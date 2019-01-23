@@ -1,0 +1,33 @@
+{
+  "name": "@mxcins/tools",
+  "version": "0.0.1",
+  "description": "tools",
+  "dependencies": {
+    "signale": "1.3.0",
+    "yargs-parser": "11.1.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "mxcins-tools": "./bin/mxcins-tools.js"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/hades/tree/master/packages/hades-tools"
+  },
+  "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/hades-tools",
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ],
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/hades/issues"
+  },
+  "files": [
+    "lib",
+    "src",
+    "bin"
+  ]
+}
