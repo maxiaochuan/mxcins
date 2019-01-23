@@ -8,13 +8,13 @@ if (argv.v || argv.version) {
   process.exit(0);
 }
 
-switch (args._[0]) {
+switch (argv._[0]) {
   case 'build':
   case 'test':
   case 'rollup':
     // require(`./src/${args._}`);
     break;
   default:
-    signale.error(`Unknown command ${args._}`);
+    signale.error(`Unknown command ${argv._}`);
     break;
 }
