@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap --npm-client=yarn",
-    "prettier": "prettier --write \"./packages/**/*\""
+    "prettier": "prettier --write \"./packages/**/*.js\""
   },
   "devDependencies": {
     "lerna": "^3.10.7",
