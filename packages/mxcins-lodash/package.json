@@ -1,0 +1,29 @@
+{
+  "name": "@mxcins/lodash",
+  "version": "0.0.0",
+  "description": "lodash",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-lodash"
+  },
+  "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-lodash",
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ],
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/hades/issues"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.4"
+  }
+}

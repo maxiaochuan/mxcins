@@ -19,7 +19,10 @@ function getBabelConfig(isBrowser) {
       }
     : { node: 6 };
   return {
-    presets: [[require.resolve('@babel/preset-env'), { targets }]],
+    presets: [
+      [require.resolve('@babel/preset-typescript')],
+      [require.resolve('@babel/preset-env'), { targets }]
+    ],
     plugins: [
       require.resolve('@babel/plugin-proposal-export-default-from'),
       require.resolve('@babel/plugin-proposal-class-properties'),
