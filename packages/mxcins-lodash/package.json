@@ -26,5 +26,8 @@
   "devDependencies": {
     "@mxcins/tools": "^0.1.1-alpha.0",
     "typescript": "^3.2.4"
+  },
+  "tools": {
+    "ts": true
   }
 }
