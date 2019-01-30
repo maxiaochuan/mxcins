@@ -20,8 +20,8 @@ function getBabelConfig(isBrowser) {
     : { node: 6 };
   return {
     presets: [
-      [require.resolve('@babel/preset-typescript')],
-      [require.resolve('@babel/preset-env'), { targets }]
+      require.resolve('@babel/preset-typescript'),
+      [require.resolve('@babel/preset-env'), { targets }],
     ],
     plugins: [
       require.resolve('@babel/plugin-proposal-export-default-from'),
@@ -36,6 +36,7 @@ function addLastSlash(path) {
 
 function transform(opts = {}) {
   const { content, path, pkg, root } = opts;
+  console.log('transform', content, path, pkg, root);
 
   const { browserFiles } = pkg.umiTools || {};
   const isBrowser =
@@ -63,7 +64,7 @@ function build(dir, opts = {}) {
       .src([src], { allowEmpty: true, base: srcDir })
       .pipe(
         through.obj((f, env, cb) => {
-          if (extname(f.path) === '.js') {
+          if (extname(f.path) === '.ts') {
             f.contents = Buffer.from(
               transform({
                 content: f.contents,
