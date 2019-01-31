@@ -8,11 +8,22 @@ const vfs = require('vinyl-fs');
 const chalk = require('chalk');
 const slash = require('slash2');
 const log = require('./utils/log');
+const shell = require('shelljs');
 
 const cwd = process.cwd();
 let pkgCount = null;
 
 function getBabelConfig(isBrowser) {
+  const envOptions = isBrowser ? {
+    targets: {
+      browsers: ['last 2 versions', 'IE 10'],
+    },
+    useBuiltIns: 'usage',
+  } : {
+    targets: {
+      node: 6
+    }
+  }
   const targets = isBrowser
     ? {
         browsers: ['last 2 versions', 'IE 10'],
@@ -20,8 +31,7 @@ function getBabelConfig(isBrowser) {
     : { node: 6 };
   return {
     presets: [
-      require.resolve('@babel/preset-typescript'),
-      [require.resolve('@babel/preset-env'), { targets }],
+      [require.resolve('@babel/preset-env'), envOptions],
     ],
     plugins: [
       require.resolve('@babel/plugin-proposal-export-default-from'),
@@ -35,11 +45,9 @@ function addLastSlash(path) {
 }
 
 function transform(opts = {}) {
-  const { content, path, pkg, root } = opts;
-  console.log('transform', content, path, pkg, root);
+  const { content, path, browserFiles, root } = opts;
 
-  const { browserFiles } = pkg.umiTools || {};
-  const isBrowser =
+  const isBrowser = opts.isBrowser ||
     browserFiles && browserFiles.includes(slash(path).replace(`${addLastSlash(slash(root))}`, ''));
 
   const babelConfig = getBabelConfig(isBrowser);
@@ -49,28 +57,36 @@ function transform(opts = {}) {
 }
 
 function build(dir, opts = {}) {
-  const { watch }= opts;
-  const libDir = join(dir, 'lib');
-  const srcDir = join(dir, 'src');
 
   const pkgPath = join(cwd, dir, 'package.json');
   const pkg = require(pkgPath);
 
+  const { browserFiles, isBrowser, ts } = pkg.mxcinsTools || {};
+
+  const libDir = join(dir, 'lib');
+  const srcDir = join(dir, ts ? 'lib' : 'src');
+
   // delete lib
   rimraf.sync(libDir);
+  if (ts) {
+    rimraf.sync(join(dir, 'jssrc'));
+    rimraf.sync(join(dir, 'types'));
+    shell.exec('tsc -d --sourceMap --outDir lib');
+  }
 
   function createStream(src) {
     return vfs
       .src([src], { allowEmpty: true, base: srcDir })
       .pipe(
         through.obj((f, env, cb) => {
-          if (extname(f.path) === '.ts') {
+          if (extname(f.path) === '.js') {
             f.contents = Buffer.from(
               transform({
                 content: f.contents,
-                pkg,
+                isBrowser,
+                browserFiles,
                 path: f.path,
-              root: join(cwd, dir),
+                root: join(cwd, dir),
               }),
             );
           }
@@ -80,27 +96,30 @@ function build(dir, opts = {}) {
       .pipe(vfs.dest(libDir));
   }
 
-  const stream = createStream(join(srcDir, '**/*'));
+  const stream = createStream(join(srcDir, '**/*.js'));
   stream.on('end', () => {
     pkgCount -= 1;
+    // if (ts) {
+    //   rimraf.sync(join(srcDir, '**/*.js'));
+    // }
     if (pkgCount === 0 && process.send) {
       process.send('BUILD_COMPLETE');
     }
     // watch
-    if (watch) {
-      log.pending('start watch', srcDir);
-      const watcher = chokidar.watch(join(cwd, srcDir), {
-        ignoreInitial: true,
-      });
-      watcher.on('all', (event, fullPath) => {
-        const relPath = fullPath.replace(join(cwd, srcDir), '');
-        log.watch(`[${event}] ${join(srcDir, relPath)}`);
-        if (!existsSync(fullPath)) return;
-        if (statSync(fullPath).isFile()) {
-          createStream(fullPath);
-        }
-      });
-    }
+    // if (watch) {
+    //   log.pending('start watch', srcDir);
+    //   const watcher = chokidar.watch(join(cwd, srcDir), {
+    //     ignoreInitial: true,
+    //   });
+    //   watcher.on('all', (event, fullPath) => {
+    //     const relPath = fullPath.replace(join(cwd, srcDir), '');
+    //     log.watch(`[${event}] ${join(srcDir, relPath)}`);
+    //     if (!existsSync(fullPath)) return;
+    //     if (statSync(fullPath).isFile()) {
+    //       createStream(fullPath);
+    //     }
+    //   });
+    // }
   });
 }
 
@@ -118,7 +137,6 @@ if (isLerna(cwd)) {
   dirs.forEach(pkg => {
     build(`./packages/${pkg}`, {
       cwd,
-      // watch,
     });
   });
 } else {

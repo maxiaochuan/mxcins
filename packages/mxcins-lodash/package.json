@@ -3,6 +3,7 @@
   "version": "0.0.1-alpha.0",
   "description": "lodash",
   "scripts": {
+    "build": "mxcins-tools build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
@@ -17,17 +18,20 @@
   "bugs": {
     "url": "https://github.com/maxiaochuan/hades/issues"
   },
+  "main": "lib/index.js",
   "files": [
-    "lib"
+    "lib",
+    "index.js"
   ],
+  "typings": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@mxcins/tools": "^0.1.1-alpha.0",
-    "typescript": "^3.2.4"
+    "@mxcins/tools": "^0.1.1-alpha.0"
   },
-  "tools": {
+  "mxcinsTools": {
+    "isBrowser": true,
     "ts": true
   }
 }
