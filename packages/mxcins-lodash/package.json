@@ -19,6 +19,7 @@
     "url": "https://github.com/maxiaochuan/hades/issues"
   },
   "main": "lib/index.js",
+  "module": "lib/index.js",
   "files": [
     "lib",
     "index.js"
@@ -32,6 +33,6 @@
   },
   "mxcinsTools": {
     "isBrowser": true,
-    "ts": true
+    "types": true
   }
 }

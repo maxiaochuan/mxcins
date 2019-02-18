@@ -14,24 +14,27 @@ const cwd = process.cwd();
 let pkgCount = null;
 
 function getBabelConfig(isBrowser) {
-  const envOptions = isBrowser ? {
+  const options = isBrowser ? {
+    modules: false,
     targets: {
       browsers: ['last 2 versions', 'IE 10'],
     },
-    useBuiltIns: 'usage',
   } : {
     targets: {
       node: 6
     }
   }
-  const targets = isBrowser
-    ? {
-        browsers: ['last 2 versions', 'IE 10'],
-      }
-    : { node: 6 };
+
   return {
+    // sourceType: 'unambiguous',
+    sourceMaps: true,
     presets: [
-      [require.resolve('@babel/preset-env'), envOptions],
+      [
+        require.resolve('@babel/preset-typescript'),
+        {},
+      ],
+      [require.resolve('@babel/preset-env'), options],
+      ...(isBrowser ? [require.resolve('@babel/preset-react')] : []),
     ],
     plugins: [
       require.resolve('@babel/plugin-proposal-export-default-from'),
@@ -53,7 +56,10 @@ function transform(opts = {}) {
   const babelConfig = getBabelConfig(isBrowser);
 
   log.transform(chalk[isBrowser ? 'yellow' : 'blue'](`${slash(path).replace(`${cwd}/`, '')}`));
-  return babel.transform(content, babelConfig).code;
+  return babel.transform(content, {
+    ...babelConfig,
+    filename: path,
+  });
 }
 
 function build(dir, opts = {}) {
@@ -61,17 +67,16 @@ function build(dir, opts = {}) {
   const pkgPath = join(cwd, dir, 'package.json');
   const pkg = require(pkgPath);
 
-  const { browserFiles, isBrowser, ts } = pkg.mxcinsTools || {};
+  const { browserFiles, isBrowser, types } = pkg.mxcinsTools || {};
 
   const libDir = join(dir, 'lib');
-  const srcDir = join(dir, ts ? 'lib' : 'src');
+  const srcDir = join(dir, 'src');
 
   // delete lib
   rimraf.sync(libDir);
-  if (ts) {
-    rimraf.sync(join(dir, 'jssrc'));
+  if (types) {
     rimraf.sync(join(dir, 'types'));
-    shell.exec('tsc -d --sourceMap --outDir lib');
+    shell.exec('tsc -d --declarationDir types --emitDeclarationOnly --sourceMap');
   }
 
   function createStream(src) {
@@ -79,29 +84,38 @@ function build(dir, opts = {}) {
       .src([src], { allowEmpty: true, base: srcDir })
       .pipe(
         through.obj((f, env, cb) => {
-          if (extname(f.path) === '.js') {
-            f.contents = Buffer.from(
-              transform({
-                content: f.contents,
-                isBrowser,
-                browserFiles,
-                path: f.path,
-                root: join(cwd, dir),
-              }),
-            );
+          if (['.js', '.ts'].includes(extname(f.path))) {
+            const transformed = transform({
+              content: f.contents,
+              isBrowser,
+              browserFiles,
+              path: f.path,
+              root: join(cwd, dir),
+            })
+            f.contents = Buffer.from(transformed.code);
+            f.path = f.path.replace(extname(f.path), '.js');
+            f.map = transformed.map;
           }
           cb(null, f);
         }),
       )
-      .pipe(vfs.dest(libDir));
+      .pipe(vfs.dest(libDir))
+      .pipe(
+        through.obj((f, env, cb) => {
+          if (f.map) {
+            f.contents = Buffer.from(JSON.stringify(f.map));
+            f.path = f.path.replace(extname(f.path), '.js.map');
+          }
+          cb(null, f);
+        })
+      )
+      .pipe(vfs.dest(libDir))
   }
 
-  const stream = createStream(join(srcDir, '**/*.js'));
+  const stream = createStream(join(srcDir, '**/*'));
   stream.on('end', () => {
     pkgCount -= 1;
-    // if (ts) {
-    //   rimraf.sync(join(srcDir, '**/*.js'));
-    // }
+
     if (pkgCount === 0 && process.send) {
       process.send('BUILD_COMPLETE');
     }
