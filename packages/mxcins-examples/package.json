@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/examples",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "examples",
   "scripts": {
     "start": "umi dev",
@@ -22,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@mxcins/lodash": "^0.0.1-alpha.0",
+    "@mxcins/lodash": "^0.0.1-alpha.1",
     "umi": "^2.5.1"
   }
 }
