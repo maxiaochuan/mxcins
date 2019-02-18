@@ -2,7 +2,6 @@
 **/*.svg
 **/*.ejs
 **/*.html
-node_modules
 package.json
 .umi
 .umi-production
