@@ -22,9 +22,9 @@
   "module": "lib/index.js",
   "files": [
     "lib",
-    "index.js"
+    "types"
   ],
-  "typings": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
