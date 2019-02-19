@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap --npm-client=yarn",
+    "publish": "node ./scripts/publish.js",
     "lint": "yarn lint:js && yarn lint:ts",
     "lint:js": "eslint --ext .js packages --fix",
     "lint:ts": "tslint --fix \"packages/**/*.ts*\"",
