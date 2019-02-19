@@ -38,5 +38,6 @@
   "dependencies": {
     "@mxcins/lodash": "^0.0.1",
     "whatwg-fetch": "3.0.0"
-  }
+  },
+  "gitHead": "ca090e345f12c86eec7b4c5b24ffb1caf24a112d"
 }

@@ -34,5 +34,6 @@
   "mxcinsTools": {
     "isBrowser": true,
     "types": true
-  }
+  },
+  "gitHead": "ca090e345f12c86eec7b4c5b24ffb1caf24a112d"
 }

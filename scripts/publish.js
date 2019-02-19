@@ -17,6 +17,8 @@ const updatedRepos = ret
   .map(line => line.replace('- ', ''))
   .filter(line => line !== '');
 
+console.log('updatedRepos', updatedRepos);
+
 if (updatedRepos.length === 0) {
   console.log('No package is updated.');
   process.exit(0);
@@ -52,7 +54,7 @@ cp.on('close', code => {
     process.exit(1);
   }
 
-  publishToNpm();
+  // publishToNpm();
 });
 
 function publishToNpm() {
