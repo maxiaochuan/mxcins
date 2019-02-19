@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/request",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "request",
   "scripts": {
     "build": "mxcins-tools build",
@@ -29,14 +29,14 @@
     "access": "public"
   },
   "devDependencies": {
-    "@mxcins/tools": "^0.2.1"
+    "@mxcins/tools": "^0.3.0"
   },
   "mxcinsTools": {
     "isBrowser": true,
     "types": true
   },
   "dependencies": {
-    "@mxcins/lodash": "^0.0.2",
+    "@mxcins/lodash": "^0.0.3",
     "whatwg-fetch": "3.0.0"
   },
   "gitHead": "ca090e345f12c86eec7b4c5b24ffb1caf24a112d"

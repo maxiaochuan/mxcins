@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/tools",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "tools",
   "bin": {
     "mxcins-tools": "./bin/mxcins-tools.js"

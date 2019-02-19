@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/lodash",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "lodash",
   "scripts": {
     "build": "mxcins-tools build",
@@ -29,7 +29,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@mxcins/tools": "^0.2.1"
+    "@mxcins/tools": "^0.3.0"
   },
   "mxcinsTools": {
     "isBrowser": true,
