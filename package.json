@@ -9,7 +9,7 @@
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --fix --ext .js",
     "lint-staged:ts": "tslint --fix",
-    "prettier": "prettier --write \"{,!(node_modules)/**/}*.js\" \"{,!(node_modules)/**/}*.ts\""
+    "prettier": "prettier --write \"{,!(node_modules)/**/}*.{js,ts}\""
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,less}": [

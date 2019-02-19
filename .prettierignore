@@ -9,4 +9,4 @@ package.json
 **/.DS_Store
 **/yarn.lock
 lib
-**/node_modules/**
+types
