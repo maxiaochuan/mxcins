@@ -34,5 +34,9 @@
   "mxcinsTools": {
     "isBrowser": true,
     "types": true
+  },
+  "dependencies": {
+    "@mxcins/lodash": "^0.0.1-alpha.1",
+    "whatwg-fetch": "3.0.0"
   }
 }
