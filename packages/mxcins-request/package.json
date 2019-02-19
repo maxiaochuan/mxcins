@@ -1,0 +1,38 @@
+{
+  "name": "@mxcins/reqeust",
+  "version": "0.0.0",
+  "description": "request",
+  "scripts": {
+    "build": "mxcins-tools build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-reqeust"
+  },
+  "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-request",
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ],
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/hades/issues"
+  },
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "files": [
+    "lib",
+    "types"
+  ],
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@mxcins/tools": "^0.1.1-alpha.1"
+  },
+  "mxcinsTools": {
+    "isBrowser": true,
+    "types": true
+  }
+}
