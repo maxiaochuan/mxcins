@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@mxcins/lodash": "^0.0.1-alpha.2",
+    "@mxcins/request": "^0.0.1-alpha.0",
     "umi": "^2.5.1"
   }
 }
