@@ -24,17 +24,11 @@ if (updatedRepos.length === 0) {
   process.exit(0);
 }
 
-// const { code: buildCode } = shell.exec('npm run build');
-// if (buildCode === 1) {
-//   console.error('Failed: npm run build');
-//   process.exit(1);
-// }
-
-// const { code: uiBuildCode } = shell.exec('npm run ui:build');
-// if (uiBuildCode === 1) {
-//   console.error('Failed: npm run ui:build');
-//   process.exit(1);
-// }
+const { code: buildCode } = shell.exec('npm run build');
+if (buildCode === 1) {
+  console.error('Failed: npm run build');
+  process.exit(1);
+}
 
 const cp = fork(
   join(process.cwd(), 'node_modules/.bin/lerna'),
