@@ -66,6 +66,9 @@ function transform(opts = {}) {
 function build(dir) {
   const pkgPath = join(cwd, dir, 'package.json');
   const pkg = require(pkgPath); // eslint-disable-line
+  if (!pkg.mxcinsTools) {
+    return;
+  }
 
   const { browserFiles, isBrowser, types } = pkg.mxcinsTools || {};
 
