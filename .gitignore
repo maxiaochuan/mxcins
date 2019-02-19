@@ -65,3 +65,5 @@ lib
 types
 .umi
 .umi-production
+.DS_Store
+

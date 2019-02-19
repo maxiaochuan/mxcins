@@ -7,32 +7,31 @@ const rimraf = require('rimraf');
 const vfs = require('vinyl-fs');
 const chalk = require('chalk');
 const slash = require('slash2');
-const log = require('./utils/log');
 const shell = require('shelljs');
+const log = require('./utils/log');
 
 const cwd = process.cwd();
 let pkgCount = null;
 
 function getBabelConfig(isBrowser) {
-  const options = isBrowser ? {
-    modules: false,
-    targets: {
-      browsers: ['last 2 versions', 'IE 10'],
-    },
-  } : {
-    targets: {
-      node: 6
-    }
-  }
+  const options = isBrowser
+    ? {
+        modules: false,
+        targets: {
+          browsers: ['last 2 versions', 'IE 10'],
+        },
+      }
+    : {
+        targets: {
+          node: 6,
+        },
+      };
 
   return {
     // sourceType: 'unambiguous',
     sourceMaps: true,
     presets: [
-      [
-        require.resolve('@babel/preset-typescript'),
-        {},
-      ],
+      [require.resolve('@babel/preset-typescript'), {}],
       [require.resolve('@babel/preset-env'), options],
       ...(isBrowser ? [require.resolve('@babel/preset-react')] : []),
     ],
@@ -50,8 +49,10 @@ function addLastSlash(path) {
 function transform(opts = {}) {
   const { content, path, browserFiles, root } = opts;
 
-  const isBrowser = opts.isBrowser ||
-    browserFiles && browserFiles.includes(slash(path).replace(`${addLastSlash(slash(root))}`, ''));
+  const isBrowser =
+    opts.isBrowser ||
+    (browserFiles &&
+      browserFiles.includes(slash(path).replace(`${addLastSlash(slash(root))}`, '')));
 
   const babelConfig = getBabelConfig(isBrowser);
 
@@ -62,10 +63,9 @@ function transform(opts = {}) {
   });
 }
 
-function build(dir, opts = {}) {
-
+function build(dir) {
   const pkgPath = join(cwd, dir, 'package.json');
-  const pkg = require(pkgPath);
+  const pkg = require(pkgPath); // eslint-disable-line
 
   const { browserFiles, isBrowser, types } = pkg.mxcinsTools || {};
 
@@ -91,7 +91,7 @@ function build(dir, opts = {}) {
               browserFiles,
               path: f.path,
               root: join(cwd, dir),
-            })
+            });
             f.contents = Buffer.from(transformed.code);
             f.path = f.path.replace(extname(f.path), '.js');
             f.map = transformed.map;
@@ -107,9 +107,9 @@ function build(dir, opts = {}) {
             f.path = f.path.replace(extname(f.path), '.js.map');
           }
           cb(null, f);
-        })
+        }),
       )
-      .pipe(vfs.dest(libDir))
+      .pipe(vfs.dest(libDir));
   }
 
   const stream = createStream(join(srcDir, '**/*'));
@@ -137,16 +137,15 @@ function build(dir, opts = {}) {
   });
 }
 
-function isLerna(cwd) {
-  return existsSync(join(cwd, 'lerna.json'));
+function isLerna(cw) {
+  return existsSync(join(cw, 'lerna.json'));
 }
 
 // Init
 const args = yParser(process.argv.slice(3));
 const watch = args.w || args.watch;
 if (isLerna(cwd)) {
-  const dirs = readdirSync(join(cwd, 'packages'))
-    .filter(dir => dir.charAt(0) !== '.');
+  const dirs = readdirSync(join(cwd, 'packages')).filter(dir => dir.charAt(0) !== '.');
   pkgCount = dirs.length;
   dirs.forEach(pkg => {
     build(`./packages/${pkg}`, {
@@ -160,4 +159,3 @@ if (isLerna(cwd)) {
     watch,
   });
 }
-

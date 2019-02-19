@@ -3,7 +3,12 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap --npm-client=yarn",
+    "lint": "yarn lint:js && yarn lint:ts",
+    "lint:js": "eslint --ext .js packages --fix",
+    "lint:ts": "tslint --fix \"packages/**/*.ts*\"",
     "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --fix --ext .js",
+    "lint-staged:ts": "tslint --fix",
     "prettier": "prettier --write \"./packages/**/*.js\" \"./packages/**/*.ts\""
   },
   "lint-staged": {
@@ -18,6 +23,12 @@
     }
   },
   "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "husky": "^1.3.1",
     "lerna": "^3.10.7",
     "lint-staged": "^8.1.4",
