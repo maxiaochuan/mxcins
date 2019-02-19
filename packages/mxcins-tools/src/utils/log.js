@@ -10,12 +10,12 @@ module.exports = new Signale({
     pending: {
       badge: '++',
       color: 'magenta',
-      label: 'pending'
+      label: 'pending',
     },
     watch: {
       badge: '**',
       color: 'yellow',
-      label: 'watch'
+      label: 'watch',
     },
-  }
+  },
 });
