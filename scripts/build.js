@@ -6,7 +6,7 @@ const { join } = require('path');
 function runUmiTools(...args) {
   console.log(['>> umi-tools', ...args].join(' '));
   return fork(
-    join(process.cwd(), 'node_modules/.bin/umi-tools'),
+    join(process.cwd(), 'node_modules/.bin/mxcins-tools'),
     [...args].concat(process.argv.slice(2)),
     {
       stdio: 'inherit',

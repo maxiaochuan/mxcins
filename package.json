@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap --npm-client=yarn",
+    "build": "node ./scripts/build.js",
     "publish": "node ./scripts/publish.js",
     "lint": "yarn lint:js && yarn lint:ts",
     "lint:js": "eslint --ext .js packages --fix",
@@ -24,6 +25,7 @@
     }
   },
   "devDependencies": {
+    "@mxcins/tools": "^0.2.1",
     "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
@@ -37,7 +39,6 @@
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.2.4",
-    "umi": "^2.5.1"
+    "typescript": "^3.2.4"
   }
 }

@@ -1,5 +1,4 @@
 import 'whatwg-fetch';
-import { isString } from '@mxcins/lodash';
 import { RequestError, ResponseError, safeJsonParse } from './utils';
 
 // tslint:disable-next-line:no-empty-interface
@@ -11,18 +10,6 @@ export interface IFetchOptions extends RequestInit {
 }
 
 export type IInstance = Promise<Response>;
-
-// export default function fetch(uri: string, options: IFetchOptions = {}) {
-//   if (!isString(uri)) {
-//     throw new Error('uri MUST be string');
-//   }
-
-//   options.method = options.method ? options.method.toUpperCase() : 'GET';
-
-//   const response = window.fetch(uri, options);
-
-//   return response;
-// }
 
 export default class Fetch {
   private uri: string;

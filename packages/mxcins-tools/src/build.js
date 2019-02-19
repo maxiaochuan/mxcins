@@ -79,6 +79,7 @@ function build(dir) {
   rimraf.sync(libDir);
   if (types) {
     rimraf.sync(join(dir, 'types'));
+    shell.cd(dir);
     shell.exec('tsc -d --declarationDir types --emitDeclarationOnly --sourceMap');
   }
 
