@@ -28,9 +28,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@mxcins/tools": "^0.3.0"
-  },
   "mxcinsTools": {
     "isBrowser": true,
     "types": true
