@@ -1,12 +1,19 @@
 import 'whatwg-fetch';
 import { RequestError, ResponseError, safeJsonParse } from './utils';
+import fetch from './base/fetch';
 
 // tslint:disable-next-line:no-empty-interface
 export interface IFetchOptions extends RequestInit {
+  params?: { [x: string]: string | number };
+  requestType?: 'json' | 'form';
   responseType?: 'json' | 'text' | 'blob';
+  data?: any;
   getResponse?: boolean;
   timeout?: number;
   errorHandler?: (error: ResponseError) => any;
+
+  prefix?: string;
+  suffix?: string;
 }
 
 export type IInstance = Promise<Response>;
@@ -14,12 +21,13 @@ export type IInstance = Promise<Response>;
 export default class Fetch {
   private uri: string;
   private options: IFetchOptions;
-  constructor(uri: string, options: IFetchOptions) {
+  constructor(uri: string, options: IFetchOptions = {}) {
     this.uri = uri;
     this.options = options;
+    this.addFix();
   }
   public do() {
-    let instance = window.fetch(this.uri, this.options);
+    let instance = fetch(this.uri, this.options);
 
     instance = this.wrappedTimeout(instance);
     return this.parseResponse(instance);
@@ -84,6 +92,19 @@ export default class Fetch {
       }
     } else {
       reject(error);
+    }
+  }
+
+  /**
+   * 增加前缀和后缀
+   */
+  private addFix() {
+    const { prefix, suffix } = this.options;
+    if (prefix) {
+      this.uri = `${prefix}${this.uri}`;
+    }
+    if (suffix) {
+      this.uri = `${this.uri}${suffix}`;
     }
   }
 }
