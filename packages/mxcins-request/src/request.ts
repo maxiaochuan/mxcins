@@ -1,4 +1,4 @@
-import Fetch, { IFetchOptions } from './fetch';
+import Fetch, { IFetchOptions } from './Fetch';
 import fetch from './base/fetch';
 
 // tslint:disable-next-line:no-empty-interface
