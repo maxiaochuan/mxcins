@@ -8,6 +8,7 @@ package.json
 **/*.snap
 **/.DS_Store
 **/yarn.lock
+coverage/**/*
 lib
 types
 yarn.lock
