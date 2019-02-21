@@ -266,13 +266,22 @@
     "@babel/helper-remap-async-to-generator" "^7.1.0"
     "@babel/plugin-syntax-async-generators" "^7.2.0"
 
-"@babel/plugin-proposal-class-properties@7.3.0":
-  version "7.3.0"
-  resolved "http://registry.npm.taobao.org/@babel/plugin-proposal-class-properties/download/@babel/plugin-proposal-class-properties-7.3.0.tgz#272636bc0fa19a0bc46e601ec78136a173ea36cd"
-  integrity sha1-JyY2vA+hmgvEbmAex4E2oXPqNs0=
+"@babel/plugin-proposal-class-properties@7.3.3":
+  version "7.3.3"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-proposal-class-properties/download/@babel/plugin-proposal-class-properties-7.3.3.tgz#e69ee114a834a671293ace001708cc1682ed63f9"
+  integrity sha1-5p7hFKg0pnEpOs4AFwjMFoLtY/k=
   dependencies:
     "@babel/helper-create-class-features-plugin" "^7.3.0"
     "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-proposal-decorators@7.3.0":
+  version "7.3.0"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-proposal-decorators/download/@babel/plugin-proposal-decorators-7.3.0.tgz#637ba075fa780b1f75d08186e8fb4357d03a72a7"
+  integrity sha1-Y3ugdfp4Cx910IGG6PtDV9A6cqc=
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.3.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-decorators" "^7.2.0"
 
 "@babel/plugin-proposal-export-default-from@7.2.0":
   version "7.2.0"
@@ -319,6 +328,13 @@
   version "7.2.0"
   resolved "http://registry.npm.taobao.org/@babel/plugin-syntax-async-generators/download/@babel/plugin-syntax-async-generators-7.2.0.tgz#69e1f0db34c6f5a0cf7e2b3323bf159a76c8cb7f"
   integrity sha1-aeHw2zTG9aDPfiszI78VmnbIy38=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-syntax-decorators@^7.2.0":
+  version "7.2.0"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-syntax-decorators/download/@babel/plugin-syntax-decorators-7.2.0.tgz#c50b1b957dcc69e4b1127b65e1c33eef61570c1b"
+  integrity sha1-xQsblX3MaeSxEntl4cM+72FXDBs=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
@@ -1356,13 +1372,14 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mxcins/tools@0.3.0":
-  version "0.3.0"
-  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-0.3.0.tgz#eedac86e63b4362c4a4f57c63a6fff3ef8813df2"
-  integrity sha1-7trIbmO0NixKT1fGOm//PviBPfI=
+"@mxcins/tools@0.4.0":
+  version "0.4.0"
+  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-0.4.0.tgz#057428b55a960a9e8b60cbfd60ad68976a45ce65"
+  integrity sha1-BXQotVqWCp6LYMv9YK1ol2pFzmU=
   dependencies:
     "@babel/core" "7.2.2"
-    "@babel/plugin-proposal-class-properties" "7.3.0"
+    "@babel/plugin-proposal-class-properties" "7.3.3"
+    "@babel/plugin-proposal-decorators" "7.3.0"
     "@babel/plugin-proposal-export-default-from" "7.2.0"
     "@babel/preset-env" "7.3.1"
     "@babel/preset-react" "7.0.0"
