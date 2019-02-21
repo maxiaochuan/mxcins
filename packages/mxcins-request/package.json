@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/request",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "request",
   "scripts": {
     "build": "mxcins-tools build",
@@ -33,7 +33,7 @@
     "types": true
   },
   "dependencies": {
-    "@mxcins/lodash": "^0.0.3",
+    "@mxcins/lodash": "^0.0.4",
     "@types/query-string": "^6.2.0",
     "query-string": "6.2.0",
     "whatwg-fetch": "3.0.0"
