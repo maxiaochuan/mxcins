@@ -11,13 +11,13 @@ if (shell.exec('npm config get registry').stdout.indexOf('https://registry.npmjs
 
 const cwd = process.cwd();
 const ret = shell.exec('./node_modules/.bin/lerna updated').stdout;
-console.log('updated');
+
 const updatedRepos = ret
   .split('\n')
   .map(line => line.replace('- ', ''))
   .filter(line => line !== '');
 
-console.log('updatedRepos', updatedRepos);
+console.log('changed repos: ', updatedRepos);
 
 if (updatedRepos.length === 0) {
   console.log('No package is updated.');
@@ -53,7 +53,6 @@ cp.on('close', code => {
 
 function publishToNpm() {
   console.log(`repos to publish: ${updatedRepos.join(', ')}`);
-  console.log('updatedRepos', updatedRepos);
   updatedRepos.forEach(repo => {
     const useName = repo.replace('@', '').replace('/', '-');
     shell.cd(join(cwd, 'packages', useName));

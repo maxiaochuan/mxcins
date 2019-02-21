@@ -3,5 +3,10 @@
   "packages": [
     "packages/*"
   ],
+  "command": {
+    "changed": {
+      "ignoreChanges": ["*.test.ts"]
+    }
+  },
   "version": "independent"
 }
