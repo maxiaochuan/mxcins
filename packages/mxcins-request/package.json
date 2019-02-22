@@ -34,10 +34,12 @@
   },
   "dependencies": {
     "@mxcins/lodash": "^0.0.6",
-    "@types/query-string": "^6.2.0",
-    "create-test-server": "^2.4.0",
     "query-string": "6.2.0",
     "whatwg-fetch": "3.0.0"
+  },
+  "devDependencies": {
+    "@types/query-string": "^6.2.0",
+    "create-test-server": "^2.4.0"
   },
   "gitHead": "ca090e345f12c86eec7b4c5b24ffb1caf24a112d"
 }
