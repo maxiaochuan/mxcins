@@ -47,9 +47,13 @@ export default class Fetch {
     }
   }
 
+  /**
+   * 2019-02-22 15:14:22 data 返回类型 问题 TODO
+   * @param instance
+   */
   private parseResponse(instance: IInstance) {
     const { responseType = 'json', getResponse = false } = this.options;
-    return new Promise<{ data: any; response: Response } | any>((resolve, reject) => {
+    return new Promise<{ data: any; response: Response }>((resolve, reject) => {
       let copy: Response;
       instance
         .then(response => {

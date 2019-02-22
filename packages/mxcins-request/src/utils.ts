@@ -1,5 +1,11 @@
 // tslint:disable:max-classes-per-file
-export class RequestError extends Error {}
+
+export class RequestError extends Error {
+  constructor(text: string) {
+    super(text);
+    this.name = 'RequestError';
+  }
+}
 
 export class ResponseError extends Error {
   public response: Response;

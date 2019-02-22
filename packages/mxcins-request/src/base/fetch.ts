@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import { IFetchOptions } from '@/fetch';
+import { IFetchOptions } from '../Fetch';
 import defaultInterceptor from './defaultInterceptor';
 
 export type IReqInterceptorHandler = (
