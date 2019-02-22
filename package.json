@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap --npm-client=yarn",
-    "build": "node ./scripts/build.js",
+    "build": "mxcins-tools build",
     "publish": "node ./scripts/publish.js",
     "test": "jest --coverage",
     "lint": "yarn lint:js && yarn lint:ts",
