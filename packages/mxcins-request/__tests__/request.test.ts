@@ -21,7 +21,7 @@ describe('test request', () => {
       }, 1000);
     });
 
-    let resp = await request(prefix('/test/timeout'), {
+    let resp = await request<string>(prefix('/test/timeout'), {
       timeout: 1200,
       getResponse: true,
     });
