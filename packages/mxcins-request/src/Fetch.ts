@@ -26,11 +26,11 @@ export default class Fetch {
     this.options = options;
     this.addFix();
   }
-  public do<T>() {
+  public do() {
     let instance = fetch(this.uri, this.options);
 
     instance = this.wrappedTimeout(instance);
-    return this.parseResponse<T>(instance);
+    return this.parseResponse(instance);
   }
 
   private wrappedTimeout(instance: IInstance): IInstance {
@@ -51,9 +51,9 @@ export default class Fetch {
    * 2019-02-22 15:14:22 data 返回类型 问题 TODO
    * @param instance
    */
-  private parseResponse<T>(instance: IInstance) {
+  private parseResponse(instance: IInstance) {
     const { responseType = 'json', getResponse = false } = this.options;
-    return new Promise<T | { data: T; response: Response }>((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       let copy: Response;
       instance
         .then(response => {

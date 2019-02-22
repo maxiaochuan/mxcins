@@ -26,6 +26,8 @@ describe('test request', () => {
       getResponse: true,
     });
 
+    console.log(resp.data);
+
     expect(resp.response.ok).toBe(true);
 
     try {

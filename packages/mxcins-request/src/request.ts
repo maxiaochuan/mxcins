@@ -35,12 +35,15 @@ export interface IRequestMethod<R = false> {
 }
 
 const request = (initOptions: IRequestOptions = {}) => {
-  const instance: IRequestMethod = <T = any>(input: string, options: IRequestOptions = {}) => {
+  const instance: IRequestMethod = (input: string, options: IRequestOptions = {}) => {
+    /**
+     * 合并options
+     */
     options.headers = { ...initOptions.headers, ...options.headers };
     options.params = { ...initOptions.params, ...options.params };
     options = { ...initOptions, ...options };
 
-    return new Fetch(input, options).do<T>();
+    return new Fetch(input, options).do();
   };
 
   instance.interceptors = fetch.interceptors;

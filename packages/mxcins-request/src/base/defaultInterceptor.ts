@@ -1,10 +1,12 @@
 import { stringify } from 'query-string';
-import { IReqInterceptorHandler } from './fetch';
+import { IReqInterceptor } from './fetch';
 
-const defaultInterceptor: IReqInterceptorHandler = (uri, originOptions) => {
+const defaultInterceptor: IReqInterceptor = (uri, originOptions) => {
   const options = { ...originOptions };
+
   const method = options.method ? options.method.toLowerCase() : 'get';
-  if (method === 'post' || method === 'post' || method === 'patch') {
+
+  if (method === 'post' || method === 'put' || method === 'patch') {
     const { requestType = 'json', data } = options;
     if (data) {
       const dataType = Object.prototype.toString.call(data);
@@ -38,6 +40,8 @@ const defaultInterceptor: IReqInterceptorHandler = (uri, originOptions) => {
     const str = uri.indexOf('?') !== -1 ? '&' : '?';
     uri = `${uri}${str}${stringify(options.params)}`;
   }
+
+  options.method = method.toUpperCase();
 
   return {
     uri,
