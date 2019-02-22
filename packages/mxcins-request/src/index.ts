@@ -1,4 +1,4 @@
-import request, { create } from './request';
+import request, { create, IRequestOptions } from './request';
 
-export { create };
+export { create, IRequestOptions };
 export default request;
