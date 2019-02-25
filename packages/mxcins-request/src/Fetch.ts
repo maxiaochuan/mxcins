@@ -1,36 +1,25 @@
 import 'whatwg-fetch';
 import { RequestError, ResponseError, safeJsonParse } from './utils';
 import fetch from './base/fetch';
-
-// tslint:disable-next-line:no-empty-interface
-export interface IFetchOptions extends RequestInit {
-  params?: { [x: string]: string | number };
-  requestType?: 'json' | 'form';
-  responseType?: 'json' | 'text' | 'blob';
-  data?: any;
-  getResponse?: boolean;
-  timeout?: number;
-  errorHandler?: (error: ResponseError) => any;
-
-  prefix?: string;
-  suffix?: string;
-}
+import { IRequestOptions } from './request';
 
 export type IInstance = Promise<Response>;
 
 export default class Fetch {
   private uri: string;
-  private options: IFetchOptions;
-  constructor(uri: string, options: IFetchOptions = {}) {
+  private options: IRequestOptions;
+  constructor(uri: string, options: IRequestOptions = {}) {
     this.uri = uri;
     this.options = options;
     this.addFix();
   }
-  public do() {
+  public async do<T>() {
     let instance = fetch(this.uri, this.options);
 
     instance = this.wrappedTimeout(instance);
-    return this.parseResponse(instance);
+
+    const response = await instance;
+    return this.parseResponse<T>(response);
   }
 
   private wrappedTimeout(instance: IInstance): IInstance {
@@ -51,51 +40,43 @@ export default class Fetch {
    * 2019-02-22 15:14:22 data 返回类型 问题 TODO
    * @param instance
    */
-  private parseResponse(instance: IInstance) {
+  private async parseResponse<T>(response: Response) {
     const { responseType = 'json', getResponse = false } = this.options;
-    return new Promise<any>((resolve, reject) => {
-      let copy: Response;
-      instance
-        .then(response => {
-          copy = response.clone();
-          if (responseType === 'json' || responseType === 'text') {
-            return response.text().then(safeJsonParse);
-          } else {
-            try {
-              return response[responseType]();
-            } catch (e) {
-              throw new ResponseError(copy, 'responseType not support');
-            }
-          }
-        })
-        .then(data => {
-          if (copy.status >= 200 && copy.status < 300) {
-            if (getResponse) {
-              resolve({
-                data,
-                response: copy,
-              });
-            } else {
-              resolve(data);
-            }
-          } else {
-            throw new ResponseError(copy, 'http error', data);
-          }
-        })
-        .catch(error => this.handleError(error, { resolve, reject }));
-    });
+
+    let data: T;
+
+    try {
+      if (responseType === 'json' || responseType === 'text') {
+        const str = await response.text();
+        data = safeJsonParse(str);
+      } else {
+        try {
+          data = (await response[responseType]()) as any;
+        } catch (error) {
+          throw new ResponseError(response, 'responseType not support');
+        }
+      }
+
+      if (response.status >= 200 && response.status < 300) {
+        return getResponse ? { response, data } : data;
+      } else {
+        throw new ResponseError(response, 'http error', data);
+      }
+    } catch (error) {
+      return this.handleError<T>(error);
+    }
   }
-  private handleError(error: ResponseError, { resolve, reject }: { resolve: any; reject: any }) {
+
+  private handleError<T>(error: ResponseError): T {
     const { errorHandler } = this.options;
     if (errorHandler) {
       try {
-        const data = errorHandler(error);
-        resolve(data);
+        return errorHandler(error);
       } catch (e) {
-        reject(e);
+        throw e;
       }
     } else {
-      reject(error);
+      throw error;
     }
   }
 

@@ -12,7 +12,7 @@ export class ResponseError extends Error {
   public data: any;
   constructor(response: Response, text: string, data?: any) {
     super(text);
-    this.name = 'ReponseError';
+    this.name = 'ResponseError';
     this.response = response;
     this.data = data;
   }

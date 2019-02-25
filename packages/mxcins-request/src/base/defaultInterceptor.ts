@@ -31,6 +31,7 @@ const defaultInterceptor: IReqInterceptor = (uri, originOptions) => {
           Accept: 'application/json',
           ...options.headers,
         };
+
         options.body = data;
       }
     }

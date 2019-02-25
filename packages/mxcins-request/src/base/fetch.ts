@@ -1,12 +1,12 @@
 import 'whatwg-fetch';
-import { IFetchOptions } from '../Fetch';
 import defaultInterceptor from './defaultInterceptor';
+import { IRequestOptions } from '../request';
 
 export type IReqInterceptor = (
   uri: string,
-  options: IFetchOptions,
-) => { uri?: string; options?: IFetchOptions };
-export type IResInterceptor = (resp: Response, options: IFetchOptions) => Response;
+  options: IRequestOptions,
+) => { uri?: string; options?: IRequestOptions };
+export type IResInterceptor = (resp: Response, options: IRequestOptions) => Response;
 
 export interface IInterceptors {
   request: {

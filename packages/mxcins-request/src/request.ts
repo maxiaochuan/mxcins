@@ -1,13 +1,28 @@
-import Fetch, { IFetchOptions } from './Fetch';
-import fetch, { IReqInterceptorHandler, IRespInterceptorHandler } from './base/fetch';
+import Fetch from './Fetch';
+import fetch from './base/fetch';
+import { ResponseError } from './utils';
 
-// tslint:disable-next-line:no-empty-interface
-export interface IRequestOptions extends IFetchOptions {}
+export interface IRequestOptionsInit extends RequestInit {
+  params?: { [x: string]: string | number };
+  requestType?: 'json' | 'form';
+  responseType?: 'json' | 'text' | 'blob';
+  data?: any;
+  timeout?: number;
+  errorHandler?: (error: ResponseError) => any;
 
-export interface IRequestOptionsWithResponse extends IFetchOptions {
+  prefix?: string;
+  suffix?: string;
+}
+
+export interface IRequestOptions extends IRequestOptionsInit {
+  getResponse?: boolean;
+}
+
+export interface IRequestOptionsWithResponse extends IRequestOptionsInit {
   getResponse: true;
 }
-export interface IRequestOptionsWithoutResponse extends IFetchOptions {
+
+export interface IRequestOptionsWithoutResponse extends IRequestOptionsInit {
   getResponse: false;
 }
 
@@ -16,41 +31,28 @@ export interface IRequestResponse<T = any> {
   response: Response;
 }
 
-// export type
-
-export interface IRequestMethod<R = false> {
-  <T = any>(uri: string, options: IRequestOptionsWithResponse): Promise<IRequestResponse<T>>;
-  <T = any>(uri: string, options: IRequestOptionsWithoutResponse): Promise<T>;
-  <T = any>(url: string, options?: IRequestOptions): R extends true
-    ? Promise<IRequestResponse<T>>
-    : Promise<T>;
-  interceptors: {
-    request: {
-      use: (handler: IReqInterceptorHandler) => void;
-    };
-    response: {
-      use: (handler: IRespInterceptorHandler) => void;
-    };
-  };
-}
-
-const request = (initOptions: IRequestOptions = {}) => {
-  const instance: IRequestMethod = (input: string, options: IRequestOptions = {}) => {
-    /**
-     * 合并options
-     */
+function request(initOptions: IRequestOptionsInit = {}) {
+  function instance<T = any>(
+    input: string,
+    options: IRequestOptionsWithResponse,
+  ): Promise<IRequestResponse<T>>;
+  function instance<T = any>(input: string, options: IRequestOptionsWithoutResponse): Promise<T>;
+  function instance<T = any>(input: string, options?: IRequestOptionsInit): Promise<T>;
+  function instance<T = any>(input: string, options: IRequestOptions = {}) {
     options.headers = { ...initOptions.headers, ...options.headers };
     options.params = { ...initOptions.params, ...options.params };
     options = { ...initOptions, ...options };
 
-    return new Fetch(input, options).do();
-  };
+    return new Fetch(input, options).do<T>();
+  }
 
   instance.interceptors = fetch.interceptors;
 
   return instance;
-};
+}
 
-export const create = (initOptions: IRequestOptions) => request(initOptions);
+export const create = (initOptions?: IRequestOptions) => {
+  return request(initOptions);
+};
 
 export default request();
