@@ -33,7 +33,6 @@
     "types": true
   },
   "dependencies": {
-    "@mxcins/lodash": "^0.0.6",
     "query-string": "6.2.0",
     "whatwg-fetch": "3.0.0"
   },
