@@ -126,20 +126,20 @@ describe('test request', () => {
     expect(resp1).toBe('x');
   });
 
-  it('params fix', async () => {
+  it('params fix compile', async () => {
     server.get('/test/params', (req, res) => {
       send(req.query, res);
     });
 
     const resp1 = await request(prefix('/test/params'), {
-      params: {
+      queryParams: {
         a: 'a',
       },
     });
     expect(resp1).toEqual({ a: 'a' });
 
     const resp4 = await request(prefix('/test/params?b=b'), {
-      params: {
+      queryParams: {
         a: 'a',
       },
     });
@@ -147,7 +147,7 @@ describe('test request', () => {
 
     const resp2 = await request('/test/params', {
       prefix: server.url,
-      params: {
+      queryParams: {
         a: 'a',
       },
     });
@@ -155,11 +155,22 @@ describe('test request', () => {
 
     const resp3 = await request(prefix('/test'), {
       suffix: '/params',
-      params: {
+      queryParams: {
         a: 'a',
       },
     });
     expect(resp3).toEqual({ a: 'a' });
+
+    console.log(prefix('/test/:type'));
+    const resp5 = await request(prefix('/test/:type'), {
+      params: {
+        type: 'params',
+      },
+      queryParams: {
+        a: 'a',
+      },
+    });
+    expect(resp5).toEqual({ a: 'a' });
   });
 
   it('test exception', async () => {

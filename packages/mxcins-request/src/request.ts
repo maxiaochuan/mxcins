@@ -3,7 +3,6 @@ import fetch from './base/fetch';
 import { ResponseError } from './utils';
 
 export interface IRequestOptionsInit extends RequestInit {
-  params?: { [x: string]: string | number };
   requestType?: 'json' | 'form';
   responseType?: 'json' | 'text' | 'blob';
   data?: any;
@@ -12,6 +11,8 @@ export interface IRequestOptionsInit extends RequestInit {
 
   prefix?: string;
   suffix?: string;
+  params?: { [x: string]: any };
+  queryParams?: { [x: string]: any };
 }
 
 export interface IRequestOptions extends IRequestOptionsInit {
