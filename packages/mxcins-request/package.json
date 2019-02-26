@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/request",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "request",
   "scripts": {
     "build": "mxcins-tools build",
