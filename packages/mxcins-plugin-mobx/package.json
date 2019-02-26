@@ -1,0 +1,34 @@
+{
+  "name": "@mxcins/plugin-mobx",
+  "version": "0.0.0",
+  "description": "umi plugin mobx-state-tree",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-plugin-mobx"
+  },
+  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-plugin-mobx",
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ],
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "files": [
+    "lib",
+    "types"
+  ],
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "mxcinsTools": {
+    "isBrowser": true,
+    "types": true
+  }
+}
