@@ -201,7 +201,7 @@ describe('test request', () => {
     });
 
     request.interceptors.request.use((uri, options) => {
-      options.params = { a: 'inter' };
+      options.queryParams = { a: 'inter' };
       return { uri, options };
     });
     const resp1 = await request(prefix('/test/interceptors'));

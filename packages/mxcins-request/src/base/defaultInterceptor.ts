@@ -37,9 +37,24 @@ const defaultInterceptor: IReqInterceptor = (uri, originOptions) => {
     }
   }
 
-  if (options.params && Object.keys(options.params).length > 0) {
+  const { params, queryParams } = options;
+  if (params) {
+    try {
+      const match = uri.match(/\/:[a-zA-Z]+/g);
+      if (match !== null) {
+        match.forEach(value => {
+          const name = value.replace('/:', '');
+          uri = uri.replace(value, `/${params[name]}`);
+        });
+      }
+    } catch (error) {
+      throw new Error(`uri: ${uri} compile error`);
+    }
+  }
+
+  if (queryParams && Object.keys(queryParams).length > 0) {
     const str = uri.indexOf('?') !== -1 ? '&' : '?';
-    uri = `${uri}${str}${stringify(options.params)}`;
+    uri = `${uri}${str}${stringify(queryParams)}`;
   }
 
   options.method = method.toUpperCase();

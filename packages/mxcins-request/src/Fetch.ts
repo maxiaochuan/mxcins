@@ -12,7 +12,6 @@ export default class Fetch {
     this.uri = uri;
     this.options = options;
     this.addFix();
-    this.compile();
   }
   public async do<T>() {
     let instance = fetch(this.uri, this.options);
@@ -91,24 +90,6 @@ export default class Fetch {
     }
     if (suffix) {
       this.uri = `${this.uri}${suffix}`;
-    }
-  }
-
-  private compile() {
-    const { params, queryParams } = this.options;
-    if (params) {
-      try {
-        const match = this.uri.match(/\/:[a-zA-Z]+/g);
-        if (match !== null) {
-          match.forEach(value => {
-            const name = value.replace('/:', '');
-            this.uri = this.uri.replace(value, `/${params[name]}`);
-          });
-        }
-        this.options.params = queryParams;
-      } catch (error) {
-        throw new RequestError(`uri: ${this.uri} compile error`);
-      }
     }
   }
 }
