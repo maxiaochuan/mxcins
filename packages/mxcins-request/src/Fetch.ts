@@ -52,7 +52,7 @@ export default class Fetch {
         data = safeJsonParse(str);
       } else {
         try {
-          data = (await response[responseType]()) as any;
+          data = ((await response[responseType]()) as unknown) as T;
         } catch (error) {
           throw new ResponseError(response, 'responseType not support');
         }

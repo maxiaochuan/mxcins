@@ -33,6 +33,7 @@
     "types": true
   },
   "dependencies": {
+    "@babel/runtime-corejs2": "7.3.4",
     "query-string": "6.2.0",
     "whatwg-fetch": "3.0.0"
   },
