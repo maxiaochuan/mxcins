@@ -56,16 +56,14 @@ function endWithSlash(path: string) {
 }
 function isSrcPath(path: string, api: IRewriteApi) {
   const { paths, winPath } = api;
-  return (
-    endWithSlash(winPath(path)) === endWithSlash(winPath(paths.absSrcPath))
-  );
+  return endWithSlash(winPath(path)) === endWithSlash(winPath(paths.absSrcPath));
 }
 
 interface IOpts {
   dynamicImport?: {
     loadingComponent?: string;
     webpackChunkName?: boolean;
-  }
+  };
   exclude?: any[];
 }
 
@@ -123,18 +121,17 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
         `.trim(),
       );
     } else {
-      tplContent = tplContent.replace( '<%= MobxConfigure %>', '');
+      tplContent = tplContent.replace('<%= MobxConfigure %>', '');
     }
 
     tplContent = tplContent.replace('<%= RegisterStores %>', getGlobalStoresContent());
     api.writeTmpFile('initMobx.js', tplContent);
   }
 
-
   api.onGenerateFiles(() => {
     generateMobxContainer();
     generateInitMobx();
-  })
+  });
 
   // TODO: dynamicImport
   if (shouldImportDynamic) {
@@ -144,7 +141,9 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
     });
 
     api.modifyRouteComponent((memo, args) => {
-      if (!args) { return; }
+      if (!args) {
+        return;
+      }
       const { importPath, webpackChunkName } = args;
       if (!webpackChunkName) {
         return memo;
@@ -159,7 +158,7 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
       if (opts.dynamicImport && opts.dynamicImport.webpackChunkName) {
         extendStr = `/* webpackChunkName: ^${webpackChunkName}^ */`;
       }
-      
+
       let ret = `
       _mobxDynamic({
   <%= STORES %>
@@ -170,7 +169,7 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
       const stores = getPageStores(join(paths.absTmpDirPath, importPath), api)
         .map(path => ({ name: basename(path, extname(path)), path }))
         .filter(_ => _.name);
-      
+
       if (stores && stores.length) {
         ret = ret.replace(
           '<%= STORES %>',
@@ -191,7 +190,7 @@ stores: [
         );
       }
       return ret.replace('<%= STORES %>', '');
-    })
+    });
   }
 
   // const mobxDir = compatDirname(
@@ -209,13 +208,13 @@ stores: [
   // ])
 
   api.modifyAFWebpackOpts(memo => {
-      const alias = {
-        mobx: require.resolve('mobx'),
-        'mobx-react': require.resolve('mobx-react'),
-        'mobx-state-tree': require.resolve('mobx-state-tree'),
-        'mobx-react-devtools': require.resolve('mobx-react-devtools'),
-        'mobx-devtools-mst': require.resolve('mobx-devtools-mst'),
-      };
+    const alias = {
+      mobx: require.resolve('mobx'),
+      'mobx-react': require.resolve('mobx-react'),
+      'mobx-state-tree': require.resolve('mobx-state-tree'),
+      'mobx-react-devtools': require.resolve('mobx-react-devtools'),
+      'mobx-devtools-mst': require.resolve('mobx-devtools-mst'),
+    };
     if (typeof memo !== 'undefined') {
       return {
         ...memo,
@@ -239,7 +238,6 @@ stores: [
     join(paths.absSrcPath, 'mobx.ts'),
     join(paths.absSrcPath, 'mobx.tsx'),
   ]);
-
 
   api.addRuntimePlugin(join(__dirname, './runtime'));
   api.addRuntimePluginKey('mobx');

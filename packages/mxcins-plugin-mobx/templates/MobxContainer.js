@@ -1,6 +1,6 @@
-import { Component, Fragment } from "react";
-import { Provider } from "mobx-react";
-import DevTools from "mobx-react-devtools";
+import { Component, Fragment } from 'react';
+import { Provider } from 'mobx-react';
+import DevTools from 'mobx-react-devtools';
 
 class MobxContainer extends Component {
   render() {

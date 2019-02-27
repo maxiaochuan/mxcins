@@ -3,7 +3,7 @@ import Loadable from 'react-loadable';
 import _umiDynamic from 'umi/dynamic';
 import { types } from 'mobx-state-tree';
 
-const cached: { [x:string]: any } = {};
+const cached: { [x: string]: any } = {};
 
 function registerStore(stores: any[] = []) {
   stores.map((store: any) => {
