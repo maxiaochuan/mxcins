@@ -28,7 +28,24 @@
     "access": "public"
   },
   "mxcinsTools": {
-    "isBrowser": true,
+    "browserFiles": [
+      "packages/mxcins-plugin-mobx/src/dynamic.ts",
+      "packages/mxcins-plugin-mobx/src/runtime.ts"
+    ],
     "types": true
+  },
+  "devDependencies": {
+    "@types/globby": "^8.0.0",
+    "@types/react": "^16.8.5",
+    "umi-types": "^0.1.2"
+  },
+  "dependencies": {
+    "globby": "^9.0.0",
+    "mobx": "5.9.0",
+    "mobx-devtools-mst": "^0.9.18",
+    "mobx-react": "5.4.3",
+    "mobx-react-devtools": "6.0.3",
+    "mobx-state-tree": "3.10.2",
+    "path-is-root": "^0.1.0"
   }
 }
