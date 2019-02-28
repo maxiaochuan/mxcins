@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/umi-plugin-mst",
-  "version": "0.0.1-alpha.0",
+  "version": "0.1.0",
   "description": "umi plugin mobx-state-tree",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
