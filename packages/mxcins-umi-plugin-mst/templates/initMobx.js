@@ -4,8 +4,6 @@ import makeInspectable from 'mobx-devtools-mst';
 const runtimeMobx = window.g_plugins.mergeConfig('mobx');
 let config = { <%= MobxConfigure %> } || {};
 
-console.log(runtimeMobx);
-
 config = {...config,...(runtimeMobx.config || {})};
 
 const RootStore = types.model("RootStore", { <%= RegisterStores %> })
@@ -13,7 +11,6 @@ const RootStore = types.model("RootStore", { <%= RegisterStores %> })
 const mobx_stores = RootStore.create(config.initStores || {});
 
 addMiddleware(mobx_stores, (call, next, abort) => {
-  console.log('call', call.type);
   if (call.type === 'flow_throw') {
     try {
       config.onError(call.args[0]);

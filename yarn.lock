@@ -29,7 +29,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.1.0", "@babel/core@^7.3.3":
+"@babel/core@^7.1.0":
   version "7.3.3"
   resolved "http://registry.npm.taobao.org/@babel/core/download/@babel/core-7.3.3.tgz#d090d157b7c5060d05a05acaebc048bd2b037947"
   integrity sha1-0JDRV7fFBg0FoFrK68BIvSsDeUc=
@@ -588,7 +588,7 @@
   dependencies:
     regenerator-transform "^0.13.3"
 
-"@babel/plugin-transform-runtime@7.3.4", "@babel/plugin-transform-runtime@^7.3.4":
+"@babel/plugin-transform-runtime@7.3.4":
   version "7.3.4"
   resolved "http://registry.npm.taobao.org/@babel/plugin-transform-runtime/download/@babel/plugin-transform-runtime-7.3.4.tgz#57805ac8c1798d102ecd75c03b024a5b3ea9b431"
   integrity sha1-V4BayMF5jRAuzXXAOwJKWz6ptDE=
@@ -635,7 +635,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-transform-typescript@^7.1.0", "@babel/plugin-transform-typescript@^7.3.2":
+"@babel/plugin-transform-typescript@^7.1.0":
   version "7.3.2"
   resolved "http://registry.npm.taobao.org/@babel/plugin-transform-typescript/download/@babel/plugin-transform-typescript-7.3.2.tgz#59a7227163e55738842f043d9e5bd7c040447d96"
   integrity sha1-WacicWPlVziELwQ9nlvXwEBEfZY=
@@ -652,7 +652,7 @@
     "@babel/helper-regex" "^7.0.0"
     regexpu-core "^4.1.3"
 
-"@babel/preset-env@7.3.1", "@babel/preset-env@^7.3.1":
+"@babel/preset-env@7.3.1":
   version "7.3.1"
   resolved "http://registry.npm.taobao.org/@babel/preset-env/download/@babel/preset-env-7.3.1.tgz#389e8ca6b17ae67aaf9a2111665030be923515db"
   integrity sha1-OJ6MprF65nqvmiERZlAwvpI1Fds=
@@ -701,7 +701,7 @@
     js-levenshtein "^1.1.3"
     semver "^5.3.0"
 
-"@babel/preset-react@7.0.0", "@babel/preset-react@^7.0.0":
+"@babel/preset-react@7.0.0":
   version "7.0.0"
   resolved "http://registry.npm.taobao.org/@babel/preset-react/download/@babel/preset-react-7.0.0.tgz#e86b4b3d99433c7b3e9e91747e2653958bc6b3c0"
   integrity sha1-6GtLPZlDPHs+npF0fiZTlYvGs8A=
@@ -719,14 +719,6 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.1.0"
-
-"@babel/preset-typescript@^7.3.3":
-  version "7.3.3"
-  resolved "http://registry.npm.taobao.org/@babel/preset-typescript/download/@babel/preset-typescript-7.3.3.tgz#88669911053fa16b2b276ea2ede2ca603b3f307a"
-  integrity sha1-iGaZEQU/oWsrJ26i7eLKYDs/MHo=
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.0.0"
-    "@babel/plugin-transform-typescript" "^7.3.2"
 
 "@babel/runtime-corejs2@7.3.4":
   version "7.3.4"
@@ -1390,10 +1382,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mxcins/tools@1.1.0":
-  version "1.1.0"
-  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-1.1.0.tgz#0a11afb260c240841b3ffb1116d5eeac03ed0000"
-  integrity sha1-ChGvsmDCQIQbP/sRFtXurAPtAAA=
+"@mxcins/tools@1.3.0":
+  version "1.3.0"
+  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-1.3.0.tgz#ff73e34aaf65324e68c030c2302dee26dd754db1"
+  integrity sha1-/3PjSq9lMk5owDDCMC3uJt11TbE=
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/plugin-proposal-class-properties" "7.3.3"

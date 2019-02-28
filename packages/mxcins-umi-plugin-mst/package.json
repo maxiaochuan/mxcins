@@ -1,5 +1,5 @@
 {
-  "name": "@mxcins/plugin-mobx",
+  "name": "@mxcins/umi-plugin-mst",
   "version": "0.0.1-alpha.0",
   "description": "umi plugin mobx-state-tree",
   "scripts": {
@@ -8,9 +8,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-plugin-mobx"
+    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-umi-plugin-mst"
   },
-  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-plugin-mobx",
+  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-umi-plugin-mst",
   "authors": [
     "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
   ],
@@ -29,8 +29,8 @@
   },
   "mxcinsTools": {
     "browserFiles": [
-      "packages/mxcins-plugin-mobx/src/dynamic.ts",
-      "packages/mxcins-plugin-mobx/src/runtime.ts"
+      "src/dynamic.ts",
+      "src/runtime.ts"
     ],
     "types": true
   },
@@ -42,7 +42,7 @@
   "dependencies": {
     "globby": "^9.0.0",
     "mobx": "5.9.0",
-    "mobx-devtools-mst": "^0.9.18",
+    "mobx-devtools-mst": "0.9.18",
     "mobx-react": "5.4.3",
     "mobx-react-devtools": "6.0.3",
     "mobx-state-tree": "3.10.2",

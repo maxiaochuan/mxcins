@@ -69,8 +69,15 @@ interface IOpts {
 
 export default function(api: IRewriteApi, opts: IOpts = {}) {
   const { paths, cwd, compatDirname, winPath } = api;
-  const isProduction = process.env.NODE_ENV === 'production';
-  const shouldImportDynamic = !!(isProduction && opts.dynamicImport);
+  const shouldImportDynamic = !!opts.dynamicImport;
+
+  api.modifyAFWebpackOpts(memo => {
+    return {
+      ...memo,
+      disableDynamicImport: false,
+    };
+  });
+
   function getMobxJs() {
     const mobxJs = findJS(paths.absSrcPath, 'mobx');
     if (mobxJs) {
@@ -174,7 +181,7 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
         ret = ret.replace(
           '<%= STORES %>',
           `
-stores: [
+stores: () => [
   ${stores
     .map(
       store =>

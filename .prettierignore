@@ -12,3 +12,4 @@ coverage/**/*
 lib
 types
 yarn.lock
+**/templates/**/*
