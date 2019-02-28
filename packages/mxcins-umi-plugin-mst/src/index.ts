@@ -143,7 +143,7 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
   // TODO: dynamicImport
   if (shouldImportDynamic) {
     api.addRouterImport({
-      source: '@mxcins/plugin-mobx/lib/dynamic',
+      source: '@mxcins/umi-plugin-mst/lib/dynamic',
       specifier: '_mobxDynamic',
     });
 
