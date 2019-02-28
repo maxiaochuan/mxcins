@@ -2,7 +2,7 @@ import { readFileSync, statSync } from 'fs';
 import { join, basename, extname, dirname } from 'path';
 import globby from 'globby';
 import isRoot from 'path-is-root';
-import { IApi } from 'umi-types';
+import { IApi, IRoute } from 'umi-types';
 import { findJS, chunkName } from './utils';
 
 interface IRewriteApi extends IApi {
@@ -25,15 +25,29 @@ export function getStores(cwd: string, api: IRewriteApi) {
     .map(p => api.winPath(join(cwd, p)));
 }
 
+function getStoresWithRoutes(routes: IRoute[], api: IRewriteApi): string[] {
+  const { paths } = api;
+  const init: string[] = [];
+  return routes.reduce(
+    (memo, route) => [
+      ...memo,
+      ...(route.component && route.component.indexOf('() =>') !== 0
+        ? getPageStores(join(paths.cwd, route.component), api)
+        : []),
+      ...(route.routes ? getStoresWithRoutes(route.routes, api) : []),
+    ],
+    init,
+  );
+}
 export function getGlobalStores(api: IRewriteApi, shouldImportDynamic?: boolean) {
   const { paths, routes } = api;
-  const stores = getStores(paths.absSrcPath, api);
-  // if (!shouldImportDynamic) {
-  //   // 不做按需加载时，还需要额外载入 page 路由的 models 文件
-  //   models = [...models, ...getModelsWithRoutes(routes, api)];
-  //   // 去重
-  //   models = uniq(models);
-  // }
+  let stores = getStores(paths.absSrcPath, api);
+  if (!shouldImportDynamic) {
+    // 不做按需加载时，还需要额外载入 page 路由的 models 文件
+    stores = [...stores, ...getStoresWithRoutes(routes, api)];
+    // 去重
+    stores = [...new Set(stores)];
+  }
   return stores;
 }
 
@@ -67,16 +81,22 @@ interface IOpts {
   exclude?: any[];
 }
 
+/**
+ * 2019-02-28 16:31:35 暂时无法支持dynamic 正在寻找解决方案
+ * @param api
+ * @param opts
+ */
 export default function(api: IRewriteApi, opts: IOpts = {}) {
   const { paths, cwd, compatDirname, winPath } = api;
-  const shouldImportDynamic = !!opts.dynamicImport;
+  // const shouldImportDynamic = !!opts.dynamicImport;
+  const shouldImportDynamic = false;
 
-  api.modifyAFWebpackOpts(memo => {
-    return {
-      ...memo,
-      disableDynamicImport: false,
-    };
-  });
+  // api.modifyAFWebpackOpts(memo => {
+  //   return {
+  //     ...memo,
+  //     disableDynamicImport: false,
+  //   };
+  // });
 
   function getMobxJs() {
     const mobxJs = findJS(paths.absSrcPath, 'mobx');
