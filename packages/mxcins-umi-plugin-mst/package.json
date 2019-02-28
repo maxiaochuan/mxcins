@@ -21,7 +21,8 @@
   "module": "lib/index.js",
   "files": [
     "lib",
-    "types"
+    "types",
+    "templates"
   ],
   "types": "types/index.d.ts",
   "publishConfig": {
