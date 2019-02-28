@@ -1,4 +1,4 @@
-import { readFileSync, statSync } from 'fs';
+import { readFileSync, existsSync, statSync } from 'fs';
 import { join, basename, extname, dirname } from 'path';
 import globby from 'globby';
 import isRoot from 'path-is-root';
@@ -54,7 +54,7 @@ export function getGlobalStores(api: IRewriteApi, shouldImportDynamic?: boolean)
 export function getPageStores(cwd: string, api: IRewriteApi) {
   let stores: any[] = [];
   while (!isPagesPath(cwd, api) && !isSrcPath(cwd, api) && !isRoot(cwd)) {
-    if (!statSync(cwd).isFile()) {
+    if (existsSync(cwd) && !statSync(cwd).isFile()) {
       stores = stores.concat(getStores(cwd, api));
     }
     cwd = dirname(cwd);
