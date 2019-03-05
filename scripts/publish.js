@@ -79,5 +79,5 @@ cp.on('close', code => {
     process.exit(1);
   }
 
-  publishToNpm();
+  // publishToNpm();
 });

@@ -54,12 +54,12 @@ export default class Gantt {
   /**
    * 所有进度最早开始时间
    */
-  private start: number;
+  // private start: number;
   /**
    * 所有进度最晚开始时间
    */
-  private end: number;
-  private width: number;
+  // private end: number;
+  // private width: number;
 
   private x: ScaleTime<number, number>;
 
@@ -127,7 +127,7 @@ export default class Gantt {
     //   console.log(d);
     //   return 'a';
     // });
-    this.groups.rows.data(this.rows)
+    this.groups.rows.data(this.rows);
     // this.groups.rows
     //   .selectAll('.row')
     //   .data(this.rows)
