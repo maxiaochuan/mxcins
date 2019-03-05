@@ -63,7 +63,9 @@ function publishToNpm() {
   });
 }
 
-const cp = fork(join(cwd, 'node_modules/.bin/lerna'), ['version'], {
+const versionArgs = ignores.length ? [changedArgs] : [];
+
+const cp = fork(join(cwd, 'node_modules/.bin/lerna'), ['version'].concat(versionArgs), {
   stdio: 'inherit',
   cwd,
 });
