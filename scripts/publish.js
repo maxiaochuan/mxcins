@@ -10,6 +10,7 @@ if (shell.exec('npm config get registry').stdout.indexOf('https://registry.npmjs
 }
 
 const cwd = process.cwd();
+
 const ret = shell.exec('./node_modules/.bin/lerna updated').stdout;
 
 const updatedRepos = ret
@@ -18,6 +19,22 @@ const updatedRepos = ret
   .filter(line => line !== '');
 
 console.log('changed repos: ', updatedRepos);
+
+function publishToNpm() {
+  console.log(`repos to publish: ${updatedRepos.join(', ')}`);
+  updatedRepos.forEach(repo => {
+    const useName = repo.replace('@', '').replace('/', '-');
+    shell.cd(join(cwd, 'packages', useName));
+    const { version } = require(join(cwd, 'packages', useName, 'package.json'));
+    if (version.includes('-rc.') || version.includes('-beta.') || version.includes('-alpha.')) {
+      console.log(`[${repo}] npm publish --tag next`);
+      shell.exec(`npm publish --tag next`);
+    } else {
+      console.log(`[${repo}] npm publish`);
+      shell.exec(`npm publish`);
+    }
+  });
+}
 
 if (updatedRepos.length === 0) {
   console.log('No package is updated.');
@@ -50,19 +67,3 @@ cp.on('close', code => {
 
   publishToNpm();
 });
-
-function publishToNpm() {
-  console.log(`repos to publish: ${updatedRepos.join(', ')}`);
-  updatedRepos.forEach(repo => {
-    const useName = repo.replace('@', '').replace('/', '-');
-    shell.cd(join(cwd, 'packages', useName));
-    const { version } = require(join(cwd, 'packages', useName, 'package.json'));
-    if (version.includes('-rc.') || version.includes('-beta.') || version.includes('-alpha.')) {
-      console.log(`[${repo}] npm publish --tag next`);
-      shell.exec(`npm publish --tag next`);
-    } else {
-      console.log(`[${repo}] npm publish`);
-      shell.exec(`npm publish`);
-    }
-  });
-}

@@ -1,4 +1,4 @@
-import * as createServer from 'create-test-server';
+import createServer from 'create-test-server';
 import request, { create, IRequestOptions } from '../src/index';
 import { ResponseError } from '../src/utils';
 

@@ -6,6 +6,9 @@
   "command": {
     "changed": {
       "ignoreChanges": ["*.test.ts"]
+    },
+    "version": {
+      "exact": true
     }
   },
   "version": "independent"

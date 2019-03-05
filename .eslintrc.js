@@ -21,6 +21,10 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
     'no-param-reassign': 0,
+    'no-console': 0,
+    'global-require': 0,
+    'import/no-dynamic-require': 0,
   },
 };
