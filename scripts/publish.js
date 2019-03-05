@@ -10,23 +10,7 @@ if (shell.exec('npm config get registry').stdout.indexOf('https://registry.npmjs
   process.exit(1);
 }
 
-const args = process.argv.slice(2);
-
-const ignores = [];
-let insert = false;
-
-args.forEach(arg => {
-  if (insert) {
-    ignores.push(JSON.stringify(arg));
-  }
-  if (arg === '--ignore') {
-    insert = true;
-  }
-});
-
-const changedArgs = ignores.length ? `--ignore-changes ${ignores.join(' ')}` : '';
-
-const ret = shell.exec(`./node_modules/.bin/lerna changed ${changedArgs}`).stdout;
+const ret = shell.exec(`./node_modules/.bin/lerna changed`).stdout;
 
 const changedRepos = ret
   .split('\n')
@@ -63,9 +47,7 @@ function publishToNpm() {
   });
 }
 
-const versionArgs = ignores.length ? [changedArgs] : [];
-
-const cp = fork(join(cwd, 'node_modules/.bin/lerna'), ['version'].concat(versionArgs), {
+const cp = fork(join(cwd, 'node_modules/.bin/lerna'), ['version'], {
   stdio: 'inherit',
   cwd,
 });
@@ -79,5 +61,5 @@ cp.on('close', code => {
     process.exit(1);
   }
 
-  // publishToNpm();
+  publishToNpm();
 });

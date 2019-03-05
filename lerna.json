@@ -4,12 +4,10 @@
     "packages/*"
   ],
   "command": {
-    "changed": {
-      "ignoreChanges": ["*.test.ts"]
-    },
     "version": {
       "exact": true
     }
   },
+  "ignoreChanges": ["*.test.ts", "packages/mxcins-gantt/**"],
   "version": "independent"
 }
