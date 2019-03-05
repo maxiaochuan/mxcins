@@ -4,28 +4,55 @@ const shell = require('shelljs');
 const { join } = require('path');
 const { fork } = require('child_process');
 
+// 检测npm registry
 if (shell.exec('npm config get registry').stdout.indexOf('https://registry.npmjs.org/') === -1) {
   console.error('Failed: set npm registry to https://registry.npmjs.org/ first');
   process.exit(1);
 }
 
-const cwd = process.cwd();
+const args = process.argv.slice(2);
 
-const ret = shell.exec('./node_modules/.bin/lerna updated').stdout;
+const ignores = [];
+let insert = false;
 
-const updatedRepos = ret
+args.forEach(arg => {
+  if (insert) {
+    ignores.push(JSON.stringify(arg));
+  }
+  if (arg === '--ignore') {
+    insert = true;
+  }
+});
+
+const changedArgs = ignores.length ? `--ignore-changes ${ignores.join(' ')}` : '';
+
+const ret = shell.exec(`./node_modules/.bin/lerna changed ${changedArgs}`).stdout;
+
+const changedRepos = ret
   .split('\n')
   .map(line => line.replace('- ', ''))
   .filter(line => line !== '');
 
-console.log('changed repos: ', updatedRepos);
+console.log('changed repos: ', changedRepos);
+
+if (changedRepos.length === 0) {
+  console.log('No package is updated.');
+  process.exit(0);
+}
+
+const buildCode = shell.exec('npm run build').code;
+if (buildCode !== 0) {
+  console.error('Failed: npm run build');
+  process.exit(1);
+}
+
+const cwd = process.cwd();
 
 function publishToNpm() {
-  console.log(`repos to publish: ${updatedRepos.join(', ')}`);
-  updatedRepos.forEach(repo => {
-    const useName = repo.replace('@', '').replace('/', '-');
-    shell.cd(join(cwd, 'packages', useName));
-    const { version } = require(join(cwd, 'packages', useName, 'package.json'));
+  changedRepos.forEach(repo => {
+    const name = repo.replace('@', '').replace('/', '-');
+    shell.cd(join(cwd, 'packages', name));
+    const { version } = require(join(cwd, 'packages', name, 'package.json'));
     if (version.includes('-rc.') || version.includes('-beta.') || version.includes('-alpha.')) {
       console.log(`[${repo}] npm publish --tag next`);
       shell.exec(`npm publish --tag next`);
@@ -36,25 +63,10 @@ function publishToNpm() {
   });
 }
 
-if (updatedRepos.length === 0) {
-  console.log('No package is updated.');
-  process.exit(0);
-}
-
-const { code: buildCode } = shell.exec('npm run build');
-if (buildCode === 1) {
-  console.error('Failed: npm run build');
-  process.exit(1);
-}
-
-const cp = fork(
-  join(process.cwd(), 'node_modules/.bin/lerna'),
-  ['version'].concat(process.argv.slice(2)),
-  {
-    stdio: 'inherit',
-    cwd: process.cwd(),
-  },
-);
+const cp = fork(join(cwd, 'node_modules/.bin/lerna'), ['version'], {
+  stdio: 'inherit',
+  cwd,
+});
 cp.on('error', err => {
   console.log(err);
 });
