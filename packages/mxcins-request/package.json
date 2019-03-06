@@ -18,10 +18,12 @@
   "bugs": {
     "url": "https://github.com/maxiaochuan/hades/issues"
   },
-  "main": "lib/index.js",
-  "module": "lib/index.js",
+  "main": "dist/request.js",
+  "jsnext:main": "es/request.es.js",
+  "module": "es/request.es.js",
   "files": [
-    "lib",
+    "dist",
+    "es",
     "types"
   ],
   "types": "types/index.d.ts",
@@ -29,11 +31,10 @@
     "access": "public"
   },
   "mxcinsTools": {
-    "isBrowser": true,
+    "input": "src/index.ts",
     "types": true
   },
   "dependencies": {
-    "@babel/runtime-corejs2": "7.3.4",
     "query-string": "6.2.0",
     "whatwg-fetch": "3.0.0"
   },

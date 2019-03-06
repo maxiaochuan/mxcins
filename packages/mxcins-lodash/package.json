@@ -18,10 +18,12 @@
   "bugs": {
     "url": "https://github.com/maxiaochuan/hades/issues"
   },
-  "main": "lib/index.js",
-  "module": "lib/index.js",
+  "main": "dist/lodash.js",
+  "jsnext:main": "es/lodash.es.js",
+  "module": "es/lodash.es.js",
   "files": [
-    "lib",
+    "dist",
+    "es",
     "types"
   ],
   "types": "types/index.d.ts",
@@ -29,8 +31,8 @@
     "access": "public"
   },
   "mxcinsTools": {
-    "isBrowser": true,
-    "types": true
+    "types": true,
+    "input": "src/index.ts"
   },
   "gitHead": "ca090e345f12c86eec7b4c5b24ffb1caf24a112d"
 }
