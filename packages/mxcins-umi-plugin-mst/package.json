@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/umi-plugin-mst",
-  "version": "0.1.5",
+  "version": "0.1.6-alpha.0",
   "description": "umi plugin mobx-state-tree",
   "scripts": {
     "build": "mxcins-tools build",
