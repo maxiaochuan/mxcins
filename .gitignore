@@ -60,6 +60,8 @@ jspm_packages/
 .next
 
 lib
+dist
+es
 
 types
 .umi
