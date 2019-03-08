@@ -68,3 +68,5 @@ types
 .umi-production
 .DS_Store
 
+
+.rpt2_cache
