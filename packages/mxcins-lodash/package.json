@@ -3,13 +3,19 @@
   "version": "0.0.8-alpha.1",
   "description": "lodash",
   "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-lodash",
-  "bugs": { "url": "https://github.com/maxiaochuan/hades/issues" },
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/hades/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-lodash"
   },
   "license": "MIT",
-  "files": ["dist", "es", "types"],
+  "files": [
+    "dist",
+    "es",
+    "types"
+  ],
   "sideEffects": true,
   "main": "dist/lodash.umd.js",
   "umd:main": "dist/lodash.umd.js",
@@ -21,7 +27,9 @@
     "build": "mxcins-tools build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "authors": [
     "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
   ],

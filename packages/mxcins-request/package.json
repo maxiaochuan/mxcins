@@ -3,13 +3,19 @@
   "version": "1.1.2-alpha.0",
   "description": "request",
   "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-request",
-  "bugs": { "url": "https://github.com/maxiaochuan/hades/issues" },
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/hades/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-reqeust"
   },
   "license": "MIT",
-  "files": ["dist", "es", "types"],
+  "files": [
+    "dist",
+    "es",
+    "types"
+  ],
   "sideEffects": true,
   "main": "dist/request.umd.js",
   "umd:main": "dist/request.umd.js",
@@ -30,7 +36,9 @@
     "@types/query-string": "^6.2.0",
     "create-test-server": "^2.4.0"
   },
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "authors": [
     "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
   ],
