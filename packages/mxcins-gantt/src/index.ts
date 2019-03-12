@@ -1,4 +1,3 @@
-import Gantt from './Gantt';
-
 export * from './Gantt';
-export default Gantt;
+
+export { default } from './Gantt';

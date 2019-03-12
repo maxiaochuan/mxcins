@@ -2,40 +2,42 @@
   "name": "@mxcins/gantt",
   "version": "0.0.1-alpha.0",
   "description": "gantt",
-  "scripts": {
-    "build": "mxcins-tools build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-gantt",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/hades/issues"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-gantt"
   },
-  "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-gantt",
-  "authors": [
-    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
-  ],
-  "bugs": {
-    "url": "https://github.com/maxiaochuan/hades/issues"
-  },
-  "main": "lib/index.js",
-  "module": "lib/index.js",
+  "license": "MIT",
   "files": [
     "lib",
     "types"
   ],
+  "sideEffects": true,
+  "main": "dist/Gantt.umd.js",
+  "umd:main": "dist/Gantt.umd.js",
+  "browser": "dist/Gantt.umd.js",
   "types": "types/index.d.ts",
+  "scripts": {
+    "build": "mtools build",
+    "dev": "mtools build -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "d3": "5.9.1",
+    "lodash-decorators": "6.0.1",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@mxcins/tools": "^2.0.0",
+    "@types/d3": "^5.7.1"
+  },
   "publishConfig": {
     "access": "public"
   },
-  "mxcinsTools": {
-    "isBrowser": true
-  },
-  "dependencies": {
-    "@babel/runtime-corejs2": "7.3.4",
-    "@types/d3": "^5.7.1",
-    "d3": "^5.9.1",
-    "lodash-decorators": "^6.0.1",
-    "moment": "^2.24.0"
-  }
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
 }

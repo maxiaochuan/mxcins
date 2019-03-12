@@ -1,184 +1,141 @@
-import {
-  select,
-  Selection,
-  axisTop,
-  scaleTime,
-  timeWednesday,
-  min,
-  max,
-  ScaleTime,
-  BaseType,
-  selectAll,
-  timeDay,
-  timeWeek,
-} from 'd3';
-import moment from 'moment';
-import { Debounce } from 'lodash-decorators';
-import Row from './Row';
+import { select, Selection, timeFormatDefaultLocale } from 'd3';
+import Sider from './Sider';
+import Axis from './Axis';
+import Canvas from './Canvas';
+import './style.less';
+
+timeFormatDefaultLocale({
+  time: '%H:%M:%S',
+  dateTime: '%a %b %e %X %Y',
+  date: '%Y-%m-%d',
+  periods: ['AM', 'PM'],
+  days: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+  shortDays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+  months: [
+    '一月',
+    '二月',
+    '三月',
+    '四月',
+    '五月',
+    '六月',
+    '七月',
+    '八月',
+    '九月',
+    '十月',
+    '十一月',
+    '十二月',
+  ],
+  shortMonths: [
+    '一月',
+    '二月',
+    '三月',
+    '四月',
+    '五月',
+    '六月',
+    '七月',
+    '八月',
+    '九月',
+    '十月',
+    '十一月',
+    '十二月',
+  ],
+});
+
+export interface ISize {
+  width: number;
+  height: number;
+}
+
+export type Modes = 'week' | 'day';
+
+export interface IOpts {
+  rowHeight?: number;
+  rowPadding?: number;
+  mode?: Modes;
+  axisHeight?: number;
+  siderWidth?: number;
+}
+
+export interface IRequiredOpts extends Required<IOpts> {}
+
+const DEFAULT_OPTIONS: IRequiredOpts = {
+  mode: 'week',
+  rowHeight: 30,
+  rowPadding: 4,
+
+  axisHeight: 50,
+  siderWidth: 200,
+};
 
 export interface IProgress {
   percent: number;
   color: 'gray' | 'blue' | 'yellow' | 'default';
 }
+
 export interface IRecord {
   id: string;
+  name: string;
   start: string;
-  end: string;
+  finish: string;
+  level: number;
   progresses: IProgress[];
 }
 
-interface IRow extends IRecord {
-  x0: number;
-  x1: number;
-}
-
-export interface IGroups {
-  xAxis: Selection<SVGGElement, any, any, any>;
-  rows: Selection<SVGGElement, any, any, any>;
-}
-
 export default class Gantt {
-  private options = {
-    rowHeight: 20,
-    rowPadding: 4,
-  };
-  private parent: Selection<HTMLDivElement, any, any, any>;
-  private scene: Selection<SVGElement, any, any, any>;
-  private groups: IGroups;
-
-  private tick: number = 60;
+  private options: IRequiredOpts = DEFAULT_OPTIONS;
 
   private data: IRecord[] = [];
-  private rows: Row[] = [];
 
-  /**
-   * 所有进度最早开始时间
-   */
-  // private start: number;
-  /**
-   * 所有进度最晚开始时间
-   */
-  // private end: number;
-  // private width: number;
+  private axis: Axis;
+  private sider: Sider;
+  private canvas: Canvas;
 
-  private x: ScaleTime<number, number>;
+  private parent: Selection<HTMLDivElement, any, any, any>;
+  private container: Selection<SVGGElement, any, any, any>;
+  private svg: Selection<SVGSVGElement, any, any, any>;
+  // private scale: ScaleTime<number, number>;
+  constructor(wrapper: HTMLDivElement) {
+    if (!wrapper) {
+      throw new Error('wrapper must be exist');
+    }
+    this.parent = select(wrapper);
+    this.svg = this.parent.append('svg').classed('gantt', true);
+    this.container = this.svg.append('g').classed('gantt-container', true);
 
-  constructor(container: HTMLDivElement) {
-    this.parent = select(container);
-    this.parent.html('');
-    this.scene = this.parent.append<SVGElement>('svg:svg');
-    this.groups = {
-      xAxis: this.generateGroup('x-axis').attr('transform', 'translate(10, 30)'),
-      rows: this.generateGroup('rows').attr('transform', 'translate(10, 40)'),
-    };
-
-    this.x = scaleTime();
+    this.sider = new Sider(this.container, this.options);
+    this.axis = new Axis(this.container, this.options);
+    this.canvas = new Canvas(this.container, this.options);
+    // // 初始化构建
+    this.init();
   }
 
-  public bind(data: IRecord[]) {
+  public set(data: IRecord[]) {
     this.data = data;
-
-    this.prepare();
-    this.draw();
+    this.sider.set(this.data);
+    this.axis.set(this.data);
+    this.canvas.set(this.data, this.axis);
+    this.sider.draw();
+    this.axis.draw();
+    this.canvas.draw();
   }
 
-  private prepare() {
-    const start = min(this.data, record => moment(record.start).valueOf());
-    const end = max(this.data, record => moment(record.end).valueOf());
+  private init() {
+    const { width, height } = this.getWrapperSize();
+    this.svg.attr('width', width).attr('height', height);
+    const { siderWidth, axisHeight } = this.options;
 
-    if (start && end) {
-      this.x.domain([start, end]).nice();
-      const [s, e] = this.x.domain();
-      this.start = moment(s).valueOf();
-      this.end = moment(e).valueOf();
-      const width = this.tick * moment(e).diff(s, 'week');
-
-      this.width = width;
-
-      this.x.range([0, this.width]);
-
-      this.scene.attr('width', this.width + 100);
-    }
-
-    this.rows = this.data.map((v, i) => new Row(v, i, this.x));
+    this.sider.init({ width: siderWidth, height });
+    this.axis.init({ width: width - siderWidth, height: axisHeight });
+    this.canvas.init({ width: width - siderWidth, height: height - axisHeight });
   }
 
-  private draw() {
-    this.drawAxes();
-    this.drawRows();
-  }
-
-  private drawAxes() {
-    const xAxis = axisTop(this.x).tickFormat(date => moment(date as Date).format('YYYY-MM-DD'));
-    const ticksArg = timeWeek;
-    if (ticksArg) {
-      xAxis.ticks(ticksArg);
-    }
-    this.groups.xAxis.call(xAxis);
-  }
-
-  private drawRows() {
-    // this.rows.forEach(row => {
-    //   row.draw().append
-    //   // this.groups.rows.data(rows)
-    //   // this.groups.rows
-    // })
-    // this.groups.rows.data(this.rows).enter().append(d => {
-    //   console.log(d);
-    //   return 'a';
-    // });
-    this.groups.rows.data(this.rows);
-    // this.groups.rows
-    //   .selectAll('.row')
-    //   .data(this.rows)
-    //   .enter()
-    //   .append('rect')
-    //   .classed('row', true)
-    //   .attr('y', (d, i) => i * this.options.rowHeight)
-    //   .attr('width', this.width)
-    //   .attr('height', this.options.rowHeight)
-    //   .attr('fill', (d, i) => (i % 2 ? '#FFFFFF' : '#EEEEEE'));
-
-    // this.groups.rows
-    //   .selectAll('.rect')
-    //   .data(this.rows)
-    //   .enter()
-    //   .append('rect')
-    //   .classed('item', true)
-    //   .attr('width', d => d.x1 - d.x0)
-    //   .attr('height', this.options.rowHeight - this.options.rowPadding * 2)
-    //   .attr('transform', (d, i) => `translate(${d.x0},${i * this.options.rowHeight + this.options.rowPadding})`)
-    //   .attr('fill', 'gray');
-
-    // this.rows.forEach((row, i) => {
-    //   const { x0, x1, progresses } = row;
-    //   this.groups.rows
-    //     .selectAll(`.progress-${i}`)
-    //     .data(progresses.reverse())
-    //     .enter()
-    //     .append('rect')
-    //     .classed(`progress-${i}`, true)
-    //     .attr('width', d => (x1 - x0) * d.percent)
-    //     .attr('height', this.options.rowHeight - this.options.rowPadding * 2)
-    //     .attr('transform', `translate(${x0},${i * this.options.rowHeight + this.options.rowPadding})`)
-    //     .attr('fill', d => d.color);
-    // });
-  }
-
-  private generateGroup(name: string) {
-    return this.scene.append<SVGGElement>('svg:g').classed(name, true);
-  }
-
-  @Debounce(200)
-  private resize() {
+  private getWrapperSize(): ISize {
     if (!this.parent) {
-      return;
+      return { width: 0, height: 0 };
     }
-    const node = this.parent.node();
-    if (node) {
-      const { width, height } = window.getComputedStyle(node);
-      this.scene.attr('width', parseInt(width as string, 10));
-      this.scene.attr('height', parseInt(height as string, 10));
-    }
+    return {
+      width: parseInt(this.parent.style('width'), 10),
+      height: parseInt(this.parent.style('height'), 10),
+    };
   }
 }
