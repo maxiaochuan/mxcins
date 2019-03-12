@@ -8,6 +8,10 @@
       "exact": true
     }
   },
-  "ignoreChanges": ["*.test.ts", "packages/mxcins-gantt/**"],
+  "ignoreChanges": [
+    "*.test.ts",
+    "packages/**/example/**",
+    "packages/mxcins-gantt/**"
+  ],
   "version": "independent"
 }

@@ -3,6 +3,7 @@
 **/*.ejs
 **/*.html
 package.json
+**/package.json
 .umi
 .umi-production
 **/*.snap
