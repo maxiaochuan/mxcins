@@ -16,12 +16,7 @@
     "es",
     "types"
   ],
-  "sideEffects": true,
   "main": "dist/request.umd.js",
-  "umd:main": "dist/request.umd.js",
-  "module": "dist/index.esm.js",
-  "jsnext:main": "dist/index.esm.js",
-  "browser": "dist/request.umd.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "mxcins-tools build",

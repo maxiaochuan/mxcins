@@ -1,9 +1,9 @@
 import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
-  entry: 'src/index.ts',
+  entry: 'src',
   cjs: { type: 'babel' },
-  nodes: ['src/index.ts', 'src/utils.ts'],
+  browserFiles: ['src/dynamic.ts', 'src/runtime.ts'],
 };
 
 export default config;

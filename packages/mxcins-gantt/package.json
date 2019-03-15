@@ -15,10 +15,7 @@
     "lib",
     "types"
   ],
-  "sideEffects": true,
   "main": "dist/Gantt.umd.js",
-  "umd:main": "dist/Gantt.umd.js",
-  "browser": "dist/Gantt.umd.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "mtools build",
@@ -31,7 +28,6 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
-    "@mxcins/tools": "^2.0.0",
     "@types/d3": "^5.7.1"
   },
   "publishConfig": {

@@ -16,12 +16,7 @@
     "es",
     "types"
   ],
-  "sideEffects": true,
   "main": "dist/lodash.umd.js",
-  "umd:main": "dist/lodash.umd.js",
-  "module": "dist/index.esm.js",
-  "jsnext:main": "dist/index.esm.js",
-  "browser": "dist/lodash.umd.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "mxcins-tools build",

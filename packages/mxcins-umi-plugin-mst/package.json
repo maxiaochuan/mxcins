@@ -17,8 +17,6 @@
     "templates"
   ],
   "main": "lib/index.js",
-  "module": "lib/index.js",
-  "jsnext:main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "mxcins-tools build",

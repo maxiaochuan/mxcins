@@ -27,7 +27,7 @@
     }
   },
   "devDependencies": {
-    "@mxcins/tools": "^2.0.0",
+    "@mxcins/tools": "^2.0.2",
     "@types/jest": "^24.0.6",
     "babel-jest": "^24.1.0",
     "eslint": "^5.14.1",
