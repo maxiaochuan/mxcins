@@ -17,7 +17,6 @@
     "templates"
   ],
   "main": "lib/index.js",
-  "types": "types/index.d.ts",
   "scripts": {
     "build": "mxcins-tools build",
     "test": "echo \"Error: no test specified\" && exit 1"

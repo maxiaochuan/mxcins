@@ -16,7 +16,9 @@
     "types"
   ],
   "main": "dist/Gantt.umd.js",
-  "types": "types/index.d.ts",
+  "umd:main": "dist/Gantt.umd.js",
+  "browser": "dist/Gantt.umd.js",
+  "types": "dist/Gantt.d.ts",
   "scripts": {
     "build": "mtools build",
     "dev": "mtools build -w",
