@@ -20,13 +20,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "peerDependencies": {
-    "mobx": "^5.9.0",
-    "mobx-devtools-mst": "^0.9.18",
-    "mobx-react": "^5.4.3",
-    "mobx-react-devtools": "^6.0.3",
-    "mobx-state-tree": "^3.10.2"
-  },
   "dependencies": {
     "globby": "^9.0.0",
     "path-is-root": "^0.1.0"
@@ -35,6 +28,13 @@
     "@types/globby": "^8.0.0",
     "@types/react": "^16.8.5",
     "umi-types": "^0.1.2"
+  },
+  "peerDependencies": {
+    "mobx": "^5.9.0",
+    "mobx-devtools-mst": "^0.9.18",
+    "mobx-react": "^5.4.3",
+    "mobx-react-devtools": "^6.0.3",
+    "mobx-state-tree": "^3.10.2"
   },
   "publishConfig": {
     "access": "public"
