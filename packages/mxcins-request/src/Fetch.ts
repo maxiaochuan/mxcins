@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import { RequestError, ResponseError, safeJsonParse } from './utils';
+import { RequestError, ResponseError, safeJsonParse, MapCache } from './utils';
 import fetch from './base/fetch';
 import { IRequestOptions } from './request';
 
@@ -7,19 +7,44 @@ export type IInstance = Promise<Response>;
 
 export default class Fetch {
   private uri: string;
+  private cache: MapCache;
   private options: IRequestOptions;
-  constructor(uri: string, options: IRequestOptions = {}) {
+  constructor(uri: string, options: IRequestOptions = {}, cache: MapCache) {
     this.uri = uri;
+    this.cache = cache;
     this.options = options;
     this.addFix();
   }
   public async do<T>() {
-    let instance = fetch(this.uri, this.options);
+    const useCache = this.options.method === 'get' && this.options.useCache;
+    if (useCache) {
+      const { params, queryParams } = this.options;
+      const cachedResponse = this.cache.get({ uri: this.uri, params, queryParams });
+      if (cachedResponse) {
+        return this.parseResponse<T>(cachedResponse);
+      }
+    }
 
+    let instance = fetch(this.uri, this.options);
     instance = this.wrappedTimeout(instance);
+    instance = this.wrappedCache(instance, this.options.useCache);
 
     const response = await instance;
     return this.parseResponse<T>(response);
+  }
+
+  private async wrappedCache(instance: IInstance, useCache?: boolean): IInstance {
+    if (useCache) {
+      const { params, queryParams, ttl } = this.options;
+      return instance.then(response => {
+        if (response.status === 200) {
+          const copy = response.clone();
+          this.cache.set({ uri: this.uri, params, queryParams }, copy, ttl);
+        }
+        return response;
+      });
+    }
+    return instance;
   }
 
   private wrappedTimeout(instance: IInstance): IInstance {
@@ -37,8 +62,7 @@ export default class Fetch {
   }
 
   /**
-   * 2019-02-22 15:14:22 data 返回类型 问题 TODO
-   * @param instance
+   * @param {Response} response
    */
   private async parseResponse<T>(response: Response) {
     const { responseType = 'json', getResponse = false } = this.options;

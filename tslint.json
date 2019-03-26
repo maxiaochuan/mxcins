@@ -6,13 +6,13 @@
     "no-var-requires": false,
     "no-submodule-imports": false,
     "object-literal-sort-keys": false,
-    "jsx-no-lambda": false,
     "no-implicit-dependencies": false,
     "array-type": [true, "array"]
   },
   "linterOptions": {
     "exclude": [
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/dist/**"
     ]
   }
 }
