@@ -8,7 +8,6 @@
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,
     "no-implicit-dependencies": false,
-    "no-console": false,
     "array-type": [true, "array"]
   },
   "linterOptions": {

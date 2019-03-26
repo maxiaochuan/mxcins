@@ -1455,10 +1455,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mxcins/tools@^2.0.3":
-  version "2.0.3"
-  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-2.0.3.tgz#1a0ffe6f55f427d5895ca6d82ea397e15a6c5009"
-  integrity sha1-Gg/+b1X0J9WJXKbYLqOX4VpsUAk=
+"@mxcins/tools@^2.0.6":
+  version "2.0.6"
+  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-2.0.6.tgz#ea672c8e598b95ff57ef6c7a5684ce6d4c2d55a8"
+  integrity sha1-6mcsjlmLlf9X72x6VoTObUwtVag=
   dependencies:
     "@babel/core" "7.3.4"
     "@babel/plugin-proposal-class-properties" "7.3.3"
@@ -1489,6 +1489,7 @@
     signale "^1.4.0"
     slash2 "2.0.0"
     sort-package-json "^1.21.0"
+    temp-dir "^1.0.0"
     through2 "3.0.0"
     typescript "3.3.3333"
     vinyl-fs "3.0.3"
