@@ -1,17 +1,16 @@
 {
   "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
   "rules": {
-    "ordered-imports": false,
-    "member-access": false,
-    "no-var-requires": false,
-    "no-submodule-imports": false,
-    "object-literal-sort-keys": false,
-    "no-implicit-dependencies": false,
-    "array-type": [true, "array"]
+    "no-implicit-dependencies": [
+      true,
+      "dev"
+    ],
+    "object-literal-sort-keys": false
   },
   "linterOptions": {
     "exclude": [
       "**/node_modules/**",
+      "**/example/**",
       "**/dist/**"
     ]
   }

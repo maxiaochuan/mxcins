@@ -9,6 +9,11 @@ if (shell.exec('npm config get registry').stdout.indexOf('https://registry.npmjs
   console.error('Failed: set npm registry to https://registry.npmjs.org/ first');
   process.exit(1);
 }
+// 检测npm user
+if (shell.exec('npm whoami').code !== 0) {
+  console.error('Failed: npm login first');
+  process.exit(1);
+}
 
 const ret = shell.exec(`./node_modules/.bin/lerna changed`).stdout;
 
