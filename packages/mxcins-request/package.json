@@ -26,13 +26,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.3.4",
+    "@babel/runtime": "7.3.4",
     "query-string": "6.2.0",
-    "whatwg-fetch": "3.0.0"
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "@types/query-string": "^6.2.0",
-    "create-test-server": "^2.4.0"
+    "create-test-server": "^2.4.0",
+    "whatwg-fetch": "3.0.0"
+  },
+  "peerDependencies": {
+    "whatwg-fetch": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"

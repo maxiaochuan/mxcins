@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "clean": "lerna clean --yes",
     "bootstrap": "lerna bootstrap --npm-client=yarn",
     "dev": "mtools build -w",
     "build": "mxcins-tools build",
