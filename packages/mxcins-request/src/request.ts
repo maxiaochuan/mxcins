@@ -1,6 +1,6 @@
-import Fetch from './Fetch';
 import fetch, { IInterceptors } from './base/fetch';
-import { ResponseError, MapCache } from './utils';
+import Fetch from './Fetch';
+import { MapCache, ResponseError } from './utils';
 
 export interface IRequestInitOptions extends RequestInit {
   requestType?: 'json' | 'form';

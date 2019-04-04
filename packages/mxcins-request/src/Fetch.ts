@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
-import { RequestError, ResponseError, safeJsonParse, MapCache } from './utils';
 import fetch from './base/fetch';
 import { IRequestOptions } from './request';
+import { MapCache, RequestError, ResponseError, safeJsonParse } from './utils';
 
 export type IInstance = Promise<Response>;
 

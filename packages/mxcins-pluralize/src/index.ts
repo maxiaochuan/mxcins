@@ -54,7 +54,7 @@ function restoreCase(word: string, token: string): string {
  * @return {string}
  */
 function interpolate(str: string, args: any[]): string {
-  return str.replace(/\$(\d{1,2})/g, (match, index) => {
+  return str.replace(/\$(\d{1,2})/g, (_, index) => {
     return args[index] || '';
   });
 }
@@ -137,7 +137,7 @@ function replaceWord(replaceMap: any, keepMap: any, rules: any[]) {
 /**
  * Check if a word is part of the map.
  */
-function checkWord(replaceMap: any, keepMap: any, rules: any, bool?: boolean) {
+function checkWord(replaceMap: any, keepMap: any, rules: any) {
   return function checkWordFunc(word: string) {
     const token = word.toLowerCase();
 

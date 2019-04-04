@@ -1,7 +1,7 @@
 import { Selection } from 'd3';
 import moment from 'moment';
-import { IRecord as IBaseRecord, IProgress as IBaseProgress, IRequiredOpts, ISize } from '../Gantt';
 import Axis from '../Axis';
+import { IProgress as IBaseProgress, IRecord as IBaseRecord, IRequiredOpts, ISize } from '../Gantt';
 
 interface IRecord extends IBaseRecord {
   x0: number;

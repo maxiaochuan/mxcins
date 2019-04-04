@@ -1,7 +1,7 @@
 import { select, Selection, timeFormatDefaultLocale } from 'd3';
-import Sider from './Sider';
 import Axis from './Axis';
 import Canvas from './Canvas';
+import Sider from './Sider';
 import './style.less';
 
 timeFormatDefaultLocale({

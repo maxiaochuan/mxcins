@@ -18,7 +18,7 @@ export default class Sider {
   private container: Selection<SVGGElement, any, any, any>;
   private inner: Selection<SVGGElement, any, any, any>;
   // private rows: Row[] = [];
-  private rows: any[] = [];
+  // private rows: any[] = [];
   private data: ISiderRow[] = [];
 
   constructor(parent: Selection<SVGGElement, any, any, any>, options: IRequiredOpts) {

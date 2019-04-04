@@ -1,9 +1,9 @@
-import { readFileSync, existsSync, statSync } from 'fs';
-import { join, basename, extname, dirname } from 'path';
+import { existsSync, readFileSync, statSync } from 'fs';
 import globby from 'globby';
+import { basename, dirname, extname, join } from 'path';
 import isRoot from 'path-is-root';
 import { IApi, IRoute } from 'umi-types';
-import { findJS, chunkName } from './utils';
+import { chunkName, findJS } from './utils';
 
 interface IRewriteApi extends IApi {
   writeTmpFile: any;
@@ -87,7 +87,7 @@ interface IOpts {
  * @param opts
  */
 export default function(api: IRewriteApi, opts: IOpts = {}) {
-  const { paths, cwd, compatDirname, winPath } = api;
+  const { paths, winPath } = api;
   // const shouldImportDynamic = !!opts.dynamicImport;
   const shouldImportDynamic = false;
 

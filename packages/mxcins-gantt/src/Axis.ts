@@ -1,6 +1,6 @@
-import { Selection, ScaleTime, Axis as IAxis, scaleTime, axisTop, min, max } from 'd3';
+import { Axis as IAxis, axisTop, max, min, ScaleTime, scaleTime, Selection } from 'd3';
 import moment from 'moment';
-import { IRequiredOpts, ISize, IRecord as IBaseRecord } from './Gantt';
+import { IRecord as IBaseRecord, IRequiredOpts, ISize } from './Gantt';
 
 const DEFAULT_START = moment('2011-01-01');
 const DEFAULT_FINISH = moment('2011-12-31');
@@ -14,8 +14,8 @@ export default class Axis {
   private g: Selection<SVGGElement, any, any, any>;
   private axis: IAxis<Date | number | { valueOf(): number }>;
 
-  private start: number = 0;
-  private finish: number = 0;
+  // private start: number = 0;
+  // private finish: number = 0;
   private width: number = 0;
 
   constructor(parent: Selection<SVGGElement, any, any, any>, options: IRequiredOpts) {
@@ -61,9 +61,9 @@ export default class Axis {
         .domain([start, end])
         .nice()
         .range([0, this.width]);
-      const [s, e] = this.scale.domain();
-      this.start = s.getTime();
-      this.finish = e.getTime();
+      // const [s, e] = this.scale.domain();
+      // this.start = s.getTime();
+      // this.finish = e.getTime();
     }
   }
 }

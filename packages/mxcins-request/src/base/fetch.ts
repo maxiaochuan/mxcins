@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
-import defaultInterceptor from './defaultInterceptor';
 import { IRequestOptions } from '../request';
+import defaultInterceptor from './defaultInterceptor';
 
 export type IReqInterceptor = (
   uri: string,

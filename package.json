@@ -2,30 +2,32 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "clean": "lerna clean --yes",
     "bootstrap": "lerna bootstrap --npm-client=yarn",
-    "dev": "mtools build -w",
     "build": "mxcins-tools build",
-    "publish": "node ./scripts/publish.js",
-    "test": "jest --coverage",
+    "clean": "lerna clean --yes",
+    "dev": "mtools build -w",
     "lint": "yarn lint:ts",
-    "lint:js": "eslint --ext .js --fix",
-    "lint:ts": "tslint --fix \"packages/**/*.ts*\"",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --fix --ext .js",
     "lint-staged:ts": "tslint --fix",
-    "prettier": "prettier --write \"{,!(node_modules)/**/}*.{js,ts}\""
+    "lint:js": "eslint --ext .js --fix",
+    "lint:ts": "tslint --fix \"packages/**/*.ts*\" && yarn ts-compile-check",
+    "prettier": "prettier --write \"{,!(node_modules)/**/}*.{js,ts}\"",
+    "publish": "node ./scripts/publish.js",
+    "test": "jest --coverage",
+    "ts-compile-check": "tsc --noEmit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn ts-compile-check && lint-staged"
+    }
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,less}": [
       "prettier --write",
       "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    ],
+    "**/*.{ts,tsx}": "yarn lint-staged:ts"
   },
   "devDependencies": {
     "@mxcins/tools": "^2.1.1",
@@ -47,6 +49,6 @@
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.2.4"
+    "typescript": "3.4.1"
   }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable global-require, import/no-dynamic-require */
-import _umiDynamic from 'umi/dynamic';
 import { types } from 'mobx-state-tree';
+import { dynamic as _umiDynamic } from 'umi';
 
 const cached: { [x: string]: any } = {};
 
