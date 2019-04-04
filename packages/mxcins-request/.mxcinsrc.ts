@@ -1,7 +1,7 @@
+// tslint:disable-next-line:no-implicit-dependencies
 import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
-  entry: 'src/index.ts',
   esm: 'rollup',
   umd: { type: 'rollup', name: 'request' },
   runtimeHelpers: true,

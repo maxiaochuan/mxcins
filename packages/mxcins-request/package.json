@@ -32,8 +32,7 @@
   },
   "devDependencies": {
     "@types/query-string": "^6.2.0",
-    "create-test-server": "^2.4.0",
-    "whatwg-fetch": "3.0.0"
+    "create-test-server": "^2.4.0"
   },
   "peerDependencies": {
     "whatwg-fetch": "^2.0.0"

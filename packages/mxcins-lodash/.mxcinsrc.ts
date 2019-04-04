@@ -1,9 +1,9 @@
+// tslint:disable-next-line:no-implicit-dependencies
 import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
-  entry: 'src/index.ts',
-  esm: { type: 'rollup' },
-  cjs: { type: 'rollup' },
+  esm: 'rollup',
+  cjs: 'rollup',
   umd: { type: 'rollup', name: 'lodash' },
 };
 

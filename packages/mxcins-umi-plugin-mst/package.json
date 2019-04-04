@@ -22,6 +22,11 @@
   },
   "dependencies": {
     "globby": "^9.0.0",
+    "mobx": "^5.9.0",
+    "mobx-devtools-mst": "^0.9.18",
+    "mobx-react": "^5.4.3",
+    "mobx-react-devtools": "^6.0.3",
+    "mobx-state-tree": "^3.10.2",
     "path-is-root": "^0.1.0"
   },
   "devDependencies": {
