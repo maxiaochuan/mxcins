@@ -15,7 +15,7 @@
     "dist"
   ],
   "sideEffects": true,
-  "main": "dist/lodash.umd.js",
+  "main": "dist/index.cjs.js",
   "umd:main": "dist/lodash.umd.js",
   "module": "dist/index.esm.js",
   "jsnext:main": "dist/index.esm.js",

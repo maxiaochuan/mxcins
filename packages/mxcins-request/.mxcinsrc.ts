@@ -2,8 +2,8 @@
 import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
-  esm: 'rollup',
-  umd: { type: 'rollup', name: 'request' },
+  esm: 'single',
+  umd: { type: 'single', name: 'request' },
   runtimeHelpers: true,
   outputExports: 'named',
 };

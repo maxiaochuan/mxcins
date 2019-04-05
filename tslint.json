@@ -11,7 +11,9 @@
     "exclude": [
       "**/node_modules/**",
       "**/example/**",
-      "**/dist/**"
+      "**/dist/**",
+      "**/lib/**",
+      "**/es/**"
     ]
   }
 }

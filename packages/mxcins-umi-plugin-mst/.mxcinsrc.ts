@@ -2,7 +2,7 @@
 import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
-  cjs: 'babel',
+  cjs: 'multiple',
   browserFiles: ['src/dynamic.ts', 'src/runtime.ts'],
 };
 

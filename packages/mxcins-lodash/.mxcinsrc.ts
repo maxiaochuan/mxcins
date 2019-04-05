@@ -2,9 +2,9 @@
 import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
-  esm: 'rollup',
-  cjs: 'rollup',
-  umd: { type: 'rollup', name: 'lodash' },
+  esm: 'single',
+  cjs: 'single',
+  umd: { type: 'single', name: 'lodash' },
 };
 
 export default config;
