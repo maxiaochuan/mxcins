@@ -19,16 +19,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "eslint-config-airbnb": "17.1.0",
-    "eslint-config-prettier": "3.3.0",
-    "eslint-loader": "2.1.1",
-    "eslint-plugin-compat": "2.6.3",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-react": "7.11.1"
+    "stylelint-config-prettier": "5.0.0",
+    "stylelint-config-rational-order": "0.0.4",
+    "stylelint-config-standard": "18.2.0",
+    "stylelint-declaration-block-no-ignored-properties": "1.1.0",
+    "stylelint-order": "2.0.0"
   },
   "peerDependencies": {
-    "eslint": "*"
+    "stylelint": "*"
   },
   "publishConfig": {
     "access": "public"
