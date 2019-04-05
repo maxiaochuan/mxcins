@@ -1,0 +1,39 @@
+{
+  "name": "stylelint-config-mxcins",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/stylelint-config-mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/stylelint-config-mxcins"
+  },
+  "license": "MIT",
+  "files": [
+    "index.json"
+  ],
+  "main": "index.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "3.3.0",
+    "eslint-loader": "2.1.1",
+    "eslint-plugin-compat": "2.6.3",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-react": "7.11.1"
+  },
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}

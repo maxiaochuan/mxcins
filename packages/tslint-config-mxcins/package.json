@@ -1,0 +1,35 @@
+{
+  "name": "tslint-config-mxcins",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/tslint-config-mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/tslint-config-mxcins"
+  },
+  "license": "MIT",
+  "files": [
+    "index.json"
+  ],
+  "main": "index.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "tslint-config-prettier": "1.10.0",
+    "tslint-react": "3.6.0"
+  },
+  "peerDependencies": {
+    "typescript": "*",
+    "tslint": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}
