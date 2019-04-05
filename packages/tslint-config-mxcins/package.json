@@ -1,6 +1,6 @@
 {
   "name": "tslint-config-mxcins",
-  "version": "0.0.0",
+  "version": "1.0.0-rc.0",
   "description": "",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/tslint-config-mxcins",
   "bugs": {
@@ -23,8 +23,8 @@
     "tslint-react": "3.6.0"
   },
   "peerDependencies": {
-    "typescript": "*",
-    "tslint": "*"
+    "tslint": "*",
+    "typescript": "*"
   },
   "publishConfig": {
     "access": "public"
