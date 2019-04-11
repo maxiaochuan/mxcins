@@ -2121,10 +2121,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mxcins/tools@3.0.0-rc.1":
-  version "3.0.0-rc.1"
-  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-3.0.0-rc.1.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2F%40mxcins%2Ftools%2Fdownload%2F%40mxcins%2Ftools-3.0.0-rc.1.tgz#2b7b75f92782b7f6596a78272de64b6c08251c90"
-  integrity sha1-K3t1+SeCt/ZZangnLeZLbAglHJA=
+"@mxcins/tools@3.0.0":
+  version "3.0.0"
+  resolved "http://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-3.0.0.tgz#171a2ff9a0d7edb83ec00be87466f3be11edf0ea"
+  integrity sha1-Fxov+aDX7bg+wAvodGbzvhHt8Oo=
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/plugin-proposal-class-properties" "7.4.0"
@@ -2147,12 +2147,12 @@
     prettier "^1.16.4"
     resolve-bin "^0.4.0"
     rimraf "^2.6.3"
-    rollup "^1.8.0"
-    rollup-plugin-babel "^4.3.2"
-    rollup-plugin-commonjs "^9.3.3"
-    rollup-plugin-node-resolve "^4.0.1"
-    rollup-plugin-postcss "^2.0.3"
-    rollup-plugin-typescript2 "^0.20.1"
+    rollup "1.8.0"
+    rollup-plugin-babel "4.3.2"
+    rollup-plugin-commonjs "9.3.3"
+    rollup-plugin-node-resolve "4.0.1"
+    rollup-plugin-postcss "2.0.3"
+    rollup-plugin-typescript2 "0.20.1"
     signale "^1.4.0"
     slash2 "^2.0.0"
     sort-package-json "^1.22.1"
@@ -2370,10 +2370,10 @@
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-11.12.2.tgz#d7f302e74b10e9801d52852137f652d9ee235da8"
   integrity sha1-1/MC50sQ6YAdUoUhN/ZS2e4jXag=
 
-"@types/node@^11.13.0":
-  version "11.13.0"
-  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-11.13.0.tgz#b0df8d6ef9b5001b2be3a94d909ce3c29a80f9e1"
-  integrity sha1-sN+Nbvm1ABsr46lNkJzjwpqA+eE=
+"@types/node@^11.11.6":
+  version "11.13.4"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-11.13.4.tgz#f83ec3c3e05b174b7241fadeb6688267fe5b22ca"
+  integrity sha1-+D7Dw+BbF0tyQfretmiCZ/5bIso=
 
 "@types/prettier@^1.16.1":
   version "1.16.1"
@@ -2384,13 +2384,6 @@
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/@types/q/download/@types/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha1-SP2YwVYf5xi2FzPa7Ub/EVtJbhg=
-
-"@types/resolve@0.0.8":
-  version "0.0.8"
-  resolved "http://registry.npm.taobao.org/@types/resolve/download/@types/resolve-0.0.8.tgz#f26074d238e02659e323ce1a13d041eee280e194"
-  integrity sha1-8mB00jjgJlnjI84aE9BB7uKA4ZQ=
-  dependencies:
-    "@types/node" "*"
 
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.3"
@@ -12300,7 +12293,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-babel@^4.3.2:
+rollup-plugin-babel@4.3.2:
   version "4.3.2"
   resolved "http://registry.npm.taobao.org/rollup-plugin-babel/download/rollup-plugin-babel-4.3.2.tgz#8c0e1bd7aa9826e90769cf76895007098ffd1413"
   integrity sha1-jA4b16qYJukHac92iVAHCY/9FBM=
@@ -12308,27 +12301,26 @@ rollup-plugin-babel@^4.3.2:
     "@babel/helper-module-imports" "^7.0.0"
     rollup-pluginutils "^2.3.0"
 
-rollup-plugin-commonjs@^9.3.3:
-  version "9.3.4"
-  resolved "http://registry.npm.taobao.org/rollup-plugin-commonjs/download/rollup-plugin-commonjs-9.3.4.tgz#2b3dddbbbded83d45c36ff101cdd29e924fd23bc"
-  integrity sha1-Kz3du73tg9RcNv8QHN0p6ST9I7w=
+rollup-plugin-commonjs@9.3.3:
+  version "9.3.3"
+  resolved "http://registry.npm.taobao.org/rollup-plugin-commonjs/download/rollup-plugin-commonjs-9.3.3.tgz#763415c1c52e0504ef854f794a7e7053002a5a85"
+  integrity sha1-djQVwcUuBQTvhU95Sn5wUwAqWoU=
   dependencies:
     estree-walker "^0.6.0"
     magic-string "^0.25.2"
     resolve "^1.10.0"
     rollup-pluginutils "^2.6.0"
 
-rollup-plugin-node-resolve@^4.0.1:
-  version "4.1.0"
-  resolved "http://registry.npm.taobao.org/rollup-plugin-node-resolve/download/rollup-plugin-node-resolve-4.1.0.tgz#2f1534c0057b2db0219d271daf887c4e062a7e56"
-  integrity sha1-LxU0wAV7LbAhnScdr4h8TgYqflY=
+rollup-plugin-node-resolve@4.0.1:
+  version "4.0.1"
+  resolved "http://registry.npm.taobao.org/rollup-plugin-node-resolve/download/rollup-plugin-node-resolve-4.0.1.tgz#f95765d174e5daeef9ea6268566141f53aa9d422"
+  integrity sha1-+Vdl0XTl2u756mJoVmFB9Tqp1CI=
   dependencies:
-    "@types/resolve" "0.0.8"
     builtin-modules "^3.0.0"
     is-module "^1.0.0"
     resolve "^1.10.0"
 
-rollup-plugin-postcss@^2.0.3:
+rollup-plugin-postcss@2.0.3:
   version "2.0.3"
   resolved "http://registry.npm.taobao.org/rollup-plugin-postcss/download/rollup-plugin-postcss-2.0.3.tgz#1fd5b7e1fc7545cb0084d9c99d11b259e41a05e6"
   integrity sha1-H9W34fx1RcsAhNnJnRGyWeQaBeY=
@@ -12348,7 +12340,7 @@ rollup-plugin-postcss@^2.0.3:
     rollup-pluginutils "^2.0.1"
     style-inject "^0.3.0"
 
-rollup-plugin-typescript2@^0.20.1:
+rollup-plugin-typescript2@0.20.1:
   version "0.20.1"
   resolved "http://registry.npm.taobao.org/rollup-plugin-typescript2/download/rollup-plugin-typescript2-0.20.1.tgz#fb1d411975cd875d24882ea66f5f4fd11d2f2240"
   integrity sha1-+x1BGXXNh10kiC6mb19P0R0vIkA=
@@ -12374,13 +12366,13 @@ rollup-pluginutils@^2.6.0:
     estree-walker "^0.6.0"
     micromatch "^3.1.10"
 
-rollup@^1.8.0:
-  version "1.9.0"
-  resolved "http://registry.npm.taobao.org/rollup/download/rollup-1.9.0.tgz#65f7db8d312a07d4e9702316025f91df56ce9f9c"
-  integrity sha1-ZffbjTEqB9TpcCMWAl+R31bOn5w=
+rollup@1.8.0:
+  version "1.8.0"
+  resolved "http://registry.npm.taobao.org/rollup/download/rollup-1.8.0.tgz#e3ce8b708ad4325166717f74f244f691595d35e2"
+  integrity sha1-486LcIrUMlFmcX908kT2kVldNeI=
   dependencies:
     "@types/estree" "0.0.39"
-    "@types/node" "^11.13.0"
+    "@types/node" "^11.11.6"
     acorn "^6.1.1"
 
 rsvp@^3.3.3:

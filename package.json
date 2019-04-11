@@ -11,7 +11,7 @@
     "lint-staged:js": "eslint --fix --ext .js",
     "lint-staged:ts": "tslint --fix",
     "lint:js": "eslint --ext .js --fix",
-    "lint:ts": "tslint --fix \"packages/**/*.ts*\" && yarn ts-compile-check",
+    "lint:ts": "tslint --fix \"packages/**/*.ts*\"",
     "prettier": "prettier --write \"{,!(node_modules)/**/}*.{js,ts}\"",
     "publish": "node ./scripts/publish.js",
     "test": "jest --coverage",
@@ -30,7 +30,7 @@
     "**/*.{ts,tsx}": "yarn lint-staged:ts"
   },
   "devDependencies": {
-    "@mxcins/tools": "3.0.0-rc.1",
+    "@mxcins/tools": "3.0.0",
     "@types/jest": "^24.0.6",
     "babel-jest": "^24.1.0",
     "eslint": "^5.14.1",
