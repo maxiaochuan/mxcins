@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/umi-plugin-mst",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "umi plugin mobx-state-tree",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-umi-plugin-mst",
   "bugs": {
@@ -30,7 +30,7 @@
     "path-is-root": "^0.1.0"
   },
   "devDependencies": {
-    "@mxcins/types": "1.0.0-rc.0",
+    "@mxcins/types": "1.0.0",
     "@types/globby": "^8.0.0",
     "react": "^16.8.6",
     "umi": "^2.6.11"

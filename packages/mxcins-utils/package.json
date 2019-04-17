@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/utils",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0",
   "description": "utils",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils",
   "bugs": {
@@ -24,7 +24,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@mxcins/lodash": "0.1.2",
+    "@mxcins/lodash": "1.0.0",
     "papaparse": "4.6.3"
   },
   "publishConfig": {
