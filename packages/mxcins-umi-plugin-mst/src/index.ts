@@ -1,8 +1,8 @@
+import { IApi, IRoute } from '@mxcins/types';
 import { existsSync, readFileSync, statSync } from 'fs';
 import globby from 'globby';
 import { basename, dirname, extname, join } from 'path';
 import isRoot from 'path-is-root';
-import { IApi, IRoute } from 'umi-types';
 import { chunkName, findJS } from './utils';
 
 interface IRewriteApi extends IApi {
@@ -169,7 +169,7 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
 
     api.modifyRouteComponent((memo, args) => {
       if (!args) {
-        return;
+        return '';
       }
       const { importPath, webpackChunkName } = args;
       if (!webpackChunkName) {

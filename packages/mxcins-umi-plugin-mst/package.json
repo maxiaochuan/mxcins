@@ -30,10 +30,10 @@
     "path-is-root": "^0.1.0"
   },
   "devDependencies": {
+    "@mxcins/types": "1.0.0-rc.0",
     "@types/globby": "^8.0.0",
     "react": "^16.8.6",
-    "umi": "^2.6.11",
-    "umi-types": "^0.1.2"
+    "umi": "^2.6.11"
   },
   "peerDependencies": {
     "mobx": "^5.9.0",

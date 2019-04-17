@@ -1,0 +1,36 @@
+{
+  "name": "@mxcins/types",
+  "version": "1.0.0-rc.0",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-types",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-types"
+  },
+  "license": "MIT",
+  "files": [
+    "index.d.ts"
+  ],
+  "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ],
+  "dependencies": {
+    "@types/history": "4.7.2",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router": "4.4.5",
+    "type-fest": "0.3.1",
+    "umi-types": "0.3.2"
+  },
+  "resolutions": {
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.4"
+  }
+}
