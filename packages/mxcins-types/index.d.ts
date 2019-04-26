@@ -3,6 +3,14 @@ declare module '@mxcins/types' {
   import React from 'react';
   import { RouteComponentProps as BasicProps, StaticContext } from 'react-router';
   import { IRoute } from 'umi-types';
+
+  export * from 'umi-types';
+  export * from 'type-fest';
+
+  export interface IObjectType<V = any> {
+    [x: string]: V;
+  }
+
   export interface IRouteComponentProps<
     Params extends { [K in keyof Params]?: string } = {},
     C extends StaticContext = StaticContext,
@@ -16,7 +24,4 @@ declare module '@mxcins/types' {
     | React.ComponentClass<P>
     | React.ClassicComponentClass<P>
     | React.SFC<P>;
-
-  export * from 'umi-types';
-  export * from 'type-fest';
 }
