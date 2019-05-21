@@ -1,4 +1,4 @@
-import papaparse from 'papaparse';
+import * as papaparse from 'papaparse';
 
 export default class Downloader {
   public static csv<T extends { [x: string]: any }>(
