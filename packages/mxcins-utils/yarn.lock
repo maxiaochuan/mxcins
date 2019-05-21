@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@types/node@*":
+  version "12.0.2"
+  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
+  integrity sha1-NFKiTt+f6hOLSPrUoKAopoPaHkA=
+
+"@types/papaparse@4.5.9":
+  version "4.5.9"
+  resolved "https://registry.npm.taobao.org/@types/papaparse/download/@types/papaparse-4.5.9.tgz#ff887bd362f57cd0c87320d2de38ac232bb55e81"
+  integrity sha1-/4h702L1fNDIcyDS3jisIyu1XoE=
+  dependencies:
+    "@types/node" "*"
+
 papaparse@4.6.3:
   version "4.6.3"
   resolved "http://registry.npm.taobao.org/papaparse/download/papaparse-4.6.3.tgz#742e5eaaa97fa6c7e1358d2934d8f18f44aee781"

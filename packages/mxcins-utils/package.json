@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@mxcins/lodash": "1.0.1",
+    "@types/papaparse": "4.5.9",
     "papaparse": "4.6.3"
   },
   "publishConfig": {
