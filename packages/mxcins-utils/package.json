@@ -28,7 +28,7 @@
     "@mxcins/types": "1.0.2",
     "camelcase": "5.3.1",
     "just-snake-case": "1.1.0",
-    "papaparse": "5.0.0"
+    "papaparse": "4.6.3"
   },
   "devDependencies": {
     "@types/just-snake-case": "1.1.0",
