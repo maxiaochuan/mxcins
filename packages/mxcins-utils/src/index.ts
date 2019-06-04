@@ -6,3 +6,4 @@ export { default as classnames } from './classnames';
 
 export { default as mapObject } from './mapObject';
 export { default as camelcaseKeys } from './camelcaseKeys';
+export { default as snakecaseKeys } from './snakecaseKeys';
