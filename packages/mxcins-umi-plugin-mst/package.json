@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/umi-plugin-mst",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "umi plugin mobx-state-tree",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-umi-plugin-mst",
   "bugs": {
