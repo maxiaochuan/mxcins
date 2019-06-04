@@ -2,41 +2,7 @@
 # yarn lockfile v1
 
 
-"@mxcins/lodash@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/@mxcins/lodash/download/@mxcins/lodash-1.0.1.tgz#8a3d6ddddf87f9bef47750f870901074fbe50cd1"
-  integrity sha1-ij1t3d+H+b70d1D4cJAQdPvlDNE=
-
-"@mxcins/types@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npm.taobao.org/@mxcins/types/download/@mxcins/types-1.0.2.tgz#f89d1711c1ea8184d9bf4bc488fb6657f4566761"
-  integrity sha1-+J0XEcHqgYTZv0vEiPtmV/RWZ2E=
-  dependencies:
-    "@types/history" "4.7.2"
-    "@types/react" "16.8.8"
-    "@types/react-dom" "16.8.4"
-    "@types/react-router" "4.4.5"
-    type-fest "0.3.1"
-    umi-types "0.3.2"
-
-"@types/anymatch@*":
-  version "1.3.1"
-  resolved "https://registry.npm.taobao.org/@types/anymatch/download/@types/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
-  integrity sha1-M2utwb7sudrMOL6izzKt9ieoQho=
-
-"@types/cheerio@^0.22.10":
-  version "0.22.11"
-  resolved "https://registry.npm.taobao.org/@types/cheerio/download/@types/cheerio-0.22.11.tgz#61c0facf9636d14ba5f77fc65ed8913aa845d717"
-  integrity sha1-YcD6z5Y20Uul93/GXtiROqhF1xc=
-  dependencies:
-    "@types/node" "*"
-
-"@types/history@*", "@types/history@4.7.2":
-  version "4.7.2"
-  resolved "https://registry.npm.taobao.org/@types/history/download/@types/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
-  integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
-
-"@types/just-snake-case@^1.1.0":
+"@types/just-snake-case@1.1.0":
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/@types/just-snake-case/download/@types/just-snake-case-1.1.0.tgz#6ca3f84a2539b72643f9808fe80cd129809227c8"
   integrity sha1-bKP4SiU5tyZD+YCP6AzRKYCSJ8g=
@@ -53,91 +19,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/prop-types@*":
-  version "15.7.1"
-  resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
-  integrity sha1-8aEee6uww8rWgQC+OB0eBkxo8fY=
-
-"@types/react-dom@16.8.4":
-  version "16.8.4"
-  resolved "https://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.8.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact-dom%2Fdownload%2F%40types%2Freact-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
-  integrity sha1-f7e6NohXx6oPTkURxHEMosWhKog=
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-router@4.4.5":
-  version "4.4.5"
-  resolved "https://registry.npm.taobao.org/@types/react-router/download/@types/react-router-4.4.5.tgz#1166997dc7eef2917b5ebce890ebecb32ee5c1b3"
-  integrity sha1-EWaZfcfu8pF7XrzokOvssy7lwbM=
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-
-"@types/react@*":
-  version "16.8.19"
-  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.8.19.tgz#629154ef05e2e1985cdde94477deefd823ad9be3"
-  integrity sha1-YpFU7wXi4Zhc3elEd97v2COtm+M=
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^2.2.0"
-
-"@types/react@16.8.8":
-  version "16.8.8"
-  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.8.8.tgz#4b60a469fd2469f7aa6eaa0f8cfbc51f6d76e662"
-  integrity sha1-S2Ckaf0kafeqbqoPjPvFH2125mI=
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^2.2.0"
-
-"@types/tapable@*":
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/@types/tapable/download/@types/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
-  integrity sha1-tP/H3Je0mMlps2CkHu4kf4JhY3A=
-
-"@types/uglify-js@*":
-  version "3.0.4"
-  resolved "https://registry.npm.taobao.org/@types/uglify-js/download/@types/uglify-js-3.0.4.tgz#96beae23df6f561862a830b4288a49e86baac082"
-  integrity sha1-lr6uI99vVhhiqDC0KIpJ6GuqwII=
-  dependencies:
-    source-map "^0.6.1"
-
-"@types/webpack-chain@^5.0.1":
-  version "5.2.0"
-  resolved "https://registry.npm.taobao.org/@types/webpack-chain/download/@types/webpack-chain-5.2.0.tgz#ccd2d75d57e962ad7372077701ce2c711fc985c6"
-  integrity sha1-zNLXXVfpYq1zcgd3Ac4scR/JhcY=
-  dependencies:
-    webpack-chain "*"
-
-"@types/webpack@^4.4.23":
-  version "4.4.32"
-  resolved "https://registry.npm.taobao.org/@types/webpack/download/@types/webpack-4.4.32.tgz#2d460cd33a15e568e93f38de5e628cf846396c51"
-  integrity sha1-LUYM0zoV5WjpPzjeXmKM+EY5bFE=
-  dependencies:
-    "@types/anymatch" "*"
-    "@types/node" "*"
-    "@types/tapable" "*"
-    "@types/uglify-js" "*"
-    source-map "^0.6.0"
-
 camelcase@5.3.1:
   version "5.3.1"
   resolved "https://registry.npm.taobao.org/camelcase/download/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha1-48mzFWnhBoEd8kL3FXJaH0xJQyA=
-
-csstype@^2.2.0:
-  version "2.6.5"
-  resolved "https://registry.npm.taobao.org/csstype/download/csstype-2.6.5.tgz#1cd1dff742ebf4d7c991470ae71e12bb6751e034"
-  integrity sha1-HNHf90Lr9NfJkUcK5x4Su2dR4DQ=
-
-deepmerge@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.npm.taobao.org/deepmerge/download/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
-  integrity sha1-EEmdhohEza1P7ghC34x/bwyVp1M=
-
-javascript-stringify@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/javascript-stringify/download/javascript-stringify-2.0.0.tgz#ef750216ae66504ffd670b68c8b8aa07bdf7b588"
-  integrity sha1-73UCFq5mUE/9ZwtoyLiqB733tYg=
 
 just-snake-case@1.1.0:
   version "1.1.0"
@@ -148,30 +33,3 @@ papaparse@4.6.3:
   version "4.6.3"
   resolved "http://registry.npm.taobao.org/papaparse/download/papaparse-4.6.3.tgz#742e5eaaa97fa6c7e1358d2934d8f18f44aee781"
   integrity sha1-dC5eqql/psfhNY0pNNjxj0Su54E=
-
-source-map@^0.6.0, source-map@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
-  integrity sha1-dHIq8y6WFOnCh6jQu95IteLxomM=
-
-type-fest@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.npm.taobao.org/type-fest/download/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
-  integrity sha1-Y9ANIE4FlHT+Xht8ARESu9HcKeE=
-
-umi-types@0.3.2:
-  version "0.3.2"
-  resolved "https://registry.npm.taobao.org/umi-types/download/umi-types-0.3.2.tgz?cache=0&sync_timestamp=1559551535890&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-types%2Fdownload%2Fumi-types-0.3.2.tgz#0ff03b5188b9865412c203fd77290060f01f45d6"
-  integrity sha1-D/A7UYi5hlQSwgP9dykAYPAfRdY=
-  dependencies:
-    "@types/cheerio" "^0.22.10"
-    "@types/webpack" "^4.4.23"
-    "@types/webpack-chain" "^5.0.1"
-
-webpack-chain@*:
-  version "6.0.0"
-  resolved "https://registry.npm.taobao.org/webpack-chain/download/webpack-chain-6.0.0.tgz#9c36525a1271a54e7bfd1791199b395f400ae4f1"
-  integrity sha1-nDZSWhJxpU57/ReRGZs5X0AK5PE=
-  dependencies:
-    deepmerge "^1.5.2"
-    javascript-stringify "^2.0.0"

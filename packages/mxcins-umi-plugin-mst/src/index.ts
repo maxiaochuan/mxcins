@@ -103,6 +103,7 @@ export default function(api: IRewriteApi, opts: IOpts = {}) {
     if (mobxJs) {
       return winPath(mobxJs);
     }
+    return '';
   }
   function getStoreName(store: string) {
     const storeArr = winPath(store).split('/');
