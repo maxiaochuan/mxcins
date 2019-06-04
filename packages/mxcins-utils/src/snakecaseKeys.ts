@@ -1,6 +1,6 @@
 import { isObject } from '@mxcins/lodash';
 import { IObjectType } from '@mxcins/types';
-import camelcase from 'camelcase';
+import snakecase from 'just-snake-case';
 
 import mapObject from './mapObject';
 
@@ -23,7 +23,7 @@ const isObjectOrArray = (input: unknown) => Array.isArray(input) || isObject(inp
 const has = (array: Array<string | RegExp>, key: string) =>
   array.some(x => (typeof x === 'string' ? x === key : x.test(key)));
 
-const camelcaseKeys = (
+const snakecaseKeys = (
   input: IObjectType<unknown> | Array<IObjectType<unknown>>,
   opts: ICamelcaseKeysOpts = {},
 ) => {
@@ -39,7 +39,7 @@ const camelcaseKeys = (
       if (cache.get(key)) {
         key = cache.get(key);
       } else {
-        const ret = camelcase(key);
+        const ret = snakecase(key);
         cache.set(key, ret);
         key = ret;
       }
@@ -55,4 +55,4 @@ const camelcaseKeys = (
   return isObjectOrArray(input) ? mapObject(input as any, fn, options) : input;
 };
 
-export default camelcaseKeys;
+export default snakecaseKeys;

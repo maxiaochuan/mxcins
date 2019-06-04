@@ -25,12 +25,14 @@
   },
   "dependencies": {
     "@mxcins/lodash": "1.0.1",
-    "@types/papaparse": "4.5.9",
     "camelcase": "5.3.1",
+    "just-snake-case": "1.1.0",
     "papaparse": "4.6.3"
   },
   "devDependencies": {
-    "@mxcins/types": "1.0.2"
+    "@mxcins/types": "1.0.2",
+    "@types/just-snake-case": "1.1.0",
+    "@types/papaparse": "4.5.9"
   },
   "publishConfig": {
     "access": "public"
