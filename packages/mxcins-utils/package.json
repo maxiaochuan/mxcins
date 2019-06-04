@@ -26,12 +26,11 @@
   "dependencies": {
     "@mxcins/lodash": "1.0.1",
     "@mxcins/types": "1.0.2",
-    "camelcase": "5.3.1",
-    "just-snake-case": "1.1.0",
-    "papaparse": "4.6.3"
+    "lodash-es": "4.17.11"
   },
   "devDependencies": {
     "@types/just-snake-case": "1.1.0",
+    "@types/lodash-es": "4.17.3",
     "@types/papaparse": "4.5.9"
   },
   "publishConfig": {

@@ -1,12 +1,12 @@
 import { isObject } from '@mxcins/lodash';
 import { IObjectType } from '@mxcins/types';
-import snakecase from 'just-snake-case';
+import { snakeCase } from 'lodash-es';
 
 import mapObject from './mapObject';
 
 const cache = new Map();
 
-export interface ICamelcaseKeysOpts {
+export interface ISnakecaseKeysOpts {
   /**
    * @default false
    *
@@ -25,7 +25,7 @@ const has = (array: Array<string | RegExp>, key: string) =>
 
 const snakecaseKeys = (
   input: IObjectType<unknown> | Array<IObjectType<unknown>>,
-  opts: ICamelcaseKeysOpts = {},
+  opts: ISnakecaseKeysOpts = {},
 ) => {
   const options = {
     deep: false,
@@ -39,7 +39,7 @@ const snakecaseKeys = (
       if (cache.get(key)) {
         key = cache.get(key);
       } else {
-        const ret = snakecase(key);
+        const ret = snakeCase(key);
         cache.set(key, ret);
         key = ret;
       }

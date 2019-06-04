@@ -1,6 +1,6 @@
 import { isObject } from '@mxcins/lodash';
 import { IObjectType } from '@mxcins/types';
-import camelcase from 'camelcase';
+import { camelCase } from 'lodash-es';
 
 import mapObject from './mapObject';
 
@@ -39,7 +39,7 @@ const camelcaseKeys = (
       if (cache.get(key)) {
         key = cache.get(key);
       } else {
-        const ret = camelcase(key);
+        const ret = camelCase(key);
         cache.set(key, ret);
         key = ret;
       }
