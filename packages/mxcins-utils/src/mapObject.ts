@@ -3,12 +3,12 @@ import { IObjectType } from '@mxcins/types';
 
 export interface IMapObjectOpts {
   deep?: boolean;
-  target?: IObjectType<unknown>;
+  target?: IObjectType;
 }
 
 export type Fn = (key: string, value: unknown, object: any) => [string, unknown];
 
-const mapObject = (object: IObjectType<unknown>, fn: Fn, opts: IMapObjectOpts = {}) => {
+const mapObject = (object: IObjectType, fn: Fn, opts: IMapObjectOpts = {}) => {
   const options = {
     deep: false,
     target: {},

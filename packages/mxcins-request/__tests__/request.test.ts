@@ -16,7 +16,7 @@ describe('test request', () => {
   const prefix = (api: string) => `${server.url}${api}`;
 
   it('timeout', async () => {
-    server.get('/test/timeout', (req: any, res: any) => {
+    server.get('/test/timeout', (_: any, res: any) => {
       setTimeout(() => {
         send('ok', res);
       }, 1000);
@@ -208,20 +208,20 @@ describe('test request', () => {
   });
 
   it('test exception', async () => {
-    server.get('/test/expection', (req: any, res: any) => {
+    server.get('/test/expection', (_: any, res: any) => {
       res.setHeader('access-control-allow-origin', '*');
       res.status(401);
       res.send('a');
     });
 
     try {
-      const resp1 = await request(prefix('/test/expection'), { params: { a: 1 } });
+      await request(prefix('/test/expection'), { params: { a: 1 } });
     } catch (error) {
       expect(error.name).toBe('ResponseError');
       expect(error.response.status).toBe(401);
     }
 
-    const errorHandler = (error: ResponseError) => {
+    const errorHandler = (_: ResponseError) => {
       return 'name';
     };
     const resp2 = await request(prefix('/test/expection'), { errorHandler });
@@ -230,7 +230,7 @@ describe('test request', () => {
   });
 
   it('test cache', async () => {
-    server.get('/test/cache', (req: any, res: any) => {
+    server.get('/test/cache', (_: any, res: any) => {
       setTimeout(() => {
         send('cache', res);
       }, 2000);

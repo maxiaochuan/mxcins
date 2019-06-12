@@ -32,7 +32,7 @@ describe('camelcaseKeys', () => {
     ).toEqual([{ sections: { component_id: 100 } }]);
   });
   it('others', () => {
-    expect(camelcaseKeys([12] as any, { deep: true, exclude: ['component_id'] })).toEqual([12]);
-    expect(camelcaseKeys(12 as any, { deep: true, exclude: ['component_id'] })).toEqual(12);
+    expect(camelcaseKeys([12], { deep: true, exclude: ['component_id'] })).toEqual([12]);
+    expect(camelcaseKeys(12, { deep: true, exclude: ['component_id'] })).toEqual(12);
   });
 });
