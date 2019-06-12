@@ -26,7 +26,8 @@
   "dependencies": {
     "@mxcins/lodash": "1.0.1",
     "@mxcins/types": "1.0.2",
-    "lodash-es": "4.17.11"
+    "lodash-es": "4.17.11",
+    "papaparse": "5.0.0"
   },
   "devDependencies": {
     "@types/just-snake-case": "1.1.0",
