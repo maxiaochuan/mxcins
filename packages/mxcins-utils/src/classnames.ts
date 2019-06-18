@@ -1,5 +1,5 @@
 import { isObject, isString } from '@mxcins/lodash';
-type Args = Array<string | string[] | { [name: string]: boolean }>;
+type Args = Array<string | string[] | { [name: string]: boolean } | undefined>;
 
 export default function classnames(...args: Args): string {
   const classes: string[] = [];

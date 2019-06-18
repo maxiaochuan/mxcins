@@ -13,6 +13,9 @@ describe('omit', () => {
     expect(classnames(['a'])).toBe('a');
     expect(classnames({ a: true, b: true })).toBe('a b');
   });
+  it('undefined', () => {
+    expect(classnames('a b', undefined)).toBe('a b');
+  });
   it('merge', () => {
     expect(classnames(['a'], { b: true }, 'c d')).toBe('a b c d');
     expect(classnames(['a'], { b: false }, 'c d')).toBe('a c d');
