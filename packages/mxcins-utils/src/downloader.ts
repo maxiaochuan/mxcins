@@ -32,6 +32,7 @@ export default class Downloader {
         const url = URL.createObjectURL(blob);
         link.setAttribute('href', url);
         link.setAttribute('download', name);
+        link.setAttribute('type', 'text/csv');
         link.style.visibility = 'hidden';
         document.body.appendChild(link);
         link.click();
