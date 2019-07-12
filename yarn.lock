@@ -2121,10 +2121,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mxcins/tools@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-3.2.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40mxcins%2Ftools%2Fdownload%2F%40mxcins%2Ftools-3.2.0.tgz#05a41bac4d377371278fea7fa377c724be785b5b"
-  integrity sha1-BaQbrE03c3Enj+p/o3fHJL54W1s=
+"@mxcins/tools@3.3.1":
+  version "3.3.1"
+  resolved "https://registry.npm.taobao.org/@mxcins/tools/download/@mxcins/tools-3.3.1.tgz#dc2fea6685a8f4b775181a8d43cf0caf32959e0a"
+  integrity sha1-3C/qZoWo9Ld1GBqNQ88MrzKVngo=
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/plugin-proposal-class-properties" "7.4.0"
