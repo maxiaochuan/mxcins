@@ -50,8 +50,8 @@ export default class Fetch {
   private wrappedTimeout(instance: IInstance): IInstance {
     const { timeout = 0 } = this.options;
     if (timeout > 0) {
-      return Promise.race<Response, Response>([
-        new Promise((_, reject) => {
+      return Promise.race<Response>([
+        new Promise<Response>((_, reject) => {
           setTimeout(() => reject(new RequestError(`timeout of ${timeout}ms exceeded`)), timeout);
         }),
         instance,

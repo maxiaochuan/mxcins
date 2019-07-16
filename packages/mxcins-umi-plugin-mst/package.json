@@ -30,10 +30,11 @@
     "path-is-root": "^0.1.0"
   },
   "devDependencies": {
-    "@mxcins/types": "1.0.2",
-    "@types/globby": "^8.0.0",
+    "@types/globby": "8.0.0",
+    "@types/react": "16.8.23",
     "react": "^16.8.6",
-    "umi": "^2.6.11"
+    "umi": "^2.6.11",
+    "umi-types": "0.3.13"
   },
   "peerDependencies": {
     "mobx": "^5.9.0",
@@ -41,7 +42,10 @@
     "mobx-react": "^5.4.3",
     "mobx-react-devtools": "^6.0.3",
     "mobx-state-tree": "^3.10.2",
-    "umi": "^2.6.11"
+    "umi": "*"
+  },
+  "resolutions": {
+    "@types/react": "16.8.23"
   },
   "publishConfig": {
     "access": "public"
