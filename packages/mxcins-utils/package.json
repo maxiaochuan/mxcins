@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/utils",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "utils",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils",
   "bugs": {
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@mxcins/lodash": "1.0.1",
-    "@mxcins/types": "1.1.0",
+    "@mxcins/types": "1.2.0",
     "lodash-es": "4.17.11",
     "papaparse": "5.0.0"
   },
