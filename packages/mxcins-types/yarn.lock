@@ -9,7 +9,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@types/history@*", "@types/history@^4.7.2":
+"@types/history@*", "@types/history@~4.7.2":
   version "4.7.2"
   resolved "https://registry.npm.taobao.org/@types/history/download/@types/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
   integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
@@ -19,14 +19,14 @@
   resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
   integrity sha1-8aEee6uww8rWgQC+OB0eBkxo8fY=
 
-"@types/react-dom@16.8.4", "@types/react-dom@^16.8.4":
+"@types/react-dom@16.8.4", "@types/react-dom@~16.8.4":
   version "16.8.4"
   resolved "https://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
   integrity sha1-f7e6NohXx6oPTkURxHEMosWhKog=
   dependencies:
     "@types/react" "*"
 
-"@types/react-router@^4.4.5":
+"@types/react-router@~4.4.5":
   version "4.4.5"
   resolved "https://registry.npm.taobao.org/@types/react-router/download/@types/react-router-4.4.5.tgz#1166997dc7eef2917b5ebce890ebecb32ee5c1b3"
   integrity sha1-EWaZfcfu8pF7XrzokOvssy7lwbM=
@@ -34,7 +34,7 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.8.23", "@types/react@^16.8.23":
+"@types/react@*", "@types/react@16.8.23", "@types/react@~16.8.23":
   version "16.8.23"
   resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.8.23.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-16.8.23.tgz#ec6be3ceed6353a20948169b6cb4c97b65b97ad2"
   integrity sha1-7Gvjzu1jU6IJSBabbLTJe2W5etI=
