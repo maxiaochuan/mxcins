@@ -4,6 +4,8 @@ import { RouteComponentProps, StaticContext } from 'react-router';
 
 export * from 'type-fest';
 
+export const tuple = <T extends string[]>(...args: T) => args;
+
 export interface IRoute {
   path?: string;
   component?: string;

@@ -15,27 +15,19 @@
     "index.d.ts"
   ],
   "sideEffects": true,
-  "types": "index.d.ts",
+  "main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "jsnext:main": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
-    "type-fest": "0.6.0"
-  },
-  "devDependencies": {
     "@types/history": "~4.7.2",
-    "@types/react": "~16.8.23",
+    "@types/react": "~16.8.6",
     "@types/react-dom": "~16.8.4",
     "@types/react-router": "~4.4.5",
     "history": "~4.9.0",
     "react": "~16.8.6",
-    "react-router": "~5.0.1"
-  },
-  "peerDependencies": {
-    "@types/history": "*",
-    "@types/react": "*",
-    "@types/react-dom": "*",
-    "@types/react-router": "*",
-    "history": "~4.9.0",
-    "react": "~16.8.6",
-    "react-router": "~5.0.1"
+    "react-router": "~5.0.1",
+    "type-fest": "0.6.0"
   },
   "resolutions": {
     "@types/react": "16.8.23",
