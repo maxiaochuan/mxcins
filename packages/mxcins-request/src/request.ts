@@ -3,7 +3,7 @@ import Fetch from './Fetch';
 import { MapCache, ResponseError } from './utils';
 
 export interface IRequestInitOptions extends RequestInit {
-  requestType?: 'json' | 'form';
+  requestType?: 'json' | 'form' | 'formdata';
   responseType?: 'json' | 'text' | 'blob';
   data?: any;
   timeout?: number;

@@ -10,7 +10,16 @@ const defaultInterceptor: IReqInterceptor = (uri, originOptions) => {
     const { requestType = 'json', data } = options;
     if (data) {
       const dataType = Object.prototype.toString.call(data);
-      if (dataType === '[object Object]' || dataType === '[object Array]') {
+      /**
+       * 2019-07-28 15:38:49  为了解决rn  FormData 类型为 [object Object]的问题
+       */
+      if (requestType === 'formdata') {
+        options.headers = {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data;charset=utf-8',
+        };
+        options.body = data;
+      } else if (dataType === '[object Object]' || dataType === '[object Array]') {
         if (requestType === 'json') {
           options.headers = {
             Accept: 'application/json',
