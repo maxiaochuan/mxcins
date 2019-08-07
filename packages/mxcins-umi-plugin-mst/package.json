@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "globby": "^9.0.0",
-    "mobx": "^5.9.0",
+    "mobx": "4.13.0",
     "mobx-devtools-mst": "^0.9.18",
     "mobx-react": "^5.4.3",
     "mobx-react-devtools": "^6.0.3",
@@ -37,7 +37,7 @@
     "umi-types": "0.3.13"
   },
   "peerDependencies": {
-    "mobx": "^5.9.0",
+    "mobx": "4.13.0",
     "mobx-devtools-mst": "^0.9.18",
     "mobx-react": "^5.4.3",
     "mobx-react-devtools": "^6.0.3",
