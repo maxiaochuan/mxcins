@@ -1,8 +1,13 @@
-import { IRequestOptions } from './request';
+import { IRequestOptions, IResponse } from './interface';
+
+export const root: Window =
+  ((typeof self === 'object' && self.self === self && self) as any) ||
+  ((typeof global === 'object' && global.global === global && global) as any) ||
+  (this as any);
 
 // tslint:disable:max-classes-per-file
 export class MapCache {
-  private cache: Map<string, Response>;
+  private cache: Map<string, IResponse>;
   private timer: { [x: string]: number };
 
   private maxSize: number;
@@ -54,9 +59,9 @@ export class RequestError extends Error {
 }
 
 export class ResponseError extends Error {
-  public response: Response;
+  public response: IResponse;
   public data: any;
-  constructor(response: Response, text: string, data?: any) {
+  constructor(response: IResponse, text: string, data?: any) {
     super(text);
     this.name = 'ResponseError';
     this.response = response;

@@ -18,7 +18,7 @@ const mapObject = (object: IObjectType, fn: Fn, opts: IMapObjectOpts = {}) => {
   const { target, deep } = options;
   delete options.target;
 
-  const mapArray = (array: Array<unknown>): Array<unknown> =>
+  const mapArray = (array: any[]): any[] =>
     array.map(v => (isObject(v) ? mapObject(v, fn, options) : v));
   if (Array.isArray(object)) {
     return mapArray(object);

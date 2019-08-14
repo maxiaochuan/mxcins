@@ -2,7 +2,7 @@ import snakecaseKeys from '../src/snakecaseKeys';
 
 describe('snakecaseKeys', () => {
   it('object', () => {
-    expect(snakecaseKeys({ 'a_b-c': 'a' })).toEqual({ 'a_b_c': 'a' });
+    expect(snakecaseKeys({ 'a_b-c': 'a' })).toEqual({ a_b_c: 'a' });
     expect(snakecaseKeys({ sectionId: 100 })).toEqual({ section_id: 100 });
     expect(snakecaseKeys({ sections: { componentId: 100 } })).toEqual({
       sections: { componentId: 100 },

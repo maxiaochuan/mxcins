@@ -1,5 +1,5 @@
 import createServer from 'create-test-server';
-import request, { factory } from '../src/index';
+import request, { extend } from '../src/index';
 import { ResponseError } from '../src/utils';
 
 const send = (data: any, res: any) => {
@@ -9,11 +9,16 @@ const send = (data: any, res: any) => {
 
 describe('test request', () => {
   let server: any;
-  beforeEach(async () => {
+  let prefix = (_: string) => '';
+  beforeAll(async () => {
     server = await createServer();
+    prefix = (api: string) => `${server.url}${api}`;
   });
-
-  const prefix = (api: string) => `${server.url}${api}`;
+  afterAll(async () => {
+    if (server) {
+      await server.close();
+    }
+  });
 
   it('timeout', async () => {
     server.get('/test/timeout', (_: any, res: any) => {
@@ -97,15 +102,6 @@ describe('test request', () => {
     });
 
     expect(resp3).toEqual({ a: 'a3' });
-
-    try {
-      await request(prefix('/test/responseType'), {
-        method: 'post',
-        responseType: 'haha' as any,
-      });
-    } catch (error) {
-      expect(error.name).toBe('ResponseError');
-    }
   });
 
   it('get response', async () => {
@@ -128,7 +124,7 @@ describe('test request', () => {
     });
     expect(resp3).toBe('x');
 
-    const instance1 = factory();
+    const instance1 = extend();
     const resp4 = await instance1<string>(prefix('/test/create'), { method: 'post', data: 'x' });
     expect(resp4).toBe('x');
     const resp5 = await instance1<string>(prefix('/test/create'), {
@@ -144,9 +140,7 @@ describe('test request', () => {
     });
     expect(resp6).toBe('x');
 
-    const instance2 = factory({ getResponse: true });
-    const resp7 = await instance2<string>(prefix('/test/create'), { method: 'post', data: 'x' });
-    expect(resp7.response.status).toBe(200);
+    const instance2 = extend();
     const resp8 = await instance2<string>(prefix('/test/create'), {
       method: 'post',
       getResponse: true,
@@ -180,21 +174,21 @@ describe('test request', () => {
     });
     expect(resp4).toEqual({ a: 'a', b: 'b' });
 
-    const resp2 = await request('/test/params', {
-      prefix: server.url,
-      queryParams: {
-        a: 'a',
-      },
-    });
-    expect(resp2).toEqual({ a: 'a' });
+    // const resp2 = await request(prefix('/test/params'), {
+    //   prefix: server.url,
+    //   queryParams: {
+    //     a: 'a',
+    //   },
+    // });
+    // expect(resp2).toEqual({ a: 'a' });
 
-    const resp3 = await request(prefix('/test'), {
-      suffix: '/params',
-      queryParams: {
-        a: 'a',
-      },
-    });
-    expect(resp3).toEqual({ a: 'a' });
+    // const resp3 = await request(prefix('/test'), {
+    //   suffix: '/params',
+    //   queryParams: {
+    //     a: 'a',
+    //   },
+    // });
+    // expect(resp3).toEqual({ a: 'a' });
 
     const resp5 = await request(prefix('/test/:type'), {
       params: {
@@ -236,7 +230,7 @@ describe('test request', () => {
       }, 2000);
     });
 
-    const instance = factory({ useCache: true });
+    const instance = extend({ useCache: true });
     const resp = await instance(prefix('/test/cache'));
 
     expect(resp).toBe('cache');
@@ -249,23 +243,19 @@ describe('test request', () => {
       send(req.query, res);
     });
 
-    request.interceptors.request.use((uri, options) => {
-      options.queryParams = { a: 'inter' };
-      return { uri, options };
+    request.use(async (ctx, next) => {
+      const { options = {} } = ctx.req;
+      ctx.req.options = { ...options, queryParams: { ...options.queryParams, a: 'inter' } };
+      return next();
     });
     const resp1 = await request(prefix('/test/interceptors'));
     expect(resp1).toEqual({ a: 'inter' });
 
-    request.interceptors.response.use(response => {
-      const copy = response.clone();
-      copy.text = async () => 'haha';
-      return copy;
+    request.use(async (ctx, next) => {
+      await next();
+      ctx.res = 'haha';
     });
     const resp2 = await request(prefix('/test/interceptors'));
     expect(resp2).toBe('haha');
-  });
-
-  afterEach(() => {
-    server.close();
   });
 });

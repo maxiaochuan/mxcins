@@ -18,22 +18,23 @@
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "jsnext:main": "dist/index.esm.js",
+  "browser": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "mxcins-tools build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@babel/runtime": "7.3.4",
-    "query-string": "6.2.0",
-    "whatwg-fetch": ">=2.0.4"
+    "@babel/runtime": "~7.3.4",
+    "path-to-regexp": "^3.0.0",
+    "qs": "^6.7.0",
+    "url-parse": "^1.4.7",
+    "whatwg-fetch": "3.0.0"
   },
   "devDependencies": {
-    "@types/query-string": "^6.2.0",
+    "@types/qs": "^6.5.3",
+    "@types/url-parse": "^1.4.3",
     "create-test-server": "^2.4.0"
-  },
-  "peerDependencies": {
-    "whatwg-fetch": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"
