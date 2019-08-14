@@ -3,7 +3,8 @@ import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
   esm: 'single',
-  // umd: { type: 'single', name: 'request' },
+  cjs: 'single',
+  umd: { type: 'single', name: 'request' },
   runtimeHelpers: true,
   outputExports: 'named',
 };
