@@ -17,9 +17,9 @@
   "sideEffects": true,
   "main": "dist/index.cjs.js",
   "umd:main": "dist/pluralize.umd.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.cjs.js",
   "jsnext:main": "dist/index.esm.js",
-  "browser": "dist/pluralize.umd.js",
+  "browser": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools build",

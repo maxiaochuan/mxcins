@@ -17,7 +17,6 @@
   ],
   "main": "dist/Gantt.umd.js",
   "umd:main": "dist/Gantt.umd.js",
-  "browser": "dist/Gantt.umd.js",
   "types": "dist/Gantt.d.ts",
   "scripts": {
     "build": "mtools build",

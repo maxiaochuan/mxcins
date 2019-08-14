@@ -18,6 +18,7 @@
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "jsnext:main": "dist/index.esm.js",
+  "browser": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools.js build",
