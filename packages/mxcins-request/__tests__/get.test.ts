@@ -25,4 +25,22 @@ describe('getMiddleware', () => {
     await getMiddleware(ctx, next);
     expect(ctx.req.uri).toBe('/response?b=b&a=a');
   });
+
+  it('uri addfix', async () => {
+    const next = () => Promise.resolve();
+    ctx.req = { uri: '/response', options: { queryParams: { a: 'a' }, prefix: '/api' } };
+    await getMiddleware(ctx, next);
+    expect(ctx.req.uri).toBe('/api/response?a=a');
+
+    ctx.req = {
+      uri: 'https://google.com/response',
+      options: { queryParams: { a: 'a' }, prefix: '/api' },
+    };
+    await getMiddleware(ctx, next);
+    expect(ctx.req.uri).toBe('https://google.com/api/response?a=a');
+
+    ctx.req = { uri: '/response?b=b', options: { queryParams: { a: 'a' }, suffix: '.json' } };
+    await getMiddleware(ctx, next);
+    expect(ctx.req.uri).toBe('/response.json?b=b&a=a');
+  });
 });

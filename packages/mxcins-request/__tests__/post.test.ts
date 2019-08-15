@@ -17,12 +17,12 @@ describe('postMiddleware', () => {
 
   it('request type', async () => {
     const next = () => Promise.resolve();
-    const o = { method: 'postMiddleware' };
+    const o = { method: 'post' };
     ctx.req = { uri: '/response', options: o };
     await postMiddleware(ctx, next);
     expect(ctx.req.options).toBe(o);
 
-    ctx.req = { ...ctx.req, options: { method: 'postMiddleware', data: { a: 'a' } } };
+    ctx.req = { ...ctx.req, options: { method: 'post', data: { a: 'a' } } };
     await postMiddleware(ctx, next);
     expect(ctx.req.options && ctx.req.options.body).toBe(JSON.stringify({ a: 'a' }));
   });
