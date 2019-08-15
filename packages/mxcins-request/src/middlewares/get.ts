@@ -18,7 +18,12 @@ const get: IRequestMiddleware = (ctx, next) => {
   const target = new Parser(uri, {}, true);
 
   if (options.prefix) {
-    target.set('pathname', `${options.prefix}${target.pathname}`);
+    const fix = new Parser(options.prefix, {}, true);
+    if (fix.hostname) {
+      target.set('host', fix.host);
+      target.set('protocol', fix.protocol);
+    }
+    target.set('pathname', `${fix.pathname}${target.pathname}`);
   }
 
   if (options.suffix) {

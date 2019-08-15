@@ -42,5 +42,12 @@ describe('getMiddleware', () => {
     ctx.req = { uri: '/response?b=b', options: { queryParams: { a: 'a' }, suffix: '.json' } };
     await getMiddleware(ctx, next);
     expect(ctx.req.uri).toBe('/response.json?b=b&a=a');
+
+    ctx.req = {
+      uri: '/response?b=b',
+      options: { queryParams: { a: 'a' }, prefix: 'https://google.com/api', suffix: '.json' },
+    };
+    await getMiddleware(ctx, next);
+    expect(ctx.req.uri).toBe('https://google.com/api/response.json?b=b&a=a');
   });
 });
