@@ -2065,10 +2065,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mxcins/tools@3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@mxcins/tools/-/tools-3.5.0.tgz#af3934c5d749d9f5cf4315c33d98b52c8a68c71c"
-  integrity sha512-tBdpFLjawsIz1TgId3yf7YhSAuBuDHVIodIglfpKIeWmwQ0NgoxwDNkxoQc9mmp+xv8VwGb16T9ZPSnLuFVLvQ==
+"@mxcins/tools@3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@mxcins/tools/-/tools-3.5.1.tgz#777938d68fc6a076d53b5b9875606bf71698d03c"
+  integrity sha512-bTdckPj0jivOfBGYtXNOFFfC9vLgH4vE2HJsn6BWFpaULjTjffSuMRymhM1z+Cc+zIu+OnWTN69QyttRsk1WRQ==
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/plugin-proposal-class-properties" "7.4.0"
