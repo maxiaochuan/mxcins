@@ -1,4 +1,5 @@
 export * from './utils';
-export * from './request';
+export * from './interface';
 
+export * from './request';
 export { default } from './request';
