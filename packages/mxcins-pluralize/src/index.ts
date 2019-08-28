@@ -1,8 +1,8 @@
 const pluralRules: RegExp[] = [];
 const singularRules: RegExp[] = [];
-const uncountables: { [x: string]: any } = {};
-const irregularPlurals: { [x: string]: any } = {};
-const irregularSingles: { [x: string]: any } = {};
+const uncountables: Record<string, any> = {};
+const irregularPlurals: Record<string, any> = {};
+const irregularSingles: Record<string, any> = {};
 
 /**
  * Sanitize a pluralization rule to a usable regular expression.
@@ -12,7 +12,7 @@ const irregularSingles: { [x: string]: any } = {};
  */
 function sanitizeRule(rule: string | RegExp): RegExp {
   if (typeof rule === 'string') {
-    return new RegExp('^' + rule + '$', 'i');
+    return new RegExp(`^${rule}$`, 'i');
   }
 
   return rule;
@@ -54,9 +54,7 @@ function restoreCase(word: string, token: string): string {
  * @return {string}
  */
 function interpolate(str: string, args: any[]): string {
-  return str.replace(/\$(\d{1,2})/g, (_, index) => {
-    return args[index] || '';
-  });
+  return str.replace(/\$(\d{1,2})/g, (_, index) => args[index] || '');
 }
 
 /**
@@ -68,6 +66,7 @@ function interpolate(str: string, args: any[]): string {
  */
 function replace(word: string, rule: any[]): string {
   return word.replace(rule[0], function re(match, index) {
+    // eslint-disable-next-line prefer-rest-params
     const result = interpolate(rule[1], [...arguments]);
 
     if (match === '') {
@@ -95,6 +94,7 @@ function sanitizeWord(token: string, word: string, rules: any[]): string {
   let len = rules.length;
 
   // Iterate over the sanitization rules and use the first one to match.
+  // eslint-disable-next-line no-plusplus
   while (len--) {
     const rule = rules[len];
 
@@ -163,7 +163,7 @@ function checkWord(replaceMap: any, keepMap: any, rules: any) {
 function pluralize(word: string, count: number, inclusive: boolean) {
   const pluralized = count === 1 ? pluralize.singular(word) : pluralize.plural(word);
 
-  return (inclusive ? count + ' ' : '') + pluralized;
+  return (inclusive ? `${count} ` : '') + pluralized;
 }
 
 /**
@@ -301,15 +301,14 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   ['pickaxe', 'pickaxes'],
   ['whiskey', 'whiskies'],
   ['passerby', 'passersby'],
-].forEach(rule => {
-  return pluralize.addIrregularRule(rule[0], rule[1]);
-});
+].forEach(rule => pluralize.addIrregularRule(rule[0], rule[1]));
 
 /**
  * Pluralization rules.
  */
 [
   [/s?$/i, 's'],
+  // eslint-disable-next-line no-control-regex
   [/[^\u0000-\u007F]$/i, '$0'],
   [/([^aeiou]ese)$/i, '$1'],
   [/(ax|test)is$/i, '$1es'],
@@ -343,9 +342,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/eaux$/i, '$0'],
   [/m[ae]n$/i, 'men'],
   ['thou', 'you'],
-].forEach(rule => {
-  return pluralize.addPluralRule(rule[0], rule[1] as any);
-});
+].forEach(rule => pluralize.addPluralRule(rule[0], rule[1] as any));
 
 /**
  * Singularization rules.
@@ -383,9 +380,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/(child)ren$/i, '$1'],
   [/(eau)x?$/i, '$1'],
   [/men$/i, 'man'],
-].forEach(rule => {
-  return pluralize.addSingularRule(rule[0], rule[1] as any);
-});
+].forEach(rule => pluralize.addSingularRule(rule[0], rule[1] as any));
 
 /**
  * Uncountable rules.

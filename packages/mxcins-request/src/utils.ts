@@ -1,6 +1,7 @@
 import { IRequestOptions, IResponse } from './interface';
 
 export const root: Window =
+  // eslint-disable-next-line no-restricted-globals
   ((typeof self === 'object' && self.self === self && self) as any) ||
   ((typeof global === 'object' && global.global === global && global) as any) ||
   (this as any);
@@ -8,9 +9,11 @@ export const root: Window =
 // tslint:disable:max-classes-per-file
 export class MapCache {
   private cache: Map<string, IResponse>;
+
   private timer: { [x: string]: number };
 
   private maxSize: number;
+
   constructor(options: IRequestOptions) {
     this.cache = new Map();
     this.timer = {};
@@ -21,7 +24,7 @@ export class MapCache {
     return this.cache.get(JSON.stringify(k));
   }
 
-  public set(k: object, v: Response, ttl: number = 60000) {
+  public set(k: object, v: Response, ttl = 60000) {
     if (this.maxSize > 0 && this.cache.size >= this.maxSize) {
       const dKey = [...this.cache.keys()][0];
       this.cache.delete(dKey);
@@ -58,10 +61,12 @@ export class RequestError extends Error {
   }
 }
 
-export class ResponseError extends Error {
+export class ResponseError<T = any> extends Error {
   public response: IResponse;
-  public data: any;
-  constructor(response: IResponse, text: string, data?: any) {
+
+  public data?: T;
+
+  constructor(response: IResponse, text: string, data?: T) {
     super(text);
     this.name = 'ResponseError';
     this.response = response;

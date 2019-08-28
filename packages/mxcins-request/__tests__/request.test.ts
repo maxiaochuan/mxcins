@@ -215,9 +215,7 @@ describe('test request', () => {
       expect(error.response.status).toBe(401);
     }
 
-    const errorHandler = (_: ResponseError) => {
-      return 'name';
-    };
+    const errorHandler = (_: ResponseError) => 'name';
     const resp2 = await request(prefix('/test/expection'), { errorHandler });
 
     expect(resp2).toBe('name');

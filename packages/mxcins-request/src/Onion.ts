@@ -2,7 +2,9 @@ type Middleware = (...args: any[]) => Promise<void> | void;
 
 export default class Onion {
   public middlewares: any[] = [];
-  public defaultMiddlewaresLen: number = 0;
+
+  public defaultMiddlewaresLen = 0;
+
   constructor(defaultMiddlewares: Middleware[] = []) {
     if (!Array.isArray(defaultMiddlewares)) {
       throw new TypeError('Default Middlewares must be an array!');
@@ -25,10 +27,10 @@ export default class Onion {
   }
 
   private compose() {
-    const middlewares = this.middlewares;
+    const { middlewares } = this;
     return function wrapper(params: any) {
       let index = -1;
-      const dispatch = (i: any) => {
+      const dispatch = (i: number) => {
         if (i <= index) {
           return Promise.reject(
             new Error('next() should not be called multiple times in one middleware'),

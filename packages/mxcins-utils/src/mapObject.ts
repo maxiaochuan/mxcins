@@ -24,9 +24,11 @@ const mapObject = (object: IObjectType, fn: Fn, opts: IMapObjectOpts = {}) => {
     return mapArray(object);
   }
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const [key, value] of Object.entries(object)) {
     const [newKey, newValue] = fn(key, value, object);
     target[newKey] =
+      // eslint-disable-next-line no-nested-ternary
       deep && isObject(newValue)
         ? Array.isArray(newValue)
           ? mapArray(newValue)

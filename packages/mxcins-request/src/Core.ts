@@ -9,7 +9,9 @@ import { MapCache } from './utils';
 
 export default class Core {
   public onion: Onion;
+
   public cache: MapCache;
+
   constructor(options: IRequestOptionsInit, defaultMiddlewares: IRequestMiddleware[] = []) {
     this.onion = new Onion(defaultMiddlewares);
     this.cache = new MapCache(options);
@@ -27,8 +29,8 @@ export default class Core {
       cache: this.cache,
     };
 
-    return new Promise((resolve, reject) => {
-      return this.onion
+    return new Promise((resolve, reject) =>
+      this.onion
         .excute(ctx)
         .then(() => resolve(ctx.res))
         .catch(error => {
@@ -44,7 +46,7 @@ export default class Core {
           } else {
             reject(error);
           }
-        });
-    });
+        }),
+    );
   }
 }

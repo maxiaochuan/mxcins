@@ -9,10 +9,11 @@ export default function parseJson(
   } catch (e) {
     if (typeof txt !== 'string') {
       const isEmptyArray = Array.isArray(txt) && (txt as any[]).length === 0;
-      const errorMessage = 'Cannot parse ' + (isEmptyArray ? 'an empty array' : String(txt));
+      const errorMessage = `Cannot parse ${isEmptyArray ? 'an empty array' : String(txt)}`;
       throw new TypeError(errorMessage);
     }
     const syntaxErr = e.message.match(/^Unexpected token.*position\s+(\d+)/i);
+    // eslint-disable-next-line no-nested-ternary
     const errIdx = syntaxErr
       ? +syntaxErr[1]
       : e.message.match(/^Unexpected end of JSON.*/i)

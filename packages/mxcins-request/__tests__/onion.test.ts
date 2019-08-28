@@ -4,7 +4,7 @@ describe('Onion', () => {
   it('constructor', () => {
     expect(new Onion().middlewares.length).toBe(0);
 
-    expect(() => new Onion({} as any)).toThrowError(/Default Middlewares/);
+    expect(() => new Onion({} as any)).toThrow(/Default Middlewares/);
 
     expect(new Onion([() => Promise.resolve()]).middlewares.length).toBe(1);
   });

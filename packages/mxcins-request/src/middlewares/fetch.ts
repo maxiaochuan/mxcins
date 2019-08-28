@@ -37,7 +37,7 @@ const fetch: IRequestMiddleware = async (ctx, next) => {
 
   const f = root.fetch(uri, options);
   const promise: Promise<IResponse> =
-    timeout > 0 ? (Promise.race([f, asyncTimeout(timeout)]) as any) : f;
+    timeout > 0 ? (Promise.race([f, asyncTimeout(timeout)]) as Promise<IResponse>) : f;
 
   const res = await promise;
 

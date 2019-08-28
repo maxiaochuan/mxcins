@@ -44,9 +44,7 @@ const snakecaseKeys = <T extends any = any>(input: any, opts: ISnakecaseKeysOpts
   };
 
   if (Array.isArray(input)) {
-    return (input as any[]).map(v => {
-      return isObjectOrArray(v) ? mapObject(v, fn, options) : v;
-    }) as any;
+    return (input as any[]).map(v => (isObjectOrArray(v) ? mapObject(v, fn, options) : v)) as any;
   }
   return isObjectOrArray(input) ? mapObject(input, fn, options) : input;
 };

@@ -41,6 +41,7 @@ function publishToNpm() {
   changedRepos.forEach(repo => {
     const name = repo.replace('@', '').replace('/', '-');
     shell.cd(join(cwd, 'packages', name));
+    // eslint-disable-next-line global-require, import/no-dynamic-require
     const { version } = require(join(cwd, 'packages', name, 'package.json'));
     if (version.includes('-rc.') || version.includes('-beta.') || version.includes('-alpha.')) {
       console.log(`[${repo}] npm publish --tag next`);

@@ -13,6 +13,6 @@ describe('arr2obj', () => {
   });
   it('input not arr', () => {
     const input: any = 1;
-    expect(() => arr2obj(input)).toThrowError(/MUST be array/);
+    expect(() => arr2obj(input)).toThrow(/MUST be array/);
   });
 });

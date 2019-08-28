@@ -1,7 +1,7 @@
 import * as papaparse from 'papaparse';
 
 export default class Downloader {
-  public static csv<T extends { [x: string]: any }>(
+  public static csv<T extends Record<string, any>>(
     name: string,
     data: T[],
     maps?: { [k: string]: string },

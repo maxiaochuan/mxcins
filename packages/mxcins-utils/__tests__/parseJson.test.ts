@@ -2,8 +2,8 @@ import parseJson from '../src/parseJson';
 
 describe('parseJson', () => {
   it('error', () => {
-    expect(() => parseJson('{"a":1,}')).toThrowError(/while/);
-    expect(() => parseJson('')).toThrowError(/while/);
+    expect(() => parseJson('{"a":1,}')).toThrow(/while/);
+    expect(() => parseJson('')).toThrow(/while/);
   });
   it('normal', () => {
     expect(parseJson('{"a":1}')).toEqual({ a: 1 });

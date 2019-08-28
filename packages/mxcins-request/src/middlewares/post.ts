@@ -29,14 +29,14 @@ const post: IRequestMiddleware = async (ctx, next) => {
     if ((t === '[object Object]' || t === '[object Array]') && !isFormData(data)) {
       if (requestType === 'json') {
         options.headers = {
-          Accept: 'application/json',
+          'Accept': 'application/json',
           'Content-Type': 'application/json;charset=UTF-8',
           ...options.headers,
         };
         options.body = JSON.stringify(data);
       } else if (requestType === 'form') {
         options.headers = {
-          Accept: 'application/json',
+          'Accept': 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
           ...options.headers,
         };
