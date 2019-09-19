@@ -5,7 +5,7 @@
   ],
   "command": {
     "version": {
-      "exact": true
+      "exact": false
     }
   },
   "ignoreChanges": [

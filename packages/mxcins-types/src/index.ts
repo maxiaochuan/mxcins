@@ -12,14 +12,19 @@ export interface IRoute {
   routes?: IRoute[];
   Routes?: string[];
   redirect?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
-export interface IObjectType<V = any> {
-  [x: string]: V;
+export interface IRouteComponentProps<
+  Params extends { [K in keyof Params]?: string } = {},
+  C extends StaticContext = StaticContext,
+  S = H.LocationState
+> extends RouteComponentProps<Params, C, S> {
+  route?: IRoute;
 }
 
-export interface IRouteComponentProps<
+export interface IRCP<
   Params extends { [K in keyof Params]?: string } = {},
   C extends StaticContext = StaticContext,
   S = H.LocationState
