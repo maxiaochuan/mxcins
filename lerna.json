@@ -5,13 +5,12 @@
   ],
   "command": {
     "version": {
-      "exact": false
+      "exact": true
     }
   },
   "ignoreChanges": [
     "*.test.ts",
-    "packages/**/example/**",
-    "packages/mxcins-gantt/**"
+    "packages/**/example/**"
   ],
   "version": "independent"
 }

@@ -23,6 +23,15 @@
   "dependencies": {
     "type-fest": "0.6.0"
   },
+  "devDependencies": {
+    "@types/history": "4.7.3",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.9.0",
+    "@types/react-router": "5.0.5",
+    "history": "4.9.0",
+    "react": "16.8.6",
+    "react-router": "5.0.1"
+  },
   "peerDependencies": {
     "@types/history": "*",
     "@types/react": "*",
@@ -32,15 +41,6 @@
     "react": "*",
     "react-router": "*",
     "type-fest": "*"
-  },
-  "devDependencies": {
-    "@types/history": "4.7.3",
-    "@types/react": "16.8.23",
-    "@types/react-dom": "16.9.0",
-    "@types/react-router": "5.0.5",
-    "history": "4.9.0",
-    "react": "16.8.6",
-    "react-router": "5.0.1"
   },
   "publishConfig": {
     "access": "public"
