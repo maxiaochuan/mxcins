@@ -1,5 +1,5 @@
 /**
- * @description omit 
+ * @description omit
  * @author Xiaochuan Ma <mxcins@gmail.com>
  * @date 2019-09-20
  * @export

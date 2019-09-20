@@ -1,4 +1,4 @@
-import { camelCase, isObject } from 'lodash-es';
+import { camelCase, isObject } from 'lodash';
 import mapObject from './mapObject';
 
 const cache = new Map();

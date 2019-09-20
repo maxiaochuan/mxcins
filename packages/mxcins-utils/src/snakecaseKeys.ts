@@ -1,4 +1,4 @@
-import { snakeCase, isObject } from 'lodash-es';
+import { snakeCase, isObject } from 'lodash';
 
 import mapObject from './mapObject';
 
