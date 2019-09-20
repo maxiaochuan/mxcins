@@ -1,4 +1,4 @@
-import { isObject, isString } from '@mxcins/lodash';
+import { isObject, isString } from 'lodash-es';
 
 type Args = Array<string | string[] | { [name: string]: boolean } | undefined>;
 

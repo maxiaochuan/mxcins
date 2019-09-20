@@ -1,8 +1,19 @@
-export default function parseJson(
+/**
+ * @description
+ * @author Xiaochuan Ma <mxcins@gmail.com>
+ * @date 2019-09-20
+ * @export
+ * @template R
+ * @param {string} txt
+ * @param {(key: any, value: any) => any} [reviver]
+ * @param {number} [context]
+ * @returns {R}
+ */
+export default function parseJson<R = any>(
   txt: string,
   reviver?: (key: any, value: any) => any,
   context?: number,
-) {
+): R {
   context = context || 20;
   try {
     return JSON.parse(txt, reviver);

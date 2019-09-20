@@ -1,5 +1,4 @@
-import { isObject } from '@mxcins/lodash';
-import { snakeCase } from 'lodash-es';
+import { snakeCase, isObject } from 'lodash-es';
 
 import mapObject from './mapObject';
 

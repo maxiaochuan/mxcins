@@ -1,10 +1,9 @@
 import * as csv from './csv';
 
 export default class Downloader {
-
   public static DOCUMENT_TYPES = {
     csv: 'text/csv',
-  }
+  };
 
   public static csv<T extends Record<string, any>>(
     name: string,

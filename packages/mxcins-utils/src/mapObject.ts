@@ -1,14 +1,13 @@
-import { isObject } from '@mxcins/lodash';
-import { IObjectType } from '@mxcins/types';
+import { isObject } from 'lodash-es';
 
 export interface IMapObjectOpts {
   deep?: boolean;
-  target?: IObjectType;
+  target?: Record<string, any>;
 }
 
 export type Fn = (key: string, value: unknown, object: any) => [string, unknown];
 
-const mapObject = (object: IObjectType, fn: Fn, opts: IMapObjectOpts = {}) => {
+const mapObject = (object: Record<string, any>, fn: Fn, opts: IMapObjectOpts = {}) => {
   const options = {
     deep: false,
     target: {},

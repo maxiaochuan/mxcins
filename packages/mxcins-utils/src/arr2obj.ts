@@ -1,26 +1,35 @@
 export interface IArr2objOptions<T> {
-  key?: keyof T;
+  key?: keyof T | (keyof T)[];
   clone?: boolean;
   prefix?: string;
   suffix?: string;
+  delimiter?: string;
 }
 
 /**
- * array to object by key
- * @param {Array}           arr
- * @param {IArr2objOptions} options
+ * @description array to object, support mutiple keys
+ * @author Xiaochuan Ma <mxcins@gmail.com>
+ * @date 2019-09-20
+ * @export
+ * @template T
+ * @param {T[]} arr
+ * @param {IArr2objOptions<T>} [options={}]
+ * @returns
  */
-export default function arr2obj<T extends Record<string, any>>(
+export default function arr2obj<T extends Record<string, any>>( // eslint-disable-line @typescript-eslint/no-explicit-any
   arr: T[],
   options: IArr2objOptions<T> = {},
 ) {
   if (!Array.isArray(arr)) {
-    throw new Error('arr2obj first arg MUST be array');
+    throw new Error('arr2obj first arg MUST be array.');
   }
-  const { key = 'id', clone = false, prefix = '', suffix = '' } = options;
+  const { key = 'id', delimiter = '-', clone = false, prefix = '', suffix = '' } = options;
+
   return arr.reduce<Record<string, T>>((prev, item) => {
-    if (item && item[key]) {
-      prev[`${prefix}${item[key]}${suffix}`] = clone ? { ...item } : item;
+    const center = Array.isArray(key) ? key.map(k => item[k]).join(delimiter) : item[key];
+    if (item && center) {
+      // eslint-disable-next-line no-param-reassign
+      prev[`${prefix}${center}${suffix}`] = clone ? { ...item } : item;
     }
     return prev;
   }, {});

@@ -1,6 +1,4 @@
-import { isObject } from '@mxcins/lodash';
-import { camelCase } from 'lodash-es';
-
+import { camelCase, isObject } from 'lodash-es';
 import mapObject from './mapObject';
 
 const cache = new Map();
@@ -22,7 +20,7 @@ const isObjectOrArray = (input: unknown) => Array.isArray(input) || isObject(inp
 const has = (array: Array<string | RegExp>, key: string) =>
   array.some(x => (typeof x === 'string' ? x === key : x.test(key)));
 
-const camelcaseKeys = <T extends any = any>(input: any, opts: ICamelcaseKeysOpts = {}): T => {
+const camelcaseKeys = <T = any>(input: any, opts: ICamelcaseKeysOpts = {}): T => {
   const options = {
     deep: false,
     ...opts,
