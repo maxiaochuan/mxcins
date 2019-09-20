@@ -14,6 +14,12 @@
   "files": [
     "dist"
   ],
+  "sideEffects": true,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.cjs.js",
+  "jsnext:main": "dist/index.esm.js",
+  "browser": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools.js build",
     "test": "echo \"Error: no test specified\" && exit 1"
