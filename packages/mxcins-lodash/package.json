@@ -2,13 +2,13 @@
   "name": "@mxcins/lodash",
   "version": "1.0.3",
   "description": "lodash",
-  "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-lodash",
+  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-lodash",
   "bugs": {
-    "url": "https://github.com/maxiaochuan/hades/issues"
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-lodash"
+    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-lodash"
   },
   "license": "MIT",
   "files": [

@@ -2,13 +2,13 @@
   "name": "@mxcins/request",
   "version": "2.0.0",
   "description": "request",
-  "homepage": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-request",
+  "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-request",
   "bugs": {
-    "url": "https://github.com/maxiaochuan/hades/issues"
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxiaochuan/hades/tree/master/packages/mxcins-reqeust"
+    "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust"
   },
   "license": "MIT",
   "files": [
