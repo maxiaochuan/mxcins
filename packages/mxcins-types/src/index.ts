@@ -24,7 +24,7 @@ export interface IRouteComponentProps<
   route?: IRoute;
 }
 
-export interface IRCP<
+export interface IRCPS<
   Params extends { [K in keyof Params]?: string } = {},
   C extends StaticContext = StaticContext,
   S = H.LocationState
