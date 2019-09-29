@@ -1822,10 +1822,10 @@
     stylelint-declaration-block-no-ignored-properties "^2.1.0"
     stylelint-order "^3.0.1"
 
-"@mxcins/tools@4.0.0-alpha.1":
-  version "4.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@mxcins/tools/-/tools-4.0.0-alpha.1.tgz#ee8880c1527f3f5076b56eabe36e512154cfb17a"
-  integrity sha512-WKSkBDKfoNLZao01f1wT/D4iT6HWH0VqsEH8Q3PKkYdQMP4BwaEjySDE3BU7ei+hmcH0JOvDKqFYCdRtrtGEEQ==
+"@mxcins/tools@4.0.0-alpha.2":
+  version "4.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@mxcins/tools/-/tools-4.0.0-alpha.2.tgz#73c6982eef3b6edd81462e44ef41b477c8ea8302"
+  integrity sha512-3feG1cGJKPxeRvlQYXpDQwgrkppeljJ+2sXtnk88Dj2iDlG+G4GOkzVPBRr55xzzGvWKwv+wrb5BhhOFKcn49Q==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
