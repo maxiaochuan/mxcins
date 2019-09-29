@@ -22,7 +22,7 @@
   "browser": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools build",
+    "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools.js build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {

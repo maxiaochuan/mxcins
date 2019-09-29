@@ -16,6 +16,7 @@
   ],
   "sideEffects": true,
   "main": "dist/index.cjs.js",
+  "umd:main": "dist/extensions.umd.js",
   "module": "dist/index.cjs.js",
   "jsnext:main": "dist/index.esm.js",
   "browser": "dist/index.esm.js",

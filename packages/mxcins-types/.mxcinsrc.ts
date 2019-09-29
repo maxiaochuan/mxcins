@@ -2,7 +2,8 @@
 import { IConfig } from '@mxcins/tools';
 
 const config: IConfig = {
-  esm: 'single',
+  esm: true,
+  cjs: true,
 };
 
 export default config;
