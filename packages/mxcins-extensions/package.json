@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/extensions",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "extensions",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-extensions",
   "bugs": {
@@ -26,7 +26,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@mxcins/pluralize": "0.1.3",
+    "@mxcins/pluralize": "0.1.4",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
