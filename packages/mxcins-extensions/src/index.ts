@@ -1,7 +1,5 @@
 import pluralize from '@mxcins/pluralize';
-import { camelCase,
-  snakeCase, upperFirst, kebabCase, lowerFirst,
-} from 'lodash';
+import { camelCase, snakeCase, upperFirst, kebabCase, lowerFirst } from 'lodash';
 
 declare global {
   interface String {
@@ -30,14 +28,14 @@ declare global {
   ['upperFirst', upperFirst],
   ['lowerFirst', lowerFirst],
 ] as [any, Function][]).forEach(([key, fn]) => {
-  if (!String.prototype[key]) {
+  if (typeof String.prototype[key] === 'undefined') {
     // eslint-disable-next-line no-extend-native
     Object.defineProperty(String.prototype, key, {
-      get () {
-        return fn(this)
+      get() {
+        return fn(this);
       },
-    })
+    });
   }
-})
+});
 
 export { pluralize };
