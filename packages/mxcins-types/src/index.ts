@@ -1,6 +1,4 @@
 import * as H from 'history';
-import React from 'react';
-import { RouteComponentProps, StaticContext } from 'react-router';
 
 export * from 'type-fest';
 
@@ -16,24 +14,35 @@ export interface IRoute {
   [key: string]: any;
 }
 
+export interface IStaticContext {
+  statusCode?: number;
+}
+
+export interface IMatch<Params extends { [K in keyof Params]?: string } = {}> {
+  params: Params;
+  isExact: boolean;
+  path: string;
+  url: string;
+}
+
 export interface IRouteComponentProps<
   Params extends { [K in keyof Params]?: string } = {},
-  C extends StaticContext = StaticContext,
+  C extends IStaticContext = IStaticContext,
   S = H.LocationState
-> extends RouteComponentProps<Params, C, S> {
-  route?: IRoute;
+> {
+  history: H.History;
+  location: H.Location<S> & { query: Partial<Record<string, string>> };
+  match: IMatch<Params>;
+  staticContext?: C;
 }
 
 export interface IRCPS<
   Params extends { [K in keyof Params]?: string } = {},
-  C extends StaticContext = StaticContext,
+  C extends IStaticContext = IStaticContext,
   S = H.LocationState
-> extends RouteComponentProps<Params, C, S> {
-  route?: IRoute;
+> {
+  history: H.History;
+  location: H.Location<S> & { query: Partial<Record<string, string>> };
+  match: IMatch<Params>;
+  staticContext?: C;
 }
-
-export type IReactComponent<P> =
-  | React.StatelessComponent<P>
-  | React.ComponentClass<P>
-  | React.ClassicComponentClass<P>
-  | React.SFC<P>;
