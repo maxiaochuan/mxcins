@@ -4,6 +4,8 @@ import { DocumentNode } from 'graphql';
 import { tuple } from '@mxcins/types';
 import { QueryHookOptions, QueryHookResult, useQuery as useBasicQuery } from 'react-apollo-hooks';
 
+type ANY = any;
+
 interface IQueryHookOptionsWithFormatter<D, Q, V> extends QueryHookOptions<V> {
   formatter: (data: Q) => D;
 }
@@ -23,35 +25,35 @@ export interface IQueryHookOptions<D, Q, V> extends QueryHookOptions<V> {
 }
 
 export interface UseQuery {
-  <Q = any, V = any>(service: DocumentNode, options?: QueryHookOptions<Q, V>): QueryHookResult<
-    Q,
-    V
-  >;
-  <Q = any, V = any>(service: DocumentNode, options: IQueryHookOptionsWithInit<Q, V>): Omit<
-    QueryHookResult<Q, V>,
-    'data'
-  > & { data: Q };
-  <T = any, Q = any, V = any>(
-    service: DocumentNode,
-    options: IQueryHookOptionsWithFormatter<T, Q, V>,
-  ): QueryHookResult<T, V>;
-  <T = any, Q = any, V = any>(
+  <T = ANY, Q = ANY, V = ANY>(
     service: DocumentNode,
     options: IQueryHookOptionsWithBoth<T, Q, V>,
   ): Omit<QueryHookResult<T, V>, 'data'> & { data: T };
+  <T = ANY, Q = ANY, V = ANY>(
+    service: DocumentNode,
+    options: IQueryHookOptionsWithFormatter<T, Q, V>,
+  ): QueryHookResult<T, V>;
+  <Q = ANY, V = ANY>(service: DocumentNode, options: IQueryHookOptionsWithInit<Q, V>): Omit<
+    QueryHookResult<Q, V>,
+    'data'
+  > & { data: Q };
+  <Q = ANY, V = ANY>(service: DocumentNode, options?: IQueryHookOptions<Q, Q, V>): QueryHookResult<
+    Q,
+    V
+  >;
 }
 
 const ACTION_TYPES = tuple('DATA', 'CHANGE_LOADING');
 type ActionType = typeof ACTION_TYPES[number];
 
 interface IS {
-  data?: any;
+  data?: ANY;
   loading: boolean;
 }
 
 interface IA<R extends ActionType = ActionType> {
   type: R;
-  payload: R extends 'INIT' ? any : R extends 'CHANGE_LOADING' ? boolean : never;
+  payload: R extends 'INIT' ? ANY : R extends 'CHANGE_LOADING' ? boolean : never;
 }
 
 const reducer: Reducer<IS, IA> = (prev, action) => {
@@ -73,9 +75,9 @@ const reducer: Reducer<IS, IA> = (prev, action) => {
   }
 };
 
-export const useQuery: UseQuery = <T = any, Q = any, V = any>(
+export const useQuery: UseQuery = (
   service: DocumentNode,
-  options: IQueryHookOptions<T, Q, V> = {},
+  options: IQueryHookOptions<ANY, ANY, ANY> = {},
 ) => {
   const { formatter, init, ...query } = options;
   const { data, loading, networkStatus, ...others } = useBasicQuery(service, {
@@ -92,5 +94,5 @@ export const useQuery: UseQuery = <T = any, Q = any, V = any>(
     }
   }, [loading, data, networkStatus]);
 
-  return { ...others, networkStatus, ...state, data: state.data as any };
+  return { ...others, networkStatus, ...state, data: state.data as ANY };
 };
