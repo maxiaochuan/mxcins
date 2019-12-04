@@ -14,9 +14,27 @@
   "files": [
     "dist"
   ],
+  "sideEffects": true,
+  "main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "jsnext:main": "dist/index.esm.js",
+  "browser": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools.js build",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@babel/runtime": "~7.6.0",
+    "@mxcins/types": "^1.4.0",
+    "react-apollo-hooks": "^0.5.0"
+  },
+  "devDependencies": {
+    "apollo-boost": "^0.4.4",
+    "graphql": "14.5.8"
+  },
+  "peerDependencies": {
+    "react": "~16.8.0"
   },
   "publishConfig": {
     "access": "public"
