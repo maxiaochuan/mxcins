@@ -13,10 +13,6 @@
     "esModuleInterop": true
   },
   "exclude": [
-    "**/node_modules/**",
-    "**/__tests__/**",
-    "**/dist/**",
-    "**/es/**",
-    "**/lib/**"
+    "node_modules"
   ]
 }
