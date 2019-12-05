@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/hooks",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "hooks",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-hooks",
   "bugs": {
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@babel/runtime": "~7.6.0",
-    "@mxcins/types": "1.5.0-alpha.0",
+    "@mxcins/types": "1.5.0",
     "react-apollo-hooks": "^0.5.0"
   },
   "devDependencies": {
