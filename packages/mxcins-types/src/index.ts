@@ -34,6 +34,7 @@ export interface IRouteComponentProps<
   location: H.Location<S> & { query: Partial<Record<string, string>> };
   match: IMatch<Params>;
   staticContext?: C;
+  route?: IRoute;
 }
 
 export interface IRCPS<
@@ -45,4 +46,5 @@ export interface IRCPS<
   location: H.Location<S> & { query: Partial<Record<string, string>> };
   match: IMatch<Params>;
   staticContext?: C;
+  route?: IRoute;
 }
