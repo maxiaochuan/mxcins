@@ -26,15 +26,16 @@
   },
   "dependencies": {
     "@babel/runtime": "~7.6.0",
-    "@mxcins/types": "1.5.0",
-    "react-apollo-hooks": "^0.5.0"
+    "@mxcins/types": "1.5.0"
   },
   "devDependencies": {
     "apollo-boost": "^0.4.4",
-    "graphql": "14.5.8"
+    "graphql": "14.5.8",
+    "react-apollo-hooks": "0.5.0"
   },
   "peerDependencies": {
-    "react": "~16.8.0"
+    "react": "~16.8.0",
+    "react-apollo-hooks": "~0.5.0"
   },
   "publishConfig": {
     "access": "public"
