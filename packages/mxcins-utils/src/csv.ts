@@ -34,6 +34,84 @@ const mostFrequent = (text: string, delimiters: string[]) => {
   return delimiters[0];
 };
 
+const unsafeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
+  const lines = text.split(opts.newline).filter(Boolean);
+
+  if (!lines.length) {
+    throw new Error(`csv parser error: lines length ${lines.length}`);
+  }
+
+  const cells = (line: string) => line.split(opts.delimiter);
+  return lines.map(line => cells(line));
+};
+
+const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
+  const { newline, delimiter } = opts;
+  const quoteMark = '"';
+  const len = text.length;
+  let cur = 0;
+  let inQuote = false;
+  const rows: string[][] = [];
+  let rowIndex = 0;
+  let colIndex = 0;
+  let cell: string | undefined;
+
+  while (cur < len) {
+    const str = text[cur];
+    if (inQuote) {
+      if (str === quoteMark && text[cur - 1] !== '\\') {
+        inQuote = false;
+        cur += 1;
+      } else {
+        cell = cell || '';
+        cell += str;
+        cur += 1;
+      }
+    } else {
+      // eslint-disable-next-line no-lonely-if
+      if (str === quoteMark && text[cur - 1] !== '\\') {
+        inQuote = true;
+        cur += 1;
+      } else {
+        // eslint-disable-next-line no-lonely-if
+        if (str === delimiter) {
+          rows[rowIndex] = rows[rowIndex] || [];
+          if (typeof cell !== 'undefined') {
+            rows[rowIndex][colIndex] = cell.trim();
+          }
+          cell = undefined;
+          colIndex += 1;
+          cur += 1;
+        } else if (str === newline[0]) {
+          rows[rowIndex] = rows[rowIndex] || [];
+          if (typeof cell !== 'undefined') {
+            rows[rowIndex][colIndex] = cell.trim();
+          }
+          cell = undefined;
+          rowIndex += 1;
+          colIndex = 0;
+          if (newline === '\r\n' && text[cur + 1] === '\n') {
+            cur += 2;
+          } else {
+            cur += 1;
+          }
+        } else {
+          cell = cell || '';
+          cell += str;
+          cur += 1;
+        }
+      }
+    }
+  }
+
+  // add last
+  if (typeof cell !== 'undefined') {
+    rows[rowIndex][colIndex] = cell;
+  }
+
+  return rows;
+};
+
 export function decode(text: string, options: IDecodeOpts = {}) {
   const opts = {
     ...STANDARD_DECODE_OPTS,
@@ -42,22 +120,18 @@ export function decode(text: string, options: IDecodeOpts = {}) {
     ...options,
   };
 
-  // TODO: unsafe quote
-  const lines = text.split(opts.newline).filter(Boolean);
-
-  if (!lines.length) {
-    throw new Error(`csv parser error: lines length ${lines.length}`);
-  }
-
-  const cells = (line: string) => line.split(opts.delimiter);
-
-  const fields = cells(lines.shift() as string);
-
+  const quoteMark = '"';
   const ret: Array<Record<string, any>> = [];
-  while (lines.length) {
-    const row = cells(lines.shift() as string);
+
+  const hasQuote = text.indexOf(quoteMark);
+
+  const rows = (hasQuote ? safeParse : unsafeParse)(text, opts);
+
+  const fields = rows.shift() || [];
+  while (rows.length) {
+    const row = rows.shift();
     // 筛选空行
-    if (row.filter(Boolean).length !== 0) {
+    if (row && row.filter(Boolean).length !== 0) {
       ret.push(
         fields.reduce<Record<string, string>>((prev, f, i) => {
           // eslint-disable-next-line no-param-reassign

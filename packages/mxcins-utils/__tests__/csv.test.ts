@@ -29,3 +29,21 @@ describe('csv encode', () => {
     expect(encode([{ a: 1, b: 2 }], { fields: { a: 'aa', b: 'bb' } })).toBe('aa,bb\r\n1,2\r\n');
   });
 });
+
+describe('csv decode quote', () => {
+  const text = readFileSync(join(__dirname, '../examples/test_risk.csv'), 'utf-8');
+  it('debug 1', () => {
+    expect(decode(text)).toStrictEqual([
+      {
+        a: '1',
+        b: '2',
+        c: '3',
+      },
+      {
+        a: '4',
+        b: `5\na`,
+        c: '6',
+      },
+    ]);
+  });
+});
