@@ -54,7 +54,20 @@ const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
   const rows: string[][] = [];
   let rowIndex = 0;
   let colIndex = 0;
-  let cell: string | undefined;
+  let cell = '';
+
+  const push = (next: 'row' | 'col') => {
+    rows[rowIndex] = rows[rowIndex] || [];
+    rows[rowIndex][colIndex] = cell.trim();
+    cell = '';
+    if (next === 'row') {
+      rowIndex += 1;
+      colIndex = 0;
+    }
+    if (next === 'col') {
+      colIndex += 1;
+    }
+  };
 
   while (cur < len) {
     const str = text[cur];
@@ -63,7 +76,6 @@ const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
         inQuote = false;
         cur += 1;
       } else {
-        cell = cell || '';
         cell += str;
         cur += 1;
       }
@@ -75,38 +87,27 @@ const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
       } else {
         // eslint-disable-next-line no-lonely-if
         if (str === delimiter) {
-          rows[rowIndex] = rows[rowIndex] || [];
-          if (typeof cell !== 'undefined') {
-            rows[rowIndex][colIndex] = cell.trim();
-          }
-          cell = undefined;
-          colIndex += 1;
+          push('col');
           cur += 1;
         } else if (str === newline[0]) {
-          rows[rowIndex] = rows[rowIndex] || [];
-          if (typeof cell !== 'undefined') {
-            rows[rowIndex][colIndex] = cell.trim();
-          }
-          cell = undefined;
-          rowIndex += 1;
-          colIndex = 0;
-          if (newline === '\r\n' && text[cur + 1] === '\n') {
-            cur += 2;
+          if (newline === '\r\n') {
+            if (text[cur + 1] === '\n') {
+              push('row');
+              cur += 2;
+            } else {
+              cell += str;
+              cur += 1;
+            }
           } else {
+            push('row');
             cur += 1;
           }
         } else {
-          cell = cell || '';
           cell += str;
           cur += 1;
         }
       }
     }
-  }
-
-  // add last
-  if (typeof cell !== 'undefined') {
-    rows[rowIndex][colIndex] = cell;
   }
 
   return rows;
@@ -135,7 +136,7 @@ export function decode(text: string, options: IDecodeOpts = {}) {
       ret.push(
         fields.reduce<Record<string, string>>((prev, f, i) => {
           // eslint-disable-next-line no-param-reassign
-          prev[f] = row[i].trim();
+          prev[f] = row[i] || '';
           return prev;
         }, {}),
       );
