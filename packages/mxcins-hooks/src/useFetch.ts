@@ -49,10 +49,10 @@ export interface UseFetch {
     IFetchHookResult<Q, V>,
     'data'
   > & { data: Q };
-  <Q = ANY, V = ANY>(service: string | string[], options?: IFetchHookOptions<Q, Q, V>): IFetchHookResult<
-    Q,
-    V
-  >;
+  <Q = ANY, V = ANY>(
+    service: string | string[],
+    options?: IFetchHookOptions<Q, Q, V>,
+  ): IFetchHookResult<Q, V>;
 }
 
 const ACTION_TYPES = tuple('DATA', 'CHANGE_LOADING');
@@ -98,18 +98,19 @@ export const useFetch: UseFetch = (
     const opts = { params: parameters, ...others };
     dispatch({ type: ACTION_TYPES[1], payload: true });
     try {
-      const resp = await (typeof service === 'string' ? client(service, opts)
-        : Promise.all(service.map(i => client(i, opts))))
-      dispatch({ type: ACTION_TYPES[0], payload: formatter ? formatter(resp) : resp })
+      const resp = await (typeof service === 'string'
+        ? client(service, opts)
+        : Promise.all(service.map(i => client(i, opts))));
+      dispatch({ type: ACTION_TYPES[0], payload: formatter ? formatter(resp) : resp });
     } catch (error) {
       dispatch({ type: ACTION_TYPES[1], payload: false });
       throw error;
     }
-  }
+  };
 
   useEffect(() => {
     if (!skip) {
-      refetch({  ...variables, ...params });
+      refetch({ ...variables, ...params });
     }
   }, [skip]);
 

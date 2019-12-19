@@ -110,6 +110,10 @@ const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
     }
   }
 
+  if (cell.length) {
+    rows[rowIndex][colIndex] = cell;
+  }
+
   return rows;
 };
 
