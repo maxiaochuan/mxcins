@@ -111,7 +111,7 @@ const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
   }
 
   if (cell.length) {
-    rows[rowIndex][colIndex] = cell;
+    push('row');
   }
 
   return rows;
@@ -128,7 +128,7 @@ export function decode(text: string, options: IDecodeOpts = {}) {
   const quoteMark = '"';
   const ret: Array<Record<string, any>> = [];
 
-  const hasQuote = text.indexOf(quoteMark);
+  const hasQuote = text.indexOf(quoteMark) !== -1;
 
   const rows = (hasQuote ? safeParse : unsafeParse)(text, opts);
 
