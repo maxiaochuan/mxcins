@@ -1,8 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useReducer, Reducer, useEffect } from 'react';
-import { DocumentNode } from 'graphql';
 import { tuple } from '@mxcins/types';
-import { QueryHookOptions, QueryHookResult, useQuery as useBasicQuery } from 'react-apollo-hooks';
+import {
+  QueryHookOptions,
+  QueryResult,
+  useQuery as useBasicQuery,
+  DocumentNode,
+} from '@apollo/client';
 
 type ANY = any;
 
@@ -28,16 +32,16 @@ export interface UseQuery {
   <T = ANY, Q = ANY, V = ANY>(
     service: DocumentNode,
     options: IQueryHookOptionsWithBoth<T, Q, V>,
-  ): Omit<QueryHookResult<T, V>, 'data'> & { data: T };
+  ): Omit<QueryResult<T, V>, 'data'> & { data: T };
   <T = ANY, Q = ANY, V = ANY>(
     service: DocumentNode,
     options: IQueryHookOptionsWithFormatter<T, Q, V>,
-  ): QueryHookResult<T, V>;
+  ): QueryResult<T, V>;
   <Q = ANY, V = ANY>(service: DocumentNode, options: IQueryHookOptionsWithInit<Q, V>): Omit<
-    QueryHookResult<Q, V>,
+    QueryResult<Q, V>,
     'data'
   > & { data: Q };
-  <Q = ANY, V = ANY>(service: DocumentNode, options?: IQueryHookOptions<Q, Q, V>): QueryHookResult<
+  <Q = ANY, V = ANY>(service: DocumentNode, options?: IQueryHookOptions<Q, Q, V>): QueryResult<
     Q,
     V
   >;

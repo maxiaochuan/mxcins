@@ -26,17 +26,17 @@
   },
   "dependencies": {
     "@babel/runtime": "~7.6.0",
-    "@mxcins/request": "^2.1.0-alpha.0",
-    "@mxcins/types": "1.5.0"
+    "@mxcins/request": "2.1.0-alpha.0"
   },
   "devDependencies": {
-    "apollo-boost": "^0.4.4",
-    "graphql": "14.5.8",
-    "react-apollo-hooks": "0.5.0"
+    "@apollo/client": "3.0.0-beta.16",
+    "@mxcins/types": "1.5.0",
+    "graphql": "14.5.8"
   },
   "peerDependencies": {
-    "react": "~16.8.0",
-    "react-apollo-hooks": "~0.5.0"
+    "@apollo/client": "^3.0.0-beta.16",
+    "graphql": "^14.5.8",
+    "react": "~16.8.0"
   },
   "publishConfig": {
     "access": "public"
