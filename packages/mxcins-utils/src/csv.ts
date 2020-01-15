@@ -14,6 +14,7 @@ const STANDARD_ENCODE_OPTS = {
 interface IDecodeOpts {
   newline?: string;
   delimiter?: string;
+  fields?: boolean;
 }
 
 interface IEncodeOpts {
@@ -122,6 +123,7 @@ export function decode(text: string, options: IDecodeOpts = {}) {
     ...STANDARD_DECODE_OPTS,
     delimiter: options.delimiter || mostFrequent(text, CELL_DELIMITERS),
     newline: options.newline || mostFrequent(text, LINE_DELIMITERS),
+    fields: false,
     ...options,
   };
 
@@ -133,6 +135,7 @@ export function decode(text: string, options: IDecodeOpts = {}) {
   const rows = (hasQuote ? safeParse : unsafeParse)(text, opts);
 
   const fields = rows.shift() || [];
+
   while (rows.length) {
     const row = rows.shift();
     // 筛选空行
@@ -145,6 +148,10 @@ export function decode(text: string, options: IDecodeOpts = {}) {
         }, {}),
       );
     }
+  }
+
+  if (opts.fields) {
+    return { data: ret, fields };
   }
 
   return ret;

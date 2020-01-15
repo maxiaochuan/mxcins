@@ -33,12 +33,9 @@ describe('csv encode', () => {
 describe('csv decode quote', () => {
   const text = readFileSync(join(__dirname, '../examples/test_risk.csv'), 'utf-8');
   it('debug 1', () => {
+    console.log('abc', decode(text));
+
     expect(decode(text)).toStrictEqual([
-      {
-        a: '1',
-        b: '2',
-        c: '3',
-      },
       {
         a: '4',
         b: `5\na`,
