@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import { dirname } from 'path';
+// import { dirname } from 'path';
 
 export interface IOpts {
   debug?: boolean;
@@ -43,7 +43,8 @@ export default (_: any, { debug, env, react, typescript, transformRuntime }: IOp
         corejs: 3,
         version: require('@babel/runtime/package.json').version,
         // https://github.com/umijs/umi/blob/master/packages/babel-preset-umi/src/index.ts
-        absoluteRuntime: dirname(require.resolve('@babel/runtime/package.json')),
+        // 2020-03-30 01:07:20 在 yarn link 之后路径会有问题 打包dependency 的 import 很奇怪 暂时去掉
+        // absoluteRuntime: dirname(require.resolve('@babel/runtime/package.json')),
         // https://babeljs.io/docs/en/babel-plugin-transform-runtime#useesmodules
         useESModules: true,
       },
