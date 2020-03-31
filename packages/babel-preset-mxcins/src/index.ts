@@ -16,7 +16,12 @@ export default (_: any, { debug, env, react, typescript, transformRuntime }: IOp
       {
         ...env,
         debug,
-        exclude: ['transform-modules-amd', 'transform-modules-umd', 'transform-modules-systemjs'],
+        exclude: [
+          'transform-typeof-symbol',
+          'transform-modules-amd',
+          'transform-modules-umd',
+          'transform-modules-systemjs',
+        ],
       },
     ],
     react && [require('@babel/preset-react').default, react],
