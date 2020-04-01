@@ -1,6 +1,8 @@
 import pluralize from '@mxcins/pluralize';
 import { camelCase, snakeCase, upperFirst, kebabCase, lowerFirst } from 'lodash';
 
+import './dom';
+
 declare global {
   interface String {
     pascalcase: string;
