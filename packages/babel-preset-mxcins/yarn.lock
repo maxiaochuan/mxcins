@@ -308,7 +308,7 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-dynamic-import" "^7.8.0"
 
-"@babel/plugin-proposal-export-default-from@^7.8.3":
+"@babel/plugin-proposal-export-default-from@7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-export-default-from/-/plugin-proposal-export-default-from-7.8.3.tgz#4cb7c2fdeaed490b60d9bfd3dc8a20f81f9c2e7c"
   integrity sha512-PYtv2S2OdCdp7GSPDg5ndGZFm9DmWFvuLoS5nBxZCgOBggluLnhTScspJxng96alHQzPyrrHxvC9/w4bFuspeA==
@@ -364,7 +364,7 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-optional-chaining" "^7.8.0"
 
-"@babel/plugin-proposal-pipeline-operator@^7.8.3":
+"@babel/plugin-proposal-pipeline-operator@7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-pipeline-operator/-/plugin-proposal-pipeline-operator-7.8.3.tgz#c3569228e7466f91bfff7f1c1ae18fb5d36b3097"
   integrity sha512-Z0qV3aUYoLUAnVLdfLTlz/GJYfcrbX7Mhrp897Twik29wQseAFAAXQ4TPvN1oswVBHdN74sLPIn9HVfTXtjuQA==
@@ -991,6 +991,11 @@ debug@^4.1.0:
   integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
   dependencies:
     ms "^2.1.1"
+
+deepmerge@4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
 
 define-properties@^1.1.2:
   version "1.1.3"

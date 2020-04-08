@@ -11,28 +11,18 @@
     "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils"
   },
   "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "sideEffects": true,
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.cjs.js",
-  "jsnext:main": "dist/index.esm.js",
-  "browser": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools.js build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@babel/runtime": "~7.6.0",
-    "@mxcins/types": "1.5.0"
-  },
   "devDependencies": {
     "@types/lodash": "~4.14.138",
     "lodash": "^4.17.15"
   },
   "peerDependencies": {
+    "@mxcins/types": "1.5.0",
     "lodash": "^4.17.15"
   },
   "publishConfig": {

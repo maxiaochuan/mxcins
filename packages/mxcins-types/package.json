@@ -11,15 +11,12 @@
     "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-types"
   },
   "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
     "index.d.ts"
   ],
-  "sideEffects": true,
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.cjs.js",
-  "jsnext:main": "dist/index.esm.js",
-  "browser": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
   "dependencies": {
     "@types/history": "4.7.3",
     "type-fest": "0.8.1"

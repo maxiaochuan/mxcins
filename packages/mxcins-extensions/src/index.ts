@@ -29,8 +29,8 @@ declare global {
   ['isSingular', pluralize.isSingular],
   ['upperFirst', upperFirst],
   ['lowerFirst', lowerFirst],
-] as [any, Function][]).forEach(([key, fn]) => {
-  if (typeof String.prototype[key] === 'undefined') {
+] as [keyof string, Function][]).forEach(([key, fn]) => {
+  if (String && typeof String.prototype[key] === 'undefined') {
     // eslint-disable-next-line no-extend-native
     Object.defineProperty(String.prototype, key, {
       get() {

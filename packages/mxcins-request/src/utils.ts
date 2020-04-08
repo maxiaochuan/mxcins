@@ -1,12 +1,11 @@
 import { IRequestOptions, IResponse } from './interface';
 
-export const root: Window =
+export const root =
   // eslint-disable-next-line no-restricted-globals
-  ((typeof self === 'object' && self.self === self && self) as any) ||
-  ((typeof global === 'object' && global.global === global && global) as any) ||
-  (this as any);
+  ((typeof self === 'object' && self.self === self && self) ||
+    (typeof global === 'object' && global.global === global && global) ||
+    (typeof window === 'object' && window.window === window && window)) as Window;
 
-// tslint:disable:max-classes-per-file
 export class MapCache {
   private cache: Map<string, IResponse>;
 

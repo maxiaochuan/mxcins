@@ -11,21 +11,13 @@
     "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-hooks"
   },
   "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "sideEffects": true,
-  "main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
-  "jsnext:main": "dist/index.esm.js",
-  "browser": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools.js build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
-    "@babel/runtime": "~7.6.0",
     "@mxcins/request": "2.1.0-alpha.0"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap --npm-client=yarn",
-    "build": "mxcins-tools build",
+    "build": "mlib build",
     "clean": "lerna clean --yes",
     "lint": "eslint --fix '**/*.{js,jsx,ts,tsx}' && yarn ts-compile-check",
     "lint-staged": "lint-staged",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@mxcins/bedrock": "1.0.0-beta.4",
-    "@mxcins/tools": "4.0.0-beta.4",
+    "@mxcins/library": "0.0.0-alpha.4",
     "@types/jest": "^24.0.6",
     "@types/react": "16.9.8",
     "@types/react-dom": "16.9.4",
