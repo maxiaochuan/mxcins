@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/request",
-  "version": "2.1.0-alpha.0",
+  "version": "2.1.0",
   "description": "request",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-request",
   "bugs": {
