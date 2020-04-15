@@ -1,4 +1,5 @@
-export { default as Downloader } from './downloader';
+export { default as Downloader } from './helpers/Downloader';
+export { default as Tree } from './helpers/Tree';
 
 export { default as omit } from './omit';
 export { default as arr2obj } from './arr2obj';
