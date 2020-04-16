@@ -1,7 +1,7 @@
 module.exports = {
   verbose: true,
   transform: {
-    '\\.(ts|tsx)?$': 'ts-jest',
+    '\\.(ts|tsx)?$': './scripts/transform.js',
     '\\.(js|jsx)?$': './scripts/transform.js',
   },
   transformIgnorePatterns: ['/node_modules/(?!(lodash-es)/)'],

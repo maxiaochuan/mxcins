@@ -1,4 +1,7 @@
 const config = {
-  presets: ['@babel/preset-env', '@babel/preset-react'],
+  presets: [
+    [require.resolve('../packages/babel-preset-mxcins/dist/index.cjs.js'), { typescript: true }],
+  ],
 };
+
 module.exports = require('babel-jest').createTransformer(config);
