@@ -1,10 +1,11 @@
 /* eslint-disable no-underscore-dangle */
+
 type TreeNode<T extends Record<string, any>> = Node<T> & T;
 
 export class Node<T extends Record<string, any>> {
   public parent?: TreeNode<T>;
 
-  public children?: Array<TreeNode<T>>;
+  public children: Array<TreeNode<T>> = [];
 
   private _ancestors?: Array<TreeNode<T>>;
 
@@ -32,9 +33,9 @@ export class Node<T extends Record<string, any>> {
 
   public get proletariats(): TreeNode<T>[] {
     if (!this._proletariats) {
-      this._proletariats = this.children
-        ? this.children.map(c => c.proletariats).flat()
-        : [this as TreeNode<T>];
+      this._proletariats = this.children.length
+        ? this.children.map(c => (c.children.length ? c.proletariats : c)).flat()
+        : [];
     }
     return this._proletariats;
   }
@@ -45,25 +46,45 @@ export interface ITreeOpts {
   mode?: 'parent' | 'children';
 }
 
+const DEFAULT_PUID = 'parent.id';
+// const DEFAULT_MODE = '';
+
 export default class Tree<T extends Record<string, any>> {
-  public opts: Required<ITreeOpts> = {
-    puid: 'parent.id',
-    mode: 'parent',
-  };
+  public opts: Required<ITreeOpts>;
 
   public roots: Array<TreeNode<T>> = [];
 
   public nodes: { [x: string]: TreeNode<T> } = {};
 
   constructor(data: T[], opts: ITreeOpts = {}) {
-    this.opts = { ...this.opts, ...opts };
-
-    this.init(data, this.opts.mode);
+    this.opts = Tree.initOpts({ data, opts });
+    this.bind(data);
   }
 
-  private init(data: T[], mode: 'parent' | 'children') {
+  // eslint-disable-next-line class-methods-use-this
+  private static initOpts<T>({ data, opts }: { data: T[]; opts: ITreeOpts }): Required<ITreeOpts> {
+    const { puid = DEFAULT_PUID, mode } = opts;
+
+    if (mode) {
+      return { mode, puid };
+    }
+    const one = data[0];
+    const property = puid.split('.')[0];
+    if (one && property && Object.prototype.hasOwnProperty.call(one, property)) {
+      return { mode: 'parent', puid };
+    }
+
+    if (one && Object.prototype.hasOwnProperty.call(one, 'children')) {
+      return { mode: 'children', puid };
+    }
+
+    throw new Error('tree init options error');
+  }
+
+  private bind(data: T[]) {
+    const { mode } = this.opts;
     if (mode === 'parent') {
-      const { puid } = this.opts;
+      const { puid = DEFAULT_PUID } = this.opts;
       this.nodes = data.reduce<Record<string, TreeNode<T>>>((prev, r) => {
         prev[r.id] = new Node(r) as TreeNode<T>;
         return prev;
@@ -75,6 +96,7 @@ export default class Tree<T extends Record<string, any>> {
         const parent = this.nodes[pid];
         if (parent) {
           node.parent = parent;
+          parent.children.push(node);
         } else {
           this.roots.push(node);
         }
@@ -88,6 +110,7 @@ export default class Tree<T extends Record<string, any>> {
           this.nodes[r.id] = node;
           if (parent) {
             node.parent = parent;
+            parent.children.push(node);
           }
           if (r.children && r.children.length) {
             loop(r.children, node);
