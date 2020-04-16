@@ -30,5 +30,8 @@
   },
   "authors": [
     "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
-  ]
+  ],
+  "dependencies": {
+    "deepmerge": "^4.2.2"
+  }
 }

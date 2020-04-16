@@ -1,3 +1,5 @@
+export { default as deepmerge } from 'deepmerge';
+
 export { default as Downloader } from './helpers/Downloader';
 export { default as Tree } from './helpers/Tree';
 
