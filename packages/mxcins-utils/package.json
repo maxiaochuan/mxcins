@@ -17,6 +17,9 @@
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "deepmerge": "^4.2.2"
+  },
   "devDependencies": {
     "@types/lodash": "~4.14.138",
     "lodash": "^4.17.15"
@@ -30,8 +33,5 @@
   },
   "authors": [
     "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
-  ],
-  "dependencies": {
-    "deepmerge": "^4.2.2"
-  }
+  ]
 }
