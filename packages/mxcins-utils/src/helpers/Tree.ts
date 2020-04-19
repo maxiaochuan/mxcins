@@ -70,8 +70,12 @@ export default class Tree<T extends Record<string, any>> {
     puid: string | ((r: T) => string | null);
   }): Mode {
     const one = data[0];
-    const property = typeof puid === 'string' ? puid.split('.')[0] : puid(one);
-    if (typeof property !== 'undefined') {
+    const pv =
+      typeof puid === 'string'
+        ? puid.split('.').reduce<any>((prev, k) => prev && prev[k], one)
+        : puid(one);
+
+    if (typeof pv !== 'undefined') {
       return 'parent';
     }
 
@@ -163,7 +167,8 @@ export default class Tree<T extends Record<string, any>> {
         });
 
         d.forEach(r => {
-          const node = this.nodes[r.id];
+          const k = typeof uid === 'string' ? r[uid] : uid(r);
+          const node = this.nodes[k];
           if (!node.parent) {
             this.roots.push(node);
           }

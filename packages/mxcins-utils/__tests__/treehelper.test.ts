@@ -68,18 +68,32 @@ describe('tree helper', () => {
   });
 
   it('opt uid, puid', () => {
-    const data = [
+    const dd1 = [
       { key: '1', name: 'n1', pid: null },
       { key: '2', name: 'n1', pid: '1' },
     ];
-    const helper = new TreeHelper(data, { uid: 'key', puid: 'pid' });
+    const dd2 = [{ key: '1', name: 'dd2n1', children: [{ key: '2', name: 'dd2n2' }] }];
 
-    expect(helper.nodes['1'].children?.length).toBe(1);
-    expect(helper.nodes['1'].children?.[0]).toBe(helper.nodes['2']);
+    const h1 = new TreeHelper(dd1, { uid: 'key', puid: 'pid' });
 
-    const h2 = new TreeHelper(data, { uid: r => r.key, puid: r => r.pid });
+    expect(h1.nodes['1'].children?.length).toBe(1);
+    expect(h1.nodes['1'].children?.[0]).toBe(h1.nodes['2']);
+
+    const h2 = new TreeHelper(dd1, { uid: r => r.key, puid: r => r.pid });
 
     expect(h2.nodes['1'].children?.length).toBe(1);
     expect(h2.nodes['1'].children?.[0]).toBe(h2.nodes['2']);
+
+    const h3 = new TreeHelper(dd2, { uid: 'key' });
+
+    expect(h3.nodes['1'].children?.length).toBe(1);
+    expect(h3.nodes['1'].children?.[0]).toBe(h3.nodes['2']);
+
+    const h4 = new TreeHelper(dd2, { uid: r => r.key });
+
+    console.log(h4.nodes);
+
+    expect(h4.nodes['1'].children?.length).toBe(1);
+    expect(h4.nodes['1'].children?.[0]).toBe(h4.nodes['2']);
   });
 });
