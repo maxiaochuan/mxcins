@@ -29,26 +29,30 @@ export class Node<T extends Record<string, any>> {
 
 type Mode = 'parent' | 'children';
 
-export interface ITreeOpts {
+export interface ITreeOpts<T> {
+  uid?: string | ((r: T) => string);
   puid?: string;
   mode?: Mode;
+
   ancestors?: boolean;
   proletariats?: boolean;
 }
 
+const DEFAULT_UID = 'id';
 const DEFAULT_PUID = 'parent.id';
 // const DEFAULT_MODE = '';
 
 export default class Tree<T extends Record<string, any>> {
-  public opts: Required<ITreeOpts>;
+  public opts: Required<ITreeOpts<T>>;
 
   public roots: Array<TreeNode<T>> = [];
 
   public nodes: { [x: string]: TreeNode<T> } = {};
 
-  constructor(data: T[], opts: ITreeOpts = {}) {
-    const { puid = DEFAULT_PUID, mode, ancestors, proletariats } = opts;
+  constructor(data: T[], opts: ITreeOpts<T> = {}) {
+    const { uid = DEFAULT_UID, puid = DEFAULT_PUID, mode, ancestors, proletariats } = opts;
     this.opts = {
+      uid,
       puid,
       ancestors: !!ancestors,
       proletariats: !!proletariats,
@@ -110,14 +114,16 @@ export default class Tree<T extends Record<string, any>> {
   private bind(data: T[]) {
     const { mode } = this.opts;
     if (mode === 'parent') {
-      const { puid = DEFAULT_PUID } = this.opts;
+      const { uid = DEFAULT_UID, puid = DEFAULT_PUID } = this.opts;
       this.nodes = data.reduce<Record<string, TreeNode<T>>>((prev, r) => {
-        prev[r.id] = new Node(r) as TreeNode<T>;
+        const index = typeof uid === 'string' ? uid : uid(r);
+        prev[r[index]] = new Node(r) as TreeNode<T>;
         return prev;
       }, {});
 
       data.forEach(r => {
-        const node = this.nodes[r.id];
+        const index = typeof uid === 'string' ? uid : uid(r);
+        const node = this.nodes[r[index]];
         const pid = puid.split('.').reduce<any>((prev, k) => prev && prev[k], r);
         const parent = this.nodes[pid];
         if (parent) {

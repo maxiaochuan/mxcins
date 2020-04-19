@@ -66,4 +66,15 @@ describe('tree helper', () => {
     expect(helper.nodes['1'].proletariats?.[0]).toBe(helper.nodes['2']);
     expect(helper.nodes['2'].proletariats).toBe(undefined);
   });
+
+  it('opt uid, puid', () => {
+    const data = [
+      { key: '1', name: 'n1', pid: null },
+      { key: '2', name: 'n1', pid: '1' },
+    ];
+    const helper = new TreeHelper(data, { uid: 'key', puid: 'pid' });
+
+    expect(helper.nodes['1'].children?.length).toBe(1);
+    expect(helper.nodes['1'].children?.[0]).toBe(helper.nodes['2']);
+  });
 });
