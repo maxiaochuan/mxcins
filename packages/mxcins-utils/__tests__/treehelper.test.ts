@@ -76,5 +76,10 @@ describe('tree helper', () => {
 
     expect(helper.nodes['1'].children?.length).toBe(1);
     expect(helper.nodes['1'].children?.[0]).toBe(helper.nodes['2']);
+
+    const h2 = new TreeHelper(data, { uid: r => r.key, puid: r => r.pid });
+
+    expect(h2.nodes['1'].children?.length).toBe(1);
+    expect(h2.nodes['1'].children?.[0]).toBe(h2.nodes['2']);
   });
 });

@@ -31,7 +31,7 @@ type Mode = 'parent' | 'children';
 
 export interface ITreeOpts<T> {
   uid?: string | ((r: T) => string);
-  puid?: string;
+  puid?: string | ((r: T) => string | null);
   mode?: Mode;
 
   ancestors?: boolean;
@@ -62,10 +62,16 @@ export default class Tree<T extends Record<string, any>> {
     this.reschedule();
   }
 
-  private static guess<T>({ data, puid }: { data: T[]; puid: string }): Mode {
+  private static guess<T>({
+    data,
+    puid,
+  }: {
+    data: T[];
+    puid: string | ((r: T) => string | null);
+  }): Mode {
     const one = data[0];
-    const property = puid.split('.')[0];
-    if (one && property && Object.prototype.hasOwnProperty.call(one, property)) {
+    const property = typeof puid === 'string' ? puid.split('.')[0] : puid(one);
+    if (typeof property !== 'undefined') {
       return 'parent';
     }
 
@@ -113,19 +119,23 @@ export default class Tree<T extends Record<string, any>> {
 
   private bind(data: T[]) {
     const { mode } = this.opts;
+    const { uid = DEFAULT_UID, puid = DEFAULT_PUID } = this.opts;
     if (mode === 'parent') {
-      const { uid = DEFAULT_UID, puid = DEFAULT_PUID } = this.opts;
       this.nodes = data.reduce<Record<string, TreeNode<T>>>((prev, r) => {
-        const index = typeof uid === 'string' ? uid : uid(r);
-        prev[r[index]] = new Node(r) as TreeNode<T>;
+        const index = typeof uid === 'string' ? r[uid] : uid(r);
+        prev[index] = new Node(r) as TreeNode<T>;
         return prev;
       }, {});
 
       data.forEach(r => {
-        const index = typeof uid === 'string' ? uid : uid(r);
-        const node = this.nodes[r[index]];
-        const pid = puid.split('.').reduce<any>((prev, k) => prev && prev[k], r);
-        const parent = this.nodes[pid];
+        const index = typeof uid === 'string' ? r[uid] : uid(r);
+        const node = this.nodes[index];
+        const pIndex =
+          typeof puid === 'string'
+            ? puid.split('.').reduce<any>((prev, k) => prev && prev[k], r)
+            : puid(r);
+
+        const parent = this.nodes[pIndex];
         if (parent) {
           node.parent = parent;
           parent.children = parent.children || [];
@@ -139,8 +149,9 @@ export default class Tree<T extends Record<string, any>> {
     if (mode === 'children') {
       const loop = (d: T[], parent?: TreeNode<T>) => {
         d.forEach(r => {
+          const k = typeof uid === 'string' ? r[uid] : uid(r);
           const node = new Node(r) as TreeNode<T>;
-          this.nodes[r.id] = node;
+          this.nodes[k] = node;
           if (parent) {
             node.parent = parent;
             parent.children = parent.children || [];
