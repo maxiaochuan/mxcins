@@ -98,16 +98,16 @@ describe('tree helper', () => {
   it('insert', () => {
     const h1 = new TreeHelper(d1);
     expect(h1.roots.length).toBe(1);
-    h1.insert({ id: '100', name: '123' })
+    h1.insert({ id: '100', name: '123' });
     expect(h1.roots.length).toBe(2);
 
     h1.insert([
       { id: '1000', name: 'n1' },
       { id: '1001', name: 'n2' },
-    ])
+    ]);
 
     expect(h1.roots.length).toBe(4);
-  })
+  });
 
   it('insert with pid', () => {
     const h1 = new TreeHelper(d1, { proletariats: true });
@@ -116,7 +116,7 @@ describe('tree helper', () => {
     expect(h1.roots.length).toBe(1);
     expect(h1.roots[0].children?.[1]?.id).toBe('100');
     expect(h1.roots[0].proletariats?.length).toBe(2);
-  })
+  });
 
   it('update', () => {
     const h1 = new TreeHelper(d1);
@@ -125,5 +125,5 @@ describe('tree helper', () => {
 
     h1.update('0', { name: 'new' });
     expect(h1.nodes['0'].name).toBe('new');
-  })
+  });
 });

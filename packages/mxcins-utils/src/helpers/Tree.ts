@@ -101,7 +101,7 @@ export default class Tree<T extends Record<string, any>> {
     this.nodes[id] = Object.assign(node, extra);
   }
 
-  public insert( data: Omited<T> | Omited<T>[], pid?: string) {
+  public insert(data: Omited<T> | Omited<T>[], pid?: string) {
     if (Array.isArray(data)) {
       data.forEach(one => this.insertOne(one, pid));
     } else {
