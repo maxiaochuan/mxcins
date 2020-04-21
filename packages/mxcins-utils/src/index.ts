@@ -1,6 +1,7 @@
 export { default as deepmerge } from 'deepmerge';
 
 export { default as Downloader } from './helpers/Downloader';
+export type { TreeNode } from './helpers/Tree';
 export { default as Tree } from './helpers/Tree';
 
 export { default as omit } from './omit';

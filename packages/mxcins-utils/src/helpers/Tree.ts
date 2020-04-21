@@ -2,7 +2,7 @@
 
 import omit from '../omit';
 
-type TreeNode<T extends Record<string, any>> = Node<T> & T;
+export type TreeNode<T extends Record<string, any>> = Node<T> & T;
 
 type Omited<T> = Omit<T, 'parent' | 'children' | 'ancestors' | 'proletariats'>;
 
