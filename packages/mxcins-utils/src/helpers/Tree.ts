@@ -4,6 +4,8 @@ import omit from '../omit';
 
 type TreeNode<T extends Record<string, any>> = Node<T> & T;
 
+type Omited<T> = Omit<T, 'parent' | 'children' | 'ancestors' | 'proletariats'>;
+
 const uuid = <T>(o: T, func: string | ((r: T) => string | undefined)): string | undefined => {
   if (typeof func === 'string') {
     return func.split('.').reduce<any>((prev, k) => prev && prev[k], o) as string | undefined;
@@ -88,6 +90,27 @@ export default class Tree<T extends Record<string, any>> {
     }
 
     throw new Error('tree init options error');
+  }
+
+  public update(id: string, extra: Partial<T>) {
+    const node = this.nodes[id];
+    if (!node) {
+      throw new Error(`node id: ${id} is not exist.`);
+    }
+
+    this.nodes[id] = Object.assign(node, extra);
+  }
+
+  public insert( data: Omited<T> | Omited<T>[], pid?: string) {
+    if (Array.isArray(data)) {
+      data.forEach(one => this.insertOne(one, pid));
+    } else {
+      this.insertOne(data, pid);
+    }
+
+    if (pid) {
+      this.reschedule();
+    }
   }
 
   private reschedule() {
@@ -193,6 +216,26 @@ export default class Tree<T extends Record<string, any>> {
       };
 
       loop(data);
+    }
+  }
+
+  private insertOne(one: Omited<T>, pid?: string) {
+    const { uid } = this.opts;
+    const id = uuid(one as T, uid) || '';
+    if (this.nodes[id]) {
+      throw new Error(`node id: ${id} is exist.`);
+    }
+
+    const node = new Node(one) as TreeNode<T>;
+    this.nodes[id] = node;
+    if (pid) {
+      const parent = this.nodes[pid];
+      if (parent) {
+        parent.children = parent.children || [];
+        parent.children.push(node);
+      }
+    } else {
+      this.roots.push(node);
     }
   }
 }
