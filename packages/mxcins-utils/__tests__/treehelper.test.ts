@@ -91,8 +91,6 @@ describe('tree helper', () => {
 
     const h4 = new TreeHelper(dd2, { uid: r => r.key });
 
-    console.log(h4.nodes);
-
     expect(h4.nodes['1'].children?.length).toBe(1);
     expect(h4.nodes['1'].children?.[0]).toBe(h4.nodes['2']);
   });
