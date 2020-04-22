@@ -8,11 +8,14 @@ module.exports = {
   },
   rules: {
     ...eslint.rules,
-    '@typescript-eslint/no-unused-vars': ['error', {
-      vars: "all",
-      args: "after-used",
-      argsIgnorePattern: '^_',
-    }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
     'consistent-return': 0,
     'no-param-reassign': 1,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
