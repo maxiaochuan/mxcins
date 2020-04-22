@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file, import/no-cycle
 import { IRequestOptions, IResponse } from './interface';
 
 export const root =

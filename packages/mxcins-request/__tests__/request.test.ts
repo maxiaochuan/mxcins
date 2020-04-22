@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-try-expect */
 import createServer from 'create-test-server';
 import request, { extend } from '../src/index';
 import { ResponseError } from '../src/utils';
@@ -27,21 +28,19 @@ describe('test request', () => {
       }, 1000);
     });
 
-    let resp = await request<string>(prefix('/test/timeout'), {
+    const resp = await request<string>(prefix('/test/timeout'), {
       timeout: 1200,
       getResponse: true,
     });
 
     expect(resp.response.ok).toBe(true);
 
-    try {
-      resp = await request<string>(prefix('/test/timeout'), {
+    await expect(() =>
+      request<string>(prefix('/test/timeout'), {
         timeout: 600,
         getResponse: true,
-      });
-    } catch (error) {
-      expect(error.name).toBe('RequestError');
-    }
+      }),
+    ).rejects.toThrowError();
   });
 
   it('request type', async () => {

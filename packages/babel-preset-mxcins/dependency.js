@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 
 // eslint-disable-next-line func-names
-module.exports = function(_, opts) {
+module.exports = function (_, opts) {
   return {
     presets: [
       [

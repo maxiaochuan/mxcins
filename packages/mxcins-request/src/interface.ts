@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { MapCache, ResponseError } from './utils';
 
 export interface IResponse extends Response {

@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
+// eslint-disable-next-line max-classes-per-file
 import omit from '../omit';
 
 export type TreeNode<T extends Record<string, any>> = Node<T> & T;
@@ -67,8 +68,9 @@ export default class Tree<T extends Record<string, any>> {
       proletariats: !!proletariats,
       mode: mode || Tree.guess({ data, puid }),
     };
-    this.bind(data);
-    this.reschedule();
+    if (data && data.length) {
+      this.bind(data);
+    }
   }
 
   private static guess<T>({
@@ -157,7 +159,11 @@ export default class Tree<T extends Record<string, any>> {
     return loop(this.roots);
   }
 
-  private bind(data: T[]) {
+  public bind(data: T[]) {
+    /* ------ 2020-04-22 14:14:55 clear ------*/
+    this.roots = [];
+    this.nodes = {};
+    /* ------ 2020-04-22 14:14:55 clear ------*/
     const { mode } = this.opts;
     const { uid = DEFAULT_UID, puid = DEFAULT_PUID } = this.opts;
     if (mode === 'parent') {
@@ -217,6 +223,8 @@ export default class Tree<T extends Record<string, any>> {
 
       loop(data);
     }
+
+    this.reschedule();
   }
 
   private insertOne(one: Omited<T>, pid?: string) {

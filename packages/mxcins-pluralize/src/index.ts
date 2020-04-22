@@ -87,7 +87,7 @@ function replace(word: string, rule: any[]): string {
  */
 function sanitizeWord(token: string, word: string, rules: any[]): string {
   // Empty string or doesn't need fixing.
-  if (!token.length || uncountables.hasOwnProperty(token)) {
+  if (!token.length || Object.prototype.hasOwnProperty.call(uncountables, token)) {
     return word;
   }
 
@@ -120,12 +120,12 @@ function replaceWord(replaceMap: any, keepMap: any, rules: any[]) {
     const token = word.toLowerCase();
 
     // Check against the keep object map.
-    if (keepMap.hasOwnProperty(token)) {
+    if (Object.prototype.hasOwnProperty.call(keepMap, token)) {
       return restoreCase(word, token);
     }
 
     // Check against the replacement map for a direct word replacement.
-    if (replaceMap.hasOwnProperty(token)) {
+    if (Object.prototype.hasOwnProperty.call(replaceMap, token)) {
       return restoreCase(word, replaceMap[token]);
     }
 
@@ -141,10 +141,10 @@ function checkWord(replaceMap: any, keepMap: any, rules: any) {
   return function checkWordFunc(word: string) {
     const token = word.toLowerCase();
 
-    if (keepMap.hasOwnProperty(token)) {
+    if (Object.prototype.hasOwnProperty.call(keepMap, token)) {
       return true;
     }
-    if (replaceMap.hasOwnProperty(token)) {
+    if (Object.prototype.hasOwnProperty.call(replaceMap, token)) {
       return false;
     }
 
@@ -237,7 +237,9 @@ pluralize.addUncountableRule = (word: string | RegExp) => {
  * @param {string} plural
  */
 pluralize.addIrregularRule = (single: string, plural: string) => {
+  // eslint-disable-next-line no-param-reassign
   plural = plural.toLowerCase();
+  // eslint-disable-next-line no-param-reassign
   single = single.toLowerCase();
 
   irregularSingles[single] = plural;

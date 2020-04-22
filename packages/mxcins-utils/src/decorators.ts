@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export function enumerable(value: boolean) {
   return function inner<T>(target: T, propertyKey: string) {
     const descriptor = Object.getOwnPropertyDescriptor(target, propertyKey) || {};
