@@ -7,8 +7,8 @@ module.exports = function (_, opts) {
       [
         require('./dist/index.cjs').default,
         require('deepmerge', {
-          typescript: true,
-          react: true,
+          typescript: {},
+          react: {},
           env: {
             useBuiltIns: 'entry',
             corejs: 3,
