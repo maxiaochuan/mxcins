@@ -6,7 +6,7 @@ module.exports = function (_, opts) {
     presets: [
       [
         require('./dist/index.cjs').default,
-        require('deepmerge', {
+        require('deepmerge')({
           typescript: {},
           react: {},
           env: {
