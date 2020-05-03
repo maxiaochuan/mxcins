@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/hooks",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "hooks",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-hooks",
   "bugs": {
@@ -18,11 +18,11 @@
     "dist"
   ],
   "dependencies": {
-    "@mxcins/request": "2.1.2"
+    "@mxcins/request": "2.2.0"
   },
   "devDependencies": {
     "@apollo/client": "3.0.0-beta.16",
-    "@mxcins/types": "1.6.0",
+    "@mxcins/types": "1.7.0",
     "graphql": "14.5.8"
   },
   "peerDependencies": {
