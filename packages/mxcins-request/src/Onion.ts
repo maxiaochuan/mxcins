@@ -21,14 +21,14 @@ export default class Onion {
     this.middlewares.splice(this.middlewares.length - this.defaultMiddlewaresLen, 0, middleware);
   }
 
-  public excute(params: any = null) {
+  public excute(ctx: any = null) {
     const fn = this.compose();
-    return fn(params);
+    return fn(ctx);
   }
 
   private compose() {
     const { middlewares } = this;
-    return function wrapper(params: any) {
+    return function wrapper(ctx: any) {
       let index = -1;
       const dispatch = (i: number) => {
         if (i <= index) {
@@ -44,7 +44,7 @@ export default class Onion {
         }
 
         try {
-          return Promise.resolve(fn(params, () => dispatch(i + 1)));
+          return Promise.resolve(fn(ctx, () => dispatch(i + 1)));
         } catch (err) {
           return Promise.reject(err);
         }

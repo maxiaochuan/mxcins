@@ -1,6 +1,7 @@
-import path2exp from 'path-to-regexp';
-import Parser from 'url-parse';
+import * as path2exp from 'path-to-regexp';
+import qs from 'qs';
 import { IRequestMiddleware } from '../interface';
+import { win } from '../utils';
 
 /**
  * default method
@@ -15,27 +16,35 @@ const get: IRequestMiddleware = (ctx, next) => {
     req: { uri, options = {} },
   } = ctx;
 
-  const target = new Parser(uri, {}, true);
+  let target = new URL(uri, win.location?.origin || '');
+  let query = qs.parse(target.search, { ignoreQueryPrefix: true });
 
   if (options.prefix) {
-    const fix = new Parser(options.prefix, {}, true);
-    if (fix.hostname) {
-      target.set('host', fix.host);
-      target.set('protocol', fix.protocol);
+    if (/^https?/.test(options.prefix)) {
+      const subpathname = target.pathname;
+      target = new URL(options.prefix, target);
+      target.pathname = `${target.pathname}${subpathname}`;
+    } else {
+      target.pathname = `${options.prefix}${target.pathname}`;
     }
-    target.set('pathname', `${fix.pathname}${target.pathname}`);
   }
 
   if (options.suffix) {
-    target.set('pathname', `${target.pathname}${options.suffix}`);
+    target.pathname = `${target.pathname}${options.suffix}`;
   }
 
-  if (options.queryParams && Object.keys(options.queryParams).length > 0) {
-    target.set('query', { ...target.query, ...options.queryParams });
+  if (options.query) {
+    const extra =
+      typeof options.query === 'string'
+        ? qs.parse(options.query, { ignoreQueryPrefix: true })
+        : options.query || {};
+    query = { ...query, ...extra };
   }
+
+  target.search = qs.stringify(query, { addQueryPrefix: true, arrayFormat: 'brackets' });
 
   if (options.params && Object.keys(options.params).length > 0) {
-    target.set('pathname', path2exp.compile(target.pathname)(options.params));
+    target.pathname = path2exp.compile(target.pathname)(options.params);
   }
 
   ctx.req.uri = target.toString();

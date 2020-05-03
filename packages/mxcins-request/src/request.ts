@@ -5,13 +5,13 @@ import {
   IRequestOptions,
   IRequestOptionsInit,
 } from './interface';
-import { fetchMiddleware, getMiddleware, parseMiddleware, postMiddleware } from './middlewares';
+import * as mw from './middlewares';
 
-const request = (
+const generator = (
   initOptions: IRequestOptionsInit = {},
-  ms: IRequestMiddleware[] = [],
+  initMiddlewares: IRequestMiddleware[] = [],
 ): IRequestMethod => {
-  const core = new Core(initOptions, ms);
+  const core = new Core(initOptions, initMiddlewares);
 
   const instance: any = (uri: string, options: IRequestOptions = {}) => {
     const merged: IRequestOptions = {
@@ -25,9 +25,9 @@ const request = (
         ...initOptions.params,
         ...options.params,
       },
-      queryParams: {
-        ...initOptions.queryParams,
-        ...options.queryParams,
+      query: {
+        ...initOptions.query,
+        ...options.query,
       },
       method: (options.method || 'get').toLowerCase(),
     };
@@ -45,11 +45,8 @@ const request = (
   return instance;
 };
 
-export const extendMiddlewares = [postMiddleware, getMiddleware, fetchMiddleware, parseMiddleware];
-export const fetchMiddlewares = [postMiddleware, getMiddleware, fetchMiddleware];
+export const builtins = [mw.post, mw.get, mw.fetch, mw.parse];
 
-export const extend = (init: IRequestOptionsInit = {}) => request(init, extendMiddlewares);
+export const extend = (init: IRequestOptionsInit = {}) => generator(init, builtins);
 
-export const fetch = request({}, fetchMiddlewares);
-
-export default request({}, extendMiddlewares);
+export default generator({}, builtins);

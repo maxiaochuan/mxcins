@@ -1,10 +1,10 @@
 import 'whatwg-fetch';
 import { IRequestMiddleware, IResponse } from '../interface';
-import { RequestError, root } from '../utils';
+import { RequestError, win } from '../utils';
 
 export const asyncTimeout = async (msec: number) =>
   new Promise((_, reject) => {
-    root.setTimeout(() => reject(new RequestError(`timeout of ${msec}ms exceeded`)), msec);
+    win.setTimeout(() => reject(new RequestError(`timeout of ${msec}ms exceeded`)), msec);
   });
 
 /**
@@ -18,15 +18,15 @@ const fetch: IRequestMiddleware = async (ctx, next) => {
     req: { uri, options = {} },
     cache,
   } = ctx;
-  if (!root.fetch) {
+  if (!win.fetch) {
     throw new Error("window fetch don't exist!");
   }
 
-  const { method = 'get', params, queryParams, useCache, timeout = 0 } = options;
+  const { method = 'get', params, query, useCache, timeout = 0 } = options;
 
   const needCache = method.toLowerCase() === 'get' && useCache;
   if (needCache) {
-    const responseCache = cache.get({ uri, params, queryParams });
+    const responseCache = cache.get({ uri, params, query });
     if (responseCache) {
       const clone = responseCache.clone();
       clone.useCache = true;
@@ -35,7 +35,7 @@ const fetch: IRequestMiddleware = async (ctx, next) => {
     }
   }
 
-  const f = root.fetch(uri, options);
+  const f = win.fetch(uri, options);
   const promise: Promise<IResponse> =
     timeout > 0 ? (Promise.race([f, asyncTimeout(timeout)]) as Promise<IResponse>) : f;
 
@@ -45,7 +45,7 @@ const fetch: IRequestMiddleware = async (ctx, next) => {
     if (res.status === 200) {
       const copy = res.clone();
       copy.useCache = true;
-      cache.set({ uri, params, queryParams }, copy);
+      cache.set({ uri, params, query }, copy);
     }
   }
   ctx.res = res;

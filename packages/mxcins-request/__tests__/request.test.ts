@@ -160,14 +160,14 @@ describe('test request', () => {
     });
 
     const resp1 = await request(prefix('/test/params'), {
-      queryParams: {
+      query: {
         a: 'a',
       },
     });
     expect(resp1).toEqual({ a: 'a' });
 
     const resp4 = await request(prefix('/test/params?b=b'), {
-      queryParams: {
+      query: {
         a: 'a',
       },
     });
@@ -193,7 +193,7 @@ describe('test request', () => {
       params: {
         type: 'params',
       },
-      queryParams: {
+      query: {
         a: 'a',
       },
     });
@@ -242,7 +242,7 @@ describe('test request', () => {
 
     request.use(async (ctx, next) => {
       const { options = {} } = ctx.req;
-      ctx.req.options = { ...options, queryParams: { ...options.queryParams, a: 'inter' } };
+      ctx.req.options = { ...options, query: { ...options.query, a: 'inter' } };
       return next();
     });
     const resp1 = await request(prefix('/test/interceptors'));

@@ -1,4 +1,4 @@
-export { default as getMiddleware } from './get';
-export { default as postMiddleware } from './post';
-export { default as fetchMiddleware } from './fetch';
-export { default as parseMiddleware } from './parse';
+export { default as fetch } from './fetch';
+export { default as get } from './get';
+export { default as post } from './post';
+export { default as parse } from './parse';

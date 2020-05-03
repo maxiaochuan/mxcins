@@ -1,6 +1,6 @@
 import { IRequestContext } from '../src/interface';
-import { postMiddleware } from '../src/middlewares';
-import { MapCache } from '../src/utils';
+import { post as postMiddleware } from '../src/middlewares';
+import MapCache from '../src/MapCache';
 
 const ctx: IRequestContext = { req: { uri: `/response` }, res: null, cache: new MapCache({}) };
 

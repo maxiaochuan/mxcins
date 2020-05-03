@@ -6,16 +6,19 @@ module.exports = function (_, opts) {
     presets: [
       [
         require('./dist/index.cjs').default,
-        require('deepmerge')({
-          typescript: {},
-          react: {},
-          env: {
-            useBuiltIns: 'entry',
-            corejs: 3,
-            modules: false,
+        require('deepmerge')(
+          {
+            env: {
+              useBuiltIns: 'entry',
+              corejs: 3,
+              modules: false,
+            },
+            react: {},
+            typescript: {},
+            transformRuntime: {},
           },
-          transformRuntime: true,
-        }, opts),
+          opts,
+        ),
       ],
     ],
   };

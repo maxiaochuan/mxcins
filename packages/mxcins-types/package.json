@@ -11,15 +11,16 @@
     "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-types"
   },
   "license": "MIT",
+  "sideEffects": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
-    "index.d.ts"
+    "dist"
   ],
   "dependencies": {
     "@types/history": "4.7.3",
-    "type-fest": "0.8.1"
+    "type-fest": "0.13.1"
   },
   "devDependencies": {
     "history": "4.9.0"

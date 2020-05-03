@@ -19,7 +19,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "../../node_modules/@mxcins/tools/bin/mxcins-tools.js build",
+    "build": "../../node_modules/@mxcins/library/bin/mlib.js build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

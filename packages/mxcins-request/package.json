@@ -11,6 +11,7 @@
     "url": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust"
   },
   "license": "MIT",
+  "sideEffects": false,
   "main": "dist/index.cjs.js",
   "unpkg": "dist/index.umd.js",
   "module": "dist/index.esm.js",
@@ -19,14 +20,12 @@
     "dist"
   ],
   "dependencies": {
-    "path-to-regexp": "^3.0.0",
-    "qs": "^6.7.0",
-    "url-parse": "^1.4.7",
+    "path-to-regexp": "6.1.0",
+    "qs": "6.9.3",
     "whatwg-fetch": "3.0.0"
   },
   "devDependencies": {
     "@types/qs": "^6.5.3",
-    "@types/url-parse": "^1.4.3",
     "create-test-server": "^2.4.0"
   },
   "publishConfig": {

@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { MapCache, ResponseError } from './utils';
+import type { ResponseError } from './utils';
+import type MapCache from './MapCache';
 
 export interface IResponse extends Response {
   useCache?: boolean;
@@ -17,6 +18,9 @@ export interface IRequestContext<T = any> {
   cache: MapCache;
 }
 
+/**
+ * queryParams will removed
+ */
 export interface IRequestOptionsInit extends RequestInit {
   requestType?: 'json' | 'form' | 'formdata';
   responseType?: 'json' | 'text' | 'blob';
@@ -31,7 +35,7 @@ export interface IRequestOptionsInit extends RequestInit {
   prefix?: string;
   suffix?: string;
   params?: { [x: string]: any };
-  queryParams?: { [x: string]: any };
+  query?: { [x: string]: any };
 }
 
 export interface IRequestOptions extends IRequestOptionsInit {

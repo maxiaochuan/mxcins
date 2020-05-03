@@ -1,13 +1,15 @@
 /* eslint-disable global-require */
-// import { dirname } from 'path';
+import type { Options as ENV } from '@babel/preset-env';
 
 export interface IOpts {
+  env?: ENV;
   debug?: boolean;
-  env?: {};
-  react?: {};
-  typescript?: {};
+  react?: boolean | {};
+  typescript?: boolean | {};
   transformRuntime?: boolean;
 }
+
+const toObject = (input: unknown) => (typeof input === 'object' ? input : {});
 
 export default (_: any, { debug, env, react, typescript, transformRuntime }: IOpts = {}) => ({
   presets: [
@@ -24,10 +26,10 @@ export default (_: any, { debug, env, react, typescript, transformRuntime }: IOp
         ],
       },
     ],
-    react && [require('@babel/preset-react').default, react],
+    react && [require('@babel/preset-react').default, toObject(react)],
     typescript && [
       require('@babel/preset-typescript').default,
-      { ...typescript, allowNamespaces: true, onlyRemoveTypeImports: true },
+      { ...toObject(typescript), allowNamespaces: true, onlyRemoveTypeImports: true },
     ],
   ].filter(Boolean),
   plugins: [
@@ -41,7 +43,7 @@ export default (_: any, { debug, env, react, typescript, transformRuntime }: IOp
         proposal: 'minimal',
       },
     ],
-    require('@babel/plugin-proposal-optional-chaining'),
+    require('@babel/plugin-proposal-optional-chaining').default,
     transformRuntime && [
       require('@babel/plugin-transform-runtime').default,
       {

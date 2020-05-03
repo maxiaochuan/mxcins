@@ -5,7 +5,7 @@ import {
   IRequestOptionsInit,
 } from './interface';
 import Onion from './Onion';
-import { MapCache } from './utils';
+import MapCache from './MapCache';
 
 export default class Core {
   public onion: Onion;
