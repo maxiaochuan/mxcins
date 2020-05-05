@@ -23,7 +23,9 @@
   "devDependencies": {
     "@apollo/client": "3.0.0-beta.16",
     "@mxcins/types": "1.7.0",
-    "graphql": "14.5.8"
+    "@types/react": "16.9.34",
+    "graphql": "14.5.8",
+    "react": "16.13.1"
   },
   "peerDependencies": {
     "@apollo/client": "^3.0.0-beta.16",
