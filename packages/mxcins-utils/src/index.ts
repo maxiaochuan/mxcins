@@ -13,3 +13,5 @@ export { encode as json2csv, decode as csv2json } from './csv';
 export { default as mapObject } from './mapObject';
 export { default as camelcaseKeys } from './camelcaseKeys';
 export { default as snakecaseKeys } from './snakecaseKeys';
+
+export { default as num2percent } from './num2percent';
