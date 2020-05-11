@@ -149,9 +149,9 @@ export default class Tree<T extends Record<string, any>> {
     const loop = (nodes: TreeNode<T>[]): TreeNode<T>[] =>
       nodes.map(node => {
         const next = hide(node);
-        next.children = next.children && loop(next.children);
-        next.ancestors = next.ancestors && loop(next.ancestors);
-        next.proletariats = next.proletariats && loop(next.proletariats);
+        next.children = node.children && loop(node.children);
+        next.ancestors = node.ancestors && loop(node.ancestors);
+        next.proletariats = node.proletariats && loop(node.proletariats);
 
         return next;
       });

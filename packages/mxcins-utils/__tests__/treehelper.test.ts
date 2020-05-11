@@ -126,4 +126,15 @@ describe('tree helper', () => {
     h1.update('0', { name: 'new' });
     expect(h1.nodes['0']?.name).toBe('new');
   });
+
+  it('toJSON', () => {
+    const h1 = new TreeHelper(d1);
+    expect(h1.toJSON()).toEqual([
+      {
+        id: '0',
+        name: 'n0',
+        children: [{ id: '1', name: 'n1', children: [{ id: '2', name: 'n2' }] }],
+      },
+    ]);
+  });
 });
