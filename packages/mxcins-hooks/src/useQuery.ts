@@ -10,15 +10,15 @@ import {
 
 type ANY = any;
 
-interface IQueryHookOptionsWithFormatter<D, Q, V> extends QueryHookOptions<V> {
+interface IFormatQueryHookOptionsWithFormatter<D, Q, V> extends QueryHookOptions<V> {
   formatter: (data: Q) => D;
 }
 
-interface IQueryHookOptionsWithInit<Q, V> extends QueryHookOptions<V> {
+interface IFormatQueryHookOptionsWithInit<Q, V> extends QueryHookOptions<V> {
   init: Q;
 }
 
-interface IQueryHookOptionsWithBoth<D, Q, V> extends QueryHookOptions<V> {
+interface IFormatQueryHookOptionsWithBoth<D, Q, V> extends QueryHookOptions<V> {
   init: D;
   formatter: (data: Q) => D;
 }
@@ -28,16 +28,16 @@ export interface IQueryHookOptions<D, Q, V> extends QueryHookOptions<V> {
   formatter?: (data: Q) => D;
 }
 
-export interface UseQuery {
+export interface UseFormatQuery {
   <T = ANY, Q = ANY, V = ANY>(
     service: DocumentNode,
-    options: IQueryHookOptionsWithBoth<T, Q, V>,
+    options: IFormatQueryHookOptionsWithBoth<T, Q, V>,
   ): Omit<QueryResult<T, V>, 'data'> & { data: T };
   <T = ANY, Q = ANY, V = ANY>(
     service: DocumentNode,
-    options: IQueryHookOptionsWithFormatter<T, Q, V>,
+    options: IFormatQueryHookOptionsWithFormatter<T, Q, V>,
   ): QueryResult<T, V>;
-  <Q = ANY, V = ANY>(service: DocumentNode, options: IQueryHookOptionsWithInit<Q, V>): Omit<
+  <Q = ANY, V = ANY>(service: DocumentNode, options: IFormatQueryHookOptionsWithInit<Q, V>): Omit<
     QueryResult<Q, V>,
     'data'
   > & { data: Q };
@@ -79,7 +79,7 @@ const reducer: Reducer<IS, IA> = (prev, action) => {
   }
 };
 
-export const useQuery: UseQuery = (
+export const useFormatQuery: UseFormatQuery = (
   service: DocumentNode,
   options: IQueryHookOptions<ANY, ANY, ANY> = {},
 ) => {
