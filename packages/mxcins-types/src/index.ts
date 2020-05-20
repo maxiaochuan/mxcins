@@ -1,6 +1,22 @@
-import * as H from 'history';
+import type * as H from 'history';
 
-export * from 'type-fest';
+export type {
+  Primitive,
+  JsonObject,
+  JsonArray,
+  JsonValue,
+  Class,
+  TypedArray,
+  ObservableLike,
+  Merge,
+  PartialDeep,
+  ReadonlyDeep,
+  Promisable,
+  ValueOf,
+  Stringified,
+  PackageJson,
+  TsConfigJson,
+} from 'type-fest';
 
 export const tuple = <T extends string[]>(...args: T) => args;
 
