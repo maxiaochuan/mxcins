@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/hooks",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "hooks",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-hooks",
   "bugs": {
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@apollo/client": "3.0.0-beta.16",
-    "@mxcins/types": "1.7.0",
+    "@mxcins/types": "1.7.1",
     "@types/react": "16.9.34",
     "graphql": "14.5.8",
     "react": "16.13.1"
