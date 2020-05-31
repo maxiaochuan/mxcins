@@ -1,2 +1,2 @@
-export * from './useQuery';
+export * from './useFormatQuery';
 export * from './useFetch';

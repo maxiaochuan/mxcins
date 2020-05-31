@@ -1,12 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useReducer, Reducer, useEffect } from 'react';
 import { tuple } from '@mxcins/types';
-import {
-  QueryHookOptions,
-  QueryResult,
-  useQuery as useBasicQuery,
-  DocumentNode,
-} from '@apollo/client';
+import { DocumentNode } from 'graphql';
+import { QueryResult } from '@apollo/react-common';
+import { QueryHookOptions, useQuery } from '@apollo/react-hooks';
 
 type ANY = any;
 
@@ -84,7 +81,7 @@ export const useFormatQuery: UseFormatQuery = (
   options: IQueryHookOptions<ANY, ANY, ANY> = {},
 ) => {
   const { formatter, init, ...query } = options;
-  const { data, loading, networkStatus, ...others } = useBasicQuery(service, {
+  const { data, loading, networkStatus, ...others } = useQuery(service, {
     notifyOnNetworkStatusChange: true,
     ...query,
   });
