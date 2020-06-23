@@ -16,7 +16,6 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
-    "bin",
     "dist"
   ],
   "dependencies": {
@@ -32,9 +31,8 @@
     "antd": "4.3.5",
     "umi": "^3.2.5"
   },
-  "peerDependencies": {
-    "@mxcins/types": "1.5.0",
-    "lodash": "^4.17.15"
+  "publishConfig": {
+    "access": "public"
   },
   "authors": [
     "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
