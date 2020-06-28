@@ -19,6 +19,7 @@
     "dist"
   ],
   "dependencies": {
+    "@mxcins/utils": "1.13.1",
     "less": "3.11.3",
     "mkdirp": "1.0.4",
     "rimraf": "3.0.2",
