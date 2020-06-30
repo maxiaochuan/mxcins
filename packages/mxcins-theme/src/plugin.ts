@@ -4,9 +4,10 @@ import serveStatic from 'serve-static';
 import { join } from 'path';
 import { camelcaseKeys as camel } from '@mxcins/utils';
 import build from './build';
+import theme2vars from './theme2vars';
 
-export interface IDynamicTheme extends Partial<Record<string, Record<string, string>>> {
-  default?: Record<string, string>;
+export interface IDynamicTheme extends Partial<Record<string, any>> {
+  default?: Record<string, any>;
 }
 
 export interface IDynamicThemeConfig {
@@ -27,7 +28,7 @@ export default (api: IApi) => {
   }
 
   const conf: IDynamicThemeConfig = JSON.parse(readFileSync(themeConfigPath, 'utf-8'));
-  const { theme } = conf;
+  const theme = theme2vars(conf.theme);
 
   api.modifyDefaultConfig(memo => {
     return {
