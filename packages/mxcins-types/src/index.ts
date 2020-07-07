@@ -64,3 +64,19 @@ export interface IRCPS<
   staticContext?: C;
   route?: IRoute;
 }
+
+export const ABSTRUSE_VALUE_TYPES = tuple(
+  'string',
+  'number',
+  'boolean',
+  'object',
+  'array',
+  'id',
+  'name',
+  'date',
+  'datetime',
+  'json',
+  'unknown',
+);
+
+export type AbstruseValueType = typeof ABSTRUSE_VALUE_TYPES[number];
