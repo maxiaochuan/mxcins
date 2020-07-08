@@ -10,7 +10,8 @@
   },
   "ignoreChanges": [
     "*.test.ts",
-    "packages/**/example/**"
+    "packages/**/example/**",
+    "packages/explosion-core"
   ],
   "version": "independent"
 }
