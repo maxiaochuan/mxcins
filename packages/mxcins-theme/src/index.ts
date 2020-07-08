@@ -25,6 +25,8 @@ export default async ({ input, output }: { input: string; output: string }) => {
 
   const names = Object.keys(theme);
 
+  const jsons: Record<string, any> = {};
+  const csses: Record<string, any> = {};
   // theme to vars;
   for (let index = 0; index < names.length; index += 1) {
     const name = names[index];
@@ -35,7 +37,10 @@ export default async ({ input, output }: { input: string; output: string }) => {
 
     writeFileSync(join(output, `${name}.css`), css);
     writeFileSync(join(output, `${name}.json`), JSON.stringify(transformed, null, 2));
+    jsons[name] = transformed;
+    csses[name] = css;
   }
 
   console.log('done!');
+  return { jsons, csses };
 };
