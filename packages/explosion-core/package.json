@@ -1,7 +1,7 @@
 {
   "name": "@mxcins/explosion-core",
-  "version": "1.13.1",
-  "description": "utils",
+  "version": "0.0.0",
+  "description": "explosion",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/explosion-core",
   "bugs": {
     "url": "https://github.com/maxiaochuan/mxcins/issues"
