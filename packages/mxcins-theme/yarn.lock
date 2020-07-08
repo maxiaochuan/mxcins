@@ -5703,6 +5703,16 @@ less-loader@5.0.0:
     loader-utils "^1.1.0"
     pify "^4.0.1"
 
+less-plugin-variables-export@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/less-plugin-variables-export/-/less-plugin-variables-export-3.0.2.tgz#4a6cba44d4c4f55f0bb191a88089f76353ffa212"
+  integrity sha512-JLDIZbyIHNjEkwPDRYUUtUylEYk6EWQHAlOToER7EMGUXwQAGetrZTrZ8lJ1qkvgovbhM7MO1Ca0ayLG2qmcJQ==
+
+less-plugin-variables-output@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/less-plugin-variables-output/-/less-plugin-variables-output-1.2.0.tgz#dbadf71b30ac87c4ce210508d9576513e19628ce"
+  integrity sha1-2633GzCsh8TOIQUI2VdlE+GWKM4=
+
 less@3.11.1:
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/less/-/less-3.11.1.tgz#c6bf08e39e02404fe6b307a3dfffafdc55bd36e2"

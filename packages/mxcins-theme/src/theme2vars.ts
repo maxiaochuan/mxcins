@@ -1,28 +1,19 @@
-import { palette } from './utils';
+import less from 'less';
+import { antdPath } from './utils';
+import { VariablesOutput } from './plugins';
 
-const generateColors = (colors: Record<string, string>) =>
-  Object.keys(colors).reduce<Record<string, string>>((prev, key) => {
-    prev[key] = colors[key];
-    const name = key.split('-')[0];
-    if (name) {
-      prev[name] = colors[key];
-      Array.from(Array(10), (_, i) => i + 1).forEach(index => {
-        prev[`${name}-${index}`] = index === 6 ? colors[key] : palette(colors[key], index);
-      });
-    }
+export default async (vars: Record<string, string>) => {
+  const content = `
+    @import "lib/style/themes/default.less";
+  `;
 
-    return prev;
-  }, {});
+  const output = await less.render(content, {
+    javascriptEnabled: true,
+    paths: [antdPath],
+    modifyVars: vars,
+    compress: true,
+    plugins: [new VariablesOutput({})],
+  });
 
-export default (theme: Record<string, Record<string, any>>) => {
-  return Object.keys(theme).reduce<Record<string, Record<string, any>>>((prev, key) => {
-    const { colors: themeColors, ...rest } = theme[key];
-    const colors = generateColors(themeColors);
-    const merged: Record<string, string> = { ...colors, ...rest };
-    prev[key] = Object.keys(merged).reduce<Record<string, string>>((pre, k) => {
-      pre[k] = (merged[k] && merged[k].startsWith('~') && merged[merged[k].slice(1)]) || merged[k];
-      return pre;
-    }, {});
-    return prev;
-  }, {});
+  return JSON.parse(output.css);
 };

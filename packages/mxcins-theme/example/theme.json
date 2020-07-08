@@ -1,0 +1,10 @@
+{
+  "theme": {
+    "default": {
+      "primary-color": "red"
+    },
+    "bucg": {
+      "primary-color": "green"
+    }
+  }
+}
