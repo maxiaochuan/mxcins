@@ -25,12 +25,12 @@
   "dependencies": {
     "@mxcins/pluralize": "1.0.1"
   },
-  "peerDependencies": {
-    "lodash": "^4.17.19"
-  },
   "devDependencies": {
     "@types/lodash": "~4.14.138",
     "lodash": "4.17.19"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.19"
   },
   "publishConfig": {
     "access": "public"
