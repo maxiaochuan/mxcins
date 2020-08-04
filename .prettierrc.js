@@ -1,5 +1,1 @@
-const { prettier } = require('@mxcins/bedrock');
-
-module.exports = {
-  ...prettier,
-};
+module.exports = require('@mxcins/bedrock').prettier;

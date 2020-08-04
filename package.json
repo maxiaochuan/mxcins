@@ -7,7 +7,7 @@
     "clean": "lerna clean --yes",
     "lint": "eslint --fix '**/*.{js,jsx,ts,tsx}'",
     "lint-staged": "lint-staged",
-    "prettier": "prettier --write \"{,!(node_modules)/**/}*.{js,ts}\"",
+    "prettier": "prettier --write \"**\/*.{js,jsx,ts,tsx}\"",
     "publish": "lerna publish",
     "test": "jest",
     "ts-compile-check": "tsc --noEmit"

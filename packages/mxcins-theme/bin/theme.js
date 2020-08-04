@@ -22,6 +22,5 @@ if (!input || !output) {
   console.error(`input: ${input}, output: ${output} is missing.`);
 }
 
-
 const { join } = require('path');
 require('../dist/index.cjs').default({ input: join(cwd, input), output: join(cwd, output) });
