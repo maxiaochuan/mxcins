@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-try-expect */
 import createServer from 'create-test-server';
-import request, { extend } from '../src/index';
+import request, { extend } from '../src';
 import { ResponseError } from '../src/utils';
 
 const send = (data: any, res: any) => {
@@ -8,9 +8,10 @@ const send = (data: any, res: any) => {
   res.send(data);
 };
 
+let prefix = (_: string) => '';
+
 describe('test request', () => {
   let server: any;
-  let prefix = (_: string) => '';
   beforeAll(async () => {
     server = await createServer();
     prefix = (api: string) => `${server.url}${api}`;
@@ -214,6 +215,7 @@ describe('test request', () => {
       expect(error.response.status).toBe(401);
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const errorHandler = (_: ResponseError) => 'name';
     const resp2 = await request(prefix('/test/expection'), { errorHandler });
 

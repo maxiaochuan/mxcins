@@ -3,6 +3,7 @@ import { useReducer, Reducer, useEffect } from 'react';
 import request, { IRequestOptions } from '@mxcins/request';
 import { tuple } from '@mxcins/types';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ANY = any;
 
 interface IFetchCommonOptions<V = Record<string, ANY>> extends IRequestOptions {
@@ -56,14 +57,14 @@ export interface UseFetch {
 }
 
 const ACTION_TYPES = tuple('DATA', 'CHANGE_LOADING');
-type ACTION_TYPE = typeof ACTION_TYPES[number];
+type ActionType = typeof ACTION_TYPES[number];
 
 interface IS {
   data?: ANY;
   loading: boolean;
 }
 
-interface IA<R extends ACTION_TYPE = ACTION_TYPE> {
+interface IA<R extends ActionType = ActionType> {
   type: R;
   payload: R extends 'INIT' ? ANY : R extends 'CHANGE_LOADING' ? boolean : never;
 }

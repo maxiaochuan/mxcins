@@ -1,7 +1,7 @@
 import { SELECTOR } from './utils';
 
 export default class VariablesOutputPostProcessor {
-  public filename: string = '';
+  public filename = '';
 
   constructor(_: any, filename: any) {
     this.filename = filename;
@@ -25,7 +25,7 @@ export default class VariablesOutputPostProcessor {
     }, {});
 
     // Pretty print the JSON
-    const contents = JSON.stringify(json, null, 2);
+    const contents = JSON.stringify(json, undefined, 2);
 
     // Write the variables to the given filename, creating
     // directories as we go if not present using mkdirp

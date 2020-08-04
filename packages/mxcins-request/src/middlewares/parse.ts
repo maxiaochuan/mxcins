@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { IRequestMiddleware, IResponse } from '../interface';
 import { ResponseError, safeJsonParse } from '../utils';
 

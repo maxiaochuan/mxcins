@@ -1,4 +1,4 @@
-/* eslint-disable no-extend-native */
+/* eslint-disable @typescript-eslint/ban-types, no-extend-native */
 import pluralize from '@mxcins/pluralize';
 import { camelCase, snakeCase, upperFirst, kebabCase, lowerFirst } from 'lodash';
 

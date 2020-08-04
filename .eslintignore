@@ -8,5 +8,6 @@ fixtures/
 website/
 examples/
 bin/
-
 templates/
+
+.eslintrc.js

@@ -5,7 +5,7 @@
     "bootstrap": "lerna bootstrap --npm-client=yarn",
     "build": "mlib build",
     "clean": "lerna clean --yes",
-    "lint": "eslint --fix '**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "lint-staged": "lint-staged",
     "prettier": "prettier --write \"**\/*.{js,jsx,ts,tsx}\"",
     "publish": "lerna publish",
@@ -23,7 +23,7 @@
     ]
   },
   "devDependencies": {
-    "@mxcins/bedrock": "1.4.0",
+    "@mxcins/bedrock": "1.4.2",
     "@mxcins/library": "0.4.4",
     "@types/jest": "24.0.6",
     "@types/lodash": "4.14.150",

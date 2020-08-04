@@ -1,17 +1,17 @@
-/* eslint-disable global-require */
+/* eslint-disable global-require, @typescript-eslint/no-var-requires, @typescript-eslint/explicit-module-boundary-types */
 import type { Options as ENV } from '@babel/preset-env';
 
 export interface IOpts {
   env?: ENV;
   debug?: boolean;
-  react?: boolean | {};
-  typescript?: boolean | {};
+  react?: boolean | Record<string, unknown>;
+  typescript?: boolean | Record<string, unknown>;
   transformRuntime?: boolean;
 }
 
 const toObject = (input: unknown) => (typeof input === 'object' ? input : {});
 
-export default (_: any, { debug, env, react, typescript, transformRuntime }: IOpts = {}) => ({
+export default (_: unknown, { debug, env, react, typescript, transformRuntime }: IOpts = {}) => ({
   presets: [
     [
       require('@babel/preset-env').default,

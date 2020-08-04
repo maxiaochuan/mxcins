@@ -2,12 +2,20 @@ import { isObject } from 'lodash';
 
 export interface IMapObjectOpts {
   deep?: boolean;
-  target?: Record<string, any>;
+  target?: Record<string, unknown>;
 }
 
-export type Fn = (key: string, value: unknown, object: any) => [string, unknown];
+export type Fn = (
+  key: string,
+  value: unknown,
+  object: Record<string, unknown>,
+) => [string, unknown];
 
-const mapObject = (object: Record<string, any>, fn: Fn, opts: IMapObjectOpts = {}) => {
+const mapObject = <T extends Record<string, unknown> = Record<string, unknown>>(
+  object: Record<string, unknown>,
+  fn: Fn,
+  opts: IMapObjectOpts = {},
+): T => {
   const options = {
     deep: false,
     target: {},
@@ -17,25 +25,24 @@ const mapObject = (object: Record<string, any>, fn: Fn, opts: IMapObjectOpts = {
   const { target, deep } = options;
   delete options.target;
 
-  const mapArray = (array: any[]): any[] =>
-    array.map(v => (isObject(v) ? mapObject(v, fn, options) : v));
+  const mapArray = (array: unknown[]): unknown =>
+    array.map(v => (isObject(v) ? mapObject(v as Record<string, unknown>, fn, options) : v));
   if (Array.isArray(object)) {
-    return mapArray(object);
+    return mapArray(object) as T;
   }
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const [key, value] of Object.entries(object)) {
+  Object.entries(object).forEach(([key, value]) => {
     const [newKey, newValue] = fn(key, value, object);
-    target[newKey] =
-      // eslint-disable-next-line no-nested-ternary
-      deep && isObject(newValue)
-        ? Array.isArray(newValue)
-          ? mapArray(newValue)
-          : mapObject(newValue, fn, options)
-        : newValue;
-  }
+    if (deep && isObject(newValue)) {
+      target[newKey] = Array.isArray(newValue)
+        ? mapArray(newValue)
+        : mapObject(newValue as Record<string, unknown>, fn, options);
+    } else {
+      target[newKey] = newValue;
+    }
+  });
 
-  return target;
+  return target as T;
 };
 
 export default mapObject;

@@ -5,12 +5,12 @@ const win: Window & typeof globalThis = (() => {
     return window;
   }
   if (typeof global !== 'undefined') {
-    return global as any;
+    return global as never;
   }
   if (typeof self !== 'undefined') {
-    return self as any;
+    return self as never;
   }
-  return {} as any;
+  return {} as never;
 })();
 
 export default win;

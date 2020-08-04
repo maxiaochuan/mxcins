@@ -39,7 +39,7 @@ export class ResponseError<T = any> extends Error {
 export function safeJsonParse(str: string) {
   try {
     return JSON.parse(str);
-  } catch (e) {
+  } catch {
     return str;
   }
 }

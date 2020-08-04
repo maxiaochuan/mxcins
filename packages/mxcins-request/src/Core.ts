@@ -25,7 +25,7 @@ export default class Core {
   public async request(uri: string, options: IRequestOptions = {}) {
     const ctx: IRequestContext = {
       req: { uri, options },
-      res: null,
+      res: undefined,
       cache: this.cache,
     };
 
@@ -40,8 +40,8 @@ export default class Core {
             try {
               const d = errorHandler(error);
               resolve(d);
-            } catch (e) {
-              reject(e);
+            } catch (error_) {
+              reject(error_);
             }
           } else {
             reject(error);

@@ -2,7 +2,8 @@ import 'whatwg-fetch';
 import { IRequestMiddleware, IResponse } from '../interface';
 import { RequestError, win } from '../utils';
 
-export const asyncTimeout = async (msec: number) =>
+export const asyncTimeout = async (msec: number): Promise<unknown> =>
+  // eslint-disable-next-line promise/param-names
   new Promise((_, reject) => {
     win.setTimeout(() => reject(new RequestError(`timeout of ${msec}ms exceeded`)), msec);
   });

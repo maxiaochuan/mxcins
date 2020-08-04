@@ -1,9 +1,10 @@
+/* eslint-disable unicorn/consistent-function-scoping */
 /* eslint-disable no-underscore-dangle */
 
 // eslint-disable-next-line max-classes-per-file
 import omit from '../omit';
 
-export type TreeNode<T extends Record<string, any>> = Node<T> & T;
+export type TreeNode<T extends Record<string, unknown>> = Node<T> & T;
 
 type Omited<T> = Omit<T, 'parent' | 'children' | 'ancestors' | 'proletariats'>;
 
@@ -14,7 +15,7 @@ const uuid = <T>(o: T, func: string | ((r: T) => string | undefined)): string | 
   return func(o);
 };
 
-export class Node<T extends Record<string, any>> {
+export class Node<T extends Record<string, unknown>> {
   public parent?: TreeNode<T>;
 
   public children?: Array<TreeNode<T>>;

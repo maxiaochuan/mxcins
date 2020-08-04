@@ -21,7 +21,7 @@ export default function arr2obj<T extends Record<string, any>>( // eslint-disabl
   options: IArr2objOptions<T> = {},
 ) {
   if (!Array.isArray(arr)) {
-    throw new Error('arr2obj first arg MUST be array.');
+    throw new TypeError('arr2obj first arg MUST be array.');
   }
   const { key = 'id', delimiter = '-', clone = false, prefix = '', suffix = '' } = options;
 

@@ -9,7 +9,10 @@
  * @param {K[]} keys
  * @returns {Omit<T, K>}
  */
-export default function omit<T extends {}, K extends keyof T>(target: T, keys: K[]): Omit<T, K> {
+export default function omit<T extends Record<string, unknown>, K extends keyof T>(
+  target: T,
+  keys: K[],
+): Omit<T, K> {
   const copy = { ...target };
   keys.forEach(key => {
     delete copy[key];

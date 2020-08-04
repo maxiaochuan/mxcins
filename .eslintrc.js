@@ -1,1 +1,5 @@
-module.exports = require('@mxcins/bedrock').eslint;
+const { eslint } = require('@mxcins/bedrock');
+
+module.exports = {
+  ...eslint,
+};

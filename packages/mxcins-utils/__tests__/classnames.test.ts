@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null */
 import classnames from '../src/classnames';
 
 describe('omit', () => {
@@ -14,7 +15,7 @@ describe('omit', () => {
     expect(classnames({ a: true, b: true })).toBe('a b');
   });
   it('undefined', () => {
-    expect(classnames('a b', undefined)).toBe('a b');
+    expect(classnames('a b')).toBe('a b');
   });
   it('merge', () => {
     expect(classnames(['a'], { b: true }, 'c d')).toBe('a b c d');

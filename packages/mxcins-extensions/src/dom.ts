@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-node-remove */
 import win from './window';
 // 2020-04-01 13:57:56 for IE TypeError remove();
 // 2020-04-08 20:43:13 for test window is undefined

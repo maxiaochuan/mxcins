@@ -13,11 +13,11 @@ export default class MapCache {
     this.maxSize = options.cacheSize || 20;
   }
 
-  public get(k: object) {
+  public get(k: Record<string, unknown>): IResponse | undefined {
     return this.cache.get(JSON.stringify(k));
   }
 
-  public set(k: object, v: IResponse, ttl = 60000) {
+  public set(k: Record<string, unknown>, v: IResponse, ttl = 60000): void {
     if (this.maxSize > 0 && this.cache.size >= this.maxSize) {
       const dKey = [...this.cache.keys()][0];
       this.cache.delete(dKey);
@@ -35,13 +35,13 @@ export default class MapCache {
     }
   }
 
-  public delete(k: object) {
+  public delete(k: Record<string, unknown>): boolean {
     const cacheKey = JSON.stringify(k);
     delete this.timer[cacheKey];
     return this.cache.delete(cacheKey);
   }
 
-  public clear() {
+  public clear(): void {
     this.timer = {};
     return this.cache.clear();
   }

@@ -1,5 +1,7 @@
 import Onion from '../src/Onion';
 
+const fn = () => Promise.resolve();
+
 describe('Onion', () => {
   it('constructor', () => {
     expect(new Onion().middlewares.length).toBe(0);
@@ -11,7 +13,6 @@ describe('Onion', () => {
 
   it('use', () => {
     const o = new Onion();
-    const fn = () => Promise.resolve();
     o.use(fn);
     expect(o.middlewares.length).toBe(1);
     expect(o.middlewares[0]).toBe(fn);

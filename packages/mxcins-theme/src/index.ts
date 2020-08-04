@@ -28,19 +28,18 @@ export default async ({ input, output }: { input: string; output: string }) => {
   const jsons: Record<string, any> = {};
   const csses: Record<string, any> = {};
   // theme to vars;
-  for (let index = 0; index < names.length; index += 1) {
-    const name = names[index];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const name of names) {
     // eslint-disable-next-line no-await-in-loop
     const transformed = await theme2vars({ ...theme[name], theme: name });
     // eslint-disable-next-line no-await-in-loop
     const css = await build(transformed);
 
     writeFileSync(join(output, `${name}.css`), css);
-    writeFileSync(join(output, `${name}.json`), JSON.stringify(transformed, null, 2));
+    writeFileSync(join(output, `${name}.json`), JSON.stringify(transformed, undefined, 2));
     jsons[name] = transformed;
     csses[name] = css;
   }
 
-  console.log('done!');
   return { jsons, csses };
 };

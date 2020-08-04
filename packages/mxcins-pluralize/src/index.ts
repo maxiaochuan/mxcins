@@ -1,8 +1,9 @@
+/* eslint-disable unicorn/explicit-length-check */
 const pluralRules: RegExp[] = [];
 const singularRules: RegExp[] = [];
-const uncountables: Record<string, any> = {};
-const irregularPlurals: Record<string, any> = {};
-const irregularSingles: Record<string, any> = {};
+const uncountables: Record<string, unknown> = {};
+const irregularPlurals: Record<string, unknown> = {};
+const irregularSingles: Record<string, unknown> = {};
 
 /**
  * Sanitize a pluralization rule to a usable regular expression.
@@ -39,7 +40,7 @@ function restoreCase(word: string, token: string): string {
 
   // Title cased words. E.g. "Title".
   if (word[0] === word[0].toUpperCase()) {
-    return token.charAt(0).toUpperCase() + token.substr(1).toLowerCase();
+    return token.charAt(0).toUpperCase() + token.slice(1).toLowerCase();
   }
 
   // Lower cased words. E.g. "test".
@@ -316,7 +317,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/(ax|test)is$/i, '$1es'],
   [/(alias|[^aou]us|t[lm]as|gas|ris)$/i, '$1es'],
   [/(e[mn]u)s?$/i, '$1s'],
-  [/([^l]ias|[aeiou]las|[ejzr]as|[iu]am)$/i, '$1'],
+  [/([^l]ias|[aeiou]las|[ejrz]as|[iu]am)$/i, '$1'],
   [
     /(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i,
     '$1i',
@@ -335,7 +336,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/sis$/i, 'ses'],
   [/(?:(kni|wi|li)fe|(ar|l|ea|eo|oa|hoo)f)$/i, '$1$2ves'],
   [/([^aeiouy]|qu)y$/i, '$1ies'],
-  [/([^ch][ieo][ln])ey$/i, '$1ies'],
+  [/([^ch][eio][ln])ey$/i, '$1ies'],
   [/(x|ch|ss|sh|zz)$/i, '$1es'],
   [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, '$1ices'],
   [/\b((?:tit)?m|l)(?:ice|ouse)$/i, '$1ice'],
@@ -352,10 +353,10 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
 [
   [/s$/i, ''],
   [/(ss)$/i, '$1'],
-  [/(wi|kni|(?:after|half|high|low|mid|non|night|[^\w]|^)li)ves$/i, '$1fe'],
+  [/(wi|kni|(?:after|half|high|low|mid|non|night|\W|^)li)ves$/i, '$1fe'],
   [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, '$1f'],
   [/ies$/i, 'y'],
-  [/\b([pl]|zomb|(?:neck|cross)?t|coll|faer|food|gen|goon|group|lass|talk|goal|cut)ies$/i, '$1ie'],
+  [/\b([lp]|zomb|(?:neck|cross)?t|coll|faer|food|gen|goon|group|lass|talk|goal|cut)ies$/i, '$1ie'],
   [/\b(mon|smil)ies$/i, '$1ey'],
   [/\b((?:tit)?m|l)ice$/i, '$1ouse'],
   [/(seraph|cherub)im$/i, '$1'],
@@ -488,6 +489,6 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   /o[iu]s$/i, // "carnivorous"
   /pox$/i, // "chickpox", "smallpox"
   /sheep$/i,
-].forEach(pluralize.addUncountableRule);
+].forEach(regexp => pluralize.addUncountableRule(regexp));
 
 export default pluralize;

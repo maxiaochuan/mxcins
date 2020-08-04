@@ -16,7 +16,7 @@ const post: IRequestMiddleware = async (ctx, next) => {
   } = ctx;
 
   const { method = 'get' } = options;
-  if (['post', 'put', 'patch', 'delete'].indexOf(method.toLowerCase()) === -1) {
+  if (!['post', 'put', 'patch', 'delete'].includes(method.toLowerCase())) {
     return next();
   }
 

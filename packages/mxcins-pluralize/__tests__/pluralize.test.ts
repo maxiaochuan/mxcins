@@ -1,4 +1,4 @@
-import pluralize from '../src/index';
+import pluralize from '../src';
 
 describe('pluralize', () => {
   it('normal', () => {

@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable unicorn/no-null, import/no-extraneous-dependencies */
 import { cloneDeep } from 'lodash';
 import { IRequestContext } from '../src/interface';
 import { get as getMiddleware } from '../src/middlewares';

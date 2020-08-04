@@ -16,35 +16,23 @@ export interface ICamelcaseKeysOpts {
   readonly exclude?: Array<string | RegExp>;
 }
 
-const isObjectOrArray = (input: unknown) => Array.isArray(input) || isObject(input);
+const isObjectOrArray = (input: unknown): input is Record<string, unknown> =>
+  Array.isArray(input) || isObject(input);
 const has = (array: Array<string | RegExp>, key: string) =>
   array.some(x => (typeof x === 'string' ? x === key : x.test(key)));
 
-const camelcaseKeys = <T = any>(input: any, opts: ICamelcaseKeysOpts = {}): T => {
-  const options = {
-    deep: false,
-    ...opts,
-  };
-
+const camelcaseKeys = <T = unknown>(input: unknown, opts: ICamelcaseKeysOpts = {}): T => {
+  const options = { deep: false, ...opts };
   const { exclude } = options;
 
-  const fn = (key: string, value: unknown): [string, unknown] => {
-    if (!(exclude && has(exclude, key))) {
-      if (cache.get(key)) {
-        key = cache.get(key);
-      } else {
-        const ret = camelCase(key);
-        cache.set(key, ret);
-        key = ret;
-      }
-    }
-    return [key, value];
-  };
+  const fn = (k: string, v: unknown): [string, unknown] =>
+    exclude && has(exclude, k) ? [k, v] : [cache.get(k) || cache.set(k, camelCase(k)).get(k), v];
 
   if (Array.isArray(input)) {
-    return (input as any[]).map(v => (isObjectOrArray(v) ? mapObject(v, fn, options) : v)) as any;
+    return (input.map(v => (isObjectOrArray(v) ? mapObject(v, fn, options) : v)) as unknown) as T;
   }
-  return isObjectOrArray(input) ? mapObject(input, fn, options) : input;
+
+  return (isObjectOrArray(input) ? mapObject(input, fn, options) : input) as T;
 };
 
 export default camelcaseKeys;

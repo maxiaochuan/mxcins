@@ -11,7 +11,7 @@ export default class Downloader {
     fields?: { [k: string]: string },
   ) {
     const content = csv.encode(data, { fields: fields || Object.keys(data[0] || {}) });
-    const blob = new Blob(['\ufeff', content], { type: 'text/csv;charset=utf-8' });
+    const blob = new Blob(['\uFEFF', content], { type: 'text/csv;charset=utf-8' });
 
     return Downloader.download('csv', `${name}.csv`, blob);
   }
@@ -30,9 +30,9 @@ export default class Downloader {
         link.setAttribute('download', name);
         link.setAttribute('type', Downloader.DOCUMENT_TYPES[type]);
         link.style.visibility = 'hidden';
-        document.body.appendChild(link);
+        document.body.append(link);
         link.click();
-        document.body.removeChild(link);
+        link.remove();
       }
     }
   }

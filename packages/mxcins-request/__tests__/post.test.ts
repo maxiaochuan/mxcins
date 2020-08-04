@@ -2,11 +2,12 @@ import { IRequestContext } from '../src/interface';
 import { post as postMiddleware } from '../src/middlewares';
 import MapCache from '../src/MapCache';
 
-const ctx: IRequestContext = { req: { uri: `/response` }, res: null, cache: new MapCache({}) };
+const ctx: IRequestContext = { req: { uri: `/response` }, res: undefined, cache: new MapCache({}) };
+
+const next = () => Promise.resolve();
 
 describe('postMiddleware', () => {
   it('method', async () => {
-    const next = () => Promise.resolve();
     await postMiddleware(ctx, next);
     expect(ctx.req.options && ctx.req.options.method).toBe(undefined);
 
@@ -16,7 +17,6 @@ describe('postMiddleware', () => {
   });
 
   it('request type', async () => {
-    const next = () => Promise.resolve();
     const o = { method: 'post' };
     ctx.req = { uri: '/response', options: o };
     await postMiddleware(ctx, next);

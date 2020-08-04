@@ -24,8 +24,8 @@ interface IEncodeOpts {
 }
 
 const mostFrequent = (text: string, delimiters: string[]) => {
-  for (let i = 0; i < delimiters.length; i += 1) {
-    const current = delimiters[i];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const current of delimiters) {
     const index = text.indexOf(current);
     if (index !== -1) {
       return current;
@@ -130,7 +130,7 @@ export function decode(text: string, options: IDecodeOpts = {}) {
   const quoteMark = '"';
   const ret: Array<Record<string, any>> = [];
 
-  const hasQuote = text.indexOf(quoteMark) !== -1;
+  const hasQuote = text.includes(quoteMark);
 
   const rows = (hasQuote ? safeParse : unsafeParse)(text, opts);
 

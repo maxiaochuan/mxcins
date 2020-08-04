@@ -21,7 +21,7 @@ export default class Onion {
     this.middlewares.splice(this.middlewares.length - this.defaultMiddlewaresLen, 0, middleware);
   }
 
-  public excute(ctx: any = null) {
+  public excute(ctx: undefined | any): Promise<any> {
     const fn = this.compose();
     return fn(ctx);
   }
@@ -45,8 +45,8 @@ export default class Onion {
 
         try {
           return Promise.resolve(fn(ctx, () => dispatch(i + 1)));
-        } catch (err) {
-          return Promise.reject(err);
+        } catch (error) {
+          return Promise.reject(error);
         }
       };
 
