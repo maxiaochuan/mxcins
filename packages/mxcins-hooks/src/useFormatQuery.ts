@@ -1,43 +1,63 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useReducer, Reducer, useEffect } from 'react';
+import { useReducer, Reducer, useEffect, useCallback, useMemo } from 'react';
 import { tuple } from '@mxcins/types';
 import { DocumentNode } from 'graphql';
 import { QueryResult } from '@apollo/react-common';
 import { QueryHookOptions, useQuery } from '@apollo/react-hooks';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ANY = any;
 
-interface IFormatQueryHookOptionsWithFormatter<D, Q, V> extends QueryHookOptions<V> {
+interface IFormatQueryHookOptionsWithFormatter<D, Q, V>
+  extends Omit<QueryHookOptions<V>, 'onCompleted'> {
   formatter: (data: Q) => D;
+  onCompleted?: (data: D) => void;
 }
 
 interface IFormatQueryHookOptionsWithInit<Q, V> extends QueryHookOptions<V> {
   init: Q;
 }
 
-interface IFormatQueryHookOptionsWithBoth<D, Q, V> extends QueryHookOptions<V> {
+interface IFormatQueryHookOptionsWithBoth<D, Q, V>
+  extends Omit<QueryHookOptions<V>, 'onCompleted'> {
   init: D;
   formatter: (data: Q) => D;
+  onCompleted?: (data: D) => void;
 }
 
-export interface IQueryHookOptions<D, Q, V> extends QueryHookOptions<V> {
+interface IFormatQueryResultWithBoth<D, V> extends Omit<QueryResult<D, V>, 'data'> {
+  data: D;
+}
+
+interface IFormatQueryResultWithFormatter<D, V> extends Omit<QueryResult<D, V>, 'data'> {
+  data?: D;
+}
+
+interface IFormatQueryResultWIthInit<Q, V> extends Omit<QueryResult<Q, V>, 'data'> {
+  data: Q;
+}
+
+export interface IQueryHookOptions<D, Q, V> extends Omit<QueryHookOptions<V>, 'onCompleted'> {
   init?: D;
   formatter?: (data: Q) => D;
+  onCompleted?: (data: D) => void;
 }
 
 export interface UseFormatQuery {
-  <T = ANY, Q = ANY, V = ANY>(
+  <D = ANY, Q = ANY, V = ANY>(
     service: DocumentNode,
-    options: IFormatQueryHookOptionsWithBoth<T, Q, V>,
-  ): Omit<QueryResult<T, V>, 'data'> & { data: T };
-  <T = ANY, Q = ANY, V = ANY>(
+    options: IFormatQueryHookOptionsWithBoth<D, Q, V>,
+  ): IFormatQueryResultWithBoth<D, V>;
+
+  <D = ANY, Q = ANY, V = ANY>(
     service: DocumentNode,
-    options: IFormatQueryHookOptionsWithFormatter<T, Q, V>,
-  ): QueryResult<T, V>;
-  <Q = ANY, V = ANY>(service: DocumentNode, options: IFormatQueryHookOptionsWithInit<Q, V>): Omit<
-    QueryResult<Q, V>,
-    'data'
-  > & { data: Q };
+    options: IFormatQueryHookOptionsWithFormatter<D, Q, V>,
+  ): IFormatQueryResultWithFormatter<D, V>;
+
+  <Q = ANY, V = ANY>(
+    service: DocumentNode,
+    options: IFormatQueryHookOptionsWithInit<Q, V>,
+  ): IFormatQueryResultWIthInit<Q, V>;
+
   <Q = ANY, V = ANY>(service: DocumentNode, options?: IQueryHookOptions<Q, Q, V>): QueryResult<
     Q,
     V
@@ -60,17 +80,9 @@ interface IA<R extends ActionType = ActionType> {
 const reducer: Reducer<IS, IA> = (prev, action) => {
   switch (action.type) {
     case 'DATA':
-      return {
-        ...prev,
-        data: action.payload,
-        loading: false,
-      };
-    case 'CHANGE_LOADING': {
-      return {
-        ...prev,
-        loading: action.payload,
-      };
-    }
+      return { ...prev, data: action.payload };
+    case 'CHANGE_LOADING':
+      return action.payload === prev.loading ? prev : { ...prev, loading: action.payload };
     default:
       return prev;
   }
@@ -80,20 +92,32 @@ export const useFormatQuery: UseFormatQuery = (
   service: DocumentNode,
   options: IQueryHookOptions<ANY, ANY, ANY> = {},
 ) => {
-  const { formatter, init, ...query } = options;
-  const { data, loading, networkStatus, ...others } = useQuery(service, {
+  const { formatter, init, onCompleted, ...query } = options;
+  const [state, dispatch] = useReducer(reducer, { loading: false, data: init });
+
+  const onQueryCompleted = useCallback<Required<IQueryHookOptions<ANY, ANY, ANY>>['onCompleted']>(
+    ret => {
+      const payload = (formatter && formatter(ret)) || ret;
+      dispatch({ type: 'DATA', payload });
+      if (onCompleted) {
+        onCompleted(payload);
+      }
+    },
+    [],
+  );
+
+  const result = useQuery(service, {
     notifyOnNetworkStatusChange: true,
+    onCompleted: onQueryCompleted,
     ...query,
   });
-  const [state, dispatch] = useReducer(reducer, { loading, data: init });
 
-  useEffect(() => {
-    if (!loading && data && networkStatus === 7) {
-      dispatch({ type: 'DATA', payload: formatter ? formatter(data) : data });
-    } else {
-      dispatch({ type: 'CHANGE_LOADING', payload: loading });
-    }
-  }, [loading, data, networkStatus]);
+  useEffect(() => dispatch({ type: 'CHANGE_LOADING', payload: result.loading }), [result.loading]);
 
-  return { ...others, networkStatus, ...state, data: state.data as ANY };
+  const returned = useMemo(() => ({ ...result, data: state.data, loading: state.loading }), [
+    state.data,
+    state.loading,
+  ]);
+
+  return returned;
 };

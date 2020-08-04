@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useReducer, Reducer, useEffect } from 'react';
 import request, { IRequestOptions } from '@mxcins/request';
 import { tuple } from '@mxcins/types';
