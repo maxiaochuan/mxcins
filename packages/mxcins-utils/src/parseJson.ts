@@ -12,7 +12,7 @@
  */
 export default function parseJson<R = any>(
   txt: string,
-  reviver?: (key: any, value: any) => any,
+  reviver?: (key: string, value: any) => any,
   context = 20,
 ): R {
   try {

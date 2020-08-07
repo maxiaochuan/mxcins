@@ -14,7 +14,7 @@ export default class Onion {
     this.defaultMiddlewaresLen = this.middlewares.length;
   }
 
-  public use(middleware: Middleware) {
+  public use(middleware: Middleware): void {
     if (typeof middleware !== 'function') {
       throw new TypeError('Middleware must be function!');
     }

@@ -17,12 +17,15 @@ export default class Core {
     this.cache = new MapCache(options);
   }
 
-  public use(middleware: IRequestMiddleware) {
+  public use(middleware: IRequestMiddleware): this {
     this.onion.use(middleware);
     return this;
   }
 
-  public async request(uri: string, options: IRequestOptions = {}) {
+  public async request(
+    uri: string,
+    options: IRequestOptions = {},
+  ): Promise<IRequestContext['res']> {
     const ctx: IRequestContext = {
       req: { uri, options },
       res: undefined,

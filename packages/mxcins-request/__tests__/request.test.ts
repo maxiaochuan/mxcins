@@ -1,9 +1,10 @@
 /* eslint-disable jest/no-try-expect */
 import createServer from 'create-test-server';
 import request, { extend } from '../src';
-import { ResponseError } from '../src/utils';
 
-const send = (data: any, res: any) => {
+type ANY = any;
+
+const send = (data: ANY, res: ANY) => {
   res.setHeader('access-control-allow-origin', '*');
   res.send(data);
 };
@@ -11,7 +12,7 @@ const send = (data: any, res: any) => {
 let prefix = (_: string) => '';
 
 describe('test request', () => {
-  let server: any;
+  let server: ANY;
   beforeAll(async () => {
     server = await createServer();
     prefix = (api: string) => `${server.url}${api}`;
@@ -23,7 +24,7 @@ describe('test request', () => {
   });
 
   it('timeout', async () => {
-    server.get('/test/timeout', (_: any, res: any) => {
+    server.get('/test/timeout', (_: ANY, res: ANY) => {
       setTimeout(() => {
         send('ok', res);
       }, 1000);
@@ -45,7 +46,7 @@ describe('test request', () => {
   });
 
   it('request type', async () => {
-    server.post('/test/requestType', (req: any, res: any) => {
+    server.post('/test/requestType', (req: ANY, res: ANY) => {
       send(req.body, res);
     });
 
@@ -72,7 +73,7 @@ describe('test request', () => {
   });
 
   it('response type', async () => {
-    server.post('/test/responseType', (req: any, res: any) => {
+    server.post('/test/responseType', (req: ANY, res: ANY) => {
       send(req.body, res);
     });
 
@@ -105,7 +106,7 @@ describe('test request', () => {
   });
 
   it('get response', async () => {
-    server.post('/test/create', (req: any, res: any) => {
+    server.post('/test/create', (req: ANY, res: ANY) => {
       send(req.body, res);
     });
 
@@ -156,7 +157,7 @@ describe('test request', () => {
   });
 
   it('params fix compile', async () => {
-    server.get('/test/params', (req: any, res: any) => {
+    server.get('/test/params', (req: ANY, res: ANY) => {
       send(req.query, res);
     });
 
@@ -202,7 +203,7 @@ describe('test request', () => {
   });
 
   it('test exception', async () => {
-    server.get('/test/expection', (_: any, res: any) => {
+    server.get('/test/expection', (_: ANY, res: ANY) => {
       res.setHeader('access-control-allow-origin', '*');
       res.status(401);
       res.send('a');
@@ -216,14 +217,14 @@ describe('test request', () => {
     }
 
     // eslint-disable-next-line unicorn/consistent-function-scoping
-    const errorHandler = (_: ResponseError) => 'name';
+    const errorHandler = () => 'name';
     const resp2 = await request(prefix('/test/expection'), { errorHandler });
 
     expect(resp2).toBe('name');
   });
 
   it('test cache', async () => {
-    server.get('/test/cache', (_: any, res: any) => {
+    server.get('/test/cache', (_: ANY, res: ANY) => {
       setTimeout(() => {
         send('cache', res);
       }, 2000);
@@ -238,7 +239,7 @@ describe('test request', () => {
   });
 
   it('test interceptors', async () => {
-    server.get('/test/interceptors', (req: any, res: any) => {
+    server.get('/test/interceptors', (req: ANY, res: ANY) => {
       send(req.query, res);
     });
 

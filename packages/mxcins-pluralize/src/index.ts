@@ -1,9 +1,9 @@
 /* eslint-disable unicorn/explicit-length-check */
-const pluralRules: RegExp[] = [];
-const singularRules: RegExp[] = [];
-const uncountables: Record<string, unknown> = {};
-const irregularPlurals: Record<string, unknown> = {};
-const irregularSingles: Record<string, unknown> = {};
+const pluralRules: [RegExp, string][] = [];
+const singularRules: [RegExp, string][] = [];
+const uncountables: Record<string, boolean> = {};
+const irregularPlurals: Record<string, string> = {};
+const irregularSingles: Record<string, string> = {};
 
 /**
  * Sanitize a pluralization rule to a usable regular expression.
@@ -54,7 +54,7 @@ function restoreCase(word: string, token: string): string {
  * @param  {Array}  args
  * @return {string}
  */
-function interpolate(str: string, args: any[]): string {
+function interpolate(str: string, args: string[]): string {
   return str.replace(/\$(\d{1,2})/g, (_, index) => args[index] || '');
 }
 
@@ -65,7 +65,7 @@ function interpolate(str: string, args: any[]): string {
  * @param  {Array}  rule
  * @return {string}
  */
-function replace(word: string, rule: any[]): string {
+function replace(word: string, rule: [RegExp, string]): string {
   return word.replace(rule[0], function re(match, index) {
     // eslint-disable-next-line prefer-rest-params
     const result = interpolate(rule[1], [...arguments]);
@@ -86,7 +86,7 @@ function replace(word: string, rule: any[]): string {
  * @param  {Array}    rules
  * @return {string}
  */
-function sanitizeWord(token: string, word: string, rules: any[]): string {
+function sanitizeWord(token: string, word: string, rules: [RegExp, string][]): string {
   // Empty string or doesn't need fixing.
   if (!token.length || Object.prototype.hasOwnProperty.call(uncountables, token)) {
     return word;
@@ -115,8 +115,12 @@ function sanitizeWord(token: string, word: string, rules: any[]): string {
  * @param  {Array}    rules
  * @return {Function}
  */
-function replaceWord(replaceMap: any, keepMap: any, rules: any[]) {
-  return function replaceWordFunc(word: any) {
+function replaceWord(
+  replaceMap: Record<string, string>,
+  keepMap: Record<string, string>,
+  rules: [RegExp, string][],
+) {
+  return function replaceWordFunc(word: string) {
     // Get the correct token and case restoration functions.
     const token = word.toLowerCase();
 
@@ -138,7 +142,11 @@ function replaceWord(replaceMap: any, keepMap: any, rules: any[]) {
 /**
  * Check if a word is part of the map.
  */
-function checkWord(replaceMap: any, keepMap: any, rules: any) {
+function checkWord(
+  replaceMap: Record<string, string>,
+  keepMap: Record<string, string>,
+  rules: [RegExp, string][],
+) {
   return function checkWordFunc(word: string) {
     const token = word.toLowerCase();
 
@@ -161,7 +169,7 @@ function checkWord(replaceMap: any, keepMap: any, rules: any) {
  * @param  {boolean} inclusive
  * @return {string}
  */
-function pluralize(word: string, count: number, inclusive: boolean) {
+function pluralize(word: string, count: number, inclusive: boolean): string {
   const pluralized = count === 1 ? pluralize.singular(word) : pluralize.plural(word);
 
   return (inclusive ? `${count} ` : '') + pluralized;
@@ -202,7 +210,7 @@ pluralize.isSingular = checkWord(irregularPlurals, irregularSingles, singularRul
  * @param {string}          replacement
  */
 pluralize.addPluralRule = (rule: string | RegExp, replacement: string) => {
-  pluralRules.push([sanitizeRule(rule), replacement] as any);
+  pluralRules.push([sanitizeRule(rule), replacement]);
 };
 
 /**
@@ -212,7 +220,7 @@ pluralize.addPluralRule = (rule: string | RegExp, replacement: string) => {
  * @param {string}          replacement
  */
 pluralize.addSingularRule = (rule: string | RegExp, replacement: string) => {
-  singularRules.push([sanitizeRule(rule), replacement] as any);
+  singularRules.push([sanitizeRule(rule), replacement]);
 };
 
 /**
@@ -345,7 +353,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/eaux$/i, '$0'],
   [/m[ae]n$/i, 'men'],
   ['thou', 'you'],
-].forEach(rule => pluralize.addPluralRule(rule[0], rule[1] as any));
+].forEach(rule => pluralize.addPluralRule(rule[0], rule[1] as string));
 
 /**
  * Singularization rules.
@@ -383,7 +391,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/(child)ren$/i, '$1'],
   [/(eau)x?$/i, '$1'],
   [/men$/i, 'man'],
-].forEach(rule => pluralize.addSingularRule(rule[0], rule[1] as any));
+].forEach(rule => pluralize.addSingularRule(rule[0], rule[1] as string));
 
 /**
  * Uncountable rules.
