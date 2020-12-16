@@ -22,6 +22,9 @@
     "dist",
     "bin"
   ],
+  "scripts": {
+    "build": "mlib build"
+  },
   "dependencies": {
     "@mxcins/utils": "1.13.4",
     "less": "3.11.3",

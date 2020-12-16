@@ -18,16 +18,19 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "deepmerge": "4.2.2"
+  "scripts": {
+    "build": "mlib build"
   },
-  "devDependencies": {
-    "@types/lodash": "~4.14.138",
-    "lodash": "^4.17.15"
+  "dependencies": {
+    "@types/lodash": "4.14.165",
+    "deepmerge": "4.2.2",
+    "lodash": "4.17.15"
   },
   "peerDependencies": {
-    "@mxcins/types": "~1.5.0",
-    "lodash": "^4.17.15"
+    "@mxcins/types": "~1.5.0"
+  },
+  "devDependencies": {
+    "@mxcins/types": "1.7.3"
   },
   "publishConfig": {
     "access": "public"

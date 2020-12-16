@@ -19,6 +19,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "mlib build"
+  },
   "dependencies": {
     "path-to-regexp": "6.1.0",
     "qs": "6.9.3",

@@ -17,6 +17,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "mlib build"
+  },
   "dependencies": {
     "@mxcins/request": "2.2.2"
   },

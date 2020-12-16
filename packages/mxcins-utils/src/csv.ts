@@ -2,8 +2,8 @@ const CELL_DELIMITERS = [',', ';', '\t', '|', '^'];
 const LINE_DELIMITERS = ['\r\n', '\r', '\n'];
 
 const STANDARD_DECODE_OPTS = {
-  // newline: LINE_DELIMITERS[0],
-  // delimiter: CELL_DELIMITERS[0],
+  newline: LINE_DELIMITERS[0],
+  delimiter: CELL_DELIMITERS[0],
 };
 
 const STANDARD_ENCODE_OPTS = {
@@ -11,13 +11,25 @@ const STANDARD_ENCODE_OPTS = {
   delimiter: CELL_DELIMITERS[0],
 };
 
-interface IDecodeOpts {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ANY = any;
+type V = string | number;
+
+interface DecodeOpts {
   newline?: string;
   delimiter?: string;
   fields?: boolean;
 }
 
-interface IEncodeOpts {
+interface DecodeOptsWithoutFields extends DecodeOpts {
+  fields: false;
+}
+
+interface DecodeOptsWithFields extends DecodeOpts {
+  fields: true;
+}
+
+interface EncodeOpts {
   newline?: string;
   delimiter?: string;
   fields: string[] | Record<string, string>;
@@ -35,18 +47,14 @@ const mostFrequent = (text: string, delimiters: string[]) => {
   return delimiters[0];
 };
 
-const unsafeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
-  const lines = text.split(opts.newline).filter(Boolean);
+const unsafeParse = (text: string, opts: Required<DecodeOpts>): V[][] => {
+  const { delimiter, newline } = opts;
+  const rows = text.split(newline);
 
-  if (!lines.length) {
-    throw new Error(`csv parser error: lines length ${lines.length}`);
-  }
-
-  const cells = (line: string) => line.split(opts.delimiter);
-  return lines.map(line => cells(line));
+  return rows.map(row => row.split(delimiter));
 };
 
-const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
+const safeParse = (text: string, opts: Required<DecodeOpts>): V[][] => {
   const { newline, delimiter } = opts;
   const quoteMark = '"';
   const len = text.length;
@@ -111,6 +119,7 @@ const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
     }
   }
 
+  // eslint-disable-next-line unicorn/explicit-length-check
   if (cell.length) {
     push('row');
   }
@@ -118,7 +127,21 @@ const safeParse = (text: string, opts: Required<IDecodeOpts>): any[][] => {
   return rows;
 };
 
-export function decode(text: string, options: IDecodeOpts = {}) {
+interface DecodeMethod<R = false> {
+  <T extends Record<string, V> = ANY>(text: string, options: DecodeOptsWithFields): {
+    data: T[];
+    fields: string[];
+  };
+  <T extends Record<string, V> = ANY>(text: string, options: DecodeOptsWithoutFields): T[];
+  <T extends Record<string, V> = ANY>(text: string, options?: DecodeOpts): R extends true
+    ? { data: T[]; fields: string[] }
+    : T[];
+}
+
+export const decode: DecodeMethod = <T extends Record<string, V>>(
+  text: string,
+  options: DecodeOpts = {},
+) => {
   const opts = {
     ...STANDARD_DECODE_OPTS,
     delimiter: options.delimiter || mostFrequent(text, CELL_DELIMITERS),
@@ -128,7 +151,7 @@ export function decode(text: string, options: IDecodeOpts = {}) {
   };
 
   const quoteMark = '"';
-  const ret: Array<Record<string, any>> = [];
+  const ret: T[] = [];
 
   const hasQuote = text.includes(quoteMark);
 
@@ -140,38 +163,44 @@ export function decode(text: string, options: IDecodeOpts = {}) {
     const row = rows.shift();
     // 筛选空行
     if (row && row.filter(Boolean).length !== 0) {
-      ret.push(
-        fields.reduce<Record<string, string>>((prev, f, i) => {
-          // eslint-disable-next-line no-param-reassign
-          prev[f] = row[i] || '';
-          return prev;
-        }, {}),
-      );
+      const r = fields.reduce<ANY>((prev, f, i) => {
+        prev[f] = row[i] || '';
+        return prev;
+      }, {} as T);
+      ret.push(r);
     }
   }
 
   if (opts.fields) {
-    return { data: ret, fields };
+    return { data: ret, fields } as ANY;
   }
 
-  return ret;
-}
+  return ret as ANY;
+};
 
-export function encode(objects: Array<Record<string, string | number>>, options: IEncodeOpts) {
+const encodeRow = (arr: string[], options: Omit<EncodeOpts, 'fields'> = {}) => {
+  const { delimiter, newline } = { ...STANDARD_ENCODE_OPTS, ...options };
+  return `${arr.join(delimiter)}${newline}`;
+};
+
+export function encode(input: Record<string, unknown>[], options: EncodeOpts): string {
   const opts = {
     ...STANDARD_ENCODE_OPTS,
     ...options,
   };
 
-  const { fields } = opts;
+  const { fields, ...rest } = opts;
 
-  const isArr = Array.isArray(fields);
-  const keys = isArr ? (fields as string[]) : Object.keys(fields);
+  const fieldsIsArray = Array.isArray(fields);
+  const properties = fieldsIsArray ? (fields as string[]) : Object.keys(fields);
 
-  const text = objects.reduce((prev, obj) => {
-    prev += keys.map(f => obj[f]).join(opts.delimiter) + opts.newline;
-    return prev;
-  }, (isArr ? keys : keys.map(k => (fields as Record<string, string>)[k])).join(opts.delimiter) + opts.newline);
+  const header = fieldsIsArray
+    ? properties
+    : properties.map(property => (fields as Record<string, string>)[property]);
 
-  return text;
+  const content = input.map(r => properties.map(property => `${r[property]}`));
+
+  const csv = `${encodeRow(header, rest)}${content.map(c => encodeRow(c, rest))}`;
+
+  return csv;
 }

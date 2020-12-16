@@ -19,7 +19,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "../../node_modules/@mxcins/library/bin/mlib.js build",
+    "build": "mlib build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

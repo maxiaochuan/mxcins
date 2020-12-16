@@ -5,15 +5,19 @@ export default class Downloader {
     csv: 'text/csv',
   };
 
-  public static csv<T extends Record<string, any>>(
-    name: string,
-    data: T[],
+  public static csv<T extends Record<string, unknown>>(
+    filename: string,
+    data: T[] | string,
     fields?: { [k: string]: string },
-  ) {
-    const content = csv.encode(data, { fields: fields || Object.keys(data[0] || {}) });
-    const blob = new Blob(['\uFEFF', content], { type: 'text/csv;charset=utf-8' });
+  ): void {
+    const str =
+      typeof data === 'string'
+        ? data
+        : csv.encode(data, { fields: fields || Object.keys(data[0] || {}) });
+    const content = str.startsWith('\uFEFF') ? [str] : ['\uFEFF', str];
+    const blob = new Blob(content, { type: 'text/csv;charset=utf-8' });
 
-    return Downloader.download('csv', `${name}.csv`, blob);
+    return Downloader.download('csv', `${filename}.csv`, blob);
   }
 
   private static download(type: 'csv', name: string, blob: Blob) {

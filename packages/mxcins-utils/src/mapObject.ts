@@ -1,6 +1,6 @@
 import { isObject } from 'lodash';
 
-export interface IMapObjectOpts {
+export interface MapObjectOptions {
   deep?: boolean;
   target?: Record<string, unknown>;
 }
@@ -14,9 +14,9 @@ export type Fn = (
 const mapObject = <T extends Record<string, unknown> = Record<string, unknown>>(
   object: Record<string, unknown>,
   fn: Fn,
-  opts: IMapObjectOpts = {},
+  opts: MapObjectOptions = {},
 ): T => {
-  const options = {
+  const options: MapObjectOptions = {
     deep: false,
     target: {},
     ...opts,
@@ -34,11 +34,11 @@ const mapObject = <T extends Record<string, unknown> = Record<string, unknown>>(
   Object.entries(object).forEach(([key, value]) => {
     const [newKey, newValue] = fn(key, value, object);
     if (deep && isObject(newValue)) {
-      target[newKey] = Array.isArray(newValue)
+      target![newKey] = Array.isArray(newValue)
         ? mapArray(newValue)
         : mapObject(newValue as Record<string, unknown>, fn, options);
     } else {
-      target[newKey] = newValue;
+      target![newKey] = newValue;
     }
   });
 

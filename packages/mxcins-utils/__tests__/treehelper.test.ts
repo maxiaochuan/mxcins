@@ -1,4 +1,4 @@
-import TreeHelper from '../src/helpers/Tree';
+import TreeHelper from '../src/tree';
 
 const d1 = [
   { id: '0', parent: null, name: 'n0' },

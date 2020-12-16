@@ -1,20 +1,25 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "bootstrap": "lerna bootstrap --npm-client=yarn",
-    "build": "mlib build",
+    "build": "yarn workspaces run build",
     "clean": "lerna clean --yes",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
     "lint-staged": "lint-staged",
-    "prettier": "prettier --write \"**\/*.{js,jsx,ts,tsx}\"",
-    "publish": "lerna publish",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "publish": "lerna publish from-git",
     "test": "jest",
-    "ts-compile-check": "tsc --noEmit"
+    "ts-compile-check": "tsc --noEmit",
+    "version": "lerna version --conventional-commits --yes"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn ts-compile-check && lint-staged"
+      "pre-commit": "yarn ts-compile-check && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -22,12 +27,21 @@
       "eslint --fix"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
   "devDependencies": {
+    "@commitlint/cli": "9.1.2",
+    "@commitlint/config-conventional": "9.1.2",
     "@mxcins/bedrock": "1.4.2",
     "@mxcins/library": "0.4.4",
     "@types/jest": "24.0.6",
     "@types/lodash": "4.14.150",
     "babel-jest": "25.3.0",
+    "commitizen": "4.2.2",
+    "cz-lerna-changelog": "2.0.3",
     "husky": "4.2.5",
     "jest": "25.3.0",
     "lerna": "3.22.1",
@@ -35,6 +49,6 @@
     "lodash": "4.17.19",
     "shelljs": "0.8.3",
     "ts-jest": "24.0.0",
-    "typescript": "4.1.3"
+    "typescript": "3.8.3"
   }
 }

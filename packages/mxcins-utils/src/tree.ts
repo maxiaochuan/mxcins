@@ -1,12 +1,14 @@
-/* eslint-disable unicorn/consistent-function-scoping */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable max-classes-per-file */
+import { tuple } from '@mxcins/types';
+import omit from './omit';
 
-// eslint-disable-next-line max-classes-per-file
-import omit from '../omit';
+const BUILTIN_KEYS = tuple('parent', 'children', 'ancestors', 'proletariats');
 
-export type TreeNode<T extends Record<string, unknown>> = Node<T> & T;
+type BuiltinKeyType = typeof BUILTIN_KEYS[number];
 
-type Omited<T> = Omit<T, 'parent' | 'children' | 'ancestors' | 'proletariats'>;
+type Omited<T> = Omit<T, BuiltinKeyType>;
+
+const hide = <T>(node: TreeNode<Omited<T>>): Omited<T> => omit(node, BUILTIN_KEYS) as Omited<T>;
 
 const uuid = <T>(o: T, func: string | ((r: T) => string | undefined)): string | undefined => {
   if (typeof func === 'string') {
@@ -15,14 +17,16 @@ const uuid = <T>(o: T, func: string | ((r: T) => string | undefined)): string | 
   return func(o);
 };
 
+export type TreeNode<T extends Record<string, unknown>> = Omited<T> & Node<T>;
+
 export class Node<T extends Record<string, unknown>> {
   public parent?: TreeNode<T>;
 
-  public children?: Array<TreeNode<T>>;
+  public children?: TreeNode<T>[];
 
-  public ancestors?: Array<TreeNode<T>>;
+  public ancestors?: TreeNode<T>[];
 
-  public proletariats?: Array<TreeNode<T>>;
+  public proletariats?: TreeNode<T>[];
 
   constructor(init: T) {
     Object.keys(init).forEach(key => {
@@ -40,7 +44,7 @@ export class Node<T extends Record<string, unknown>> {
 
 type Mode = 'parent' | 'children';
 
-export interface ITreeOpts<T> {
+export interface TreeOpts<T> {
   uid?: string | ((r: T) => string | undefined);
   puid?: string | ((r: T) => string | undefined);
   mode?: Mode;
@@ -51,16 +55,15 @@ export interface ITreeOpts<T> {
 
 const DEFAULT_UID = 'id';
 const DEFAULT_PUID = 'parent.id';
-// const DEFAULT_MODE = '';
 
-export default class Tree<T extends Record<string, any>> {
-  public opts: Required<ITreeOpts<T>>;
+export default class Tree<T extends Record<string, unknown>> {
+  public opts: Required<TreeOpts<T>>;
 
   public roots: Array<TreeNode<T>> = [];
 
   public nodes: Partial<Record<string, TreeNode<T>>> = {};
 
-  constructor(data: T[], opts: ITreeOpts<T> = {}) {
+  constructor(data: T[], opts: TreeOpts<T> = {}) {
     const { uid = DEFAULT_UID, puid = DEFAULT_PUID, mode, ancestors, proletariats } = opts;
     this.opts = {
       uid,
@@ -69,7 +72,7 @@ export default class Tree<T extends Record<string, any>> {
       proletariats: !!proletariats,
       mode: mode || Tree.guess({ data, puid }),
     };
-    if (data && data.length) {
+    if (data?.length) {
       this.bind(data);
     }
   }
@@ -82,6 +85,9 @@ export default class Tree<T extends Record<string, any>> {
     puid: string | ((r: T) => string | undefined);
   }): Mode {
     const one = data[0];
+    if (!one) {
+      return 'parent';
+    }
     const pid = uuid(one, puid);
 
     if (typeof pid !== 'undefined') {
@@ -95,16 +101,17 @@ export default class Tree<T extends Record<string, any>> {
     throw new Error('tree init options error');
   }
 
-  public update(id: string, extra: Partial<T>) {
+  public update(id: string, extra: Partial<Omited<T>>): this {
     const node = this.nodes[id];
     if (!node) {
       throw new Error(`node id: ${id} is not exist.`);
     }
 
     this.nodes[id] = Object.assign(node, extra);
+    return this;
   }
 
-  public insert(data: Omited<T> | Omited<T>[], pid?: string) {
+  public insert(data: Omited<T> | Omited<T>[], pid?: string): this {
     if (Array.isArray(data)) {
       data.forEach(one => this.insertOne(one, pid));
     } else {
@@ -114,53 +121,51 @@ export default class Tree<T extends Record<string, any>> {
     if (pid) {
       this.reschedule();
     }
+    return this;
   }
 
   private reschedule() {
     const { ancestors, proletariats } = this.opts;
     if (ancestors) {
-      const forAncestors = (node: TreeNode<T>): TreeNode<T>[] | undefined =>
-        node.parent ? (forAncestors(node.parent) || []).concat([node.parent]) : undefined;
+      const reAncestors = (node: TreeNode<T>): TreeNode<T>[] | undefined =>
+        node.parent ? (reAncestors(node.parent) || []).concat([node.parent]) : undefined;
 
       Object.values(this.nodes).forEach(node => {
         if (node) {
-          node.ancestors = forAncestors(node);
+          node.ancestors = reAncestors(node);
         }
       });
     }
 
     if (proletariats) {
-      const forProletariats = (node: TreeNode<T>): TreeNode<T>[] | undefined =>
+      const reProletariats = (node: TreeNode<T>): TreeNode<T>[] | undefined =>
         node.children?.length
-          ? node.children.map(c => (c.children?.length ? forProletariats(c) : c)).flat()
+          ? node.children.map(c => reProletariats(c) as TreeNode<T>[]).flat()
           : undefined;
 
       Object.values(this.nodes).forEach(node => {
         if (node) {
-          node.proletariats = forProletariats(node);
+          node.proletariats = reProletariats(node);
         }
       });
     }
   }
 
-  public toJSON() {
-    const hide = (node: TreeNode<T>): TreeNode<T> =>
-      omit(node, ['parent', 'children', 'ancestors', 'proletariats']) as T;
-
-    const loop = (nodes: TreeNode<T>[]): TreeNode<T>[] =>
+  public toJSON(): TreeNode<T>[] {
+    const map = (nodes: TreeNode<T>[]): TreeNode<T>[] =>
       nodes.map(node => {
-        const next = hide(node);
-        next.children = node.children && loop(node.children);
-        next.ancestors = node.ancestors && loop(node.ancestors);
-        next.proletariats = node.proletariats && loop(node.proletariats);
+        const next = hide<T>(node) as TreeNode<T>;
+        next.children = node.children && map(node.children);
+        next.ancestors = node.ancestors && map(node.ancestors);
+        next.proletariats = node.proletariats && map(node.proletariats);
 
-        return next;
+        return node;
       });
 
-    return loop(this.roots);
+    return map(this.roots);
   }
 
-  public bind(data: T[]) {
+  public bind(data: T[]): this {
     /* ------ 2020-04-22 14:14:55 clear ------*/
     this.roots = [];
     this.nodes = {};
@@ -194,20 +199,21 @@ export default class Tree<T extends Record<string, any>> {
     }
 
     if (mode === 'children') {
-      const loop = (d: T[], parent?: TreeNode<T>) => {
+      const map = (d: T[], parent?: TreeNode<T>) => {
         d.forEach(one => {
           const id = uuid(one, uid) || '';
           const node = new Node(one) as TreeNode<T>;
 
           if (parent) {
             node.parent = parent;
+            // eslint-disable-next-line no-param-reassign
             parent.children = parent.children || [];
             parent.children.push(node);
           }
           this.nodes[id] = node;
 
-          if (one.children && one.children.length) {
-            loop(one.children, node);
+          if ((one.children as T[])?.length) {
+            map(one.children as T[], node);
           }
         });
 
@@ -222,10 +228,11 @@ export default class Tree<T extends Record<string, any>> {
         });
       };
 
-      loop(data);
+      map(data);
     }
 
     this.reschedule();
+    return this;
   }
 
   private insertOne(one: Omited<T>, pid?: string) {

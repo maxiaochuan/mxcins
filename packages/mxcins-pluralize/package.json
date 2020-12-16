@@ -18,6 +18,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "mlib build"
+  },
   "publishConfig": {
     "access": "public"
   },

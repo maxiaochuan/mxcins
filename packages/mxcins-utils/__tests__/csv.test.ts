@@ -1,16 +1,9 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
 import { encode, decode } from '../src/csv';
 
 describe('csv decode', () => {
-  it('normal', () => {
-    const text = readFileSync(join(__dirname, '../examples/test.csv'), 'utf-8');
-    expect(decode(text, { newline: '\n' })).toEqual([
-      { task_name: '3垫层浇筑', plan_start_date: '2019-8-7', plan_finish_date: '2019-8-8' },
-    ]);
-  });
-
-  it('auto newline', () => {
+  test('unsafe', () => {
+    expect(decode('a\r\n')).toEqual([]);
+    expect(decode('a\r\n1\r\n')).toEqual([{ a: '1' }]);
     expect(decode('a,b\r\n1,2\r\n')).toEqual([{ a: '1', b: '2' }]);
     expect(decode('a,b\r\n1,2')).toEqual([{ a: '1', b: '2' }]);
     expect(decode('a,b\n1,2\n')).toEqual([{ a: '1', b: '2' }]);
@@ -18,29 +11,27 @@ describe('csv decode', () => {
     expect(decode('a,b\r1,2\r')).toEqual([{ a: '1', b: '2' }]);
     expect(decode('a,b\r1,2')).toEqual([{ a: '1', b: '2' }]);
   });
+
+  test('fields', () => {
+    expect(decode('a\r\n', { fields: true })).toEqual({ data: [], fields: ['a'] });
+  });
 });
 
 describe('csv encode', () => {
-  it('normal', () => {
-    expect(encode([{ a: 1, b: 2 }], { fields: ['a', 'b'] })).toBe('a,b\r\n1,2\r\n');
+  test('object array', () => {
+    const input = [
+      //
+      { id: 'i1', name: 'n1' },
+    ];
+    expect(encode(input, { fields: ['id'] })).toBe('id\r\ni1\r\n');
+    expect(encode(input, { fields: ['id', 'name'] })).toBe('id,name\r\ni1,n1\r\n');
+    expect(encode(input, { fields: { id: 'ID' } })).toBe('ID\r\ni1\r\n');
+    expect(encode(input, { fields: { id: 'ID', name: 'NAME' } })).toBe('ID,NAME\r\ni1,n1\r\n');
+    expect(encode(input, { fields: { name: 'NAME', id: 'ID' } })).toBe('NAME,ID\r\nn1,i1\r\n');
   });
 
-  it('fields', () => {
-    expect(encode([{ a: 1, b: 2 }], { fields: { a: 'aa', b: 'bb' } })).toBe('aa,bb\r\n1,2\r\n');
-  });
-});
-
-describe('csv decode quote', () => {
-  const text = readFileSync(join(__dirname, '../examples/test_risk.csv'), 'utf-8');
-  it('debug 1', () => {
-    console.log('abc', decode(text));
-
-    expect(decode(text)).toStrictEqual([
-      {
-        a: '4',
-        b: `5\na`,
-        c: '6',
-      },
-    ]);
+  test('empty array', () => {
+    const input: any[] = [];
+    expect(encode(input, { fields: ['id'] })).toBe('id\r\n');
   });
 });

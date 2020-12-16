@@ -18,6 +18,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "mlib build"
+  },
   "dependencies": {
     "@types/history": "4.7.3",
     "type-fest": "0.13.1"
