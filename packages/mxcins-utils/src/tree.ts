@@ -140,7 +140,9 @@ export default class Tree<T extends Record<string, unknown>> {
     if (proletariats) {
       const reProletariats = (node: TreeNode<T>): TreeNode<T>[] | undefined =>
         node.children?.length
-          ? node.children.map(c => reProletariats(c) as TreeNode<T>[]).flat()
+          ? node.children
+              .map(c => (c.children?.length ? (reProletariats(c) as TreeNode<T>[]) : [c]))
+              .flat()
           : undefined;
 
       Object.values(this.nodes).forEach(node => {
@@ -159,7 +161,7 @@ export default class Tree<T extends Record<string, unknown>> {
         next.ancestors = node.ancestors && map(node.ancestors);
         next.proletariats = node.proletariats && map(node.proletariats);
 
-        return node;
+        return next;
       });
 
     return map(this.roots);

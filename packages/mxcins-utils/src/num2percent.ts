@@ -1,4 +1,4 @@
-import { isNaN, isNumber, floor } from 'lodash';
+import { isNaN, isNumber } from 'lodash';
 
 const num2percent = (input: unknown, digits = 2): string => {
   const num = isNumber(input) ? input : Number(input);
@@ -6,7 +6,7 @@ const num2percent = (input: unknown, digits = 2): string => {
     throw new TypeError('num2percent argument is invalid.');
   }
 
-  return `${floor(num * 100, digits)}%`;
+  return `${(num * 100).toFixed(digits)}%`;
 };
 
 export default num2percent;

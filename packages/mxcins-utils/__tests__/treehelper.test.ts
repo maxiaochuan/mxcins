@@ -58,7 +58,7 @@ describe('tree helper', () => {
     expect(helper.nodes['2']?.ancestors?.[1]).toBe(helper.nodes['1']);
   });
 
-  it('opts proletariats false', () => {
+  it('opts proletariats true', () => {
     const helper = new TreeHelper([...d1], { proletariats: true });
     expect(helper.nodes['0']?.proletariats?.length).toBe(1);
     expect(helper.nodes['0']?.proletariats?.[0]).toBe(helper.nodes['2']);
