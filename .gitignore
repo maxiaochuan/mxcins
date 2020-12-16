@@ -71,3 +71,5 @@ types
 
 .rpt2_cache
 *.swp
+
+yarn.lock
