@@ -36,10 +36,10 @@ export class ResponseError<T = any> extends Error {
   }
 }
 
-export function safeJsonParse(str: string) {
+export function safeJsonParse<T = any>(str: string): T {
   try {
     return JSON.parse(str);
   } catch {
-    return str;
+    return str as any;
   }
 }

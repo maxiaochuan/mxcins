@@ -7,7 +7,7 @@ import {
 } from './interface';
 import * as mw from './middlewares';
 
-const generator = (
+const creator = (
   initOptions: IRequestOptionsInit = {},
   initMiddlewares: IRequestMiddleware[] = [],
 ): IRequestMethod => {
@@ -47,6 +47,8 @@ const generator = (
 
 export const builtins = [mw.post, mw.get, mw.fetch, mw.parse];
 
-export const extend = (init: IRequestOptionsInit = {}) => generator(init, builtins);
+export * as middlewares from './middlewares';
 
-export default generator({}, builtins);
+export const extend = (init: IRequestOptionsInit = {}): IRequestMethod => creator(init, builtins);
+
+export default creator({}, builtins);
