@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/utils",
-  "version": "1.13.4",
+  "version": "1.13.5",
   "description": "utils",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils",
   "bugs": {
@@ -30,7 +30,7 @@
     "@mxcins/types": "~1.5.0"
   },
   "devDependencies": {
-    "@mxcins/types": "1.7.3"
+    "@mxcins/types": "^1.7.4"
   },
   "publishConfig": {
     "access": "public"
