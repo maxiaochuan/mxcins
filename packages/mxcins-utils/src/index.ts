@@ -24,4 +24,4 @@ export { encode as json2csv, decode as csv2json } from './csv';
 // helpers
 export { default as Downloader } from './downloader';
 export { default as Tree } from './tree';
-export { TreeNode, TreeOpts } from './tree';
+export type { TreeNode, TreeOpts } from './tree';
