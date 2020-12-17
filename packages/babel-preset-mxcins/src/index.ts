@@ -75,15 +75,15 @@ export default (
         useESModules: true,
         ...toObject(transformRuntime),
       },
-      styledComponents && [
-        require('babel-plugin-styled-components').default,
-        { ssr: false, ...toObject(styledComponents) },
-      ],
-      ...(imports
-        ? imports.map(o => {
-            return [require('babel-plugin-import').default, o, o.libraryName];
-          })
-        : []),
     ],
+    styledComponents && [
+      require('babel-plugin-styled-components').default,
+      { ssr: false, ...toObject(styledComponents) },
+    ],
+    ...(imports
+      ? imports.map(o => {
+          return [require('babel-plugin-import').default, o, o.libraryName];
+        })
+      : []),
   ].filter(Boolean),
 });
