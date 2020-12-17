@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.6](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils/compare/@mxcins/utils@1.13.5...@mxcins/utils@1.13.6) (2020-12-17)
+
+
+### Bug Fixes
+
+* **@mxcins/utils:** fix export type build error ([c2a22a0](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils/commit/c2a22a09f997ce3809a614ebbc0af87ec117e07d))
+
+
+
+
+
 ## [1.13.5](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils/compare/@mxcins/utils@1.13.4...@mxcins/utils@1.13.5) (2020-12-17)
 
 
