@@ -5,7 +5,7 @@ import { tuple } from '@mxcins/types';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ANY = any;
 
-interface IFetchCommonOptions<V = Record<string, ANY>> extends IRequestOptions {
+interface IFetchCommonOptions<V = Record<string, ANY>> extends Omit<IRequestOptions, 'params'> {
   variables?: V;
   params?: V;
   skip?: boolean;

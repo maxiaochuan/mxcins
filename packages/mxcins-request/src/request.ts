@@ -6,8 +6,9 @@ import {
   IRequestOptionsInit,
 } from './interface';
 import * as mw from './middlewares';
+import { extend as graphqlExtend } from './graphql';
 
-const generator = (
+const creator = (
   initOptions: IRequestOptionsInit = {},
   initMiddlewares: IRequestMiddleware[] = [],
 ): IRequestMethod => {
@@ -42,11 +43,13 @@ const generator = (
       instance(uri, { ...options, method });
   });
 
+  instance.query = graphqlExtend(initOptions);
+
   return instance;
 };
 
 export const builtins = [mw.post, mw.get, mw.fetch, mw.parse];
 
-export const extend = (init: IRequestOptionsInit = {}) => generator(init, builtins);
+export const extend = (init: IRequestOptionsInit = {}): IRequestMethod => creator(init, builtins);
 
-export default generator({}, builtins);
+export default creator({}, builtins);

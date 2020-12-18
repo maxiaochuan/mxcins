@@ -1,7 +1,7 @@
-import type { IRequestOptions, IResponse } from './interface';
+import type { IRequestOptions, ResponseType } from './interface';
 
 export default class MapCache {
-  private cache: Map<string, IResponse>;
+  private cache: Map<string, ResponseType>;
 
   private timer: { [x: string]: number };
 
@@ -13,11 +13,11 @@ export default class MapCache {
     this.maxSize = options.cacheSize || 20;
   }
 
-  public get(k: Record<string, unknown>): IResponse | undefined {
+  public get(k: Record<string, unknown>): ResponseType | undefined {
     return this.cache.get(JSON.stringify(k));
   }
 
-  public set(k: Record<string, unknown>, v: IResponse, ttl = 60000): void {
+  public set(k: Record<string, unknown>, v: ResponseType, ttl = 60000): void {
     if (this.maxSize > 0 && this.cache.size >= this.maxSize) {
       const dKey = [...this.cache.keys()][0];
       this.cache.delete(dKey);

@@ -15,7 +15,7 @@ describe('getMiddleware', () => {
   it('uri parse', async () => {
     const ctx = cloneDeep(DEFAULT_CTX);
     ctx.req.uri = '/response?a[]=1&a[]=2';
-    ctx.req.options = { query: { b: [1, 2] } };
+    ctx.req.options = { query: { b: ['1', '2'] } };
     await getMiddleware(ctx, next);
     expect(ctx.req.uri).toBe('http://localhost/response?a%5B%5D=1&a%5B%5D=2&b%5B%5D=1&b%5B%5D=2');
   });

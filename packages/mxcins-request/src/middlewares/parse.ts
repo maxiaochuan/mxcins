@@ -1,12 +1,12 @@
 /* eslint-disable consistent-return */
-import { IRequestMiddleware, IResponse } from '../interface';
+import { IRequestMiddleware, ResponseType } from '../interface';
 import { ResponseError, safeJsonParse } from '../utils';
 
 const parse: IRequestMiddleware = async (ctx, next) => {
   const {
     req: { options = {} },
   } = ctx;
-  const res = ctx.res as IResponse;
+  const res = ctx.res as ResponseType;
   if (!res || !res.clone) {
     return next();
   }
