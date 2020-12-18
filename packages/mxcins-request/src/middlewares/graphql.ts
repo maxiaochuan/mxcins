@@ -13,7 +13,7 @@ const query: IRequestMiddleware = async (ctx, next) => {
   }
 
   if (typeof data === 'string') {
-    ctx.req.options = { ...options, data: { query: data, variables: params } };
+    ctx.req.options = { ...options, method: 'post', data: { query: data, variables: params } };
   }
 
   await next();

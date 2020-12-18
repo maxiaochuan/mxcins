@@ -8,4 +8,4 @@ force update 20190815
 * request.post('//mxcins.com/api/users.json', { data: {} }) -> create user;
 
 ### graphql
-* request.query('//mxcins.com/api/graphql', { data: {} }) -> graphql;
+* request.query('//mxcins.com/api/graphql', { data: {} }) -> graphql query;

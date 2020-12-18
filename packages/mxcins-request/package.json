@@ -23,6 +23,7 @@
     "build": "mlib build"
   },
   "dependencies": {
+    "deepmerge": "^4.2.2",
     "path-to-regexp": "6.1.0",
     "qs": "6.9.3",
     "whatwg-fetch": "3.0.0"

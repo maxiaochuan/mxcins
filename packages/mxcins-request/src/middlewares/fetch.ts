@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import { IRequestMiddleware, IResponse } from '../interface';
+import { IRequestMiddleware, ResponseType } from '../interface';
 import { RequestError, win } from '../utils';
 
 export const asyncTimeout = async (msec: number): Promise<unknown> =>
@@ -37,8 +37,8 @@ const fetch: IRequestMiddleware = async (ctx, next) => {
   }
 
   const f = win.fetch(uri, options);
-  const promise: Promise<IResponse> =
-    timeout > 0 ? (Promise.race([f, asyncTimeout(timeout)]) as Promise<IResponse>) : f;
+  const promise: Promise<ResponseType> =
+    timeout > 0 ? (Promise.race([f, asyncTimeout(timeout)]) as Promise<ResponseType>) : f;
 
   const res = await promise;
 

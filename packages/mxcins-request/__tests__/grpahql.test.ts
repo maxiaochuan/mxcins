@@ -22,6 +22,13 @@ describe('graphql', () => {
     });
   });
 
+  it('method should be post', async () => {
+    const ctx = cloneDeep(DEFAULT_CTX);
+    ctx.req.options = { data: 'query {}' };
+    await middleware(ctx, next);
+    expect(ctx.req.options.method).toBe('post');
+  });
+
   it('data transform with variables', async () => {
     const ctx = cloneDeep(DEFAULT_CTX);
     ctx.req.options = { data: 'query {}', params: { id: '1' } };

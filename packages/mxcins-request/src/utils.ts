@@ -1,5 +1,7 @@
 // eslint-disable-next-line max-classes-per-file, import/no-cycle
-import { IResponse } from './interface';
+import { ResponseType } from './interface';
+
+export { default as deepmerge } from 'deepmerge';
 
 export const win: Window & typeof globalThis = (() => {
   if (typeof window !== 'undefined') {
@@ -23,12 +25,12 @@ export class RequestError extends Error {
   }
 }
 
-export class ResponseError<T = any> extends Error {
-  public response: IResponse;
+export class ResponseError<T = unknown> extends Error {
+  public response: ResponseType;
 
   public data?: T;
 
-  constructor(response: IResponse, text: string, data?: T) {
+  constructor(response: ResponseType, text: string, data?: T) {
     super(text);
     this.name = 'ResponseError';
     this.response = response;
