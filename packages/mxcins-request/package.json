@@ -22,9 +22,6 @@
   "scripts": {
     "build": "mlib build"
   },
-  "peerDependencies": {
-    "graphql": "*"
-  },
   "dependencies": {
     "deepmerge": "^4.2.2",
     "path-to-regexp": "6.1.0",
@@ -35,6 +32,9 @@
     "@types/qs": "^6.5.3",
     "create-test-server": "^2.4.0",
     "graphql": "15.4.0"
+  },
+  "peerDependencies": {
+    "graphql": "*"
   },
   "publishConfig": {
     "access": "public"
