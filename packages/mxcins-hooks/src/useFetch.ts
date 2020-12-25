@@ -1,11 +1,11 @@
 import { useReducer, Reducer, useEffect } from 'react';
-import request, { IRequestOptions } from '@mxcins/request';
+import request, { RequestOptions } from '@mxcins/request';
 import { tuple } from '@mxcins/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ANY = any;
 
-interface IFetchCommonOptions<V = Record<string, ANY>> extends Omit<IRequestOptions, 'params'> {
+interface IFetchCommonOptions<V = Record<string, ANY>> extends Omit<RequestOptions, 'params'> {
   variables?: V;
   params?: V;
   skip?: boolean;

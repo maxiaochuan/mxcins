@@ -1,32 +1,24 @@
-import {
-  IRequestContext,
-  IRequestMiddleware,
-  IRequestOptions,
-  IRequestOptionsInit,
-} from './interface';
+import { RequestContext, RequestMidd, RequestOptions } from './interface';
 import Onion from './Onion';
-import MapCache from './MapCache';
+import MapCache, { MapCacheOptions } from './MapCache';
 
 export default class Core {
   public onion: Onion;
 
   public cache: MapCache;
 
-  constructor(options: IRequestOptionsInit, defaultMiddlewares: IRequestMiddleware[] = []) {
+  constructor(options: MapCacheOptions, defaultMiddlewares: RequestMidd[] = []) {
     this.onion = new Onion(defaultMiddlewares);
     this.cache = new MapCache(options);
   }
 
-  public use(middleware: IRequestMiddleware): this {
+  public use(middleware: RequestMidd): this {
     this.onion.use(middleware);
     return this;
   }
 
-  public async request(
-    uri: string,
-    options: IRequestOptions = {},
-  ): Promise<IRequestContext['res']> {
-    const ctx: IRequestContext = {
+  public async request(uri: string, options: RequestOptions = {}): Promise<RequestContext['res']> {
+    const ctx: RequestContext = {
       req: { uri, options },
       res: undefined,
       cache: this.cache,
@@ -38,10 +30,10 @@ export default class Core {
         .then(() => resolve(ctx.res))
         .catch(error => {
           const { options: opts = {} } = ctx.req;
-          const { errorHandler } = opts;
-          if (errorHandler) {
+          const { onError } = opts;
+          if (onError) {
             try {
-              const d = errorHandler(error);
+              const d = onError(error);
               resolve(d);
             } catch (error_) {
               reject(error_);

@@ -1,4 +1,8 @@
-import type { IRequestOptions, ResponseType } from './interface';
+import type { ResponseType } from './interface';
+
+export interface MapCacheOptions {
+  cacheSize?: number;
+}
 
 export default class MapCache {
   private cache: Map<string, ResponseType>;
@@ -7,7 +11,7 @@ export default class MapCache {
 
   private maxSize: number;
 
-  constructor(options: IRequestOptions) {
+  constructor(options: MapCacheOptions) {
     this.cache = new Map();
     this.timer = {};
     this.maxSize = options.cacheSize || 20;

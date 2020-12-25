@@ -217,8 +217,8 @@ describe('test request', () => {
     }
 
     // eslint-disable-next-line unicorn/consistent-function-scoping
-    const errorHandler = () => 'name';
-    const resp2 = await request(prefix('/test/expection'), { errorHandler });
+    const onError = () => 'name';
+    const resp2 = await request(prefix('/test/expection'), { onError });
 
     expect(resp2).toBe('name');
   });

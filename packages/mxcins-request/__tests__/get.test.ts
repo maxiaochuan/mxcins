@@ -1,10 +1,10 @@
 /* eslint-disable unicorn/no-null, import/no-extraneous-dependencies */
 import { cloneDeep } from 'lodash';
-import { IRequestContext } from '../src/interface';
+import { RequestContext } from '../src/interface';
 import { get as getMiddleware } from '../src/middlewares';
 import MapCache from '../src/MapCache';
 
-const DEFAULT_CTX: IRequestContext = {
+const DEFAULT_CTX: RequestContext = {
   req: { uri: `/response` },
   res: null,
   cache: new MapCache({}),

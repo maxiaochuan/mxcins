@@ -1,8 +1,8 @@
-import { IRequestContext } from '../src/interface';
+import { RequestContext } from '../src/interface';
 import { post as postMiddleware } from '../src/middlewares';
 import MapCache from '../src/MapCache';
 
-const ctx: IRequestContext = { req: { uri: `/response` }, res: undefined, cache: new MapCache({}) };
+const ctx: RequestContext = { req: { uri: `/response` }, res: undefined, cache: new MapCache({}) };
 
 const next = () => Promise.resolve();
 

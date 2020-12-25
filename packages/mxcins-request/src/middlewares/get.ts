@@ -1,6 +1,6 @@
 import * as path2exp from 'path-to-regexp';
-import qs from 'qs';
-import { IRequestMiddleware } from '../interface';
+import qs, { ParsedQs } from 'qs';
+import { RequestMidd } from '../interface';
 import { win } from '../utils';
 
 /**
@@ -11,7 +11,7 @@ import { win } from '../utils';
  * @param ctx
  * @param next
  */
-const get: IRequestMiddleware = (ctx, next) => {
+const get: RequestMidd = (ctx, next) => {
   const {
     req: { uri, options = {} },
   } = ctx;
@@ -38,7 +38,7 @@ const get: IRequestMiddleware = (ctx, next) => {
       typeof options.query === 'string'
         ? qs.parse(options.query, { ignoreQueryPrefix: true })
         : options.query || {};
-    query = { ...query, ...extra };
+    query = { ...query, ...(extra as ParsedQs) };
   }
 
   target.search = qs.stringify(query, { addQueryPrefix: true, arrayFormat: 'brackets' });
