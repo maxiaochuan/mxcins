@@ -17,7 +17,7 @@ export interface ResponseType extends Response {
   clone: () => ResponseType;
 }
 
-export interface RequestMidd {
+export interface RequestMiddleware {
   (ctx: RequestContext, next: () => Promise<void>): Promise<void> | void;
 }
 
@@ -87,7 +87,7 @@ interface SimpleRequestMethod<R = false> {
 export interface RequestMethod<R = false>
   extends SimpleRequestMethod<R>,
     Record<MethodType, SimpleRequestMethod<R>> {
-  use: (handler: RequestMidd) => void;
+  use: (handler: RequestMiddleware) => void;
   query: RequestGraphqlQueryMethod;
 }
 

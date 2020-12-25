@@ -1,6 +1,6 @@
 import * as path2exp from 'path-to-regexp';
 import qs, { ParsedQs } from 'qs';
-import { RequestMidd } from '../interface';
+import { RequestMiddleware } from '../interface';
 import { win } from '../utils';
 
 /**
@@ -11,7 +11,7 @@ import { win } from '../utils';
  * @param ctx
  * @param next
  */
-const get: RequestMidd = (ctx, next) => {
+const get: RequestMiddleware = (ctx, next) => {
   const {
     req: { uri, options = {} },
   } = ctx;

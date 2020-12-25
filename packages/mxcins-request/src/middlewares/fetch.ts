@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import { RequestMidd, ResponseType } from '../interface';
+import { RequestMiddleware, ResponseType } from '../interface';
 import { RequestError, win } from '../utils';
 
 export const asyncTimeout = async (msec: number): Promise<unknown> =>
@@ -14,7 +14,7 @@ export const asyncTimeout = async (msec: number): Promise<unknown> =>
  * @param ctx
  * @param next
  */
-const fetch: RequestMidd = async (ctx, next) => {
+const fetch: RequestMiddleware = async (ctx, next) => {
   const {
     req: { uri, options = {} },
     cache,

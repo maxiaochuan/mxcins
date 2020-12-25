@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { RequestMidd } from '../interface';
+import { RequestMiddleware } from '../interface';
 
 const isFormData = (f: any) =>
   f && f.append && typeof f.append === 'function' && f.delete && typeof f.delete === 'function';
@@ -10,7 +10,7 @@ const isFormData = (f: any) =>
  * @param ctx
  * @param next
  */
-const post: RequestMidd = async (ctx, next) => {
+const post: RequestMiddleware = async (ctx, next) => {
   const {
     req: { options = {} },
   } = ctx;

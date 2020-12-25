@@ -1,4 +1,4 @@
-import { RequestContext, RequestMidd, RequestOptions } from './interface';
+import { RequestContext, RequestMiddleware, RequestOptions } from './interface';
 import Onion from './Onion';
 import MapCache, { MapCacheOptions } from './MapCache';
 
@@ -7,12 +7,12 @@ export default class Core {
 
   public cache: MapCache;
 
-  constructor(options: MapCacheOptions, defaultMiddlewares: RequestMidd[] = []) {
+  constructor(options: MapCacheOptions, defaultMiddlewares: RequestMiddleware[] = []) {
     this.onion = new Onion(defaultMiddlewares);
     this.cache = new MapCache(options);
   }
 
-  public use(middleware: RequestMidd): this {
+  public use(middleware: RequestMiddleware): this {
     this.onion.use(middleware);
     return this;
   }
