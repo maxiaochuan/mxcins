@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@2.3.0...@mxcins/request@3.0.0) (2020-12-25)
+
+
+### Code Refactoring
+
+* **request:** refactor request interface & add graphql suport ([7fdd1ae](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/7fdd1aeea7b7e6dc5b5f36f9afb556a1827a4d4a))
+
+
+### BREAKING CHANGES
+
+* **request:** errorHandler -> onError
+
+
+
+
+
 # [2.3.0](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@2.2.3...@mxcins/request@2.3.0) (2020-12-18)
 
 
