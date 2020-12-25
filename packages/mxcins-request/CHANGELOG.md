@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.0.1...@mxcins/request@3.1.0) (2020-12-25)
+
+
+### Features
+
+* request middleware interface ([bc93d61](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/bc93d618d8247c4af36522b4d5eeff9404bb35b4))
+
+
+
+
+
 ## [3.0.1](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.0.0...@mxcins/request@3.0.1) (2020-12-25)
 
 **Note:** Version bump only for package @mxcins/request
