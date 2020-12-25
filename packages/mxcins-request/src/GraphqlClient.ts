@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { print } from 'graphql';
-import type { RequestDocument, RequestOptionsInit, ParamsType } from './interface';
+import type {
+  RequestDocument,
+  RequestOptionsInit,
+  ParamsType,
+  RequestMiddleware,
+} from './interface';
 import { builtins } from './middlewares';
 import Core from './Core';
 
@@ -17,6 +22,11 @@ export default class GraphQLClient {
   constructor(uri: string, options: RequestOptionsInit = {}) {
     this.uri = uri;
     this.core = new Core(options, builtins);
+  }
+
+  public use(m: RequestMiddleware): this {
+    this.core.use(m);
+    return this;
   }
 
   /**
