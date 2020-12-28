@@ -31,7 +31,7 @@ export default class GraphQLClient {
    * Send a GraphQL document to the server.
    */
   async request<T = any, V = ParamsType>(document: RequestDocument, variables?: V): Promise<T> {
-    const response: any = this.core.request(this.uri, {
+    const response: any = await this.core.request(this.uri, {
       ...this.options,
       method: 'post',
       data: {
