@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.1...@mxcins/request@3.2.2) (2020-12-28)
+
+
+### Bug Fixes
+
+* **@mxcins/request:** fix: graphql client options ([5ac6d00](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/5ac6d009136a75327fa74cc93b0bd15bbd42575b))
+
+
+
+
+
 ## [3.2.1](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.0...@mxcins/request@3.2.1) (2020-12-28)
 
 

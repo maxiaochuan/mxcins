@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-hooks/compare/@mxcins/hooks@2.0.4...@mxcins/hooks@2.0.5) (2020-12-28)
+
+**Note:** Version bump only for package @mxcins/hooks
+
+
+
+
+
 ## [2.0.4](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-hooks/compare/@mxcins/hooks@2.0.3...@mxcins/hooks@2.0.4) (2020-12-28)
 
 **Note:** Version bump only for package @mxcins/hooks
