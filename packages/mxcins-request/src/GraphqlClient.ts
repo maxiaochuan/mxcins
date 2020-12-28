@@ -39,6 +39,6 @@ export default class GraphQLClient {
         variables,
       },
     });
-    return response;
+    return response.data;
   }
 }
