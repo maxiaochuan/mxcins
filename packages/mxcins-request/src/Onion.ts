@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type Middleware = (...args: any[]) => Promise<void> | void;
 
 export default class Onion {
