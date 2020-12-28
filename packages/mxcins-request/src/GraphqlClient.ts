@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { print } from 'graphql';
-import type {
-  RequestDocument,
-  RequestOptionsInit,
-  ParamsType,
-  RequestMiddleware,
-} from './interface';
+import type { RequestDocument, ParamsType, RequestMiddleware } from './interface';
 import { builtins } from './middlewares';
 import Core from './Core';
+import { MapCacheOptions } from './MapCache';
 
 export function resolveRequestDocument(document: RequestDocument): string {
   if (typeof document === 'string') return document;
@@ -19,7 +15,7 @@ export default class GraphQLClient {
 
   private core: Core;
 
-  constructor(uri: string, options: RequestOptionsInit = {}) {
+  constructor(uri: string, options: MapCacheOptions = {}) {
     this.uri = uri;
     this.core = new Core(options, builtins);
   }
@@ -34,6 +30,7 @@ export default class GraphQLClient {
    */
   async request<T = any, V = ParamsType>(document: RequestDocument, variables?: V): Promise<T> {
     const response: any = this.core.request(this.uri, {
+      method: 'post',
       data: {
         query: resolveRequestDocument(document),
         variables,
