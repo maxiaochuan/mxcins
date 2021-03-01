@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.9](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils/compare/@mxcins/utils@1.13.8...@mxcins/utils@1.13.9) (2021-03-01)
+
+
+### Bug Fixes
+
+* utils tree typescript interface extends ([668a890](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils/commit/668a890a5f850bd571d0cf5cd3b4b3e75676fc51))
+
+
+
+
+
 ## [1.13.8](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils/compare/@mxcins/utils@1.13.7...@mxcins/utils@1.13.8) (2021-02-22)
 
 

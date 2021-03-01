@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/theme",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "utils",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-theme",
   "bugs": {
@@ -26,7 +26,7 @@
     "build": "mlib build"
   },
   "dependencies": {
-    "@mxcins/utils": "^1.13.8",
+    "@mxcins/utils": "^1.13.9",
     "less": "3.11.3",
     "less-plugin-variables-export": "^3.0.2",
     "less-plugin-variables-output": "^1.2.0",
