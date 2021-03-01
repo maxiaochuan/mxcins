@@ -57,7 +57,7 @@ export interface TreeOpts<T> {
 const DEFAULT_UID = 'id';
 const DEFAULT_PUID = 'parent.id';
 
-export default class Tree<T extends Record<string, unknown>> {
+export default class Tree<T extends object = {}> {
   public opts: Required<TreeOpts<T>>;
 
   public roots: Array<TreeNode<T>> = [];
@@ -215,8 +215,11 @@ export default class Tree<T extends Record<string, unknown>> {
           }
           this.nodes[id] = node;
 
-          if ((one.children as T[])?.length) {
-            map(one.children as T[], node);
+          if (
+            Object.prototype.hasOwnProperty.call(one, 'children') &&
+            Array.isArray((one as { children: T[] }).children)
+          ) {
+            map((one as { children: T[] }).children, node);
           }
         });
 
