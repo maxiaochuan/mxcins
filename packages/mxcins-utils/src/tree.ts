@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable max-classes-per-file */
 import { tuple } from '@mxcins/types';
 import omit from './omit';
@@ -17,9 +18,9 @@ const uuid = <T>(o: T, func: string | ((r: T) => string | undefined)): string | 
   return func(o);
 };
 
-export type TreeNode<T extends Record<string, unknown>> = Omited<T> & Node<T>;
+export type TreeNode<T extends object = {}> = Omited<T> & Node<T>;
 
-export class Node<T extends Record<string, unknown>> {
+export class Node<T extends object = {}> {
   public parent?: TreeNode<T>;
 
   public children?: TreeNode<T>[];
@@ -35,7 +36,7 @@ export class Node<T extends Record<string, unknown>> {
           enumerable: true,
           configurable: true,
           writable: true,
-          value: init[key],
+          value: init[key as keyof T],
         });
       }
     });
