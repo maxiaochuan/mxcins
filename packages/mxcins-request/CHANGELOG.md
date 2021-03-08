@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.5](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.4...@mxcins/request@3.2.5) (2021-03-08)
+
+
+### Bug Fixes
+
+* build mxcins/request ([dcf2080](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/dcf20806006f4d81c88fd561fc5fad6627063dab))
+
+
+
+
+
 ## [3.2.4](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.3...@mxcins/request@3.2.4) (2020-12-28)
 
 
