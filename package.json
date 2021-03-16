@@ -36,7 +36,7 @@
     "@commitlint/cli": "9.1.2",
     "@commitlint/config-conventional": "9.1.2",
     "@mxcins/bedrock": "1.4.2",
-    "@mxcins/library": "0.5.0",
+    "@mxcins/library": "0.6.2",
     "@types/jest": "24.0.6",
     "@types/lodash": "4.14.150",
     "babel-jest": "25.3.0",

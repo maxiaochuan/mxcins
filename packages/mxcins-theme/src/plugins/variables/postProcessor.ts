@@ -12,7 +12,7 @@ export default class VariablesOutputPostProcessor {
     // Find the dummy selector in the output CSS
     const selectorStart = css.indexOf(SELECTOR);
     const selectorEnd = css.lastIndexOf('}');
-    const selectorContents = css.slice(selectorStart + SELECTOR.length + 2, selectorEnd).trim();
+    const selectorContents = css.slice(selectorStart + SELECTOR.length + 1, selectorEnd).trim();
 
     // Parse the dummy selector's contents into a regular JSON-y object
     const json = selectorContents.split(';').reduce((memo: any, variable: any) => {
