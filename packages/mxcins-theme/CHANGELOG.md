@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.8](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-theme/compare/@mxcins/theme@1.0.7...@mxcins/theme@1.0.8) (2021-03-16)
+
+
+### Bug Fixes
+
+* **theme:** theme post processor split error ([17746ba](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-theme/commit/17746ba2f9e80feeb1f8c557dcb052f6c1739066))
+
+
+
+
+
 ## [1.0.7](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-theme/compare/@mxcins/theme@1.0.6...@mxcins/theme@1.0.7) (2021-03-01)
 
 **Note:** Version bump only for package @mxcins/theme
