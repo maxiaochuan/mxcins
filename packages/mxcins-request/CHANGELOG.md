@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.6](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.5...@mxcins/request@3.2.6) (2021-03-20)
+
+
+### Bug Fixes
+
+* request URI parser double slash ([dcace18](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/dcace183f9e41e8d451a549ff7e77bb2974691e5))
+
+
+
+
+
 ## [3.2.5](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.4...@mxcins/request@3.2.5) (2021-03-08)
 
 
