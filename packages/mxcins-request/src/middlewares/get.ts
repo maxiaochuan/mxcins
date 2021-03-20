@@ -23,14 +23,14 @@ const get: RequestMiddleware = (ctx, next) => {
     if (/^https?/.test(options.prefix)) {
       const subpathname = target.pathname;
       target = new URL(options.prefix, target);
-      target.pathname = `${target.pathname}${subpathname}`;
+      target.pathname = `${target.pathname}${subpathname}`.replace(/\/\//, '/');
     } else {
-      target.pathname = `${options.prefix}${target.pathname}`;
+      target.pathname = `${options.prefix}${target.pathname}`.replace(/\/\//, '/');
     }
   }
 
   if (options.suffix) {
-    target.pathname = `${target.pathname}${options.suffix}`;
+    target.pathname = `${target.pathname}${options.suffix}`.replace(/\/\//, '/');
   }
 
   if (options.query) {
