@@ -15,8 +15,9 @@ import GraphqlClient from './GraphqlClient';
 
 export const extend = (init: RequestOptionsInit = {}): RequestMethod => {
   const core = new Core(init, builtins);
+  // 2021-06-01 18:33:32 主要解决deepmerge会使formdata变成object的问题
   const instance: any = (uri: string, options: RequestOptions = {}) =>
-    core.request(uri, deepmerge(init, options));
+    core.request(uri, { ...deepmerge(init, options), data: options.data });
 
   instance.use = core.use.bind(core);
   METHOD_TYPES.forEach(method => {
