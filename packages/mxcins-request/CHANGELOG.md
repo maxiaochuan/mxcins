@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.7](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.6...@mxcins/request@3.2.7) (2021-06-01)
+
+
+### Bug Fixes
+
+* **request:** fix request form data ([f0480ab](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/f0480abc0d31762198626fd0508f534ed778e349))
+
+
+
+
+
 ## [3.2.6](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.5...@mxcins/request@3.2.6) (2021-03-20)
 
 
