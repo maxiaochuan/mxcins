@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.3.0...@mxcins/request@3.3.1) (2021-06-24)
+
+
+### Bug Fixes
+
+* **@mxcins/request:** force update request fix grpahql client errors ([859b11a](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/859b11ae598737b56d1ae9577765287b00a3d057))
+
+
+
+
+
 # [3.3.0](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.7...@mxcins/request@3.3.0) (2021-06-24)
 
 

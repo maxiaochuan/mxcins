@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/hooks",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "hooks",
   "homepage": "https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-hooks",
   "bugs": {
@@ -21,7 +21,7 @@
     "build": "mlib build"
   },
   "dependencies": {
-    "@mxcins/request": "^3.3.0"
+    "@mxcins/request": "^3.3.1"
   },
   "devDependencies": {
     "@apollo/react-common": "3.1.4",
