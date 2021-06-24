@@ -1,8 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { print } from 'graphql';
-import type { RequestDocument, ParamsType, RequestMiddleware, RequestOptions } from './interface';
+import type {
+  RequestDocument,
+  ParamsType,
+  RequestMiddleware,
+  RequestOptions,
+  ResponseType,
+} from './interface';
 import { builtins } from './middlewares';
 import Core from './Core';
+import { ResponseError } from './utils';
 
 export function resolveRequestDocument(document: RequestDocument): string {
   if (typeof document === 'string') return document;
@@ -34,11 +41,19 @@ export default class GraphQLClient {
     const response: any = await this.core.request(this.uri, {
       ...this.options,
       method: 'post',
+      getResponse: true,
       data: {
         query: resolveRequestDocument(document),
         variables,
       },
     });
-    return response.data;
+
+    const resp = response as { response: ResponseType; data: { data: T } & { errors?: any[] } };
+    /** graphql errors in data */
+    if (resp.data.errors) {
+      throw new ResponseError(resp.response, 'Graphql Error', resp.data.errors);
+    }
+
+    return response.data.data;
   }
 }
