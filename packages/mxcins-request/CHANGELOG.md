@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.7...@mxcins/request@3.3.0) (2021-06-24)
+
+
+### Features
+
+* **mxcins-request:** throw error when graphql errors in data ([109590f](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/commit/109590f3dd02f6f107d24df5d226525939c67557))
+
+
+
+
+
 ## [3.2.7](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.2.6...@mxcins/request@3.2.7) (2021-06-01)
 
 
