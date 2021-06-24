@@ -51,7 +51,11 @@ export default class GraphQLClient {
     const resp = response as { response: ResponseType; data: { data: T } & { errors?: any[] } };
     /** graphql errors in data */
     if (resp.data.errors) {
-      throw new ResponseError(resp.response, 'Graphql Error', resp.data.errors);
+      const copy = new Response(resp.response.body, {
+        status: 400,
+        statusText: 'Bed Request',
+      });
+      throw new ResponseError(copy, 'Graphql Error', resp.data.errors);
     }
 
     return response.data.data;
