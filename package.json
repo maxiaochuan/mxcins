@@ -47,6 +47,7 @@
     "lerna": "3.22.1",
     "lint-staged": "10.2.2",
     "lodash": "4.17.19",
+    "rescript": "9.1.4",
     "shelljs": "0.8.3",
     "ts-jest": "24.0.0",
     "typescript": "3.8.3"
