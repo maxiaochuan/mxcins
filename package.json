@@ -44,7 +44,7 @@
     "cz-lerna-changelog": "2.0.3",
     "husky": "4.2.5",
     "jest": "25.3.0",
-    "lerna": "3.22.1",
+    "lerna": "4.0.0",
     "lint-staged": "10.2.2",
     "lodash": "4.17.19",
     "rescript": "9.1.4",
