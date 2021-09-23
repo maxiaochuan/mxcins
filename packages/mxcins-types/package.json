@@ -22,14 +22,7 @@
     "build": "mlib build"
   },
   "dependencies": {
-    "@types/history": "4.7.3",
-    "type-fest": "0.13.1"
-  },
-  "devDependencies": {
-    "history": "4.9.0"
-  },
-  "peerDependencies": {
-    "history": "*"
+    "type-fest": "2.3.4"
   },
   "publishConfig": {
     "access": "public"
