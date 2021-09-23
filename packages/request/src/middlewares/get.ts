@@ -17,13 +17,15 @@ const get: RequestMiddleware = (ctx, next) => {
   } = ctx;
 
   let target = new URL(uri, win.location?.origin || '');
+
   let query = qs.parse(target.search, { ignoreQueryPrefix: true });
 
   if (options.prefix) {
     if (/^https?/.test(options.prefix)) {
-      const subpathname = target.pathname;
-      target = new URL(options.prefix, target);
-      target.pathname = `${target.pathname}${subpathname}`.replace(/\/\//, '/');
+      const { pathname } = target;
+      const modify = new URL(options.prefix, target);
+      modify.pathname = `${modify.pathname}${pathname}`.replace(/\/\//, '/');
+      target = modify;
     } else {
       target.pathname = `${options.prefix}${target.pathname}`.replace(/\/\//, '/');
     }
@@ -34,11 +36,7 @@ const get: RequestMiddleware = (ctx, next) => {
   }
 
   if (options.query) {
-    const extra =
-      typeof options.query === 'string'
-        ? qs.parse(options.query, { ignoreQueryPrefix: true })
-        : options.query || {};
-    query = { ...query, ...(extra as ParsedQs) };
+    query = { ...query, ...(options.query as ParsedQs) };
   }
 
   target.search = qs.stringify(query, { addQueryPrefix: true, arrayFormat: 'brackets' });
