@@ -47,8 +47,10 @@ const get: RequestMiddleware = (ctx, next) => {
     target.pathname = path2exp.compile(target.pathname)(options.params);
   }
 
+  // eslint-disable-next-line unicorn/consistent-destructuring
   ctx.req.uri = target.toString();
   options.method = options.method ? options.method.toUpperCase() : 'GET';
+  // eslint-disable-next-line unicorn/consistent-destructuring
   ctx.req.options = options;
 
   return next();

@@ -20,10 +20,10 @@ export const extend = (init: RequestOptionsInit = {}): RequestMethod => {
     core.request(uri, { ...deepmerge(init, options), data: options.data });
 
   instance.use = core.use.bind(core);
-  METHOD_TYPES.forEach(method => {
+  for (const method of METHOD_TYPES) {
     instance[method] = (uri: string, options: RequestOptions) =>
       instance(uri, { ...options, method });
-  });
+  }
 
   const query: RequestGraphqlQueryMethod = (
     uri: string,

@@ -1,21 +1,20 @@
-// eslint-disable-next-line max-classes-per-file, import/no-cycle
+/* eslint-disable no-restricted-globals */
+// eslint-disable-next-line max-classes-per-file
 import { ResponseType } from './interface';
 
 export { default as deepmerge } from 'deepmerge';
 
-export const win: Window & typeof globalThis = (() => {
+export const win: Window = (() => {
   if (typeof window !== 'undefined') {
     return window;
   }
   if (typeof global !== 'undefined') {
-    return global as any;
+    return global as unknown as Window;
   }
-  // eslint-disable-next-line no-restricted-globals
   if (typeof self !== 'undefined') {
-    // eslint-disable-next-line no-restricted-globals
-    return self as any;
+    return self as unknown as Window;
   }
-  return {} as any;
+  return {} as unknown as Window;
 })();
 
 export class RequestError extends Error {
@@ -38,10 +37,10 @@ export class ResponseError<T = unknown> extends Error {
   }
 }
 
-export function safeJsonParse<T = any>(str: string): T {
+export function safeJsonParse<T extends unknown | string = unknown>(str: string): T {
   try {
     return JSON.parse(str);
   } catch {
-    return str as any;
+    return str as T;
   }
 }

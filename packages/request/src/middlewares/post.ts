@@ -1,8 +1,8 @@
 import qs from 'qs';
 import { RequestMiddleware } from '../interface';
 
-const isFormData = (f: any) =>
-  f && f.append && typeof f.append === 'function' && f.delete && typeof f.delete === 'function';
+const isFormData = (f: FormData | undefined | null): f is FormData =>
+  !!(f && f.append && typeof f.append === 'function' && f.delete && typeof f.delete === 'function');
 
 /**
  * method check;
@@ -20,7 +20,7 @@ const post: RequestMiddleware = async (ctx, next) => {
     return next();
   }
 
-  const { requestType = 'json', data } = options;
+  const { requestType = 'json', data, headers } = options;
   if (data) {
     const t = Object.prototype.toString.call(data);
     /**
@@ -31,27 +31,28 @@ const post: RequestMiddleware = async (ctx, next) => {
         options.headers = {
           'Accept': 'application/json',
           'Content-Type': 'application/json;charset=UTF-8',
-          ...options.headers,
+          ...headers,
         };
         options.body = JSON.stringify(data);
       } else if (requestType === 'form') {
         options.headers = {
           'Accept': 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-          ...options.headers,
+          ...headers,
         };
         options.body = qs.stringify(data);
       }
     } else {
       options.headers = {
         Accept: 'application/json',
-        ...options.headers,
+        ...headers,
       };
 
       options.body = data;
     }
   }
 
+  // eslint-disable-next-line unicorn/consistent-destructuring
   ctx.req.options = options;
 
   return next();

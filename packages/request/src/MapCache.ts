@@ -21,7 +21,7 @@ export default class MapCache {
     return this.cache.get(JSON.stringify(k));
   }
 
-  public set(k: Record<string, unknown>, v: ResponseType, ttl = 60000): void {
+  public set(k: Record<string, unknown>, v: ResponseType, ttl = 60_000): void {
     if (this.maxSize > 0 && this.cache.size >= this.maxSize) {
       const dKey = [...this.cache.keys()][0];
       this.cache.delete(dKey);
