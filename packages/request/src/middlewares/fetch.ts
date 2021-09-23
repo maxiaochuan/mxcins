@@ -42,12 +42,10 @@ const fetch: RequestMiddleware = async (ctx, next) => {
 
   const res = await promise;
 
-  if (needCache) {
-    if (res.status === 200) {
-      const copy = res.clone();
-      copy.useCache = true;
-      cache.set({ uri, params, query }, copy);
-    }
+  if (needCache && res.status === 200) {
+    const copy = res.clone();
+    copy.useCache = true;
+    cache.set({ uri, params, query }, copy);
   }
   ctx.res = res;
   return next();
