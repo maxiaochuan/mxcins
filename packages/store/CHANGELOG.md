@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.0.0-alpha.6](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.5...@mxcins/store@0.0.0-alpha.6) (2021-11-23)
+
+
+### Bug Fixes
+
+* **store:** fix use async loadable return type ([9c8d774](https://github.com/maxiaochuan/mxcins/commit/9c8d774099ec32b26e39f139540edfad0419f152))
+
+
+
+
+
 # [0.0.0-alpha.5](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.4...@mxcins/store@0.0.0-alpha.5) (2021-11-23)
 
 
