@@ -2,12 +2,12 @@
 import { useMemo, useRef } from 'react';
 import { Loadable, RecoilState, useRecoilRefresher_UNSTABLE, useRecoilValueLoadable } from 'recoil';
 
-interface UseAsyncLodableOptions<T> {
+interface UseAsyncLoadableOptions<T> {
   state: RecoilState<T>;
 }
 
-export const useAsyncLodable = <T>(
-  opts: UseAsyncLodableOptions<T>,
+export const useAsyncLoadable = <T>(
+  opts: UseAsyncLoadableOptions<T>,
 ): Loadable<T> & { data: T | undefined; loading: boolean } => {
   const { state: s } = opts;
   const { state, ...rest } = useRecoilValueLoadable(s);
