@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.0.0-alpha.4](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.3...@mxcins/store@0.0.0-alpha.4) (2021-11-23)
+
+
+### Features
+
+* **store:** interface ([af96f54](https://github.com/maxiaochuan/mxcins/commit/af96f5450819e751678070d9579d7064a96be35f))
+
+
+
+
+
 # [0.0.0-alpha.3](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.2...@mxcins/store@0.0.0-alpha.3) (2021-11-23)
 
 
