@@ -1,9 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import { useMemo, useRef } from 'react';
-import { Loadable, RecoilState, useRecoilRefresher_UNSTABLE, useRecoilValueLoadable } from 'recoil';
+import { Loadable, RecoilValue, useRecoilRefresher_UNSTABLE, useRecoilValueLoadable } from 'recoil';
 
 interface UseAsyncLoadableOptions<T> {
-  state: RecoilState<T>;
+  state: RecoilValue<T>;
 }
 
 export const useAsyncLoadable = <T>(
