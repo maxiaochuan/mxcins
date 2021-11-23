@@ -8,7 +8,12 @@ interface UseAsyncLoadableOptions<T> {
 
 export const useAsyncLoadable = <T>(
   opts: UseAsyncLoadableOptions<T>,
-): Loadable<T> & { data: T | undefined; loading: boolean } => {
+): Loadable<T> & {
+  data: T | undefined;
+  error: Error | undefined;
+  loading: boolean;
+  refresh: () => void;
+} => {
   const { state: s } = opts;
   const { state, ...rest } = useRecoilValueLoadable(s);
   const refresh = useRecoilRefresher_UNSTABLE(s);
