@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.0.0-alpha.5](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.4...@mxcins/store@0.0.0-alpha.5) (2021-11-23)
+
+
+### Features
+
+* **store:** use async loadable state interface to RecoilValue ([6df95f1](https://github.com/maxiaochuan/mxcins/commit/6df95f1cee154e149b6452d8614263ecb7bfbcec))
+
+
+
+
+
 # [0.0.0-alpha.4](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.3...@mxcins/store@0.0.0-alpha.4) (2021-11-23)
 
 
