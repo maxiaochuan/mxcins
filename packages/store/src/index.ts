@@ -37,5 +37,5 @@ export type {
 
 export {
   //
-  useAsyncLodable,
+  useAsyncLoadable,
 } from './hooks';
