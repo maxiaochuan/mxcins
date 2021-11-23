@@ -1,0 +1,17 @@
+**/*.md
+**/*.svg
+**/*.ejs
+**/*.html
+package.json
+**/package.json
+.umi
+.umi-production
+**/*.snap
+**/.DS_Store
+**/yarn.lock
+coverage/**/*
+lib
+types
+yarn.lock
+**/templates/**/*
+**/dist/**

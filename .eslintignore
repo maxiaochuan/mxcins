@@ -1,0 +1,15 @@
+node_modules/
+coverage/
+lib/
+dist/
+es/
+template/
+fixtures/
+website/
+examples/
+bin/
+templates/
+
+.eslintrc.js
+commitlint.config.js
+jest.config.js

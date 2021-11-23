@@ -1,0 +1,23 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "bootstrap": {},
+    "version": {
+      "conventionalCommits": true
+    },
+    "publish": {
+      "registry": "https://registry.npmjs.org",
+      "message": "chore: publish"
+    }
+  },
+  "ignoreChanges": [
+    "*.test.ts",
+    "packages/**/example/**",
+    "packages/explosion-core/**"
+  ],
+  "version": "independent"
+}
