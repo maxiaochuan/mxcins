@@ -112,6 +112,7 @@ export const useFetch: UseFetch = (
     if (!skip) {
       refetch({ ...variables, ...params });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skip]);
 
   return { ...state, data: state.data as ANY, refetch };

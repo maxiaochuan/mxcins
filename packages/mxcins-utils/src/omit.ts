@@ -16,8 +16,8 @@ export default function omit<T extends object, K extends keyof T>(
   keys: K[],
 ): Omit<T, K> {
   const copy = { ...target };
-  keys.forEach(key => {
+  for (const key of keys) {
     delete copy[key];
-  });
+  }
   return copy;
 }

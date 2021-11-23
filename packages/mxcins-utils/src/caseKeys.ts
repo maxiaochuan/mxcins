@@ -33,7 +33,7 @@ const caseKeys = <T = unknown>(
     exclude && has(exclude, k) ? [k, v] : [cache.get(k) || cache.set(k, caseFn(k)).get(k), v];
 
   if (Array.isArray(input)) {
-    return (input.map(v => (isObjectOrArray(v) ? mapObject(v, fn, options) : v)) as unknown) as T;
+    return input.map(v => (isObjectOrArray(v) ? mapObject(v, fn, options) : v)) as unknown as T;
   }
 
   return (isObjectOrArray(input) ? mapObject(input, fn, options) : input) as T;

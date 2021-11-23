@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-try-expect */
 import createServer from 'create-test-server';
-import request, { extend } from '../src';
+import request, { extend, ResponseError } from '../src';
 
 type ANY = any;
 
@@ -211,8 +211,11 @@ describe('test request', () => {
 
     try {
       await request(prefix('/test/expection'), { params: { a: 1 } });
-    } catch (error) {
+    } catch (error_) {
+      const error = error_ as ResponseError;
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(error.name).toBe('ResponseError');
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(error.response.status).toBe(401);
     }
 

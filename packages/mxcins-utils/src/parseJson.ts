@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable unicorn/no-nested-ternary, unicorn/no-null */
 /**
  * @description
@@ -17,9 +18,10 @@ export default function parseJson<R = any>(
 ): R {
   try {
     return JSON.parse(txt, reviver);
-  } catch (error) {
+  } catch (error_) {
+    const error = error_ as Error;
     if (typeof txt !== 'string') {
-      const isEmptyArray = Array.isArray(txt) && (txt as any[]).length === 0;
+      const isEmptyArray = Array.isArray(txt) && (txt as string[]).length === 0;
       const errorMessage = `Cannot parse ${isEmptyArray ? 'an empty array' : String(txt)}`;
       throw new TypeError(errorMessage);
     }
@@ -27,7 +29,7 @@ export default function parseJson<R = any>(
     // eslint-disable-next-line no-nested-ternary
     const errIdx = syntaxErr
       ? +syntaxErr[1]
-      : error.message.match(/^unexpected end of json.*/i)
+      : /^unexpected end of json.*/i.test(error.message)
       ? txt.length - 1
       : null;
 

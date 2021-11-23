@@ -258,7 +258,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
 /**
  * Irregular rules.
  */
-[
+for (const rule of [
   // Pronouns.
   ['I', 'we'],
   ['me', 'us'],
@@ -312,12 +312,13 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   ['pickaxe', 'pickaxes'],
   ['whiskey', 'whiskies'],
   ['passerby', 'passersby'],
-].forEach(rule => pluralize.addIrregularRule(rule[0], rule[1]));
+])
+  pluralize.addIrregularRule(rule[0], rule[1]);
 
 /**
  * Pluralization rules.
  */
-[
+for (const rule of [
   [/s?$/i, 's'],
   // eslint-disable-next-line no-control-regex
   [/[^\u0000-\u007F]$/i, '$0'],
@@ -353,12 +354,13 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/eaux$/i, '$0'],
   [/m[ae]n$/i, 'men'],
   ['thou', 'you'],
-].forEach(rule => pluralize.addPluralRule(rule[0], rule[1] as string));
+])
+  pluralize.addPluralRule(rule[0], rule[1] as string);
 
 /**
  * Singularization rules.
  */
-[
+for (const rule of [
   [/s$/i, ''],
   [/(ss)$/i, '$1'],
   [/(wi|kni|(?:after|half|high|low|mid|non|night|\W|^)li)ves$/i, '$1fe'],
@@ -391,12 +393,13 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   [/(child)ren$/i, '$1'],
   [/(eau)x?$/i, '$1'],
   [/men$/i, 'man'],
-].forEach(rule => pluralize.addSingularRule(rule[0], rule[1] as string));
+])
+  pluralize.addSingularRule(rule[0], rule[1] as string);
 
 /**
  * Uncountable rules.
  */
-[
+for (const regexp of [
   // Singular words with no plurals.
   'adulthood',
   'advice',
@@ -497,6 +500,7 @@ pluralize.addIrregularRule = (single: string, plural: string) => {
   /o[iu]s$/i, // "carnivorous"
   /pox$/i, // "chickpox", "smallpox"
   /sheep$/i,
-].forEach(regexp => pluralize.addUncountableRule(regexp));
+])
+  pluralize.addUncountableRule(regexp);
 
 export default pluralize;

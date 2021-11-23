@@ -29,12 +29,14 @@ export default function arr2obj<T extends R>(arr: T[], options: Opts<T> = {}): R
   }
   const { key = 'id', delimiter = '-', clone, prefix = '', suffix = '' } = options;
 
-  return arr.reduce<R<T>>((prev, item) => {
-    const center = Array.isArray(key) ? key.map(k => item[k]).join(delimiter) : item[key];
-    if (item && center) {
-      // eslint-disable-next-line no-param-reassign
-      prev[`${prefix}${center}${suffix}`] = clone ? { ...item } : item;
-    }
-    return prev;
-  }, {});
+  return Object.fromEntries(
+    arr.map(row => {
+      const center = Array.isArray(key) ? key.map(k => row[k]).join(delimiter) : row[key];
+      if (row && center) {
+        // eslint-disable-next-line no-param-reassign
+        return [`${prefix}${center}${suffix}`, clone ? { ...row } : row];
+      }
+      return [];
+    }),
+  );
 }

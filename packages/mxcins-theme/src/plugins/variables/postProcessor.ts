@@ -1,3 +1,8 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable unicorn/prefer-object-from-entries */
+/* eslint-disable unicorn/no-array-reduce */
 import { SELECTOR } from './utils';
 
 export default class VariablesOutputPostProcessor {

@@ -1,9 +1,10 @@
-import { dirname } from 'path';
+import path from 'path';
 import less from 'less';
 
-const build = async (vars: Record<string, string>) => {
+const build = async (vars: Record<string, string>): Promise<string> => {
+  // eslint-disable-next-line unicorn/prefer-module
   const antdPackagePath = require.resolve('antd/package.json');
-  const antdPath = dirname(antdPackagePath);
+  const antdPath = path.dirname(antdPackagePath);
 
   const content = `
     @import "lib/style/themes/default.less";

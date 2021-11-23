@@ -31,16 +31,18 @@ const mapObject = <T extends Record<string, unknown> = Record<string, unknown>>(
     return mapArray(object) as T;
   }
 
-  Object.entries(object).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(object)) {
     const [newKey, newValue] = fn(key, value, object);
     if (deep && isObject(newValue)) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       target![newKey] = Array.isArray(newValue)
         ? mapArray(newValue)
         : mapObject(newValue as Record<string, unknown>, fn, options);
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       target![newKey] = newValue;
     }
-  });
+  }
 
   return target as T;
 };

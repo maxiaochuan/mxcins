@@ -1,14 +1,18 @@
-import { join } from 'path';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import path from 'path';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import rimraf from 'rimraf';
 import mkdirp from 'mkdirp';
 import theme2vars from './theme2vars';
 import build from './build';
-// export type { IOpts as IbuildOpts } from './build';
-// export { default as build } from './build';
 
-// export { default as plugin } from './plugin';
-export default async ({ input, output }: { input: string; output: string }) => {
+export default async ({
+  input,
+  output,
+}: {
+  input: string;
+  output: string;
+}): Promise<{ jsons: Record<string, any>; csses: Record<string, any> }> => {
   if (!existsSync(input)) {
     throw new Error(`input file: ${input} is not exist.`);
   }
@@ -35,8 +39,8 @@ export default async ({ input, output }: { input: string; output: string }) => {
     // eslint-disable-next-line no-await-in-loop
     const css = await build(transformed);
 
-    writeFileSync(join(output, `${name}.css`), css);
-    writeFileSync(join(output, `${name}.json`), JSON.stringify(transformed, undefined, 2));
+    writeFileSync(path.join(output, `${name}.css`), css);
+    writeFileSync(path.join(output, `${name}.json`), JSON.stringify(transformed, undefined, 2));
     jsons[name] = transformed;
     csses[name] = css;
   }

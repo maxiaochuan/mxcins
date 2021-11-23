@@ -22,7 +22,7 @@ declare global {
     lowerFirst: string;
   }
   interface Object {
-    _setv: <T extends Record<string, any>>(property: NamePath, value: any) => T;
+    _setv: <T extends Record<string, unknown>>(property: NamePath, value: unknown) => T;
     _getv: (property: NamePath) => string;
   }
   interface Array<T> {
@@ -44,7 +44,7 @@ declare global {
     ['lowerFirst', lowerFirst],
   ];
 
-  funcs.forEach(([key, fn]) => {
+  for (const [key, fn] of funcs) {
     if (String && typeof String.prototype[key] === 'undefined') {
       Object.defineProperty(String.prototype, key, {
         get() {
@@ -52,7 +52,7 @@ declare global {
         },
       });
     }
-  });
+  }
 
   if (Array && typeof Array.prototype.uniq === 'undefined') {
     Object.defineProperty(Array.prototype, 'uniq', {
@@ -66,13 +66,15 @@ declare global {
       configurable: false,
       writable: false,
       enumerable: false,
-      value: function setv(name: NamePath, v: any) {
+      value: function setv(name: NamePath, v: unknown) {
         const names = Array.isArray(name) ? [...name] : [name];
-        const fn = (target: Record<string, any>): any => {
+        const fn = (target: Record<string, unknown>): unknown => {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           const key = names.shift()!;
-          target[key] = names.length
-            ? fn(target[key] || (typeof names[0] === 'number' ? [] : {}))
-            : v;
+          const next: Record<string, unknown> = (target[key] ||
+            (typeof names[0] === 'number' ? [] : {})) as Record<string, unknown>;
+          // eslint-disable-next-line no-param-reassign
+          target[key] = names.length > 0 ? fn(next) : v;
           return target;
         };
 
@@ -88,8 +90,9 @@ declare global {
       enumerable: false,
       value: function getv(name: NamePath) {
         const names = Array.isArray(name) ? [...name] : [name];
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const key = names.shift()!;
-        if (names.length) {
+        if (names.length > 0) {
           if (this[key] && this[key]._getv) {
             return this[key]._getv(names);
           }

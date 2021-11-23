@@ -11,3 +11,5 @@ bin/
 templates/
 
 .eslintrc.js
+commitlint.config.js
+jest.config.js

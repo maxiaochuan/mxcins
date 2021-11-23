@@ -5,7 +5,7 @@ type Args = Array<string | string[] | { [name: string]: boolean } | undefined>;
 export default function classnames(...args: Args): string {
   const classes: string[] = [];
 
-  args.forEach(input => {
+  for (const input of args) {
     if (Array.isArray(input)) {
       classes.push(classnames(...input));
     } else if (isObject(input)) {
@@ -16,7 +16,7 @@ export default function classnames(...args: Args): string {
     } else if (isString(input)) {
       classes.push(input);
     }
-  });
+  }
 
   return classes.join(' ');
 }

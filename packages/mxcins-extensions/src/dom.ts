@@ -6,7 +6,7 @@ import win from './window';
 (() => {
   function remove(this: Element | Text) {
     if (this.parentNode) {
-      this.parentNode.removeChild(this);
+      this.remove();
     }
   }
 

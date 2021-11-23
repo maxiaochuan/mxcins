@@ -159,10 +159,11 @@ export const decode: DecodeMethod = <T extends Record<string, V>>(
 
   const fields = rows.shift() || [];
 
-  while (rows.length) {
+  while (rows.length > 0) {
     const row = rows.shift();
     // 筛选空行
-    if (row && row.filter(Boolean).length !== 0) {
+    if (row && row.some(Boolean)) {
+      // eslint-disable-next-line unicorn/no-array-reduce
       const r = fields.reduce<ANY>((prev, f, i) => {
         prev[f] = row[i] || '';
         return prev;

@@ -13,7 +13,14 @@ const hide = <T>(node: TreeNode<Omited<T>>): Omited<T> => omit(node, BUILTIN_KEY
 
 const uuid = <T>(o: T, func: string | ((r: T) => string | undefined)): string | undefined => {
   if (typeof func === 'string') {
-    return func.split('.').reduce<any>((prev, k) => prev && prev[k], o) as string | undefined;
+    return (
+      func
+        .split('.')
+        // eslint-disable-next-line unicorn/no-array-reduce
+        .reduce<unknown>((prev, k) => prev && (prev as Record<string, unknown>)[k], o) as
+        | string
+        | undefined
+    );
   }
   return func(o);
 };
@@ -30,7 +37,7 @@ export class Node<T extends object = {}> {
   public proletariats?: TreeNode<T>[];
 
   constructor(init: T) {
-    Object.keys(init).forEach(key => {
+    for (const key of Object.keys(init)) {
       if (!/^(children|parent|ancestors|proletariats)$/.test(key)) {
         Object.defineProperty(this, key, {
           enumerable: true,
@@ -39,7 +46,7 @@ export class Node<T extends object = {}> {
           value: init[key as keyof T],
         });
       }
-    });
+    }
   }
 }
 
@@ -114,7 +121,7 @@ export default class Tree<T extends object = {}> {
 
   public insert(data: Omited<T> | Omited<T>[], pid?: string): this {
     if (Array.isArray(data)) {
-      data.forEach(one => this.insertOne(one, pid));
+      for (const one of data) this.insertOne(one, pid);
     } else {
       this.insertOne(data, pid);
     }
@@ -129,28 +136,28 @@ export default class Tree<T extends object = {}> {
     const { ancestors, proletariats } = this.opts;
     if (ancestors) {
       const reAncestors = (node: TreeNode<T>): TreeNode<T>[] | undefined =>
-        node.parent ? (reAncestors(node.parent) || []).concat([node.parent]) : undefined;
+        node.parent ? [...(reAncestors(node.parent) || []), node.parent] : undefined;
 
-      Object.values(this.nodes).forEach(node => {
+      for (const node of Object.values(this.nodes)) {
         if (node) {
           node.ancestors = reAncestors(node);
         }
-      });
+      }
     }
 
     if (proletariats) {
       const reProletariats = (node: TreeNode<T>): TreeNode<T>[] | undefined =>
         node.children?.length
-          ? node.children
-              .map(c => (c.children?.length ? (reProletariats(c) as TreeNode<T>[]) : [c]))
-              .flat()
+          ? node.children.flatMap(c =>
+              c.children?.length ? (reProletariats(c) as TreeNode<T>[]) : [c],
+            )
           : undefined;
 
-      Object.values(this.nodes).forEach(node => {
+      for (const node of Object.values(this.nodes)) {
         if (node) {
           node.proletariats = reProletariats(node);
         }
-      });
+      }
     }
   }
 
@@ -176,15 +183,17 @@ export default class Tree<T extends object = {}> {
     const { mode } = this.opts;
     const { uid = DEFAULT_UID, puid = DEFAULT_PUID } = this.opts;
     if (mode === 'parent') {
-      this.nodes = data.reduce<Record<string, TreeNode<T>>>((prev, one) => {
-        const id = uuid(one, uid);
-        if (id) {
-          prev[id] = new Node(one) as TreeNode<T>;
-        }
-        return prev;
-      }, {});
+      this.nodes = Object.fromEntries(
+        data.map(row => {
+          const id = uuid(row, uid);
+          if (id) {
+            return [id, new Node(row) as TreeNode<T>];
+          }
+          return [];
+        }),
+      );
 
-      data.forEach(one => {
+      for (const one of data) {
         const id = uuid(one, uid) || '';
         const pid = uuid(one, puid) || '';
         const node = this.nodes[id];
@@ -198,12 +207,12 @@ export default class Tree<T extends object = {}> {
             this.roots.push(node);
           }
         }
-      });
+      }
     }
 
     if (mode === 'children') {
       const map = (d: T[], parent?: TreeNode<T>) => {
-        d.forEach(one => {
+        for (const one of d) {
           const id = uuid(one, uid) || '';
           const node = new Node(one) as TreeNode<T>;
 
@@ -221,17 +230,15 @@ export default class Tree<T extends object = {}> {
           ) {
             map((one as { children: T[] }).children, node);
           }
-        });
+        }
 
-        d.forEach(one => {
+        for (const one of d) {
           const id = uuid(one, uid) || '';
           const node = this.nodes[id];
-          if (node) {
-            if (!node.parent) {
-              this.roots.push(node);
-            }
+          if (node && !node.parent) {
+            this.roots.push(node);
           }
-        });
+        }
       };
 
       map(data);

@@ -1,6 +1,8 @@
-/* eslint-disable global-require, @typescript-eslint/no-var-requires */
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable func-names */
+/* eslint-disable unicorn/prefer-module */
 
-// eslint-disable-next-line func-names
 module.exports = function (_, opts) {
   return {
     presets: [

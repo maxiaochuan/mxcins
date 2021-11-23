@@ -21,23 +21,18 @@ export default class Downloader {
   }
 
   private static download(type: 'csv', name: string, blob: Blob) {
-    if (navigator.msSaveBlob) {
-      // IE 10+
-      navigator.msSaveBlob(blob, name);
-    } else {
-      const link = document.createElement('a');
-      if (link.download !== undefined) {
-        // feature detection
-        // Browsers that support HTML5 download attribute
-        const url = URL.createObjectURL(blob);
-        link.setAttribute('href', url);
-        link.setAttribute('download', name);
-        link.setAttribute('type', Downloader.DOCUMENT_TYPES[type]);
-        link.style.visibility = 'hidden';
-        document.body.append(link);
-        link.click();
-        link.remove();
-      }
+    const link = document.createElement('a');
+    if (link.download !== undefined) {
+      // feature detection
+      // Browsers that support HTML5 download attribute
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', name);
+      link.setAttribute('type', Downloader.DOCUMENT_TYPES[type]);
+      link.style.visibility = 'hidden';
+      document.body.append(link);
+      link.click();
+      link.remove();
     }
   }
 }

@@ -1,4 +1,7 @@
-/* eslint-disable global-require, @typescript-eslint/no-var-requires, @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable unicorn/prefer-module */
 import type { Options as ENV } from '@babel/preset-env';
 
 interface ImportPluginOpts {
@@ -81,9 +84,7 @@ export default (
       { ssr: false, ...toObject(styledComponents) },
     ],
     ...(imports
-      ? imports.map(o => {
-          return [require('babel-plugin-import').default, o, o.libraryName];
-        })
+      ? imports.map(o => [require('babel-plugin-import').default, o, o.libraryName])
       : []),
   ].filter(Boolean),
 });

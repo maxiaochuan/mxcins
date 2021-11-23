@@ -45,11 +45,7 @@ const getSaturation = (hsv: ColorFormats.HSV, i: number, isLight: boolean) => {
 
 const getValue = (hsv: ColorFormats.HSV, i: number, isLight: boolean) => {
   let value;
-  if (isLight) {
-    value = hsv.v + brightnessStep1 * i;
-  } else {
-    value = hsv.v - brightnessStep2 * i;
-  }
+  value = isLight ? hsv.v + brightnessStep1 * i : hsv.v - brightnessStep2 * i;
   if (value > 1) {
     value = 1;
   }

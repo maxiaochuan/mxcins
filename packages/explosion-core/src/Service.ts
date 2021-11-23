@@ -1,4 +1,4 @@
-import { join } from 'path';
+import path from 'path';
 import { EventEmitter } from 'events';
 import { loadDotEnv } from './utils';
 
@@ -26,7 +26,7 @@ export default class Service extends EventEmitter {
     this.env = env || process.env.NODE_ENV;
 
     // dotenv
-    const envPath = join(this.paths.cwd, '.env');
+    const envPath = path.join(this.paths.cwd, '.env');
     loadDotEnv(envPath);
   }
 }

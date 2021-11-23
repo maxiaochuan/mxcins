@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useReducer, Reducer, useEffect, useCallback, useMemo } from 'react';
 import { tuple } from '@mxcins/types';
 import { DocumentNode } from 'graphql';
@@ -114,10 +115,10 @@ export const useFormatQuery: UseFormatQuery = (
 
   useEffect(() => dispatch({ type: 'CHANGE_LOADING', payload: result.loading }), [result.loading]);
 
-  const returned = useMemo(() => ({ ...result, data: state.data, loading: state.loading }), [
-    state.data,
-    state.loading,
-  ]);
+  const returned = useMemo(
+    () => ({ ...result, data: state.data, loading: state.loading }),
+    [state.data, state.loading],
+  );
 
   return returned;
 };
