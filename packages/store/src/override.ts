@@ -27,20 +27,6 @@ export function atom<T>(options: AtomOptions<T>): RecoilState<T> {
   return a({ key, ...rest });
 }
 
-export interface ReadWriteSelectorOptions<T> extends Omit<RWSO<T>, 'key'> {
-  key?: string;
-}
-
-export interface ReadOnlySelectorOptions<T> extends Omit<ROSO<T>, 'key'> {
-  key?: string;
-}
-
-export function selector<T>(options: ReadWriteSelectorOptions<T>): RecoilState<T>;
-export function selector<T>(options: ReadOnlySelectorOptions<T>): RecoilValueReadOnly<T> {
-  const { key = nanoid(), ...rest } = options;
-  return s({ key, ...rest });
-}
-
 export interface AtomFamilyOptions<T, P extends SerializableParam> extends Omit<AFO<T, P>, 'key'> {
   key?: string;
 }
@@ -50,6 +36,23 @@ export function atomFamily<T, P extends SerializableParam>(
 ): (param: P) => RecoilState<T> {
   const { key = nanoid(), ...rest } = options;
   return af({ key, ...rest });
+}
+
+export interface ReadWriteSelectorOptions<T> extends Omit<RWSO<T>, 'key'> {
+  key?: string;
+}
+
+export interface ReadOnlySelectorOptions<T> extends Omit<ROSO<T>, 'key'> {
+  key?: string;
+}
+
+export function selector<T>(options: ReadWriteSelectorOptions<T>): RecoilState<T>;
+export function selector<T>(options: ReadOnlySelectorOptions<T>): RecoilValueReadOnly<T>;
+export function selector<T>(
+  options: ReadOnlySelectorOptions<T> | ReadWriteSelectorOptions<T>,
+): RecoilState<T> | RecoilValueReadOnly<T> {
+  const { key = nanoid(), ...rest } = options;
+  return s({ key, ...rest });
 }
 
 export interface ReadWriteSelectorFamilyOptions<T, P extends SerializableParam>
@@ -62,14 +65,15 @@ export interface ReadOnlySelectorFamilyOptions<T, P extends SerializableParam>
   key?: string;
 }
 
-function selectorFamily<T, P extends SerializableParam>(
+export function selectorFamily<T, P extends SerializableParam>(
   options: ReadWriteSelectorFamilyOptions<T, P>,
 ): (param: P) => RecoilState<T>;
-function selectorFamily<T, P extends SerializableParam>(
+export function selectorFamily<T, P extends SerializableParam>(
   options: ReadOnlySelectorFamilyOptions<T, P>,
-): (param: P) => RecoilValueReadOnly<T> {
+): (param: P) => RecoilValueReadOnly<T>;
+export function selectorFamily<T, P extends SerializableParam>(
+  options: ReadWriteSelectorFamilyOptions<T, P> | ReadOnlySelectorFamilyOptions<T, P>,
+): ((param: P) => RecoilState<T>) | ((param: P) => RecoilValueReadOnly<T>) {
   const { key = nanoid(), ...rest } = options;
   return sf({ key, ...rest });
 }
-
-export { selectorFamily };

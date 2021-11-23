@@ -10,6 +10,7 @@ export {
   useGotoRecoilSnapshot,
   useRecoilRefresher_UNSTABLE,
   RecoilRoot,
+  DefaultValue,
 } from 'recoil';
 
 export type {
