@@ -1,0 +1,31 @@
+{
+  "name": "@mxcins/libs",
+  "version": "1.0.0-alpha.0",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "mlib build",
+    "dev": "rescript build -w"
+  },
+  "dependencies": {
+    "resize-observer-polyfill": "1.5.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}
