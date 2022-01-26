@@ -3,7 +3,7 @@ type t<'key, 'value>
 @new
 external make: unit => t<'key, 'value> = "Map"
 
-@ocaml.doc("Returns the value associated to the key, or `undefined` if there is none.") @send
+@send
 external get: (t<'key, 'value>, 'key) => option<'value> = "get"
 
 @send
