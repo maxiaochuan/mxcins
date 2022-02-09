@@ -4,15 +4,11 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import ResizeObserverPolyfill from "resize-observer-polyfill";
 
-var $$ResizeObserverEntry = {};
-
-var $$ResizeObserver = {};
-
-var mapTargetCallbacks = new Map();
+var collections = new Map();
 
 var observer = new ResizeObserverPolyfill((function (entries) {
         entries.forEach(function (entry) {
-              var callbacks = mapTargetCallbacks.get(entry.target);
+              var callbacks = collections.get(entry.target);
               if (callbacks !== undefined) {
                 Caml_option.valFromOption(callbacks).forEach(function (callback) {
                       return Curry._1(callback, entry);
@@ -25,19 +21,19 @@ var observer = new ResizeObserverPolyfill((function (entries) {
       }));
 
 function observe(element, callback) {
-  var callbacks = mapTargetCallbacks.get(element);
+  var callbacks = collections.get(element);
   if (callbacks !== undefined) {
     Caml_option.valFromOption(callbacks).add(callback);
     return ;
   }
   observer.observe(element);
   var callbacks$1 = new Set().add(callback);
-  mapTargetCallbacks.set(element, callbacks$1);
+  collections.set(element, callbacks$1);
   
 }
 
 function unobserve(element, callback) {
-  var callbacks = mapTargetCallbacks.get(element);
+  var callbacks = collections.get(element);
   if (callbacks === undefined) {
     return ;
   }
@@ -50,11 +46,12 @@ function unobserve(element, callback) {
   
 }
 
+var $$ResizeObserverEntry;
+
 export {
   $$ResizeObserverEntry ,
-  $$ResizeObserver ,
   observe ,
   unobserve ,
   
 }
-/* mapTargetCallbacks Not a pure module */
+/* collections Not a pure module */

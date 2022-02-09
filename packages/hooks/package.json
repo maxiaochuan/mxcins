@@ -1,6 +1,6 @@
 {
-  "name": "@mxcins/libs",
-  "version": "1.0.0-alpha.0",
+  "name": "@mxcins/hooks",
+  "version": "3.0.0-alpha.0",
   "description": "",
   "homepage": "https://github.com/maxiaochuan/mxcins",
   "bugs": {
@@ -16,11 +16,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "rescript",
     "dev": "rescript build -w"
   },
   "dependencies": {
-    "resize-observer-polyfill": "1.5.1"
+    "@rescript/react": "0.10.3",
+    "@ryyppy/rescript-promise": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@mxcins/libs": "*"
   },
   "publishConfig": {
     "access": "public"
