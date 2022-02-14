@@ -10,7 +10,7 @@ type callback = ResizeObserverEntry.t => unit
 %%private(
   let observer = ResizeObserver.make(entries => {
     entries->Js.Array2.forEach(entry =>
-      switch entry->ResizeObserverEntry.target |> Map.get(collections) {
+      switch collections->Map.get(entry->ResizeObserverEntry.target) {
       | Some(callbacks) => callbacks->Set.forEach(callback => entry->callback)
       | None => ()
       }
@@ -19,21 +19,19 @@ type callback = ResizeObserverEntry.t => unit
 )
 
 let observe = (element: Element.t, callback) =>
-  switch element |> Map.get(collections) {
-  | Some(callbacks) => {
-      let _ = callbacks ->Set.add(callback)
-    }
+  switch collections->Map.get(element) {
+  | Some(callbacks) => callbacks->Set.add(callback)->ignore
   | None => {
       observer->ResizeObserver.observe(element)
       let callbacks = Set.make()->Set.add(callback)
-      let _ = collections->Map.set(element, callbacks)
+      collections->Map.set(element, callbacks)->ignore
     }
   }
 
 let unobserve = (element: Element.t, callback) =>
-  switch element |> Map.get(collections) {
+  switch collections->Map.get(element) {
   | Some(callbacks) => {
-      let _ = callbacks-> Set.delete(callback)
+      callbacks->Set.delete(callback)->ignore
       if callbacks->Set.size === 0 {
         observer->ResizeObserver.unobserve(element)
       }
