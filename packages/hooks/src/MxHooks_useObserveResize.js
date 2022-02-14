@@ -6,10 +6,7 @@ import * as Js_math from "rescript/lib/es6/js_math.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxLibs__SingleResizeObserver from "@mxcins/libs/src/MxLibs__SingleResizeObserver.js";
 
-function MxHooks_useObserveResize$useObserveResize(Props) {
-  var target = Props.target;
-  var onResize = Props.onResize;
-  var disabled = Props.disabled;
+function useObserveResize(target, onResize, disabled) {
   var sizeRef = React.useRef({
         width: -1,
         height: -1,
@@ -67,8 +64,6 @@ function MxHooks_useObserveResize$useObserveResize(Props) {
       ]);
   
 }
-
-var useObserveResize = MxHooks_useObserveResize$useObserveResize;
 
 export {
   useObserveResize ,
