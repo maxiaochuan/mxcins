@@ -11,3 +11,6 @@ external set: (t<'key, 'value>, 'key, 'value) => t<'key, 'value> = "set"
 
 @send
 external has: (t<'key, 'value>, 'key) => bool = "has"
+
+@send
+external delete: (t<'key, 'value>, 'key) => t<'key, 'value> = "delete"
