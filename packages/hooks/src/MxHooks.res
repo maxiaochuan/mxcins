@@ -1,4 +1,4 @@
-let useGetState = (init: 'state => unit) => {
+let useGetState = (init: unit => 'state) => {
   let (state, set) = React.useState(init)
   let ref = React.useRef(state)
   ref.current = state
