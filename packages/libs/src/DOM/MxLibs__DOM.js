@@ -7,10 +7,13 @@ var DomRect;
 
 var $$Element;
 
+var $$Window;
+
 export {
   $$ResizeObserver ,
   DomRect ,
   $$Element ,
+  $$Window ,
   
 }
 /* No side effect */
