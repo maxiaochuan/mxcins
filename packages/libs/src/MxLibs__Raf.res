@@ -3,20 +3,13 @@ open MxLibs__STD
 @val external raf: (int => unit) => int = "requestAnimationFrame"
 @val external caf: int => unit = "cancelAnimationFrame"
 
-type callback = unit => unit
-
 %%private(let index = ref(0))
 
 %%private(let cache = Map.make())
 
 %%private(let cleanup = id => cache->Map.delete(id))
 
-let make = (callback, times: option<int>) => {
-  let times = switch times {
-  | Some(times) => times
-  | None => 1
-  }
-
+let make = (~times = 1, callback: unit => unit) => {
   index := index.contents + 1
   let id = index.contents
 
@@ -45,22 +38,22 @@ let cancel = (id: int): unit => {
   }
 }
 
-let throttle = (callback: 'a, times: option<int>) => {
+let throttle = (~times = 1, callback: 'a => unit) => {
   let valid = ref(true)
-  let run = (a1: 'param) => {
+  let run = (param: 'a) => {
     if valid.contents {
       valid.contents = false
       make(() => {
-        a1->callback
+        param->callback
         valid.contents = true
-      }, times)->ignore
+      }, ~times)->ignore
     }
   }
 
   run
 }
 
-let debounce = (callback: 'a, times: option<int>) => {
+let debounce = (~times=1, callback: 'a => unit) => {
   let id: ref<option<int>> = ref(None)
   let run = (a1: 'param) => {
     switch id.contents {
@@ -70,7 +63,7 @@ let debounce = (callback: 'a, times: option<int>) => {
 
     id.contents = make(() => {
         a1->callback
-      }, times)->Some
+      }, ~times)->Some
   }
 
   run

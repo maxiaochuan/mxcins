@@ -5,11 +5,14 @@ var DOM;
 
 var STD;
 
+var Raf;
+
 var SingleResizeObserver;
 
 export {
   DOM ,
   STD ,
+  Raf ,
   SingleResizeObserver ,
   
 }

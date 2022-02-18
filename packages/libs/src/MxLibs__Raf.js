@@ -8,8 +8,8 @@ var index = {
 
 var cache = new Map();
 
-function make(callback, times) {
-  var times$1 = times !== undefined ? times : 1;
+function make(timesOpt, callback) {
+  var times = timesOpt !== undefined ? timesOpt : 1;
   index.contents = index.contents + 1 | 0;
   var id = index.contents;
   var run = function (remaining) {
@@ -23,7 +23,7 @@ function make(callback, times) {
     cache.set(id, rafid);
     
   };
-  run(times$1);
+  run(times);
   return id;
 }
 
@@ -37,25 +37,27 @@ function cancel(id) {
   
 }
 
-function throttle(callback, times) {
+function throttle(timesOpt, callback) {
+  var times = timesOpt !== undefined ? timesOpt : 1;
   var valid = {
     contents: true
   };
-  return function (a1) {
+  return function (param) {
     if (valid.contents) {
       valid.contents = false;
-      make((function (param) {
-              Curry._1(callback, a1);
+      make(times, (function (param$1) {
+              Curry._1(callback, param);
               valid.contents = true;
               
-            }), times);
+            }));
       return ;
     }
     
   };
 }
 
-function debounce(callback, times) {
+function debounce(timesOpt, callback) {
+  var times = timesOpt !== undefined ? timesOpt : 1;
   var id = {
     contents: undefined
   };
@@ -64,9 +66,9 @@ function debounce(callback, times) {
     if (id$1 !== undefined) {
       cancel(id$1);
     }
-    id.contents = make((function (param) {
+    id.contents = make(times, (function (param) {
             return Curry._1(callback, a1);
-          }), times);
+          }));
     
   };
 }

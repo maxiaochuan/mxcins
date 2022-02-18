@@ -1,3 +1,3 @@
 type t = Dom.window
 
-@get external innerHeight: T.t => int = "innerHeight"
+@get external innerHeight: t => int = "innerHeight"

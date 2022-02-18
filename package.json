@@ -4,7 +4,11 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev": "dumi dev"
+  },
   "devDependencies": {
+    "dumi": "^1.1.38",
     "lerna": "^4.0.0"
   },
   "dependencies": {

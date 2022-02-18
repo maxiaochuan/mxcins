@@ -1,0 +1,34 @@
+{
+  "name": "@mxcins/components",
+  "version": "1.0.0-alpha.0",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "module": "src/index.js",
+  "scripts": {
+    "dev": "rescript build -w"
+  },
+  "dependencies": {
+    "@rescript/react": "0.10.3",
+    "@mxcins/hooks": "3.0.0-alpha.0",
+    "@mxcins/libs": "1.0.0-alpha.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}
