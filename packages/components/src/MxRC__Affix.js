@@ -73,7 +73,6 @@ function MxRC__Affix(Props) {
                   }
                   var targetRect = getDomRect(target);
                   var containerRect = getDomRect(Caml_option.some(container));
-                  console.log(target);
                   var fixedTop = getFixedTop(targetRect, containerRect, initOffsetTop);
                   var fixedBottom = getFixedBottom(targetRect, containerRect, offsetBottom);
                   var next;

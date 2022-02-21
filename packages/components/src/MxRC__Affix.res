@@ -95,8 +95,6 @@ let make = (
           let targetRect = target->AffixUtils.getDomRect
           let containerRect = Some(container)->AffixUtils.getDomRect
 
-          target->Js.log
-
           let fixedTop = AffixUtils.getFixedTop(
             ~targetRect,
             ~containerRect,
