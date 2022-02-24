@@ -1,46 +1,59 @@
 open MxLibs
 
+type element = DOM.Element.t
+
 module AffixUtils = {
   type rect = {top: int, bottom: int, width: int, height: int}
 
-  let getDomRect = (node: option<DOM.Element.t>) =>
+  let getDomRect = node => {
+    open DOM.Element
+    open DOM.DomRect
+    open Belt.Float
+    let rect = node->getBoundingClientRect
+    {
+      top: rect->top->toInt,
+      bottom: rect->bottom->toInt,
+      width: rect->width->toInt,
+      height: rect->height->toInt,
+    }
+  }
+
+  let getWinRect = () => {
+    open DOM.Window
+    {
+      top: 0,
+      bottom: DOM.window->innerHeight,
+      width: 0,
+      height: 0,
+    }
+  }
+
+  let getTargetRect = (node: option<element>) =>
     switch node {
-    | Some(node) => {
-        let rect = node->DOM.Element.getBoundingClientRect
-        open Belt.Float
-        {
-          top: rect->DOM.DomRect.top->toInt,
-          bottom: rect->DOM.DomRect.bottom->toInt,
-          width: rect->DOM.DomRect.width->toInt,
-          height: rect->DOM.DomRect.height->toInt,
-        }
-      }
-    | None => {
-        top: 0,
-        bottom: DOM.window->DOM.Window.innerHeight,
-        width: 0,
-        height: 0,
-      }
+    | None => ()->getWinRect
+    | Some(node) => node->getDomRect
     }
 
-  let getFixedTop = (~targetRect: rect, ~containerRect: rect, ~offsetTop: option<int>): option<
-    int,
-  > =>
-    switch offsetTop {
-    | Some(top) => targetRect.top > containerRect.top - top ? Some(top + targetRect.top) : None
+  let getFixedTop = (
+    ~targetRect as target: rect,
+    ~containerRect as container: rect,
+    ~offsetTop as top: option<int>,
+  ): option<int> =>
+    switch top {
+    | Some(top) => target.top > container.top - top ? Some(top + target.top) : None
     | _ => None
     }
 
   let getFixedBottom = (
-    ~targetRect: rect,
-    ~containerRect: rect,
-    ~offsetBottom: option<int>,
+    ~targetRect as target: rect,
+    ~containerRect as container: rect,
+    ~offsetBottom as bottom: option<int>,
   ): option<int> =>
-    switch offsetBottom {
+    switch bottom {
     | Some(bottom) =>
-      targetRect.bottom < containerRect.bottom + bottom
+      target.bottom < container.bottom + bottom
         ? {
-            let offset = DOM.window->DOM.Window.innerHeight - targetRect.bottom
+            let offset = DOM.window->DOM.Window.innerHeight - target.bottom
             Some(bottom + offset)
           }
         : None
@@ -66,97 +79,142 @@ type state =
   | Fixed({fixed: fixedStyle, placeholder: placeholderStyle})
   | Unfixed
 
+let events = ["resize", "scroll", "touchstart", "touchmove", "touchend", "pageshow", "load"]
+
 @react.component
 let make = (
-  ~offsetTop: option<int>=?,
+  ~offsetTop=0,
   ~offsetBottom: option<int>=?,
-  ~target as tar: option<unit => Js.nullable<DOM.Element.t>>=?,
+  ~target as tar: option<unit => Js.Nullable.t<element>>=?,
   ~children: option<React.element>=?,
 ) => {
   let containerRef = React.useRef(Js.Nullable.null)
   let fixedRef = React.useRef(Js.Nullable.null)
-  let updateRef = React.useRef(() => ())
-  let (state, setState, _) = MxHooks.useGetState(_ => Unfixed)
 
-  let initOffsetTop = switch offsetTop {
-  | Some(top) => top
-  | _ => 0
+  let updateRef = React.useRef(() => ())
+
+  let (state, setState, getState) = MxHooks.useGetState(_ => Unfixed)
+
+  let isUseingDefaultTarget = switch tar {
+  | Some(_) => false
+  | _ => true
   }
 
   let target = switch tar {
-  | Some(tar) => tar()->Js.Nullable.toOption
-  | _ => None
+  | None => None
+  | Some(fn) => ()->fn->Js.toOption
   }
 
-  React.useEffect3(() => {
-    updateRef.current = Raf.throttle((_) => {
-      switch containerRef.current->Js.Nullable.toOption {
-      | Some(container) => {
-          let targetRect = target->AffixUtils.getDomRect
-          let containerRect = Some(container)->AffixUtils.getDomRect
+  React.useEffect4(() => {
+    updateRef.current = Raf.throttle(_ => {
+      let container = containerRef.current->Js.toOption
+      switch container {
+      | None => ()
+      | Some(container) =>
+        switch (isUseingDefaultTarget, target) {
+        | (false, None) => ()
+        | (_, target) => {
+            let targetRect = target->AffixUtils.getTargetRect
+            let containerRect = container->AffixUtils.getDomRect
+            let fixedTop = AffixUtils.getFixedTop(
+              ~targetRect,
+              ~containerRect,
+              ~offsetTop=Some(offsetTop),
+            )
+            let fixedBottom = AffixUtils.getFixedBottom(~targetRect, ~containerRect, ~offsetBottom)
 
-          let fixedTop = AffixUtils.getFixedTop(
-            ~targetRect,
-            ~containerRect,
-            ~offsetTop=Some(initOffsetTop),
-          )
+            "rect"->Js.log3(targetRect, containerRect)
+            "fixed"->Js.log3(fixedTop, fixedBottom)
 
-          let fixedBottom = AffixUtils.getFixedBottom(~targetRect, ~containerRect, ~offsetBottom)
-
-          let next = switch (fixedTop, fixedBottom) {
-          | (None, None) => Unfixed
-          | (top, bottom) => {
-              open Belt.Int
-              Fixed({
-                fixed: {
-                  position: "fixed",
-                  top: switch top {
-                  | Some(top) => `${top->toString}px`
-                  | _ => "initial"
+            let next = switch (fixedTop, fixedBottom) {
+            | (None, None) => Unfixed
+            | (top, bottom) => {
+                open Belt.Int
+                Fixed({
+                  fixed: {
+                    position: "fixed",
+                    top: switch top {
+                    | Some(top) => `${top->toString}px`
+                    | _ => "initial"
+                    },
+                    bottom: switch bottom {
+                    | Some(bottom) => `${bottom->toString}px`
+                    | _ => "initial"
+                    },
+                    width: `${containerRect.width->toString}px`,
+                    height: `${containerRect.height->toString}px`,
+                    zIndex: "10",
                   },
-                  bottom: switch bottom {
-                  | Some(bottom) => `${bottom->toString}px`
-                  | _ => "initial"
+                  placeholder: {
+                    width: `${containerRect.width->toString}px`,
+                    height: `${containerRect.height->toString}px`,
                   },
-                  width: `${containerRect.width->toString}px`,
-                  height: `${containerRect.height->toString}px`,
-                  zIndex: "10",
-                },
-                placeholder: {
-                  width: `${containerRect.width->toString}px`,
-                  height: `${containerRect.height->toString}px`,
-                },
-              })
+                })
+              }
             }
+
+            "set"->Js.log3(getState(), next)
+
+            setState(prev =>
+              switch (prev, next) {
+              | (Fixed(prev), Fixed(_)) => Fixed(prev)
+              | (Unfixed, Unfixed) => Unfixed
+              | (_, _) => next
+              }
+            )
           }
-
-          setState(prev =>
-            switch (prev, next) {
-            | (Fixed(prev), Fixed(_)) => Fixed(prev)
-            | (Unfixed, Unfixed) => Unfixed
-            | (_, _) => next
-            }
-          )
         }
-      | _ => ()
       }
     })
-
     updateRef.current()
 
     None
-  }, (target, initOffsetTop, offsetBottom))
+  }, (isUseingDefaultTarget, target, offsetTop, offsetBottom))
+
+  React.useEffect1(() => {
+    let handler = Raf.throttle(evt => {
+      "evt"->Js.log2(evt)
+      // let state = getState()
+      ()->updateRef.current
+    }, ~times=10)
+
+    let bind = () => {
+      switch target {
+      | Some(target) => {
+          open Js.Array2
+          events->forEach(name => {
+            open DOM.Element
+            target->addEventListener(name, handler)
+          })
+        }
+      | _ => ()
+      }
+    }
+
+    let unbind = () => {
+      switch target {
+      | Some(target) => {
+          open Js.Array2
+          events->forEach(name => {
+            open DOM.Element
+            target->removeEventListener(name, handler)
+          })
+        }
+      | _ => ()
+      }
+    }
+
+    ()->bind
+
+    unbind->Some
+  }, [target])
 
   let placeholder = switch state {
   | Fixed(state) =>
     <div
       style={ReactDOM.Style.make(
-        ~position=state.fixed.position,
-        ~top=state.fixed.top,
-        ~bottom=state.fixed.bottom,
-        ~width=state.fixed.width,
-        ~height=state.fixed.height,
-        ~zIndex=state.fixed.zIndex,
+        ~width=state.placeholder.width,
+        ~height=state.placeholder.height,
         (),
       )}
     />
@@ -167,6 +225,8 @@ let make = (
   | Some(children) => children
   | _ => React.null
   }
+
+  "render"->Js.log4(state, placeholder, child)
 
   <div ref={ReactDOM.Ref.domRef(containerRef)}>
     placeholder
@@ -185,7 +245,7 @@ let make = (
         )
       | _ => ReactDOM.Style.make()
       }}>
-      child
+      {child}
     </div>
   </div>
 }

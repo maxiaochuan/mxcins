@@ -9,7 +9,7 @@ open MxLibs__STD
 
 %%private(let cleanup = id => cache->Map.delete(id))
 
-let make = (~times = 1, callback: unit => unit) => {
+let make = (~times=1, callback: unit => unit) => {
   index := index.contents + 1
   let id = index.contents
 
@@ -38,7 +38,7 @@ let cancel = (id: int): unit => {
   }
 }
 
-let throttle = (~times = 1, callback: 'a => unit) => {
+let throttle = (~times=1, callback: 'a => unit) => {
   let valid = ref(true)
   let run = (param: 'a) => {
     if valid.contents {

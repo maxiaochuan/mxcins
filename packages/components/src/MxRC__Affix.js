@@ -7,15 +7,7 @@ import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxLibs__Raf from "@mxcins/libs/src/MxLibs__Raf.js";
 
 function getDomRect(node) {
-  if (node === undefined) {
-    return {
-            top: 0,
-            bottom: window.innerHeight,
-            width: 0,
-            height: 0
-          };
-  }
-  var rect = Caml_option.valFromOption(node).getBoundingClientRect();
+  var rect = node.getBoundingClientRect();
   return {
           top: rect.top | 0,
           bottom: rect.bottom | 0,
@@ -24,35 +16,65 @@ function getDomRect(node) {
         };
 }
 
-function getFixedTop(targetRect, containerRect, offsetTop) {
-  if (offsetTop !== undefined && targetRect.top > (containerRect.top - offsetTop | 0)) {
-    return offsetTop + targetRect.top | 0;
+function getWinRect(param) {
+  return {
+          top: 0,
+          bottom: window.innerHeight,
+          width: 0,
+          height: 0
+        };
+}
+
+function getTargetRect(node) {
+  if (node !== undefined) {
+    return getDomRect(Caml_option.valFromOption(node));
+  } else {
+    return getWinRect(undefined);
+  }
+}
+
+function getFixedTop(target, container, top) {
+  if (top !== undefined && target.top > (container.top - top | 0)) {
+    return top + target.top | 0;
   }
   
 }
 
-function getFixedBottom(targetRect, containerRect, offsetBottom) {
-  if (offsetBottom === undefined) {
+function getFixedBottom(target, container, bottom) {
+  if (bottom === undefined) {
     return ;
   }
-  if (targetRect.bottom >= (containerRect.bottom + offsetBottom | 0)) {
+  if (target.bottom >= (container.bottom + bottom | 0)) {
     return ;
   }
-  var offset = window.innerHeight - targetRect.bottom | 0;
-  return offsetBottom + offset | 0;
+  var offset = window.innerHeight - target.bottom | 0;
+  return bottom + offset | 0;
 }
 
 var AffixUtils = {
   getDomRect: getDomRect,
+  getWinRect: getWinRect,
+  getTargetRect: getTargetRect,
   getFixedTop: getFixedTop,
   getFixedBottom: getFixedBottom
 };
 
+var events = [
+  "resize",
+  "scroll",
+  "touchstart",
+  "touchmove",
+  "touchend",
+  "pageshow",
+  "load"
+];
+
 function MxRC__Affix(Props) {
-  var offsetTop = Props.offsetTop;
+  var offsetTopOpt = Props.offsetTop;
   var offsetBottom = Props.offsetBottom;
   var tar = Props.target;
   var children = Props.children;
+  var offsetTop = offsetTopOpt !== undefined ? offsetTopOpt : 0;
   var containerRef = React.useRef(null);
   var fixedRef = React.useRef(null);
   var updateRef = React.useRef(function (param) {
@@ -61,9 +83,10 @@ function MxRC__Affix(Props) {
   var match = MxHooks.useGetState(function (param) {
         return /* Unfixed */0;
       });
+  var getState = match[2];
   var setState = match[1];
   var state = match[0];
-  var initOffsetTop = offsetTop !== undefined ? offsetTop : 0;
+  var isUseingDefaultTarget = tar === undefined;
   var target = tar !== undefined ? Caml_option.nullable_to_opt(Curry._1(tar, undefined)) : undefined;
   React.useEffect((function () {
           updateRef.current = MxLibs__Raf.throttle(undefined, (function (param) {
@@ -71,65 +94,108 @@ function MxRC__Affix(Props) {
                   if (container == null) {
                     return ;
                   }
-                  var targetRect = getDomRect(target);
-                  var containerRect = getDomRect(Caml_option.some(container));
-                  var fixedTop = getFixedTop(targetRect, containerRect, initOffsetTop);
-                  var fixedBottom = getFixedBottom(targetRect, containerRect, offsetBottom);
-                  var next;
                   var exit = 0;
-                  if (fixedTop !== undefined || fixedBottom !== undefined) {
+                  if (isUseingDefaultTarget) {
                     exit = 1;
                   } else {
-                    next = /* Unfixed */0;
+                    if (target === undefined) {
+                      return ;
+                    }
+                    exit = 1;
                   }
                   if (exit === 1) {
-                    next = /* Fixed */{
-                      fixed: {
-                        position: "fixed",
-                        top: fixedTop !== undefined ? String(fixedTop) + "px" : "initial",
-                        bottom: fixedBottom !== undefined ? String(fixedBottom) + "px" : "initial",
-                        width: String(containerRect.width) + "px",
-                        height: String(containerRect.height) + "px",
-                        zIndex: "10"
-                      },
-                      placeholder: {
-                        width: String(containerRect.width) + "px",
-                        height: String(containerRect.height) + "px"
-                      }
-                    };
-                  }
-                  return Curry._1(setState, (function (prev) {
-                                if (prev) {
-                                  if (next) {
-                                    return prev;
-                                  } else {
+                    var targetRect = getTargetRect(target);
+                    var containerRect = getDomRect(container);
+                    var fixedTop = getFixedTop(targetRect, containerRect, offsetTop);
+                    var fixedBottom = getFixedBottom(targetRect, containerRect, offsetBottom);
+                    console.log("rect", targetRect, containerRect);
+                    console.log("fixed", fixedTop, fixedBottom);
+                    var next;
+                    var exit$1 = 0;
+                    if (fixedTop !== undefined || fixedBottom !== undefined) {
+                      exit$1 = 2;
+                    } else {
+                      next = /* Unfixed */0;
+                    }
+                    if (exit$1 === 2) {
+                      next = /* Fixed */{
+                        fixed: {
+                          position: "fixed",
+                          top: fixedTop !== undefined ? String(fixedTop) + "px" : "initial",
+                          bottom: fixedBottom !== undefined ? String(fixedBottom) + "px" : "initial",
+                          width: String(containerRect.width) + "px",
+                          height: String(containerRect.height) + "px",
+                          zIndex: "10"
+                        },
+                        placeholder: {
+                          width: String(containerRect.width) + "px",
+                          height: String(containerRect.height) + "px"
+                        }
+                      };
+                    }
+                    console.log("set", Curry._1(getState, undefined), next);
+                    return Curry._1(setState, (function (prev) {
+                                  if (prev) {
+                                    if (next) {
+                                      return prev;
+                                    } else {
+                                      return next;
+                                    }
+                                  } else if (next) {
                                     return next;
+                                  } else {
+                                    return /* Unfixed */0;
                                   }
-                                } else if (next) {
-                                  return next;
-                                } else {
-                                  return /* Unfixed */0;
-                                }
-                              }));
+                                }));
+                  }
+                  
                 }));
           Curry._1(updateRef.current, undefined);
           
         }), [
+        isUseingDefaultTarget,
         target,
-        initOffsetTop,
+        offsetTop,
         offsetBottom
       ]);
+  React.useEffect((function () {
+          var handler = MxLibs__Raf.throttle(10, (function (evt) {
+                  console.log("evt", evt);
+                  return Curry._1(updateRef.current, undefined);
+                }));
+          var bind = function (param) {
+            if (target === undefined) {
+              return ;
+            }
+            var target$1 = Caml_option.valFromOption(target);
+            events.forEach(function (name) {
+                  target$1.addEventListener(name, handler);
+                  
+                });
+            
+          };
+          var unbind = function (param) {
+            if (target === undefined) {
+              return ;
+            }
+            var target$1 = Caml_option.valFromOption(target);
+            events.forEach(function (name) {
+                  target$1.removeEventListener(name, handler);
+                  
+                });
+            
+          };
+          bind(undefined);
+          return unbind;
+        }), [target]);
   var placeholder = state ? React.createElement("div", {
           style: {
-            bottom: state.fixed.bottom,
-            height: state.fixed.height,
-            position: state.fixed.position,
-            top: state.fixed.top,
-            width: state.fixed.width,
-            zIndex: state.fixed.zIndex
+            height: state.placeholder.height,
+            width: state.placeholder.width
           }
         }) : null;
   var child = children !== undefined ? Caml_option.valFromOption(children) : null;
+  console.log("render", state, placeholder, child);
   return React.createElement("div", {
               ref: containerRef
             }, placeholder, React.createElement("div", {
@@ -149,6 +215,7 @@ var make = MxRC__Affix;
 
 export {
   AffixUtils ,
+  events ,
   make ,
   
 }

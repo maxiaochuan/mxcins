@@ -9,7 +9,15 @@
     "dev:rescript:libs": "yarn workspace @mxcins/libs run rescript build -w",
     "dev:rescript:hooks": "yarn workspace @mxcins/hooks run rescript build -w",
     "dev:rescript:components": "yarn workspace @mxcins/components run rescript build -w",
-    "dev:dumi": "dumi dev"
+    "dev:dumi": "dumi dev",
+    "clean": "run-p clean:**",
+    "clean:rescript:libs": "yarn workspace @mxcins/libs run rescript clean",
+    "clean:rescript:hooks": "yarn workspace @mxcins/hooks run rescript clean",
+    "clean:rescript:components": "yarn workspace @mxcins/components run rescript clean",
+    "format": "run-p format:**",
+    "format:rescript:libs": "yarn workspace @mxcins/libs run rescript format -all",
+    "format:rescript:hooks": "yarn workspace @mxcins/hooks run rescript format -all",
+    "format:rescript:components": "yarn workspace @mxcins/components run rescript format -all"
   },
   "devDependencies": {
     "dumi": "^1.1.38",
