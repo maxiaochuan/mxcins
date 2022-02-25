@@ -49,7 +49,7 @@ import * as React from 'react'
 
 export default () => {
   return (
-    <div style={{ display: 'flex', height: 500 }} />
+    <div style={{ display: 'flex', height: 800 }} />
   )
 }
 ```

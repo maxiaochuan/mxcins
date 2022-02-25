@@ -9,11 +9,14 @@ var $$Element;
 
 var $$Window;
 
+var $$EventTarget;
+
 export {
   $$ResizeObserver ,
   DomRect ,
   $$Element ,
   $$Window ,
+  $$EventTarget ,
   
 }
 /* No side effect */

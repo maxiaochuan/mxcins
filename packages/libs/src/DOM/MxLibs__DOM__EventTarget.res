@@ -1,3 +1,5 @@
+type t = Dom.eventTarget
+
 module Mixin = (
   T: {
     type t
@@ -11,3 +13,7 @@ module Mixin = (
   @send
   external removeEventListener: (T.t, string, Dom.event => unit) => unit = "removeEventListener"
 }
+
+include Mixin({
+  type t = t
+})

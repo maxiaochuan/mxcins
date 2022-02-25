@@ -10,7 +10,7 @@
     "dev:rescript:hooks": "yarn workspace @mxcins/hooks run rescript build -w",
     "dev:rescript:components": "yarn workspace @mxcins/components run rescript build -w",
     "dev:dumi": "dumi dev",
-    "clean": "run-p clean:**",
+    "clean": "run-s clean:**",
     "clean:rescript:libs": "yarn workspace @mxcins/libs run rescript clean",
     "clean:rescript:hooks": "yarn workspace @mxcins/hooks run rescript clean",
     "clean:rescript:components": "yarn workspace @mxcins/components run rescript clean",

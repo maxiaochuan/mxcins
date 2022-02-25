@@ -10,6 +10,9 @@ module AffixUtils = {
     open DOM.DomRect
     open Belt.Float
     let rect = node->getBoundingClientRect
+
+    "width"->Js.log2(rect->width)
+
     {
       top: rect->top->toInt,
       bottom: rect->bottom->toInt,
@@ -22,17 +25,11 @@ module AffixUtils = {
     open DOM.Window
     {
       top: 0,
-      bottom: DOM.window->innerHeight,
+      bottom: window->innerHeight,
       width: 0,
       height: 0,
     }
   }
-
-  let getTargetRect = (node: option<element>) =>
-    switch node {
-    | None => ()->getWinRect
-    | Some(node) => node->getDomRect
-    }
 
   let getFixedTop = (
     ~targetRect as target: rect,
@@ -53,7 +50,8 @@ module AffixUtils = {
     | Some(bottom) =>
       target.bottom < container.bottom + bottom
         ? {
-            let offset = DOM.window->DOM.Window.innerHeight - target.bottom
+            open DOM.Window
+            let offset = window->innerHeight - target.bottom
             Some(bottom + offset)
           }
         : None
@@ -81,6 +79,11 @@ type state =
 
 let events = ["resize", "scroll", "touchstart", "touchmove", "touchend", "pageshow", "load"]
 
+type targetType =
+  | Default
+  | Element
+  | Null
+
 @react.component
 let make = (
   ~offsetTop=0,
@@ -90,19 +93,20 @@ let make = (
 ) => {
   let containerRef = React.useRef(Js.Nullable.null)
   let fixedRef = React.useRef(Js.Nullable.null)
-
-  let updateRef = React.useRef(() => ())
+  let targetRef = React.useRef(None)
 
   let (state, setState, _) = MxHooks.useGetState(_ => Unfixed)
+  let updateRef = React.useRef(() => ())
 
-  let isUseingDefaultTarget = switch tar {
-  | Some(_) => false
-  | _ => true
-  }
-
-  let target = switch tar {
-  | None => None
-  | Some(fn) => ()->fn->Js.toOption
+  let targetType = switch tar {
+    | Some(tar) => switch ()->tar->Js.toOption {
+      | Some(target) => {
+        targetRef.current = target->Some
+        Element
+      }
+      | None => Null
+    }
+    | None => Default
   }
 
   React.useEffect4(() => {
@@ -110,11 +114,14 @@ let make = (
       let container = containerRef.current->Js.toOption
       switch container {
       | None => ()
-      | Some(container) =>
-        switch (isUseingDefaultTarget, target) {
-        | (false, None) => ()
-        | (_, target) => {
-            let targetRect = target->AffixUtils.getTargetRect
+      | Some(container) => {
+        let targetRect = switch (targetType, targetRef.current) {
+          | (Default, _) => ()->AffixUtils.getWinRect->Some
+          | (Element, Some(target)) => target->AffixUtils.getDomRect->Some
+          | (_, _) => None
+        }
+        switch targetRect {
+          | Some(targetRect) => {
             let containerRect = container->AffixUtils.getDomRect
             let fixedTop = AffixUtils.getFixedTop(
               ~targetRect,
@@ -159,55 +166,50 @@ let make = (
               }
             )
           }
+          | (_) => ()
         }
       }
-    })
+    }})
     updateRef.current()
 
     None
-  }, (isUseingDefaultTarget, target, offsetTop, offsetBottom))
+  }, (targetType, targetRef.current, offsetTop, offsetBottom))
 
   React.useEffect2(() => {
     let handler = Raf.throttle(_ => {
       ()->updateRef.current
-    }, ~times=10)
+    })
+
+      let node = switch (targetType, targetRef.current) {
+        | (Default, _) => {
+          open DOM.Window
+          window->asEventTarget->Some
+        }
+        | (Element, Some(target)) => {
+          open DOM.Element
+          target->asEventTarget->Some
+        }
+        | (_, _) => None
+      }
 
     let bind = () => {
-      switch (isUseingDefaultTarget, target) {
-      | (true, _) => {
-          open Js.Array2
-          events->forEach(name => {
-            open DOM.Window
-            DOM.window->addEventListener(name, handler)
-          })
-        }
-      | (false, Some(target)) => {
-          open Js.Array2
-          events->forEach(name => {
-            open DOM.Element
-            target->addEventListener(name, handler)
-          })
-        }
-      | (_, _) => ()
+      switch node {
+      | (Some(node)) => {
+        open Js.Array2
+        open DOM.EventTarget
+        events->forEach(name => node->addEventListener(name, handler))
+      }
+      | _ => ()
       }
     }
 
     let unbind = () => {
-      switch (isUseingDefaultTarget, target) {
-      | (true, _) => {
-          open Js.Array2
-          events->forEach(name => {
-            open DOM.Window
-            DOM.window->removeEventListener(name, handler)
-          })
-        }
-      | (false, Some(target)) => {
-          open Js.Array2
-          events->forEach(name => {
-            open DOM.Element
-            target->removeEventListener(name, handler)
-          })
-        }
+      switch node {
+      | (Some(node)) => {
+        open Js.Array2
+        open DOM.EventTarget
+        events->forEach(name => node->removeEventListener(name, handler))
+      }
       | _ => ()
       }
     }
@@ -215,7 +217,7 @@ let make = (
     ()->bind
 
     unbind->Some
-  }, (isUseingDefaultTarget, target))
+  }, (targetType, targetRef.current))
 
   let placeholder = switch state {
   | Fixed(state) =>

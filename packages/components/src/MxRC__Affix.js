@@ -8,6 +8,7 @@ import * as MxLibs__Raf from "@mxcins/libs/src/MxLibs__Raf.js";
 
 function getDomRect(node) {
   var rect = node.getBoundingClientRect();
+  console.log("width", rect.width);
   return {
           top: rect.top | 0,
           bottom: rect.bottom | 0,
@@ -23,14 +24,6 @@ function getWinRect(param) {
           width: 0,
           height: 0
         };
-}
-
-function getTargetRect(node) {
-  if (node !== undefined) {
-    return getDomRect(Caml_option.valFromOption(node));
-  } else {
-    return getWinRect(undefined);
-  }
 }
 
 function getFixedTop(target, container, top) {
@@ -54,7 +47,6 @@ function getFixedBottom(target, container, bottom) {
 var AffixUtils = {
   getDomRect: getDomRect,
   getWinRect: getWinRect,
-  getTargetRect: getTargetRect,
   getFixedTop: getFixedTop,
   getFixedBottom: getFixedBottom
 };
@@ -77,119 +69,134 @@ function MxRC__Affix(Props) {
   var offsetTop = offsetTopOpt !== undefined ? offsetTopOpt : 0;
   var containerRef = React.useRef(null);
   var fixedRef = React.useRef(null);
-  var updateRef = React.useRef(function (param) {
-        
-      });
+  var targetRef = React.useRef(undefined);
   var match = MxHooks.useGetState(function (param) {
         return /* Unfixed */0;
       });
   var setState = match[1];
   var state = match[0];
-  var isUseingDefaultTarget = tar === undefined;
-  var target = tar !== undefined ? Caml_option.nullable_to_opt(Curry._1(tar, undefined)) : undefined;
+  var updateRef = React.useRef(function (param) {
+        
+      });
+  var targetType;
+  if (tar !== undefined) {
+    var target = Curry._1(tar, undefined);
+    if (target == null) {
+      targetType = /* Null */2;
+    } else {
+      targetRef.current = Caml_option.some(target);
+      targetType = /* Element */1;
+    }
+  } else {
+    targetType = /* Default */0;
+  }
   React.useEffect((function () {
           updateRef.current = MxLibs__Raf.throttle(undefined, (function (param) {
                   var container = containerRef.current;
                   if (container == null) {
                     return ;
                   }
+                  var match = targetRef.current;
+                  var targetRect;
+                  switch (targetType) {
+                    case /* Default */0 :
+                        targetRect = getWinRect(undefined);
+                        break;
+                    case /* Element */1 :
+                        targetRect = match !== undefined ? getDomRect(Caml_option.valFromOption(match)) : undefined;
+                        break;
+                    case /* Null */2 :
+                        targetRect = undefined;
+                        break;
+                    
+                  }
+                  if (targetRect === undefined) {
+                    return ;
+                  }
+                  var containerRect = getDomRect(container);
+                  var fixedTop = getFixedTop(targetRect, containerRect, offsetTop);
+                  var fixedBottom = getFixedBottom(targetRect, containerRect, offsetBottom);
+                  var next;
                   var exit = 0;
-                  if (isUseingDefaultTarget) {
+                  if (fixedTop !== undefined || fixedBottom !== undefined) {
                     exit = 1;
                   } else {
-                    if (target === undefined) {
-                      return ;
-                    }
-                    exit = 1;
+                    next = /* Unfixed */0;
                   }
                   if (exit === 1) {
-                    var targetRect = getTargetRect(target);
-                    var containerRect = getDomRect(container);
-                    var fixedTop = getFixedTop(targetRect, containerRect, offsetTop);
-                    var fixedBottom = getFixedBottom(targetRect, containerRect, offsetBottom);
-                    var next;
-                    var exit$1 = 0;
-                    if (fixedTop !== undefined || fixedBottom !== undefined) {
-                      exit$1 = 2;
-                    } else {
-                      next = /* Unfixed */0;
-                    }
-                    if (exit$1 === 2) {
-                      next = /* Fixed */{
-                        fixed: {
-                          position: "fixed",
-                          top: fixedTop !== undefined ? String(fixedTop) + "px" : "initial",
-                          bottom: fixedTop !== undefined || fixedBottom === undefined ? "initial" : String(fixedBottom) + "px",
-                          width: String(containerRect.width) + "px",
-                          height: String(containerRect.height) + "px",
-                          zIndex: "10"
-                        },
-                        placeholder: {
-                          width: String(containerRect.width) + "px",
-                          height: String(containerRect.height) + "px"
-                        }
-                      };
-                    }
-                    return Curry._1(setState, (function (prev) {
-                                  if (prev) {
-                                    if (next) {
-                                      return prev;
-                                    } else {
-                                      return next;
-                                    }
-                                  } else if (next) {
-                                    return next;
-                                  } else {
-                                    return /* Unfixed */0;
-                                  }
-                                }));
+                    next = /* Fixed */{
+                      fixed: {
+                        position: "fixed",
+                        top: fixedTop !== undefined ? String(fixedTop) + "px" : "initial",
+                        bottom: fixedTop !== undefined || fixedBottom === undefined ? "initial" : String(fixedBottom) + "px",
+                        width: String(containerRect.width) + "px",
+                        height: String(containerRect.height) + "px",
+                        zIndex: "10"
+                      },
+                      placeholder: {
+                        width: String(containerRect.width) + "px",
+                        height: String(containerRect.height) + "px"
+                      }
+                    };
                   }
-                  
+                  return Curry._1(setState, (function (prev) {
+                                if (prev) {
+                                  if (next) {
+                                    return prev;
+                                  } else {
+                                    return next;
+                                  }
+                                } else if (next) {
+                                  return next;
+                                } else {
+                                  return /* Unfixed */0;
+                                }
+                              }));
                 }));
           Curry._1(updateRef.current, undefined);
           
         }), [
-        isUseingDefaultTarget,
-        target,
+        targetType,
+        targetRef.current,
         offsetTop,
         offsetBottom
       ]);
   React.useEffect((function () {
-          var handler = MxLibs__Raf.throttle(10, (function (param) {
+          var handler = MxLibs__Raf.throttle(undefined, (function (param) {
                   return Curry._1(updateRef.current, undefined);
                 }));
+          var match = targetRef.current;
+          var node;
+          switch (targetType) {
+            case /* Default */0 :
+                node = Caml_option.some(window);
+                break;
+            case /* Element */1 :
+                node = match !== undefined ? Caml_option.some(Caml_option.valFromOption(match)) : undefined;
+                break;
+            case /* Null */2 :
+                node = undefined;
+                break;
+            
+          }
           var bind = function (param) {
-            if (isUseingDefaultTarget) {
-              events.forEach(function (name) {
-                    window.addEventListener(name, handler);
-                    
-                  });
+            if (node === undefined) {
               return ;
             }
-            if (target === undefined) {
-              return ;
-            }
-            var target$1 = Caml_option.valFromOption(target);
+            var node$1 = Caml_option.valFromOption(node);
             events.forEach(function (name) {
-                  target$1.addEventListener(name, handler);
+                  node$1.addEventListener(name, handler);
                   
                 });
             
           };
           var unbind = function (param) {
-            if (isUseingDefaultTarget) {
-              events.forEach(function (name) {
-                    window.removeEventListener(name, handler);
-                    
-                  });
+            if (node === undefined) {
               return ;
             }
-            if (target === undefined) {
-              return ;
-            }
-            var target$1 = Caml_option.valFromOption(target);
+            var node$1 = Caml_option.valFromOption(node);
             events.forEach(function (name) {
-                  target$1.removeEventListener(name, handler);
+                  node$1.removeEventListener(name, handler);
                   
                 });
             
@@ -197,8 +204,8 @@ function MxRC__Affix(Props) {
           bind(undefined);
           return unbind;
         }), [
-        isUseingDefaultTarget,
-        target
+        targetType,
+        targetRef.current
       ]);
   var placeholder = state ? React.createElement("div", {
           style: {
