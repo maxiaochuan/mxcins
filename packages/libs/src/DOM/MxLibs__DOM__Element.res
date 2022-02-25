@@ -6,6 +6,6 @@ type t = Dom.element
 
 @send external getBoundingClientRect: t => MxLibs__DOM__DomRect.t = "getBoundingClientRect"
 
-include MxLibs__DOM__MixinEvents.Mixin({
+include MxLibs__DOM__EventTarget.Mixin({
   type t = t
 })

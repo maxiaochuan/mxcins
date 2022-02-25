@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "run-p dev:**",
+    "dev": "run-p dev:rescript:**",
     "dev:rescript:libs": "yarn workspace @mxcins/libs run rescript build -w",
     "dev:rescript:hooks": "yarn workspace @mxcins/hooks run rescript build -w",
     "dev:rescript:components": "yarn workspace @mxcins/components run rescript build -w",
