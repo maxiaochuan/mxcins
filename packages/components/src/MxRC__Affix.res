@@ -93,7 +93,7 @@ let make = (
 
   let updateRef = React.useRef(() => ())
 
-  let (state, setState, getState) = MxHooks.useGetState(_ => Unfixed)
+  let (state, setState, _) = MxHooks.useGetState(_ => Unfixed)
 
   let isUseingDefaultTarget = switch tar {
   | Some(_) => false
@@ -123,9 +123,6 @@ let make = (
             )
             let fixedBottom = AffixUtils.getFixedBottom(~targetRect, ~containerRect, ~offsetBottom)
 
-            "rect"->Js.log3(targetRect, containerRect)
-            "fixed"->Js.log3(fixedTop, fixedBottom)
-
             let next = switch (fixedTop, fixedBottom) {
             | (None, None) => Unfixed
             | (top, bottom) => {
@@ -137,9 +134,10 @@ let make = (
                     | Some(top) => `${top->toString}px`
                     | _ => "initial"
                     },
-                    bottom: switch bottom {
-                    | Some(bottom) => `${bottom->toString}px`
-                    | _ => "initial"
+                    // top first
+                    bottom: switch (top, bottom) {
+                    | (None, Some(bottom)) => `${bottom->toString}px`
+                    | (_, _) => "initial"
                     },
                     width: `${containerRect.width->toString}px`,
                     height: `${containerRect.height->toString}px`,
@@ -152,8 +150,6 @@ let make = (
                 })
               }
             }
-
-            "set"->Js.log3(getState(), next)
 
             setState(prev =>
               switch (prev, next) {
@@ -171,29 +167,41 @@ let make = (
     None
   }, (isUseingDefaultTarget, target, offsetTop, offsetBottom))
 
-  React.useEffect1(() => {
-    let handler = Raf.throttle(evt => {
-      "evt"->Js.log2(evt)
-      // let state = getState()
+  React.useEffect2(() => {
+    let handler = Raf.throttle(_ => {
       ()->updateRef.current
     }, ~times=10)
 
     let bind = () => {
-      switch target {
-      | Some(target) => {
+      switch (isUseingDefaultTarget, target) {
+      | (true, _) => {
+          open Js.Array2
+          events->forEach(name => {
+            open DOM.Window
+            DOM.window->addEventListener(name, handler)
+          })
+        }
+      | (false, Some(target)) => {
           open Js.Array2
           events->forEach(name => {
             open DOM.Element
             target->addEventListener(name, handler)
           })
         }
-      | _ => ()
+      | (_, _) => ()
       }
     }
 
     let unbind = () => {
-      switch target {
-      | Some(target) => {
+      switch (isUseingDefaultTarget, target) {
+      | (true, _) => {
+          open Js.Array2
+          events->forEach(name => {
+            open DOM.Window
+            DOM.window->removeEventListener(name, handler)
+          })
+        }
+      | (false, Some(target)) => {
           open Js.Array2
           events->forEach(name => {
             open DOM.Element
@@ -207,7 +215,7 @@ let make = (
     ()->bind
 
     unbind->Some
-  }, [target])
+  }, (isUseingDefaultTarget, target))
 
   let placeholder = switch state {
   | Fixed(state) =>
@@ -225,8 +233,6 @@ let make = (
   | Some(children) => children
   | _ => React.null
   }
-
-  "render"->Js.log4(state, placeholder, child)
 
   <div ref={ReactDOM.Ref.domRef(containerRef)}>
     placeholder

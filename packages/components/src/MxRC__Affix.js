@@ -83,7 +83,6 @@ function MxRC__Affix(Props) {
   var match = MxHooks.useGetState(function (param) {
         return /* Unfixed */0;
       });
-  var getState = match[2];
   var setState = match[1];
   var state = match[0];
   var isUseingDefaultTarget = tar === undefined;
@@ -108,8 +107,6 @@ function MxRC__Affix(Props) {
                     var containerRect = getDomRect(container);
                     var fixedTop = getFixedTop(targetRect, containerRect, offsetTop);
                     var fixedBottom = getFixedBottom(targetRect, containerRect, offsetBottom);
-                    console.log("rect", targetRect, containerRect);
-                    console.log("fixed", fixedTop, fixedBottom);
                     var next;
                     var exit$1 = 0;
                     if (fixedTop !== undefined || fixedBottom !== undefined) {
@@ -122,7 +119,7 @@ function MxRC__Affix(Props) {
                         fixed: {
                           position: "fixed",
                           top: fixedTop !== undefined ? String(fixedTop) + "px" : "initial",
-                          bottom: fixedBottom !== undefined ? String(fixedBottom) + "px" : "initial",
+                          bottom: fixedTop !== undefined || fixedBottom === undefined ? "initial" : String(fixedBottom) + "px",
                           width: String(containerRect.width) + "px",
                           height: String(containerRect.height) + "px",
                           zIndex: "10"
@@ -133,7 +130,6 @@ function MxRC__Affix(Props) {
                         }
                       };
                     }
-                    console.log("set", Curry._1(getState, undefined), next);
                     return Curry._1(setState, (function (prev) {
                                   if (prev) {
                                     if (next) {
@@ -159,11 +155,17 @@ function MxRC__Affix(Props) {
         offsetBottom
       ]);
   React.useEffect((function () {
-          var handler = MxLibs__Raf.throttle(10, (function (evt) {
-                  console.log("evt", evt);
+          var handler = MxLibs__Raf.throttle(10, (function (param) {
                   return Curry._1(updateRef.current, undefined);
                 }));
           var bind = function (param) {
+            if (isUseingDefaultTarget) {
+              events.forEach(function (name) {
+                    window.addEventListener(name, handler);
+                    
+                  });
+              return ;
+            }
             if (target === undefined) {
               return ;
             }
@@ -175,6 +177,13 @@ function MxRC__Affix(Props) {
             
           };
           var unbind = function (param) {
+            if (isUseingDefaultTarget) {
+              events.forEach(function (name) {
+                    window.removeEventListener(name, handler);
+                    
+                  });
+              return ;
+            }
             if (target === undefined) {
               return ;
             }
@@ -187,7 +196,10 @@ function MxRC__Affix(Props) {
           };
           bind(undefined);
           return unbind;
-        }), [target]);
+        }), [
+        isUseingDefaultTarget,
+        target
+      ]);
   var placeholder = state ? React.createElement("div", {
           style: {
             height: state.placeholder.height,
@@ -195,7 +207,6 @@ function MxRC__Affix(Props) {
           }
         }) : null;
   var child = children !== undefined ? Caml_option.valFromOption(children) : null;
-  console.log("render", state, placeholder, child);
   return React.createElement("div", {
               ref: containerRef
             }, placeholder, React.createElement("div", {

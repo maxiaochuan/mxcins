@@ -1,12 +1,26 @@
 # Affix
 
 ```jsx
+/**
+ * title: 基础使用
+ */
 import * as React from 'react'
 import { Affix } from '@mxcins/components'
 
-      // <Affix offsetTop={20} target={() => target}>
-      //   <button>button top</button>
-      // </Affix>
+export default () => {
+  return (
+    <div style={{ display: 'flex' }}>
+      <Affix offsetTop={50}>
+        <button>button offset top 50</button>
+      </Affix>
+    </div>
+  )
+}
+```
+
+<!-- ```jsx
+import * as React from 'react'
+import { Affix } from '@mxcins/components'
 
 export default () => {
   const [target, set] = React.useState(null);
@@ -26,6 +40,16 @@ export default () => {
         <button onClick={() => setHeight(prev => prev - 10)}>substruct 10</button>
       </div>
     </div>
+  )
+}
+``` -->
+
+```jsx
+import * as React from 'react'
+
+export default () => {
+  return (
+    <div style={{ display: 'flex', height: 500 }} />
   )
 }
 ```
