@@ -8,7 +8,6 @@ import * as MxLibs__Raf from "@mxcins/libs/src/MxLibs__Raf.js";
 
 function getDomRect(node) {
   var rect = node.getBoundingClientRect();
-  console.log("width", rect.width);
   return {
           top: rect.top | 0,
           bottom: rect.bottom | 0,
@@ -21,34 +20,35 @@ function getWinRect(param) {
   return {
           top: 0,
           bottom: window.innerHeight,
-          width: 0,
-          height: 0
+          width: window.innerWidth,
+          height: window.innerHeight
         };
 }
 
-function getFixedTop(target, container, top) {
-  if (top !== undefined && target.top > (container.top - top | 0)) {
-    return top + target.top | 0;
+function getFixed(target, container, offset) {
+  if (offset.TAG === /* OffsetTop */0) {
+    var top = offset._0;
+    if (top !== undefined && target.top > (container.top - top | 0)) {
+      return top + target.top | 0;
+    } else {
+      return ;
+    }
   }
-  
-}
-
-function getFixedBottom(target, container, bottom) {
+  var bottom = offset._0;
   if (bottom === undefined) {
     return ;
   }
   if (target.bottom >= (container.bottom + bottom | 0)) {
     return ;
   }
-  var offset = window.innerHeight - target.bottom | 0;
-  return bottom + offset | 0;
+  var offset$1 = window.innerHeight - target.bottom | 0;
+  return bottom + offset$1 | 0;
 }
 
 var AffixUtils = {
   getDomRect: getDomRect,
   getWinRect: getWinRect,
-  getFixedTop: getFixedTop,
-  getFixedBottom: getFixedBottom
+  getFixed: getFixed
 };
 
 var events = [
@@ -114,8 +114,14 @@ function MxRC__Affix(Props) {
                     return ;
                   }
                   var containerRect = getDomRect(container);
-                  var fixedTop = getFixedTop(targetRect, containerRect, offsetTop);
-                  var fixedBottom = getFixedBottom(targetRect, containerRect, offsetBottom);
+                  var fixedTop = getFixed(targetRect, containerRect, {
+                        TAG: /* OffsetTop */0,
+                        _0: offsetTop
+                      });
+                  var fixedBottom = getFixed(targetRect, containerRect, {
+                        TAG: /* OffsetBottom */1,
+                        _0: offsetBottom
+                      });
                   var next;
                   var exit = 0;
                   if (fixedTop !== undefined || fixedBottom !== undefined) {
