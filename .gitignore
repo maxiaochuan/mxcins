@@ -3,4 +3,4 @@ lib
 .bsb.lock
 .merlin
 yarn.lock
-.umi
+dist

@@ -9,6 +9,8 @@ var $$Element;
 
 var $$Window;
 
+var $$Document;
+
 var $$EventTarget;
 
 export {
@@ -16,6 +18,7 @@ export {
   DomRect ,
   $$Element ,
   $$Window ,
+  $$Document ,
   $$EventTarget ,
   
 }

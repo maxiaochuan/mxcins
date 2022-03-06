@@ -21,9 +21,12 @@
     "dev": "rescript build -w"
   },
   "dependencies": {
-    "@rescript/react": "0.10.3",
     "@mxcins/hooks": "3.0.0-alpha.0",
     "@mxcins/libs": "1.0.0-alpha.0"
+  },
+  "peerDependencies": {
+    "@rescript/react": "*",
+    "twind": "*"
   },
   "publishConfig": {
     "access": "public"

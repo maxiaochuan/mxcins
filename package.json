@@ -5,26 +5,35 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "run-p dev:rescript:**",
-    "dev:rescript:libs": "yarn workspace @mxcins/libs run rescript build -w",
-    "dev:rescript:hooks": "yarn workspace @mxcins/hooks run rescript build -w",
-    "dev:rescript:components": "yarn workspace @mxcins/components run rescript build -w",
-    "dev:dumi": "dumi dev",
+    "dev": "vite dev",
+    "dev:res": "run-p dev:rescript:**",
+    "dev:res:libs": "yarn workspace @mxcins/libs run rescript build -w",
+    "dev:res:hooks": "yarn workspace @mxcins/hooks run rescript build -w",
+    "dev:res:components": "yarn workspace @mxcins/components run rescript build -w",
     "clean": "run-s clean:**",
-    "clean:rescript:libs": "yarn workspace @mxcins/libs run rescript clean",
-    "clean:rescript:hooks": "yarn workspace @mxcins/hooks run rescript clean",
-    "clean:rescript:components": "yarn workspace @mxcins/components run rescript clean",
+    "clean:res:libs": "yarn workspace @mxcins/libs run rescript clean",
+    "clean:res:hooks": "yarn workspace @mxcins/hooks run rescript clean",
+    "clean:res:components": "yarn workspace @mxcins/components run rescript clean",
     "format": "run-p format:**",
-    "format:rescript:libs": "yarn workspace @mxcins/libs run rescript format -all",
-    "format:rescript:hooks": "yarn workspace @mxcins/hooks run rescript format -all",
-    "format:rescript:components": "yarn workspace @mxcins/components run rescript format -all"
-  },
-  "devDependencies": {
-    "dumi": "^1.1.38",
-    "lerna": "^4.0.0",
-    "npm-run-all": "^4.1.5"
+    "format:res:libs": "yarn workspace @mxcins/libs run rescript format -all",
+    "format:res:hooks": "yarn workspace @mxcins/hooks run rescript format -all",
+    "format:res:components": "yarn workspace @mxcins/components run rescript format -all",
+    "build": "run-p build:**",
+    "build:res:libs": "yarn workspace @mxcins/libs run rescript build",
+    "build:res:hooks": "yarn workspace @mxcins/hooks run rescript build",
+    "build:res:components": "yarn workspace @mxcins/components run rescript build"
   },
   "dependencies": {
-    "rescript": "9.1.4"
+    "@rescript/react": "0.10.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "rescript": "9.1.4",
+    "twind": "0.16.16"
+  },
+  "devDependencies": {
+    "vite": "2.8.6",
+    "@vitejs/plugin-react": "1.2.0",
+    "lerna": "4.0.0",
+    "npm-run-all": "4.1.5"
   }
 }
