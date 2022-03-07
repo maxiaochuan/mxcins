@@ -54,7 +54,8 @@ function init(param) {
             DEFAULT: "cubic-bezier(.645,.045,.355,1)"
           },
           fontSize: {
-            base: ['14px', { 'lineHeight': '22px' }]
+            base: ['14px', { 'lineHeight': '22px' }],
+            lg: ['16px', { 'lineHeight': '24px' }]
           },
           extend: {
             colors: MxRC__Libs__Twind.colors

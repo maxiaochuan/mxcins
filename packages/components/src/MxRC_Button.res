@@ -66,9 +66,9 @@ module Style = {
     }
 
     switch size {
-    | #default => classes.contents->push("h-8")->ignore
-    | #small => classes.contents->push("h-6")->ignore
-    | #large => classes.contents->push("h-10")->ignore
+    | #default => classes.contents->push("h-8 py-[4px]")->ignore
+    | #small => classes.contents->push("h-6 py-0")->ignore
+    | #large => classes.contents->push("text-lg h-10 py-[7px]")->ignore
     }
 
     classes.contents->apply->tw

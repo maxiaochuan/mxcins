@@ -31,7 +31,6 @@ const ButtonView = () => {
         <Button size="default">default size button</Button>
         <Button size="small">small size button</Button>
         <Button size="large">large size button</Button>
-        <Button size="large" style={{ lineHeight: '40px' }}>large size button</Button>
       </Record>
       <Record title="disabled">
         <Record>

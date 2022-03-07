@@ -60,11 +60,11 @@ function make(size, _type, d, block, dis) {
     classes.push("w-full");
   }
   if (size === "small") {
-    classes.push("h-6");
+    classes.push("h-6 py-0");
   } else if (size === "default") {
-    classes.push("h-8");
+    classes.push("h-8 py-[4px]");
   } else {
-    classes.push("h-10");
+    classes.push("text-lg h-10 py-[7px]");
   }
   return Twind.tw(Twind.apply(classes));
 }
