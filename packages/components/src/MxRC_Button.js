@@ -22,32 +22,32 @@ var dashed = def + " border-dashed";
 
 var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
 
-function make(size, _type, d, block, dis) {
+function make(size, _type, isDanger, block, isDisabled) {
   var classes = [init];
-  if (dis) {
+  if (isDisabled) {
     classes.push(disabled);
   }
   var colors = _type === "text" ? (
-      d ? [
+      isDanger ? [
           text,
           "text(" + danger + ")"
         ] : [text]
     ) : (
       _type === "primary" ? (
-          d ? [
+          isDanger ? [
               primary,
               "bg(" + danger + ")",
               "border(" + danger + ")"
             ] : [primary]
         ) : (
           _type === "default" ? (
-              d ? [
+              isDanger ? [
                   "text(" + danger + ")",
                   "border(" + danger + ")"
                 ] : [def]
             ) : (
               _type === "dashed" ? (
-                  d ? [
+                  isDanger ? [
                       dashed,
                       "text(" + danger + ")",
                       "border(" + danger + ")"
@@ -56,7 +56,7 @@ function make(size, _type, d, block, dis) {
                       "border-dashed"
                     ]
                 ) : (
-                  d ? [
+                  isDanger ? [
                       link,
                       "text(" + danger + ")"
                     ] : [link]

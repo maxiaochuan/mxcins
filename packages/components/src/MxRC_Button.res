@@ -49,13 +49,13 @@ module Style = {
 
   let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
 
-  let make = (~size, ~_type, ~danger as d, ~block, ~disabled as dis) => {
+  let make = (~size, ~_type, ~danger as isDanger, ~block, ~disabled as isDisabled) => {
     open Js.Array2
     let classes = ref([init])
-    if dis {
+    if isDisabled {
       classes.contents->push(disabled)->ignore
     }
-    let colors = switch (_type, d) {
+    let colors = switch (_type, isDanger) {
     | (#default, false) => [def]
     | (#default, true) => [`text(${danger})`, `border(${danger})`]
     | (#primary, false) => [primary]
