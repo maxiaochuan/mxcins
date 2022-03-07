@@ -27,12 +27,6 @@ module Style = {
     border(hover:primary-hover focus:primary-hover active:primary-active)
   "
 
-  let primary = "
-    text-white
-    bg(primary hover:primary-hover focus:primary-hover active:primary-active)
-    border(primary hover:primary-hover focus:primary-hover active:primary-active)
-  "
-
   let text = "
     border-none
     bg(initial hover:gray-100 focus:gray-100 active:gray-200)
@@ -48,6 +42,7 @@ module Style = {
 
   let dashed = `${def} border-dashed`
 
+  let primary = "primary hover:primary-hover focus:primary-hover active:primary-active"
   let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
 
   let ghost = "bg(transparent hover:transparent focus:transparent active:transparent)"
@@ -59,8 +54,8 @@ module Style = {
     let colors = switch (_type, isDanger) {
     | (#default, false) => [def]
     | (#default, true) => [`text(${danger})`, `border(${danger})`]
-    | (#primary, false) => [primary]
-    | (#primary, true) => [primary, `bg(${danger})`, `border(${danger})`]
+    | (#primary, false) => ["text-white", `bg(${primary})`, `border(${primary})`]
+    | (#primary, true) => ["text-white", `bg(${danger})`, `border(${danger})`]
     | (#text, false) => [text]
     | (#text, true) => [text, `text(${danger})`]
     | (#link, false) => [link]
@@ -76,6 +71,11 @@ module Style = {
     }
 
     if (isGhost) {
+      switch (_type, isDanger) {
+      | (#primary, false) => classes.contents->push(`text(${primary})`)->ignore
+      | (#primary, true) => classes.contents->push(`text(${danger})`)->ignore
+      | (_, _) => classes.contents->push("text-white")->ignore
+      }
       classes.contents->push(ghost)->ignore
     }
 

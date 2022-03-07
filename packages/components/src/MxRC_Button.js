@@ -12,13 +12,13 @@ var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 ho
 
 var def = "\n    text(hover:primary-hover focus:primary-hover active:primary-active)\n    border(hover:primary-hover focus:primary-hover active:primary-active)\n  ";
 
-var primary = "\n    text-white\n    bg(primary hover:primary-hover focus:primary-hover active:primary-active)\n    border(primary hover:primary-hover focus:primary-hover active:primary-active)\n  ";
-
 var text = "\n    border-none\n    bg(initial hover:gray-100 focus:gray-100 active:gray-200)\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
 
 var link = "\n    border-none\n    text(link hover:link-hover focus:link-hover active:link-active)\n    bg(initial hover:initial focus:initial active:initial)\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
 
 var dashed = def + " border-dashed";
+
+var primary = "primary hover:primary-hover focus:primary-hover active:primary-active";
 
 var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
 
@@ -37,10 +37,14 @@ function make(size, _type, isDanger, isGhost, block, param) {
     ) : (
       _type === "primary" ? (
           isDanger ? [
-              primary,
+              "text-white",
               "bg(" + danger + ")",
               "border(" + danger + ")"
-            ] : [primary]
+            ] : [
+              "text-white",
+              "bg(" + primary + ")",
+              "border(" + primary + ")"
+            ]
         ) : (
           _type === "default" ? (
               isDanger ? [
@@ -71,6 +75,15 @@ function make(size, _type, isDanger, isGhost, block, param) {
     classes.push("w-full");
   }
   if (isGhost) {
+    if (_type === "primary") {
+      if (isDanger) {
+        classes.push("text(" + danger + ")");
+      } else {
+        classes.push("text(" + primary + ")");
+      }
+    } else {
+      classes.push("text-white");
+    }
     classes.push(ghost);
   }
   if (size === "small") {
@@ -87,10 +100,10 @@ var Style = {
   init: init,
   disabled: disabled,
   def: def,
-  primary: primary,
   text: text,
   link: link,
   dashed: dashed,
+  primary: primary,
   danger: danger,
   ghost: ghost,
   make: make
