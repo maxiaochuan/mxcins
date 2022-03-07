@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as Twind from "twind";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__Libs__Twind from "./libs/MxRC__Libs__Twind.js";
 
@@ -58,11 +59,11 @@ var colors = {
   danger: colors_danger
 };
 
-function init(param) {
+function init(primary, param) {
   Twind.setup({
         preflight: {
           ":root": {
-            "--color-primary": colors_primary.base,
+            "--color-primary": Belt_Option.getWithDefault(primary, colors_primary.base),
             "--color-primary-hover": colors_primary.hover,
             "--color-primary-active": colors_primary.active,
             "--color-link": colors_link.base,
@@ -115,7 +116,7 @@ function init(param) {
   
 }
 
-init(undefined);
+init(undefined, undefined);
 
 function MxRC__ConfigProvider(Props) {
   var sizeOpt = Props.size;

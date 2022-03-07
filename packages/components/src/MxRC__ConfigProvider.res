@@ -42,11 +42,13 @@ let colors = {
   },
 }
 
-let init = () =>
+open Belt.Option
+
+let init = (~primary: option<string>=?, ()) =>
   MxRC__Libs__Twind.setup({
     "preflight": {
       ":root": {
-        "--color-primary": colors.primary.base,
+        "--color-primary": primary->getWithDefault(colors.primary.base),
         "--color-primary-hover": colors.primary.hover,
         "--color-primary-active": colors.primary.active,
         "--color-link": colors.link.base,
@@ -110,12 +112,12 @@ let init = () =>
 
 init()
 
-@react.component @genType
-let make = (~size: ConfigContext.size=#default, ~children=React.null) => {
-  let value = React.useMemo1(() => {
-    let ctx: ConfigContext.context = {size: size}
-    ctx
-  }, [size])
+open ConfigContext
 
-  <> <ConfigContext.Provider value={value}> children </ConfigContext.Provider> </>
+@react.component @genType
+let make = (~size=#default, ~children=React.null) => {
+
+  let value = React.useMemo1(() => { size: size }, [size])
+
+  <> <Provider value> children </Provider> </>
 }
