@@ -24,6 +24,11 @@ let init = () =>
         "text": {
           "DEFAULT": "rgba(0, 0, 0, .85)",
         },
+        "link": {
+          "DEFAULT": "var(--color-link)",
+          "hover": "var(--color-link-hover)",
+          "active": "var(--color-link-active)",
+        },
         "primary": {
           "DEFAULT": "var(--color-primary)",
           "hover": "var(--color-primary-hover)",
@@ -69,13 +74,18 @@ type some = {
   active: string,
 }
 
-type colors = {primary: some, danger: some}
+type colors = {primary: some, link: some, danger: some}
 
 %%private(let b = MxRC__Libs__Twind.colors["blue"])
 %%private(let r = MxRC__Libs__Twind.colors["red"])
 
 let colors = {
   primary: {
+    base: b["500"],
+    hover: b["400"],
+    active: b["600"],
+  },
+  link: {
     base: b["500"],
     hover: b["400"],
     active: b["600"],
@@ -92,6 +102,9 @@ let style = `
   --color-primary: ${colors.primary.base};
   --color-primary-hover: ${colors.primary.hover};
   --color-primary-active: ${colors.primary.active};
+  --color-link: ${colors.link.base};
+  --color-link-hover: ${colors.link.hover};
+  --color-link-active: ${colors.link.active};
   --color-danger: ${colors.danger.base};
   --color-danger-hover: ${colors.danger.hover};
   --color-danger-active: ${colors.danger.active};

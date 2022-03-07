@@ -39,6 +39,11 @@ function init(param) {
             text: {
               DEFAULT: "rgba(0, 0, 0, .85)"
             },
+            link: {
+              DEFAULT: "var(--color-link)",
+              hover: "var(--color-link-hover)",
+              active: "var(--color-link-active)"
+            },
             primary: {
               DEFAULT: "var(--color-primary)",
               hover: "var(--color-primary-hover)",
@@ -77,6 +82,12 @@ var colors_primary = {
   active: b[600]
 };
 
+var colors_link = {
+  base: b[500],
+  hover: b[400],
+  active: b[600]
+};
+
 var colors_danger = {
   base: r[500],
   hover: r[400],
@@ -85,10 +96,11 @@ var colors_danger = {
 
 var colors = {
   primary: colors_primary,
+  link: colors_link,
   danger: colors_danger
 };
 
-var style = "\n:root {\n  --color-primary: " + colors_primary.base + ";\n  --color-primary-hover: " + colors_primary.hover + ";\n  --color-primary-active: " + colors_primary.active + ";\n  --color-danger: " + colors_danger.base + ";\n  --color-danger-hover: " + colors_danger.hover + ";\n  --color-danger-active: " + colors_danger.active + ";\n}\nbutton:focus {\n  outline: 0;\n}\n";
+var style = "\n:root {\n  --color-primary: " + colors_primary.base + ";\n  --color-primary-hover: " + colors_primary.hover + ";\n  --color-primary-active: " + colors_primary.active + ";\n  --color-link: " + colors_link.base + ";\n  --color-link-hover: " + colors_link.hover + ";\n  --color-link-active: " + colors_link.active + ";\n  --color-danger: " + colors_danger.base + ";\n  --color-danger-hover: " + colors_danger.hover + ";\n  --color-danger-active: " + colors_danger.active + ";\n}\nbutton:focus {\n  outline: 0;\n}\n";
 
 function MxRC__ConfigProvider(Props) {
   var sizeOpt = Props.size;

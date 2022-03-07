@@ -17,12 +17,14 @@ const ButtonView = () => {
         <Button type="default">default button</Button>
         <Button type="dashed">dahed button</Button>
         <Button type="text">text button</Button>
+        <Button type="link">link button</Button>
       </Record>
       <Record title="danger">
         <Button type="primary" danger>primary button</Button>
         <Button type="default" danger>default button</Button>
         <Button type="dashed" danger>dahed button</Button>
         <Button type="text" danger>text button</Button>
+        <Button type="link" danger>link button</Button>
       </Record>
       <Record>
         <Button type="default" block>block button</Button>

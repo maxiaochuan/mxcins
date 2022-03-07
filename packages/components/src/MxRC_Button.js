@@ -16,6 +16,8 @@ var primary = "\n    text-white\n    bg(primary hover:primary-hover focus:primar
 
 var text = "\n    border-none\n    bg(initial hover:gray-100 focus:gray-100 active:gray-200)\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
 
+var link = "\n    border-none\n    text(link hover:link-hover focus:link-hover active:link-active)\n    bg(initial hover:initial focus:initial active:initial)\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
+
 var dashed = def + " border-dashed";
 
 var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
@@ -25,33 +27,40 @@ function make(size, _type, d, block, dis) {
   if (dis) {
     classes.push(disabled);
   }
-  var colors = _type === "primary" ? (
+  var colors = _type === "text" ? (
       d ? [
-          primary,
-          "bg(" + danger + ")",
-          "border(" + danger + ")"
-        ] : [primary]
+          text,
+          "text(" + danger + ")"
+        ] : [text]
     ) : (
-      _type === "default" ? (
+      _type === "primary" ? (
           d ? [
-              "text(" + danger + ")",
+              primary,
+              "bg(" + danger + ")",
               "border(" + danger + ")"
-            ] : [def]
+            ] : [primary]
         ) : (
-          _type === "dashed" ? (
+          _type === "default" ? (
               d ? [
-                  dashed,
                   "text(" + danger + ")",
                   "border(" + danger + ")"
-                ] : [
-                  dashed,
-                  "border-dashed"
-                ]
+                ] : [def]
             ) : (
-              d ? [
-                  text,
-                  "text(" + danger + ")"
-                ] : [text]
+              _type === "dashed" ? (
+                  d ? [
+                      dashed,
+                      "text(" + danger + ")",
+                      "border(" + danger + ")"
+                    ] : [
+                      dashed,
+                      "border-dashed"
+                    ]
+                ) : (
+                  d ? [
+                      link,
+                      "text(" + danger + ")"
+                    ] : [link]
+                )
             )
         )
     );
@@ -75,6 +84,7 @@ var Style = {
   def: def,
   primary: primary,
   text: text,
+  link: link,
   dashed: dashed,
   danger: danger,
   make: make

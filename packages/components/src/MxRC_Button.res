@@ -1,4 +1,4 @@
-type _type = [#default | #primary | #dashed | #text]
+type _type = [#default | #primary | #dashed | #text | #link]
 
 module Style = {
   open MxRC__Libs__Twind
@@ -38,6 +38,13 @@ module Style = {
     disabled:bg(initial hover:initial focus:initial active:initial)
   "
 
+  let link = "
+    border-none
+    text(link hover:link-hover focus:link-hover active:link-active)
+    bg(initial hover:initial focus:initial active:initial)
+    disabled:bg(initial hover:initial focus:initial active:initial)
+  "
+
   let dashed = `${def} border-dashed`
 
   let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
@@ -55,6 +62,8 @@ module Style = {
     | (#primary, true) => [primary, `bg(${danger})`, `border(${danger})`]
     | (#text, false) => [text]
     | (#text, true) => [text, `text(${danger})`]
+    | (#link, false) => [link]
+    | (#link, true) => [link, `text(${danger})`]
     | (#dashed, false) => [dashed, "border-dashed"]
     | (#dashed, true) => [dashed, `text(${danger})`, `border(${danger})`]
     }
