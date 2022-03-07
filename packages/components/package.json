@@ -13,10 +13,10 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist",
     "src"
   ],
   "module": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "dev": "rescript build -w"
   },

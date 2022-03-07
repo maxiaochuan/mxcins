@@ -84,22 +84,27 @@ module Style = {
   }
 }
 
-@react.component
+type style = MxRC_React.style
+
+@react.component @genType
 let make = React.forwardRef((
-  ~style,
+  ~style: option<style>=?,
   ~_type: _type=#default,
   ~size,
   ~danger=false,
   ~block=false,
   ~disabled=false,
-  ~children,
+  ~children=?,
   ref_,
 ) => {
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
-  let size = size->Belt.Option.getWithDefault(context.size)
+  open Belt.Option
+  let size = size->getWithDefault(context.size)
 
   let className = Style.make(~size, ~_type, ~danger, ~block, ~disabled)
+  let style = style->getWithDefault(ReactDOM.Style.make())
+  let children = children->getWithDefault(React.null)
 
   <button className style ref=?{Js.Nullable.toOption(ref_)->Belt.Option.map(ReactDOM.Ref.domRef)}>
     children

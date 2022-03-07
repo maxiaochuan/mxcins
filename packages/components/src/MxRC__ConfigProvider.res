@@ -114,7 +114,7 @@ button:focus {
 }
 `
 
-@react.component
+@react.component @genType
 let make = (~size: ConfigContext.size=#default, ~children=React.null) => {
   React.useLayoutEffect(() => {
     open DOM

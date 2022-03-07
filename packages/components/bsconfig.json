@@ -12,5 +12,15 @@
   ],
   "reason": { "react-jsx": 3 },
   "bs-dependencies": ["@rescript/react", "@mxcins/hooks", "@mxcins/libs"],
-  "pinned-dependencies": ["@mxcins/hooks", "@mxcins/libs"]
+  "pinned-dependencies": ["@mxcins/hooks", "@mxcins/libs"],
+  "gentypeconfig": {
+    "language": "typescript",
+    "shims": {},
+    "generatedFileExtension": ".gen.tsx",
+    "module": "es6",
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  }
 }

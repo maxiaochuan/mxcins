@@ -105,9 +105,11 @@ var make$1 = React.forwardRef(function (Props, ref_) {
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
       var size$1 = Belt_Option.getWithDefault(size, context.size);
       var className = make(size$1, _type, danger, block, disabled);
+      var style$1 = Belt_Option.getWithDefault(style, {});
+      var children$1 = Belt_Option.getWithDefault(children, null);
       var tmp = {
         className: className,
-        style: style
+        style: style$1
       };
       var tmp$1 = Belt_Option.map((ref_ == null) ? undefined : Caml_option.some(ref_), (function (prim) {
               return prim;
@@ -115,7 +117,7 @@ var make$1 = React.forwardRef(function (Props, ref_) {
       if (tmp$1 !== undefined) {
         tmp.ref = Caml_option.valFromOption(tmp$1);
       }
-      return React.createElement("button", tmp, children);
+      return React.createElement("button", tmp, children$1);
     });
 
 export {
