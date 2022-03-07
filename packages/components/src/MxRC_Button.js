@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as Twind from "twind";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__ConfigProvider from "./MxRC__ConfigProvider.js";
 
@@ -79,32 +80,37 @@ var Style = {
   make: make
 };
 
-function MxRC_Button(Props) {
-  var _typeOpt = Props.type;
-  var size = Props.size;
-  var dangerOpt = Props.danger;
-  var blockOpt = Props.block;
-  var disabledOpt = Props.disabled;
-  var childrenOpt = Props.children;
-  var _type = _typeOpt !== undefined ? _typeOpt : "default";
-  var danger = dangerOpt !== undefined ? dangerOpt : false;
-  var block = blockOpt !== undefined ? blockOpt : false;
-  var disabled = disabledOpt !== undefined ? disabledOpt : false;
-  var children = childrenOpt !== undefined ? Caml_option.valFromOption(childrenOpt) : null;
-  var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-  var size$1 = size !== undefined ? size : context.size;
-  var className = make(size$1, _type, danger, block, disabled);
-  return React.createElement("button", {
-              className: className,
-              disabled: disabled
-            }, children);
-}
-
-var make$1 = MxRC_Button;
+var make$1 = React.forwardRef(function (Props, ref_) {
+      var style = Props.style;
+      var _typeOpt = Props.type;
+      var size = Props.size;
+      var dangerOpt = Props.danger;
+      var blockOpt = Props.block;
+      var disabledOpt = Props.disabled;
+      var children = Props.children;
+      var _type = _typeOpt !== undefined ? _typeOpt : "default";
+      var danger = dangerOpt !== undefined ? dangerOpt : false;
+      var block = blockOpt !== undefined ? blockOpt : false;
+      var disabled = disabledOpt !== undefined ? disabledOpt : false;
+      var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
+      var size$1 = Belt_Option.getWithDefault(size, context.size);
+      var className = make(size$1, _type, danger, block, disabled);
+      var tmp = {
+        className: className,
+        style: style
+      };
+      var tmp$1 = Belt_Option.map((ref_ == null) ? undefined : Caml_option.some(ref_), (function (prim) {
+              return prim;
+            }));
+      if (tmp$1 !== undefined) {
+        tmp.ref = Caml_option.valFromOption(tmp$1);
+      }
+      return React.createElement("button", tmp, children);
+    });
 
 export {
   Style ,
   make$1 as make,
   
 }
-/* react Not a pure module */
+/* make Not a pure module */

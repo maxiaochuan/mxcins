@@ -76,21 +76,23 @@ module Style = {
 }
 
 @react.component
-let make = (
-  ~_type=#default,
-  ~size=?,
+let make = React.forwardRef((
+  ~style,
+  ~_type: _type=#default,
+  ~size,
   ~danger=false,
   ~block=false,
   ~disabled=false,
-  ~children: React.element=React.null,
+  ~children,
+  ref_,
 ) => {
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
-  let size = switch size {
-  | Some(size) => size
-  | _ => context.size
-  }
+  let size = size->Belt.Option.getWithDefault(context.size)
+
   let className = Style.make(~size, ~_type, ~danger, ~block, ~disabled)
 
-  <button className={className} disabled> children </button>
-}
+  <button className style ref=?{Js.Nullable.toOption(ref_)->Belt.Option.map(ReactDOM.Ref.domRef)}>
+    children
+  </button>
+})
