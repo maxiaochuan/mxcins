@@ -19,6 +19,7 @@ export type _type =
   | "dashed"
   | "text"
   | "link";
+export type ButtonType = _type;
 
 // tslint:disable-next-line:interface-over-type-literal
 export type style = MxRC_React_style;

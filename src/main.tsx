@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ConfigProvider, Button } from '../packages/components/src';
+import { ConfigProvider, Button } from '../packages/components';
 import { Record } from './components';
 
 const ButtonView = () => {
-  const inputRef = React.useRef(null)
+  const inputRef = React.useRef<HTMLElement>(null)
 
   React.useEffect(() => {
     console.log('inputRef', inputRef.current)

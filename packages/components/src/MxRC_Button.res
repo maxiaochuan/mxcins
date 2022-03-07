@@ -1,3 +1,4 @@
+@genType.as("ButtonType")
 type _type = [#default | #primary | #dashed | #text | #link]
 
 module Style = {
@@ -51,10 +52,8 @@ module Style = {
 
   let make = (~size, ~_type, ~danger as isDanger, ~block, ~disabled as isDisabled) => {
     open Js.Array2
-    let classes = ref([init])
-    if isDisabled {
-      classes.contents->push(disabled)->ignore
-    }
+    let classes = ref([init, disabled])
+
     let colors = switch (_type, isDanger) {
     | (#default, false) => [def]
     | (#default, true) => [`text(${danger})`, `border(${danger})`]
@@ -80,6 +79,10 @@ module Style = {
     | #large => classes.contents->push("text-lg h-10 py-[7px]")->ignore
     }
 
+    if (isDisabled && _type === #text) {
+      "disabled"->Js.log2(classes.contents)
+    }
+
     classes.contents->apply->tw
   }
 }
@@ -95,7 +98,8 @@ let make = React.forwardRef((
   ~block=false,
   ~disabled=false,
   ~children=?,
-  ref_,
+  (),
+  ref,
 ) => {
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
@@ -106,7 +110,7 @@ let make = React.forwardRef((
   let style = style->getWithDefault(ReactDOM.Style.make())
   let children = children->getWithDefault(React.null)
 
-  <button className style ref=?{Js.Nullable.toOption(ref_)->Belt.Option.map(ReactDOM.Ref.domRef)}>
+  <button className style disabled ref=?{Js.Nullable.toOption(ref)->Belt.Option.map(ReactDOM.Ref.domRef)}>
     children
   </button>
 })

@@ -23,10 +23,10 @@ var dashed = def + " border-dashed";
 var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
 
 function make(size, _type, isDanger, block, isDisabled) {
-  var classes = [init];
-  if (isDisabled) {
-    classes.push(disabled);
-  }
+  var classes = [
+    init,
+    disabled
+  ];
   var colors = _type === "text" ? (
       isDanger ? [
           text,
@@ -75,6 +75,9 @@ function make(size, _type, isDanger, block, isDisabled) {
   } else {
     classes.push("text-lg h-10 py-[7px]");
   }
+  if (isDisabled && _type === "text") {
+    console.log("disabled", classes);
+  }
   return Twind.tw(Twind.apply(classes));
 }
 
@@ -90,34 +93,35 @@ var Style = {
   make: make
 };
 
-var make$1 = React.forwardRef(function (Props, ref_) {
-      var style = Props.style;
-      var _typeOpt = Props.type;
-      var size = Props.size;
-      var dangerOpt = Props.danger;
-      var blockOpt = Props.block;
-      var disabledOpt = Props.disabled;
-      var children = Props.children;
-      var _type = _typeOpt !== undefined ? _typeOpt : "default";
-      var danger = dangerOpt !== undefined ? dangerOpt : false;
-      var block = blockOpt !== undefined ? blockOpt : false;
-      var disabled = disabledOpt !== undefined ? disabledOpt : false;
+var make$1 = React.forwardRef(function (Props, param) {
+      var partial_arg = Props.children;
+      var partial_arg$1 = Props.disabled;
+      var partial_arg$2 = Props.block;
+      var partial_arg$3 = Props.danger;
+      var partial_arg$4 = Props.size;
+      var partial_arg$5 = Props.type;
+      var partial_arg$6 = Props.style;
+      var _type = partial_arg$5 !== undefined ? partial_arg$5 : "default";
+      var danger = partial_arg$3 !== undefined ? partial_arg$3 : false;
+      var block = partial_arg$2 !== undefined ? partial_arg$2 : false;
+      var disabled = partial_arg$1 !== undefined ? partial_arg$1 : false;
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-      var size$1 = Belt_Option.getWithDefault(size, context.size);
-      var className = make(size$1, _type, danger, block, disabled);
-      var style$1 = Belt_Option.getWithDefault(style, {});
-      var children$1 = Belt_Option.getWithDefault(children, null);
+      var size = Belt_Option.getWithDefault(partial_arg$4, context.size);
+      var className = make(size, _type, danger, block, disabled);
+      var style = Belt_Option.getWithDefault(partial_arg$6, {});
+      var children = Belt_Option.getWithDefault(partial_arg, null);
       var tmp = {
         className: className,
-        style: style$1
+        style: style,
+        disabled: disabled
       };
-      var tmp$1 = Belt_Option.map((ref_ == null) ? undefined : Caml_option.some(ref_), (function (prim) {
+      var tmp$1 = Belt_Option.map((param == null) ? undefined : Caml_option.some(param), (function (prim) {
               return prim;
             }));
       if (tmp$1 !== undefined) {
         tmp.ref = Caml_option.valFromOption(tmp$1);
       }
-      return React.createElement("button", tmp, children$1);
+      return React.createElement("button", tmp, children);
     });
 
 export {

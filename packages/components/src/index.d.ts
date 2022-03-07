@@ -1,9 +1,11 @@
-import type { make as ConfigProvider, Props as ConfigProviderProps } from './MxRC__ConfigProvider.gen'
-import type { make as Button, Props as ButtonProps } from './MxRC_Button.gen'
+import * as React from 'react'
+import { make as ConfigProvider, Props as ConfigProviderProps } from './MxRC__ConfigProvider.gen'
+import { Props as ButtonProps } from './MxRC_Button.gen'
+
+export const Button: React.ForwardRefExoticComponent<React.PropsWithoutRef<ButtonProps> & React.RefAttributes<HTMLElement>>
 
 export {
   ConfigProvider,
-  Button,
 }
 
 export type {
