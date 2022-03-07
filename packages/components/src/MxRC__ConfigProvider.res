@@ -1,5 +1,3 @@
-open MxLibs
-
 module ConfigContext = {
   type size = [#default | #small | #large]
   type context = {size: size}
@@ -15,8 +13,51 @@ module ConfigContext = {
   }
 }
 
+type some = {
+  base: string,
+  hover: string,
+  active: string,
+}
+
+type colors = {primary: some, link: some, danger: some}
+
+%%private(let b = MxRC__Libs__Twind.colors["blue"])
+%%private(let r = MxRC__Libs__Twind.colors["red"])
+
+let colors = {
+  primary: {
+    base: b["500"],
+    hover: b["400"],
+    active: b["600"],
+  },
+  link: {
+    base: b["500"],
+    hover: b["400"],
+    active: b["600"],
+  },
+  danger: {
+    base: r["500"],
+    hover: r["400"],
+    active: r["600"],
+  },
+}
+
 let init = () =>
   MxRC__Libs__Twind.setup({
+    "preflight": {
+      ":root": {
+        "--color-primary": colors.primary.base,
+        "--color-primary-hover": colors.primary.hover,
+        "--color-primary-active": colors.primary.active,
+        "--color-link": colors.link.base,
+        "--color-link-hover": colors.link.hover,
+        "--color-link-active": colors.link.active,
+        "--color-danger": colors.danger.base,
+        "--color-danger-hover": colors.danger.hover,
+        "--color-danger-active": colors.danger.active,
+      },
+      "button:focus": { "outline": "0" },
+    },
     "theme": {
       "colors": {
         "initial": "initial",
@@ -69,68 +110,8 @@ let init = () =>
 
 init()
 
-type some = {
-  base: string,
-  hover: string,
-  active: string,
-}
-
-type colors = {primary: some, link: some, danger: some}
-
-%%private(let b = MxRC__Libs__Twind.colors["blue"])
-%%private(let r = MxRC__Libs__Twind.colors["red"])
-
-let colors = {
-  primary: {
-    base: b["500"],
-    hover: b["400"],
-    active: b["600"],
-  },
-  link: {
-    base: b["500"],
-    hover: b["400"],
-    active: b["600"],
-  },
-  danger: {
-    base: r["500"],
-    hover: r["400"],
-    active: r["600"],
-  },
-}
-
-let style = `
-:root {
-  --color-primary: ${colors.primary.base};
-  --color-primary-hover: ${colors.primary.hover};
-  --color-primary-active: ${colors.primary.active};
-  --color-link: ${colors.link.base};
-  --color-link-hover: ${colors.link.hover};
-  --color-link-active: ${colors.link.active};
-  --color-danger: ${colors.danger.base};
-  --color-danger-hover: ${colors.danger.hover};
-  --color-danger-active: ${colors.danger.active};
-}
-button:focus {
-  outline: 0;
-}
-`
-
 @react.component @genType
 let make = (~size: ConfigContext.size=#default, ~children=React.null) => {
-  React.useLayoutEffect(() => {
-    open DOM
-    open Document
-    open Element
-    let ele = document->createElement("style")
-    ele->setInnerHTML(style)
-    let head = document->querySelector("head")
-    switch head {
-    | Some(head) => head->appendChild(~child=ele)
-    | _ => ()
-    }
-    None
-  })
-
   let value = React.useMemo1(() => {
     let ctx: ConfigContext.context = {size: size}
     ctx

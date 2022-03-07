@@ -30,8 +30,52 @@ var ConfigContext = {
   Provider: Provider
 };
 
+var b = MxRC__Libs__Twind.colors.blue;
+
+var r = MxRC__Libs__Twind.colors.red;
+
+var colors_primary = {
+  base: b[500],
+  hover: b[400],
+  active: b[600]
+};
+
+var colors_link = {
+  base: b[500],
+  hover: b[400],
+  active: b[600]
+};
+
+var colors_danger = {
+  base: r[500],
+  hover: r[400],
+  active: r[600]
+};
+
+var colors = {
+  primary: colors_primary,
+  link: colors_link,
+  danger: colors_danger
+};
+
 function init(param) {
   Twind.setup({
+        preflight: {
+          ":root": {
+            "--color-primary": colors_primary.base,
+            "--color-primary-hover": colors_primary.hover,
+            "--color-primary-active": colors_primary.active,
+            "--color-link": colors_link.base,
+            "--color-link-hover": colors_link.hover,
+            "--color-link-active": colors_link.active,
+            "--color-danger": colors_danger.base,
+            "--color-danger-hover": colors_danger.hover,
+            "--color-danger-active": colors_danger.active
+          },
+          "button:focus": {
+            outline: "0"
+          }
+        },
         theme: {
           colors: {
             initial: "initial",
@@ -73,50 +117,11 @@ function init(param) {
 
 init(undefined);
 
-var b = MxRC__Libs__Twind.colors.blue;
-
-var r = MxRC__Libs__Twind.colors.red;
-
-var colors_primary = {
-  base: b[500],
-  hover: b[400],
-  active: b[600]
-};
-
-var colors_link = {
-  base: b[500],
-  hover: b[400],
-  active: b[600]
-};
-
-var colors_danger = {
-  base: r[500],
-  hover: r[400],
-  active: r[600]
-};
-
-var colors = {
-  primary: colors_primary,
-  link: colors_link,
-  danger: colors_danger
-};
-
-var style = "\n:root {\n  --color-primary: " + colors_primary.base + ";\n  --color-primary-hover: " + colors_primary.hover + ";\n  --color-primary-active: " + colors_primary.active + ";\n  --color-link: " + colors_link.base + ";\n  --color-link-hover: " + colors_link.hover + ";\n  --color-link-active: " + colors_link.active + ";\n  --color-danger: " + colors_danger.base + ";\n  --color-danger-hover: " + colors_danger.hover + ";\n  --color-danger-active: " + colors_danger.active + ";\n}\nbutton:focus {\n  outline: 0;\n}\n";
-
 function MxRC__ConfigProvider(Props) {
   var sizeOpt = Props.size;
   var childrenOpt = Props.children;
   var size = sizeOpt !== undefined ? sizeOpt : "default";
   var children = childrenOpt !== undefined ? Caml_option.valFromOption(childrenOpt) : null;
-  React.useLayoutEffect(function () {
-        var ele = document.createElement("style");
-        ele.innerHTML = style;
-        var head = document.querySelector("head");
-        if (!(head == null)) {
-          head.appendChild(ele);
-        }
-        
-      });
   var value = React.useMemo((function () {
           return {
                   size: size
@@ -132,9 +137,8 @@ var make = MxRC__ConfigProvider;
 
 export {
   ConfigContext ,
-  init ,
   colors ,
-  style ,
+  init ,
   make ,
   
 }
