@@ -56,6 +56,13 @@ const ButtonView = () => {
           <Button type="default" danger disabled>danger[disabled]</Button>
         </Record>
       </Record>
+      <Record title="ghost" gray>
+        <Button type="primary" ghost>primary button</Button>
+        <Button type="default" ghost>default button</Button>
+        <Button type="dashed" ghost>dahed button</Button>
+        <Button type="text" ghost>text button</Button>
+        <Button type="link" ghost>link button</Button>
+      </Record>
     </>
   )
 }

@@ -22,7 +22,9 @@ var dashed = def + " border-dashed";
 
 var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
 
-function make(size, _type, isDanger, block, isDisabled) {
+var ghost = "bg(transparent hover:transparent focus:transparent active:transparent)";
+
+function make(size, _type, isDanger, isGhost, block, param) {
   var classes = [
     init,
     disabled
@@ -68,15 +70,15 @@ function make(size, _type, isDanger, block, isDisabled) {
   if (block) {
     classes.push("w-full");
   }
+  if (isGhost) {
+    classes.push(ghost);
+  }
   if (size === "small") {
     classes.push("h-6 py-0");
   } else if (size === "default") {
     classes.push("h-8 py-[4px]");
   } else {
     classes.push("text-lg h-10 py-[7px]");
-  }
-  if (isDisabled && _type === "text") {
-    console.log("disabled", classes);
   }
   return Twind.tw(Twind.apply(classes));
 }
@@ -90,25 +92,28 @@ var Style = {
   link: link,
   dashed: dashed,
   danger: danger,
+  ghost: ghost,
   make: make
 };
 
 var make$1 = React.forwardRef(function (Props, param) {
       var partial_arg = Props.children;
-      var partial_arg$1 = Props.disabled;
-      var partial_arg$2 = Props.block;
-      var partial_arg$3 = Props.danger;
-      var partial_arg$4 = Props.size;
-      var partial_arg$5 = Props.type;
-      var partial_arg$6 = Props.style;
-      var _type = partial_arg$5 !== undefined ? partial_arg$5 : "default";
-      var danger = partial_arg$3 !== undefined ? partial_arg$3 : false;
-      var block = partial_arg$2 !== undefined ? partial_arg$2 : false;
-      var disabled = partial_arg$1 !== undefined ? partial_arg$1 : false;
+      var partial_arg$1 = Props.ghost;
+      var partial_arg$2 = Props.disabled;
+      var partial_arg$3 = Props.block;
+      var partial_arg$4 = Props.danger;
+      var partial_arg$5 = Props.size;
+      var partial_arg$6 = Props.type;
+      var partial_arg$7 = Props.style;
+      var _type = partial_arg$6 !== undefined ? partial_arg$6 : "default";
+      var danger = partial_arg$4 !== undefined ? partial_arg$4 : false;
+      var block = partial_arg$3 !== undefined ? partial_arg$3 : false;
+      var disabled = partial_arg$2 !== undefined ? partial_arg$2 : false;
+      var ghost = partial_arg$1 !== undefined ? partial_arg$1 : false;
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-      var size = Belt_Option.getWithDefault(partial_arg$4, context.size);
-      var className = make(size, _type, danger, block, disabled);
-      var style = Belt_Option.getWithDefault(partial_arg$6, {});
+      var size = Belt_Option.getWithDefault(partial_arg$5, context.size);
+      var className = make(size, _type, danger, ghost, block, disabled);
+      var style = Belt_Option.getWithDefault(partial_arg$7, {});
       var children = Belt_Option.getWithDefault(partial_arg, null);
       var tmp = {
         className: className,

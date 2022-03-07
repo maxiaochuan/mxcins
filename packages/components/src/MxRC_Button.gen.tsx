@@ -31,6 +31,7 @@ export type Props = {
   readonly children?: React.ReactNode; 
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
+  readonly ghost?: boolean; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
 };
@@ -41,6 +42,7 @@ export const make: React.ComponentType<{
   readonly children?: React.ReactNode; 
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
+  readonly ghost?: boolean; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
 }> = MxRC_ButtonBS.make;

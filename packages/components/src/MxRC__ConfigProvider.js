@@ -36,6 +36,7 @@ function init(param) {
           colors: {
             initial: "initial",
             inherit: "inherit",
+            transparent: "transparent",
             text: {
               DEFAULT: "rgba(0, 0, 0, .85)"
             },

@@ -50,7 +50,9 @@ module Style = {
 
   let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
 
-  let make = (~size, ~_type, ~danger as isDanger, ~block, ~disabled as isDisabled) => {
+  let ghost = "bg(transparent hover:transparent focus:transparent active:transparent)"
+
+  let make = (~size, ~_type, ~danger as isDanger, ~ghost as isGhost, ~block, ~disabled as _) => {
     open Js.Array2
     let classes = ref([init, disabled])
 
@@ -73,14 +75,14 @@ module Style = {
       classes.contents->push("w-full")->ignore
     }
 
+    if (isGhost) {
+      classes.contents->push(ghost)->ignore
+    }
+
     switch size {
     | #default => classes.contents->push("h-8 py-[4px]")->ignore
     | #small => classes.contents->push("h-6 py-0")->ignore
     | #large => classes.contents->push("text-lg h-10 py-[7px]")->ignore
-    }
-
-    if (isDisabled && _type === #text) {
-      "disabled"->Js.log2(classes.contents)
     }
 
     classes.contents->apply->tw
@@ -97,6 +99,7 @@ let make = React.forwardRef((
   ~danger=false,
   ~block=false,
   ~disabled=false,
+  ~ghost=false,
   ~children=?,
   (),
   ref,
@@ -106,7 +109,7 @@ let make = React.forwardRef((
   open Belt.Option
   let size = size->getWithDefault(context.size)
 
-  let className = Style.make(~size, ~_type, ~danger, ~block, ~disabled)
+  let className = Style.make(~size, ~_type, ~danger, ~ghost, ~block, ~disabled)
   let style = style->getWithDefault(ReactDOM.Style.make())
   let children = children->getWithDefault(React.null)
 
