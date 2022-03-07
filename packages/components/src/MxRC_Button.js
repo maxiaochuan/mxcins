@@ -5,80 +5,72 @@ import * as Twind from "twind";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__ConfigProvider from "./MxRC__ConfigProvider.js";
 
-var init = "\n    relative\n    inline\n    font-normal\n    text(base center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
+var init = "\n    relative\n    inline\n    font-normal\n    text(base center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n  ";
+
+var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
 
 var def = "\n    text(hover:primary-hover focus:primary-hover active:primary-active)\n    border(hover:primary-hover focus:primary-hover active:primary-active)\n  ";
 
 var primary = "\n    text-white\n    bg(primary hover:primary-hover focus:primary-hover active:primary-active)\n    border(primary hover:primary-hover focus:primary-hover active:primary-active)\n  ";
 
-var text = "\n    border-none\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
+var text = "\n    border-none\n    bg(initial hover:gray-100 focus:gray-100 active:gray-200)\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
 
 var dashed = def + " border-dashed";
 
 var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
 
-function make(size, _type, d, block, disabled) {
-  var ret = _type === "text" ? (
+function make(size, _type, d, block, dis) {
+  var classes = [init];
+  if (dis) {
+    classes.push(disabled);
+  }
+  var colors = _type === "primary" ? (
       d ? [
-          init,
-          text,
-          "text(" + danger + ")"
-        ] : [
-          init,
-          text
-        ]
+          primary,
+          "bg(" + danger + ")",
+          "border(" + danger + ")"
+        ] : [primary]
     ) : (
-      _type === "primary" ? (
+      _type === "default" ? (
           d ? [
-              init,
-              primary,
-              "bg(" + danger + ")",
+              "text(" + danger + ")",
               "border(" + danger + ")"
-            ] : [
-              init,
-              primary
-            ]
+            ] : [def]
         ) : (
-          _type === "default" ? (
+          _type === "dashed" ? (
               d ? [
-                  init,
+                  dashed,
                   "text(" + danger + ")",
                   "border(" + danger + ")"
                 ] : [
-                  init,
-                  def
+                  dashed,
+                  "border-dashed"
                 ]
             ) : (
-              _type === "dashed" ? (
-                  d ? [
-                      init,
-                      dashed,
-                      "text(" + danger + ")",
-                      "border(" + danger + ")"
-                    ] : [
-                      init,
-                      dashed,
-                      "border-dashed"
-                    ]
-                ) : [init]
+              d ? [
+                  text,
+                  "text(" + danger + ")"
+                ] : [text]
             )
         )
     );
+  classes = classes.concat(colors);
   if (block) {
-    ret.push("w-full");
+    classes.push("w-full");
   }
   if (size === "small") {
-    ret.push("h-6");
+    classes.push("h-6");
   } else if (size === "default") {
-    ret.push("h-8");
+    classes.push("h-8");
   } else {
-    ret.push("h-10");
+    classes.push("h-10");
   }
-  return Twind.tw(Twind.apply(ret));
+  return Twind.tw(Twind.apply(classes));
 }
 
 var Style = {
   init: init,
+  disabled: disabled,
   def: def,
   primary: primary,
   text: text,

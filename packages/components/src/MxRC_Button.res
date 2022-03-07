@@ -12,6 +12,9 @@ module Style = {
     rounded
     px-3
     transition
+  "
+
+  let disabled = "
     disabled:cursor-not-allowed
     disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)
     disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)
@@ -31,6 +34,7 @@ module Style = {
 
   let text = "
     border-none
+    bg(initial hover:gray-100 focus:gray-100 active:gray-200)
     disabled:bg(initial hover:initial focus:initial active:initial)
   "
 
@@ -38,31 +42,36 @@ module Style = {
 
   let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
 
-  let make = (~size, ~_type, ~danger as d, ~block, ~disabled) => {
-    let ret = switch (_type, d) {
-    | (#default, false) => [init, def]
-    | (#default, true) => [init, `text(${danger})`, `border(${danger})`]
-    | (#primary, false) => [init, primary]
-    | (#primary, true) => [init, primary, `bg(${danger})`, `border(${danger})`]
-    | (#text, false) => [init, text]
-    | (#text, true) => [init, text, `text(${danger})`]
-    | (#dashed, false) => [init, dashed, "border-dashed"]
-    | (#dashed, true) => [init, dashed, `text(${danger})`, `border(${danger})`]
-    | (_, _) => [init]
-    }
+  let make = (~size, ~_type, ~danger as d, ~block, ~disabled as dis) => {
     open Js.Array2
+    let classes = ref([init])
+    if dis {
+      classes.contents->push(disabled)->ignore
+    }
+    let colors = switch (_type, d) {
+    | (#default, false) => [def]
+    | (#default, true) => [`text(${danger})`, `border(${danger})`]
+    | (#primary, false) => [primary]
+    | (#primary, true) => [primary, `bg(${danger})`, `border(${danger})`]
+    | (#text, false) => [text]
+    | (#text, true) => [text, `text(${danger})`]
+    | (#dashed, false) => [dashed, "border-dashed"]
+    | (#dashed, true) => [dashed, `text(${danger})`, `border(${danger})`]
+    }
+
+    classes.contents = classes.contents->concat(colors)
 
     if block {
-      let _ = ret->push("w-full")
+      classes.contents->push("w-full")->ignore
     }
 
-    let _ = switch size {
-    | #default => ret->push("h-8")
-    | #small => ret->push("h-6")
-    | #large => ret->push("h-10")
+    switch size {
+    | #default => classes.contents->push("h-8")->ignore
+    | #small => classes.contents->push("h-6")->ignore
+    | #large => classes.contents->push("h-10")->ignore
     }
 
-    ret->apply->tw
+    classes.contents->apply->tw
   }
 }
 
