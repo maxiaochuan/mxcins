@@ -22,30 +22,19 @@ module Style = {
     disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)
   "
 
-  let def = "
-    text(hover:primary-hover focus:primary-hover active:primary-active)
-    border(hover:primary-hover focus:primary-hover active:primary-active)
-  "
+  let primary = "primary hover:primary-hover focus:primary-hover active:primary-active"
+  let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
+  let link = "link hover:link-hover focus:link-hover active:link-active"
+  let initial = "initial hover:initial focus:initial active:initial"
+  let transparent = "transparent hover:transparent focus:transparent active:transparent"
+
+  let def = `text(${primary}) text-text border(${primary}) border-gray-300`
 
   let text = "
     border-none
-    bg(initial hover:gray-100 focus:gray-100 active:gray-200)
+    bg(initial hover:(black opacity-[0.018]) focus:(black opacity-[0.018]) active:(black opacity-[0.028]))
     disabled:bg(initial hover:initial focus:initial active:initial)
   "
-
-  let link = "
-    border-none
-    text(link hover:link-hover focus:link-hover active:link-active)
-    bg(initial hover:initial focus:initial active:initial)
-    disabled:bg(initial hover:initial focus:initial active:initial)
-  "
-
-  let dashed = `${def} border-dashed`
-
-  let primary = "primary hover:primary-hover focus:primary-hover active:primary-active"
-  let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
-
-  let ghost = "bg(transparent hover:transparent focus:transparent active:transparent)"
 
   let make = (~size, ~_type, ~danger as isDanger, ~ghost as isGhost, ~block, ~disabled as _) => {
     open Js.Array2
@@ -58,10 +47,10 @@ module Style = {
     | (#primary, true) => ["text-white", `bg(${danger})`, `border(${danger})`]
     | (#text, false) => [text]
     | (#text, true) => [text, `text(${danger})`]
-    | (#link, false) => [link]
-    | (#link, true) => [link, `text(${danger})`]
-    | (#dashed, false) => [dashed, "border-dashed"]
-    | (#dashed, true) => [dashed, `text(${danger})`, `border(${danger})`]
+    | (#link, false) => [`text(${link})`, `bg(${initial})`, `disabled:bg(${initial})`, "border-none"]
+    | (#link, true) => [`text(${danger})`, `bg(${initial})`, `disabled:bg(${initial})`, "border-none"]
+    | (#dashed, false) => [def, "border-dashed"]
+    | (#dashed, true) => [def, "border-dashed", `text(${danger})`, `border(${danger})`]
     }
 
     classes.contents = classes.contents->concat(colors)
@@ -71,12 +60,16 @@ module Style = {
     }
 
     if (isGhost) {
-      switch (_type, isDanger) {
-      | (#primary, false) => classes.contents->push(`text(${primary})`)->ignore
-      | (#primary, true) => classes.contents->push(`text(${danger})`)->ignore
-      | (_, _) => classes.contents->push("text-white")->ignore
+      let background = `bg(${transparent})`
+      let disabled =  `disabled:bg(${transparent})`
+      classes.contents = switch (_type, isDanger) {
+      | (#primary, false) => classes.contents->concat([background, `text(${primary})`])
+      | (#primary, true) => classes.contents->concat([background, `text(${danger})`])
+      | (#link, _) => classes.contents
+      | (#text, _) => classes.contents
+      | (_, _) => classes.contents->concat(["text-white border-white"])
       }
-      classes.contents->push(ghost)->ignore
+      classes.contents->push(disabled)->ignore
     }
 
     switch size {

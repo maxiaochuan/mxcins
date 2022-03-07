@@ -10,19 +10,19 @@ var init = "\n    relative\n    inline\n    font-normal\n    text(base center te
 
 var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
 
-var def = "\n    text(hover:primary-hover focus:primary-hover active:primary-active)\n    border(hover:primary-hover focus:primary-hover active:primary-active)\n  ";
-
-var text = "\n    border-none\n    bg(initial hover:gray-100 focus:gray-100 active:gray-200)\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
-
-var link = "\n    border-none\n    text(link hover:link-hover focus:link-hover active:link-active)\n    bg(initial hover:initial focus:initial active:initial)\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
-
-var dashed = def + " border-dashed";
-
 var primary = "primary hover:primary-hover focus:primary-hover active:primary-active";
 
 var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
 
-var ghost = "bg(transparent hover:transparent focus:transparent active:transparent)";
+var link = "link hover:link-hover focus:link-hover active:link-active";
+
+var initial = "initial hover:initial focus:initial active:initial";
+
+var transparent = "transparent hover:transparent focus:transparent active:transparent";
+
+var def = "text(" + primary + ") text-text border(" + primary + ") border-gray-300";
+
+var text = "\n    border-none\n    bg(initial hover:(black opacity-[0.018]) focus:(black opacity-[0.018]) active:(black opacity-[0.028]))\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
 
 function make(size, _type, isDanger, isGhost, block, param) {
   var classes = [
@@ -54,18 +54,26 @@ function make(size, _type, isDanger, isGhost, block, param) {
             ) : (
               _type === "dashed" ? (
                   isDanger ? [
-                      dashed,
+                      def,
+                      "border-dashed",
                       "text(" + danger + ")",
                       "border(" + danger + ")"
                     ] : [
-                      dashed,
+                      def,
                       "border-dashed"
                     ]
                 ) : (
                   isDanger ? [
-                      link,
-                      "text(" + danger + ")"
-                    ] : [link]
+                      "text(" + danger + ")",
+                      "bg(" + initial + ")",
+                      "disabled:bg(" + initial + ")",
+                      "border-none"
+                    ] : [
+                      "text(" + link + ")",
+                      "bg(" + initial + ")",
+                      "disabled:bg(" + initial + ")",
+                      "border-none"
+                    ]
                 )
             )
         )
@@ -75,16 +83,20 @@ function make(size, _type, isDanger, isGhost, block, param) {
     classes.push("w-full");
   }
   if (isGhost) {
-    if (_type === "primary") {
-      if (isDanger) {
-        classes.push("text(" + danger + ")");
-      } else {
-        classes.push("text(" + primary + ")");
-      }
-    } else {
-      classes.push("text-white");
-    }
-    classes.push(ghost);
+    var background = "bg(" + transparent + ")";
+    var disabled$1 = "disabled:bg(" + transparent + ")";
+    classes = _type === "text" || _type === "link" ? classes : (
+        _type === "primary" ? (
+            isDanger ? classes.concat([
+                    background,
+                    "text(" + danger + ")"
+                  ]) : classes.concat([
+                    background,
+                    "text(" + primary + ")"
+                  ])
+          ) : classes.concat(["text-white border-white"])
+      );
+    classes.push(disabled$1);
   }
   if (size === "small") {
     classes.push("h-6 py-0");
@@ -99,13 +111,13 @@ function make(size, _type, isDanger, isGhost, block, param) {
 var Style = {
   init: init,
   disabled: disabled,
-  def: def,
-  text: text,
-  link: link,
-  dashed: dashed,
   primary: primary,
   danger: danger,
-  ghost: ghost,
+  link: link,
+  initial: initial,
+  transparent: transparent,
+  def: def,
+  text: text,
   make: make
 };
 

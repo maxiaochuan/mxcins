@@ -63,6 +63,7 @@ const ButtonView = () => {
         <Button type="text" ghost>text button</Button>
         <Button type="link" ghost>link button</Button>
         <Button type="primary" danger ghost>danger button</Button>
+        <Button ghost disabled>Ghost(disabled)</Button>
       </Record>
     </>
   )
