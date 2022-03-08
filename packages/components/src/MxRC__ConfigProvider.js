@@ -105,8 +105,11 @@ function init(primary, param) {
             DEFAULT: "cubic-bezier(.645,.045,.355,1)"
           },
           fontSize: {
+            sm: ['12px', { 'lineHeight': '20px' }],
             base: ['14px', { 'lineHeight': '22px' }],
-            lg: ['16px', { 'lineHeight': '24px' }]
+            lg: ['16px', { 'lineHeight': '24px' }],
+            xl: ['18px', { 'lineHeight': '26px' }],
+            "2xl": ['20px', { 'lineHeight': '28px' }]
           },
           minWidth: {
             "6": "1.5rem",

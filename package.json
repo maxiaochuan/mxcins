@@ -24,6 +24,7 @@
     "build:res:components": "yarn workspace @mxcins/components run rescript build"
   },
   "dependencies": {
+    "@ant-design/icons": "4.7.0",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.13",
     "@rescript/react": "0.10.3",

@@ -43,6 +43,7 @@ export type Props = {
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
+  readonly icon?: JSX.Element; 
   readonly onClick?: onClick; 
   readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
@@ -57,6 +58,7 @@ export const make: React.ComponentType<{
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
+  readonly icon?: JSX.Element; 
   readonly onClick?: onClick; 
   readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 

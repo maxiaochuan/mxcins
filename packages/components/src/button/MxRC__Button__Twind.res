@@ -45,13 +45,14 @@ let make = (
   ~ghost as isGhost,
   ~block as isBlock,
   ~disabled as _,
+  ~iconOnly as isIconOnly,
 ) => {
   open Js.Array2
   let classes = [init, disabled]
   let push = str => classes->push(str)->ignore
   let pushMany = strs => classes->pushMany(strs)->ignore
 
-  /*--- colors, `type` `danger` ---*/
+  /* --- colors, `type` `danger` --- */
   let colors = switch (_type, isDanger) {
   | (#default, false) => [def]
   | (#default, true) => [`text(${danger})`, `border(${danger})`]
@@ -65,14 +66,13 @@ let make = (
   | (#dashed, true) => [def, "border-dashed", `text(${danger})`, `border(${danger})`]
   }
   pushMany(colors)
-  /*--- colors ---*/
+  /* --- colors --- */
 
-
-  /*--- block ---*/
+  /* --- block --- */
   isBlock ? push(block) : ()
-  /*--- block ---*/
+  /* --- block --- */
 
-  /*--- ghost ---*/
+  /* --- ghost --- */
   if isGhost {
     switch (_type, isDanger) {
     | (#primary, false) => pushMany([`bg(${transparent})`, `text(${primary})`])
@@ -83,27 +83,38 @@ let make = (
     }
     push(`disabled:bg(${transparent})`)
   }
-  /*--- ghost ---*/
+  /* --- ghost --- */
 
-  /*--- size ---*/
+  /* --- size --- */
   switch size {
   | #default => push("h-8 py-[4px]")
   | #small => push("h-6 py-0")
   | #large => push("text-lg h-10 py-[7px]")
   }
-  /*--- size ---*/
+  /* --- size --- */
 
-  /*--- shape ---*/
+  /* --- shape --- */
   switch (shape, size) {
-    | (#circle, #default) => pushMany([circle, "min-w-8 max-w-8"])
-    | (#circle, #small) => pushMany([circle, "min-w-6 max-w-6"])
-    | (#circle, #large) => pushMany([circle, "min-w-10 max-w-10"])
-    | (#round, #default) => pushMany(["rounded-full"])
-    | (#round, #small) => pushMany(["rounded-full"])
-    | (#round, #large) => pushMany(["rounded-full"])
-    | _ => ()
+  | (#circle, #default) => pushMany([circle, "min-w-8 max-w-8"])
+  | (#circle, #small) => pushMany([circle, "min-w-6 max-w-6"])
+  | (#circle, #large) => pushMany([circle, "min-w-10 max-w-10"])
+  | (#round, #default) => pushMany(["rounded-full"])
+  | (#round, #small) => pushMany(["rounded-full"])
+  | (#round, #large) => pushMany(["rounded-full"])
+  | _ => ()
   }
-  /*--- shape ---*/
+  /* --- shape --- */
+
+  if isIconOnly {
+    push("px-0 ")
+    switch size {
+    | #default => push("w-8 text-lg")
+    | #small => push("w-6")
+    | #large => push("w-10 text-xl")
+    }
+  }
+
+  push(css({".anticon": ["flex justify-center"]->apply}))
 
   switch (classes->apply->tw, className) {
   | (classes, Some(className)) => [classes, className]->joinWith(" ")

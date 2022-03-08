@@ -23,7 +23,8 @@ let make = React.forwardRef((
   ~block=false,
   ~disabled=false,
   ~ghost=false,
-  ~children=?,
+  ~icon: option<React.element>=?,
+  ~children: option<React.element>=?,
   ~onClick: option<onClick>=?,
   (),
   ref,
@@ -33,10 +34,6 @@ let make = React.forwardRef((
 
   // size
   let size = size->getWithDefault(context.size)
-
-  // classname
-  let className =
-    className->MxRC__Button__Twind.make(~size, ~_type, ~shape, ~danger, ~ghost, ~block, ~disabled)
 
   // style
   let style = style->getWithDefault(ReactDOM.Style.make())
@@ -51,7 +48,32 @@ let make = React.forwardRef((
     | (_, _) => ()
     }
 
-  let rendered =
+  let iconOnly = switch (children, icon) {
+  | (None, Some(_)) => true
+  | (_, _) => false
+  }
+
+  // let iconOnly = switch (children, icon) {
+  // | (Some()) => expression
+  // | pattern2 => expression
+  // }
+
+  // classname
+  let className =
+    className->MxRC__Button__Twind.make(
+      ~size,
+      ~_type,
+      ~shape,
+      ~danger,
+      ~ghost,
+      ~block,
+      ~disabled,
+      ~iconOnly,
+    )
+
+  let icon = icon->Belt.Option.getWithDefault(React.null)
+
+  let kids =
     children
     ->getWithDefault(React.null)
     ->React.Children.map(child => {
@@ -74,6 +96,6 @@ let make = React.forwardRef((
     style
     disabled
     onClick>
-    rendered
+    icon kids
   </button>
 })

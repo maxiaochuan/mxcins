@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { DownloadOutlined } from '@ant-design/icons';
 import { ConfigProvider, Button } from '../packages/components';
 import { Record } from './components';
 
@@ -18,6 +19,11 @@ const ButtonView = () => {
         <Button type="dashed">dahed button</Button>
         <Button type="text">text button</Button>
         <Button type="link">link button</Button>
+      </Record>
+      <Record title="icon">
+        <Button type="primary" icon={<DownloadOutlined />} />
+        <Button type="primary" icon={<DownloadOutlined />} size="small" />
+        <Button type="primary" icon={<DownloadOutlined />} size="large" />
       </Record>
       <Record title="shape">
         <Button type="primary" shape="circle">1</Button>

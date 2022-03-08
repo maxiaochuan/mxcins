@@ -6,6 +6,10 @@ external setup: {..} => unit = "setup"
 external tw: 'a => string = "tw"
 @module("twind")
 external apply: array<string> => applyreturned = "apply"
+@module("twind/css")
+external css: {..} => string = "css"
+@module("twind/css")
+external rawCss: string => string = "css"
 
 %%raw("import * as c from 'twind/colors'")
 let colors: {..} = %raw("c")
