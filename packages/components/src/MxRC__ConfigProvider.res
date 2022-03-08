@@ -104,6 +104,16 @@ let init = (~primary: option<string>=?, ()) =>
         // '8xl': ['6rem', { lineHeight: '1' }],
         // '9xl': ['8rem', { lineHeight: '1' }],
       },
+      "minWidth": {
+        "6": "1.5rem",
+        "8": "2rem",
+        "10": "2.5rem",
+      },
+      "maxWidth": {
+        "6": "1.5rem",
+        "8": "2rem",
+        "10": "2.5rem",
+      },
       "extend": {
         "colors": MxRC__Libs__Twind.colors,
       },

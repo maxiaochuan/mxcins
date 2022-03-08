@@ -19,6 +19,10 @@ const ButtonView = () => {
         <Button type="text">text button</Button>
         <Button type="link">link button</Button>
       </Record>
+      <Record title="shape">
+        <Button type="primary" shape="circle">1</Button>
+        <Button type="primary" shape="round">12345678</Button>
+      </Record>
       <Record title="danger">
         <Button type="primary" danger>primary button</Button>
         <Button type="default" danger>default button</Button>

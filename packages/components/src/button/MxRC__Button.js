@@ -16,19 +16,21 @@ var make = React.forwardRef(function (Props, param) {
       var partial_arg$3 = Props.disabled;
       var partial_arg$4 = Props.block;
       var partial_arg$5 = Props.danger;
-      var partial_arg$6 = Props.size;
+      var partial_arg$6 = Props.shape;
       var partial_arg$7 = Props.type;
-      var partial_arg$8 = Props.style;
-      var partial_arg$9 = Props.className;
+      var partial_arg$8 = Props.size;
+      var partial_arg$9 = Props.style;
+      var partial_arg$10 = Props.className;
       var _type = partial_arg$7 !== undefined ? partial_arg$7 : "default";
+      var shape = partial_arg$6 !== undefined ? partial_arg$6 : "default";
       var danger = partial_arg$5 !== undefined ? partial_arg$5 : false;
       var block = partial_arg$4 !== undefined ? partial_arg$4 : false;
       var disabled = partial_arg$3 !== undefined ? partial_arg$3 : false;
       var ghost = partial_arg$2 !== undefined ? partial_arg$2 : false;
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-      var size = Belt_Option.getWithDefault(partial_arg$6, context.size);
-      var className = MxRC__Button__Twind.make(partial_arg$9, size, _type, danger, ghost, block, disabled);
-      var style = Belt_Option.getWithDefault(partial_arg$8, {});
+      var size = Belt_Option.getWithDefault(partial_arg$8, context.size);
+      var className = MxRC__Button__Twind.make(partial_arg$10, size, _type, shape, danger, ghost, block, disabled);
+      var style = Belt_Option.getWithDefault(partial_arg$9, {});
       var onClick = function (evt) {
         if (partial_arg !== undefined && !disabled) {
           evt.preventDefault();

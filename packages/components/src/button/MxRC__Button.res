@@ -4,6 +4,9 @@ open MxRC__Button__Utils
 @genType.as("ButtonType")
 type _type = [#default | #primary | #dashed | #text | #link]
 
+@genType.as("ButtonShapeType")
+type shape = [#default | #circle | #round]
+
 type style = MxRC__React.style
 
 type evt = ReactEvent.Mouse.t
@@ -13,8 +16,9 @@ type onClick = evt => unit
 let make = React.forwardRef((
   ~className=?,
   ~style: option<style>=?,
+  ~size=?,
   ~_type: _type=#default,
-  ~size,
+  ~shape: shape=#default,
   ~danger=false,
   ~block=false,
   ~disabled=false,
@@ -32,7 +36,7 @@ let make = React.forwardRef((
 
   // classname
   let className =
-    className->MxRC__Button__Twind.make(~size, ~_type, ~danger, ~ghost, ~block, ~disabled)
+    className->MxRC__Button__Twind.make(~size, ~_type, ~shape, ~danger, ~ghost, ~block, ~disabled)
 
   // style
   let style = style->getWithDefault(ReactDOM.Style.make())

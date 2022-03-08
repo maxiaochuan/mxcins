@@ -108,6 +108,16 @@ function init(primary, param) {
             base: ['14px', { 'lineHeight': '22px' }],
             lg: ['16px', { 'lineHeight': '24px' }]
           },
+          minWidth: {
+            "6": "1.5rem",
+            "8": "2rem",
+            "10": "2.5rem"
+          },
+          maxWidth: {
+            "6": "1.5rem",
+            "8": "2rem",
+            "10": "2.5rem"
+          },
           extend: {
             colors: MxRC__Libs__Twind.colors
           }

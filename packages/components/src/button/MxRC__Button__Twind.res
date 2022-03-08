@@ -32,18 +32,26 @@ let text = "
     disabled:bg(initial hover:initial focus:initial active:initial)
   "
 
+let block = "w-full"
+
+let circle = "rounded-full px-0"
+
 let make = (
   className: option<string>,
   ~size,
   ~_type,
+  ~shape,
   ~danger as isDanger,
   ~ghost as isGhost,
-  ~block,
+  ~block as isBlock,
   ~disabled as _,
 ) => {
   open Js.Array2
-  let classes = ref([init, disabled])
+  let classes = [init, disabled]
+  let push = str => classes->push(str)->ignore
+  let pushMany = strs => classes->pushMany(strs)->ignore
 
+  /*--- colors, `type` `danger` ---*/
   let colors = switch (_type, isDanger) {
   | (#default, false) => [def]
   | (#default, true) => [`text(${danger})`, `border(${danger})`]
@@ -56,34 +64,49 @@ let make = (
   | (#dashed, false) => [def, "border-dashed"]
   | (#dashed, true) => [def, "border-dashed", `text(${danger})`, `border(${danger})`]
   }
+  pushMany(colors)
+  /*--- colors ---*/
 
-  classes.contents = classes.contents->concat(colors)
 
-  if block {
-    classes.contents->push("w-full")->ignore
-  }
+  /*--- block ---*/
+  isBlock ? push(block) : ()
+  /*--- block ---*/
 
+  /*--- ghost ---*/
   if isGhost {
-    let background = `bg(${transparent})`
-    let disabled = `disabled:bg(${transparent})`
-    classes.contents = switch (_type, isDanger) {
-    | (#primary, false) => classes.contents->concat([background, `text(${primary})`])
-    | (#primary, true) => classes.contents->concat([background, `text(${danger})`])
-    | (#link, _) => classes.contents
-    | (#text, _) => classes.contents
-    | (_, _) => classes.contents->concat(["text-white border-white"])
+    switch (_type, isDanger) {
+    | (#primary, false) => pushMany([`bg(${transparent})`, `text(${primary})`])
+    | (#primary, true) => pushMany([`bg(${transparent})`, `text(${danger})`])
+    | (#link, _) => ()
+    | (#text, _) => ()
+    | (_, _) => pushMany(["text-white border-white"])
     }
-    classes.contents->push(disabled)->ignore
+    push(`disabled:bg(${transparent})`)
   }
+  /*--- ghost ---*/
 
+  /*--- size ---*/
   switch size {
-  | #default => classes.contents->push("h-8 py-[4px]")->ignore
-  | #small => classes.contents->push("h-6 py-0")->ignore
-  | #large => classes.contents->push("text-lg h-10 py-[7px]")->ignore
+  | #default => push("h-8 py-[4px]")
+  | #small => push("h-6 py-0")
+  | #large => push("text-lg h-10 py-[7px]")
   }
+  /*--- size ---*/
 
-  switch (classes.contents->apply->tw, className) {
-  | (classes, Some(className)) => `${classes} ${className}`
+  /*--- shape ---*/
+  switch (shape, size) {
+    | (#circle, #default) => pushMany([circle, "min-w-8 max-w-8"])
+    | (#circle, #small) => pushMany([circle, "min-w-6 max-w-6"])
+    | (#circle, #large) => pushMany([circle, "min-w-10 max-w-10"])
+    | (#round, #default) => pushMany(["rounded-full"])
+    | (#round, #small) => pushMany(["rounded-full"])
+    | (#round, #large) => pushMany(["rounded-full"])
+    | _ => ()
+  }
+  /*--- shape ---*/
+
+  switch (classes->apply->tw, className) {
+  | (classes, Some(className)) => [classes, className]->joinWith(" ")
   | (classes, _) => classes
   }
 }

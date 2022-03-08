@@ -22,6 +22,10 @@ export type _type =
 export type ButtonType = _type;
 
 // tslint:disable-next-line:interface-over-type-literal
+export type shape = "default" | "circle" | "round";
+export type ButtonShapeType = shape;
+
+// tslint:disable-next-line:interface-over-type-literal
 export type style = MxRC__React_style;
 
 // tslint:disable-next-line:interface-over-type-literal
@@ -40,6 +44,7 @@ export type Props = {
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
   readonly onClick?: onClick; 
+  readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
 };
@@ -53,6 +58,7 @@ export const make: React.ComponentType<{
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
   readonly onClick?: onClick; 
+  readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
 }> = MxRC__ButtonBS.make;
