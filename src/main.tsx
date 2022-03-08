@@ -70,6 +70,11 @@ const ButtonView = () => {
           console.log('e', e)
         }}>primary button</Button>
       </Record>
+      <Record title="two char">
+        <Button type="primary" onClick={e => {
+          console.log('e', e)
+        }}>按钮</Button>
+      </Record>
     </>
   )
 }

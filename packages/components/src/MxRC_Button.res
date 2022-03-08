@@ -1,5 +1,9 @@
 open Belt.Option
 
+
+let regexp = %re("/^[\u4e00-\u9fa5]{2}$/")
+let isTwoCNChar = str => regexp->Js.Re.test_(str)
+
 module Twind = {
   open MxRC__Libs__Twind
   let init = "
@@ -147,14 +151,15 @@ let make = React.forwardRef((
     | (_, _) => ()
     }
 
-  // let child = switch children->getWithDefault(React.null) {
-  // | (React.string) => <span>{React.string("button")}</span>
-  // | _ => React.null
-  // }
   let rendered = children->getWithDefault(React.null)->React.Children.map(child => {
     open MxRC_React.Children
     if (child->isString || child->isNumber) {
-      <span> child </span>
+      if (child->isString && child->asString->isTwoCNChar) {
+        let string = child->asString->Js.String2.split("")->Js.Array2.joinWith(" ")
+        <span>{React.string(string)}</span>
+      } else {
+        <span> child </span>
+      }
     } else {
       child
     }

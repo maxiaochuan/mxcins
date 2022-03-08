@@ -8,6 +8,12 @@ import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__ConfigProvider from "./MxRC__ConfigProvider.js";
 
+var regexp = /^[\u4e00-\u9fa5]{2}$/;
+
+function isTwoCNChar(str) {
+  return regexp.test(str);
+}
+
 var init = "\n    relative\n    inline\n    font-normal\n    text(base center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n  ";
 
 var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
@@ -157,11 +163,14 @@ var make$1 = React.forwardRef(function (Props, param) {
         
       };
       var rendered = React.Children.map(Belt_Option.getWithDefault(partial_arg$1, null), (function (child) {
-              if (MxRC_React.Children.isString(child) || MxRC_React.Children.isNumber(child)) {
-                return React.createElement("span", undefined, child);
-              } else {
+              if (!(MxRC_React.Children.isString(child) || MxRC_React.Children.isNumber(child))) {
                 return child;
               }
+              if (!(MxRC_React.Children.isString(child) && regexp.test(child))) {
+                return React.createElement("span", undefined, child);
+              }
+              var string = child.split("").join(" ");
+              return React.createElement("span", undefined, string);
             }));
       var tmp = {
         className: className,
@@ -179,6 +188,8 @@ var make$1 = React.forwardRef(function (Props, param) {
     });
 
 export {
+  regexp ,
+  isTwoCNChar ,
   Twind$1 as Twind,
   make$1 as make,
   
