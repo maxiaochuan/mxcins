@@ -58,7 +58,7 @@ let init = (~primary: option<string>=?, ()) =>
         "--color-danger-hover": colors.danger.hover,
         "--color-danger-active": colors.danger.active,
       },
-      "button:focus": { "outline": "0" },
+      "button:focus": {"outline": "0"},
     },
     "theme": {
       "colors": {
@@ -116,8 +116,7 @@ open ConfigContext
 
 @react.component @genType
 let make = (~size=#default, ~children=React.null) => {
-
-  let value = React.useMemo1(() => { size: size }, [size])
+  let value = React.useMemo1(() => {size: size}, [size])
 
   <> <Provider value> children </Provider> </>
 }

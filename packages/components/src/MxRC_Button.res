@@ -1,7 +1,6 @@
-@genType.as("ButtonType")
-type _type = [#default | #primary | #dashed | #text | #link]
+open Belt.Option
 
-module Style = {
+module Twind = {
   open MxRC__Libs__Twind
   let init = "
     relative
@@ -36,7 +35,15 @@ module Style = {
     disabled:bg(initial hover:initial focus:initial active:initial)
   "
 
-  let make = (~size, ~_type, ~danger as isDanger, ~ghost as isGhost, ~block, ~disabled as _) => {
+  let make = (
+    className: option<string>,
+    ~size,
+    ~_type,
+    ~danger as isDanger,
+    ~ghost as isGhost,
+    ~block,
+    ~disabled as _,
+  ) => {
     open Js.Array2
     let classes = ref([init, disabled])
 
@@ -47,8 +54,18 @@ module Style = {
     | (#primary, true) => ["text-white", `bg(${danger})`, `border(${danger})`]
     | (#text, false) => [text]
     | (#text, true) => [text, `text(${danger})`]
-    | (#link, false) => [`text(${link})`, `bg(${initial})`, `disabled:bg(${initial})`, "border-none"]
-    | (#link, true) => [`text(${danger})`, `bg(${initial})`, `disabled:bg(${initial})`, "border-none"]
+    | (#link, false) => [
+        `text(${link})`,
+        `bg(${initial})`,
+        `disabled:bg(${initial})`,
+        "border-none",
+      ]
+    | (#link, true) => [
+        `text(${danger})`,
+        `bg(${initial})`,
+        `disabled:bg(${initial})`,
+        "border-none",
+      ]
     | (#dashed, false) => [def, "border-dashed"]
     | (#dashed, true) => [def, "border-dashed", `text(${danger})`, `border(${danger})`]
     }
@@ -59,9 +76,9 @@ module Style = {
       classes.contents->push("w-full")->ignore
     }
 
-    if (isGhost) {
+    if isGhost {
       let background = `bg(${transparent})`
-      let disabled =  `disabled:bg(${transparent})`
+      let disabled = `disabled:bg(${transparent})`
       classes.contents = switch (_type, isDanger) {
       | (#primary, false) => classes.contents->concat([background, `text(${primary})`])
       | (#primary, true) => classes.contents->concat([background, `text(${danger})`])
@@ -78,14 +95,24 @@ module Style = {
     | #large => classes.contents->push("text-lg h-10 py-[7px]")->ignore
     }
 
-    classes.contents->apply->tw
+    switch (classes.contents->apply->tw, className) {
+    | (classes, Some(className)) => `${classes} ${className}`
+    | (classes, _) => classes
+    }
   }
 }
 
+@genType.as("ButtonType")
+type _type = [#default | #primary | #dashed | #text | #link]
+
 type style = MxRC_React.style
+
+type evt = ReactEvent.Mouse.t
+type onClick = evt => unit
 
 @react.component @genType
 let make = React.forwardRef((
+  ~className=?,
   ~style: option<style>=?,
   ~_type: _type=#default,
   ~size,
@@ -94,19 +121,51 @@ let make = React.forwardRef((
   ~disabled=false,
   ~ghost=false,
   ~children=?,
+  ~onClick: option<onClick>=?,
   (),
   ref,
 ) => {
+  // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
-  open Belt.Option
+  // size
   let size = size->getWithDefault(context.size)
 
-  let className = Style.make(~size, ~_type, ~danger, ~ghost, ~block, ~disabled)
-  let style = style->getWithDefault(ReactDOM.Style.make())
-  let children = children->getWithDefault(React.null)
+  // classname
+  let className = className->Twind.make(~size, ~_type, ~danger, ~ghost, ~block, ~disabled)
 
-  <button className style disabled ref=?{Js.Nullable.toOption(ref)->Belt.Option.map(ReactDOM.Ref.domRef)}>
-    children
+  // style
+  let style = style->getWithDefault(ReactDOM.Style.make())
+
+  // onclick
+  let onClick = evt =>
+    switch (onClick, disabled) {
+    | (Some(onClick), false) => {
+        evt->ReactEvent.Mouse.preventDefault
+        evt->onClick->ignore
+      }
+    | (_, _) => ()
+    }
+
+  // let child = switch children->getWithDefault(React.null) {
+  // | (React.string) => <span>{React.string("button")}</span>
+  // | _ => React.null
+  // }
+  let rendered = children->getWithDefault(React.null)->React.Children.map(child => {
+    open MxRC_React.Children
+    if (child->isString || child->isNumber) {
+      <span> child </span>
+    } else {
+      child
+    }
+  })
+
+  <button
+    ref=?{Js.Nullable.toOption(ref)->Belt.Option.map(ReactDOM.Ref.domRef)}
+    className
+    style
+    disabled
+    onClick>
+    rendered
   </button>
 })

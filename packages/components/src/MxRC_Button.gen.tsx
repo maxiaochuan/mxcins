@@ -25,13 +25,21 @@ export type ButtonType = _type;
 export type style = MxRC_React_style;
 
 // tslint:disable-next-line:interface-over-type-literal
+export type evt = MouseEvent;
+
+// tslint:disable-next-line:interface-over-type-literal
+export type onClick = (_1:evt) => void;
+
+// tslint:disable-next-line:interface-over-type-literal
 export type Props = {
   readonly type?: _type; 
   readonly block?: boolean; 
   readonly children?: React.ReactNode; 
+  readonly className?: string; 
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
+  readonly onClick?: onClick; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
 };
@@ -40,9 +48,11 @@ export const make: React.ComponentType<{
   readonly type?: _type; 
   readonly block?: boolean; 
   readonly children?: React.ReactNode; 
+  readonly className?: string; 
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
+  readonly onClick?: onClick; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
 }> = MxRC_ButtonBS.make;

@@ -65,6 +65,11 @@ const ButtonView = () => {
         <Button type="primary" danger ghost>danger button</Button>
         <Button ghost disabled>Ghost(disabled)</Button>
       </Record>
+      <Record title="onclick">
+        <Button type="primary" onClick={e => {
+          console.log('e', e)
+        }}>primary button</Button>
+      </Record>
     </>
   )
 }
