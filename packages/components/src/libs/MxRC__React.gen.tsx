@@ -1,4 +1,4 @@
-/* TypeScript file generated from MxRC_React.res by genType. */
+/* TypeScript file generated from MxRC__React.res by genType. */
 /* eslint-disable import/first */
 
 
