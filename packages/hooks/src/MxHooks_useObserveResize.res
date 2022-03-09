@@ -1,6 +1,3 @@
-open MxLibs
-open DOM
-
 type size = {
   width: int,
   height: int,
@@ -8,10 +5,10 @@ type size = {
   offsetHeight: int,
 }
 
-type onResize = (~target: Element.t, ~size: size) => unit
+type onResize = (~target: Dom.element, ~size: size) => unit
 
 let useObserveResize = (
-  ~target: option<Element.t>,
+  ~target: option<Dom.element>,
   ~onResize: option<onResize>,
   ~disabled: option<bool>,
 ) => {
@@ -19,13 +16,16 @@ let useObserveResize = (
   let onResizeRef = React.useRef(onResize)
 
   let onObserverResizeCallback = React.useCallback(entry => {
-    open SingleResizeObserver
+    open MxLibs.SingleResizeObserver
+    open MxLibs.Dom.MxElement
+    open MxLibs.Dom.DomRect
     let target = entry->ResizeObserverEntry.target
-    let rect = target->Element.getBoundingClientRect
-    let width = rect->DomRect.width
-    let height = rect->DomRect.height
-    let offsetWidth = target->Element.offsetWidth
-    let offsetHeight = target->Element.offsetHeight
+    let rect = target->getBoundingClientRect
+    let width = rect->width
+    let height = rect->height
+    let offsetWidth = target->offsetWidth
+    let offsetHeight = target->offsetHeight
+
     /**
      * Resize observer trigger when content size changed.
      * In most case we just care about element size,
@@ -65,7 +65,7 @@ let useObserveResize = (
   })
 
   React.useEffect2(() => {
-    open SingleResizeObserver
+    open MxLibs.SingleResizeObserver
     switch (target, disabled) {
     | (Some(target), None) => target->observe(onObserverResizeCallback)
     | (Some(target), Some(false)) => target->observe(onObserverResizeCallback)

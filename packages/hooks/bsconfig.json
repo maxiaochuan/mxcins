@@ -11,6 +11,6 @@
     }
   ],
   "reason": { "react-jsx": 3 },
-  "bs-dependencies": ["@rescript/react", "@ryyppy/rescript-promise", "@mxcins/libs"],
+  "bs-dependencies": ["@rescript/react", "@ryyppy/rescript-promise", "@mxcins/libs", "rescript-webapi"],
   "pinned-dependencies": ["@mxcins/libs"]
 }

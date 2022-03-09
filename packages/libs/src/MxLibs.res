@@ -1,7 +1,6 @@
-%%raw("import ResizeObserver from 'resize-observer-polyfill'")
-%%raw("window.ResizeObserver = ResizeObserver")
-module Dom = Webapi.Dom
 module STD = MxLibs__STD
+module Dom = MxLibs__Dom
+module ResizeObserver = MxLibs__ResizeObserver
 
 module Raf = MxLibs__Raf
 module SingleResizeObserver = MxLibs__SingleResizeObserver

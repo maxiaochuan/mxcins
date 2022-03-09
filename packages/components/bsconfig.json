@@ -11,7 +11,7 @@
     }
   ],
   "reason": { "react-jsx": 3 },
-  "bs-dependencies": ["@rescript/react", "@mxcins/hooks", "@mxcins/libs"],
+  "bs-dependencies": ["@rescript/react", "@mxcins/hooks", "@mxcins/libs", "rescript-webapi"],
   "pinned-dependencies": ["@mxcins/hooks", "@mxcins/libs"],
   "gentypeconfig": {
     "language": "typescript",

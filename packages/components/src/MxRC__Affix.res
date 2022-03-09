@@ -1,13 +1,11 @@
-open MxLibs
-
-type element = DOM.Element.t
+type element = Dom.element
 
 module AffixUtils = {
   type rect = {top: int, bottom: int, width: int, height: int}
 
   let getDomRect = node => {
-    open DOM.Element
-    open DOM.DomRect
+    open MxLibs.Dom.Element
+    open MxLibs.Dom.DomRect
     open Belt.Float
     let rect = node->getBoundingClientRect
 
@@ -20,7 +18,8 @@ module AffixUtils = {
   }
 
   let getWinRect = () => {
-    open DOM.Window
+    open MxLibs.Dom.Window
+    open! MxLibs.Dom
     {
       top: 0,
       bottom: window->innerHeight,
@@ -45,7 +44,8 @@ module AffixUtils = {
       | Some(bottom) =>
         target.bottom < container.bottom + bottom
           ? {
-              open DOM.Window
+              open MxLibs.Dom.Window
+              open! MxLibs.Dom
               let offset = window->innerHeight - target.bottom
               Some(bottom + offset)
             }
@@ -108,7 +108,7 @@ let make = (
   }
 
   React.useEffect4(() => {
-    updateRef.current = Raf.throttle(_ => {
+    updateRef.current = MxLibs.Raf.throttle(_ => {
       let container = containerRef.current->Js.toOption
       switch container {
       | None => ()
@@ -179,17 +179,18 @@ let make = (
   }, (targetType, targetRef.current, offsetTop, offsetBottom))
 
   React.useEffect2(() => {
-    let handler = Raf.throttle(_ => {
+    let handler = MxLibs.Raf.throttle(_ => {
       ()->updateRef.current
     })
 
     let node = switch (targetType, targetRef.current) {
     | (Default, _) => {
-        open DOM.Window
+        open MxLibs.Dom.Window
+        open! MxLibs.Dom
         window->asEventTarget->Some
       }
     | (Element, Some(target)) => {
-        open DOM.Element
+        open MxLibs.Dom.Element
         target->asEventTarget->Some
       }
     | (_, _) => None
@@ -199,7 +200,7 @@ let make = (
       switch node {
       | Some(node) => {
           open Js.Array2
-          open DOM.EventTarget
+          open MxLibs.Dom.EventTarget
           events->forEach(name => node->addEventListener(name, handler))
         }
       | _ => ()
@@ -210,7 +211,7 @@ let make = (
       switch node {
       | Some(node) => {
           open Js.Array2
-          open DOM.EventTarget
+          open MxLibs.Dom.EventTarget
           events->forEach(name => node->removeEventListener(name, handler))
         }
       | _ => ()
