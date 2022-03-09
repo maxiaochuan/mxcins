@@ -20,6 +20,7 @@
     "dev": "rescript build -w"
   },
   "dependencies": {
+    "rescript-webapi": "0.6.1",
     "resize-observer-polyfill": "1.5.1"
   },
   "publishConfig": {

@@ -2,11 +2,10 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import ResizeObserverPolyfill from "resize-observer-polyfill";
 
 var collections = new Map();
 
-var observer = new ResizeObserverPolyfill((function (entries) {
+var observer = new ResizeObserver((function (entries) {
         entries.forEach(function (entry) {
               var callbacks = collections.get(entry.target);
               if (callbacks !== undefined) {
