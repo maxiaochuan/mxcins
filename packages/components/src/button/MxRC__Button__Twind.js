@@ -26,7 +26,7 @@ var block = "w-full";
 
 var circle = "rounded-full px-0";
 
-function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, isIconOnly) {
+function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, isLoading, isIconOnly) {
   var classes = [
     init,
     disabled
@@ -117,7 +117,7 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
     classes.push("rounded-full");
   }
   if (isIconOnly) {
-    classes.push("px-0 ");
+    classes.push("px-0");
     if (size === "small") {
       classes.push("w-6");
     } else if (size === "default") {
@@ -126,10 +126,19 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
       classes.push("w-10 text-xl");
     }
   }
+  classes.push("before::(content-empty inset-[-1px] z-[1] bg-white opacity-30 transition-opacity duration-200)");
+  if (isLoading) {
+    classes.push("cursor-default before::absolute");
+  }
   var str = Css.css({
-        ".anticon": Twind.apply(["flex justify-center"])
+        ".anticon": Twind.apply(isIconOnly ? ["flex justify-center"] : ["animate-none pr-2"]),
+        ".anticon svg": {
+          animation: "loadingCircle 1s infinite linear"
+        },
+        span: Twind.apply(["inline-block"])
       });
   classes.push(str);
+  console.log("classes", classes);
   var match = Twind.tw(Twind.apply(classes));
   if (className !== undefined) {
     return [

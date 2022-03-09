@@ -45,6 +45,7 @@ let make = (
   ~ghost as isGhost,
   ~block as isBlock,
   ~disabled as _,
+  ~loading as isLoading,
   ~iconOnly as isIconOnly,
 ) => {
   open Js.Array2
@@ -106,7 +107,7 @@ let make = (
   /* --- shape --- */
 
   if isIconOnly {
-    push("px-0 ")
+    push("px-0")
     switch size {
     | #default => push("w-8 text-lg")
     | #small => push("w-6")
@@ -114,8 +115,26 @@ let make = (
     }
   }
 
-  push(css({".anticon": ["flex justify-center"]->apply}))
+  // before
+  push(
+    "before::(content-empty inset-[-1px] z-[1] bg-white opacity-30 transition-opacity duration-200)",
+  )
+  if isLoading {
+    push("cursor-default before::absolute")
+  }
 
+  push(
+    css({
+      ".anticon": switch isIconOnly {
+      | true => ["flex justify-center"]
+      | false => ["animate-none pr-2"]
+      }->apply,
+      ".anticon svg": {"animation": "loadingCircle 1s infinite linear"},
+      "span": ["inline-block"]->apply,
+    }),
+  )
+
+  "classes"->Js.log2(classes)
   switch (classes->apply->tw, className) {
   | (classes, Some(className)) => [classes, className]->joinWith(" ")
   | (classes, _) => classes

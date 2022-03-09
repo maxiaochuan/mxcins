@@ -4,70 +4,91 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxRC__React from "../libs/MxRC__React.js";
+import * as MxRC__Libs__React from "../_libs/MxRC__Libs__React.js";
 import * as MxRC__Button__Twind from "./MxRC__Button__Twind.js";
 import * as MxRC__Button__Utils from "./MxRC__Button__Utils.js";
 import * as MxRC__ConfigProvider from "../MxRC__ConfigProvider.js";
+import * as MxRC__Button__LoadingComponent from "./MxRC__Button__LoadingComponent.js";
 
-var make = React.forwardRef(function (Props, param) {
-      var partial_arg = Props.onClick;
-      var partial_arg$1 = Props.children;
-      var partial_arg$2 = Props.icon;
-      var partial_arg$3 = Props.ghost;
-      var partial_arg$4 = Props.disabled;
-      var partial_arg$5 = Props.block;
-      var partial_arg$6 = Props.danger;
-      var partial_arg$7 = Props.shape;
-      var partial_arg$8 = Props.type;
-      var partial_arg$9 = Props.size;
-      var partial_arg$10 = Props.style;
-      var partial_arg$11 = Props.className;
-      var _type = partial_arg$8 !== undefined ? partial_arg$8 : "default";
-      var shape = partial_arg$7 !== undefined ? partial_arg$7 : "default";
-      var danger = partial_arg$6 !== undefined ? partial_arg$6 : false;
-      var block = partial_arg$5 !== undefined ? partial_arg$5 : false;
-      var disabled = partial_arg$4 !== undefined ? partial_arg$4 : false;
-      var ghost = partial_arg$3 !== undefined ? partial_arg$3 : false;
+var make = React.forwardRef(function (Props, ref) {
+      var className = Props.className;
+      var style = Props.style;
+      var size = Props.size;
+      var _typeOpt = Props.type;
+      var shapeOpt = Props.shape;
+      var dangerOpt = Props.danger;
+      var blockOpt = Props.block;
+      var disabledOpt = Props.disabled;
+      var ghostOpt = Props.ghost;
+      var icon = Props.icon;
+      var children = Props.children;
+      var onClick = Props.onClick;
+      var loadingOpt = Props.loading;
+      var _type = _typeOpt !== undefined ? _typeOpt : "default";
+      var shape = shapeOpt !== undefined ? shapeOpt : "default";
+      var danger = dangerOpt !== undefined ? dangerOpt : false;
+      var block = blockOpt !== undefined ? blockOpt : false;
+      var disabled = disabledOpt !== undefined ? disabledOpt : false;
+      var ghost = ghostOpt !== undefined ? ghostOpt : false;
+      var loading = loadingOpt !== undefined ? loadingOpt : false;
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-      var size = Belt_Option.getWithDefault(partial_arg$9, context.size);
-      var style = Belt_Option.getWithDefault(partial_arg$10, {});
-      var onClick = function (evt) {
-        if (partial_arg !== undefined && !disabled) {
+      var size$1 = Belt_Option.getWithDefault(size, context.size);
+      var onClick$1 = function (evt) {
+        if (onClick !== undefined && !disabled) {
           evt.preventDefault();
-          Curry._1(partial_arg, evt);
+          Curry._1(onClick, evt);
           return ;
         }
         
       };
-      var iconOnly = partial_arg$1 !== undefined ? false : partial_arg$2 !== undefined;
-      var className = MxRC__Button__Twind.make(partial_arg$11, size, _type, shape, danger, ghost, block, disabled, iconOnly);
-      var icon = Belt_Option.getWithDefault(partial_arg$2, null);
-      var kids = React.Children.map(Belt_Option.getWithDefault(partial_arg$1, null), (function (child) {
-              if (!(MxRC__React.Children.isString(child) || MxRC__React.Children.isNumber(child))) {
+      var iconOnly = children !== undefined ? false : icon !== undefined;
+      var className$1 = MxRC__Button__Twind.make(className, size$1, _type, shape, danger, ghost, block, disabled, loading, iconOnly);
+      var icon$1;
+      var exit = 0;
+      if (icon !== undefined && !loading) {
+        icon$1 = Caml_option.valFromOption(icon);
+      } else {
+        exit = 1;
+      }
+      if (exit === 1) {
+        var exist = icon !== undefined;
+        icon$1 = React.createElement(MxRC__Button__LoadingComponent.make, {
+              loading: loading,
+              exist: exist,
+              iconOnly: iconOnly
+            });
+      }
+      var kids = React.Children.map(Belt_Option.getWithDefault(children, null), (function (child) {
+              if (!(MxRC__Libs__React.Children.isString(child) || MxRC__Libs__React.Children.isNumber(child))) {
                 return child;
               }
-              if (!(MxRC__React.Children.isString(child) && MxRC__Button__Utils.isTwoCNChar(child))) {
+              if (!(MxRC__Libs__React.Children.isString(child) && MxRC__Button__Utils.isTwoCNChar(child))) {
                 return React.createElement("span", undefined, child);
               }
               var string = child.split("").join(" ");
               return React.createElement("span", undefined, string);
             }));
       var tmp = {
-        className: className,
-        style: style,
+        className: className$1,
         disabled: disabled,
-        onClick: onClick
+        onClick: onClick$1
       };
-      var tmp$1 = Belt_Option.map((param == null) ? undefined : Caml_option.some(param), (function (prim) {
+      var tmp$1 = Belt_Option.map((ref == null) ? undefined : Caml_option.some(ref), (function (prim) {
               return prim;
             }));
       if (tmp$1 !== undefined) {
         tmp.ref = Caml_option.valFromOption(tmp$1);
       }
-      return React.createElement("button", tmp, icon, kids);
+      if (style !== undefined) {
+        tmp.style = Caml_option.valFromOption(style);
+      }
+      return React.createElement("button", tmp, icon$1, kids);
     });
 
+var LoadingComponent;
+
 export {
+  LoadingComponent ,
   make ,
   
 }

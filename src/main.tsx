@@ -83,6 +83,9 @@ const ButtonView = () => {
       <Record title="two char">
         <Button type="primary">按钮</Button>
       </Record>
+      <Record title="loading">
+        <Button type="primary" loading>按钮</Button>
+      </Record>
     </>
   )
 }

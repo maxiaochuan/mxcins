@@ -4,7 +4,8 @@ import * as React from "react";
 import * as Twind from "twind";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxRC__Libs__Twind from "./libs/MxRC__Libs__Twind.js";
+import * as Content from "@twind/content";
+import * as MxRC__Libs__Twind from "./_libs/MxRC__Libs__Twind.js";
 
 var ctx = React.createContext({
       size: "default"
@@ -61,6 +62,9 @@ var colors = {
 
 function init(primary, param) {
   Twind.setup({
+        plugins: {
+          content: Content.content
+        },
         preflight: {
           ":root": {
             "--color-primary": Belt_Option.getWithDefault(primary, colors_primary.base),
@@ -78,6 +82,9 @@ function init(primary, param) {
           }
         },
         theme: {
+          content: {
+            empty: "\"\""
+          },
           colors: {
             initial: "initial",
             inherit: "inherit",
@@ -103,6 +110,10 @@ function init(primary, param) {
           },
           transitionTimingFunction: {
             DEFAULT: "cubic-bezier(.645,.045,.355,1)"
+          },
+          transitionDuration: {
+            DEFAULT: "300ms",
+            "200": "200ms"
           },
           fontSize: {
             sm: ['12px', { 'lineHeight': '20px' }],

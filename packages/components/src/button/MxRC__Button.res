@@ -1,13 +1,15 @@
 open Belt.Option
 open MxRC__Button__Utils
 
+module LoadingComponent = MxRC__Button__LoadingComponent
+
 @genType.as("ButtonType")
 type _type = [#default | #primary | #dashed | #text | #link]
 
 @genType.as("ButtonShapeType")
 type shape = [#default | #circle | #round]
 
-type style = MxRC__React.style
+type style = MxRC__Libs__React.style
 
 type evt = ReactEvent.Mouse.t
 type onClick = evt => unit
@@ -26,7 +28,7 @@ let make = React.forwardRef((
   ~icon: option<React.element>=?,
   ~children: option<React.element>=?,
   ~onClick: option<onClick>=?,
-  (),
+  ~loading=false,
   ref,
 ) => {
   // config context
@@ -34,9 +36,6 @@ let make = React.forwardRef((
 
   // size
   let size = size->getWithDefault(context.size)
-
-  // style
-  let style = style->getWithDefault(ReactDOM.Style.make())
 
   // onclick
   let onClick = evt =>
@@ -53,11 +52,6 @@ let make = React.forwardRef((
   | (_, _) => false
   }
 
-  // let iconOnly = switch (children, icon) {
-  // | (Some()) => expression
-  // | pattern2 => expression
-  // }
-
   // classname
   let className =
     className->MxRC__Button__Twind.make(
@@ -68,16 +62,26 @@ let make = React.forwardRef((
       ~ghost,
       ~block,
       ~disabled,
+      ~loading,
       ~iconOnly,
     )
 
-  let icon = icon->Belt.Option.getWithDefault(React.null)
+  let icon = switch (icon, loading) {
+  | (Some(icon), false) => icon
+  | (_, _) => {
+      let exist = switch icon {
+      | None => false
+      | _ => true
+      }
+      <LoadingComponent exist={exist} loading iconOnly />
+    }
+  }
 
   let kids =
     children
     ->getWithDefault(React.null)
     ->React.Children.map(child => {
-      open MxRC__React.Children
+      open MxRC__Libs__React.Children
       if child->isString || child->isNumber {
         if child->isString && child->asString->isTwoCNChar {
           let string = child->asString->Js.String2.split("")->Js.Array2.joinWith(" ")
@@ -91,9 +95,9 @@ let make = React.forwardRef((
     })
 
   <button
-    ref=?{Js.Nullable.toOption(ref)->Belt.Option.map(ReactDOM.Ref.domRef)}
+    ref=?{ref->Js.Nullable.toOption->Belt.Option.map(ReactDOM.Ref.domRef)}
     className
-    style
+    ?style
     disabled
     onClick>
     icon kids

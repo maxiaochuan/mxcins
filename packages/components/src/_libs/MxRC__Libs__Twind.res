@@ -10,6 +10,8 @@ external apply: array<string> => applyreturned = "apply"
 external css: {..} => string = "css"
 @module("twind/css")
 external rawCss: string => string = "css"
+@val @module("@twind/content")
+external content: 'a = "content"
 
 %%raw("import * as c from 'twind/colors'")
 let colors: {..} = %raw("c")

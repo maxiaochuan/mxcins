@@ -46,6 +46,9 @@ open Belt.Option
 
 let init = (~primary: option<string>=?, ()) =>
   MxRC__Libs__Twind.setup({
+    "plugins": {
+      "content": MxRC__Libs__Twind.content,
+    },
     "preflight": {
       ":root": {
         "--color-primary": primary->getWithDefault(colors.primary.base),
@@ -61,6 +64,9 @@ let init = (~primary: option<string>=?, ()) =>
       "button:focus": {"outline": "0"},
     },
     "theme": {
+      "content": {
+        "empty": "\"\"",
+      },
       "colors": {
         "initial": "initial",
         "inherit": "inherit",
@@ -86,6 +92,10 @@ let init = (~primary: option<string>=?, ()) =>
       },
       "transitionTimingFunction": {
         "DEFAULT": "cubic-bezier(.645,.045,.355,1)",
+      },
+      "transitionDuration": {
+        "DEFAULT": "300ms",
+        "200": "200ms",
       },
       "fontSize": {
         "sm": %raw("['12px', { 'lineHeight': '20px' }]"),
