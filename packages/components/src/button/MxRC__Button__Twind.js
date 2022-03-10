@@ -132,7 +132,7 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
       classes.push("w-10 text-xl");
     }
   }
-  classes.push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30)");
+  classes.push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)");
   var str = Css.css({
         span: Twind.apply(["inline-block"]),
         ".anticon + span": Twind.apply(["ml-2"])

@@ -115,7 +115,7 @@ let make = (
   }
 
   // before
-  push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30)")
+  push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)")
 
   // anticon
   push(

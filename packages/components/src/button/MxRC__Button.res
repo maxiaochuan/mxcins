@@ -25,10 +25,10 @@ let make = React.forwardRef((
   ~block=false,
   ~disabled=false,
   ~ghost=false,
+  ~loading=false,
   ~icon: option<React.element>=?,
   ~children: option<React.element>=?,
   ~onClick: option<onClick>=?,
-  ~loading=false,
   ref,
 ) => {
   // config context

@@ -31,12 +31,12 @@ var make = React.forwardRef(function (Props, ref) {
       var style = Props.style;
       var children = Props.children;
       var className = Twind.tw(Twind.apply(iconOnly ? [
-                  "transition",
+                  "transition transition-[width, opacity]",
                   Css.css({
                         ".anticon": ["pr-0 animation-none"]
                       })
                 ] : [
-                  "transition",
+                  "transition transition-[width, opacity]",
                   Css.css({
                         ".anticon": ["pr-1 animation-none"]
                       })

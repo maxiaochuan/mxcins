@@ -20,10 +20,10 @@ var make = React.forwardRef(function (Props, ref) {
       var blockOpt = Props.block;
       var disabledOpt = Props.disabled;
       var ghostOpt = Props.ghost;
+      var loadingOpt = Props.loading;
       var icon = Props.icon;
       var children = Props.children;
       var onClick = Props.onClick;
-      var loadingOpt = Props.loading;
       var _type = _typeOpt !== undefined ? _typeOpt : "default";
       var shape = shapeOpt !== undefined ? shapeOpt : "default";
       var danger = dangerOpt !== undefined ? dangerOpt : false;

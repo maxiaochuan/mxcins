@@ -35,24 +35,14 @@ let getRealWidth = node => {
   )
 }
 
-// {({ style }, ref: unknown) => (
-//   <TransitionBody
-//     style={style}
-//     ref={ref as React.MutableRefObject<HTMLSpanElement>}
-//     iconOnly={iconOnly}
-//   >
-//     <LoadingOutlined />
-//   </TransitionBody>
-// )}
-
 module TransitionBody = {
   @react.component
   let make = React.forwardRef((~iconOnly, ~style=?, ~children, ref) => {
     open MxRC__Libs__Twind
     let className =
       switch iconOnly {
-      | true => ["transition", {".anticon": ["pr-0 animation-none"]}->css]
-      | false => ["transition", {".anticon": ["pr-1 animation-none"]}->css]
+      | true => ["transition transition-[width, opacity]", {".anticon": ["pr-0 animation-none"]}->css]
+      | false => ["transition transition-[width, opacity]", {".anticon": ["pr-1 animation-none"]}->css]
       }
       ->apply
       ->tw

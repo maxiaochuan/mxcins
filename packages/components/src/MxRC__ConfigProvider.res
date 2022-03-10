@@ -93,6 +93,10 @@ let init = (~primary: option<string>=?, ()) =>
           "active": "var(--color-danger-active)",
         },
       },
+      "transitionProperty": {
+        "width": "width",
+        "opacity": "opacity",
+      },
       "transitionTimingFunction": {
         "DEFAULT": "cubic-bezier(.645,.045,.355,1)",
       },
