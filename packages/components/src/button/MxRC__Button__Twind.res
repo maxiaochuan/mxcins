@@ -2,7 +2,7 @@ open MxRC__Libs__Twind
 let init = "
     relative
     font-normal
-    text(base center text)
+    text(sm center text)
     whitespace-nowrap
     border(1 gray-300)
     rounded
@@ -87,9 +87,9 @@ let make = (
 
   /* --- size --- */
   switch size {
-  | #default => push("h-8 py-[4px]")
-  | #small => push("h-6 py-0")
-  | #large => push("text-lg h-10 py-[7px]")
+  | #default => push("h-8")
+  | #small => push("h-6")
+  | #large => push("text-lg h-10")
   }
   /* --- size --- */
 

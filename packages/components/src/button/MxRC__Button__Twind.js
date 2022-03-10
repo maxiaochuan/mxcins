@@ -4,7 +4,7 @@ import * as Twind from "twind";
 import * as Css from "twind/css";
 import * as Caml_splice_call from "rescript/lib/es6/caml_splice_call.js";
 
-var init = "\n    relative\n    font-normal\n    text(base center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n  ";
+var init = "\n    relative\n    font-normal\n    text(sm center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n  ";
 
 var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
 
@@ -99,11 +99,11 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
     classes.push("disabled:bg(" + transparent + ")");
   }
   if (size === "small") {
-    classes.push("h-6 py-0");
+    classes.push("h-6");
   } else if (size === "default") {
-    classes.push("h-8 py-[4px]");
+    classes.push("h-8");
   } else {
-    classes.push("text-lg h-10 py-[7px]");
+    classes.push("text-lg h-10");
   }
   if (shape === "circle") {
     if (size === "small") {
