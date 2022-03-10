@@ -109,13 +109,13 @@ let make = (
     "before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)",
   )
 
-  { ">span": ["inline-block"]->apply }->css->push
+  {">span": ["inline-block"]->apply}->css->push
 
   if isIconOnly {
     "px-0"->push
     switch size {
     | #default => ["w-8 leading-8 text-base"]
-    | #small => ["w-6 leading-6", {".anticon": ["align-baseline"]->apply }->css]
+    | #small => ["w-6 leading-6", {".anticon": ["align-baseline"]->apply}->css]
     | #large => ["w-10 leading-10 text-lg"]
     }->pushMany
   }

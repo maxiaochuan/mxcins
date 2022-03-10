@@ -41,7 +41,7 @@ let make = React.forwardRef((
   let onClick = evt =>
     switch (onClick, disabled) {
     | (Some(onClick), false) => {
-      open ReactEvent.Mouse
+        open ReactEvent.Mouse
         evt->preventDefault
         evt->onClick->ignore
       }

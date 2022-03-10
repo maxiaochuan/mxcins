@@ -1,8 +1,41 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { DownloadOutlined } from '@ant-design/icons';
-import { ConfigProvider, Button } from '../packages/components';
+import { ConfigProvider, Button, Divider } from '../packages/components';
 import { Record } from './components';
+
+const DividerView = () => {
+  return (
+    <>
+    <Record title="vertical">
+      <div>
+        <span>Text</span>
+        <Divider type="vertical" />
+        <a href="#">Link</a>
+        <Divider type="vertical" />
+        <a href="#">Link</a>
+      </div>
+    </Record>
+      <Record>
+    <p> Lorem ipsum dolor sit amet </p>
+    <Divider />
+    <Divider dashed />
+    <Divider orientation="left">Text</Divider>
+    <Divider orientation="center">Text</Divider>
+    <Divider orientation="right">Text</Divider>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
+      probare, quae sunt a te dicta? Refert tamen, quo modo.
+    </p>
+    <Divider dashed />
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
+      probare, quae sunt a te dicta? Refert tamen, quo modo.
+    </p>
+      </Record>
+    </>
+  )
+}
 
 const ButtonView = () => {
   const inputRef = React.useRef<HTMLElement>(null);
@@ -104,6 +137,7 @@ ReactDOM.render(
     <ConfigProvider>
       <div>
         <h1>app</h1>
+        <DividerView />
         <ButtonView />
       </div>
     </ConfigProvider>
