@@ -27,30 +27,28 @@ function getRealWidth(node) {
 }
 
 var make = React.forwardRef(function (Props, ref) {
-      var iconOnly = Props.iconOnly;
       var style = Props.style;
       var children = Props.children;
-      var className = Twind.tw(Twind.apply(iconOnly ? [
-                  "transition transition-[width, opacity]",
-                  Css.css({
-                        ".anticon": ["pr-0 animation-none"]
-                      })
-                ] : [
-                  "transition transition-[width, opacity]",
-                  Css.css({
-                        ".anticon": ["pr-1 animation-none"]
-                      })
-                ]));
-      var style$1 = Belt_Option.getWithDefault(style, {});
+      var className = Twind.tw(Twind.apply([
+                "transition transition-[width, opacity]",
+                Css.css({
+                      ".anticon": Twind.apply(["pr-2 animate-none"]),
+                      ".anticon svg": {
+                        animation: "loadingCircle 1s infinite linear"
+                      }
+                    })
+              ]));
       var tmp = {
-        className: className,
-        style: style$1
+        className: className
       };
       var tmp$1 = Belt_Option.map((ref == null) ? undefined : Caml_option.some(ref), (function (prim) {
               return prim;
             }));
       if (tmp$1 !== undefined) {
         tmp.ref = Caml_option.valFromOption(tmp$1);
+      }
+      if (style !== undefined) {
+        tmp.style = Caml_option.valFromOption(style);
       }
       return React.createElement("span", tmp, children);
     });
@@ -59,19 +57,41 @@ var TransitionBody = {
   make: make
 };
 
-function MxRC__Button__LoadingComponent(Props) {
+function MxRC__Button__IconBody$MarginRightBody(Props) {
+  var children = Props.children;
+  var className = Twind.tw(Twind.apply(["pr-2"]));
+  return React.createElement("span", {
+              className: className
+            }, children);
+}
+
+var MarginRightBody = {
+  make: MxRC__Button__IconBody$MarginRightBody
+};
+
+function MxRC__Button__IconBody(Props) {
   var loading = Props.loading;
-  var exist = Props.exist;
+  var icon = Props.icon;
   var iconOnly = Props.iconOnly;
-  if (exist) {
-    return React.createElement(make, {
-                iconOnly: iconOnly,
-                children: React.createElement(Icons.LoadingOutlined, {})
+  if (iconOnly) {
+    if (icon !== undefined) {
+      if (loading) {
+        return React.createElement(Icons.LoadingOutlined, {});
+      } else {
+        return Caml_option.valFromOption(icon);
+      }
+    } else {
+      return null;
+    }
+  }
+  if (icon !== undefined) {
+    var child = loading ? React.createElement(Icons.LoadingOutlined, {}) : Caml_option.valFromOption(icon);
+    return React.createElement(MxRC__Button__IconBody$MarginRightBody, {
+                children: child
               });
   }
   var children = function (params, ref) {
     return React.createElement(make, {
-                iconOnly: iconOnly,
                 style: params.style,
                 children: React.createElement(Icons.LoadingOutlined, {}),
                 ref: ref
@@ -91,13 +111,14 @@ function MxRC__Button__LoadingComponent(Props) {
             });
 }
 
-var make$1 = MxRC__Button__LoadingComponent;
+var make$1 = MxRC__Button__IconBody;
 
 export {
   RcMotion$1 as RcMotion,
   getCollapsedWidth ,
   getRealWidth ,
   TransitionBody ,
+  MarginRightBody ,
   make$1 as make,
   
 }

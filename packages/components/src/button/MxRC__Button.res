@@ -1,7 +1,7 @@
 open Belt.Option
 open MxRC__Button__Utils
 
-module LoadingComponent = MxRC__Button__LoadingComponent
+module IconBody = MxRC__Button__IconBody
 
 @genType.as("ButtonType")
 type _type = [#default | #primary | #dashed | #text | #link]
@@ -41,7 +41,8 @@ let make = React.forwardRef((
   let onClick = evt =>
     switch (onClick, disabled) {
     | (Some(onClick), false) => {
-        evt->ReactEvent.Mouse.preventDefault
+      open ReactEvent.Mouse
+        evt->preventDefault
         evt->onClick->ignore
       }
     | (_, _) => ()
@@ -66,16 +67,7 @@ let make = React.forwardRef((
       ~iconOnly,
     )
 
-  let icon = switch (icon, loading) {
-  | (Some(icon), false) => icon
-  | (_, _) => {
-      let exist = switch icon {
-      | None => false
-      | _ => true
-      }
-      <LoadingComponent exist={exist} loading iconOnly />
-    }
-  }
+  let icon = <IconBody iconOnly icon loading />
 
   let kids =
     children

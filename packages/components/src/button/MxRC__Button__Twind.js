@@ -4,7 +4,7 @@ import * as Twind from "twind";
 import * as Css from "twind/css";
 import * as Caml_splice_call from "rescript/lib/es6/caml_splice_call.js";
 
-var init = "\n    relative\n    font-normal\n    text(sm center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n  ";
+var init = "\n    relative\n    font-normal\n    text(sm center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded-sm\n    px-3\n    transition\n  ";
 
 var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
 
@@ -31,80 +31,69 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
     init,
     disabled
   ];
-  var colors = _type === "text" ? (
-      isDanger ? [
-          text,
-          "text(" + danger + ")"
-        ] : [text]
-    ) : (
-      _type === "primary" ? (
-          isDanger ? [
-              "text-white",
-              "bg(" + danger + ")",
-              "border(" + danger + ")"
-            ] : [
-              "text-white",
-              "bg(" + primary + ")",
-              "border(" + primary + ")"
-            ]
-        ) : (
-          _type === "default" ? (
-              isDanger ? [
-                  "text(" + danger + ")",
-                  "border(" + danger + ")"
-                ] : [def]
-            ) : (
-              _type === "dashed" ? (
-                  isDanger ? [
-                      def,
-                      "border-dashed",
-                      "text(" + danger + ")",
-                      "border(" + danger + ")"
-                    ] : [
-                      def,
-                      "border-dashed"
-                    ]
-                ) : (
-                  isDanger ? [
-                      "text(" + danger + ")",
-                      "bg(" + initial + ")",
-                      "disabled:bg(" + initial + ")",
-                      "border-none"
-                    ] : [
-                      "text(" + link + ")",
-                      "bg(" + initial + ")",
-                      "disabled:bg(" + initial + ")",
-                      "border-none"
-                    ]
-                )
-            )
-        )
-    );
-  Caml_splice_call.spliceObjApply(classes, "push", [colors]);
+  Caml_splice_call.spliceObjApply(classes, "push", [_type === "text" ? (
+            isDanger ? [
+                text,
+                "text(" + danger + ")"
+              ] : [text]
+          ) : (
+            _type === "primary" ? (
+                isDanger ? [
+                    "text-white",
+                    "bg(" + danger + ")",
+                    "border(" + danger + ")"
+                  ] : [
+                    "text-white",
+                    "bg(" + primary + ")",
+                    "border(" + primary + ")"
+                  ]
+              ) : (
+                _type === "default" ? (
+                    isDanger ? [
+                        "text(" + danger + ")",
+                        "border(" + danger + ")"
+                      ] : [def]
+                  ) : (
+                    _type === "dashed" ? (
+                        isDanger ? [
+                            def,
+                            "border-dashed",
+                            "text(" + danger + ")",
+                            "border(" + danger + ")"
+                          ] : [
+                            def,
+                            "border-dashed"
+                          ]
+                      ) : (
+                        isDanger ? [
+                            "text(" + danger + ")",
+                            "bg(" + initial + ")",
+                            "disabled:bg(" + initial + ")",
+                            "border-none"
+                          ] : [
+                            "text(" + link + ")",
+                            "bg(" + initial + ")",
+                            "disabled:bg(" + initial + ")",
+                            "border-none"
+                          ]
+                      )
+                  )
+              )
+          )]);
   if (isBlock) {
     classes.push(block);
   }
   if (isGhost) {
-    if (_type === "text" || _type === "link") {
-      
-    } else if (_type === "primary") {
-      if (isDanger) {
-        classes.push("bg(" + transparent + ")", "text(" + danger + ")");
-      } else {
-        classes.push("bg(" + transparent + ")", "text(" + primary + ")");
-      }
-    } else {
-      classes.push("text-white border-white");
-    }
+    classes.push(_type === "link" || _type === "text" ? "" : (
+            _type === "primary" ? (
+                isDanger ? "bg(" + transparent + ") text(" + danger + ")" : "bg(" + transparent + ") text(" + primary + ")"
+              ) : "text-white border-white"
+          ));
     classes.push("disabled:bg(" + transparent + ")");
   }
-  if (size === "small") {
-    classes.push("h-6");
-  } else if (size === "default") {
-    classes.push("h-8");
-  } else {
-    classes.push("text-lg h-10");
-  }
+  classes.push(size === "small" ? "h-6" : (
+          size === "default" ? "h-8" : "text-base h-10"
+        ));
   if (shape === "circle") {
     if (size === "small") {
       classes.push(circle, "min-w-6 max-w-6");
@@ -116,40 +105,25 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
   } else if (shape === "round") {
     classes.push("rounded-full");
   }
-  if (isIconOnly) {
-    var strs = [
-      "px-0",
-      Css.css({
-            ".anticon": Twind.apply(["flex justify-center"])
-          })
-    ];
-    Caml_splice_call.spliceObjApply(classes, "push", [strs]);
-    if (size === "small") {
-      classes.push("w-6");
-    } else if (size === "default") {
-      classes.push("w-8 text-lg");
-    } else {
-      classes.push("w-10 text-xl");
-    }
-  }
   classes.push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)");
   var str = Css.css({
-        span: Twind.apply(["inline-block"]),
-        ".anticon + span": Twind.apply(["ml-2"])
+        ">span": Twind.apply(["inline-block"])
       });
   classes.push(str);
+  if (isIconOnly) {
+    classes.push("px-0");
+    var strs = size === "small" ? [
+        "w-6 leading-6",
+        Css.css({
+              ".anticon": Twind.apply(["align-baseline"])
+            })
+      ] : (
+        size === "default" ? ["w-8 leading-8 text-base"] : ["w-10 leading-10 text-lg"]
+      );
+    Caml_splice_call.spliceObjApply(classes, "push", [strs]);
+  }
   if (isLoading) {
     classes.push("cursor-default before::block");
-    if (!isIconOnly) {
-      var str$1 = Css.css({
-            ".anticon": Twind.apply(["animate-none pr-2"]),
-            ".anticon svg": {
-              animation: "loadingCircle 1s infinite linear"
-            }
-          });
-      classes.push(str$1);
-    }
-    
   }
   var match = Twind.tw(Twind.apply(classes));
   if (className !== undefined) {

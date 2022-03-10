@@ -5,7 +5,7 @@ let init = "
     text(sm center text)
     whitespace-nowrap
     border(1 gray-300)
-    rounded
+    rounded-sm
     px-3
     transition
   "
@@ -53,7 +53,7 @@ let make = (
   let pushMany = strs => classes->pushMany(strs)->ignore
 
   /* --- colors, `type` `danger` --- */
-  let colors = switch (_type, isDanger) {
+  switch (_type, isDanger) {
   | (#default, false) => [def]
   | (#default, true) => [`text(${danger})`, `border(${danger})`]
   | (#primary, false) => ["text-white", `bg(${primary})`, `border(${primary})`]
@@ -64,33 +64,32 @@ let make = (
   | (#link, true) => [`text(${danger})`, `bg(${initial})`, `disabled:bg(${initial})`, "border-none"]
   | (#dashed, false) => [def, "border-dashed"]
   | (#dashed, true) => [def, "border-dashed", `text(${danger})`, `border(${danger})`]
-  }
-  pushMany(colors)
+  }->pushMany
   /* --- colors --- */
 
   /* --- block --- */
-  isBlock ? push(block) : ()
+  isBlock ? block->push : ()
   /* --- block --- */
 
   /* --- ghost --- */
   if isGhost {
     switch (_type, isDanger) {
-    | (#primary, false) => pushMany([`bg(${transparent})`, `text(${primary})`])
-    | (#primary, true) => pushMany([`bg(${transparent})`, `text(${danger})`])
-    | (#link, _) => ()
-    | (#text, _) => ()
-    | (_, _) => pushMany(["text-white border-white"])
-    }
-    push(`disabled:bg(${transparent})`)
+    | (#primary, false) => `bg(${transparent}) text(${primary})`
+    | (#primary, true) => `bg(${transparent}) text(${danger})`
+    | (#link, _) => ""
+    | (#text, _) => ""
+    | (_, _) => "text-white border-white"
+    }->push
+    `disabled:bg(${transparent})`->push
   }
   /* --- ghost --- */
 
   /* --- size --- */
   switch size {
-  | #default => push("h-8")
-  | #small => push("h-6")
-  | #large => push("text-lg h-10")
-  }
+  | #default => "h-8"
+  | #small => "h-6"
+  | #large => "text-base h-10"
+  }->push
   /* --- size --- */
 
   /* --- shape --- */
@@ -105,36 +104,24 @@ let make = (
   }
   /* --- shape --- */
 
-  if isIconOnly {
-    pushMany(["px-0", css({".anticon": ["flex justify-center"]->apply})])
-    switch size {
-    | #default => push("w-8 text-lg")
-    | #small => push("w-6")
-    | #large => push("w-10 text-xl")
-    }
-  }
-
   // before
-  push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)")
-
-  // anticon
   push(
-    css({
-      "span": ["inline-block"]->apply,
-      ".anticon + span": ["ml-2"]->apply,
-    }),
+    "before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)",
   )
+
+  { ">span": ["inline-block"]->apply }->css->push
+
+  if isIconOnly {
+    "px-0"->push
+    switch size {
+    | #default => ["w-8 leading-8 text-base"]
+    | #small => ["w-6 leading-6", {".anticon": ["align-baseline"]->apply }->css]
+    | #large => ["w-10 leading-10 text-lg"]
+    }->pushMany
+  }
 
   if isLoading {
     push("cursor-default before::block")
-    if !isIconOnly {
-      push(
-        css({
-          ".anticon": ["animate-none pr-2"]->apply,
-          ".anticon svg": {"animation": "loadingCircle 1s infinite linear"},
-        }),
-      )
-    }
   }
 
   switch (classes->apply->tw, className) {

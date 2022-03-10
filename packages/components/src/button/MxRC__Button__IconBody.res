@@ -37,31 +37,46 @@ let getRealWidth = node => {
 
 module TransitionBody = {
   @react.component
-  let make = React.forwardRef((~iconOnly, ~style=?, ~children, ref) => {
+  let make = React.forwardRef((~style=?, ~children, ref) => {
     open MxRC__Libs__Twind
     let className =
-      switch iconOnly {
-      | true => ["transition transition-[width, opacity]", {".anticon": ["pr-0 animation-none"]}->css]
-      | false => ["transition transition-[width, opacity]", {".anticon": ["pr-1 animation-none"]}->css]
-      }
+      [
+        "transition transition-[width, opacity]",
+        {
+          ".anticon": ["pr-2 animate-none"]->apply,
+          ".anticon svg": {"animation": "loadingCircle 1s infinite linear"},
+        }->css,
+      ]
       ->apply
       ->tw
 
-    let style = style->Belt.Option.getWithDefault(ReactDOM.Style.make())
-
-    <span ref=?{ref->Js.Nullable.toOption->Belt.Option.map(ReactDOM.Ref.domRef)} className style>
+    <span ref=?{ref->Js.Nullable.toOption->Belt.Option.map(ReactDOM.Ref.domRef)} className ?style>
       children
     </span>
   })
 }
 
+module MarginRightBody = {
+  open MxRC__Libs__Twind
+  @react.component
+  let make = (~children) => {
+    let className = ["pr-2"]->apply->tw
+    <span className> children </span>
+  }
+}
+
 @react.component
-let make = (~loading, ~exist, ~iconOnly) => {
-  switch exist {
-  | true => <TransitionBody iconOnly> <LoadingOutlined /> </TransitionBody>
-  | false => {
+let make = (~loading, ~icon: option<React.element>, ~iconOnly) => {
+  switch (iconOnly, icon, loading) {
+  | (true, Some(icon), loading) => loading ? <LoadingOutlined /> : icon
+  | (true, None, _) => React.null // unable
+  | (false, Some(icon), loading) => {
+      let child = loading ? <LoadingOutlined /> : icon
+      <MarginRightBody> child </MarginRightBody>
+    }
+  | (false, None, loading) => {
       let children = (params: RcMotion.params, ref) => {
-        <TransitionBody ref style={params.style} iconOnly> <LoadingOutlined /> </TransitionBody>
+        <TransitionBody ref style={params.style}> <LoadingOutlined /> </TransitionBody>
       }
 
       <RcMotion

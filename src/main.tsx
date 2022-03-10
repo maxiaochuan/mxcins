@@ -19,10 +19,11 @@ const ButtonView = () => {
     <>
       <Record title="loading">
         <Button type="primary" loading>Download</Button>
-        <Button type="primary" icon={<DownloadOutlined />} loading={loading}>Download</Button>
-        <Button type="primary" loading={loading}>Download</Button>
         <Button type="primary" loading icon={<DownloadOutlined />} />
+        <Button type="primary" icon={<DownloadOutlined />} />
+        <Button type="primary" loading={loading}>Download</Button>
         <Button type="primary" loading={loading} icon={<DownloadOutlined />} />
+        <Button type="primary" icon={<DownloadOutlined />} loading={loading}>Download</Button>
       </Record>
       <Record>
         <Button ref={inputRef} type="primary">primary button</Button>

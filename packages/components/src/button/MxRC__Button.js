@@ -8,7 +8,7 @@ import * as MxRC__Libs__React from "../_libs/MxRC__Libs__React.js";
 import * as MxRC__Button__Twind from "./MxRC__Button__Twind.js";
 import * as MxRC__Button__Utils from "./MxRC__Button__Utils.js";
 import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.js";
-import * as MxRC__Button__LoadingComponent from "./MxRC__Button__LoadingComponent.js";
+import * as MxRC__Button__IconBody from "./MxRC__Button__IconBody.js";
 
 var make = React.forwardRef(function (Props, ref) {
       var className = Props.className;
@@ -43,21 +43,11 @@ var make = React.forwardRef(function (Props, ref) {
       };
       var iconOnly = children !== undefined ? false : icon !== undefined;
       var className$1 = MxRC__Button__Twind.make(className, size$1, _type, shape, danger, ghost, block, disabled, loading, iconOnly);
-      var icon$1;
-      var exit = 0;
-      if (icon !== undefined && !loading) {
-        icon$1 = Caml_option.valFromOption(icon);
-      } else {
-        exit = 1;
-      }
-      if (exit === 1) {
-        var exist = icon !== undefined;
-        icon$1 = React.createElement(MxRC__Button__LoadingComponent.make, {
-              loading: loading,
-              exist: exist,
-              iconOnly: iconOnly
-            });
-      }
+      var icon$1 = React.createElement(MxRC__Button__IconBody.make, {
+            loading: loading,
+            icon: icon,
+            iconOnly: iconOnly
+          });
       var kids = React.Children.map(Belt_Option.getWithDefault(children, null), (function (child) {
               if (!(MxRC__Libs__React.Children.isString(child) || MxRC__Libs__React.Children.isNumber(child))) {
                 return child;
@@ -85,10 +75,10 @@ var make = React.forwardRef(function (Props, ref) {
       return React.createElement("button", tmp, icon$1, kids);
     });
 
-var LoadingComponent;
+var IconBody;
 
 export {
-  LoadingComponent ,
+  IconBody ,
   make ,
   
 }
