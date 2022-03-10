@@ -62,6 +62,9 @@ let init = (~primary: option<string>=?, ()) =>
         "--color-danger-active": colors.danger.active,
       },
       "button:focus": {"outline": "0"},
+      /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
+      "svg": {"vertical-align": "initial"},
+      /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
     },
     "theme": {
       "content": {

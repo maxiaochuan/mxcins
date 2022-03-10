@@ -79,6 +79,9 @@ function init(primary, param) {
           },
           "button:focus": {
             outline: "0"
+          },
+          svg: {
+            "vertical-align": "initial"
           }
         },
         theme: {

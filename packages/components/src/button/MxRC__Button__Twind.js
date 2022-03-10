@@ -4,7 +4,7 @@ import * as Twind from "twind";
 import * as Css from "twind/css";
 import * as Caml_splice_call from "rescript/lib/es6/caml_splice_call.js";
 
-var init = "\n    relative\n    inline\n    font-normal\n    text(base center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n  ";
+var init = "\n    relative\n    font-normal\n    text(base center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded\n    px-3\n    transition\n  ";
 
 var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
 
@@ -117,7 +117,13 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
     classes.push("rounded-full");
   }
   if (isIconOnly) {
-    classes.push("px-0");
+    var strs = [
+      "px-0",
+      Css.css({
+            ".anticon": Twind.apply(["flex justify-center"])
+          })
+    ];
+    Caml_splice_call.spliceObjApply(classes, "push", [strs]);
     if (size === "small") {
       classes.push("w-6");
     } else if (size === "default") {
@@ -126,19 +132,25 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
       classes.push("w-10 text-xl");
     }
   }
-  classes.push("before::(content-empty inset-[-1px] z-[1] bg-white opacity-30 transition-opacity duration-200)");
-  if (isLoading) {
-    classes.push("cursor-default before::absolute");
-  }
+  classes.push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30)");
   var str = Css.css({
-        ".anticon": Twind.apply(isIconOnly ? ["flex justify-center"] : ["animate-none pr-2"]),
-        ".anticon svg": {
-          animation: "loadingCircle 1s infinite linear"
-        },
-        span: Twind.apply(["inline-block"])
+        span: Twind.apply(["inline-block"]),
+        ".anticon + span": Twind.apply(["ml-2"])
       });
   classes.push(str);
-  console.log("classes", classes);
+  if (isLoading) {
+    classes.push("cursor-default before::block");
+    if (!isIconOnly) {
+      var str$1 = Css.css({
+            ".anticon": Twind.apply(["animate-none pr-2"]),
+            ".anticon svg": {
+              animation: "loadingCircle 1s infinite linear"
+            }
+          });
+      classes.push(str$1);
+    }
+    
+  }
   var match = Twind.tw(Twind.apply(classes));
   if (className !== undefined) {
     return [

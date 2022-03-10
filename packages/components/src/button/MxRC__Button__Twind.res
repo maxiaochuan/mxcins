@@ -1,7 +1,6 @@
 open MxRC__Libs__Twind
 let init = "
     relative
-    inline
     font-normal
     text(base center text)
     whitespace-nowrap
@@ -107,7 +106,7 @@ let make = (
   /* --- shape --- */
 
   if isIconOnly {
-    push("px-0")
+    pushMany(["px-0", css({".anticon": ["flex justify-center"]->apply})])
     switch size {
     | #default => push("w-8 text-lg")
     | #small => push("w-6")
@@ -116,25 +115,28 @@ let make = (
   }
 
   // before
-  push(
-    "before::(content-empty inset-[-1px] z-[1] bg-white opacity-30 transition-opacity duration-200)",
-  )
-  if isLoading {
-    push("cursor-default before::absolute")
-  }
+  push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30)")
 
+  // anticon
   push(
     css({
-      ".anticon": switch isIconOnly {
-      | true => ["flex justify-center"]
-      | false => ["animate-none pr-2"]
-      }->apply,
-      ".anticon svg": {"animation": "loadingCircle 1s infinite linear"},
       "span": ["inline-block"]->apply,
+      ".anticon + span": ["ml-2"]->apply,
     }),
   )
 
-  "classes"->Js.log2(classes)
+  if isLoading {
+    push("cursor-default before::block")
+    if !isIconOnly {
+      push(
+        css({
+          ".anticon": ["animate-none pr-2"]->apply,
+          ".anticon svg": {"animation": "loadingCircle 1s infinite linear"},
+        }),
+      )
+    }
+  }
+
   switch (classes->apply->tw, className) {
   | (classes, Some(className)) => [classes, className]->joinWith(" ")
   | (classes, _) => classes

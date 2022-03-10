@@ -5,14 +5,24 @@ import { ConfigProvider, Button } from '../packages/components';
 import { Record } from './components';
 
 const ButtonView = () => {
-  const inputRef = React.useRef<HTMLElement>(null)
+  const inputRef = React.useRef<HTMLElement>(null);
+  const intervalRef = React.useRef<number>();
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     console.log('inputRef', inputRef.current)
-  });
+    intervalRef.current = window.setInterval(() => setLoading(prev => !prev), 3000)
+    return () => intervalRef.current && window.clearInterval(intervalRef.current)
+  }, []);
 
   return (
     <>
+      <Record title="loading">
+        <Button type="primary" loading>Download</Button>
+        <Button type="primary" icon={<DownloadOutlined />}>Download</Button>
+        <Button type="primary" loading={loading}>Download</Button>
+        <Button type="primary" loading icon={<DownloadOutlined />} />
+      </Record>
       <Record>
         <Button ref={inputRef} type="primary">primary button</Button>
         <Button type="default">default button</Button>
@@ -82,9 +92,6 @@ const ButtonView = () => {
       </Record>
       <Record title="two char">
         <Button type="primary">按钮</Button>
-      </Record>
-      <Record title="loading">
-        <Button type="primary" loading>按钮</Button>
       </Record>
     </>
   )
