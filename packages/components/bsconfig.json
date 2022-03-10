@@ -15,7 +15,9 @@
   "pinned-dependencies": ["@mxcins/hooks", "@mxcins/libs"],
   "gentypeconfig": {
     "language": "typescript",
-    "shims": {},
+    "shims": {
+      "Dom": "Dom"
+    },
     "generatedFileExtension": ".gen.tsx",
     "module": "es6",
     "debug": {

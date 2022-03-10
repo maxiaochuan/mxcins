@@ -7,7 +7,7 @@ import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__Libs__React from "../_libs/MxRC__Libs__React.js";
 import * as MxRC__Button__Twind from "./MxRC__Button__Twind.js";
 import * as MxRC__Button__Utils from "./MxRC__Button__Utils.js";
-import * as MxRC__ConfigProvider from "../MxRC__ConfigProvider.js";
+import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.js";
 import * as MxRC__Button__LoadingComponent from "./MxRC__Button__LoadingComponent.js";
 
 var make = React.forwardRef(function (Props, ref) {

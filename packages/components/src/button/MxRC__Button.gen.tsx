@@ -8,7 +8,7 @@ import * as React from 'react';
 import * as MxRC__ButtonBS__Es6Import from './MxRC__Button.bs';
 const MxRC__ButtonBS: any = MxRC__ButtonBS__Es6Import;
 
-import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from '../../src/MxRC__ConfigProvider.gen';
+import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from '../../src/config-provider/MxRC__ConfigProvider.gen';
 
 import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
 

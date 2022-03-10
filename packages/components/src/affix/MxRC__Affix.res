@@ -1,5 +1,3 @@
-type element = Dom.element
-
 module AffixUtils = {
   type rect = {top: int, bottom: int, width: int, height: int}
 
@@ -81,11 +79,13 @@ type targetType =
   | Element
   | Null
 
-@react.component
+type element = Dom.element
+
+@react.component @genType
 let make = (
   ~offsetTop=0,
   ~offsetBottom: option<int>=?,
-  ~target as tar: option<unit => Js.Nullable.t<element>>=?,
+  ~target as tar: option<unit => Js.Nullable.t<Dom.element>>=?,
   ~children: option<React.element>=?,
 ) => {
   let containerRef = React.useRef(Js.Nullable.null)
