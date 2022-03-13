@@ -15,17 +15,12 @@ var Id = Belt_Id.MakeComparable({
       cmp: cmp
     });
 
-function make(param) {
-  return Belt_MutableSet.make(Id);
-}
-
 function fromArray(arr) {
   return Belt_MutableSet.fromArray(arr, Id);
 }
 
 var ResizeListenerSet = {
   Id: Id,
-  make: make,
   fromArray: fromArray
 };
 
@@ -35,13 +30,13 @@ var Id$1 = Belt_Id.MakeComparable({
       cmp: cmp$1
     });
 
-function make$1(param) {
+function make(param) {
   return Belt_MutableMap.make(Id$1);
 }
 
 var ElementResizeListenersMap = {
   Id: Id$1,
-  make: make$1
+  make: make
 };
 
 var store = Belt_MutableMap.make(Id$1);
@@ -62,7 +57,9 @@ function observe(element, listener) {
   if (listeners !== undefined) {
     return Belt_MutableSet.add(Caml_option.valFromOption(listeners), listener);
   } else {
-    return Belt_MutableMap.set(store, element, Belt_MutableSet.fromArray([listener], Id));
+    Belt_MutableMap.set(store, element, Belt_MutableSet.fromArray([listener], Id));
+    observer.observe(element);
+    return ;
   }
 }
 
@@ -79,12 +76,13 @@ function unobserve(element, listener) {
 
 var $$ResizeObserver;
 
+var $$ResizeObserverEntry;
+
 export {
   $$ResizeObserver ,
+  $$ResizeObserverEntry ,
   ResizeListenerSet ,
   ElementResizeListenersMap ,
-  store ,
-  observer ,
   observe ,
   unobserve ,
   

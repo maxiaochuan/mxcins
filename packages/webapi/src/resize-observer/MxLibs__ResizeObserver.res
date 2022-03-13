@@ -1,4 +1,5 @@
 module ResizeObserverEntry = {
+  @genType
   type t = Dom.resizeObserverEntry
 
   @get external contentRect: t => Dom.domRect = "contentRect"

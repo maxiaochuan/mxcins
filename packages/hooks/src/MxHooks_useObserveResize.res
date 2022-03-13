@@ -8,7 +8,7 @@ type size = {
 type onResize = (~target: Dom.element, ~size: size) => unit
 
 let useObserveResize = (
-  ~target: option<Dom.element>,
+  ~target,
   ~onResize: option<onResize>,
   ~disabled: option<bool>,
 ) => {

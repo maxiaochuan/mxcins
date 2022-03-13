@@ -1,2 +1,1 @@
-export type element = HTMLElement;
-
+export * from '@mxcins/webapi/src/shims/dom.shim'

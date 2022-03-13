@@ -1,11 +1,6 @@
-@val external raf: (int => unit) => int = "requestAnimationFrame"
-@val external caf: int => unit = "cancelAnimationFrame"
-
 %%private(let index = ref(0))
 
-%%private(let cache = Belt.MutableMap.Int.fromArray([]))
-
-%%private(let cleanup = id => cache->Belt.MutableMap.Int.remove(id))
+%%private(let store = Belt.MutableMap.Int.fromArray([]))
 
 let make = (~times=1, callback: unit => unit) => {
   index := index.contents + 1
@@ -13,11 +8,10 @@ let make = (~times=1, callback: unit => unit) => {
 
   let rec run = (remaining: int) => {
     if remaining === 0 {
-      id->cleanup->ignore
-      ()->callback
+      store->Belt.MutableMap.Int.clear->callback
     } else {
-      let rafid = raf(_ => run(remaining - 1))
-      cache->Belt.MutableMap.Int.set(id, rafid)
+      let rafid = Webapi.requestCancellableAnimationFrame(_ => run(remaining - 1))
+      store->Belt.MutableMap.Int.set(id, rafid)
     }
   }
 
@@ -26,15 +20,10 @@ let make = (~times=1, callback: unit => unit) => {
   id
 }
 
-let cancel = (id: int): unit => {
-  switch cache->Belt.MutableMap.Int.get(id) {
-  | Some(rafid) => {
-      caf(rafid)
-      cache->Belt.MutableMap.Int.remove(id)->ignore
-    }
-  | _ => ()
-  }
-}
+let cancel = id => store->Belt.MutableMap.Int.get(id)->Belt.Option.forEach(rafid => {
+  rafid->Webapi.cancelAnimationFrame
+  store->Belt.MutableMap.Int.remove(id)->ignore
+})
 
 let throttle = (~times=1, callback: 'a => unit) => {
   let valid = ref(true)

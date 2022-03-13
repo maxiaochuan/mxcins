@@ -4,7 +4,7 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as MxHooks from "@mxcins/hooks/src/MxHooks.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxLibs__Raf from "@mxcins/libs/src/MxLibs__Raf.js";
+import * as MxLibs__Raf from "@mxcins/webapi/src/raf/MxLibs__Raf.js";
 
 function getDomRect(node) {
   var rect = node.getBoundingClientRect();

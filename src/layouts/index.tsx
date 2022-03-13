@@ -3,7 +3,7 @@ import { ConfigProvider } from '@mxcins/components';
 
 const Layout: React.FC = props => {
   const { children } = props;
-  return <ConfigProvider>{children}</ConfigProvider>
-}
+  return <ConfigProvider>{children}</ConfigProvider>;
+};
 
 export default Layout;

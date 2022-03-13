@@ -1,32 +1,39 @@
 import * as React from 'react';
-import { Outlet, Route, RouteProps } from 'react-router';
+import { Outlet, Route } from 'react-router';
 
 interface RouteConfig {
-  path: string;
+  key?: string;
+  index?: boolean;
+  path?: string;
   trunk: () => any;
   children?: RouteConfig[];
 }
 
 const routes: RouteConfig[] = [
   {
-    path: "/",
+    path: '/',
     trunk: () => import('@/layouts'),
     children: [
       {
-        path: '/libs',
-        trunk: () => import('@/pages/libs'),
-      }
+        key: 'home',
+        index: true,
+        trunk: () => import('@/pages/home'),
+      },
+      {
+        path: '/components/button',
+        trunk: () => import('@/pages/components/button'),
+      },
+      {
+        path: '/webapi',
+        trunk: () => import('@/pages/webapi'),
+      },
     ],
-  }
-]
+  },
+];
 
 const make = (conf: RouteConfig) => {
-  const { path, trunk, children } = conf;
-  const Trunk = React.lazy(() => {
-    const r = trunk();
-    console.log('trunk', r)
-    return r;
-  });
+  const { index, key, path, trunk, children } = conf;
+  const Trunk = React.lazy(() => trunk());
 
   const element = children ? (
     <React.Suspense fallback={<>Loading...</>}>
@@ -36,13 +43,13 @@ const make = (conf: RouteConfig) => {
     <React.Suspense fallback={<>Loading...</>}>
       <Trunk />
     </React.Suspense>
-  )
+  );
 
   return (
-    <Route key={path} path={path} element={element}>
+    <Route index={index} key={key || path} path={path} element={element}>
       {children?.map(make)}
     </Route>
-  )
-}
+  );
+};
 
-export default routes.map(make)
+export default routes.map(make);

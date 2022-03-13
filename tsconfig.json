@@ -30,7 +30,7 @@
     "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "@mxcins/components": ["packages/components"],
-      "@mxcins/libs": ["packages/libs"],
+      "@mxcins/webapi": ["packages/webapi"],
       "@/*": ["src/*"],
     },
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */

@@ -1,5 +1,5 @@
 {
-  "name": "@mxcins/libs",
+  "name": "@mxcins/webapi",
   "version": "1.0.0-alpha.0",
   "description": "",
   "homepage": "https://github.com/maxiaochuan/mxcins",
@@ -13,8 +13,10 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist"
+    "src"
   ],
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "build": "rescript",
     "dev": "rescript build -w"

@@ -1,5 +1,5 @@
 {
-  "name": "@mxcins/components",
+  "name": "@mxcins/webapi",
   "sources": {
     "dir": "src",
     "subdirs": true
@@ -10,13 +10,11 @@
       "in-source": true
     }
   ],
-  "reason": { "react-jsx": 3 },
-  "bs-dependencies": ["@rescript/react", "@mxcins/hooks", "@mxcins/webapi", "rescript-webapi"],
-  "pinned-dependencies": ["@mxcins/hooks", "@mxcins/webapi"],
+  "bs-dependencies": ["rescript-webapi"],
   "gentypeconfig": {
     "language": "typescript",
     "shims": {
-      "Dom": "dom"
+      "Dom": "Dom"
     },
     "generatedFileExtension": ".gen.tsx",
     "module": "es6",

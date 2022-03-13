@@ -4,7 +4,7 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Js_math from "rescript/lib/es6/js_math.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxLibs__SingleResizeObserver from "@mxcins/libs/src/MxLibs__SingleResizeObserver.js";
+import * as MxLibs__SingleResizeObserver from "@mxcins/webapi/src/single-resize-observer/MxLibs__SingleResizeObserver.js";
 
 function useObserveResize(target, onResize, disabled) {
   var sizeRef = React.useRef({

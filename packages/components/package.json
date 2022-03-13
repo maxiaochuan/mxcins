@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@mxcins/hooks": "3.0.0-alpha.0",
-    "@mxcins/libs": "1.0.0-alpha.0",
+    "@mxcins/webapi": "1.0.0-alpha.0",
     "twind": "0.16.16",
     "@twind/content": "0.1.0",
     "rc-motion": "2.4.5"
