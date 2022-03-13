@@ -3,7 +3,6 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Belt_Id from "rescript/lib/es6/belt_Id.js";
 import * as Belt_Map from "rescript/lib/es6/belt_Map.js";
-import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Belt_MutableMapInt from "rescript/lib/es6/belt_MutableMapInt.js";
 import * as Belt_MutableMapString from "rescript/lib/es6/belt_MutableMapString.js";
@@ -17,7 +16,9 @@ var breakpoints = [
   "xs"
 ];
 
-var cmp = Caml_obj.caml_compare;
+function cmp(a, b) {
+  return breakpoints.indexOf(a) - breakpoints.indexOf(b) | 0;
+}
 
 var BreakpointCmp = Belt_Id.MakeComparable({
       cmp: cmp
@@ -50,32 +51,9 @@ var queries = Belt_Map.fromArray([
       ]
     ], BreakpointCmp);
 
-var screens = Belt_Map.fromArray([
-      [
-        "xs",
-        false
-      ],
-      [
-        "sm",
-        false
-      ],
-      [
-        "md",
-        false
-      ],
-      [
-        "lg",
-        false
-      ],
-      [
-        "xl",
-        false
-      ],
-      [
-        "xxl",
-        false
-      ]
-    ], BreakpointCmp);
+var screen = {
+  contents: undefined
+};
 
 var token = {
   contents: -1
@@ -85,14 +63,17 @@ var store = Belt_MutableMapString.fromArray([]);
 
 var subscribers = Belt_MutableMapInt.fromArray([]);
 
-function register(param) {
+function start(param) {
   return Belt_Map.forEach(queries, (function (breakpoint, query) {
                 var handler = function (evt) {
                   var matches = evt.matches;
-                  Belt_Map.set(screens, breakpoint, matches);
-                  return Belt_MutableMapInt.forEach(subscribers, (function (param, func) {
-                                return Curry._1(func, screens);
-                              }));
+                  if (matches) {
+                    screen.contents = breakpoint;
+                    return Belt_MutableMapInt.forEach(subscribers, (function (param, func) {
+                                  return Curry._1(func, breakpoint);
+                                }));
+                  }
+                  
                 };
                 var mediaQueryList = window.matchMedia(query);
                 mediaQueryList.addEventListener("change", handler);
@@ -104,7 +85,7 @@ function register(param) {
               }));
 }
 
-function unregister(param) {
+function close(param) {
   Belt_Map.forEach(queries, (function (param, query) {
           return Belt_Option.forEach(Belt_MutableMapString.get(store, query), (function (cached) {
                         cached.mediaQueryList.addEventListener("change", cached.handler);
@@ -116,18 +97,18 @@ function unregister(param) {
 
 function subscribe(func) {
   if (Belt_MutableMapInt.size(subscribers) === 0) {
-    register(undefined);
+    start(undefined);
   }
   token.contents = token.contents + 1 | 0;
   Belt_MutableMapInt.set(subscribers, token.contents, func);
-  Curry._1(func, screens);
+  Belt_Option.forEach(screen.contents, func);
   return token.contents;
 }
 
 function unsubscribe(id) {
   Belt_MutableMapInt.remove(subscribers, id);
   if (Belt_MutableMapInt.size(subscribers) === 0) {
-    return unregister(undefined);
+    return close(undefined);
   }
   
 }
@@ -136,12 +117,12 @@ export {
   breakpoints ,
   BreakpointCmp ,
   queries ,
-  screens ,
+  screen ,
   token ,
   store ,
   subscribers ,
-  register ,
-  unregister ,
+  start ,
+  close ,
   subscribe ,
   unsubscribe ,
   
