@@ -16,10 +16,6 @@ var breakpoints = [
   "xs"
 ];
 
-var screen = {
-  contents: undefined
-};
-
 var store = Belt_MutableMapString.fromArray([]);
 
 function cmp(a, b) {
@@ -33,7 +29,7 @@ var BreakpointCmp = Belt_Id.MakeComparable({
 var queries = Belt_Map.fromArray([
       [
         "xs",
-        "(max-width: 575px)"
+        "(min-width: 0px)"
       ],
       [
         "sm",
@@ -57,19 +53,49 @@ var queries = Belt_Map.fromArray([
       ]
     ], BreakpointCmp);
 
+var screens = {
+  contents: Belt_Map.fromArray([
+        [
+          "xs",
+          false
+        ],
+        [
+          "sm",
+          false
+        ],
+        [
+          "md",
+          false
+        ],
+        [
+          "lg",
+          false
+        ],
+        [
+          "xl",
+          false
+        ],
+        [
+          "xxl",
+          false
+        ]
+      ], BreakpointCmp)
+};
+
 function dispatch(fn) {
-  return Belt_Option.forEach(screen.contents, fn);
+  return Belt_Option.forEach(Belt_Map.findFirstBy(screens.contents, (function (param, v) {
+                    return v === true;
+                  })), fn);
 }
 
 function register(onchange) {
   return Belt_Map.forEach(queries, (function (breakpoint, query) {
                 var handler = function (evt) {
                   var matches = evt.matches;
-                  if (matches) {
-                    screen.contents = breakpoint;
-                    return Curry._1(onchange, breakpoint);
-                  }
-                  
+                  screens.contents = Belt_Map.set(screens.contents, breakpoint, matches);
+                  return Belt_Option.forEach(Belt_Map.findFirstBy(screens.contents, (function (param, v) {
+                                    return v === true;
+                                  })), onchange);
                 };
                 var mediaQueryList = window.matchMedia(query);
                 mediaQueryList.addEventListener("change", handler);
@@ -92,10 +118,10 @@ function unregister(param) {
 
 var QueryListDispatcher = {
   breakpoints: breakpoints,
-  screen: screen,
   store: store,
   BreakpointCmp: BreakpointCmp,
   queries: queries,
+  screens: screens,
   dispatch: dispatch,
   register: register,
   unregister: unregister
@@ -117,7 +143,7 @@ function subscribe(subscriber) {
   }
   token.contents = token.contents + 1 | 0;
   Belt_MutableMapInt.set(subscribers, token.contents, subscriber);
-  Belt_Option.forEach(screen.contents, subscriber);
+  dispatch(subscriber);
   return token.contents;
 }
 

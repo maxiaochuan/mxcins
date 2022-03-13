@@ -9,9 +9,12 @@ const MxLibs__SingleBreakpointPublisherBS: any = MxLibs__SingleBreakpointPublish
 // tslint:disable-next-line:interface-over-type-literal
 export type QueryListDispatcher_breakpoint = "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
 
+// tslint:disable-next-line:interface-over-type-literal
+export type QueryListDispatcher_BreakpointCmp_t = QueryListDispatcher_breakpoint;
+
 export const QueryListDispatcher_breakpoints: QueryListDispatcher_breakpoint[] = MxLibs__SingleBreakpointPublisherBS.QueryListDispatcher.breakpoints;
 
-export const subscribe: (subscriber:((_1:QueryListDispatcher_breakpoint) => void)) => number = MxLibs__SingleBreakpointPublisherBS.subscribe;
+export const subscribe: (subscriber:((_1:[QueryListDispatcher_BreakpointCmp_t, boolean]) => void)) => number = MxLibs__SingleBreakpointPublisherBS.subscribe;
 
 export const unsubscribe: (id:number) => void = MxLibs__SingleBreakpointPublisherBS.unsubscribe;
 

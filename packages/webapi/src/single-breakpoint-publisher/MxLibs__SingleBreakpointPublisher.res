@@ -5,8 +5,6 @@ module QueryListDispatcher = {
   @genType
   let breakpoints: array<breakpoint> = [#xxl, #xl, #lg, #md, #sm, #xs]
 
-  let screen = ref(None)
-
   type cached = {
     mediaQueryList: Webapi.Dom.Window.mediaQueryList,
     handler: MxLibs__Dom.MediaQueryList.listener,
@@ -21,7 +19,7 @@ module QueryListDispatcher = {
 
   let queries = Belt.Map.fromArray(
     [
-      (#xs, "(max-width: 575px)"),
+      (#xs, "(min-width: 0px)"),
       (#sm, "(min-width: 576px)"),
       (#md, "(min-width: 768px)"),
       (#lg, "(min-width: 992px)"),
@@ -31,17 +29,23 @@ module QueryListDispatcher = {
     ~id=module(BreakpointCmp),
   )
 
-  let dispatch = fn => screen.contents->Belt.Option.forEach(fn)
+  let screens = ref(
+    Belt.Map.fromArray(
+      [(#xs, false), (#sm, false), (#md, false), (#lg, false), (#xl, false), (#xxl, false)],
+      ~id=module(BreakpointCmp),
+    ),
+  )
+
+  let dispatch = fn =>
+    screens.contents->Belt.Map.findFirstBy((_, v) => v === true)->Belt.Option.forEach(fn)
 
   let register = onchange => {
     queries->Belt.Map.forEach((breakpoint, query) => {
       open MxLibs__Dom
       let handler = evt => {
         let matches = evt->MediaQueryList.ChangeEvent.matches
-        if matches {
-          screen.contents = breakpoint->Some
-          onchange(breakpoint)
-        }
+        screens := screens.contents->Belt.Map.set(breakpoint, matches)
+        screens.contents->Belt.Map.findFirstBy((_, v) => v === true)->Belt.Option.forEach(onchange)
       }
       let mediaQueryList = window->Window.matchMedia(query)
       mediaQueryList->MediaQueryList.addEventListener("change", handler)
