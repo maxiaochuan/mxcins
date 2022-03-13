@@ -20,10 +20,13 @@ let make = (~times=1, callback: unit => unit) => {
   id
 }
 
-let cancel = id => store->Belt.MutableMap.Int.get(id)->Belt.Option.forEach(rafid => {
-  rafid->Webapi.cancelAnimationFrame
-  store->Belt.MutableMap.Int.remove(id)->ignore
-})
+let cancel = id =>
+  store
+  ->Belt.MutableMap.Int.get(id)
+  ->Belt.Option.forEach(rafid => {
+    rafid->Webapi.cancelAnimationFrame
+    store->Belt.MutableMap.Int.remove(id)->ignore
+  })
 
 let throttle = (~times=1, callback: 'a => unit) => {
   let valid = ref(true)

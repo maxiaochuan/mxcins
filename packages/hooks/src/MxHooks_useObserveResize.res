@@ -7,11 +7,7 @@ type size = {
 
 type onResize = (~target: Dom.element, ~size: size) => unit
 
-let useObserveResize = (
-  ~target,
-  ~onResize: option<onResize>,
-  ~disabled: option<bool>,
-) => {
+let useObserveResize = (~target, ~onResize: option<onResize>, ~disabled: option<bool>) => {
   let sizeRef = React.useRef({width: -1, height: -1, offsetWidth: -1, offsetHeight: -1})
   let onResizeRef = React.useRef(onResize)
 

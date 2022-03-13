@@ -5,6 +5,12 @@ import * as Webapi__Dom__Element from "rescript-webapi/src/Webapi/Dom/Webapi__Do
 
 var MxElement = Webapi__Dom__Element;
 
+var ChangeEvent = {};
+
+var $$MediaQueryList = {
+  ChangeEvent: ChangeEvent
+};
+
 var $$AnimationEvent = Webapi__Dom.$$AnimationEvent;
 
 var $$Attr = Webapi__Dom.$$Attr;
@@ -313,6 +319,7 @@ export {
   decodeVisibilityState ,
   WhatToShow ,
   MxElement ,
+  $$MediaQueryList ,
   
 }
 /* Webapi__Dom__Element Not a pure module */
