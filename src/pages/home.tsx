@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { conf } from '../routes';
 
 const Home: React.FC = () => {
   return <>HOME
-  <Link to="/components/button">[components/button]</Link>
-  <Link to="/webapi">[webapi]</Link>
+  {conf[0].children?.map(row => row.path && (
+    <div>
+      <Link style={{ color: 'blue' }} key={row.path} to={row.path}>{row.path}</Link>
+    </div>
+  ))}
   </>
 }
 

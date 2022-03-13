@@ -9,7 +9,7 @@ interface RouteConfig {
   children?: RouteConfig[];
 }
 
-const routes: RouteConfig[] = [
+export const conf: RouteConfig[] = [
   {
     path: '/',
     trunk: () => import('@/layouts'),
@@ -22,6 +22,10 @@ const routes: RouteConfig[] = [
       {
         path: '/components/button',
         trunk: () => import('@/pages/components/button'),
+      },
+      {
+        path: '/components/divider',
+        trunk: () => import('@/pages/components/divider'),
       },
       {
         path: '/webapi',
@@ -52,4 +56,4 @@ const make = (conf: RouteConfig) => {
   );
 };
 
-export default routes.map(make);
+export default conf.map(make);
