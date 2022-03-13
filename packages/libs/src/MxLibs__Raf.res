@@ -1,13 +1,11 @@
-open MxLibs__STD
-
 @val external raf: (int => unit) => int = "requestAnimationFrame"
 @val external caf: int => unit = "cancelAnimationFrame"
 
 %%private(let index = ref(0))
 
-%%private(let cache = Map.make())
+%%private(let cache = Belt.MutableMap.Int.fromArray([]))
 
-%%private(let cleanup = id => cache->Map.delete(id))
+%%private(let cleanup = id => cache->Belt.MutableMap.Int.remove(id))
 
 let make = (~times=1, callback: unit => unit) => {
   index := index.contents + 1
@@ -19,7 +17,7 @@ let make = (~times=1, callback: unit => unit) => {
       ()->callback
     } else {
       let rafid = raf(_ => run(remaining - 1))
-      cache->Map.set(id, rafid)->ignore
+      cache->Belt.MutableMap.Int.set(id, rafid)
     }
   }
 
@@ -29,10 +27,10 @@ let make = (~times=1, callback: unit => unit) => {
 }
 
 let cancel = (id: int): unit => {
-  switch cache->Map.get(id) {
+  switch cache->Belt.MutableMap.Int.get(id) {
   | Some(rafid) => {
       caf(rafid)
-      cache->Map.delete(id)->ignore
+      cache->Belt.MutableMap.Int.remove(id)->ignore
     }
   | _ => ()
   }
