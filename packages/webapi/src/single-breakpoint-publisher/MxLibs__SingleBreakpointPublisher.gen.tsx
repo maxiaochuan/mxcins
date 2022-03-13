@@ -7,13 +7,12 @@ import * as MxLibs__SingleBreakpointPublisherBS__Es6Import from './MxLibs__Singl
 const MxLibs__SingleBreakpointPublisherBS: any = MxLibs__SingleBreakpointPublisherBS__Es6Import;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type breakpoint = "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
+export type QueryListDispatcher_breakpoint = "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
 
-// tslint:disable-next-line:interface-over-type-literal
-export type BreakpointCmp_t = breakpoint;
+export const QueryListDispatcher_breakpoints: QueryListDispatcher_breakpoint[] = MxLibs__SingleBreakpointPublisherBS.QueryListDispatcher.breakpoints;
 
-export const breakpoints: breakpoint[] = MxLibs__SingleBreakpointPublisherBS.breakpoints;
-
-export const subscribe: (func:((_1:BreakpointCmp_t) => void)) => number = MxLibs__SingleBreakpointPublisherBS.subscribe;
+export const subscribe: (subscriber:((_1:QueryListDispatcher_breakpoint) => void)) => number = MxLibs__SingleBreakpointPublisherBS.subscribe;
 
 export const unsubscribe: (id:number) => void = MxLibs__SingleBreakpointPublisherBS.unsubscribe;
+
+export const QueryListDispatcher: { breakpoints: QueryListDispatcher_breakpoint[] } = MxLibs__SingleBreakpointPublisherBS.QueryListDispatcher

@@ -16,6 +16,12 @@ var breakpoints = [
   "xs"
 ];
 
+var screen = {
+  contents: undefined
+};
+
+var store = Belt_MutableMapString.fromArray([]);
+
 function cmp(a, b) {
   return breakpoints.indexOf(a) - breakpoints.indexOf(b) | 0;
 }
@@ -51,27 +57,17 @@ var queries = Belt_Map.fromArray([
       ]
     ], BreakpointCmp);
 
-var screen = {
-  contents: undefined
-};
+function dispatch(fn) {
+  return Belt_Option.forEach(screen.contents, fn);
+}
 
-var token = {
-  contents: -1
-};
-
-var store = Belt_MutableMapString.fromArray([]);
-
-var subscribers = Belt_MutableMapInt.fromArray([]);
-
-function start(param) {
+function register(onchange) {
   return Belt_Map.forEach(queries, (function (breakpoint, query) {
                 var handler = function (evt) {
                   var matches = evt.matches;
                   if (matches) {
                     screen.contents = breakpoint;
-                    return Belt_MutableMapInt.forEach(subscribers, (function (param, func) {
-                                  return Curry._1(func, breakpoint);
-                                }));
+                    return Curry._1(onchange, breakpoint);
                   }
                   
                 };
@@ -85,46 +81,60 @@ function start(param) {
               }));
 }
 
-function close(param) {
-  Belt_Map.forEach(queries, (function (param, query) {
-          return Belt_Option.forEach(Belt_MutableMapString.get(store, query), (function (cached) {
-                        cached.mediaQueryList.addEventListener("change", cached.handler);
-                        
-                      }));
-        }));
-  return Belt_MutableMapInt.clear(subscribers);
+function unregister(param) {
+  return Belt_Map.forEach(queries, (function (param, query) {
+                return Belt_Option.forEach(Belt_MutableMapString.get(store, query), (function (cached) {
+                              cached.mediaQueryList.addEventListener("change", cached.handler);
+                              
+                            }));
+              }));
 }
 
-function subscribe(func) {
+var QueryListDispatcher = {
+  breakpoints: breakpoints,
+  screen: screen,
+  store: store,
+  BreakpointCmp: BreakpointCmp,
+  queries: queries,
+  dispatch: dispatch,
+  register: register,
+  unregister: unregister
+};
+
+var token = {
+  contents: -1
+};
+
+var subscribers = Belt_MutableMapInt.fromArray([]);
+
+function subscribe(subscriber) {
   if (Belt_MutableMapInt.size(subscribers) === 0) {
-    start(undefined);
+    register(function (screen) {
+          return Belt_MutableMapInt.forEach(subscribers, (function (param, fn) {
+                        return Curry._1(fn, screen);
+                      }));
+        });
   }
   token.contents = token.contents + 1 | 0;
-  Belt_MutableMapInt.set(subscribers, token.contents, func);
-  Belt_Option.forEach(screen.contents, func);
+  Belt_MutableMapInt.set(subscribers, token.contents, subscriber);
+  Belt_Option.forEach(screen.contents, subscriber);
   return token.contents;
 }
 
 function unsubscribe(id) {
   Belt_MutableMapInt.remove(subscribers, id);
   if (Belt_MutableMapInt.size(subscribers) === 0) {
-    return close(undefined);
+    return unregister(undefined);
   }
   
 }
 
 export {
-  breakpoints ,
-  BreakpointCmp ,
-  queries ,
-  screen ,
+  QueryListDispatcher ,
   token ,
-  store ,
   subscribers ,
-  start ,
-  close ,
   subscribe ,
   unsubscribe ,
   
 }
-/* BreakpointCmp Not a pure module */
+/* store Not a pure module */
