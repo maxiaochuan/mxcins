@@ -9,14 +9,14 @@ var Raf;
 
 var SingleResizeObserver;
 
-var SingleBreakpointPublisher;
+var BreakpointPubSub;
 
 export {
   Dom ,
   $$ResizeObserver ,
   Raf ,
   SingleResizeObserver ,
-  SingleBreakpointPublisher ,
+  BreakpointPubSub ,
   
 }
 /* No side effect */

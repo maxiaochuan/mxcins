@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SingleResizeObserver, SingleBreakpointPublisher } from '@mxcins/webapi';
+import { SingleResizeObserver, BreakpointPubSub } from '@mxcins/webapi';
 
 export default () => {
   const divRef = React.useRef(null);
@@ -13,7 +13,7 @@ export default () => {
       SingleResizeObserver.observe(divRef.current, listener)
     }
 
-    let id = SingleBreakpointPublisher.subscribe(args => {
+    let id = BreakpointPubSub.subscribe(args => {
       console.log('args', args)
     })
 
@@ -22,7 +22,7 @@ export default () => {
         SingleResizeObserver.unobserve(divRef.current, listener)
       }
 
-      SingleBreakpointPublisher.unsubscribe(id)
+      BreakpointPubSub.unsubscribe(id)
     }
   }, []);
 

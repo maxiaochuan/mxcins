@@ -1,4 +1,4 @@
-module QueryListDispatcher = {
+module BreakpointPublisher = {
   @genType
   type breakpoint = [#xxl | #xl | #lg | #md | #sm | #xs]
 
@@ -7,7 +7,7 @@ module QueryListDispatcher = {
 
   type cached = {
     mediaQueryList: Webapi.Dom.Window.mediaQueryList,
-    handler: MxLibs__Dom.MediaQueryList.listener,
+    listener: MxLibs__Dom.MediaQueryList.listener,
   }
 
   let store = Belt.MutableMap.String.fromArray([])
@@ -42,15 +42,15 @@ module QueryListDispatcher = {
   let register = onchange => {
     queries->Belt.Map.forEach((breakpoint, query) => {
       open MxLibs__Dom
-      let handler = evt => {
+      let listener = evt => {
         let matches = evt->MediaQueryList.ChangeEvent.matches
         screens := screens.contents->Belt.Map.set(breakpoint, matches)
-        screens.contents->Belt.Map.findFirstBy((_, v) => v === true)->Belt.Option.forEach(onchange)
+        onchange->dispatch
       }
       let mediaQueryList = window->Window.matchMedia(query)
-      mediaQueryList->MediaQueryList.addEventListener("change", handler)
-      mediaQueryList->MediaQueryList.asChangeEvent->handler
-      store->Belt.MutableMap.String.set(query, {mediaQueryList: mediaQueryList, handler: handler})
+      mediaQueryList->MediaQueryList.addEventListener("change", listener)
+      store->Belt.MutableMap.String.set(query, {mediaQueryList: mediaQueryList, listener: listener})
+      mediaQueryList->MediaQueryList.asChangeEvent->listener
     })
   }
 
@@ -60,27 +60,27 @@ module QueryListDispatcher = {
       ->Belt.MutableMap.String.get(query)
       ->Belt.Option.forEach(cached => {
         open MxLibs__Dom
-        let {mediaQueryList, handler} = cached
-        mediaQueryList->MediaQueryList.removeEventListener("change", handler)
+        let {mediaQueryList, listener} = cached
+        mediaQueryList->MediaQueryList.removeEventListener("change", listener)
       })
     })
   }
 }
 
-let token = ref(-1)
+%%private(let token = ref(-1))
 
-let subscribers = Belt.MutableMap.Int.fromArray([])
+%%private(let subscribers = Belt.MutableMap.Int.fromArray([]))
 
 @genType
 let subscribe = subscriber => {
   if subscribers->Belt.MutableMap.Int.size === 0 {
-    QueryListDispatcher.register(screen => {
+    BreakpointPublisher.register(screen => {
       subscribers->Belt.MutableMap.Int.forEach((_, fn) => screen->fn)
     })
   }
   token := token.contents + 1
   subscribers->Belt.MutableMap.Int.set(token.contents, subscriber)
-  QueryListDispatcher.dispatch(subscriber)
+  BreakpointPublisher.dispatch(subscriber)
   token.contents
 }
 
@@ -88,6 +88,6 @@ let subscribe = subscriber => {
 let unsubscribe = (id: int) => {
   subscribers->Belt.MutableMap.Int.remove(id)
   if subscribers->Belt.MutableMap.Int.size === 0 {
-    ()->QueryListDispatcher.unregister
+    ()->BreakpointPublisher.unregister
   }
 }

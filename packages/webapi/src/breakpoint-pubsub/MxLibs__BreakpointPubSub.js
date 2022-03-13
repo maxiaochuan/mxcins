@@ -90,33 +90,31 @@ function dispatch(fn) {
 
 function register(onchange) {
   return Belt_Map.forEach(queries, (function (breakpoint, query) {
-                var handler = function (evt) {
+                var listener = function (evt) {
                   var matches = evt.matches;
                   screens.contents = Belt_Map.set(screens.contents, breakpoint, matches);
-                  return Belt_Option.forEach(Belt_Map.findFirstBy(screens.contents, (function (param, v) {
-                                    return v === true;
-                                  })), onchange);
+                  return dispatch(onchange);
                 };
                 var mediaQueryList = window.matchMedia(query);
-                mediaQueryList.addEventListener("change", handler);
-                handler(mediaQueryList);
-                return Belt_MutableMapString.set(store, query, {
-                            mediaQueryList: mediaQueryList,
-                            handler: handler
-                          });
+                mediaQueryList.addEventListener("change", listener);
+                Belt_MutableMapString.set(store, query, {
+                      mediaQueryList: mediaQueryList,
+                      listener: listener
+                    });
+                return listener(mediaQueryList);
               }));
 }
 
 function unregister(param) {
   return Belt_Map.forEach(queries, (function (param, query) {
                 return Belt_Option.forEach(Belt_MutableMapString.get(store, query), (function (cached) {
-                              cached.mediaQueryList.addEventListener("change", cached.handler);
+                              cached.mediaQueryList.addEventListener("change", cached.listener);
                               
                             }));
               }));
 }
 
-var QueryListDispatcher = {
+var BreakpointPublisher = {
   breakpoints: breakpoints,
   store: store,
   BreakpointCmp: BreakpointCmp,
@@ -156,9 +154,7 @@ function unsubscribe(id) {
 }
 
 export {
-  QueryListDispatcher ,
-  token ,
-  subscribers ,
+  BreakpointPublisher ,
   subscribe ,
   unsubscribe ,
   
