@@ -7,6 +7,22 @@ import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Belt_MutableMapInt from "rescript/lib/es6/belt_MutableMapInt.js";
 import * as Belt_MutableMapString from "rescript/lib/es6/belt_MutableMapString.js";
 
+function make(param) {
+  return Belt_MutableMapString.fromArray([]);
+}
+
+function save(map, query, mediaQueryList, listener) {
+  return Belt_MutableMapString.set(map, query, {
+              mediaQueryList: mediaQueryList,
+              listener: listener
+            });
+}
+
+var QueryDataSet = {
+  make: make,
+  save: save
+};
+
 var breakpoints = [
   "xxl",
   "xl",
@@ -16,7 +32,7 @@ var breakpoints = [
   "xs"
 ];
 
-var store = Belt_MutableMapString.fromArray([]);
+var dataset = Belt_MutableMapString.fromArray([]);
 
 function cmp(a, b) {
   return breakpoints.indexOf(a) - breakpoints.indexOf(b) | 0;
@@ -85,7 +101,9 @@ var screens = {
 function dispatch(fn) {
   return Belt_Option.forEach(Belt_Map.findFirstBy(screens.contents, (function (param, v) {
                     return v === true;
-                  })), fn);
+                  })), (function (param) {
+                return Curry._1(fn, param[0]);
+              }));
 }
 
 function register(onchange) {
@@ -97,17 +115,14 @@ function register(onchange) {
                 };
                 var mediaQueryList = window.matchMedia(query);
                 mediaQueryList.addEventListener("change", listener);
-                Belt_MutableMapString.set(store, query, {
-                      mediaQueryList: mediaQueryList,
-                      listener: listener
-                    });
+                save(dataset, query, mediaQueryList, listener);
                 return listener(mediaQueryList);
               }));
 }
 
 function unregister(param) {
   return Belt_Map.forEach(queries, (function (param, query) {
-                return Belt_Option.forEach(Belt_MutableMapString.get(store, query), (function (cached) {
+                return Belt_Option.forEach(Belt_MutableMapString.get(dataset, query), (function (cached) {
                               cached.mediaQueryList.addEventListener("change", cached.listener);
                               
                             }));
@@ -116,7 +131,7 @@ function unregister(param) {
 
 var BreakpointPublisher = {
   breakpoints: breakpoints,
-  store: store,
+  dataset: dataset,
   BreakpointCmp: BreakpointCmp,
   queries: queries,
   screens: screens,
@@ -154,10 +169,11 @@ function unsubscribe(id) {
 }
 
 export {
+  QueryDataSet ,
   BreakpointPublisher ,
   breakpoints ,
   subscribe ,
   unsubscribe ,
   
 }
-/* store Not a pure module */
+/* dataset Not a pure module */

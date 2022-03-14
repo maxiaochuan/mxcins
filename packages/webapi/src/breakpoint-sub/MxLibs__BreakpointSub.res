@@ -1,3 +1,17 @@
+module QueryDataSet = {
+  open Belt.MutableMap.String
+
+  type value = {
+    mediaQueryList: MxLibs__Dom.Window.mediaQueryList,
+    listener: MxLibs__Dom.MediaQueryList.listener,
+  }
+
+  let make = () => fromArray([])
+
+  let save = (map, ~query, ~mediaQueryList, ~listener) =>
+    map->set(query, {mediaQueryList: mediaQueryList, listener: listener})
+}
+
 module BreakpointPublisher = {
   @genType
   type breakpoint = [#xxl | #xl | #lg | #md | #sm | #xs]
@@ -5,12 +19,7 @@ module BreakpointPublisher = {
   @genType
   let breakpoints: array<breakpoint> = [#xxl, #xl, #lg, #md, #sm, #xs]
 
-  type cached = {
-    mediaQueryList: Webapi.Dom.Window.mediaQueryList,
-    listener: MxLibs__Dom.MediaQueryList.listener,
-  }
-
-  let store = Belt.MutableMap.String.fromArray([])
+  let dataset = QueryDataSet.make()
 
   module BreakpointCmp = Belt.Id.MakeComparable({
     type t = breakpoint
@@ -37,7 +46,9 @@ module BreakpointPublisher = {
   )
 
   let dispatch = fn =>
-    screens.contents->Belt.Map.findFirstBy((_, v) => v === true)->Belt.Option.forEach(fn)
+    screens.contents
+    ->Belt.Map.findFirstBy((_, v) => v === true)
+    ->Belt.Option.forEach(((screen, _)) => screen->fn)
 
   let register = onchange => {
     queries->Belt.Map.forEach((breakpoint, query) => {
@@ -49,14 +60,14 @@ module BreakpointPublisher = {
       }
       let mediaQueryList = window->Window.matchMedia(query)
       mediaQueryList->MediaQueryList.addEventListener("change", listener)
-      store->Belt.MutableMap.String.set(query, {mediaQueryList: mediaQueryList, listener: listener})
+      dataset->QueryDataSet.save(~query, ~mediaQueryList, ~listener)
       mediaQueryList->MediaQueryList.asChangeEvent->listener
     })
   }
 
   let unregister = () => {
     queries->Belt.Map.forEach((_, query) => {
-      store
+      dataset
       ->Belt.MutableMap.String.get(query)
       ->Belt.Option.forEach(cached => {
         open MxLibs__Dom

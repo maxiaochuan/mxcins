@@ -1,5 +1,5 @@
 import * as SingleResizeObserver from './single-resize-observer/MxLibs__SingleResizeObserver.gen'
 
-import * as BreakpointPubSub from './breakpoint-pubsub/MxLibs__BreakpointPubSub.gen'
+import * as BreakpointSub from './breakpoint-sub/MXLibs__BreakpointSub.gen'
 
-export { SingleResizeObserver, BreakpointPubSub }
+export { SingleResizeObserver, BreakpointSub }
