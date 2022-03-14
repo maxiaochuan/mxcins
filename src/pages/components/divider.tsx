@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider } from '@mxcins/components';
+import { Divider } from '@mxcins/components/src';
 import { Record } from '../../components';
 
 const DividerView = () => {

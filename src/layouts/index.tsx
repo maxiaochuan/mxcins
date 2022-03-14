@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ConfigProvider } from '@mxcins/components';
+import { ConfigProvider } from '@mxcins/components/src';
 
 const Layout: React.FC = props => {
   const { children } = props;

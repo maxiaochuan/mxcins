@@ -10,6 +10,7 @@
       "in-source": true
     }
   ],
+  "suffix": ".bs.js",
   "reason": { "react-jsx": 3 },
   "bs-dependencies": ["@rescript/react", "@mxcins/hooks", "@mxcins/webapi", "rescript-webapi"],
   "pinned-dependencies": ["@mxcins/hooks", "@mxcins/webapi"],

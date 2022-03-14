@@ -3,7 +3,6 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Belt_Id from "rescript/lib/es6/belt_Id.js";
 import * as Belt_Map from "rescript/lib/es6/belt_Map.js";
-import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Belt_MutableMapInt from "rescript/lib/es6/belt_MutableMapInt.js";
 import * as Belt_MutableMapString from "rescript/lib/es6/belt_MutableMapString.js";
 
@@ -101,11 +100,11 @@ var screens = {
 var subscribers = Belt_MutableMapInt.fromArray([]);
 
 function dispatch(subscriber) {
-  return Belt_Option.forEach(Belt_Map.findFirstBy(screens.contents, (function (param, v) {
-                    return v === true;
-                  })), (function (param) {
-                return Curry._1(subscriber, param[0]);
-              }));
+  return Curry._1(subscriber, Belt_Map.toArray(screens.contents).filter(function (param) {
+                    return param[1] === true;
+                  }).map(function (param) {
+                  return param[0];
+                }));
 }
 
 var cache = Belt_MutableMapString.fromArray([]);
@@ -115,8 +114,8 @@ function register(param) {
                 var listener = function (evt) {
                   var matches = evt.matches;
                   screens.contents = Belt_Map.set(screens.contents, breakpoint, matches);
-                  return Belt_MutableMapInt.forEach(subscribers, (function (param, fn) {
-                                return dispatch(fn);
+                  return Belt_MutableMapInt.forEach(subscribers, (function (param, subscriber) {
+                                return dispatch(subscriber);
                               }));
                 };
                 var mediaQueryList = window.matchMedia(query);

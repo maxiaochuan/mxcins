@@ -2,7 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as MxHooks_useObserveResize from "./MxHooks_useObserveResize.js";
+import * as MxHooks_useObserveResize from "./MxHooks_useObserveResize.bs.js";
 
 function useGetState(init) {
   var match = React.useState(function () {

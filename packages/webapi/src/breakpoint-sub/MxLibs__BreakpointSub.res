@@ -48,8 +48,10 @@ module BreakpointPubSub = {
 
   let dispatch = subscriber =>
     screens.contents
-    ->Belt.Map.findFirstBy((_, v) => v === true)
-    ->Belt.Option.forEach(((screen, _)) => screen->subscriber)
+    ->Belt.Map.toArray
+    ->Js.Array2.filter(((_, v)) => v === true)
+    ->Js.Array2.map(((k, _)) => k)
+    ->subscriber
 
   let cache = QueryCacheList.make()
   let register = () => {
@@ -58,7 +60,7 @@ module BreakpointPubSub = {
       let listener = evt => {
         let matches = evt->MediaQueryList.ChangeEvent.matches
         screens := screens.contents->Belt.Map.set(breakpoint, matches)
-        subscribers->Belt.MutableMap.Int.forEach((_, fn) => fn->dispatch)
+        subscribers->Belt.MutableMap.Int.forEach((_, subscriber) => subscriber->dispatch)
       }
       let mediaQueryList = window->Window.matchMedia(query)
       mediaQueryList->MediaQueryList.addEventListener("change", listener)
@@ -98,6 +100,8 @@ module BreakpointPubSub = {
 type breakpoint = BreakpointPubSub.breakpoint
 @genType
 let breakpoints = BreakpointPubSub.breakpoints
+@genType
+type subscriber = Js.Array2.t<BreakpointPubSub.BreakpointCmp.t> => unit
 
 @genType
 let subscribe = subscriber => subscriber->BreakpointPubSub.subscribe

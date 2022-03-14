@@ -4,11 +4,11 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxRC__Libs__React from "../_libs/MxRC__Libs__React.js";
-import * as MxRC__Button__Twind from "./MxRC__Button__Twind.js";
-import * as MxRC__Button__Utils from "./MxRC__Button__Utils.js";
-import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.js";
-import * as MxRC__Button__IconBody from "./MxRC__Button__IconBody.js";
+import * as MxRC__Libs__React from "../_libs/MxRC__Libs__React.bs.js";
+import * as MxRC__Button__Twind from "./MxRC__Button__Twind.bs.js";
+import * as MxRC__Button__Utils from "./MxRC__Button__Utils.bs.js";
+import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.bs.js";
+import * as MxRC__Button__IconBody from "./MxRC__Button__IconBody.bs.js";
 
 var make = React.forwardRef(function (Props, ref) {
       var className = Props.className;

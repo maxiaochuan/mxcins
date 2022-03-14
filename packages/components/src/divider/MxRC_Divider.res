@@ -12,13 +12,6 @@ module DividerTwind = {
     let classes = [init]
     let pushMany = strs => classes->pushMany(strs)->ignore
 
-    // position: relative;
-    // top: -0.06em;
-    // display: inline-block;
-    // height: 0.9em;
-    // vertical-align: middle;
-    // border-top: 0;
-    // border-left: 1px solid rgba(0, 0, 0, 0.06);
     switch _type {
     | #vertical => ["relative inline-block mx-2 top-[-0.06em] h-[0.9em] align-middle border-l"]
     | #horizontal =>

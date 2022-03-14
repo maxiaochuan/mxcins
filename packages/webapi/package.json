@@ -15,8 +15,8 @@
   "files": [
     "src"
   ],
-  "module": "src/index.js",
-  "types": "src/index.d.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
     "build": "rescript",
     "dev": "rescript build -w"

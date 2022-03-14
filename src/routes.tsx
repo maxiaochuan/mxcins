@@ -28,6 +28,10 @@ export const conf: RouteConfig[] = [
         trunk: () => import('@/pages/components/divider'),
       },
       {
+        path: '/components/grid',
+        trunk: () => import('@/pages/components/grid'),
+      },
+      {
         path: '/webapi',
         trunk: () => import('@/pages/webapi'),
       },

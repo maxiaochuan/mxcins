@@ -5,7 +5,7 @@ import * as Twind from "twind";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Content from "@twind/content";
-import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.js";
+import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
 var ctx = React.createContext({
       size: "default"
