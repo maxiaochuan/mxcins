@@ -11,16 +11,18 @@ function make(param) {
   return Belt_MutableMapString.fromArray([]);
 }
 
-function save(map, query, mediaQueryList, listener) {
+function set(map, query, mediaQueryList, listener) {
   return Belt_MutableMapString.set(map, query, {
               mediaQueryList: mediaQueryList,
               listener: listener
             });
 }
 
-var QueryDataSet = {
+var QueryCacheList = {
   make: make,
-  save: save
+  set: set,
+  forEach: Belt_MutableMapString.forEach,
+  clear: Belt_MutableMapString.clear
 };
 
 var breakpoints = [
@@ -31,8 +33,6 @@ var breakpoints = [
   "sm",
   "xs"
 ];
-
-var dataset = Belt_MutableMapString.fromArray([]);
 
 function cmp(a, b) {
   return breakpoints.indexOf(a) - breakpoints.indexOf(b) | 0;
@@ -98,82 +98,88 @@ var screens = {
       ], BreakpointCmp)
 };
 
-function dispatch(fn) {
+var subscribers = Belt_MutableMapInt.fromArray([]);
+
+function dispatch(subscriber) {
   return Belt_Option.forEach(Belt_Map.findFirstBy(screens.contents, (function (param, v) {
                     return v === true;
                   })), (function (param) {
-                return Curry._1(fn, param[0]);
+                return Curry._1(subscriber, param[0]);
               }));
 }
 
-function register(onchange) {
+var cache = Belt_MutableMapString.fromArray([]);
+
+function register(param) {
   return Belt_Map.forEach(queries, (function (breakpoint, query) {
                 var listener = function (evt) {
                   var matches = evt.matches;
                   screens.contents = Belt_Map.set(screens.contents, breakpoint, matches);
-                  return dispatch(onchange);
+                  return Belt_MutableMapInt.forEach(subscribers, (function (param, fn) {
+                                return dispatch(fn);
+                              }));
                 };
                 var mediaQueryList = window.matchMedia(query);
                 mediaQueryList.addEventListener("change", listener);
-                save(dataset, query, mediaQueryList, listener);
-                return listener(mediaQueryList);
+                listener(mediaQueryList);
+                return set(cache, query, mediaQueryList, listener);
               }));
 }
 
 function unregister(param) {
-  return Belt_Map.forEach(queries, (function (param, query) {
-                return Belt_Option.forEach(Belt_MutableMapString.get(dataset, query), (function (cached) {
-                              cached.mediaQueryList.addEventListener("change", cached.listener);
-                              
-                            }));
-              }));
+  Belt_MutableMapString.forEach(cache, (function (param, value) {
+          value.mediaQueryList.addEventListener("change", value.listener);
+          
+        }));
+  return Belt_MutableMapString.clear(cache);
 }
 
-var BreakpointPublisher = {
-  breakpoints: breakpoints,
-  dataset: dataset,
-  BreakpointCmp: BreakpointCmp,
-  queries: queries,
-  screens: screens,
-  dispatch: dispatch,
-  register: register,
-  unregister: unregister
-};
-
-var token = {
+var index = {
   contents: -1
 };
 
-var subscribers = Belt_MutableMapInt.fromArray([]);
-
 function subscribe(subscriber) {
-  if (Belt_MutableMapInt.size(subscribers) === 0) {
-    register(function (screen) {
-          return Belt_MutableMapInt.forEach(subscribers, (function (param, fn) {
-                        return Curry._1(fn, screen);
-                      }));
-        });
+  if (Belt_MutableMapInt.isEmpty(subscribers)) {
+    register(undefined);
   }
-  token.contents = token.contents + 1 | 0;
-  Belt_MutableMapInt.set(subscribers, token.contents, subscriber);
+  index.contents = index.contents + 1 | 0;
+  Belt_MutableMapInt.set(subscribers, index.contents, subscriber);
   dispatch(subscriber);
-  return token.contents;
+  return index.contents;
 }
 
 function unsubscribe(id) {
   Belt_MutableMapInt.remove(subscribers, id);
-  if (Belt_MutableMapInt.size(subscribers) === 0) {
+  if (Belt_MutableMapInt.isEmpty(subscribers)) {
     return unregister(undefined);
   }
   
 }
 
+var BreakpointPubSub = {
+  breakpoints: breakpoints,
+  BreakpointCmp: BreakpointCmp,
+  queries: queries,
+  screens: screens,
+  subscribers: subscribers,
+  dispatch: dispatch,
+  cache: cache,
+  register: register,
+  unregister: unregister,
+  subscribe: subscribe,
+  unsubscribe: unsubscribe
+};
+
+var subscribe$1 = subscribe;
+
+var unsubscribe$1 = unsubscribe;
+
 export {
-  QueryDataSet ,
-  BreakpointPublisher ,
+  QueryCacheList ,
+  BreakpointPubSub ,
   breakpoints ,
-  subscribe ,
-  unsubscribe ,
+  subscribe$1 as subscribe,
+  unsubscribe$1 as unsubscribe,
   
 }
-/* dataset Not a pure module */
+/* BreakpointCmp Not a pure module */

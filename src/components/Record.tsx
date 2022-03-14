@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Record: React.FC<{ title?: string, gray?: boolean }> = props => {
+const Record: React.FC<{ title?: string; gray?: boolean }> = props => {
   const { title, gray, children } = props;
   return (
     <div>
