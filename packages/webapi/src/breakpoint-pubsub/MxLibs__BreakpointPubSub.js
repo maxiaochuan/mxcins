@@ -155,6 +155,7 @@ function unsubscribe(id) {
 
 export {
   BreakpointPublisher ,
+  breakpoints ,
   subscribe ,
   unsubscribe ,
   

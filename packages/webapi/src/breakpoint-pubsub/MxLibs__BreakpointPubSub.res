@@ -68,8 +68,9 @@ module BreakpointPublisher = {
 }
 
 %%private(let token = ref(-1))
-
 %%private(let subscribers = Belt.MutableMap.Int.fromArray([]))
+@genType
+let breakpoints = BreakpointPublisher.breakpoints
 
 @genType
 let subscribe = subscriber => {

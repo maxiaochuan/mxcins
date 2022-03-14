@@ -14,6 +14,8 @@ export type BreakpointPublisher_BreakpointCmp_t = BreakpointPublisher_breakpoint
 
 export const BreakpointPublisher_breakpoints: BreakpointPublisher_breakpoint[] = MxLibs__BreakpointPubSubBS.BreakpointPublisher.breakpoints;
 
+export const breakpoints: BreakpointPublisher_breakpoint[] = MxLibs__BreakpointPubSubBS.breakpoints;
+
 export const subscribe: (subscriber:((_1:[BreakpointPublisher_BreakpointCmp_t, boolean]) => void)) => number = MxLibs__BreakpointPubSubBS.subscribe;
 
 export const unsubscribe: (id:number) => void = MxLibs__BreakpointPubSubBS.unsubscribe;
