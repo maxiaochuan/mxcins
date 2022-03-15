@@ -1,0 +1,17 @@
+{
+  "key": "{{{key}}}",
+  {{#index}}
+  index: true,
+  {{/index}}
+  {{#path}}
+  path: "{{{path}}}",
+  {{/path}}
+  {{#component}}
+  component: dynamic(() => import("{{{.}}}"), { {{#sub}}isLayout: true{{/sub}} }),
+  {{/component}}
+  {{#sub}}
+  routes: [
+    {{{.}}}
+  ],
+  {{/sub}}
+}

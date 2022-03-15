@@ -1,0 +1,45 @@
+{
+  "name": "@mxcins/vite-plugin-routes",
+  "version": "1.0.0-alpha.0",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins"
+  },
+  "files": [
+    "mustaches",
+    "dynamic.js"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "dev": "rollup --config build -w"
+  },
+  "dependencies": {
+    "mkdirp": "1.0.4",
+    "mustache": "4.2.0",
+    "react-router": "6.2.2",
+    "react-router-dom": "6.2.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "8.3.1",
+    "@types/node": "17.0.21",
+    "rollup": "^2.70.1",
+    "vite": "2.8.6"
+  },
+  "peerDependencies": {
+    "vite": "2.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}

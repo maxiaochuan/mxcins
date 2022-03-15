@@ -1,6 +1,16 @@
 {
-  "packages": [
-    "packages/*"
-  ],
-  "version": "0.0.0"
+  "packages": ["packages/*"],
+  "useWorkspaces": true,
+  "command": {
+    "bootstrap": {},
+    "version": {
+      "conventionalCommits": true
+    },
+    "publish": {
+      "registry": "https://registry.npmjs.org",
+      "message": "chore: publish"
+    }
+  },
+  "ignoreChanges": ["*.test.ts"],
+  "version": "independent"
 }
