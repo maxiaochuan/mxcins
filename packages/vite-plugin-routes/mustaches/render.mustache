@@ -1,4 +1,4 @@
-import { Routes, Route, RouteProps } from 'react-router-dom';
+import { Routes, Route, RouteProps, Outlet } from 'react-router-dom';
 import conf from '{{{routesPath}}}';
 
 interface IRoute extends RouteProps {
@@ -11,7 +11,7 @@ const map = (routes: IRoute[]) => {
   return routes.map(row => {
     const { key, path, index, component: Component, routes = [] } = row;
     return (
-      <Route key={key} index={index} path={path} element={<Component />}>
+      <Route key={key} index={index} path={path} element={<Component>{routes.length && <Outlet /> || null}</Component>}>
         {map(routes)}
       </Route>
     );
