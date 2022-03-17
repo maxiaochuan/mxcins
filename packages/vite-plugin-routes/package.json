@@ -12,6 +12,7 @@
   },
   "files": [
     "mustaches",
+    "runtime",
     "dist",
     "src"
   ],
