@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.7](https://github.com/maxiaochuan/mxcins/compare/@mxcins/vite-plugin-routes@1.0.0-alpha.6...@mxcins/vite-plugin-routes@1.0.0-alpha.7) (2022-03-17)
+
+
+### Bug Fixes
+
+* **vite-plugin-routes:** render outlet ([7bf0997](https://github.com/maxiaochuan/mxcins/commit/7bf0997821da59f2edb44b2fdfb4df686ac84589))
+
+
+
+
+
 # [1.0.0-alpha.6](https://github.com/maxiaochuan/mxcins/compare/@mxcins/vite-plugin-routes@1.0.0-alpha.5...@mxcins/vite-plugin-routes@1.0.0-alpha.6) (2022-03-17)
 
 
