@@ -4,3 +4,5 @@ lib
 .merlin
 yarn.lock
 dist
+
+/packages/vite-plugin-routes/dynamic.js
