@@ -1,0 +1,23 @@
+import { Routes, Route, RouteProps } from 'react-router-dom';
+import conf from '{{{routesPath}}}';
+
+interface IRoute extends RouteProps {
+  key?: string;
+  component?: any;
+  routes?: IRoute[];
+}
+
+const map = (routes: IRoute[]) => {
+  return routes.map(row => {
+    const { key, path, component: Component, routes = [] } = row;
+    return (
+      <Route key={key} path={path} element={<Component />}>
+        {map(routes)}
+      </Route>
+    );
+  });
+};
+
+const render = (routes: IRoute[]) => <Routes>{map(routes)}</Routes>
+
+export default render(conf);

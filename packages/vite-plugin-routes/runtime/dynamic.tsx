@@ -1,15 +1,16 @@
 import { ComponentType, Suspense, lazy, FC } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet } from 'react-router-dom';
 
 const dynamic = <T extends ComponentType<any>>(
   factory: () => Promise<{ default: T }>,
-  opts: { isLayout?: boolean } = {},
+  opts: { isLayout?: boolean, loading?: ComponentType<any> },
 ): FC => {
-  const { isLayout = false } = opts;
+  const { isLayout = false, loading: Loading = () => <>Loading...</> } = opts;
   const RealComponent = lazy(factory) as ComponentType<any>;
+
   return () => {
     return (
-      <Suspense fallback={<>loading...</>}>
+      <Suspense fallback={<Loading />}>
         <RealComponent>{isLayout ? <Outlet /> : null}</RealComponent>
       </Suspense>
     );

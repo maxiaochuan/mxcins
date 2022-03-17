@@ -1,7 +1,8 @@
 // @ts-ignore
-import dynamic from '@mxcins/vite-plugin-routes/dynamic';
+import dynamic from '{{{dynamicPath}}}';
+{{#loading}}import Loading from '{{{.}}}'{{/loading}}
 
 // @ts-ignore
 export default [
-  {{routes}}
+  {{{routes}}}
 ]

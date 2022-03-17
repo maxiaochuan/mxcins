@@ -1,3 +1,16 @@
 {
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.json",
+  "compilerOptions": { 
+    "target": "ES6",
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": true
+  },
+  "exclude": [
+    "dist"
+  ],
+  "include": [
+    "src",
+    "typings"
+  ]
 }

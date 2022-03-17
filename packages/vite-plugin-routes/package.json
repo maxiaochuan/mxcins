@@ -11,18 +11,16 @@
     "url": "https://github.com/maxiaochuan/mxcins"
   },
   "files": [
-    "dist",
     "mustaches",
-    "dynamic.d.ts",
-    "dynamic.js",
-    "index.d.ts"
+    "dist",
+    "src"
   ],
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.cjs.js",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf dist && tsc && rollup -c",
     "dev": "rollup -c -w"
   },
   "dependencies": {

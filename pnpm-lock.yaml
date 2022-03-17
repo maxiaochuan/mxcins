@@ -43,8 +43,8 @@ importers:
 
   packages/components:
     specifiers:
-      '@mxcins/hooks': 3.0.0-alpha.0
-      '@mxcins/webapi': 1.0.0-alpha.0
+      '@mxcins/hooks': ^3.0.0-alpha.1
+      '@mxcins/webapi': ^1.0.0-alpha.1
       '@twind/content': 0.1.0
       rc-motion: 2.4.5
       twind: 0.16.16
@@ -57,7 +57,7 @@ importers:
 
   packages/hooks:
     specifiers:
-      '@mxcins/webapi': 1.0.0-alpha.0
+      '@mxcins/webapi': ^1.0.0-alpha.1
       '@rescript/react': 0.10.3
       '@ryyppy/rescript-promise': ^2.1.0
     dependencies:

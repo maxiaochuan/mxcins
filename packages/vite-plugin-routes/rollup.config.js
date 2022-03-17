@@ -3,7 +3,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
 import typescript from '@rollup/plugin-typescript';
 
-console.log('r', process.cwd());
 export default [
   // browser-friendly UMD build
   // {
@@ -47,13 +46,13 @@ export default [
       // { file: pkg.module, format: 'es' }
     ]
   },
-  {
-    input: 'src/runtime/dynamic.tsx',
-    plugins: [
-      typescript(),
-    ],
-    output: [
-      { file: 'dynamic.js', format: 'es' }
-    ]
-  }
+  // {
+  //   input: 'src/runtime/dynamic.tsx',
+  //   plugins: [
+  //     typescript(),
+  //   ],
+  //   output: [
+  //     { file: 'dynamic.js', format: 'es' }
+  //   ]
+  // }
 ];
