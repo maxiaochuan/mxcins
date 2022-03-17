@@ -4,6 +4,11 @@
   "command": {
     "bootstrap": {},
     "version": {
+      "ignore": [
+        "packages/components/**/*",
+        "packages/hooks/**/*",
+        "packages/webapi/**/*"
+      ],
       "conventionalCommits": true
     },
     "publish": {
