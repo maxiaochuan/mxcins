@@ -1,6 +1,5 @@
 import type { PluginOption, ResolvedConfig } from 'vite';
 import * as path from 'path';
-import { dirname, join } from 'path';
 import * as fs from 'fs';
 import Mustache from 'mustache';
 import mkdirp from 'mkdirp';
@@ -20,6 +19,7 @@ export interface Route {
 
 export interface RoutesOptions {
   loading?: string;
+  dynamic?: boolean;
   routes: Route[];
 }
 
@@ -47,19 +47,24 @@ export default function(opts: RoutesOptions): PluginOption {
       fs.copyFileSync(path.join(__dirname, '../runtime/dynamic.tsx'), path.join(runtimeOutputPath, 'dynamic.tsx'));
     },
     buildStart() {
+      const components: { name: string, path: string }[] = [];
       const make = (routes: Route[]): string => routes.map(route => {
         const sub = route.routes ? make(route.routes) : '';
-        let component: string = route.component || '';
+        let componentPath: string = route.component || '';
         conf.resolve.alias.forEach(a => {
-          component = component.replace(a.find, a.replacement);
+          componentPath = componentPath.replace(a.find, a.replacement);
         })
 
-        return Mustache.render(views.route, { ...route, key: route.key || route.path, component, sub, loading: !!opts.loading })
-      }).join('')
+        const component = { name: route.component?.replace(/\//g, '_').replace('@', '$_component_') || '', path: componentPath };
 
+        components.push(component);
+
+        return Mustache.render(views.route, { ...route, key: route.key || route.path, component, sub, loading: !!opts.loading, dynamic: opts.dynamic })
+      }).join('')
 
       const exported = Mustache.render(views.export, {
         dynamicPath: path.join(outputPath, 'runtime', 'dynamic'),
+        imports: components,
         routes: make(opts.routes),
         loading: opts.loading,
       })

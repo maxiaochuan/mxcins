@@ -1,6 +1,5 @@
-
 {
-  "key": "{{{key}}}",
+  key: '{{{key}}}',
   {{#index}}
   index: true,
   {{/index}}
@@ -8,10 +7,14 @@
   path: "{{{path}}}",
   {{/path}}
   {{#component}}
-  component: dynamic(() => import("{{{.}}}"), {
-    {{#sub}}isLayout: true,{{/sub}}
+  {{^dynamic}}
+  component: {{{component.name}}},
+  {{/dynamic}}
+  {{#dynamic}}
+  component: dynamic(() => import("{{{component.path}}}"), {
     {{#loading}}loading: Loading,{{/loading}}
   }),
+  {{/dynamic}}
   {{/component}}
   {{#sub}}
   routes: [

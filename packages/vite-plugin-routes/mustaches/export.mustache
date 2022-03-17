@@ -1,5 +1,8 @@
 // @ts-ignore
 import dynamic from '{{{dynamicPath}}}';
+{{#imports}}
+import {{name}} from '{{{path}}}';
+{{/imports}}
 {{#loading}}import Loading from '{{{.}}}'{{/loading}}
 
 // @ts-ignore
