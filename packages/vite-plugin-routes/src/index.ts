@@ -32,7 +32,7 @@ export default function(opts: RoutesOptions): Plugin {
 
       const exported = Mustache.render(views.export, { routes: make(opts.routes) })
 
-      const outputPath = path.join(conf.root, OUTPUT_DIR);
+      const outputPath = path.join(conf.root, OUTPUT_DIR, 'routes.ts');
       mkdirp.sync(outputPath); 
       fs.writeFileSync(outputPath, exported);
     }
