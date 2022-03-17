@@ -22,7 +22,9 @@
     "build:res:webapi": "yarn workspace @mxcins/webapi run rescript build",
     "build:res:hooks": "yarn workspace @mxcins/hooks run rescript build",
     "build:res:components": "yarn workspace @mxcins/components run rescript build",
-    "prettier": "prettier --write \"src/**/*.tsx\""
+    "prettier": "prettier --write \"src/**/*.tsx\"",
+    "publish": "lerna publish from-git",
+    "version": "lerna version --conventional-commits --yes"
   },
   "dependencies": {
     "@ant-design/icons": "4.7.0",
