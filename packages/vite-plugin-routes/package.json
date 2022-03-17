@@ -11,8 +11,11 @@
     "url": "https://github.com/maxiaochuan/mxcins"
   },
   "files": [
+    "dist",
     "mustaches",
-    "dynamic.js"
+    "dynamic.d.ts",
+    "dynamic.js",
+    "index.d.ts"
   ],
   "license": "MIT",
   "sideEffects": false,
