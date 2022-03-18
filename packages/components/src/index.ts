@@ -4,6 +4,7 @@ import { make as Affix, Props as AffixProps } from './affix/MxRC__Affix.gen'
 import { make as _Button, Props as ButtonProps, ButtonType, ButtonShapeType } from './button/MxRC__Button.gen'
 import { make as Divider, Props as DividerProps } from './divider/MxRC_Divider.gen'
 import { make as Row, Props as RowProps } from './grid/MxRC__Grid__Row.gen'
+import { make as Col, Props as ColProps } from './grid/MxRC__Grid__Col.gen'
 
 const Button: React.ForwardRefExoticComponent<React.PropsWithoutRef<ButtonProps> & React.RefAttributes<HTMLElement>> = _Button as any;
 
@@ -13,6 +14,7 @@ export {
   Button,
   Divider,
   Row,
+  Col,
 }
 
 export type {
@@ -23,4 +25,5 @@ export type {
   ButtonShapeType,
   DividerProps,
   RowProps,
+  ColProps,
 }

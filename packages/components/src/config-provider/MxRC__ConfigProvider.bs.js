@@ -2,9 +2,7 @@
 
 import * as React from "react";
 import * as Twind from "twind";
-import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as Content from "@twind/content";
 import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
 var ctx = React.createContext({
@@ -32,115 +30,12 @@ var ConfigContext = {
   Provider: Provider
 };
 
-var b = MxRC__Libs__Twind.colors.blue;
-
-var r = MxRC__Libs__Twind.colors.red;
-
-var colors_primary = {
-  base: b[500],
-  hover: b[400],
-  active: b[600]
-};
-
-var colors_link = {
-  base: b[500],
-  hover: b[400],
-  active: b[600]
-};
-
-var colors_danger = {
-  base: r[500],
-  hover: r[400],
-  active: r[600]
-};
-
-var colors = {
-  primary: colors_primary,
-  link: colors_link,
-  danger: colors_danger
-};
-
-function init(primary, param) {
-  Twind.setup({
-        plugins: {
-          content: Content.content
-        },
-        preflight: {
-          ":root": {
-            "--color-primary": Belt_Option.getWithDefault(primary, colors_primary.base),
-            "--color-primary-hover": colors_primary.hover,
-            "--color-primary-active": colors_primary.active,
-            "--color-link": colors_link.base,
-            "--color-link-hover": colors_link.hover,
-            "--color-link-active": colors_link.active,
-            "--color-danger": colors_danger.base,
-            "--color-danger-hover": colors_danger.hover,
-            "--color-danger-active": colors_danger.active
-          },
-          "button:focus": {
-            outline: "0"
-          },
-          svg: {
-            "vertical-align": "initial"
-          }
-        },
-        theme: {
-          content: {
-            empty: "\"\""
-          },
-          colors: {
-            initial: "initial",
-            inherit: "inherit",
-            transparent: "transparent",
-            text: {
-              DEFAULT: "rgba(0, 0, 0, .85)"
-            },
-            link: {
-              DEFAULT: "var(--color-link)",
-              hover: "var(--color-link-hover)",
-              active: "var(--color-link-active)"
-            },
-            primary: {
-              DEFAULT: "var(--color-primary)",
-              hover: "var(--color-primary-hover)",
-              active: "var(--color-primary-active)"
-            },
-            danger: {
-              DEFAULT: "var(--color-danger)",
-              hover: "var(--color-danger-hover)",
-              active: "var(--color-danger-active)"
-            }
-          },
-          transitionProperty: {
-            width: "width",
-            opacity: "opacity"
-          },
-          transitionTimingFunction: {
-            DEFAULT: "cubic-bezier(.645,.045,.355,1)"
-          },
-          transitionDuration: {
-            DEFAULT: "300ms",
-            "200": "200ms"
-          },
-          minWidth: {
-            "6": "1.5rem",
-            "8": "2rem",
-            "10": "2.5rem"
-          },
-          maxWidth: {
-            "6": "1.5rem",
-            "8": "2rem",
-            "10": "2.5rem"
-          },
-          extend: {
-            colors: MxRC__Libs__Twind.colors
-          }
-        }
-      });
+function init(param) {
+  Twind.setup(MxRC__Libs__Twind.conf);
   
 }
 
-init(undefined, undefined);
+Twind.setup(MxRC__Libs__Twind.conf);
 
 function MxRC__ConfigProvider(Props) {
   var sizeOpt = Props.size;
@@ -162,7 +57,6 @@ var make = MxRC__ConfigProvider;
 
 export {
   ConfigContext ,
-  colors ,
   init ,
   make ,
   

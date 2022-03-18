@@ -4,14 +4,45 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Twind from "twind";
 import * as Belt_Map from "rescript/lib/es6/belt_Map.js";
-import * as Css from "twind/css";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxLibs__BreakpointSub from "@mxcins/webapi/src/breakpoint-sub/MxLibs__BreakpointSub.bs.js";
 
+var ctx = React.createContext({
+      spacex: 0
+    });
+
+function make(spacex) {
+  return {
+          spacex: spacex
+        };
+}
+
+var provider = ctx.Provider;
+
+function MxRC__Grid__Row$GridRowContext$Provider(Props) {
+  var value = Props.value;
+  var children = Props.children;
+  return React.createElement(provider, {
+              value: value,
+              children: children
+            });
+}
+
+var Provider = {
+  provider: provider,
+  make: MxRC__Grid__Row$GridRowContext$Provider
+};
+
+var GridRowContext = {
+  ctx: ctx,
+  make: make,
+  Provider: Provider
+};
+
 var init = "flex";
 
-function make(className, wrap, justify, align, space) {
+function make$1(className, wrap, justify, align) {
   var classes = [init];
   classes.push(wrap ? "flex-wrap" : "flex-nowrap");
   classes.push(justify === "space-between" ? "justify-space-between" : (
@@ -24,20 +55,6 @@ function make(className, wrap, justify, align, space) {
   classes.push(align === "start" ? "items-start" : (
           align === "center" ? "items-center" : "items-end"
         ));
-  var y = space[1];
-  var x = space[0];
-  if (x !== 0) {
-    var str = Css.css({
-          "column-gap": x.toString() + "px;"
-        });
-    classes.push(str);
-  }
-  if (y !== 0) {
-    var str$1 = Css.css({
-          "row-gap": y.toString() + "px;"
-        });
-    classes.push(str$1);
-  }
   var match = Twind.tw(Twind.apply(classes));
   if (className !== undefined) {
     return [
@@ -51,7 +68,7 @@ function make(className, wrap, justify, align, space) {
 
 var GridRowTwind = {
   init: init,
-  make: make
+  make: make$1
 };
 
 function MxRC__Grid__Row(Props) {
@@ -120,22 +137,36 @@ function MxRC__Grid__Row(Props) {
       0
     ];
   }
-  var className$1 = make(className, wrap, justify, align, space$1);
+  var spacey = space$1[1];
+  var spacex = space$1[0];
+  var style$1 = spacey !== 0 ? Caml_option.some(Object.assign({}, Belt_Option.getWithDefault(style, {}), {
+              gridRowGap: spacey.toString() + "px"
+            })) : style;
+  var value = React.useMemo((function () {
+          return {
+                  spacex: spacex
+                };
+        }), [spacex]);
+  var className$1 = make$1(className, wrap, justify, align);
   var children$1 = Belt_Option.getWithDefault(children, null);
   var tmp = {
     className: className$1
   };
-  if (style !== undefined) {
-    tmp.style = Caml_option.valFromOption(style);
+  if (style$1 !== undefined) {
+    tmp.style = Caml_option.valFromOption(style$1);
   }
-  return React.createElement("div", tmp, children$1);
+  return React.createElement(MxRC__Grid__Row$GridRowContext$Provider, {
+              value: value,
+              children: React.createElement("div", tmp, children$1)
+            });
 }
 
-var make$1 = MxRC__Grid__Row;
+var make$2 = MxRC__Grid__Row;
 
 export {
+  GridRowContext ,
   GridRowTwind ,
-  make$1 as make,
+  make$2 as make,
   
 }
-/* react Not a pure module */
+/* ctx Not a pure module */

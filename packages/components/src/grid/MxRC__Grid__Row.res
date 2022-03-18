@@ -1,10 +1,28 @@
+module GridRowContext = {
+  type context = {spacex: int}
+
+  let ctx = React.createContext({spacex: 0})
+
+  let make = (spacex: int) => {
+    {spacex: spacex}
+  }
+
+  module Provider = {
+    let provider = React.Context.provider(ctx)
+    @react.component
+    let make = (~value: context, ~children) => {
+      React.createElement(provider, {"value": value, "children": children})
+    }
+  }
+}
+
 module GridRowTwind = {
   open MxRC__Libs__Twind
   open Js.Array2
 
   let init = "flex"
 
-  let make = (className, ~wrap, ~justify, ~align, ~space) => {
+  let make = (className, ~wrap, ~justify, ~align) => {
     let classes = [init]
     let push = str => classes->push(str)->ignore
 
@@ -23,16 +41,6 @@ module GridRowTwind = {
     | #end => "items-end"
     | #center => "items-center"
     }->push
-
-    let (x, y) = space
-    switch x {
-    | 0 => ()
-    | n => {"column-gap": `${n->Js.Int.toString}px;`}->css->push
-    }
-    switch y {
-    | 0 => ()
-    | n => {"row-gap": `${n->Js.Int.toString}px;`}->css->push
-    }
 
     switch (classes->apply->tw, className) {
     | (classes, Some(className)) => [classes, className]->joinWith(" ")
@@ -99,8 +107,20 @@ let make = (
   | (None, None) => (0, 0)
   }
 
-  let className = GridRowTwind.make(className, ~wrap, ~justify, ~align, ~space)
+  let (spacex, spacey) = space
+  let style = switch spacey {
+  | 0 => style
+  | n =>
+    style
+    ->Belt.Option.getWithDefault(ReactDOM.Style.make())
+    ->ReactDOM.Style.combine(ReactDOM.Style.make(~gridRowGap=`${n->Js.Int.toString}px`, ()))
+    ->Some
+  }
+
+  let value = React.useMemo1(() => spacex->GridRowContext.make, [spacex])
+
+  let className = GridRowTwind.make(className, ~wrap, ~justify, ~align)
   let children = children->Belt.Option.getWithDefault(React.null)
 
-  <div className ?style> children </div>
+  <GridRowContext.Provider value> <div className ?style> children </div> </GridRowContext.Provider>
 }
