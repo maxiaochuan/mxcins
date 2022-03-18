@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/maxiaochuan/mxcins/compare/@mxcins/vite-plugin-routes@1.0.0-alpha.7...@mxcins/vite-plugin-routes@1.0.0-alpha.8) (2022-03-18)
+
+
+### Bug Fixes
+
+* **vite-plugin-routes:** win path ([3ad00c8](https://github.com/maxiaochuan/mxcins/commit/3ad00c8326a75dff651fd67413a8de1f599c706b))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/maxiaochuan/mxcins/compare/@mxcins/vite-plugin-routes@1.0.0-alpha.6...@mxcins/vite-plugin-routes@1.0.0-alpha.7) (2022-03-17)
 
 
