@@ -22,7 +22,7 @@
     "build:res:webapi": "yarn workspace @mxcins/webapi run rescript build",
     "build:res:hooks": "yarn workspace @mxcins/hooks run rescript build",
     "build:res:components": "yarn workspace @mxcins/components run rescript build",
-    "prettier": "prettier --write \"src/**/*.tsx\"",
+    "prettier": "prettier --write 'src/**/*.tsx' 'packages/vite-plugin-routes/**/*.{ts,js}'",
     "publish": "lerna publish from-git",
     "version": "lerna version --conventional-commits --yes"
   },

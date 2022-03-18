@@ -6,7 +6,25 @@ import mkdirp from 'mkdirp';
 
 const OUTPUT_DIR = 'src/.mx';
 
-const getMustacheView = (name: string) => fs.readFileSync(path.join(__dirname, '../mustaches', `${name}.mustache`), 'utf-8');
+const view = (name: string) =>
+  fs.readFileSync(path.join(__dirname, '../mustaches', `${name}.mustache`), 'utf-8');
+
+const winPath = (str: string) => str.replaceAll(path.sep, path.posix.sep);
+
+const makeAbsolutePath = (p: string | undefined, conf: ResolvedConfig) => {
+  if (!p) {
+    return '';
+  }
+  let componentPath: string = p;
+  conf.resolve.alias.forEach(a => {
+    componentPath = componentPath.replace(a.find, a.replacement);
+  });
+  return winPath(componentPath);
+};
+
+const makeComponentName = (route: Route) => {
+  return route.component?.replace(/\//g, '_').replace('@', '$_component_') || '';
+};
 
 export interface Route {
   key?: string;
@@ -23,14 +41,14 @@ export interface RoutesOptions {
   routes: Route[];
 }
 
-export default function(opts: RoutesOptions): PluginOption {
-  const packagePath = path.join(__dirname, '../package.json')
+export default function (opts: RoutesOptions): PluginOption {
+  const packagePath = path.join(__dirname, '../package.json');
   const pkg = JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
 
   const views = {
-    route:  getMustacheView('route'),
-    export:  getMustacheView('export'),
-    render:  getMustacheView('render'),
+    route: view('route'),
+    export: view('export'),
+    render: view('render'),
   };
 
   let conf: ResolvedConfig;
@@ -42,41 +60,53 @@ export default function(opts: RoutesOptions): PluginOption {
       conf = resolvedConfig;
       outputPath = path.join(conf.root, OUTPUT_DIR);
       const runtimeOutputPath = path.join(outputPath, 'runtime');
-      mkdirp.sync(outputPath); 
+      mkdirp.sync(outputPath);
       mkdirp.sync(runtimeOutputPath);
-      fs.copyFileSync(path.join(__dirname, '../runtime/dynamic.tsx'), path.join(runtimeOutputPath, 'dynamic.tsx'));
+      fs.copyFileSync(
+        path.join(__dirname, '../runtime/dynamic.tsx'),
+        path.join(runtimeOutputPath, 'dynamic.tsx'),
+      );
     },
     buildStart() {
-      const components: { name: string, path: string }[] = [];
-      const make = (routes: Route[]): string => routes.map(route => {
-        const sub = route.routes ? make(route.routes) : '';
-        let componentPath: string = route.component || '';
-        conf.resolve.alias.forEach(a => {
-          componentPath = componentPath.replace(a.find, a.replacement);
-        })
+      const components: { name: string; path: string }[] = [];
 
-        const component = { name: route.component?.replace(/\//g, '_').replace('@', '$_component_') || '', path: componentPath };
+      const make = (routes: Route[]): string =>
+        routes
+          .map(route => {
+            const sub = route.routes ? make(route.routes) : '';
 
-        components.push(component);
+            const component = {
+              name: makeComponentName(route),
+              path: makeAbsolutePath(route.component, conf),
+            };
 
-        return Mustache.render(views.route, { ...route, key: route.key || route.path, component, sub, loading: !!opts.loading, dynamic: opts.dynamic })
-      }).join('')
+            components.push(component);
+
+            return Mustache.render(views.route, {
+              ...route,
+              key: route.key || route.path,
+              component,
+              sub,
+              loading: !!opts.loading,
+              dynamic: opts.dynamic,
+            });
+          })
+          .join('');
 
       const exported = Mustache.render(views.export, {
-        dynamicPath: path.join(outputPath, 'runtime', 'dynamic'),
+        dynamicPath: winPath(path.join(outputPath, 'runtime', 'dynamic')),
         imports: components,
         routes: make(opts.routes),
-        loading: opts.loading,
-      })
+        loading: makeAbsolutePath(opts.loading, conf),
+      });
 
       fs.writeFileSync(path.join(outputPath, 'routes.ts'), exported);
 
       const render = Mustache.render(views.render, {
-        routesPath: path.join(outputPath, 'routes'),
-      })
+        routesPath: winPath(path.join(outputPath, 'routes')),
+      });
 
       fs.writeFileSync(path.join(outputPath, 'render.tsx'), render);
-    }
-  }
+    },
+  };
 }
-
