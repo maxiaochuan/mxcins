@@ -3,29 +3,29 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Twind from "twind";
+import * as Belt_Map from "rescript/lib/es6/belt_Map.js";
 import * as Css from "twind/css";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxRC__Libs__Utils from "../_libs/MxRC__Libs__Utils.bs.js";
 import * as MxLibs__BreakpointSub from "@mxcins/webapi/src/breakpoint-sub/MxLibs__BreakpointSub.bs.js";
 
 var init = "flex";
 
-function make(className, wrap, justify, align, spacing) {
+function make(className, wrap, justify, align, space) {
   var classes = [init];
   classes.push(wrap ? "flex-wrap" : "flex-nowrap");
-  classes.push(justify === "spacing-between" ? "justify-spacing-between" : (
+  classes.push(justify === "space-between" ? "justify-space-between" : (
           justify === "end" ? "justify-end" : (
               justify === "start" ? "justify-start" : (
-                  justify === "center" ? "justify-center" : "justify-spacing-around"
+                  justify === "center" ? "justify-center" : "justify-space-around"
                 )
             )
         ));
   classes.push(align === "start" ? "items-start" : (
           align === "center" ? "items-center" : "items-end"
         ));
-  var y = spacing[1];
-  var x = spacing[0];
+  var y = space[1];
+  var x = space[0];
   if (x !== 0) {
     var str = Css.css({
           "column-gap": x.toString() + "px;"
@@ -54,37 +54,73 @@ var GridRowTwind = {
   make: make
 };
 
-function MxRC__Row(Props) {
+function MxRC__Grid__Row(Props) {
   var className = Props.className;
   var style = Props.style;
   var wrapOpt = Props.wrap;
   var justifyOpt = Props.justify;
   var alignOpt = Props.align;
-  var spacing = Props.spacing;
+  var space = Props.space;
+  var mspace = Props.mspace;
   var children = Props.children;
   var wrap = wrapOpt !== undefined ? wrapOpt : true;
   var justify = justifyOpt !== undefined ? justifyOpt : "start";
   var align = alignOpt !== undefined ? alignOpt : "start";
-  var spacingRef = React.useRef(spacing);
+  var spaceRef = React.useRef(space);
+  var mspaceRef = React.useRef(mspace);
   var match = React.useState(function () {
         return MxLibs__BreakpointSub.breakpoints;
       });
   var setScreens = match[1];
+  var screens = match[0];
   React.useLayoutEffect((function () {
           var token = MxLibs__BreakpointSub.subscribe(function (screens) {
-                if (MxRC__Libs__Utils.BreakpointUtils.isBreakpointRecord(spacingRef.current)) {
-                  return Curry._1(setScreens, (function (param) {
-                                return screens;
-                              }));
-                }
-                
+                return Belt_Option.forEach(mspaceRef.current, (function (param) {
+                              return Curry._1(setScreens, (function (param) {
+                                            return screens;
+                                          }));
+                            }));
               });
           return (function (param) {
                     return MxLibs__BreakpointSub.unsubscribe(token);
                   });
         }), []);
-  var spacing$1 = MxRC__Libs__Utils.BreakpointUtils.makeSpacingByBreakpoints(spacingRef.current, match[0]);
-  var className$1 = make(className, wrap, justify, align, spacing$1);
+  var match$1 = spaceRef.current;
+  var match$2 = mspaceRef.current;
+  var space$1;
+  if (match$1 !== undefined) {
+    if (match$2 !== undefined) {
+      console.warn("`space` or `mspace` only can be set one");
+      space$1 = match$1;
+    } else {
+      space$1 = match$1;
+    }
+  } else if (match$2 !== undefined) {
+    var mx = Belt_Map.fromArray(match$2[0], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp);
+    var my = Belt_Map.fromArray(match$2[1], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp);
+    var mx$1 = Belt_Map.findFirstBy(mx, (function (k, param) {
+            return screens.includes(k);
+          }));
+    var my$1 = Belt_Map.findFirstBy(my, (function (k, param) {
+            return screens.includes(k);
+          }));
+    var mx$2 = Belt_Option.map(mx$1, (function (param) {
+            return param[1];
+          }));
+    var my$2 = Belt_Option.map(my$1, (function (param) {
+            return param[1];
+          }));
+    space$1 = [
+      Belt_Option.getWithDefault(mx$2, 0),
+      Belt_Option.getWithDefault(my$2, 0)
+    ];
+  } else {
+    space$1 = [
+      0,
+      0
+    ];
+  }
+  var className$1 = make(className, wrap, justify, align, space$1);
   var children$1 = Belt_Option.getWithDefault(children, null);
   var tmp = {
     className: className$1
@@ -95,7 +131,7 @@ function MxRC__Row(Props) {
   return React.createElement("div", tmp, children$1);
 }
 
-var make$1 = MxRC__Row;
+var make$1 = MxRC__Grid__Row;
 
 export {
   GridRowTwind ,

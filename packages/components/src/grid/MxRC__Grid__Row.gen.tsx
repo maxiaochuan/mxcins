@@ -1,12 +1,14 @@
-/* TypeScript file generated from MxRC__Row.res by genType. */
+/* TypeScript file generated from MxRC__Grid__Row.res by genType. */
 /* eslint-disable import/first */
 
 
 import * as React from 'react';
 
 // @ts-ignore: Implicit any on import
-import * as MxRC__RowBS__Es6Import from './MxRC__Row.bs';
-const MxRC__RowBS: any = MxRC__RowBS__Es6Import;
+import * as MxRC__Grid__RowBS__Es6Import from './MxRC__Grid__Row.bs';
+const MxRC__Grid__RowBS: any = MxRC__Grid__RowBS__Es6Import;
+
+import type {breakpoint as MxLibs__BreakpointSub_breakpoint} from '@mxcins/webapi/src/breakpoint-sub/MxLibs__BreakpointSub.gen';
 
 import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
 
@@ -14,7 +16,10 @@ import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs_
 export type style = MxRC__Libs__React_style;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type Props<spacing> = {
+export type mspace = [Array<[MxLibs__BreakpointSub_breakpoint, number]>, Array<[MxLibs__BreakpointSub_breakpoint, number]>];
+
+// tslint:disable-next-line:interface-over-type-literal
+export type Props = {
   readonly align?: 
     "center"
   | "end"
@@ -24,10 +29,11 @@ export type Props<spacing> = {
   readonly justify?: 
     "center"
   | "end"
-  | "spacing-around"
-  | "spacing-between"
+  | "space-around"
+  | "space-between"
   | "start"; 
-  readonly spacing?: spacing; 
+  readonly mspace?: mspace; 
+  readonly space?: [number, number]; 
   readonly style?: style; 
   readonly wrap?: boolean
 };
@@ -42,10 +48,11 @@ export const make: React.ComponentType<{
   readonly justify?: 
     "center"
   | "end"
-  | "spacing-around"
-  | "spacing-between"
+  | "space-around"
+  | "space-between"
   | "start"; 
-  readonly spacing?: any; 
+  readonly mspace?: mspace; 
+  readonly space?: [number, number]; 
   readonly style?: style; 
   readonly wrap?: boolean
-}> = MxRC__RowBS.make;
+}> = MxRC__Grid__RowBS.make;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import { Row } from '@mxcins/components';
 import { Record } from '../../components';
 
@@ -7,9 +7,12 @@ const GridView = () => {
     <>
       <Record title="row">
         <Row
-          spacing={[
-            { xs: 10, md: 20 },
-            { xs: 10, md: 30 },
+          mspace={[
+            [
+              ['xs', 10],
+              ['sm', 20],
+            ],
+            [],
           ]}
         >
           <div style={{ width: 50, height: 50, background: 'gray' }}></div>
