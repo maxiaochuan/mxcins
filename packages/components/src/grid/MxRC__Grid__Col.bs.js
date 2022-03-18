@@ -3,7 +3,6 @@
 import * as React from "react";
 import * as Twind from "twind";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
-import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__Grid__Row from "./MxRC__Grid__Row.bs.js";
 
 var init = "block";
@@ -34,22 +33,31 @@ function MxRC__Grid__Col(Props) {
   var className = Props.className;
   var style = Props.style;
   var span = Props.span;
+  var flex = Props.flex;
   var children = Props.children;
   var context = React.useContext(MxRC__Grid__Row.GridRowContext.ctx);
   var className$1 = make(className, span);
   var children$1 = Belt_Option.getWithDefault(children, null);
   var n = context.spacex;
-  var style$1 = n !== 0 ? Caml_option.some(Object.assign({}, Belt_Option.getWithDefault(style, {}), {
-              paddingRight: (n / 2 | 0).toString() + "px",
-              paddingLeft: (n / 2 | 0).toString() + "px"
-            })) : style;
-  var tmp = {
-    className: className$1
-  };
-  if (style$1 !== undefined) {
-    tmp.style = Caml_option.valFromOption(style$1);
+  var style$1 = n !== 0 ? Object.assign({}, Belt_Option.getWithDefault(style, {}), {
+          paddingRight: (n / 2 | 0).toString() + "px",
+          paddingLeft: (n / 2 | 0).toString() + "px"
+        }) : Belt_Option.getWithDefault(style, {});
+  var style$2;
+  if (flex !== undefined) {
+    var f = /^\d+$/.test(flex) ? flex + " " + flex + " auto" : (
+        /^\d+(\.\d+)?(px|em|rem|%)$/.test(flex) ? "0 0 " + flex : flex
+      );
+    style$2 = Object.assign({}, style$1, {
+          flex: f
+        });
+  } else {
+    style$2 = style$1;
   }
-  return React.createElement("div", tmp, children$1);
+  return React.createElement("div", {
+              className: className$1,
+              style: style$2
+            }, children$1);
 }
 
 var make$1 = MxRC__Grid__Col;

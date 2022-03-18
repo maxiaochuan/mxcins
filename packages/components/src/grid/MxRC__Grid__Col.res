@@ -19,14 +19,14 @@ module GridColTwind = {
 type style = MxRC__Libs__React.style
 
 @react.component @genType
-let make = (~className=?, ~style: option<style>=?, ~span=?, ~children=?) => {
+let make = (~className=?, ~style: option<style>=?, ~span=?, ~flex=?, ~children=?) => {
   let context = React.useContext(MxRC__Grid__Row.GridRowContext.ctx)
 
   let className = GridColTwind.make(className, ~span)
   let children = children->Belt.Option.getWithDefault(React.null)
 
   let style = switch context.spacex {
-  | 0 => style
+  | 0 => style->Belt.Option.getWithDefault(ReactDOM.Style.make())
   | n =>
     style
     ->Belt.Option.getWithDefault(ReactDOM.Style.make())
@@ -37,8 +37,23 @@ let make = (~className=?, ~style: option<style>=?, ~span=?, ~children=?) => {
         (),
       ),
     )
-    ->Some
   }
 
-  <div className ?style> children </div>
+  let style = switch flex {
+  | Some(flex) => {
+      let f = {
+        if %re("/^\d+$/")->Js.Re.test_(flex) {
+          `${flex} ${flex} auto`
+        } else if %re("/^\d+(\.\d+)?(px|em|rem|%)$/")->Js.Re.test_(flex) {
+          `0 0 ${flex}`
+        } else {
+          flex
+        }
+      }
+      style->ReactDOM.Style.combine(ReactDOM.Style.make(~flex=f, ()))
+    }
+  | _ => style
+  }
+
+  <div className style> children </div>
 }

@@ -17,6 +17,7 @@ export type style = MxRC__Libs__React_style;
 export type Props = {
   readonly children?: React.ReactNode; 
   readonly className?: string; 
+  readonly flex?: string; 
   readonly span?: number; 
   readonly style?: style
 };
@@ -24,6 +25,7 @@ export type Props = {
 export const make: React.ComponentType<{
   readonly children?: React.ReactNode; 
   readonly className?: string; 
+  readonly flex?: string; 
   readonly span?: number; 
   readonly style?: style
 }> = MxRC__Grid__ColBS.make;
