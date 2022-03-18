@@ -14,9 +14,10 @@ export type BreakpointPubSub_BreakpointCmp_t = BreakpointPubSub_breakpoint;
 
 // tslint:disable-next-line:interface-over-type-literal
 export type breakpoint = BreakpointPubSub_breakpoint;
+export type BreakpointType = breakpoint;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type subscriber = (_1:BreakpointPubSub_BreakpointCmp_t[]) => void;
+export type subscriber = (_1:breakpoint[]) => void;
 
 export const breakpoints: BreakpointPubSub_breakpoint[] = MxLibs__BreakpointSubBS.breakpoints;
 

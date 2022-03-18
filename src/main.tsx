@@ -5,9 +5,7 @@ import routes from './.mx/render';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {routes}
-    </BrowserRouter>
+    <BrowserRouter>{routes}</BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -96,12 +96,12 @@ module BreakpointPubSub = {
   }
 }
 
-@genType
+@genType.as("BreakpointType")
 type breakpoint = BreakpointPubSub.breakpoint
 @genType
 let breakpoints = BreakpointPubSub.breakpoints
 @genType
-type subscriber = Js.Array2.t<BreakpointPubSub.BreakpointCmp.t> => unit
+type subscriber = Js.Array2.t<breakpoint> => unit
 
 @genType
 let subscribe = subscriber => subscriber->BreakpointPubSub.subscribe

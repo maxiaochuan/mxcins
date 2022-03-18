@@ -14,20 +14,20 @@ import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs_
 export type style = MxRC__Libs__React_style;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type Props<gap> = {
+export type Props<spacing> = {
   readonly align?: 
     "center"
   | "end"
   | "start"; 
   readonly children?: React.ReactNode; 
   readonly className?: string; 
-  readonly gap: gap; 
   readonly justify?: 
     "center"
   | "end"
-  | "space-around"
-  | "space-between"
+  | "spacing-around"
+  | "spacing-between"
   | "start"; 
+  readonly spacing?: spacing; 
   readonly style?: style; 
   readonly wrap?: boolean
 };
@@ -39,13 +39,13 @@ export const make: React.ComponentType<{
   | "start"; 
   readonly children?: React.ReactNode; 
   readonly className?: string; 
-  readonly gap: any; 
   readonly justify?: 
     "center"
   | "end"
-  | "space-around"
-  | "space-between"
+  | "spacing-around"
+  | "spacing-between"
   | "start"; 
+  readonly spacing?: any; 
   readonly style?: style; 
   readonly wrap?: boolean
 }> = MxRC__RowBS.make;

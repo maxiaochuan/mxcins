@@ -1,31 +1,10 @@
-module RowContext = {
-  open MxRC__Libs__Utils
-  type gap = (BreakpointUtils.hash, BreakpointUtils.hash)
-  type value = {gap: gap}
-
-  let make = (~gap: gap): value => {gap: gap}
-
-  let init = {gap: BreakpointUtils.makeBreakpointNumberHashArray()}
-  let context = React.createContext(init)
-
-  module Provider = {
-    let provider = React.Context.provider(context)
-
-    @react.component
-    let make = (~value, ~children) => {
-      React.createElement(provider, {"value": value, "children": children})
-    }
-  }
-}
-
 module GridRowTwind = {
   open MxRC__Libs__Twind
   open Js.Array2
 
   let init = "flex"
 
-  let make = (className, ~wrap, ~justify, ~align, ~gap) => {
-    "classes make"->Js.log4(wrap, justify, gap)
+  let make = (className, ~wrap, ~justify, ~align, ~spacing) => {
     let classes = [init]
     let push = str => classes->push(str)->ignore
 
@@ -35,8 +14,8 @@ module GridRowTwind = {
     | #start => "justify-start"
     | #end => "justify-end"
     | #center => "justify-center"
-    | #"space-between" => "justify-space-between"
-    | #"space-around" => "justify-space-around"
+    | #"spacing-between" => "justify-spacing-between"
+    | #"spacing-around" => "justify-spacing-around"
     }->push
 
     switch align {
@@ -45,12 +24,12 @@ module GridRowTwind = {
     | #center => "items-center"
     }->push
 
-    let (n1, n2) = gap
-    switch n1 {
+    let (x, y) = spacing
+    switch x {
     | 0 => ()
     | n => {"column-gap": `${n->Js.Int.toString}px;`}->css->push
     }
-    switch n2 {
+    switch y {
     | 0 => ()
     | n => {"row-gap": `${n->Js.Int.toString}px;`}->css->push
     }
@@ -62,9 +41,9 @@ module GridRowTwind = {
   }
 }
 
-type justify = [#start | #end | #center | #"space-between" | #"space-around"]
+type justify = [#start | #end | #center | #"spacing-between" | #"spacing-around"]
 type align = [#start | #end | #center]
-type gap = RowContext.gap
+// type gap = RowContext.gap
 type style = MxRC__Libs__React.style
 
 @react.component @genType
@@ -74,19 +53,31 @@ let make = (
   ~wrap=true,
   ~justify=#start,
   ~align=#start,
-  ~gap: 'gap,
+  ~spacing: option<'spacing>=?,
   ~children=?,
 ) => {
-  let gap = MxRC__Libs__Utils.BreakpointUtils.makeBreakpointNumberHashArray(gap)
+  let spacingRef = React.useRef(spacing)
+  let (screens, setScreens) = React.useState(_ => MxLibs__BreakpointSub.breakpoints)
 
-  let screens = MxRC__Grid.useBreakpoint()
-  let gap = MxRC__Libs__Utils.BreakpointUtils.getCurrentBreakpointValue(gap, screens)
+  React.useLayoutEffect0(() => {
+    let token = MxLibs__BreakpointSub.subscribe(screens => {
+      if spacingRef.current->MxRC__Libs__Utils.BreakpointUtils.isBreakpointRecord {
+        setScreens(_ => screens)
+      }
+    })
 
-  let className = GridRowTwind.make(className, ~wrap, ~justify, ~align, ~gap)
+    let cleanup = () => MxLibs__BreakpointSub.unsubscribe(token)
+
+    cleanup->Some
+  })
+
+  let spacing = MxRC__Libs__Utils.BreakpointUtils.makeSpacingByBreakpoints(
+    spacingRef.current,
+    screens,
+  )
+
+  let className = GridRowTwind.make(className, ~wrap, ~justify, ~align, ~spacing)
   let children = children->Belt.Option.getWithDefault(React.null)
 
-  // let value = React.useMemo1(() => RowContext.make(~gap), [Js.Json.stringifyAny(gap)])
-
-  // <RowContext.Provider value> <div className ?style> children </div> </RowContext.Provider>
   <div className ?style> children </div>
 }

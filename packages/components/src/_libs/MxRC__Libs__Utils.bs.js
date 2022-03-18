@@ -2,22 +2,27 @@
 
 import * as ExternalsJs from "./_externals.js";
 
-function makeBreakpointNumberHash(prim) {
-  return ExternalsJs.makeBreakpointNumberHash(prim);
+function anyToBreakpointRecord(prim) {
+  return ExternalsJs.anyToBreakpointRecord(prim);
 }
 
-function makeBreakpointNumberHashArray(prim) {
-  return ExternalsJs.makeBreakpointNumberHashArray(prim);
+function anyToTwoBreakpointRecord(prim) {
+  return ExternalsJs.anyToTwoBreakpointRecord(prim);
 }
 
-function getCurrentBreakpointValue(prim0, prim1) {
-  return ExternalsJs.getCurrentBreakpointValue(prim0, prim1);
+function isBreakpointRecord(prim) {
+  return ExternalsJs.isBreakpointRecord(prim);
+}
+
+function makeSpacingByBreakpoints(prim0, prim1) {
+  return ExternalsJs.makeSpacingByBreakpoints(prim0, prim1);
 }
 
 var BreakpointUtils = {
-  makeBreakpointNumberHash: makeBreakpointNumberHash,
-  makeBreakpointNumberHashArray: makeBreakpointNumberHashArray,
-  getCurrentBreakpointValue: getCurrentBreakpointValue
+  anyToBreakpointRecord: anyToBreakpointRecord,
+  anyToTwoBreakpointRecord: anyToTwoBreakpointRecord,
+  isBreakpointRecord: isBreakpointRecord,
+  makeSpacingByBreakpoints: makeSpacingByBreakpoints
 };
 
 export {

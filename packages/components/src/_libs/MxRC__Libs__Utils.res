@@ -1,21 +1,28 @@
 module BreakpointUtils = {
   open MxLibs__BreakpointSub
-  @genType
-  type hash = {
-    xs: option<int>,
-    sm: option<int>,
-    md: option<int>,
-    lg: option<int>,
-    xl: option<int>,
-    xxl: option<int>,
-  }
 
-  // undefined null
+  @genType.as("BreakpointRecord")
+  type breakpointRecord = {
+    xxl: int,
+    xl: int,
+    lg: int,
+    md: int,
+    sm: int,
+    xs: int,
+  }
+  // let makeRecord = () => {
+  //   {
+
+  //   }
+  // }
+
   @module("./_externals.js") @val
-  external makeBreakpointNumberHash: 'a => hash = "makeBreakpointNumberHash"
+  external anyToBreakpointRecord: 'a => 'b = "anyToBreakpointRecord"
   @module("./_externals.js") @val
-  external makeBreakpointNumberHashArray: 'a => (hash, hash) = "makeBreakpointNumberHashArray"
+  external anyToTwoBreakpointRecord: 'a => 'b = "anyToTwoBreakpointRecord"
   @module("./_externals.js") @val
-  external getCurrentBreakpointValue: ((hash, hash), Js.Array2.t<breakpoint>) => (int, int) =
-    "getCurrentBreakpointValue"
+  external isBreakpointRecord: 'a => bool = "isBreakpointRecord"
+  @module("./_externals.js") @val
+  external makeSpacingByBreakpoints: ('a, array<breakpoint>) => (int, int) =
+    "makeSpacingByBreakpoints"
 }
