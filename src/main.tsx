@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes } from 'react-router-dom';
-import routes from './routes';
+import { BrowserRouter } from 'react-router-dom';
+import routes from './.mx/render';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>{routes}</Routes>
+      {routes}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

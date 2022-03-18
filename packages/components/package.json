@@ -13,11 +13,14 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "src"
+    "src",
+    "bsconfig.json"
   ],
   "module": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
+    "build": "rescript",
+    "clean": "rescript clean",
     "dev": "rescript build -w"
   },
   "dependencies": {

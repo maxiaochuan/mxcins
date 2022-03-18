@@ -13,7 +13,8 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist"
+    "src",
+    "bsconfig.json"
   ],
   "scripts": {
     "dev": "rescript build -w"

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { conf } from '../routes';
+import routes from '../.mx/routes';
 
 const Home: React.FC = () => {
   return (
     <>
       HOME
-      {conf[0].children?.map(
+      {routes[0].routes?.map(
         row =>
           row.path && (
             <div>

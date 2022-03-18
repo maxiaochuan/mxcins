@@ -15,7 +15,7 @@
   "gentypeconfig": {
     "language": "typescript",
     "shims": {
-      "Dom": "Dom"
+      "Dom": "dom"
     },
     "generatedFileExtension": ".gen.tsx",
     "module": "es6",
