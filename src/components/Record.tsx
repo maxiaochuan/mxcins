@@ -1,12 +1,18 @@
 import * as React from 'react';
 
-const Record: React.FC<{ title?: string; gray?: boolean; style?: React.CSSProperties }> = props => {
-  const { title, gray, style, children } = props;
+const Record: React.FC<{
+  className?: string;
+  title?: string;
+  gray?: boolean;
+  style?: React.CSSProperties;
+}> = props => {
+  const { className, title, gray, style, children } = props;
   return (
     <div>
       {title && <h2 style={{ fontSize: '1.5rem' }}>{title}</h2>}
       <div style={{ padding: 12 }}>
         <div
+          className={className}
           style={{
             display: 'flex',
             gap: '12px',

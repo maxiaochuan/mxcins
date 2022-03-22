@@ -46,12 +46,14 @@ importers:
       '@mxcins/hooks': ^3.0.0-alpha.1
       '@mxcins/webapi': ^1.0.0-alpha.1
       '@twind/content': 0.1.0
+      nanoid: 3.3.1
       rc-motion: 2.4.5
       twind: 0.16.16
     dependencies:
       '@mxcins/hooks': link:../hooks
       '@mxcins/webapi': link:../webapi
       '@twind/content': 0.1.0_twind@0.16.16+typescript@4.6.2
+      nanoid: 3.3.1
       rc-motion: 2.4.5_react-dom@17.0.2+react@17.0.2
       twind: 0.16.16_typescript@4.6.2
 
@@ -3764,7 +3766,6 @@ packages:
     resolution: {integrity: sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: true
 
   /negotiator/0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}

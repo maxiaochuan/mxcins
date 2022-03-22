@@ -39,6 +39,10 @@ export default defineConfig({
               component: '@/pages/components/grid',
             },
             {
+              path: '/components/layout',
+              component: '@/pages/components/layout',
+            },
+            {
               index: true,
               component: '@/pages/home',
             }

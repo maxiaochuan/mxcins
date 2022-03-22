@@ -46,6 +46,9 @@ export const conf = {
         hover: 'var(--color-danger-hover)',
         active: 'var(--color-danger-active)',
       },
+      background: {
+        DEFAULT: '#f0f2f5',
+      },
     },
     transitionProperty: {
       width: 'width',

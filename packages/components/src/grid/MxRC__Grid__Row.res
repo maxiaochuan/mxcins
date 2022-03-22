@@ -119,7 +119,7 @@ let make = (
     ->Some
   }
 
-  let value = React.useMemo1(() => GridRowContext.make(~spacex=spacex), [spacex])
+  let value = React.useMemo1(() => GridRowContext.make(~spacex), [spacex])
 
   let className = GridRowTwind.make(className, ~wrap, ~justify, ~align)
   let children = children->Belt.Option.getWithDefault(React.null)

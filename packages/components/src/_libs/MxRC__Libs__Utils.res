@@ -1,3 +1,6 @@
+@val @module("nanoid")
+external nanoid: unit => string = "nanoid"
+
 module BreakpointUtils = {
   open MxLibs__BreakpointSub
 
