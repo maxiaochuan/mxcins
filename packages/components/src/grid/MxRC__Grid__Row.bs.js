@@ -78,13 +78,13 @@ function MxRC__Grid__Row(Props) {
   var justifyOpt = Props.justify;
   var alignOpt = Props.align;
   var space = Props.space;
-  var mspace = Props.mspace;
+  var dynamicSpace = Props.dynamicSpace;
   var children = Props.children;
   var wrap = wrapOpt !== undefined ? wrapOpt : true;
   var justify = justifyOpt !== undefined ? justifyOpt : "start";
   var align = alignOpt !== undefined ? alignOpt : "start";
   var spaceRef = React.useRef(space);
-  var mspaceRef = React.useRef(mspace);
+  var dynamicSpaceRef = React.useRef(dynamicSpace);
   var match = React.useState(function () {
         return MxLibs__BreakpointSub.breakpoints;
       });
@@ -92,7 +92,7 @@ function MxRC__Grid__Row(Props) {
   var screens = match[0];
   React.useLayoutEffect((function () {
           var token = MxLibs__BreakpointSub.subscribe(function (screens) {
-                return Belt_Option.forEach(mspaceRef.current, (function (param) {
+                return Belt_Option.forEach(dynamicSpaceRef.current, (function (param) {
                               return Curry._1(setScreens, (function (param) {
                                             return screens;
                                           }));
@@ -103,33 +103,29 @@ function MxRC__Grid__Row(Props) {
                   });
         }), []);
   var match$1 = spaceRef.current;
-  var match$2 = mspaceRef.current;
+  var match$2 = dynamicSpaceRef.current;
   var space$1;
   if (match$1 !== undefined) {
     if (match$2 !== undefined) {
-      console.warn("`space` or `mspace` only can be set one");
+      console.warn("`space` or `dynamic space` only can be set one");
       space$1 = match$1;
     } else {
       space$1 = match$1;
     }
   } else if (match$2 !== undefined) {
-    var mx = Belt_Map.fromArray(match$2[0], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp);
-    var my = Belt_Map.fromArray(match$2[1], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp);
-    var mx$1 = Belt_Map.findFirstBy(mx, (function (k, param) {
-            return screens.includes(k);
-          }));
-    var my$1 = Belt_Map.findFirstBy(my, (function (k, param) {
-            return screens.includes(k);
-          }));
-    var mx$2 = Belt_Option.map(mx$1, (function (param) {
+    var mx = Belt_Option.map(Belt_Map.findFirstBy(Belt_Map.fromArray(match$2[0], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp), (function (k, param) {
+                return screens.includes(k);
+              })), (function (param) {
             return param[1];
           }));
-    var my$2 = Belt_Option.map(my$1, (function (param) {
+    var my = Belt_Option.map(Belt_Map.findFirstBy(Belt_Map.fromArray(match$2[1], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp), (function (k, param) {
+                return screens.includes(k);
+              })), (function (param) {
             return param[1];
           }));
     space$1 = [
-      Belt_Option.getWithDefault(mx$2, 0),
-      Belt_Option.getWithDefault(my$2, 0)
+      Belt_Option.getWithDefault(mx, 0),
+      Belt_Option.getWithDefault(my, 0)
     ];
   } else {
     space$1 = [

@@ -3,7 +3,7 @@ module GridRowContext = {
 
   let ctx = React.createContext({spacex: 0})
 
-  let make = (spacex: int) => {
+  let make = (~spacex: int) => {
     {spacex: spacex}
   }
 
@@ -66,18 +66,18 @@ let make = (
   ~justify=#start,
   ~align=#start,
   ~space: option<(int, int)>=?,
-  ~mspace: option<mspace>=?,
+  ~dynamicSpace: option<mspace>=?,
   ~children=?,
 ) => {
   // space only initial
   let spaceRef = React.useRef(space)
-  let mspaceRef = React.useRef(mspace)
+  let dynamicSpaceRef = React.useRef(dynamicSpace)
 
   let (screens, setScreens) = React.useState(_ => MxLibs__BreakpointSub.breakpoints)
 
   React.useLayoutEffect0(() => {
     let token = MxLibs__BreakpointSub.subscribe(screens => {
-      mspaceRef.current->Belt.Option.forEach(_ => setScreens(_ => screens))
+      dynamicSpaceRef.current->Belt.Option.forEach(_ => setScreens(_ => screens))
     })
 
     let cleanup = () => MxLibs__BreakpointSub.unsubscribe(token)
@@ -85,22 +85,24 @@ let make = (
     cleanup->Some
   })
 
-  let space = switch (spaceRef.current, mspaceRef.current) {
+  let space = switch (spaceRef.current, dynamicSpaceRef.current) {
   | (Some(space), Some(_)) => {
-      Js.Console.warn("`space` or `mspace` only can be set one")
+      Js.Console.warn("`space` or `dynamic space` only can be set one")
       space
     }
   | (Some(space), None) => space
-  | (None, Some(mspace)) => {
+  | (None, Some(space)) => {
       module Id = MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp
-      let (mx, my) = mspace
-      let mx = Belt.Map.fromArray(mx, ~id=module(Id))
-      let my = Belt.Map.fromArray(my, ~id=module(Id))
-      let mx = mx->Belt.Map.findFirstBy((k, _) => screens->Js.Array2.includes(k))
-      let my = my->Belt.Map.findFirstBy((k, _) => screens->Js.Array2.includes(k))
-
-      let mx = mx->Belt.Option.map(((_, v)) => v)
-      let my = my->Belt.Option.map(((_, v)) => v)
+      open Belt.Map
+      let (mx, my) = space
+      let mx =
+        fromArray(mx, ~id=module(Id))
+        ->findFirstBy((k, _) => screens->Js.Array2.includes(k))
+        ->Belt.Option.map(((_, v)) => v)
+      let my =
+        fromArray(my, ~id=module(Id))
+        ->findFirstBy((k, _) => screens->Js.Array2.includes(k))
+        ->Belt.Option.map(((_, v)) => v)
 
       (mx->Belt.Option.getWithDefault(0), my->Belt.Option.getWithDefault(0))
     }
@@ -117,7 +119,7 @@ let make = (
     ->Some
   }
 
-  let value = React.useMemo1(() => spacex->GridRowContext.make, [spacex])
+  let value = React.useMemo1(() => GridRowContext.make(~spacex=spacex), [spacex])
 
   let className = GridRowTwind.make(className, ~wrap, ~justify, ~align)
   let children = children->Belt.Option.getWithDefault(React.null)

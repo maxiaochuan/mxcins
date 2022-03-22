@@ -26,13 +26,13 @@ export type Props = {
   | "start"; 
   readonly children?: React.ReactNode; 
   readonly className?: string; 
+  readonly dynamicSpace?: mspace; 
   readonly justify?: 
     "center"
   | "end"
   | "space-around"
   | "space-between"
   | "start"; 
-  readonly mspace?: mspace; 
   readonly space?: [number, number]; 
   readonly style?: style; 
   readonly wrap?: boolean
@@ -45,13 +45,13 @@ export const make: React.ComponentType<{
   | "start"; 
   readonly children?: React.ReactNode; 
   readonly className?: string; 
+  readonly dynamicSpace?: mspace; 
   readonly justify?: 
     "center"
   | "end"
   | "space-around"
   | "space-between"
   | "start"; 
-  readonly mspace?: mspace; 
   readonly space?: [number, number]; 
   readonly style?: style; 
   readonly wrap?: boolean

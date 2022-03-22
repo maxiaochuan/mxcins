@@ -8,7 +8,7 @@ const GridView = () => {
       <Record title="row" style={{ display: 'block' }}>
         <Row
           style={{ width: '100%' }}
-          mspace={[
+          dynamicSpace={[
             [
               ['xs', 10],
               ['sm', 20],

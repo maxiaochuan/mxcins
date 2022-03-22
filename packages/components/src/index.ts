@@ -3,8 +3,7 @@ import { make as ConfigProvider, Props as ConfigProviderProps } from './config-p
 import { make as Affix, Props as AffixProps } from './affix/MxRC__Affix.gen'
 import { make as _Button, Props as ButtonProps, ButtonType, ButtonShapeType } from './button/MxRC__Button.gen'
 import { make as Divider, Props as DividerProps } from './divider/MxRC_Divider.gen'
-import { make as Row, Props as RowProps } from './grid/MxRC__Grid__Row.gen'
-import { make as Col, Props as ColProps } from './grid/MxRC__Grid__Col.gen'
+import { Row, Col, RowProps, ColProps } from './grid';
 
 const Button: React.ForwardRefExoticComponent<React.PropsWithoutRef<ButtonProps> & React.RefAttributes<HTMLElement>> = _Button as any;
 
