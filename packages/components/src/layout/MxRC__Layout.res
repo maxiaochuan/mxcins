@@ -27,6 +27,12 @@ module LayoutTwind = {
     let classes = [init]
     let push = str => classes->push(str)->ignore
 
+    if hasSider {
+      "flex-row"->push
+      { "& > main": { "width": "0" }, "& > section": { "width": "0" } }->css->push
+    } else {
+      "flex-col"->push
+    }
     (hasSider ? "flex-row" : "flex-col")->push
 
     switch (classes->apply->tw, className) {

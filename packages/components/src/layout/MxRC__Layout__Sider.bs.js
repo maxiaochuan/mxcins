@@ -16,8 +16,8 @@ function make(className) {
     Css.css({
           "& > div": {
             height: "100%",
-            marginTop: "-0.1.px",
-            paddingTop: "0.1.px"
+            marginTop: "-0.1px",
+            paddingTop: "0.1px"
           }
         })
   ];

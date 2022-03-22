@@ -3,6 +3,7 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Twind from "twind";
+import * as Css from "twind/css";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 
@@ -52,6 +53,20 @@ var init = "flex flex-auto bg-background min-h-0";
 
 function make$1(className, hasSider) {
   var classes = [init];
+  if (hasSider) {
+    classes.push("flex-row");
+    var str = Css.css({
+          "& > main": {
+            width: "0"
+          },
+          "& > section": {
+            width: "0"
+          }
+        });
+    classes.push(str);
+  } else {
+    classes.push("flex-col");
+  }
   classes.push(hasSider ? "flex-row" : "flex-col");
   var match = Twind.tw(Twind.apply(classes));
   if (className !== undefined) {
