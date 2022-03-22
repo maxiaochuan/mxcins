@@ -43,6 +43,10 @@ export default defineConfig({
               component: '@/pages/components/layout',
             },
             {
+              path: '/components/space',
+              component: '@/pages/components/space',
+            },
+            {
               index: true,
               component: '@/pages/home',
             }
