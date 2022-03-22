@@ -47,6 +47,10 @@ export default defineConfig({
               component: '@/pages/components/space',
             },
             {
+              path: '/components/input',
+              component: '@/pages/components/input',
+            },
+            {
               index: true,
               component: '@/pages/home',
             }

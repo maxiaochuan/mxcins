@@ -1,6 +1,11 @@
 import * as colors from 'twind/colors';
 import { content } from '@twind/content';
 
+const INLINE_ELEMENT_BASE_HEIGHT = [24, 32, 40];
+const INLINE_ELEMENT_BASE_LINEHEIGHT = [22, 22, 24];
+
+const INLINE_ELEMENT_BASE_PY = INLINE_ELEMENT_BASE_HEIGHT.map((h, i) => (h - 2 - INLINE_ELEMENT_BASE_LINEHEIGHT[i]) / 2)
+
 export const conf = {
   plugins: { content },
   preflight: {
@@ -62,6 +67,10 @@ export const conf = {
       200: '200ms',
     },
     minWidth: {
+      0: '0px',
+      full: '100%',
+      min: 'min-content',
+      max: 'max-content',
       6: '1.5rem',
       8: '2rem',
       10: '2.5rem',
@@ -128,6 +137,31 @@ export const conf = {
       min: 'min-content',
       max: 'max-content',
     }),
+    fontSize: {
+      xs: ['0.75rem', { lineHeight: '1rem' }],
+      sm: ['0.875rem', { lineHeight: '1.375rem' }],
+      base: ['1rem', { lineHeight: '1.5rem' }],
+      lg: ['1.125rem', { lineHeight: '1.75rem' }],
+      xl: ['1.25rem', { lineHeight: '1.75rem' }],
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+      '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+      '5xl': ['3rem', { lineHeight: '1' }],
+      '6xl': ['3.75rem', { lineHeight: '1' }],
+      '7xl': ['4.5rem', { lineHeight: '1' }],
+      '8xl': ['6rem', { lineHeight: '1' }],
+      '9xl': ['8rem', { lineHeight: '1' }],
+    },
+    padding: theme => {
+      return {
+        ...theme('spacing'),
+        'inline-bordered': INLINE_ELEMENT_BASE_PY[1] + "px",
+        'inline-bordered-sm': INLINE_ELEMENT_BASE_PY[0] + "px",
+        'inline-bordered-lg': INLINE_ELEMENT_BASE_PY[2] + "px",
+        '2-bordered': "0.4375rem", // 0.5rem - 1px
+        '3-bordered': "0.6875rem", // 0.75rem - 1px
+      };
+    },
     extend: {
       colors,
     },

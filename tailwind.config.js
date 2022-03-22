@@ -597,7 +597,9 @@ module.exports = {
       white: ['2px dotted white', '2px'],
       black: ['2px dotted black', '2px'],
     },
-    padding: (theme) => theme('spacing'),
+    padding: (theme) => {
+      return theme('spacing');
+    },
     placeholderColor: (theme) => theme('colors'),
     placeholderOpacity: (theme) => theme('opacity'),
     ringColor: (theme) => ({

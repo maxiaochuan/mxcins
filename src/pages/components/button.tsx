@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DownloadOutlined } from '@ant-design/icons';
-import { Button } from '@mxcins/components/src';
+import { Button } from '@mxcins/components';
 import { Record } from '@/components';
 
 const ButtonView = () => {
