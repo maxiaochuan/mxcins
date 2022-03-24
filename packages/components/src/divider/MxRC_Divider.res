@@ -6,14 +6,14 @@ module DividerTwind = {
   open MxRC__Libs__Twind
   open Js.Array2
   let init = "flex p-0 text-sm"
-  let horizontal = "flex w-full min-w-full my-6 border-gray-300 border-t"
+  let horizontal = "flex w-full min-w-full my-6 border-border border-t"
 
   let make = (className, ~_type, ~orientation, ~hasText, ~dashed as isDashed) => {
     let classes = [init]
     let pushMany = strs => classes->pushMany(strs)->ignore
 
     switch _type {
-    | #vertical => ["relative inline-block mx-2 top-[-0.06em] h-[0.9em] align-middle border-l"]
+    | #vertical => ["relative inline-block mx-2 top-[-0.06em] h-[0.9em] align-middle border-l border-border"]
     | #horizontal =>
       switch (hasText, orientation) {
       | (true, orientation) => {
@@ -23,7 +23,7 @@ module DividerTwind = {
           | #center => ("50%", "50%")
           }
 
-          let pseudo = w => `relative top-1/2 content-empty border-t w-[${w}]`
+          let pseudo = w => `relative top-1/2 content-empty border-t border-border w-[${w}]`
           let before = `before::(${lw->pseudo})`
           let after = `after::(${rw->pseudo})`
           [

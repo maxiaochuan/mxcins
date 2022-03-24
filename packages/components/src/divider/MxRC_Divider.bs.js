@@ -8,7 +8,7 @@ import * as Caml_splice_call from "rescript/lib/es6/caml_splice_call.js";
 
 var init = "flex p-0 text-sm";
 
-var horizontal = "flex w-full min-w-full my-6 border-gray-300 border-t";
+var horizontal = "flex w-full min-w-full my-6 border-border border-t";
 
 function make(className, _type, orientation, hasText, isDashed) {
   var classes = [init];
@@ -28,7 +28,7 @@ function make(className, _type, orientation, hasText, isDashed) {
             ]
         );
       var pseudo = function (w) {
-        return "relative top-1/2 content-empty border-t w-[" + w + "]";
+        return "relative top-1/2 content-empty border-t border-border w-[" + w + "]";
       };
       var before = "before::(" + pseudo(match[0]) + ")";
       var after = "after::(" + pseudo(match[1]) + ")";
@@ -45,7 +45,7 @@ function make(className, _type, orientation, hasText, isDashed) {
       strs = [horizontal];
     }
   } else {
-    strs = ["relative inline-block mx-2 top-[-0.06em] h-[0.9em] align-middle border-l"];
+    strs = ["relative inline-block mx-2 top-[-0.06em] h-[0.9em] align-middle border-l border-border"];
   }
   Caml_splice_call.spliceObjApply(classes, "push", [strs]);
   if (isDashed) {
