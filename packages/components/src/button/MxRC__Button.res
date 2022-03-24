@@ -11,9 +11,6 @@ type shape = [#default | #circle | #round]
 
 type style = MxRC__Libs__React.style
 
-type evt = ReactEvent.Mouse.t
-type onClick = evt => unit
-
 @react.component @genType
 let make = React.forwardRef((
   ~className=?,
@@ -28,7 +25,7 @@ let make = React.forwardRef((
   ~loading=false,
   ~icon: option<React.element>=?,
   ~children: option<React.element>=?,
-  ~onClick: option<onClick>=?,
+  ~onClick: option<ReactEvent.Mouse.t => unit>=?,
   ref,
 ) => {
   // config context

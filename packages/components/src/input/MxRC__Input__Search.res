@@ -18,12 +18,33 @@ module InputSearchTwind = {
 @react.component @genType
 let make = (
   ~size=?,
-  // ~className=?,
-  // ~style: option<style>=?,
   ~placeholder=?,
   ~addonBefore=?,
+  ~onSearch: option<(string, ReactEvent.Synthetic.t) => unit>=?,
 ) => {
-  let addonAfter =
-      <Button className={InputSearchTwind.makeSearch()} icon={<SearchOutlined />} />
-  <Input ?size ?placeholder ?addonBefore addonAfter />
+  let inputRef = React.useRef(Js.Nullable.null)
+
+  let onSearch = event => {
+    onSearch->Belt.Option.forEach(fn => {
+      let input = inputRef.current
+      input
+      ->Js.Nullable.toOption
+      ->Belt.Option.forEach(input => {
+        let v: option<string> = input["value"]
+        v->Belt.Option.getWithDefault("")->fn(event)
+      })
+    })
+  }
+
+  let onPressEnter = event => event->ReactEvent.toSyntheticEvent->onSearch
+
+  let addonAfter = {
+    let className = InputSearchTwind.makeSearch()
+    let icon = <SearchOutlined />
+    let onClick = event => event->ReactEvent.toSyntheticEvent->onSearch
+
+    <Button className icon onClick />
+  }
+
+  <Input ref=inputRef ?size ?placeholder ?addonBefore addonAfter onPressEnter />
 }

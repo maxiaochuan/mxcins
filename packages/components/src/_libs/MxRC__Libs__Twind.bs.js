@@ -28,7 +28,7 @@ var conf = {
       "--color-primary": Colors.presetPalettes.blue.primary,
       "--color-primary-hover": Colors.presetPalettes.blue[4],
       "--color-primary-active": Colors.presetPalettes.blue[6],
-      "--color-primary-outline": Colors.presetPalettes.blue[2],
+      "--color-primary-outline": Colors.presetPalettes.blue[1],
       "--color-danger": Colors.presetPalettes.red.primary,
       "--color-danger-hover": Colors.presetPalettes.red[4],
       "--color-danger-active": Colors.presetPalettes.red[6],

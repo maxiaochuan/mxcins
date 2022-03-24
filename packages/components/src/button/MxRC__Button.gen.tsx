@@ -29,12 +29,6 @@ export type ButtonShapeType = shape;
 export type style = MxRC__Libs__React_style;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type evt = MouseEvent;
-
-// tslint:disable-next-line:interface-over-type-literal
-export type onClick = (_1:evt) => void;
-
-// tslint:disable-next-line:interface-over-type-literal
 export type Props = {
   readonly type?: _type; 
   readonly block?: boolean; 
@@ -45,7 +39,7 @@ export type Props = {
   readonly ghost?: boolean; 
   readonly icon?: JSX.Element; 
   readonly loading?: boolean; 
-  readonly onClick?: onClick; 
+  readonly onClick?: (_1:MouseEvent) => void; 
   readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
@@ -61,7 +55,7 @@ export const make: React.ComponentType<{
   readonly ghost?: boolean; 
   readonly icon?: JSX.Element; 
   readonly loading?: boolean; 
-  readonly onClick?: onClick; 
+  readonly onClick?: (_1:MouseEvent) => void; 
   readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style

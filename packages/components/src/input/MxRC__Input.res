@@ -47,14 +47,16 @@ type style = MxRC__Libs__React.style
 type node = MxRC__Libs__React.node
 
 @react.component @genType
-let make = (
-  ~size=?,
-  ~className=?,
-  ~style: option<style>=?,
-  ~placeholder=?,
-  ~addonBefore: option<node>=?,
-  ~addonAfter: option<node>=?,
-) => {
+let make = React.forwardRef((~size=?,
+~className=?,
+~style: option<style>=?,
+~placeholder=?,
+~addonBefore: option<node>=?,
+~addonAfter: option<node>=?,
+//events
+~onPressEnter: option<ReactEvent.Keyboard.t => unit>=?,
+~onKeyDown: option<ReactEvent.Keyboard.t => unit>=?,
+ref) => {
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
@@ -64,7 +66,24 @@ let make = (
   let inGroup = addonBefore->Belt.Option.isSome || addonAfter->Belt.Option.isSome
   let className = InputTwind.make(className, ~size, ~inGroup)
 
-  let child = <input type_="text" className ?style ?placeholder />
+  let onKeyDown = event => {
+    // press enter
+    if event->ReactEvent.Keyboard.key === "Enter" {
+      onPressEnter->Belt.Option.forEach(fn => event->fn)
+    }
+
+    onKeyDown->Belt.Option.forEach(fn => event->fn)
+  }
+
+  let child =
+    <input
+      ref=?{ref->Js.Nullable.toOption->Belt.Option.map(ReactDOM.Ref.domRef)}
+      type_="text"
+      className
+      ?style
+      ?placeholder
+      onKeyDown
+    />
 
   if inGroup {
     let before = switch addonBefore {
@@ -79,4 +98,4 @@ let make = (
   } else {
     child
   }
-}
+})

@@ -26,7 +26,6 @@ function makeIn($$class) {
 }
 
 function makeAddon(isStandard) {
-  console.log("isStandard", isStandard);
   var classes = [
     "relative font-normal transition",
     isStandard ? "px-3-bordered text(sm center text) bg(background) border(1 border)" : "-left-px",
@@ -35,7 +34,6 @@ function makeAddon(isStandard) {
           "&:last-child": Twind.apply(["border-l-0"])
         })
   ];
-  console.log("classes", classes);
   return MxRC__Libs__Twind.atw(undefined, classes);
 }
 

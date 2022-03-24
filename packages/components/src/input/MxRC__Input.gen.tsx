@@ -10,6 +10,8 @@ const MxRC__InputBS: any = MxRC__InputBS__Es6Import;
 
 import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from '../../src/config-provider/MxRC__ConfigProvider.gen';
 
+import type {Keyboard_t as ReactEvent_Keyboard_t} from '../../src/shims/react.shim';
+
 import type {node as MxRC__Libs__React_node} from '../../src/_libs/MxRC__Libs__React.gen';
 
 import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
@@ -25,6 +27,8 @@ export type Props = {
   readonly addonAfter?: node; 
   readonly addonBefore?: node; 
   readonly className?: string; 
+  readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
+  readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style
@@ -34,6 +38,8 @@ export const make: React.ComponentType<{
   readonly addonAfter?: node; 
   readonly addonBefore?: node; 
   readonly className?: string; 
+  readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
+  readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly style?: style

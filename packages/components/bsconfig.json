@@ -18,7 +18,8 @@
     "language": "typescript",
     "shims": {
       "Dom": "dom",
-      "Belt": "belt"
+      "Belt": "belt",
+      "ReactEvent": "react"
     },
     "generatedFileExtension": ".gen.tsx",
     "module": "es6",

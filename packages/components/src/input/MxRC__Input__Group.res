@@ -22,7 +22,6 @@ module InputGroupTwind = {
   }
 
   let makeAddon = (~isStandard) => {
-    "isStandard"->Js.log2(isStandard)
     let classes = [
       "relative font-normal transition",
       isStandard
@@ -33,7 +32,6 @@ module InputGroupTwind = {
         "&:last-child": ["border-l-0"]->apply,
       }->css,
     ]
-    "classes"->Js.log2(classes)
 
     classes->atw
   }

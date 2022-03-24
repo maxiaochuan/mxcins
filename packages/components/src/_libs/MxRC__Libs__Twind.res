@@ -36,7 +36,7 @@ let conf = {
       "--color-primary": colors["blue"]["primary"],
       "--color-primary-hover": colors["blue"]["4"],
       "--color-primary-active": colors["blue"]["6"],
-      "--color-primary-outline": colors["blue"]["2"],
+      "--color-primary-outline": colors["blue"]["1"],
       "--color-danger": colors["red"]["primary"],
       "--color-danger-hover": colors["red"]["4"],
       "--color-danger-active": colors["red"]["6"],
