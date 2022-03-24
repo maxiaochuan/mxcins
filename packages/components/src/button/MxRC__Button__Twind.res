@@ -2,38 +2,37 @@ open MxRC__Libs__Twind
 let init = "
     relative
     font-normal
-    text(sm center text)
     whitespace-nowrap
-    border(1 gray-300)
-    rounded-sm
-    px-3
+    text(sm center text)
+    border(1 solid border)
+    rounded
+    px-4-bordered
     transition
   "
 
 let disabled = "
     disabled:cursor-not-allowed
-    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)
-    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)
-    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)
+    disabled:text(text-disabled hover:text-disabled focus:text-disabled active:text-disabled)
+    disabled:bg(background-disabled hover:background-disabled focus:background-disabled active:background-disabled)
+    disabled:border(border hover:border focus:border active:border)
   "
-
-let primary = "primary hover:primary-hover focus:primary-hover active:primary-active"
-let danger = "danger hover:danger-hover focus:danger-hover active:danger-active"
-let link = "link hover:link-hover focus:link-hover active:link-active"
-let initial = "initial hover:initial focus:initial active:initial"
-let transparent = "transparent hover:transparent focus:transparent active:transparent"
-
-let def = `text(${primary}) text-text border(${primary}) border-gray-300`
+/* --- with action colors --- */
+let colors = {
+  "primary": "primary hover:primary-hover focus:primary-hover active:primary-active",
+  "danger": "danger hover:danger-hover focus:danger-hover active:danger-active",
+  "link": "link hover:link-hover focus:link-hover active:link-active",
+  "initial": "initial hover:initial focus:initial active:initial",
+  "transparent": "transparent hover:transparent focus:transparent active:transparent",
+}
+/* --- with action colors --- */
 
 let text = "
-    border-none
+    border-transparent
     bg(initial hover:(black opacity-[0.018]) focus:(black opacity-[0.018]) active:(black opacity-[0.028]))
     disabled:bg(initial hover:initial focus:initial active:initial)
   "
 
 let block = "w-full"
-
-let circle = "rounded-full px-0"
 
 let make = (
   className: option<string>,
@@ -50,22 +49,27 @@ let make = (
   open Js.Array2
   let classes = [init, disabled]
   let push = str => classes->push(str)->ignore
-  let pushMany = strs => classes->pushMany(strs)->ignore
 
   /* --- colors, `type` `danger` --- */
   switch (_type, isDanger) {
-  | (#default, false) => [def]
-  | (#default, true) => [`text(${danger})`, `border(${danger})`]
-  | (#primary, false) => ["text-white", `bg(${primary})`, `border(${primary})`]
-  | (#primary, true) => ["text-white", `bg(${danger})`, `border(${danger})`]
-  | (#text, false) => [text]
-  | (#text, true) => [text, `text(${danger})`]
-  | (#link, false) => [`text(${link})`, `bg(${initial})`, `disabled:bg(${initial})`, "border-none"]
-  | (#link, true) => [`text(${danger})`, `bg(${initial})`, `disabled:bg(${initial})`, "border-none"]
-  | (#dashed, false) => [def, "border-dashed"]
-  | (#dashed, true) => [def, "border-dashed", `text(${danger})`, `border(${danger})`]
-  }->pushMany
-  /* --- colors --- */
+  | (#default, false) =>
+    `text(${colors["primary"]}) border(${colors["primary"]}) text-text border-border`
+  | (#default, true) => `text(${colors["danger"]}) border(${colors["danger"]})`
+  | (#primary, false) => `bg(${colors["primary"]}) border(${colors["primary"]}) text-white`
+  | (#primary, true) => `bg(${colors["danger"]}) border(${colors["danger"]}) text-white `
+  | (#dashed, false) =>
+    `text(${colors["primary"]}) border(${colors["primary"]}) text-text border-border border-dashed`
+  | (#dashed, true) =>
+    `text(${colors["danger"]}) border(${colors["danger"]}) text-text border-border border-dashed`
+  | (#text, false) => text
+  | (#text, true) => text ++ `text(${colors["danger"]})`
+  | (#link, false) =>
+    `text(${colors["link"]}) bg(${colors["initial"]}) disabled:bg(${colors["initial"]}) border-transparent`
+  | (#link, true) =>
+    `text(${colors["danger"]}) bg(${colors["initial"]}) disabled:bg(${colors["initial"]}) border-transparent`
+  | (_, _) => ""
+  }->push
+  /* --- colors, `type` `danger` --- */
 
   /* --- block --- */
   isBlock ? block->push : ()
@@ -74,13 +78,14 @@ let make = (
   /* --- ghost --- */
   if isGhost {
     switch (_type, isDanger) {
-    | (#primary, false) => `bg(${transparent}) text(${primary})`
-    | (#primary, true) => `bg(${transparent}) text(${danger})`
+    | (#primary, false) => `bg(${colors["transparent"]}) text(${colors["primary"]})`
+    | (#primary, true) => `bg(${colors["transparent"]}) text(${colors["danger"]})`
     | (#link, _) => ""
     | (#text, _) => ""
     | (_, _) => "text-white border-white"
     }->push
-    `disabled:bg(${transparent})`->push
+
+    `disabled:bg(${colors["transparent"]})`->push
   }
   /* --- ghost --- */
 
@@ -88,36 +93,35 @@ let make = (
   switch size {
   | #default => "h-8"
   | #small => "h-6"
-  | #large => "text-base h-10"
+  | #large => "h-10 text-base"
   }->push
   /* --- size --- */
 
   /* --- shape --- */
   switch (shape, size) {
-  | (#circle, #default) => pushMany([circle, "min-w-8 max-w-8"])
-  | (#circle, #small) => pushMany([circle, "min-w-6 max-w-6"])
-  | (#circle, #large) => pushMany([circle, "min-w-10 max-w-10"])
-  | (#round, #default) => pushMany(["rounded-full"])
-  | (#round, #small) => pushMany(["rounded-full"])
-  | (#round, #large) => pushMany(["rounded-full"])
-  | _ => ()
-  }
+  | (#circle, #default) => `rounded-full px-0 min-w-8 max-w-8`
+  | (#circle, #small) => `rounded-full px-0 min-w-6 max-w-6`
+  | (#circle, #large) => `rounded-full px-0 min-w-10 max-w-10`
+  | (#round, _) => `rounded-full`
+  | (_, _) => ""
+  }->push
   /* --- shape --- */
 
-  // before
+  /* --- before --- */
   push(
     "before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)",
   )
+  /* --- before --- */
 
   {">span": ["inline-block"]->apply}->css->push
 
   if isIconOnly {
     "px-0"->push
     switch size {
-    | #default => ["w-8 leading-8 text-base"]
-    | #small => ["w-6 leading-6", {".anticon": ["align-baseline"]->apply}->css]
-    | #large => ["w-10 leading-10 text-lg"]
-    }->pushMany
+    | #default => "w-8 leading-8 text-base"
+    | #small => "w-6 leading-6" ++ {".anticon": ["align-baseline"]->apply}->css
+    | #large => "w-10 leading-10 text-lg"
+    }->push
   }
 
   if isLoading {

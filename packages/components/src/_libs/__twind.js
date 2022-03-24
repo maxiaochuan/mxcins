@@ -1,12 +1,19 @@
 import * as colors from 'twind/colors';
+import * as antcolors from '@ant-design/colors';
 import { content } from '@twind/content';
+import { domSheet } from 'twind/sheets';
 
 const INLINE_ELEMENT_BASE_HEIGHT = [24, 32, 40];
 const INLINE_ELEMENT_BASE_LINEHEIGHT = [22, 22, 24];
 
 const INLINE_ELEMENT_BASE_PY = INLINE_ELEMENT_BASE_HEIGHT.map((h, i) => (h - 2 - INLINE_ELEMENT_BASE_LINEHEIGHT[i]) / 2)
 
+/**
+ * @type import('twind').Configuration
+ */
 export const conf = {
+  darkMode: 'class',
+  sheet: domSheet(),
   plugins: { content },
   preflight: {
     ':root': {
@@ -33,8 +40,16 @@ export const conf = {
       initial: 'initial',
       inherit: 'inherit',
       transparent: 'transparent',
-      text: {
+      white: '#fff',
+      black: '#000',
+      'text': {
+        DEFAULT: 'rgba(0, 0, 0, .85)', // 主字体颜色
+      },
+      'border': {
         DEFAULT: 'rgba(0, 0, 0, .85)',
+      },
+      background: {
+        disabled: ''
       },
       link: {
         DEFAULT: 'var(--color-link)',
@@ -160,10 +175,11 @@ export const conf = {
         'inline-bordered-lg': INLINE_ELEMENT_BASE_PY[2] + "px",
         '2-bordered': "0.4375rem", // 0.5rem - 1px
         '3-bordered': "0.6875rem", // 0.75rem - 1px
+        '4-bordered': "calc(1rem - 1px)", // 0.75rem - 1px
       };
     },
-    extend: {
-      colors,
-    },
+    // extend: {
+    //   colors,
+    // },
   },
 };

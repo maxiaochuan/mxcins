@@ -26,7 +26,7 @@ module InputTwind = {
 type style = MxRC__Libs__React.style
 
 @react.component @genType
-let make = (~className=?, ~style:option<style>=?, ~size, ~placeholder=?) => {
+let make = (~className=?, ~style: option<style>=?, ~size, ~placeholder=?) => {
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 

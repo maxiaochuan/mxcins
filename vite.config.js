@@ -51,6 +51,10 @@ export default defineConfig({
               component: '@/pages/components/input',
             },
             {
+              path: '/colors',
+              component: '@/pages/colors',
+            },
+            {
               index: true,
               component: '@/pages/home',
             }

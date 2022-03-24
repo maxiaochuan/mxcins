@@ -2,125 +2,84 @@
 
 import * as Twind from "twind";
 import * as Css from "twind/css";
-import * as Caml_splice_call from "rescript/lib/es6/caml_splice_call.js";
 
-var init = "\n    relative\n    font-normal\n    text(sm center text)\n    whitespace-nowrap\n    border(1 gray-300)\n    rounded-sm\n    px-3\n    transition\n  ";
+var init = "\n    relative\n    font-normal\n    whitespace-nowrap\n    text(sm center text)\n    border(1 solid border)\n    rounded\n    px-4-bordered\n    transition\n  ";
 
-var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(gray-400 hover:gray-400 focus:gray-400 active:gray-400)\n    disabled:bg(gray-100 hover:gray-100 focus:gray-100 active:gray-100)\n    disabled:border(gray-300 hover:gray-300 focus:gray-300 active:gray-300)\n  ";
+var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(text-disabled hover:text-disabled focus:text-disabled active:text-disabled)\n    disabled:bg(background-disabled hover:background-disabled focus:background-disabled active:background-disabled)\n    disabled:border(border hover:border focus:border active:border)\n  ";
 
-var primary = "primary hover:primary-hover focus:primary-hover active:primary-active";
+var colors = {
+  primary: "primary hover:primary-hover focus:primary-hover active:primary-active",
+  danger: "danger hover:danger-hover focus:danger-hover active:danger-active",
+  link: "link hover:link-hover focus:link-hover active:link-active",
+  initial: "initial hover:initial focus:initial active:initial",
+  transparent: "transparent hover:transparent focus:transparent active:transparent"
+};
 
-var danger = "danger hover:danger-hover focus:danger-hover active:danger-active";
-
-var link = "link hover:link-hover focus:link-hover active:link-active";
-
-var initial = "initial hover:initial focus:initial active:initial";
-
-var transparent = "transparent hover:transparent focus:transparent active:transparent";
-
-var def = "text(" + primary + ") text-text border(" + primary + ") border-gray-300";
-
-var text = "\n    border-none\n    bg(initial hover:(black opacity-[0.018]) focus:(black opacity-[0.018]) active:(black opacity-[0.028]))\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
+var text = "\n    border-transparent\n    bg(initial hover:(black opacity-[0.018]) focus:(black opacity-[0.018]) active:(black opacity-[0.028]))\n    disabled:bg(initial hover:initial focus:initial active:initial)\n  ";
 
 var block = "w-full";
-
-var circle = "rounded-full px-0";
 
 function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, isLoading, isIconOnly) {
   var classes = [
     init,
     disabled
   ];
-  Caml_splice_call.spliceObjApply(classes, "push", [_type === "text" ? (
-            isDanger ? [
-                text,
-                "text(" + danger + ")"
-              ] : [text]
-          ) : (
-            _type === "primary" ? (
-                isDanger ? [
-                    "text-white",
-                    "bg(" + danger + ")",
-                    "border(" + danger + ")"
-                  ] : [
-                    "text-white",
-                    "bg(" + primary + ")",
-                    "border(" + primary + ")"
-                  ]
-              ) : (
-                _type === "default" ? (
-                    isDanger ? [
-                        "text(" + danger + ")",
-                        "border(" + danger + ")"
-                      ] : [def]
-                  ) : (
-                    _type === "dashed" ? (
-                        isDanger ? [
-                            def,
-                            "border-dashed",
-                            "text(" + danger + ")",
-                            "border(" + danger + ")"
-                          ] : [
-                            def,
-                            "border-dashed"
-                          ]
-                      ) : (
-                        isDanger ? [
-                            "text(" + danger + ")",
-                            "bg(" + initial + ")",
-                            "disabled:bg(" + initial + ")",
-                            "border-none"
-                          ] : [
-                            "text(" + link + ")",
-                            "bg(" + initial + ")",
-                            "disabled:bg(" + initial + ")",
-                            "border-none"
-                          ]
-                      )
-                  )
-              )
-          )]);
+  var str = _type === "link" ? (
+      isDanger ? "text(" + colors.danger + ") bg(" + colors.initial + ") disabled:bg(" + colors.initial + ") border-transparent" : "text(" + colors.link + ") bg(" + colors.initial + ") disabled:bg(" + colors.initial + ") border-transparent"
+    ) : (
+      _type === "text" ? (
+          isDanger ? text + ("text(" + colors.danger + ")") : text
+        ) : (
+          _type === "primary" ? (
+              isDanger ? "bg(" + colors.danger + ") border(" + colors.danger + ") text-white " : "bg(" + colors.primary + ") border(" + colors.primary + ") text-white"
+            ) : (
+              _type === "default" ? (
+                  isDanger ? "text(" + colors.danger + ") border(" + colors.danger + ")" : "text(" + colors.primary + ") border(" + colors.primary + ") text-text border-border"
+                ) : (
+                  _type === "dashed" ? (
+                      isDanger ? "text(" + colors.danger + ") border(" + colors.danger + ") text-text border-border border-dashed" : "text(" + colors.primary + ") border(" + colors.primary + ") text-text border-border border-dashed"
+                    ) : ""
+                )
+            )
+        )
+    );
+  classes.push(str);
   if (isBlock) {
     classes.push(block);
   }
   if (isGhost) {
-    classes.push(_type === "link" || _type === "text" ? "" : (
-            _type === "primary" ? (
-                isDanger ? "bg(" + transparent + ") text(" + danger + ")" : "bg(" + transparent + ") text(" + primary + ")"
-              ) : "text-white border-white"
-          ));
-    classes.push("disabled:bg(" + transparent + ")");
+    var str$1 = _type === "link" || _type === "text" ? "" : (
+        _type === "primary" ? (
+            isDanger ? "bg(" + colors.transparent + ") text(" + colors.danger + ")" : "bg(" + colors.transparent + ") text(" + colors.primary + ")"
+          ) : "text-white border-white"
+      );
+    classes.push(str$1);
+    var str$2 = "disabled:bg(" + colors.transparent + ")";
+    classes.push(str$2);
   }
   classes.push(size === "small" ? "h-6" : (
-          size === "default" ? "h-8" : "text-base h-10"
+          size === "default" ? "h-8" : "h-10 text-base"
         ));
-  if (shape === "circle") {
-    if (size === "small") {
-      classes.push(circle, "min-w-6 max-w-6");
-    } else if (size === "default") {
-      classes.push(circle, "min-w-8 max-w-8");
-    } else {
-      classes.push(circle, "min-w-10 max-w-10");
-    }
-  } else if (shape === "round") {
-    classes.push("rounded-full");
-  }
+  classes.push(shape === "circle" ? (
+          size === "small" ? "rounded-full px-0 min-w-6 max-w-6" : (
+              size === "default" ? "rounded-full px-0 min-w-8 max-w-8" : "rounded-full px-0 min-w-10 max-w-10"
+            )
+        ) : (
+          shape === "round" ? "rounded-full" : ""
+        ));
   classes.push("before::(hidden absolute content-empty inset-[-1px] z-[1] bg-white opacity-30 transition transition-opacity)");
-  var str = Css.css({
+  var str$3 = Css.css({
         ">span": Twind.apply(["inline-block"])
       });
-  classes.push(str);
+  classes.push(str$3);
   if (isIconOnly) {
     classes.push("px-0");
-    var strs = size === "small" ? [
-        "w-6 leading-6",
-        Css.css({
-              ".anticon": Twind.apply(["align-baseline"])
-            })
-      ] : (
-        size === "default" ? ["w-8 leading-8 text-base"] : ["w-10 leading-10 text-lg"]
+    var str$4 = size === "small" ? "w-6 leading-6" + Css.css({
+            ".anticon": Twind.apply(["align-baseline"])
+          }) : (
+        size === "default" ? "w-8 leading-8 text-base" : "w-10 leading-10 text-lg"
       );
-    Caml_splice_call.spliceObjApply(classes, "push", [strs]);
+    classes.push(str$4);
   }
   if (isLoading) {
     classes.push("cursor-default before::block");
@@ -139,15 +98,9 @@ function make(className, size, _type, shape, isDanger, isGhost, isBlock, param, 
 export {
   init ,
   disabled ,
-  primary ,
-  danger ,
-  link ,
-  initial ,
-  transparent ,
-  def ,
+  colors ,
   text ,
   block ,
-  circle ,
   make ,
   
 }
