@@ -6,11 +6,11 @@ const LayoutView = () => {
   return (
     <>
       <Record title="space">
-        <div>
-          <Input placeholder="Basic usage" />
-          <Input placeholder="Blaceholder" size="small" />
-          <Input placeholder="Blaceholder" size="large" />
-        </div>
+        <Input placeholder="Basic usage" />
+        <Input addonBefore="http://" addonAfter=".com" />
+        <Input addonBefore="http://" />
+        <Input addonAfter=".com" />
+        <Input.Search />
       </Record>
     </>
   );

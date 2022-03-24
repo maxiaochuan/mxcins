@@ -2,16 +2,20 @@
 
 import * as React from "react";
 import * as Twind from "twind";
+import * as Css from "twind/css";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.bs.js";
 
-var init = "inline-block relative w-full m-0 border(1 gray-300) min-w-0 rounded-sm text(sm text) overflow-visible transition";
+var init = "\n    inline-block\n    relative\n    w-full\n    m-0\n    min-w-0\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    hover:(border-primary-hover)\n    focus:(border-primary-hover shadow-input-focus)\n    transition\n    tabular-nums\n    rounded\n  ";
 
-function make(className, size) {
+function make(className, size, inGroup) {
   var classes = [init];
-  classes.push(size === "small" ? "h-6 px-2-bordered py-inline-bordered-sm" : (
-          size === "default" ? "h-8 px-3-bordered py-inline-bordered" : "h-10 px-3-bordered py-inline-bordered-lg text-base"
+  if (inGroup) {
+    classes.push("z-1");
+  }
+  classes.push(size === "small" ? "h-6 px-2-bordered" : (
+          size === "default" ? "h-8 px-3-bordered" : "h-10 px-3-bordered text-base"
         ));
   var match = Twind.tw(Twind.apply(classes));
   if (className !== undefined) {
@@ -24,19 +28,40 @@ function make(className, size) {
   }
 }
 
+function makeAddon(param) {
+  return Twind.tw(Twind.apply(["\n        relative\n        table-cell\n        px-3-bordered\n        font-normal\n        text(sm center text)\n        bg(background)\n        border-border\n        transition\n      "]));
+}
+
+function makeGroup(param) {
+  return Twind.tw(Twind.apply([
+                  "table",
+                  Css.css({
+                        "& > :first-child": Twind.apply(["border(l t b) rounded-l"]),
+                        "& > :last-child": Twind.apply(["border(r t b) rounded-r"]),
+                        "& > :not(:first-child)": Twind.apply(["rounded-l-none"]),
+                        "& > :not(:last-child)": Twind.apply(["rounded-r-none"])
+                      })
+                ]));
+}
+
 var InputTwind = {
   init: init,
-  make: make
+  make: make,
+  makeAddon: makeAddon,
+  makeGroup: makeGroup
 };
 
 function MxRC__Input(Props) {
+  var size = Props.size;
   var className = Props.className;
   var style = Props.style;
-  var size = Props.size;
   var placeholder = Props.placeholder;
+  var addonBefore = Props.addonBefore;
+  var addonAfter = Props.addonAfter;
   var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
   var size$1 = Belt_Option.getWithDefault(size, context.size);
-  var className$1 = make(className, size$1);
+  var inGroup = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
+  var className$1 = make(className, size$1, inGroup);
   var tmp = {
     className: className$1,
     type: "text"
@@ -47,7 +72,19 @@ function MxRC__Input(Props) {
   if (placeholder !== undefined) {
     tmp.placeholder = Caml_option.valFromOption(placeholder);
   }
-  return React.createElement("input", tmp);
+  var child = React.createElement("input", tmp);
+  if (!inGroup) {
+    return child;
+  }
+  var before = addonBefore !== undefined ? React.createElement("span", {
+          className: Twind.tw(Twind.apply(["\n        relative\n        table-cell\n        px-3-bordered\n        font-normal\n        text(sm center text)\n        bg(background)\n        border-border\n        transition\n      "]))
+        }, Caml_option.valFromOption(addonBefore)) : null;
+  var after = addonAfter !== undefined ? React.createElement("span", {
+          className: Twind.tw(Twind.apply(["\n        relative\n        table-cell\n        px-3-bordered\n        font-normal\n        text(sm center text)\n        bg(background)\n        border-border\n        transition\n      "]))
+        }, Caml_option.valFromOption(addonAfter)) : null;
+  return React.createElement("span", {
+              className: makeGroup(undefined)
+            }, before, child, after);
 }
 
 var make$1 = MxRC__Input;

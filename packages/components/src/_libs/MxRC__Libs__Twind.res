@@ -1,8 +1,5 @@
 type applyreturned = unit => unit
 
-// @module("./__twind.js") @val
-// external conf: {..} = "conf"
-
 @module("twind")
 external setup: {..} => unit = "setup"
 @module("twind")
@@ -23,9 +20,6 @@ let background = {
   HSV.make(~h=0, ~s=0.0, ~v=0.96, ())->hsv2rgb->RGB.toS
 }
 
-"colors"->Js.log2(colors)
-
-// "disabled"->Js.log2(disabled)
 external asString: {..} => string = "%identity"
 
 let conf = {
@@ -36,6 +30,7 @@ let conf = {
       "--color-primary": colors["blue"]["primary"],
       "--color-primary-hover": colors["blue"]["4"],
       "--color-primary-active": colors["blue"]["6"],
+      "--color-primary-outline": colors["blue"]["2"],
       "--color-danger": colors["red"]["primary"],
       "--color-danger-hover": colors["red"]["4"],
       "--color-danger-active": colors["red"]["6"],
@@ -44,6 +39,7 @@ let conf = {
       "--color-link-active": colors["blue"]["6"],
     },
     "button:focus": {"outline": "0"},
+    ":focus-visible": {"outline": "0"},
     /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
     "svg": {"vertical-align": "initial"},
     /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
@@ -77,13 +73,13 @@ let conf = {
         "disabled": "rgba(0, 0, 0, 0.25)",
       },
       "background": {
-        // "DEFAULT": background,
+        "DEFAULT": background,
         "disabled": background,
       },
       "border": {
         "DEFAULT": {
           open MxRC__Colord
-          HSV.make(~h=0, ~s=0.0, ~v=0.85, ~a=0.5, ())->hsv2rgb->RGB.toS
+          HSV.make(~h=0, ~s=0.0, ~v=0.85, ())->hsv2rgb->RGB.toS
         },
       },
     },
@@ -97,13 +93,37 @@ let conf = {
     "padding": %raw("
       theme => {
         const spacing = theme('spacing');
-        console.log('spacing', spacing);
         return {
           ...spacing,
+          '2-bordered': `calc(${spacing[2]} - 1px)`,
+          '3-bordered': `calc(${spacing[3]} - 1px)`,
           '4-bordered': `calc(${spacing[4]} - 1px)`,
         };
       }
     "),
     "minWidth": %raw("theme => theme('width')"),
+    // boxShadow: {
+    //   sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    //   DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+    //   md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    //   lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    //   xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    //   '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    //   inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+    //   none: 'none',
+    // },
+    "boxShadow": {
+      "input-focus": "0 0 0 2px var(--color-primary-outline)",
+    },
+    "zIndex": {
+      "auto": "auto",
+      "0": "0",
+      "1": "1",
+      "10": "10",
+      "20": "20",
+      "30": "30",
+      "40": "40",
+      "50": "50",
+    },
   },
 }

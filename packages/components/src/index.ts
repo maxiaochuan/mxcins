@@ -8,7 +8,7 @@ import { make as Divider, Props as DividerProps } from './divider/MxRC_Divider.g
 import { Row, Col, RowProps, ColProps } from './grid';
 import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';
-import { Input, InputProps } from './input';
+import { Input, InputProps, SearchProps } from './input';
 
 export { ConfigProvider, Affix, Button, Divider, Row, Col, Layout, Space, Input };
 
@@ -24,4 +24,5 @@ export type {
   HeaderProps,
   SpaceProps,
   InputProps,
+  SearchProps,
 };

@@ -13,10 +13,6 @@ module ConfigContext = {
   }
 }
 
-let disabled = MxRC__Colord.HSV.make(~h=0, ~s=0.0, ~v=0.85, ())
-
-"disabled"->Js.log2(disabled->MxRC__Colord.hsv2rgb->MxRC__Colord.RGB.toS)
-
 let init = () => MxRC__Libs__Twind.setup(MxRC__Libs__Twind.conf)
 
 init()

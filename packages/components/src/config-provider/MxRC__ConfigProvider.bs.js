@@ -3,7 +3,6 @@
 import * as React from "react";
 import * as Twind from "twind";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxRC__Colord from "../_libs/MxRC__Colord.bs.js";
 import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
 var ctx = React.createContext({
@@ -30,10 +29,6 @@ var ConfigContext = {
   ctx: ctx,
   Provider: Provider
 };
-
-var disabled = MxRC__Colord.HSV.make(0, 0.0, 0.85, undefined, undefined);
-
-console.log("disabled", MxRC__Colord.RGB.toS(MxRC__Colord.hsv2rgb(disabled)));
 
 function init(param) {
   Twind.setup(MxRC__Libs__Twind.conf);
@@ -62,7 +57,6 @@ var make = MxRC__ConfigProvider;
 
 export {
   ConfigContext ,
-  disabled ,
   init ,
   make ,
   

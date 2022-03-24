@@ -6,8 +6,6 @@ import * as Colors from "@ant-design/colors";
 
 var background = MxRC__Colord.RGB.toS(MxRC__Colord.hsv2rgb(MxRC__Colord.HSV.make(0, 0.0, 0.96, undefined, undefined)));
 
-console.log("colors", Colors.presetPalettes);
-
 var conf = {
   darkMode: "class",
   plugins: {
@@ -18,6 +16,7 @@ var conf = {
       "--color-primary": Colors.presetPalettes.blue.primary,
       "--color-primary-hover": Colors.presetPalettes.blue[4],
       "--color-primary-active": Colors.presetPalettes.blue[6],
+      "--color-primary-outline": Colors.presetPalettes.blue[2],
       "--color-danger": Colors.presetPalettes.red.primary,
       "--color-danger-hover": Colors.presetPalettes.red[4],
       "--color-danger-active": Colors.presetPalettes.red[6],
@@ -26,6 +25,9 @@ var conf = {
       "--color-link-active": Colors.presetPalettes.blue[6]
     },
     "button:focus": {
+      outline: "0"
+    },
+    ":focus-visible": {
       outline: "0"
     },
     svg: {
@@ -61,10 +63,11 @@ var conf = {
         disabled: "rgba(0, 0, 0, 0.25)"
       },
       background: {
+        DEFAULT: background,
         disabled: background
       },
       border: {
-        DEFAULT: MxRC__Colord.RGB.toS(MxRC__Colord.hsv2rgb(MxRC__Colord.HSV.make(0, 0.0, 0.85, 0.5, undefined)))
+        DEFAULT: MxRC__Colord.RGB.toS(MxRC__Colord.hsv2rgb(MxRC__Colord.HSV.make(0, 0.0, 0.85, undefined, undefined)))
       }
     },
     fontSize: {
@@ -101,13 +104,27 @@ var conf = {
     },
     padding: (theme => {
         const spacing = theme('spacing');
-        console.log('spacing', spacing);
         return {
           ...spacing,
+          '2-bordered': `calc(${spacing[2]} - 1px)`,
+          '3-bordered': `calc(${spacing[3]} - 1px)`,
           '4-bordered': `calc(${spacing[4]} - 1px)`,
         };
       }),
-    minWidth: (theme => theme('width'))
+    minWidth: (theme => theme('width')),
+    boxShadow: {
+      "input-focus": "0 0 0 2px var(--color-primary-outline)"
+    },
+    zIndex: {
+      auto: "auto",
+      "0": "0",
+      "1": "1",
+      "10": "10",
+      "20": "20",
+      "30": "30",
+      "40": "40",
+      "50": "50"
+    }
   }
 };
 

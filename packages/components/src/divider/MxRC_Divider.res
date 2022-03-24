@@ -13,7 +13,9 @@ module DividerTwind = {
     let pushMany = strs => classes->pushMany(strs)->ignore
 
     switch _type {
-    | #vertical => ["relative inline-block mx-2 top-[-0.06em] h-[0.9em] align-middle border-l border-border"]
+    | #vertical => [
+        "relative inline-block mx-2 top-[-0.06em] h-[0.9em] align-middle border-l border-border",
+      ]
     | #horizontal =>
       switch (hasText, orientation) {
       | (true, orientation) => {

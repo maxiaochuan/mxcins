@@ -3,8 +3,11 @@
 
 var LoadingOutlined = {};
 
+var SearchOutlined = {};
+
 export {
   LoadingOutlined ,
+  SearchOutlined ,
   
 }
 /* No side effect */
