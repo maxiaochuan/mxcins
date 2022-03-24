@@ -10,26 +10,17 @@ const MxRC__Input__SearchBS: any = MxRC__Input__SearchBS__Es6Import;
 
 import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from '../../src/config-provider/MxRC__ConfigProvider.gen';
 
-import type {node as MxRC__Libs__React_node} from '../../src/_libs/MxRC__Libs__React.gen';
-
-import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
-
-// tslint:disable-next-line:interface-over-type-literal
-export type style = MxRC__Libs__React_style;
+import type {node as MxRC__Input_node} from './MxRC__Input.gen';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
-  readonly addonBefore?: MxRC__Libs__React_node; 
-  readonly className?: string; 
+  readonly addonBefore?: MxRC__Input_node; 
   readonly placeholder?: string; 
-  readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly style?: style
+  readonly size?: MxRC__ConfigProvider_ConfigContext_size
 };
 
 export const make: React.ComponentType<{
-  readonly addonBefore?: MxRC__Libs__React_node; 
-  readonly className?: string; 
+  readonly addonBefore?: MxRC__Input_node; 
   readonly placeholder?: string; 
-  readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly style?: style
+  readonly size?: MxRC__ConfigProvider_ConfigContext_size
 }> = MxRC__Input__SearchBS.make;

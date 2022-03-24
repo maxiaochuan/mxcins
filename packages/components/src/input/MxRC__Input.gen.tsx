@@ -18,9 +18,12 @@ import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs_
 export type style = MxRC__Libs__React_style;
 
 // tslint:disable-next-line:interface-over-type-literal
+export type node = MxRC__Libs__React_node;
+
+// tslint:disable-next-line:interface-over-type-literal
 export type Props = {
-  readonly addonAfter?: MxRC__Libs__React_node; 
-  readonly addonBefore?: MxRC__Libs__React_node; 
+  readonly addonAfter?: node; 
+  readonly addonBefore?: node; 
   readonly className?: string; 
   readonly placeholder?: string; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
@@ -28,8 +31,8 @@ export type Props = {
 };
 
 export const make: React.ComponentType<{
-  readonly addonAfter?: MxRC__Libs__React_node; 
-  readonly addonBefore?: MxRC__Libs__React_node; 
+  readonly addonAfter?: node; 
+  readonly addonBefore?: node; 
   readonly className?: string; 
   readonly placeholder?: string; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 

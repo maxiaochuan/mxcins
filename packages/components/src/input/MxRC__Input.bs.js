@@ -2,12 +2,12 @@
 
 import * as React from "react";
 import * as Twind from "twind";
-import * as Css from "twind/css";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
+import * as MxRC__Input__Group from "./MxRC__Input__Group.bs.js";
 import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.bs.js";
 
-var init = "\n    inline-block\n    relative\n    w-full\n    m-0\n    min-w-0\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    hover:(border-primary-hover)\n    focus:(border-primary-hover shadow-input-focus)\n    transition\n    tabular-nums\n    rounded\n  ";
+var init = "\n    inline-block\n    relative\n    m-0\n    min-w-0\n    w-full\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    hover:(border-primary-hover)\n    focus:(border-primary-hover shadow-input-focus)\n    transition\n    tabular-nums\n    rounded\n  ";
 
 function make(className, size, inGroup) {
   var classes = [init];
@@ -28,27 +28,9 @@ function make(className, size, inGroup) {
   }
 }
 
-function makeAddon(param) {
-  return Twind.tw(Twind.apply(["\n        relative\n        table-cell\n        px-3-bordered\n        font-normal\n        text(sm center text)\n        bg(background)\n        border-border\n        transition\n      "]));
-}
-
-function makeGroup(param) {
-  return Twind.tw(Twind.apply([
-                  "table",
-                  Css.css({
-                        "& > :first-child": Twind.apply(["border(l t b) rounded-l"]),
-                        "& > :last-child": Twind.apply(["border(r t b) rounded-r"]),
-                        "& > :not(:first-child)": Twind.apply(["rounded-l-none"]),
-                        "& > :not(:last-child)": Twind.apply(["rounded-r-none"])
-                      })
-                ]));
-}
-
 var InputTwind = {
   init: init,
-  make: make,
-  makeAddon: makeAddon,
-  makeGroup: makeGroup
+  make: make
 };
 
 function MxRC__Input(Props) {
@@ -76,21 +58,24 @@ function MxRC__Input(Props) {
   if (!inGroup) {
     return child;
   }
-  var before = addonBefore !== undefined ? React.createElement("span", {
-          className: Twind.tw(Twind.apply(["\n        relative\n        table-cell\n        px-3-bordered\n        font-normal\n        text(sm center text)\n        bg(background)\n        border-border\n        transition\n      "]))
-        }, Caml_option.valFromOption(addonBefore)) : null;
-  var after = addonAfter !== undefined ? React.createElement("span", {
-          className: Twind.tw(Twind.apply(["\n        relative\n        table-cell\n        px-3-bordered\n        font-normal\n        text(sm center text)\n        bg(background)\n        border-border\n        transition\n      "]))
-        }, Caml_option.valFromOption(addonAfter)) : null;
-  return React.createElement("span", {
-              className: makeGroup(undefined)
+  var before = addonBefore !== undefined ? React.createElement(MxRC__Input__Group.InputGroupAddon.make, {
+          children: Caml_option.valFromOption(addonBefore)
+        }) : null;
+  var after = addonAfter !== undefined ? React.createElement(MxRC__Input__Group.InputGroupAddon.make, {
+          children: Caml_option.valFromOption(addonAfter)
+        }) : null;
+  return React.createElement(MxRC__Input__Group.make, {
+              children: null
             }, before, child, after);
 }
+
+var InputGroup;
 
 var make$1 = MxRC__Input;
 
 export {
   InputTwind ,
+  InputGroup ,
   make$1 as make,
   
 }

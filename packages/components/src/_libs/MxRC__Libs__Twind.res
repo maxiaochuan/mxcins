@@ -15,6 +15,12 @@ external content: string = "content"
 @module("@ant-design/colors")
 external colors: {..} = "presetPalettes"
 
+let atw = (~class: option<string>=?, classes: array<string>) =>
+  switch class {
+  | Some(c) => [classes->apply->tw, c]->Js.Array2.joinWith(" ")
+  | _ => classes->apply->tw
+  }
+
 let background = {
   open MxRC__Colord
   HSV.make(~h=0, ~s=0.0, ~v=0.96, ())->hsv2rgb->RGB.toS

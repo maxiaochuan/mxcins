@@ -1,6 +1,7 @@
 open MxRC__Libs__Twind
 let init = "
     relative
+    inline-block
     font-normal
     whitespace-nowrap
     text(sm center text)

@@ -5,22 +5,22 @@ import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__Input from "./MxRC__Input.bs.js";
 import * as MxRC__Button from "../button/MxRC__Button.bs.js";
 import * as Icons from "@ant-design/icons";
+import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
-function make(className, size, inGroup) {
-  
+function makeSearch(param) {
+  return MxRC__Libs__Twind.atw(undefined, ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1)"]);
 }
 
 var InputSearchTwind = {
-  make: make
+  makeSearch: makeSearch
 };
 
 function MxRC__Input__Search(Props) {
   var size = Props.size;
-  var className = Props.className;
-  var style = Props.style;
   var placeholder = Props.placeholder;
   var addonBefore = Props.addonBefore;
   var addonAfter = React.createElement(MxRC__Button.make, {
+        className: MxRC__Libs__Twind.atw(undefined, ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1)"]),
         icon: React.createElement(Icons.SearchOutlined, {})
       });
   var tmp = {
@@ -28,12 +28,6 @@ function MxRC__Input__Search(Props) {
   };
   if (size !== undefined) {
     tmp.size = Caml_option.valFromOption(size);
-  }
-  if (className !== undefined) {
-    tmp.className = Caml_option.valFromOption(className);
-  }
-  if (style !== undefined) {
-    tmp.style = Caml_option.valFromOption(style);
   }
   if (placeholder !== undefined) {
     tmp.placeholder = Caml_option.valFromOption(placeholder);
@@ -46,15 +40,18 @@ function MxRC__Input__Search(Props) {
 
 var Input;
 
+var InputGroup;
+
 var Button;
 
-var make$1 = MxRC__Input__Search;
+var make = MxRC__Input__Search;
 
 export {
   Input ,
+  InputGroup ,
   Button ,
   InputSearchTwind ,
-  make$1 as make,
+  make ,
   
 }
 /* react Not a pure module */

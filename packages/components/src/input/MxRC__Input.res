@@ -5,9 +5,9 @@ module InputTwind = {
   let init = "
     inline-block
     relative
-    w-full
     m-0
     min-w-0
+    w-full
     overflow-visible
     text(sm text)
     border(1 solid border)
@@ -39,40 +39,12 @@ module InputTwind = {
     | (classes, _) => classes
     }
   }
-
-  let makeAddon = () => {
-    [
-      "
-        relative
-        table-cell
-        px-3-bordered
-        font-normal
-        text(sm center text)
-        bg(background)
-        border-border
-        transition
-      ",
-    ]
-    ->apply
-    ->tw
-  }
-
-  let makeGroup = () => {
-    [
-      "table",
-      {
-        "& > :first-child": ["border(l t b) rounded-l"]->apply,
-        "& > :last-child": ["border(r t b) rounded-r"]->apply,
-        "& > :not(:first-child)": ["rounded-l-none"]->apply,
-        "& > :not(:last-child)": ["rounded-r-none"]->apply,
-      }->css,
-    ]
-    ->apply
-    ->tw
-  }
 }
 
+module InputGroup = MxRC__Input__Group
+
 type style = MxRC__Libs__React.style
+type node = MxRC__Libs__React.node
 
 @react.component @genType
 let make = (
@@ -80,8 +52,8 @@ let make = (
   ~className=?,
   ~style: option<style>=?,
   ~placeholder=?,
-  ~addonBefore: option<MxRC__Libs__React.node>=?,
-  ~addonAfter: option<MxRC__Libs__React.node>=?,
+  ~addonBefore: option<node>=?,
+  ~addonAfter: option<node>=?,
 ) => {
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
@@ -96,14 +68,14 @@ let make = (
 
   if inGroup {
     let before = switch addonBefore {
-    | Some(node) => <span className={InputTwind.makeAddon()}> node </span>
+    | Some(before) => <InputGroup.InputGroupAddon> before </InputGroup.InputGroupAddon>
     | _ => React.null
     }
     let after = switch addonAfter {
-    | Some(node) => <span className={InputTwind.makeAddon()}> node </span>
+    | Some(after) => <InputGroup.InputGroupAddon> after </InputGroup.InputGroupAddon>
     | _ => React.null
     }
-    <span className={InputTwind.makeGroup()}> before child after </span>
+    <InputGroup> before child after </InputGroup>
   } else {
     child
   }

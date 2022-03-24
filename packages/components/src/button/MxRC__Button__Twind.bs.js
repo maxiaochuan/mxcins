@@ -3,7 +3,7 @@
 import * as Twind from "twind";
 import * as Css from "twind/css";
 
-var init = "\n    relative\n    font-normal\n    whitespace-nowrap\n    text(sm center text)\n    border(1 solid border)\n    rounded\n    px-4-bordered\n    transition\n  ";
+var init = "\n    relative\n    inline-block\n    font-normal\n    whitespace-nowrap\n    text(sm center text)\n    border(1 solid border)\n    rounded\n    px-4-bordered\n    transition\n  ";
 
 var disabled = "\n    disabled:cursor-not-allowed\n    disabled:text(text-disabled hover:text-disabled focus:text-disabled active:text-disabled)\n    disabled:bg(background-disabled hover:background-disabled focus:background-disabled active:background-disabled)\n    disabled:border(border hover:border focus:border active:border)\n  ";
 

@@ -11,6 +11,7 @@ const LayoutView = () => {
         <Input addonBefore="http://" />
         <Input addonAfter=".com" />
         <Input.Search />
+        <Input.Search addonBefore="someone" />
       </Record>
     </>
   );
