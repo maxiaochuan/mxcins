@@ -7,7 +7,6 @@ import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Belt_MutableMap from "rescript/lib/es6/belt_MutableMap.js";
 import * as Belt_MutableSet from "rescript/lib/es6/belt_MutableSet.js";
-import ResizeObserverPolyfill from "resize-observer-polyfill";
 
 var cmp = Caml_obj.caml_compare;
 
@@ -41,7 +40,7 @@ var ElementResizeListenersMap = {
 
 var store = Belt_MutableMap.make(Id$1);
 
-var observer = new ResizeObserverPolyfill((function (entries) {
+var observer = new ResizeObserver((function (entries) {
         entries.forEach(function (entry) {
               return Belt_Option.forEach(Belt_MutableMap.get(store, entry.target), (function (listeners) {
                             return Belt_MutableSet.forEach(listeners, (function (listener) {

@@ -1,7 +1,7 @@
-import * as SingleResizeObserver from './single-resize-observer/MxLibs__SingleResizeObserver.gen';
+import * as SingleResizeObserver from './single-resize-observer/MxWebapi__SingleResizeObserver.gen';
 
-import * as BreakpointSub from './breakpoint-sub/MxLibs__BreakpointSub.gen';
+import * as BreakpointSub from './breakpoint-sub/MxWebapi__BreakpointSub.gen';
 
-export type { BreakpointType } from './breakpoint-sub/MxLibs__BreakpointSub.gen';
+export type { BreakpointType } from './breakpoint-sub/MxWebapi__BreakpointSub.gen';
 
 export { SingleResizeObserver, BreakpointSub };

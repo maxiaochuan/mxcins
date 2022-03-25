@@ -1,5 +1,5 @@
-module ResizeObserver = MxLibs__ResizeObserver
-module ResizeObserverEntry = MxLibs__ResizeObserver.ResizeObserverEntry
+module ResizeObserver = Webapi.ResizeObserver
+module ResizeObserverEntry = Webapi.ResizeObserver.ResizeObserverEntry
 
 module ResizeListenerSet = {
   @genType.as("ResizeListenerType")

@@ -1,8 +1,27 @@
+module MediaQueryList = {
+  type t = Webapi.Dom.Window.mediaQueryList
+
+  module ChangeEvent = {
+    type t
+    @get external matches: t => bool = "matches"
+  }
+
+  external asChangeEvent: t => ChangeEvent.t = "%identity"
+
+  type listener = ChangeEvent.t => unit
+
+  @send
+  external addEventListener: (t, string, ChangeEvent.t => unit) => unit = "addEventListener"
+
+  @send
+  external removeEventListener: (t, string, ChangeEvent.t => unit) => unit = "addEventListener"
+}
+
 module QueryCacheList = {
   open Belt.MutableMap.String
 
-  type mediaQueryList = MxLibs__Dom.Window.mediaQueryList
-  type listener = MxLibs__Dom.MediaQueryList.listener
+  type mediaQueryList = MediaQueryList.t
+  type listener = MediaQueryList.ChangeEvent.t => unit
 
   type value = {mediaQueryList: mediaQueryList, listener: listener}
 
@@ -55,14 +74,13 @@ module BreakpointPubSub = {
 
   let cache = QueryCacheList.make()
   let register = () => {
-    open MxLibs__Dom
     queries->Belt.Map.forEach((breakpoint, query) => {
       let listener = evt => {
         let matches = evt->MediaQueryList.ChangeEvent.matches
         screens := screens.contents->Belt.Map.set(breakpoint, matches)
         subscribers->Belt.MutableMap.Int.forEach((_, subscriber) => subscriber->dispatch)
       }
-      let mediaQueryList = window->Window.matchMedia(query)
+      let mediaQueryList = Webapi.Dom.window->Webapi.Dom.Window.matchMedia(query)
       mediaQueryList->MediaQueryList.addEventListener("change", listener)
       mediaQueryList->MediaQueryList.asChangeEvent->listener
       cache->QueryCacheList.set(~query, ~mediaQueryList, ~listener)
@@ -72,7 +90,7 @@ module BreakpointPubSub = {
     open QueryCacheList
     cache->forEach((_, value) => {
       let {mediaQueryList, listener} = value
-      mediaQueryList->MxLibs__Dom.MediaQueryList.removeEventListener("change", listener)
+      mediaQueryList->MediaQueryList.removeEventListener("change", listener)
     })
     cache->clear
   }

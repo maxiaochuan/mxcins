@@ -6,6 +6,12 @@ import * as Belt_Map from "rescript/lib/es6/belt_Map.js";
 import * as Belt_MutableMapInt from "rescript/lib/es6/belt_MutableMapInt.js";
 import * as Belt_MutableMapString from "rescript/lib/es6/belt_MutableMapString.js";
 
+var ChangeEvent = {};
+
+var $$MediaQueryList = {
+  ChangeEvent: ChangeEvent
+};
+
 function make(param) {
   return Belt_MutableMapString.fromArray([]);
 }
@@ -174,6 +180,7 @@ var subscribe$1 = subscribe;
 var unsubscribe$1 = unsubscribe;
 
 export {
+  $$MediaQueryList ,
   QueryCacheList ,
   BreakpointPubSub ,
   breakpoints ,

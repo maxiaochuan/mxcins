@@ -2,6 +2,7 @@
 
 %%private(let store = Belt.MutableMap.Int.fromArray([]))
 
+@genType
 let make = (~times=1, callback: unit => unit) => {
   index := index.contents + 1
   let id = index.contents
@@ -20,6 +21,7 @@ let make = (~times=1, callback: unit => unit) => {
   id
 }
 
+@genType
 let cancel = id =>
   store
   ->Belt.MutableMap.Int.get(id)
@@ -28,6 +30,7 @@ let cancel = id =>
     store->Belt.MutableMap.Int.remove(id)->ignore
   })
 
+@genType
 let throttle = (~times=1, callback: 'a => unit) => {
   let valid = ref(true)
   let run = (param: 'a) => {
@@ -43,6 +46,7 @@ let throttle = (~times=1, callback: 'a => unit) => {
   run
 }
 
+@genType
 let debounce = (~times=1, callback: 'a => unit) => {
   let id: ref<option<int>> = ref(None)
   let run = (a1: 'param) => {
