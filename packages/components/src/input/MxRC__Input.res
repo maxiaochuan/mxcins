@@ -84,17 +84,20 @@ ref) => {
   let hasfix = prefix->Belt.Option.isSome || suffix->Belt.Option.isSome
   let hasaddon = addonBefore->Belt.Option.isSome || addonAfter->Belt.Option.isSome
 
-  let child =
+  let child = {
+    let className = hasfix
+        ? MxRC__Input__Twind.makeNoStyled()
+        : className->MxRC__Input__Twind.makeStyled(~size, ~affix=false, ~focused, ~z=false)
     <input
       ref={inputRef->ReactDOM.Ref.domRef}
-      className={hasfix
-        ? MxRC__Input__Twind.makeNoStyled()
-        : className->MxRC__Input__Twind.makeStyled(~size, ~affix=false, ~focused, ~z=false)}
+      type_="text"
+      className
       ?placeholder
       onBlur
       onKeyDown
       ?onChange
     />
+  }
 
   let child = switch hasfix {
   | true => {

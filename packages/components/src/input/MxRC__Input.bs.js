@@ -81,9 +81,11 @@ var make = React.forwardRef(function (Props, ref) {
       };
       var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix);
       var hasaddon = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
+      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyled(undefined) : MxRC__Input__Twind.makeStyled(className, size$1, false, false, focused);
       var tmp = {
         ref: inputRef,
-        className: hasfix ? MxRC__Input__Twind.makeNoStyled(undefined) : MxRC__Input__Twind.makeStyled(className, size$1, false, false, focused),
+        className: className$1,
+        type: "text",
         onKeyDown: onKeyDown$1,
         onBlur: onBlur$1
       };
@@ -98,28 +100,28 @@ var make = React.forwardRef(function (Props, ref) {
       if (hasfix) {
         var prefix$1;
         if (prefix !== undefined) {
-          var className$1 = MxRC__Input__Twind.makeFixed("prefix");
+          var className$2 = MxRC__Input__Twind.makeFixed("prefix");
           prefix$1 = React.createElement("span", {
-                className: className$1
+                className: className$2
               }, Caml_option.valFromOption(prefix));
         } else {
           prefix$1 = null;
         }
         var suffix$1;
         if (suffix !== undefined) {
-          var className$2 = MxRC__Input__Twind.makeFixed("suffix");
+          var className$3 = MxRC__Input__Twind.makeFixed("suffix");
           suffix$1 = React.createElement("span", {
-                className: className$2
+                className: className$3
               }, Caml_option.valFromOption(suffix));
         } else {
           suffix$1 = null;
         }
-        var className$3 = MxRC__Input__Twind.makeStyled(className, size$1, false, true, focused);
+        var className$4 = MxRC__Input__Twind.makeStyled(className, size$1, false, true, focused);
         var onMouseUp = function (param) {
           return focus(undefined);
         };
         child$1 = React.createElement("span", {
-              className: className$3,
+              className: className$4,
               onMouseUp: onMouseUp
             }, prefix$1, child, suffix$1);
       } else {
@@ -132,9 +134,9 @@ var make = React.forwardRef(function (Props, ref) {
       if (addonBefore !== undefined) {
         var addon = Caml_option.valFromOption(addonBefore);
         var isStandard = MxRC__Libs__React.Children.isString(addon);
-        var className$4 = MxRC__Input__Twind.makeGroupAddon(isStandard);
+        var className$5 = MxRC__Input__Twind.makeGroupAddon(isStandard);
         before = React.createElement("span", {
-              className: className$4
+              className: className$5
             }, addon);
       } else {
         before = null;
@@ -143,9 +145,9 @@ var make = React.forwardRef(function (Props, ref) {
       if (addonAfter !== undefined) {
         var addon$1 = Caml_option.valFromOption(addonAfter);
         var isStandard$1 = MxRC__Libs__React.Children.isString(addon$1);
-        var className$5 = MxRC__Input__Twind.makeGroupAddon(isStandard$1);
+        var className$6 = MxRC__Input__Twind.makeGroupAddon(isStandard$1);
         after = React.createElement("span", {
-              className: className$5
+              className: className$6
             }, addon$1);
       } else {
         after = null;
