@@ -41,6 +41,11 @@ const LayoutView = () => {
         <br />
         <br />
         <TextArea rows={4} placeholder="maxLength is 6" maxLength={6} />
+            <Input.Password placeholder="input password" />
+    <Input.Password
+      placeholder="input password"
+      // iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+    />
       </Record>
     </>
   );
