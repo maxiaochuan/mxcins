@@ -38,6 +38,10 @@ export type _type = "text" | "password";
 export type InputType = _type;
 
 // tslint:disable-next-line:interface-over-type-literal
+export type status = "default" | "warning" | "error";
+export type InputStatusType = status;
+
+// tslint:disable-next-line:interface-over-type-literal
 export type Props = {
   readonly type?: _type; 
   readonly addonAfter?: node; 
@@ -57,6 +61,7 @@ export type Props = {
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly status?: status; 
   readonly suffix?: node; 
   readonly value?: string
 };
@@ -80,6 +85,7 @@ export const make: React.ComponentType<{
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly status?: status; 
   readonly suffix?: node; 
   readonly value?: string
 }> = MxRC__InputBS.make;

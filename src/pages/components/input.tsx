@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SettingOutlined } from '@ant-design/icons';
+import { SettingOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { Input } from '@mxcins/components';
 import { Record } from '../../components';
 
@@ -41,6 +41,10 @@ const LayoutView = () => {
           placeholder="input password"
           // iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
+            <Input status="error" placeholder="Error" />
+    <Input status="warning" placeholder="Warning" />
+    <Input status="error" prefix={<ClockCircleOutlined />} placeholder="Error with prefix" />
+    <Input status="warning" prefix={<ClockCircleOutlined />} placeholder="Warning with prefix" />
       </Record>
     </>
   );

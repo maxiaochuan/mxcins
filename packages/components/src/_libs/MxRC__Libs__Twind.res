@@ -43,6 +43,14 @@ let conf = {
       "--color-link": colors["blue"]["primary"],
       "--color-link-hover": colors["blue"]["4"],
       "--color-link-active": colors["blue"]["6"],
+      "--color-warning": colors["gold"]["primary"],
+      "--color-warning-hover": colors["gold"]["4"],
+      "--color-warning-active": colors["gold"]["6"],
+      "--color-warning-outline": colors["gold"]["1"],
+      "--color-error": colors["red"]["primary"],
+      "--color-error-hover": colors["red"]["4"],
+      "--color-error-active": colors["red"]["6"],
+      "--color-error-outline": colors["red"]["1"],
     },
     "button:focus": {"outline": "0"},
     ":focus-visible": {"outline": "0"},
@@ -73,6 +81,18 @@ let conf = {
         "DEFAULT": "var(--color-link)",
         "hover": "var(--color-link-hover)",
         "active": "var(--color-link-active)",
+      },
+      "warning": {
+        "DEFAULT": "var(--color-warning)",
+        "hover": "var(--color-warning-hover)",
+        "active": "var(--color-warning-active)",
+        "outline": "var(--color-warning-outline)",
+      },
+      "error": {
+        "DEFAULT": "var(--color-error)",
+        "hover": "var(--color-error-hover)",
+        "active": "var(--color-error-active)",
+        "outline": "var(--color-error-outline)",
       },
       "text": {
         "DEFAULT": "rgba(0, 0, 0, .85)",
@@ -124,7 +144,23 @@ let conf = {
     //   none: 'none',
     // },
     "boxShadow": {
+      // "input-focus": "0 0 0 2px",
       "input-focus": "0 0 0 2px var(--color-primary-outline)",
+
+    },
+    "boxShadowColor": {
+      "warning": {
+        "DEFAULT": "var(--color-warning)",
+        "hover": "var(--color-warning-hover)",
+        "active": "var(--color-warning-active)",
+        "outline": "var(--color-warning-outline)",
+      },
+      "error": {
+        "DEFAULT": "var(--color-error)",
+        "hover": "var(--color-error-hover)",
+        "active": "var(--color-error-active)",
+        "outline": "var(--color-error-outline)",
+      },
     },
     "zIndex": {
       "auto": "auto",

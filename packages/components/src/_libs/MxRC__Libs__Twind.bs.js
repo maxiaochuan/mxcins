@@ -34,7 +34,15 @@ var conf = {
       "--color-danger-active": Colors.presetPalettes.red[6],
       "--color-link": Colors.presetPalettes.blue.primary,
       "--color-link-hover": Colors.presetPalettes.blue[4],
-      "--color-link-active": Colors.presetPalettes.blue[6]
+      "--color-link-active": Colors.presetPalettes.blue[6],
+      "--color-warning": Colors.presetPalettes.gold.primary,
+      "--color-warning-hover": Colors.presetPalettes.gold[4],
+      "--color-warning-active": Colors.presetPalettes.gold[6],
+      "--color-warning-outline": Colors.presetPalettes.gold[1],
+      "--color-error": Colors.presetPalettes.red.primary,
+      "--color-error-hover": Colors.presetPalettes.red[4],
+      "--color-error-active": Colors.presetPalettes.red[6],
+      "--color-error-outline": Colors.presetPalettes.red[1]
     },
     "button:focus": {
       outline: "0"
@@ -69,6 +77,18 @@ var conf = {
         DEFAULT: "var(--color-link)",
         hover: "var(--color-link-hover)",
         active: "var(--color-link-active)"
+      },
+      warning: {
+        DEFAULT: "var(--color-warning)",
+        hover: "var(--color-warning-hover)",
+        active: "var(--color-warning-active)",
+        outline: "var(--color-warning-outline)"
+      },
+      error: {
+        DEFAULT: "var(--color-error)",
+        hover: "var(--color-error-hover)",
+        active: "var(--color-error-active)",
+        outline: "var(--color-error-outline)"
       },
       text: {
         DEFAULT: "rgba(0, 0, 0, .85)",
@@ -131,6 +151,20 @@ var conf = {
     minWidth: (theme => theme('width')),
     boxShadow: {
       "input-focus": "0 0 0 2px var(--color-primary-outline)"
+    },
+    boxShadowColor: {
+      warning: {
+        DEFAULT: "var(--color-warning)",
+        hover: "var(--color-warning-hover)",
+        active: "var(--color-warning-active)",
+        outline: "var(--color-warning-outline)"
+      },
+      error: {
+        DEFAULT: "var(--color-error)",
+        hover: "var(--color-error-hover)",
+        active: "var(--color-error-active)",
+        outline: "var(--color-error-outline)"
+      }
     },
     zIndex: {
       auto: "auto",

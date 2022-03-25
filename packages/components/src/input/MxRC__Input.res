@@ -13,6 +13,9 @@ type inputRef = {
 @genType.as("InputType")
 type _type = [#text|#password]
 
+@genType.as("InputStatusType")
+type status = [#default|#warning|#error]
+
 // TODO: ReactEvent ChangeEvent
 
 exception AddonAfterConflict
@@ -40,6 +43,7 @@ let make = React.forwardRef((
 ~defaultValue=?,
 ~allowClear=false,
 ~maxLength=?,
+~status: status=#default,
 ref) => {
   // context size
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
@@ -175,7 +179,7 @@ ref) => {
   let child = {
     let className = hasfix
       ? Twind.makeNoStyle()
-      : className->Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon)
+      : className->Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon, ~status)
 
     let type_ = switch _type {
     | #text => "text"
@@ -223,7 +227,7 @@ ref) => {
         }
       | (None, false) => React.null
       }
-      let className = className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused)
+      let className = className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused, ~status)
       let onMouseUp = _ => focus()
       <span className onMouseUp> prefix child suffix </span>
     }

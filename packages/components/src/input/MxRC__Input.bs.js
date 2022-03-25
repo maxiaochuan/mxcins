@@ -34,10 +34,12 @@ var make = React.forwardRef(function (Props, ref) {
       var defaultValue = Props.defaultValue;
       var allowClearOpt = Props.allowClear;
       var maxLength = Props.maxLength;
+      var statusOpt = Props.status;
       var _type = _typeOpt !== undefined ? _typeOpt : "text";
       var addonBeforeNoStyle = addonBeforeNoStyleOpt !== undefined ? addonBeforeNoStyleOpt : false;
       var addonAfterNoStyle = addonAfterNoStyleOpt !== undefined ? addonAfterNoStyleOpt : false;
       var allowClear = allowClearOpt !== undefined ? allowClearOpt : false;
+      var status = statusOpt !== undefined ? statusOpt : "default";
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
       var size$1 = Belt_Option.getWithDefault(size, context.size);
       var match = React.useState(function () {
@@ -154,7 +156,7 @@ var make = React.forwardRef(function (Props, ref) {
       };
       var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix) || allowClear;
       var hasaddon = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
-      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyle(undefined) : MxRC__Input__Twind.make(className, size$1, hasaddon, false, focused);
+      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyle(undefined) : MxRC__Input__Twind.make(className, size$1, hasaddon, false, focused, status);
       var type_ = _type === "text" ? "text" : "password";
       var tmp = {
         ref: inputRef,
@@ -218,7 +220,7 @@ var make = React.forwardRef(function (Props, ref) {
         } else {
           suffix$1 = null;
         }
-        var className$6 = MxRC__Input__Twind.make(className, size$1, hasaddon, true, focused);
+        var className$6 = MxRC__Input__Twind.make(className, size$1, hasaddon, true, focused, status);
         var onMouseUp = function (param) {
           return focus(undefined);
         };

@@ -8,16 +8,21 @@ function makeNoStyle(param) {
   return MxRC__Libs__Twind.atw(undefined, ["w-full p-0 m-0"]);
 }
 
-function make($$class, size, z, affix, focused) {
-  var classes = ["\n    inline-block\n    relative\n    m-0\n    min-w-0\n    w-full\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    hover:(border-primary-hover)\n    focus:(border-primary-hover shadow-input-focus)\n    transition\n    tabular-nums\n    rounded\n  "];
+function make($$class, size, z, affix, focused, status) {
+  var classes = ["\n    inline-block\n    relative\n    m-0\n    min-w-0\n    w-full\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    transition\n    tabular-nums\n    rounded\n  "];
   if (affix) {
     classes.push("inline-flex");
   }
   if (focused) {
-    classes.push("border-primary-hover shadow-input-focus");
+    classes.push(status === "warning" ? "border-warning shadow-input-focus" : (
+            status === "default" ? "border-primary-hover shadow-input-focus" : "border-error shadow-input-focus"
+          ));
   }
   classes.push(size === "small" ? "h-6 px-2-bordered" : (
           size === "default" ? "h-8 px-3-bordered" : "h-10 px-3-bordered text-base"
+        ));
+  classes.push(status === "warning" ? "border-warning hover:(border-warning-hover) shadow-warning-outline" : (
+          status === "default" ? "hover:(border-primary-hover)" : "border-error hover:(border-error-hover) shadow-error-outline"
         ));
   if (z) {
     classes.push("z-1");
@@ -26,7 +31,7 @@ function make($$class, size, z, affix, focused) {
 }
 
 function makeTextArea($$class, size, focused) {
-  var $$class$1 = make($$class, size, false, false, focused);
+  var $$class$1 = make($$class, size, false, false, focused, "default");
   var classes = ["h-auto"];
   classes.push(size === "small" ? "py-y6-bordered" : (
           size === "default" ? "py-y8-bordered" : "py-y10-bordered"

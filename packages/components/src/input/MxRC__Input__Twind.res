@@ -2,7 +2,7 @@ open MxRC__Libs__Twind
 
 let makeNoStyle = () => ["w-full p-0 m-0"]->atw
 
-let make = (class, ~size, ~z, ~affix, ~focused) => {
+let make = (class, ~size, ~z, ~affix, ~focused, ~status) => {
   let classes = [
     "
     inline-block
@@ -13,8 +13,6 @@ let make = (class, ~size, ~z, ~affix, ~focused) => {
     overflow-visible
     text(sm text)
     border(1 solid border)
-    hover:(border-primary-hover)
-    focus:(border-primary-hover shadow-input-focus)
     transition
     tabular-nums
     rounded
@@ -22,18 +20,30 @@ let make = (class, ~size, ~z, ~affix, ~focused) => {
   ]
   let push = str => classes->Js.Array2.push(str)->ignore
 
+    // focus:(border-primary-hover shadow-input-focus)
+
   if affix {
     "inline-flex"->push
   }
 
   if focused {
-    "border-primary-hover shadow-input-focus"->push
+    switch status {
+    | #default => "border-primary-hover shadow-input-focus"
+    | #warning => "border-warning shadow-input-focus"
+    | #error => "border-error shadow-input-focus"
+    }->push
   }
 
   switch size {
   | #default => "h-8 px-3-bordered"
   | #small => "h-6 px-2-bordered"
   | #large => "h-10 px-3-bordered text-base"
+  }->push
+
+  switch status {
+  | #default => "hover:(border-primary-hover)"
+  | #warning => "border-warning hover:(border-warning-hover) shadow-warning-outline"
+  | #error => "border-error hover:(border-error-hover) shadow-error-outline"
   }->push
 
   if z {
@@ -44,7 +54,7 @@ let make = (class, ~size, ~z, ~affix, ~focused) => {
 }
 
 let makeTextArea = (class, ~size, ~focused) => {
-  let class = make(class, ~size, ~affix=false, ~z=false, ~focused)
+  let class = make(class, ~size, ~affix=false, ~z=false, ~focused, ~status=#default)
   let classes = ["h-auto"]
   let push = str => classes->Js.Array2.push(str)->ignore
 
