@@ -3,8 +3,9 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Js_math from "rescript/lib/es6/js_math.js";
-import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxLibs__SingleResizeObserver from "@mxcins/webapi/src/single-resize-observer/MxLibs__SingleResizeObserver.bs.js";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
+import * as Webapi__Dom__Element from "rescript-webapi/src/Webapi/Dom/Webapi__Dom__Element.bs.js";
+import * as MxWebapi__SingleResizeObserver from "@mxcins/webapi/src/single-resize-observer/MxWebapi__SingleResizeObserver.bs.js";
 
 function useObserveResize(target, onResize, disabled) {
   var sizeRef = React.useRef({
@@ -19,8 +20,12 @@ function useObserveResize(target, onResize, disabled) {
         var rect = target.getBoundingClientRect();
         var width = rect.width;
         var height = rect.height;
-        var offsetWidth = target.offsetWidth;
-        var offsetHeight = target.offsetHeight;
+        var offsetWidth = Belt_Option.getWithDefault(Belt_Option.map(Webapi__Dom__Element.asHtmlElement(target), (function (ele) {
+                    return ele.offsetWidth;
+                  })), 0);
+        var offsetHeight = Belt_Option.getWithDefault(Belt_Option.map(Webapi__Dom__Element.asHtmlElement(target), (function (ele) {
+                    return ele.offsetHeight;
+                  })), 0);
         var fixedWidth = Js_math.floor_int(width);
         var fixedHeight = Js_math.floor_int(height);
         if (!(sizeRef.current.width !== fixedWidth || sizeRef.current.height !== fixedHeight || sizeRef.current.offsetWidth !== offsetWidth || sizeRef.current.offsetHeight !== offsetHeight)) {
@@ -44,17 +49,13 @@ function useObserveResize(target, onResize, disabled) {
         
       });
   React.useEffect((function () {
-          if (target !== undefined) {
-            var target$1 = Caml_option.valFromOption(target);
-            if (disabled !== undefined && disabled) {
-              
-            } else {
-              MxLibs__SingleResizeObserver.observe(target$1, onObserverResizeCallback);
-            }
+          var match = Belt_Option.getWithDefault(disabled, false);
+          if (!(target == null) && !match) {
+            MxWebapi__SingleResizeObserver.observe(target, onObserverResizeCallback);
           }
           return (function (param) {
-                    if (target !== undefined) {
-                      return MxLibs__SingleResizeObserver.unobserve(Caml_option.valFromOption(target), onObserverResizeCallback);
+                    if (!(target == null)) {
+                      return MxWebapi__SingleResizeObserver.unobserve(target, onObserverResizeCallback);
                     }
                     
                   });

@@ -7,20 +7,25 @@ type size = {
 
 type onResize = (~target: Dom.element, ~size: size) => unit
 
-let useObserveResize = (~target, ~onResize: option<onResize>, ~disabled: option<bool>) => {
+let useObserveResize = (~target: Js.Nullable.t<Dom.element>, ~onResize: option<onResize>, ~disabled: option<bool>) => {
   let sizeRef = React.useRef({width: -1, height: -1, offsetWidth: -1, offsetHeight: -1})
   let onResizeRef = React.useRef(onResize)
 
   let onObserverResizeCallback = React.useCallback(entry => {
-    open MxLibs.SingleResizeObserver
-    open MxLibs.Dom.MxElement
-    open MxLibs.Dom.DomRect
-    let target = entry->ResizeObserverEntry.target
-    let rect = target->getBoundingClientRect
-    let width = rect->width
-    let height = rect->height
-    let offsetWidth = target->offsetWidth
-    let offsetHeight = target->offsetHeight
+    let target = entry->Webapi.ResizeObserver.ResizeObserverEntry.target
+    let rect = target->Webapi.Dom.Element.getBoundingClientRect
+    let width = rect->Webapi.Dom.DomRect.width
+    let height = rect->Webapi.Dom.DomRect.height
+    let offsetWidth =
+      target
+      ->Webapi.Dom.Element.asHtmlElement
+      ->Belt.Option.map(ele => ele->Webapi.Dom.HtmlElement.offsetWidth)
+      ->Belt.Option.getWithDefault(0)
+    let offsetHeight =
+      target
+      ->Webapi.Dom.Element.asHtmlElement
+      ->Belt.Option.map(ele => ele->Webapi.Dom.HtmlElement.offsetHeight)
+      ->Belt.Option.getWithDefault(0)
 
     /**
      * Resize observer trigger when content size changed.
@@ -61,17 +66,16 @@ let useObserveResize = (~target, ~onResize: option<onResize>, ~disabled: option<
   })
 
   React.useEffect2(() => {
-    open MxLibs.SingleResizeObserver
-    switch (target, disabled) {
-    | (Some(target), None) => target->observe(onObserverResizeCallback)
-    | (Some(target), Some(false)) => target->observe(onObserverResizeCallback)
-    | (_, __) => ()
+    open MxWebapi.SingleResizeObserver
+    switch (target->Js.Nullable.toOption, disabled->Belt.Option.getWithDefault(false)) {
+    | (Some(target), false) => target->observe(onObserverResizeCallback)
+    | (_, _) => ()
     }
 
     Some(
       () => {
-        switch target {
-        | Some(target) => target->unobserve(onObserverResizeCallback)
+        switch target->Js.Nullable.toOption {
+        | (Some(target)) => target->unobserve(onObserverResizeCallback)
         | _ => ()
         }
       },
