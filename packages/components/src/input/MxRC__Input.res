@@ -1,102 +1,148 @@
-module InputGroup = MxRC__Input__Group
-module InputAffix = MxRC__Input__Affix
-
 type node = MxRC__Libs__React.node
 
-type forwardRef = {
+@genType
+type forward = {
   focus: unit => unit,
   blur: unit => unit,
   input: option<Dom.htmlInputElement>,
 }
 
+type inputRef = React.ref<forward>
+
 @react.component @genType
 let make = React.forwardRef((~size=?,
 ~className=?,
-~style=?,
+// ~style=?,
 ~placeholder=?,
 ~addonBefore: option<node>=?,
 ~addonAfter: option<node>=?,
 ~prefix: option<node>=?,
 ~suffix: option<node>=?,
 //events
-~onPressEnter: option<ReactEvent.Keyboard.t => unit>=?,
-~onKeyDown: option<ReactEvent.Keyboard.t => unit>=?,
+~onPressEnter=?,
+~onKeyDown=?,
+~onBlur=?,
 ref) => {
-  let inputRef: React.ref<Js.Nullable.t<Dom.element>> = React.useRef(Js.Nullable.null)
-
-  React.useImperativeHandle0(ref, () => {
-    let input = inputRef.current->Js.Nullable.toOption
-    {
-      input: input
-      ->Belt.Option.map(input => input->Webapi.Dom.HtmlInputElement.ofElement)
-      ->Belt.Option.getUnsafe,
-      focus: () =>
-        input->Belt.Option.forEach(input =>
-          input
-          ->Webapi.Dom.HtmlElement.ofElement
-          ->Belt.Option.forEach(input => input->Webapi.Dom.HtmlElement.focus)
-        ),
-      blur: () =>
-        input->Belt.Option.forEach(input =>
-          input
-          ->Webapi.Dom.HtmlElement.ofElement
-          ->Belt.Option.forEach(input => input->Webapi.Dom.HtmlElement.blur)
-        ),
-    }
-  })
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
+  let (focused, setFocused) = React.useState(_ => false)
   // size
   let size = size->Belt.Option.getWithDefault(context.size)
 
-  let inGroup = addonBefore->Belt.Option.isSome || addonAfter->Belt.Option.isSome
-  let hasfix = prefix->Belt.Option.isSome || suffix->Belt.Option.isSome
+  let inputRef = React.useRef(Js.Nullable.null)
+
+  let focus = () =>
+    inputRef.current
+    ->Js.Nullable.toOption
+    ->Belt.Option.forEach(input =>
+      input
+      ->Webapi.Dom.HtmlElement.ofElement
+      ->Belt.Option.forEach(input => {
+        setFocused(_ => true)
+        input->Webapi.Dom.HtmlElement.focus
+      })
+    )
+
+  let blur = () =>
+    inputRef.current
+    ->Js.Nullable.toOption
+    ->Belt.Option.forEach(input =>
+      input
+      ->Webapi.Dom.HtmlElement.ofElement
+      ->Belt.Option.forEach(input => {
+        setFocused(_ => false)
+        input->Webapi.Dom.HtmlElement.blur
+      })
+    )
+
+  React.useImperativeHandle0(ref, () => {
+    {
+      input: inputRef.current
+      ->Js.Nullable.toOption
+      ->Belt.Option.map(input => input->Webapi.Dom.HtmlInputElement.ofElement)
+      ->Belt.Option.getUnsafe,
+      focus: focus,
+      blur: blur,
+    }
+  })
 
   let onKeyDown = event => {
     // press enter
     if event->ReactEvent.Keyboard.key === "Enter" {
       onPressEnter->Belt.Option.forEach(fn => event->fn)
     }
-
     onKeyDown->Belt.Option.forEach(fn => event->fn)
   }
 
-  let child = {
-    if hasfix {
+  let onBlur = event => {
+    setFocused(_ => false)
+    onBlur->Belt.Option.forEach(fn => event->fn)
+  }
+
+  let hasfix = prefix->Belt.Option.isSome || suffix->Belt.Option.isSome
+  let hasaddon = addonBefore->Belt.Option.isSome || addonAfter->Belt.Option.isSome
+
+  let child =
+    <input
+      ref={inputRef->ReactDOM.Ref.domRef}
+      className={hasfix
+        ? MxRC__Input__Twind.makeNoStyled()
+        : className->MxRC__Input__Twind.makeStyled(~size, ~affix=false, ~focused, ~z=false)}
+      ?placeholder
+      onBlur
+      onKeyDown
+    />
+
+  let child = switch hasfix {
+  | true => {
       let prefix = switch prefix {
-      | Some(prefix) => <InputAffix.InputAffixAddon> prefix </InputAffix.InputAffixAddon>
+      | Some(node) => {
+          let className = MxRC__Input__Twind.makeFixed(~pos=#prefix)
+          <span className> node </span>
+        }
       | _ => React.null
       }
       let suffix = switch suffix {
-      | Some(suffix) => <InputAffix.InputAffixAddon> suffix </InputAffix.InputAffixAddon>
+      | Some(node) => {
+          let className = MxRC__Input__Twind.makeFixed(~pos=#suffix)
+          <span className> node </span>
+        }
+      | _ => React.null
+      }
+      let className =
+        className->MxRC__Input__Twind.makeStyled(~size, ~affix=true, ~z=false, ~focused)
+      let onMouseUp = _ => focus()
+      <span className onMouseUp> prefix child suffix </span>
+    }
+  | false => child
+  }
+
+  let child = switch hasaddon {
+  | true => {
+      let before = switch addonBefore {
+      | Some(addon) => {
+          let isStandard = addon->MxRC__Libs__React.Children.isString
+          let className = MxRC__Input__Twind.makeGroupAddon(~isStandard)
+          <span className> addon </span>
+        }
+      | _ => React.null
+      }
+      let after = switch addonAfter {
+      | Some(addon) => {
+          let isStandard = addon->MxRC__Libs__React.Children.isString
+          let className = MxRC__Input__Twind.makeGroupAddon(~isStandard)
+          <span className> addon </span>
+        }
       | _ => React.null
       }
 
-      let child =
-        <input ref={inputRef->ReactDOM.Ref.domRef} type_="text" ?style ?placeholder onKeyDown />
+      let (o, i) = MxRC__Input__Twind.makeGroup()
 
-      let className = className->MxRC__Input__Twind.makeInputBox(~size, ~z=inGroup, ~flex=true)
-      <InputAffix className> prefix child suffix </InputAffix>
-    } else {
-      let className = className->MxRC__Input__Twind.makeInputBox(~size, ~z=inGroup, ~flex=false)
-      <input
-        ref={inputRef->ReactDOM.Ref.domRef} type_="text" className ?style ?placeholder onKeyDown
-      />
+      <span className=o> <span className=i> before child after </span> </span>
     }
+  | false => child
   }
 
-  if inGroup {
-    let before = switch addonBefore {
-    | Some(before) => <InputGroup.InputGroupAddon> before </InputGroup.InputGroupAddon>
-    | _ => React.null
-    }
-    let after = switch addonAfter {
-    | Some(after) => <InputGroup.InputGroupAddon> after </InputGroup.InputGroupAddon>
-    | _ => React.null
-    }
-    <InputGroup> before child after </InputGroup>
-  } else {
-    child
-  }
+  child
 })

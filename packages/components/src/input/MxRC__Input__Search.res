@@ -1,7 +1,6 @@
 open MxRC__Libs__Antd
 
 module Input = MxRC__Input
-module InputGroup = MxRC__Input__Group
 module Button = MxRC__Button
 
 module InputSearchTwind = {
@@ -16,6 +15,8 @@ let make = (
   ~size=?,
   ~placeholder=?,
   ~addonBefore=?,
+  ~prefix=?,
+  ~suffix=?,
   ~onSearch: option<(. string, ReactEvent.Synthetic.t) => unit>=?,
 ) => {
   let inputRef: React.ref<Js.Nullable.t<Dom.htmlInputElement>> = React.useRef(Js.Nullable.null)
@@ -37,5 +38,5 @@ let make = (
 
   let onPressEnter = event => event->ReactEvent.toSyntheticEvent->onSearch
 
-  <Input ref=inputRef ?size ?placeholder ?addonBefore addonAfter onPressEnter />
+  <Input ref=inputRef ?size ?placeholder ?addonBefore ?prefix ?suffix addonAfter onPressEnter />
 }

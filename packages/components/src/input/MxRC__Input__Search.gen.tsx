@@ -19,12 +19,16 @@ export type Props = {
   readonly addonBefore?: MxRC__Input_node; 
   readonly onSearch?: (_1:string, _2:ReactEvent_Synthetic_t) => void; 
   readonly placeholder?: string; 
-  readonly size?: MxRC__ConfigProvider_ConfigContext_size
+  readonly prefix?: MxRC__Input_node; 
+  readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly suffix?: MxRC__Input_node
 };
 
 export const make: React.ComponentType<{
   readonly addonBefore?: MxRC__Input_node; 
   readonly onSearch?: (_1:string, _2:ReactEvent_Synthetic_t) => void; 
   readonly placeholder?: string; 
-  readonly size?: MxRC__ConfigProvider_ConfigContext_size
+  readonly prefix?: MxRC__Input_node; 
+  readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly suffix?: MxRC__Input_node
 }> = MxRC__Input__SearchBS.make;

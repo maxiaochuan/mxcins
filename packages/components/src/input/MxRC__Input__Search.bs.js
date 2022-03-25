@@ -20,6 +20,8 @@ function MxRC__Input__Search(Props) {
   var size = Props.size;
   var placeholder = Props.placeholder;
   var addonBefore = Props.addonBefore;
+  var prefix = Props.prefix;
+  var suffix = Props.suffix;
   var onSearch = Props.onSearch;
   var inputRef = React.useRef(null);
   var onSearch$1 = function ($$event) {
@@ -52,12 +54,16 @@ function MxRC__Input__Search(Props) {
   if (addonBefore !== undefined) {
     tmp.addonBefore = Caml_option.valFromOption(addonBefore);
   }
+  if (prefix !== undefined) {
+    tmp.prefix = Caml_option.valFromOption(prefix);
+  }
+  if (suffix !== undefined) {
+    tmp.suffix = Caml_option.valFromOption(suffix);
+  }
   return React.createElement(MxRC__Input.make, tmp);
 }
 
 var Input;
-
-var InputGroup;
 
 var Button;
 
@@ -65,7 +71,6 @@ var make = MxRC__Input__Search;
 
 export {
   Input ,
-  InputGroup ,
   Button ,
   InputSearchTwind ,
   make ,

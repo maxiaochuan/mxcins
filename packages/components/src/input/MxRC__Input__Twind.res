@@ -1,6 +1,8 @@
 open MxRC__Libs__Twind
 
-let makeInputBox = (class, ~size, ~z, ~flex) => {
+let makeNoStyled = () => ["w-full p-0 m-0"]->atw
+
+let makeStyled = (class, ~size, ~z, ~affix, ~focused) => {
   let classes = [
     "
     inline-block
@@ -20,8 +22,12 @@ let makeInputBox = (class, ~size, ~z, ~flex) => {
   ]
   let push = str => classes->Js.Array2.push(str)->ignore
 
-  if flex {
+  if affix {
     "inline-flex"->push
+  }
+
+  if focused {
+    "border-primary-hover shadow-input-focus"->push
   }
 
   switch size {
@@ -42,9 +48,45 @@ let makeFixed = (~pos) => {
   let push = str => classes->Js.Array2.push(str)->ignore
 
   switch pos {
-  | #prefix => "ml-1"
-  | #suffix => "mr-1"
+  | #prefix => "mr-1"
+  | #suffix => "ml-1"
   }->push
+
+  classes->atw
+}
+
+let makeGroup = () => {
+  let out = {
+    ["inline-block"]->atw
+  }
+
+  let inner = {
+    let classes = [
+      "table w-full m-0 p-0 tabular-nums",
+      {
+        "& > *:first-child": ["rounded-l"]->apply,
+        "& > *:last-child": ["rounded-r"]->apply,
+        "& > *:not(:first-child)": ["rounded-l-none"]->apply,
+        "& > *:not(:last-child)": ["rounded-r-none"]->apply,
+        "& > *": ["table-cell align-middle"]->apply,
+      }->css,
+    ]
+
+    classes->atw
+  }
+
+  (out, inner)
+}
+
+let makeGroupAddon = (~isStandard) => {
+  let classes = [
+    "relative font-normal transition",
+    isStandard ? "px-3-bordered text(sm center text) bg(background) border(1 border)" : "-left-px",
+    {
+      "&:first-child": ["border-r-0"]->apply,
+      "&:last-child": ["border-l-0"]->apply,
+    }->css,
+  ]
 
   classes->atw
 }

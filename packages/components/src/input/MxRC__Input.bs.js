@@ -4,8 +4,7 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxRC__Input__Affix from "./MxRC__Input__Affix.bs.js";
-import * as MxRC__Input__Group from "./MxRC__Input__Group.bs.js";
+import * as MxRC__Libs__React from "../_libs/MxRC__Libs__React.bs.js";
 import * as MxRC__Input__Twind from "./MxRC__Input__Twind.bs.js";
 import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.bs.js";
 import * as Webapi__Dom__HtmlElement from "rescript-webapi/src/Webapi/Dom/Webapi__Dom__HtmlElement.bs.js";
@@ -14,7 +13,6 @@ import * as Webapi__Dom__HtmlInputElement from "rescript-webapi/src/Webapi/Dom/W
 var make = React.forwardRef(function (Props, ref) {
       var size = Props.size;
       var className = Props.className;
-      var style = Props.style;
       var placeholder = Props.placeholder;
       var addonBefore = Props.addonBefore;
       var addonAfter = Props.addonAfter;
@@ -22,36 +20,46 @@ var make = React.forwardRef(function (Props, ref) {
       var suffix = Props.suffix;
       var onPressEnter = Props.onPressEnter;
       var onKeyDown = Props.onKeyDown;
+      var onBlur = Props.onBlur;
+      var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
+      var match = React.useState(function () {
+            return false;
+          });
+      var setFocused = match[1];
+      var focused = match[0];
+      var size$1 = Belt_Option.getWithDefault(size, context.size);
       var inputRef = React.useRef(null);
+      var focus = function (param) {
+        return Belt_Option.forEach(Caml_option.nullable_to_opt(inputRef.current), (function (input) {
+                      return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
+                                    Curry._1(setFocused, (function (param) {
+                                            return true;
+                                          }));
+                                    input.focus();
+                                    
+                                  }));
+                    }));
+      };
+      var blur = function (param) {
+        return Belt_Option.forEach(Caml_option.nullable_to_opt(inputRef.current), (function (input) {
+                      return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
+                                    Curry._1(setFocused, (function (param) {
+                                            return false;
+                                          }));
+                                    input.blur();
+                                    
+                                  }));
+                    }));
+      };
       React.useImperativeHandle(ref, (function () {
-              var input = inputRef.current;
-              var input$1 = (input == null) ? undefined : Caml_option.some(input);
               return {
-                      focus: (function (param) {
-                          return Belt_Option.forEach(input$1, (function (input) {
-                                        return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
-                                                      input.focus();
-                                                      
-                                                    }));
-                                      }));
-                        }),
-                      blur: (function (param) {
-                          return Belt_Option.forEach(input$1, (function (input) {
-                                        return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
-                                                      input.blur();
-                                                      
-                                                    }));
-                                      }));
-                        }),
-                      input: Belt_Option.map(input$1, (function (input) {
+                      focus: focus,
+                      blur: blur,
+                      input: Belt_Option.map(Caml_option.nullable_to_opt(inputRef.current), (function (input) {
                               return Curry._1(Webapi__Dom__HtmlInputElement.ofElement, input);
                             }))
                     };
             }), []);
-      var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-      var size$1 = Belt_Option.getWithDefault(size, context.size);
-      var inGroup = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
-      var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix);
       var onKeyDown$1 = function ($$event) {
         if ($$event.key === "Enter") {
           Belt_Option.forEach(onPressEnter, (function (fn) {
@@ -62,68 +70,91 @@ var make = React.forwardRef(function (Props, ref) {
                       return Curry._1(fn, $$event);
                     }));
       };
-      var child;
+      var onBlur$1 = function ($$event) {
+        Curry._1(setFocused, (function (param) {
+                return false;
+              }));
+        return Belt_Option.forEach(onBlur, (function (fn) {
+                      return Curry._1(fn, $$event);
+                    }));
+      };
+      var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix);
+      var hasaddon = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
+      var tmp = {
+        ref: inputRef,
+        className: hasfix ? MxRC__Input__Twind.makeNoStyled(undefined) : MxRC__Input__Twind.makeStyled(className, size$1, false, false, focused),
+        onKeyDown: onKeyDown$1,
+        onBlur: onBlur$1
+      };
+      if (placeholder !== undefined) {
+        tmp.placeholder = Caml_option.valFromOption(placeholder);
+      }
+      var child = React.createElement("input", tmp);
+      var child$1;
       if (hasfix) {
-        var prefix$1 = prefix !== undefined ? React.createElement(MxRC__Input__Affix.InputAffixAddon.make, {
-                children: Caml_option.valFromOption(prefix)
-              }) : null;
-        var suffix$1 = suffix !== undefined ? React.createElement(MxRC__Input__Affix.InputAffixAddon.make, {
-                children: Caml_option.valFromOption(suffix)
-              }) : null;
-        var tmp = {
-          ref: inputRef,
-          type: "text",
-          onKeyDown: onKeyDown$1
+        var prefix$1;
+        if (prefix !== undefined) {
+          var className$1 = MxRC__Input__Twind.makeFixed("prefix");
+          prefix$1 = React.createElement("span", {
+                className: className$1
+              }, Caml_option.valFromOption(prefix));
+        } else {
+          prefix$1 = null;
+        }
+        var suffix$1;
+        if (suffix !== undefined) {
+          var className$2 = MxRC__Input__Twind.makeFixed("suffix");
+          suffix$1 = React.createElement("span", {
+                className: className$2
+              }, Caml_option.valFromOption(suffix));
+        } else {
+          suffix$1 = null;
+        }
+        var className$3 = MxRC__Input__Twind.makeStyled(className, size$1, false, true, focused);
+        var onMouseUp = function (param) {
+          return focus(undefined);
         };
-        if (style !== undefined) {
-          tmp.style = Caml_option.valFromOption(style);
-        }
-        if (placeholder !== undefined) {
-          tmp.placeholder = Caml_option.valFromOption(placeholder);
-        }
-        var child$1 = React.createElement("input", tmp);
-        var className$1 = MxRC__Input__Twind.makeInputBox(className, size$1, inGroup, true);
-        child = React.createElement(MxRC__Input__Affix.make, {
-              className: className$1,
-              children: null
-            }, prefix$1, child$1, suffix$1);
+        child$1 = React.createElement("span", {
+              className: className$3,
+              onMouseUp: onMouseUp
+            }, prefix$1, child, suffix$1);
       } else {
-        var className$2 = MxRC__Input__Twind.makeInputBox(className, size$1, inGroup, false);
-        var tmp$1 = {
-          ref: inputRef,
-          className: className$2,
-          type: "text",
-          onKeyDown: onKeyDown$1
-        };
-        if (style !== undefined) {
-          tmp$1.style = Caml_option.valFromOption(style);
-        }
-        if (placeholder !== undefined) {
-          tmp$1.placeholder = Caml_option.valFromOption(placeholder);
-        }
-        child = React.createElement("input", tmp$1);
+        child$1 = child;
       }
-      if (!inGroup) {
-        return child;
+      if (!hasaddon) {
+        return child$1;
       }
-      var before = addonBefore !== undefined ? React.createElement(MxRC__Input__Group.InputGroupAddon.make, {
-              children: Caml_option.valFromOption(addonBefore)
-            }) : null;
-      var after = addonAfter !== undefined ? React.createElement(MxRC__Input__Group.InputGroupAddon.make, {
-              children: Caml_option.valFromOption(addonAfter)
-            }) : null;
-      return React.createElement(MxRC__Input__Group.make, {
-                  children: null
-                }, before, child, after);
+      var before;
+      if (addonBefore !== undefined) {
+        var addon = Caml_option.valFromOption(addonBefore);
+        var isStandard = MxRC__Libs__React.Children.isString(addon);
+        var className$4 = MxRC__Input__Twind.makeGroupAddon(isStandard);
+        before = React.createElement("span", {
+              className: className$4
+            }, addon);
+      } else {
+        before = null;
+      }
+      var after;
+      if (addonAfter !== undefined) {
+        var addon$1 = Caml_option.valFromOption(addonAfter);
+        var isStandard$1 = MxRC__Libs__React.Children.isString(addon$1);
+        var className$5 = MxRC__Input__Twind.makeGroupAddon(isStandard$1);
+        after = React.createElement("span", {
+              className: className$5
+            }, addon$1);
+      } else {
+        after = null;
+      }
+      var match$1 = MxRC__Input__Twind.makeGroup(undefined);
+      return React.createElement("span", {
+                  className: match$1[0]
+                }, React.createElement("span", {
+                      className: match$1[1]
+                    }, before, child$1, after));
     });
 
-var InputGroup;
-
-var InputAffix;
-
 export {
-  InputGroup ,
-  InputAffix ,
   make ,
   
 }
