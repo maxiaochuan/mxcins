@@ -130,7 +130,8 @@ ref) => {
   | true => {
       let before = switch addonBefore {
       | Some(addon) => {
-          let isStandard = addon->MxRC__Libs__React.Children.isString
+          // let isStandard = addon->MxRC__Libs__React.Children.isString
+          let isStandard = true
           let className = MxRC__Input__Twind.makeGroupAddon(~isStandard)
           <span className> addon </span>
         }
@@ -138,7 +139,8 @@ ref) => {
       }
       let after = switch addonAfter {
       | Some(addon) => {
-          let isStandard = addon->MxRC__Libs__React.Children.isString
+          // let isStandard = addon->MxRC__Libs__React.Children.isString
+          let isStandard = true
           let className = MxRC__Input__Twind.makeGroupAddon(~isStandard)
           <span className> addon </span>
         }

@@ -57,7 +57,7 @@ let makeFixed = (~pos) => {
 
 let makeGroup = () => {
   let out = {
-    ["inline-block"]->atw
+    ["inline-block w-full"]->atw
   }
 
   let inner = {
@@ -68,7 +68,7 @@ let makeGroup = () => {
         "& > *:last-child": ["rounded-r"]->apply,
         "& > *:not(:first-child)": ["rounded-l-none"]->apply,
         "& > *:not(:last-child)": ["rounded-r-none"]->apply,
-        "& > *": ["table-cell align-middle"]->apply,
+        // "& > *": ["table-cell align-middle"]->apply,
       }->css,
     ]
 
@@ -80,7 +80,7 @@ let makeGroup = () => {
 
 let makeGroupAddon = (~isStandard) => {
   let classes = [
-    "relative font-normal transition",
+    "relative w-0 table-cell font-normal transition",
     isStandard ? "px-3-bordered text(sm center text) bg(background) border(1 border)" : "-left-px",
     {
       "&:first-child": ["border-r-0"]->apply,

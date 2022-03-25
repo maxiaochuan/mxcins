@@ -4,7 +4,6 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxRC__Libs__React from "../_libs/MxRC__Libs__React.bs.js";
 import * as MxRC__Input__Twind from "./MxRC__Input__Twind.bs.js";
 import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.bs.js";
 import * as Webapi__Dom__HtmlElement from "rescript-webapi/src/Webapi/Dom/Webapi__Dom__HtmlElement.bs.js";
@@ -136,23 +135,19 @@ var make = React.forwardRef(function (Props, ref) {
       }
       var before;
       if (addonBefore !== undefined) {
-        var addon = Caml_option.valFromOption(addonBefore);
-        var isStandard = MxRC__Libs__React.Children.isString(addon);
-        var className$5 = MxRC__Input__Twind.makeGroupAddon(isStandard);
+        var className$5 = MxRC__Input__Twind.makeGroupAddon(true);
         before = React.createElement("span", {
               className: className$5
-            }, addon);
+            }, Caml_option.valFromOption(addonBefore));
       } else {
         before = null;
       }
       var after;
       if (addonAfter !== undefined) {
-        var addon$1 = Caml_option.valFromOption(addonAfter);
-        var isStandard$1 = MxRC__Libs__React.Children.isString(addon$1);
-        var className$6 = MxRC__Input__Twind.makeGroupAddon(isStandard$1);
+        var className$6 = MxRC__Input__Twind.makeGroupAddon(true);
         after = React.createElement("span", {
               className: className$6
-            }, addon$1);
+            }, Caml_option.valFromOption(addonAfter));
       } else {
         after = null;
       }

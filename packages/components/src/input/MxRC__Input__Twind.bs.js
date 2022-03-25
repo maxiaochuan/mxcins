@@ -32,15 +32,14 @@ function makeFixed(pos) {
 }
 
 function makeGroup(param) {
-  var out = MxRC__Libs__Twind.atw(undefined, ["inline-block"]);
+  var out = MxRC__Libs__Twind.atw(undefined, ["inline-block w-full"]);
   var classes = [
     "table w-full m-0 p-0 tabular-nums",
     Css.css({
           "& > *:first-child": Twind.apply(["rounded-l"]),
           "& > *:last-child": Twind.apply(["rounded-r"]),
           "& > *:not(:first-child)": Twind.apply(["rounded-l-none"]),
-          "& > *:not(:last-child)": Twind.apply(["rounded-r-none"]),
-          "& > *": Twind.apply(["table-cell align-middle"])
+          "& > *:not(:last-child)": Twind.apply(["rounded-r-none"])
         })
   ];
   var inner = MxRC__Libs__Twind.atw(undefined, classes);
@@ -52,7 +51,7 @@ function makeGroup(param) {
 
 function makeGroupAddon(isStandard) {
   var classes = [
-    "relative font-normal transition",
+    "relative w-0 table-cell font-normal transition",
     isStandard ? "px-3-bordered text(sm center text) bg(background) border(1 border)" : "-left-px",
     Css.css({
           "&:first-child": Twind.apply(["border-r-0"]),
