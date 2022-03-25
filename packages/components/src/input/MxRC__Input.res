@@ -1,13 +1,18 @@
+open MxRC__Libs__Antd
+module Twind = MxRC__Input__Twind
+
 type node = MxRC__Libs__React.node
 
-@genType
-type forward = {
+@genType.as("InputRef")
+type inputRef = {
   focus: unit => unit,
   blur: unit => unit,
   input: option<Dom.htmlInputElement>,
 }
 
-type inputRef = React.ref<forward>
+// TODO: ReactEvent ChangeEvent
+
+exception AddonAfterConflict
 
 @react.component @genType
 let make = React.forwardRef((~size=?,
@@ -15,9 +20,9 @@ let make = React.forwardRef((~size=?,
 ~groupStyle=?,
 ~placeholder=?,
 ~addonBefore: option<node>=?,
-~addonBeforeNoStyle=?,
+~addonBeforeNoStyle=false,
 ~addonAfter: option<node>=?,
-~addonAfterNoStyle=?,
+~addonAfterNoStyle=false,
 ~prefix: option<node>=?,
 ~suffix: option<node>=?,
 //events
@@ -26,20 +31,23 @@ let make = React.forwardRef((~size=?,
 ~onFocus=?,
 ~onBlur=?,
 ~onChange=?,
-//value
 ~value=?,
 ~defaultValue=?,
+~allowClear=false,
 ref) => {
-  let (v, set) = React.useState(_ => defaultValue)
-  let isControled = !(value->Belt.Option.isNone)
-  let value = value->Belt.Option.getWithDefault(v)
-  // config context
+  // context size
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
-
-  let (focused, setFocused) = React.useState(_ => false)
-  // size
   let size = size->Belt.Option.getWithDefault(context.size)
 
+  // value state
+  let (v, set) = React.useState(_ => defaultValue->Belt.Option.getWithDefault(""))
+  let isControled = !(value->Belt.Option.isNone)
+  let value = value->Belt.Option.getWithDefault(v)
+
+  // focused
+  let (focused, setFocused) = React.useState(_ => false)
+
+  // inputDomRef
   let inputRef = React.useRef(Js.Nullable.null)
 
   let focus = () =>
@@ -77,6 +85,46 @@ ref) => {
     }
   })
 
+  let onReset = event => {
+    if !isControled {
+      set(_ => "")
+    }
+    focus()
+
+    onChange->Belt.Option.forEach(fn => {
+      // onchange is some
+      inputRef.current
+      ->Js.Nullable.toOption
+      ->Belt.Option.forEach(input => {
+        // input is some
+        let type_ = event->ReactEvent.Mouse.type_
+        // on clear clicked
+        if type_ === "click" {
+          input
+          ->Webapi.Dom.Element.cloneNodeDeep
+          ->Webapi.Dom.HtmlInputElement.ofElement
+          ->Belt.Option.forEach(clone => {
+            // clone input element & set value empty
+            clone->Webapi.Dom.HtmlInputElement.setValue("")
+            let makeEvent: (
+              ReactEvent.Mouse.t,
+              Webapi.Dom.HtmlInputElement.t,
+            ) => ReactEvent.Form.t = %raw("
+              function (e, value) {
+                return Object.create(e, {
+                  target: { value: value },
+                  currentTarget: { value: value },
+                })
+              }
+            ")
+            let event = makeEvent(event, clone)
+            event->fn
+          })
+        }
+      })
+    })
+  }
+
   let onChange = event => {
     open ReactEvent.Synthetic
     if !isControled {
@@ -104,13 +152,14 @@ ref) => {
     onBlur->Belt.Option.forEach(fn => event->fn)
   }
 
-  let hasfix = prefix->Belt.Option.isSome || suffix->Belt.Option.isSome
+  let hasfix = prefix->Belt.Option.isSome || suffix->Belt.Option.isSome || allowClear
   let hasaddon = addonBefore->Belt.Option.isSome || addonAfter->Belt.Option.isSome
 
   let child = {
     let className = hasfix
-      ? MxRC__Input__Twind.makeNoStyle()
-      : className->MxRC__Input__Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon)
+      ? Twind.makeNoStyle()
+      : className->Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon)
+
     <input
       ref={inputRef->ReactDOM.Ref.domRef}
       type_="text"
@@ -119,7 +168,7 @@ ref) => {
       onBlur
       onFocus
       onKeyDown
-      ?value
+      value
       onChange
     />
   }
@@ -128,19 +177,32 @@ ref) => {
   | true => {
       let prefix = switch prefix {
       | Some(node) => {
-          let className = MxRC__Input__Twind.makeFixed(~pos=#prefix)
+          let className = Twind.makeFixed(~pos=#prefix)
           <span className> node </span>
         }
-      | _ => React.null
+      | None => React.null
       }
-      let suffix = switch suffix {
-      | Some(node) => {
-          let className = MxRC__Input__Twind.makeFixed(~pos=#suffix)
+      let suffix = switch (suffix, allowClear) {
+      | (Some(_), true) => AddonAfterConflict->raise
+      | (Some(node), false) => {
+          let className = Twind.makeFixed(~pos=#suffix)
           <span className> node </span>
         }
-      | _ => React.null
+      | (None, true) => {
+          let className = Twind.makeFixed(~pos=#suffix)
+          let icon = {
+            let className = Twind.makeClear()
+            let visibility = value->Js.String2.length > 0 ? "visible" : "hidden"
+            let style = ReactDOM.Style.make(~visibility, ())
+            let onMouseDown = event => event->ReactEvent.Mouse.preventDefault
+            let onClick = onReset
+            <span className style onMouseDown role="button" onClick> <CloseCircleFilled /> </span>
+          }
+          <span className> icon </span>
+        }
+      | (None, false) => React.null
       }
-      let className = className->MxRC__Input__Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused)
+      let className = className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused)
       let onMouseUp = _ => focus()
       <span className onMouseUp> prefix child suffix </span>
     }
@@ -151,24 +213,20 @@ ref) => {
   | true => {
       let before = switch addonBefore {
       | Some(addon) => {
-          let className = MxRC__Input__Twind.makeAddon(
-            ~noStyled=addonBeforeNoStyle->Belt.Option.getWithDefault(false),
-          )
+          let className = Twind.makeAddon(~noStyled=addonBeforeNoStyle)
           <span className> addon </span>
         }
       | _ => React.null
       }
       let after = switch addonAfter {
       | Some(addon) => {
-          let className = MxRC__Input__Twind.makeAddon(
-            ~noStyled=addonAfterNoStyle->Belt.Option.getWithDefault(false),
-          )
+          let className = Twind.makeAddon(~noStyled=addonAfterNoStyle)
           <span className> addon </span>
         }
       | _ => React.null
       }
 
-      let (o, i) = MxRC__Input__Twind.makeGroup()
+      let (o, i) = Twind.makeGroup()
 
       <span className=o style=?groupStyle> <span className=i> before child after </span> </span>
     }

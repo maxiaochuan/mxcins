@@ -26,11 +26,12 @@ import type {style as ReactDOM_style} from '../../src/shims/react.shim';
 export type node = MxRC__Libs__React_node;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type forward = {
+export type inputRef = {
   readonly focus: () => void; 
   readonly blur: () => void; 
   readonly input?: Dom_htmlInputElement
 };
+export type InputRef = inputRef;
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
@@ -38,6 +39,7 @@ export type Props = {
   readonly addonAfterNoStyle?: boolean; 
   readonly addonBefore?: node; 
   readonly addonBeforeNoStyle?: boolean; 
+  readonly allowClear?: boolean; 
   readonly className?: string; 
   readonly defaultValue?: string; 
   readonly groupStyle?: ReactDOM_style; 
@@ -50,7 +52,7 @@ export type Props = {
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly suffix?: node; 
-  readonly value?: (null | undefined | string)
+  readonly value?: string
 };
 
 export const make: React.ComponentType<{
@@ -58,6 +60,7 @@ export const make: React.ComponentType<{
   readonly addonAfterNoStyle?: boolean; 
   readonly addonBefore?: node; 
   readonly addonBeforeNoStyle?: boolean; 
+  readonly allowClear?: boolean; 
   readonly className?: string; 
   readonly defaultValue?: string; 
   readonly groupStyle?: ReactDOM_style; 
@@ -70,9 +73,5 @@ export const make: React.ComponentType<{
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly suffix?: node; 
-  readonly value?: (null | undefined | string)
-}> = function MxRC__Input(Arg1: any) {
-  const $props = {addonAfter:Arg1.addonAfter, addonAfterNoStyle:Arg1.addonAfterNoStyle, addonBefore:Arg1.addonBefore, addonBeforeNoStyle:Arg1.addonBeforeNoStyle, className:Arg1.className, defaultValue:Arg1.defaultValue, groupStyle:Arg1.groupStyle, onBlur:Arg1.onBlur, onChange:Arg1.onChange, onFocus:Arg1.onFocus, onKeyDown:Arg1.onKeyDown, onPressEnter:Arg1.onPressEnter, placeholder:Arg1.placeholder, prefix:Arg1.prefix, size:Arg1.size, suffix:Arg1.suffix, value:(Arg1.value == null ? undefined : (Arg1.value == null ? undefined : Arg1.value))};
-  const result = React.createElement(MxRC__InputBS.make, $props);
-  return result
-};
+  readonly value?: string
+}> = MxRC__InputBS.make;

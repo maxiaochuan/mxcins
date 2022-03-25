@@ -37,6 +37,9 @@ function MxRC__Input__Search(Props) {
   var addonBefore = Props.addonBefore;
   var prefix = Props.prefix;
   var suffix = Props.suffix;
+  var value = Props.value;
+  var onChange = Props.onChange;
+  var allowClear = Props.allowClear;
   var onSearch = Props.onSearch;
   var inputRef = React.useRef(initRef);
   var onSearch$1 = function ($$event) {
@@ -78,6 +81,15 @@ function MxRC__Input__Search(Props) {
   }
   if (suffix !== undefined) {
     tmp.suffix = Caml_option.valFromOption(suffix);
+  }
+  if (onChange !== undefined) {
+    tmp.onChange = Caml_option.valFromOption(onChange);
+  }
+  if (value !== undefined) {
+    tmp.value = Caml_option.valFromOption(value);
+  }
+  if (allowClear !== undefined) {
+    tmp.allowClear = Caml_option.valFromOption(allowClear);
   }
   return React.createElement(MxRC__Input.make, tmp);
 }

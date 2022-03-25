@@ -90,3 +90,16 @@ let makeAddon = (~noStyled) => {
 
   classes->atw
 }
+
+let makeClear = () =>
+  [
+    "
+    text-text-disabled
+    pointer
+    text-xs
+    hover:(text-text-secondary)
+    active:(text-text)
+    transition
+    ",
+    {"vertical-align": "-1px"}->css,
+  ]->atw

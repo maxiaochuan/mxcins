@@ -22,6 +22,7 @@
     "build:res:webapi": "yarn workspace @mxcins/webapi run rescript build",
     "build:res:hooks": "yarn workspace @mxcins/hooks run rescript build",
     "build:res:components": "yarn workspace @mxcins/components run rescript build",
+    "icons": "node scripts/icons.cjs",
     "prettier": "prettier --write 'src/**/*.tsx' 'packages/vite-plugin-routes/**/*.{ts,js}' 'packages/components/**/index.ts' 'packages/components/src/shims/*.ts'",
     "publish": "lerna publish from-git",
     "version": "lerna version --conventional-commits --yes"

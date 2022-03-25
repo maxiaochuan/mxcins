@@ -62,12 +62,22 @@ function makeAddon(noStyled) {
   return MxRC__Libs__Twind.atw(undefined, classes);
 }
 
+function makeClear(param) {
+  return MxRC__Libs__Twind.atw(undefined, [
+              "\n    text-text-disabled\n    pointer\n    text-xs\n    hover:(text-text-secondary)\n    active:(text-text)\n    transition\n    ",
+              Css.css({
+                    "vertical-align": "-1px"
+                  })
+            ]);
+}
+
 export {
   makeNoStyle ,
   make ,
   makeFixed ,
   makeGroup ,
   makeAddon ,
+  makeClear ,
   
 }
 /* twind Not a pure module */

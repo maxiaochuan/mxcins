@@ -10,7 +10,7 @@ module InputSearchTwind = {
   }
 }
 
-let initRef: Input.forward = {
+let initRef: Input.inputRef = {
   focus: () => (),
   blur: () => (),
   input: None,
@@ -24,9 +24,12 @@ let make = (
   ~addonBefore=?,
   ~prefix=?,
   ~suffix=?,
+  ~value=?,
+  ~onChange=?,
+  ~allowClear=?,
   ~onSearch: option<(. string, ReactEvent.Synthetic.t) => unit>=?,
 ) => {
-  let inputRef: Input.inputRef = React.useRef(initRef)
+  let inputRef = React.useRef(initRef)
 
   let onSearch = event =>
     onSearch->Belt.Option.forEach(fn =>
@@ -53,6 +56,9 @@ let make = (
     ?addonBefore
     ?prefix
     ?suffix
+    ?allowClear
+    ?value
+    ?onChange
     addonAfter
     addonAfterNoStyle=true
     onPressEnter
