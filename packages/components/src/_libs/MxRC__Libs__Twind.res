@@ -100,12 +100,16 @@ let conf = {
     "padding": %raw("
       theme => {
         const spacing = theme('spacing');
-        return {
+        const padding = {
           ...spacing,
           '2-bordered': `calc(${spacing[2]} - 1px)`,
           '3-bordered': `calc(${spacing[3]} - 1px)`,
           '4-bordered': `calc(${spacing[4]} - 1px)`,
+          'y6-bordered': `calc(${spacing[3]} - 0.5rem - 1px)`,
+          'y8-bordered': `calc(${spacing[4]} - 0.6875rem - 1px)`,
+          'y10-bordered': `calc(${spacing[5]} - 0.75rem - 1px)`,
         };
+        return padding;
       }
     "),
     "minWidth": %raw("theme => theme('width')"),

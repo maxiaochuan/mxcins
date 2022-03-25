@@ -25,6 +25,15 @@ function make($$class, size, z, affix, focused) {
   return MxRC__Libs__Twind.atw($$class, classes);
 }
 
+function makeTextArea($$class, size, focused) {
+  var $$class$1 = make($$class, size, false, false, focused);
+  var classes = ["h-auto"];
+  classes.push(size === "small" ? "py-y6-bordered" : (
+          size === "default" ? "py-y8-bordered" : "py-y10-bordered"
+        ));
+  return MxRC__Libs__Twind.atw($$class$1, classes);
+}
+
 function makeFixed(pos) {
   var classes = ["flex flex-none items-center"];
   classes.push(pos === "prefix" ? "mr-1" : "ml-1");
@@ -74,6 +83,7 @@ function makeClear(param) {
 export {
   makeNoStyle ,
   make ,
+  makeTextArea ,
   makeFixed ,
   makeGroup ,
   makeAddon ,

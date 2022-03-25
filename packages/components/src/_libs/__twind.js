@@ -8,6 +8,12 @@ const INLINE_ELEMENT_BASE_LINEHEIGHT = [22, 22, 24];
 
 const INLINE_ELEMENT_BASE_PY = INLINE_ELEMENT_BASE_HEIGHT.map((h, i) => (h - 2 - INLINE_ELEMENT_BASE_LINEHEIGHT[i]) / 2)
 
+// const Y2 = 32 // 4 
+//             - 22 // 2.35
+//             - 1
+
+//             1.65 - 1px
+
 /**
  * @type import('twind').Configuration
  */
@@ -170,12 +176,13 @@ export const conf = {
     padding: theme => {
       return {
         ...theme('spacing'),
-        'inline-bordered': INLINE_ELEMENT_BASE_PY[1] + "px",
-        'inline-bordered-sm': INLINE_ELEMENT_BASE_PY[0] + "px",
-        'inline-bordered-lg': INLINE_ELEMENT_BASE_PY[2] + "px",
+        "inline-bordered": INLINE_ELEMENT_BASE_PY[1] + "px",
+        "inline-bordered-sm": INLINE_ELEMENT_BASE_PY[0] + "px",
+        "inline-bordered-lg": INLINE_ELEMENT_BASE_PY[2] + "px",
         '2-bordered': "0.4375rem", // 0.5rem - 1px
         '3-bordered': "0.6875rem", // 0.75rem - 1px
         '4-bordered': "calc(1rem - 1px)", // 0.75rem - 1px
+        '2y-bordered': ''
       };
     },
     // extend: {

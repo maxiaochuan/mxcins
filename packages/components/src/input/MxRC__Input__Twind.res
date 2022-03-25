@@ -43,6 +43,20 @@ let make = (class, ~size, ~z, ~affix, ~focused) => {
   classes->atw(~class?)
 }
 
+let makeTextArea = (class, ~size, ~focused) => {
+  let class = make(class, ~size, ~affix=false, ~z=false, ~focused)
+  let classes = ["h-auto"];
+  let push = str => classes->Js.Array2.push(str)->ignore
+
+  switch size {
+  | #default => "py-y8-bordered"
+  | #small => "py-y6-bordered"
+  | #large => "py-y10-bordered"
+  }->push
+
+  classes->atw(~class)
+}
+
 let makeFixed = (~pos) => {
   let classes = ["flex flex-none items-center"]
   let push = str => classes->Js.Array2.push(str)->ignore
