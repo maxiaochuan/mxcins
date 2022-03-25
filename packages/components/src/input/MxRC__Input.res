@@ -10,12 +10,17 @@ type inputRef = {
   input: option<Dom.htmlInputElement>,
 }
 
+@genType.as("InputType")
+type _type = [#text|#password]
+
 // TODO: ReactEvent ChangeEvent
 
 exception AddonAfterConflict
 
 @react.component @genType
-let make = React.forwardRef((~size=?,
+let make = React.forwardRef((
+~_type: _type=#text,
+~size=?,
 ~className=?,
 ~groupStyle=?,
 ~placeholder=?,
@@ -172,9 +177,13 @@ ref) => {
       ? Twind.makeNoStyle()
       : className->Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon)
 
+    let type_ = switch _type {
+    | #text => "text"
+    | #password => "password"
+    }
     <input
       ref={inputRef->ReactDOM.Ref.domRef}
-      type_="text"
+      type_
       className
       ?placeholder
       onBlur
@@ -208,7 +217,7 @@ ref) => {
             let style = ReactDOM.Style.make(~visibility, ())
             let onMouseDown = event => event->ReactEvent.Mouse.preventDefault
             let onClick = onReset
-            <span className style onMouseDown role="button" onClick> <CloseCircleFilled /> </span>
+            <span className style role="button"> <CloseCircleFilled onMouseDown onClick /> </span>
           }
           <span className> icon </span>
         }

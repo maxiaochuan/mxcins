@@ -34,7 +34,12 @@ export type inputRef = {
 export type InputRef = inputRef;
 
 // tslint:disable-next-line:interface-over-type-literal
+export type _type = "text" | "password";
+export type InputType = _type;
+
+// tslint:disable-next-line:interface-over-type-literal
 export type Props = {
+  readonly type?: _type; 
   readonly addonAfter?: node; 
   readonly addonAfterNoStyle?: boolean; 
   readonly addonBefore?: node; 
@@ -57,6 +62,7 @@ export type Props = {
 };
 
 export const make: React.ComponentType<{
+  readonly type?: _type; 
   readonly addonAfter?: node; 
   readonly addonAfterNoStyle?: boolean; 
   readonly addonBefore?: node; 

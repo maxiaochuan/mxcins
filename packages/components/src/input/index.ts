@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { make } from './MxRC__Input.gen';
-import type { Props, InputRef } from './MxRC__Input.gen';
+import type { Props, InputRef, InputType } from './MxRC__Input.gen';
 import { make as Search } from './MxRC__Input__Search.gen';
 import type { Props as SearchProps1 } from './MxRC__Input__Search.gen';
 import { make as TextArea } from './MxRC__Input__TextArea.gen';
@@ -42,4 +42,4 @@ Input.TextArea = TextArea as TextAreaComponent;
 Input.Password = Password as PasswordComponent;
 
 export { Input };
-export type { InputProps, SearchProps, TextAreaProps, PasswordProps };
+export type { InputType, InputProps, SearchProps, TextAreaProps, PasswordProps };

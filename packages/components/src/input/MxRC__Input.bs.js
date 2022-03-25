@@ -14,6 +14,7 @@ import * as Webapi__Dom__HtmlInputElement from "rescript-webapi/src/Webapi/Dom/W
 var AddonAfterConflict = /* @__PURE__ */Caml_exceptions.create("MxRC__Input.AddonAfterConflict");
 
 var make = React.forwardRef(function (Props, ref) {
+      var _typeOpt = Props.type;
       var size = Props.size;
       var className = Props.className;
       var groupStyle = Props.groupStyle;
@@ -33,6 +34,7 @@ var make = React.forwardRef(function (Props, ref) {
       var defaultValue = Props.defaultValue;
       var allowClearOpt = Props.allowClear;
       var maxLength = Props.maxLength;
+      var _type = _typeOpt !== undefined ? _typeOpt : "text";
       var addonBeforeNoStyle = addonBeforeNoStyleOpt !== undefined ? addonBeforeNoStyleOpt : false;
       var addonAfterNoStyle = addonAfterNoStyleOpt !== undefined ? addonAfterNoStyleOpt : false;
       var allowClear = allowClearOpt !== undefined ? allowClearOpt : false;
@@ -153,10 +155,11 @@ var make = React.forwardRef(function (Props, ref) {
       var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix) || allowClear;
       var hasaddon = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
       var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyle(undefined) : MxRC__Input__Twind.make(className, size$1, hasaddon, false, focused);
+      var type_ = _type === "text" ? "text" : "password";
       var tmp = {
         ref: inputRef,
         className: className$1,
-        type: "text",
+        type: type_,
         value: value$1,
         onKeyDown: onKeyDown$1,
         onFocus: onFocus$1,
@@ -204,10 +207,11 @@ var make = React.forwardRef(function (Props, ref) {
           var icon = React.createElement("span", {
                 className: className$5,
                 role: "button",
-                style: style,
-                onClick: onReset,
-                onMouseDown: onMouseDown
-              }, React.createElement(Icons.CloseCircleFilled, {}));
+                style: style
+              }, React.createElement(Icons.CloseCircleFilled, {
+                    onMouseDown: onMouseDown,
+                    onClick: onReset
+                  }));
           suffix$1 = React.createElement("span", {
                 className: className$4
               }, icon);

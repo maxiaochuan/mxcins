@@ -11,7 +11,13 @@ const keys = Object.keys(icons).filter(k => /^[A-Z]/.test(k) && !exclude.include
 const make = name => `
 module ${name} = {
   @module("@ant-design/icons") @react.component
-  external make: (~className:string=?, ~style: ReactDOM.style=?) => React.element = "${name}"
+  external make: (
+    ~className:string=?,
+    ~style: ReactDOM.style=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?,
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
+    ~onClick: ReactEvent.Mouse.t => unit=?,
+  ) => React.element = "${name}"
 }
 `
 

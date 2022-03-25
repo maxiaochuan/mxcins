@@ -15,9 +15,6 @@ const LayoutView = () => {
         <Input placeholder="Basic usage" maxLength={10} />
         <Input placeholder="Basic usage" size="small" />
         <Input placeholder="Basic usage" size="large" />
-        <br />
-        <br />
-        <br />
         <Input addonBefore="http://" addonAfter=".com" defaultValue="mysite" />
         <Input addonAfter={<SettingOutlined />} defaultValue="mysite" />
         <Input addonBefore="http://" suffix=".com" defaultValue="mysite" />
@@ -37,15 +34,13 @@ const LayoutView = () => {
           onSearch={onSearch}
           style={{ width: 304 }}
         />
-        <TextArea rows={4} />
-        <br />
-        <br />
+        <TextArea rows={2} />
         <TextArea rows={4} placeholder="maxLength is 6" maxLength={6} />
-            <Input.Password placeholder="input password" />
-    <Input.Password
-      placeholder="input password"
-      // iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-    />
+        <Input.Password placeholder="input password" />
+        <Input.Password
+          placeholder="input password"
+          // iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+        />
       </Record>
     </>
   );
