@@ -21,11 +21,16 @@ let make = React.forwardRef((~size=?,
 //events
 ~onPressEnter=?,
 ~onKeyDown=?,
+~onFocus=?,
 ~onBlur=?,
 ~onChange=?,
 //value
 ~value=?,
+~defaultValue=?,
 ref) => {
+  let (v, set) = React.useState(_ => defaultValue)
+  let isControled = !(value->Belt.Option.isNone)
+  let value = value->Belt.Option.getWithDefault(v)
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
@@ -70,12 +75,26 @@ ref) => {
     }
   })
 
+  let onChange = event => {
+    open ReactEvent.Synthetic
+    if (!isControled) {
+      let next = event->target
+      set(_ => next["value"])
+    }
+    onChange->Belt.Option.forEach(fn => event -> fn)
+  }
+
   let onKeyDown = event => {
     // press enter
     if event->ReactEvent.Keyboard.key === "Enter" {
       onPressEnter->Belt.Option.forEach(fn => event->fn)
     }
     onKeyDown->Belt.Option.forEach(fn => event->fn)
+  }
+
+  let onFocus = event => {
+    setFocused(_ => true)
+    onFocus->Belt.Option.forEach(fn => event->fn)
   }
 
   let onBlur = event => {
@@ -89,16 +108,17 @@ ref) => {
   let child = {
     let className = hasfix
         ? MxRC__Input__Twind.makeNoStyled()
-        : className->MxRC__Input__Twind.makeStyled(~size, ~affix=false, ~focused, ~z=false)
+        : className->MxRC__Input__Twind.makeStyled(~size, ~affix=false, ~focused, ~z=hasaddon)
     <input
       ref={inputRef->ReactDOM.Ref.domRef}
       type_="text"
       className
       ?placeholder
       onBlur
+      onFocus
       onKeyDown
       ?value
-      ?onChange
+      onChange
     />
   }
 
@@ -119,7 +139,7 @@ ref) => {
       | _ => React.null
       }
       let className =
-        className->MxRC__Input__Twind.makeStyled(~size, ~affix=true, ~z=false, ~focused)
+        className->MxRC__Input__Twind.makeStyled(~size, ~affix=true, ~z=hasaddon, ~focused)
       let onMouseUp = _ => focus()
       <span className onMouseUp> prefix child suffix </span>
     }

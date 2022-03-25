@@ -19,15 +19,23 @@ var make = React.forwardRef(function (Props, ref) {
       var suffix = Props.suffix;
       var onPressEnter = Props.onPressEnter;
       var onKeyDown = Props.onKeyDown;
+      var onFocus = Props.onFocus;
       var onBlur = Props.onBlur;
       var onChange = Props.onChange;
       var value = Props.value;
-      var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
+      var defaultValue = Props.defaultValue;
       var match = React.useState(function () {
+            return defaultValue;
+          });
+      var set = match[1];
+      var isControled = !Belt_Option.isNone(value);
+      var value$1 = Belt_Option.getWithDefault(value, match[0]);
+      var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
+      var match$1 = React.useState(function () {
             return false;
           });
-      var setFocused = match[1];
-      var focused = match[0];
+      var setFocused = match$1[1];
+      var focused = match$1[0];
       var size$1 = Belt_Option.getWithDefault(size, context.size);
       var inputRef = React.useRef(null);
       var focus = function (param) {
@@ -61,6 +69,17 @@ var make = React.forwardRef(function (Props, ref) {
                             }))
                     };
             }), []);
+      var onChange$1 = function ($$event) {
+        if (!isControled) {
+          var next = $$event.target;
+          Curry._1(set, (function (param) {
+                  return next.value;
+                }));
+        }
+        return Belt_Option.forEach(onChange, (function (fn) {
+                      return Curry._1(fn, $$event);
+                    }));
+      };
       var onKeyDown$1 = function ($$event) {
         if ($$event.key === "Enter") {
           Belt_Option.forEach(onPressEnter, (function (fn) {
@@ -68,6 +87,14 @@ var make = React.forwardRef(function (Props, ref) {
                 }));
         }
         return Belt_Option.forEach(onKeyDown, (function (fn) {
+                      return Curry._1(fn, $$event);
+                    }));
+      };
+      var onFocus$1 = function ($$event) {
+        Curry._1(setFocused, (function (param) {
+                return true;
+              }));
+        return Belt_Option.forEach(onFocus, (function (fn) {
                       return Curry._1(fn, $$event);
                     }));
       };
@@ -81,22 +108,21 @@ var make = React.forwardRef(function (Props, ref) {
       };
       var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix);
       var hasaddon = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
-      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyled(undefined) : MxRC__Input__Twind.makeStyled(className, size$1, false, false, focused);
+      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyled(undefined) : MxRC__Input__Twind.makeStyled(className, size$1, hasaddon, false, focused);
       var tmp = {
         ref: inputRef,
         className: className$1,
         type: "text",
         onKeyDown: onKeyDown$1,
-        onBlur: onBlur$1
+        onFocus: onFocus$1,
+        onBlur: onBlur$1,
+        onChange: onChange$1
       };
       if (placeholder !== undefined) {
         tmp.placeholder = Caml_option.valFromOption(placeholder);
       }
-      if (value !== undefined) {
-        tmp.value = Caml_option.valFromOption(value);
-      }
-      if (onChange !== undefined) {
-        tmp.onChange = Caml_option.valFromOption(onChange);
+      if (value$1 !== undefined) {
+        tmp.value = Caml_option.valFromOption(value$1);
       }
       var child = React.createElement("input", tmp);
       var child$1;
@@ -119,7 +145,7 @@ var make = React.forwardRef(function (Props, ref) {
         } else {
           suffix$1 = null;
         }
-        var className$4 = MxRC__Input__Twind.makeStyled(className, size$1, false, true, focused);
+        var className$4 = MxRC__Input__Twind.makeStyled(className, size$1, hasaddon, true, focused);
         var onMouseUp = function (param) {
           return focus(undefined);
         };
@@ -151,11 +177,11 @@ var make = React.forwardRef(function (Props, ref) {
       } else {
         after = null;
       }
-      var match$1 = MxRC__Input__Twind.makeGroup(undefined);
+      var match$2 = MxRC__Input__Twind.makeGroup(undefined);
       return React.createElement("span", {
-                  className: match$1[0]
+                  className: match$2[0]
                 }, React.createElement("span", {
-                      className: match$1[1]
+                      className: match$2[1]
                     }, before, child$1, after));
     });
 

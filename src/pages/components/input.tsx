@@ -3,18 +3,15 @@ import { SettingOutlined } from '@ant-design/icons';
 import { Input } from '@mxcins/components';
 import { Record } from '../../components';
 
-function onSearch(value: string, _: React.SyntheticEvent) {
-  console.log('args', value, typeof value, value === '');
-}
-
 const LayoutView = () => {
+  const [v, set] = React.useState('');
   return (
     <>
       <Record title="space">
-        <Input placeholder="Basic usage" />
-        <Input addonBefore="http://" addonAfter=".com" />
-    <Input addonAfter={<SettingOutlined />} />
-    <Input addonBefore="http://" suffix=".com" />
+        {/* <Input placeholder="Basic usage" /> */}
+        <Input addonBefore="http://" addonAfter=".com" defaultValue="site" value={v} />
+    {/* <Input addonAfter={<SettingOutlined />} />
+    <Input addonBefore="http://" suffix=".com" /> */}
       </Record>
     </>
   );

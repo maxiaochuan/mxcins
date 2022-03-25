@@ -35,28 +35,36 @@ export type Props = {
   readonly addonAfter?: node; 
   readonly addonBefore?: node; 
   readonly className?: string; 
+  readonly defaultValue?: string; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
+  readonly onFocus?: (_1:ReactEvent_Focus_t) => void; 
   readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly suffix?: node; 
-  readonly value?: string
+  readonly value?: (null | undefined | string)
 };
 
 export const make: React.ComponentType<{
   readonly addonAfter?: node; 
   readonly addonBefore?: node; 
   readonly className?: string; 
+  readonly defaultValue?: string; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
+  readonly onFocus?: (_1:ReactEvent_Focus_t) => void; 
   readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
   readonly suffix?: node; 
-  readonly value?: string
-}> = MxRC__InputBS.make;
+  readonly value?: (null | undefined | string)
+}> = function MxRC__Input(Arg1: any) {
+  const $props = {addonAfter:Arg1.addonAfter, addonBefore:Arg1.addonBefore, className:Arg1.className, defaultValue:Arg1.defaultValue, onBlur:Arg1.onBlur, onChange:Arg1.onChange, onFocus:Arg1.onFocus, onKeyDown:Arg1.onKeyDown, onPressEnter:Arg1.onPressEnter, placeholder:Arg1.placeholder, prefix:Arg1.prefix, size:Arg1.size, suffix:Arg1.suffix, value:(Arg1.value == null ? undefined : (Arg1.value == null ? undefined : Arg1.value))};
+  const result = React.createElement(MxRC__InputBS.make, $props);
+  return result
+};
