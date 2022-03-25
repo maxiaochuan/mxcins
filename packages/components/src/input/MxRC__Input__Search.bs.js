@@ -9,7 +9,7 @@ import * as Icons from "@ant-design/icons";
 import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
 function makeSearch(param) {
-  return MxRC__Libs__Twind.atw(undefined, ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1)"]);
+  return MxRC__Libs__Twind.atw(undefined, ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1) text-text-secondary"]);
 }
 
 var InputSearchTwind = {
@@ -46,7 +46,7 @@ function MxRC__Input__Search(Props) {
                               }));
                 }));
   };
-  var className = MxRC__Libs__Twind.atw(undefined, ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1)"]);
+  var className = MxRC__Libs__Twind.atw(undefined, ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1) text-text-secondary"]);
   var icon = React.createElement(Icons.SearchOutlined, {});
   var onClick = onSearch$1;
   var addonAfter = React.createElement(MxRC__Button.make, {

@@ -72,6 +72,7 @@ var conf = {
       },
       text: {
         DEFAULT: "rgba(0, 0, 0, .85)",
+        secondary: "rgba(0, 0, 0, .45)",
         disabled: "rgba(0, 0, 0, 0.25)"
       },
       background: {

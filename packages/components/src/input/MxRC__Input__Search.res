@@ -6,7 +6,7 @@ module Button = MxRC__Button
 module InputSearchTwind = {
   open MxRC__Libs__Twind
   let makeSearch = () => {
-    ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1)"]->atw
+    ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1) text-text-secondary"]->atw
   }
 }
 
