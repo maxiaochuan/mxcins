@@ -12,10 +12,12 @@ type inputRef = React.ref<forward>
 @react.component @genType
 let make = React.forwardRef((~size=?,
 ~className=?,
-// ~style=?,
+~groupStyle=?,
 ~placeholder=?,
 ~addonBefore: option<node>=?,
+~addonBeforeNoStyle=?,
 ~addonAfter: option<node>=?,
+~addonAfterNoStyle=?,
 ~prefix: option<node>=?,
 ~suffix: option<node>=?,
 //events
@@ -77,11 +79,11 @@ ref) => {
 
   let onChange = event => {
     open ReactEvent.Synthetic
-    if (!isControled) {
+    if !isControled {
       let next = event->target
       set(_ => next["value"])
     }
-    onChange->Belt.Option.forEach(fn => event -> fn)
+    onChange->Belt.Option.forEach(fn => event->fn)
   }
 
   let onKeyDown = event => {
@@ -107,8 +109,8 @@ ref) => {
 
   let child = {
     let className = hasfix
-        ? MxRC__Input__Twind.makeNoStyled()
-        : className->MxRC__Input__Twind.makeStyled(~size, ~affix=false, ~focused, ~z=hasaddon)
+      ? MxRC__Input__Twind.makeNoStyle()
+      : className->MxRC__Input__Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon)
     <input
       ref={inputRef->ReactDOM.Ref.domRef}
       type_="text"
@@ -138,8 +140,7 @@ ref) => {
         }
       | _ => React.null
       }
-      let className =
-        className->MxRC__Input__Twind.makeStyled(~size, ~affix=true, ~z=hasaddon, ~focused)
+      let className = className->MxRC__Input__Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused)
       let onMouseUp = _ => focus()
       <span className onMouseUp> prefix child suffix </span>
     }
@@ -150,18 +151,18 @@ ref) => {
   | true => {
       let before = switch addonBefore {
       | Some(addon) => {
-          // let isStandard = addon->MxRC__Libs__React.Children.isString
-          let isStandard = true
-          let className = MxRC__Input__Twind.makeGroupAddon(~isStandard)
+          let className = MxRC__Input__Twind.makeAddon(
+            ~noStyled=addonBeforeNoStyle->Belt.Option.getWithDefault(false),
+          )
           <span className> addon </span>
         }
       | _ => React.null
       }
       let after = switch addonAfter {
       | Some(addon) => {
-          // let isStandard = addon->MxRC__Libs__React.Children.isString
-          let isStandard = true
-          let className = MxRC__Input__Twind.makeGroupAddon(~isStandard)
+          let className = MxRC__Input__Twind.makeAddon(
+            ~noStyled=addonAfterNoStyle->Belt.Option.getWithDefault(false),
+          )
           <span className> addon </span>
         }
       | _ => React.null
@@ -169,7 +170,7 @@ ref) => {
 
       let (o, i) = MxRC__Input__Twind.makeGroup()
 
-      <span className=o> <span className=i> before child after </span> </span>
+      <span className=o style=?groupStyle> <span className=i> before child after </span> </span>
     }
   | false => child
   }

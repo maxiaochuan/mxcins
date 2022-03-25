@@ -16,17 +16,32 @@ var InputSearchTwind = {
   makeSearch: makeSearch
 };
 
+function initRef_focus(param) {
+  
+}
+
+function initRef_blur(param) {
+  
+}
+
+var initRef = {
+  focus: initRef_focus,
+  blur: initRef_blur,
+  input: undefined
+};
+
 function MxRC__Input__Search(Props) {
   var size = Props.size;
+  var groupStyle = Props.style;
   var placeholder = Props.placeholder;
   var addonBefore = Props.addonBefore;
   var prefix = Props.prefix;
   var suffix = Props.suffix;
   var onSearch = Props.onSearch;
-  var inputRef = React.useRef(null);
+  var inputRef = React.useRef(initRef);
   var onSearch$1 = function ($$event) {
     return Belt_Option.forEach(onSearch, (function (fn) {
-                  return Belt_Option.forEach(Caml_option.nullable_to_opt(inputRef.current), (function (input) {
+                  return Belt_Option.forEach(inputRef.current.input, (function (input) {
                                 return fn(input.value, $$event);
                               }));
                 }));
@@ -42,11 +57,15 @@ function MxRC__Input__Search(Props) {
   var onPressEnter = onSearch$1;
   var tmp = {
     addonAfter: addonAfter,
+    addonAfterNoStyle: true,
     onPressEnter: onPressEnter,
     ref: inputRef
   };
   if (size !== undefined) {
     tmp.size = Caml_option.valFromOption(size);
+  }
+  if (groupStyle !== undefined) {
+    tmp.groupStyle = Caml_option.valFromOption(groupStyle);
   }
   if (placeholder !== undefined) {
     tmp.placeholder = Caml_option.valFromOption(placeholder);
@@ -73,6 +92,7 @@ export {
   Input ,
   Button ,
   InputSearchTwind ,
+  initRef ,
   make ,
   
 }

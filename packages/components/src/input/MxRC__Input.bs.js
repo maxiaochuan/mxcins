@@ -12,9 +12,12 @@ import * as Webapi__Dom__HtmlInputElement from "rescript-webapi/src/Webapi/Dom/W
 var make = React.forwardRef(function (Props, ref) {
       var size = Props.size;
       var className = Props.className;
+      var groupStyle = Props.groupStyle;
       var placeholder = Props.placeholder;
       var addonBefore = Props.addonBefore;
+      var addonBeforeNoStyle = Props.addonBeforeNoStyle;
       var addonAfter = Props.addonAfter;
+      var addonAfterNoStyle = Props.addonAfterNoStyle;
       var prefix = Props.prefix;
       var suffix = Props.suffix;
       var onPressEnter = Props.onPressEnter;
@@ -108,7 +111,7 @@ var make = React.forwardRef(function (Props, ref) {
       };
       var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix);
       var hasaddon = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
-      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyled(undefined) : MxRC__Input__Twind.makeStyled(className, size$1, hasaddon, false, focused);
+      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyle(undefined) : MxRC__Input__Twind.make(className, size$1, hasaddon, false, focused);
       var tmp = {
         ref: inputRef,
         className: className$1,
@@ -145,7 +148,7 @@ var make = React.forwardRef(function (Props, ref) {
         } else {
           suffix$1 = null;
         }
-        var className$4 = MxRC__Input__Twind.makeStyled(className, size$1, hasaddon, true, focused);
+        var className$4 = MxRC__Input__Twind.make(className, size$1, hasaddon, true, focused);
         var onMouseUp = function (param) {
           return focus(undefined);
         };
@@ -161,7 +164,7 @@ var make = React.forwardRef(function (Props, ref) {
       }
       var before;
       if (addonBefore !== undefined) {
-        var className$5 = MxRC__Input__Twind.makeGroupAddon(true);
+        var className$5 = MxRC__Input__Twind.makeAddon(Belt_Option.getWithDefault(addonBeforeNoStyle, false));
         before = React.createElement("span", {
               className: className$5
             }, Caml_option.valFromOption(addonBefore));
@@ -170,7 +173,7 @@ var make = React.forwardRef(function (Props, ref) {
       }
       var after;
       if (addonAfter !== undefined) {
-        var className$6 = MxRC__Input__Twind.makeGroupAddon(true);
+        var className$6 = MxRC__Input__Twind.makeAddon(Belt_Option.getWithDefault(addonAfterNoStyle, false));
         after = React.createElement("span", {
               className: className$6
             }, Caml_option.valFromOption(addonAfter));
@@ -178,9 +181,13 @@ var make = React.forwardRef(function (Props, ref) {
         after = null;
       }
       var match$2 = MxRC__Input__Twind.makeGroup(undefined);
-      return React.createElement("span", {
-                  className: match$2[0]
-                }, React.createElement("span", {
+      var tmp$1 = {
+        className: match$2[0]
+      };
+      if (groupStyle !== undefined) {
+        tmp$1.style = Caml_option.valFromOption(groupStyle);
+      }
+      return React.createElement("span", tmp$1, React.createElement("span", {
                       className: match$2[1]
                     }, before, child$1, after));
     });

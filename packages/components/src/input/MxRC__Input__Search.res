@@ -10,22 +10,29 @@ module InputSearchTwind = {
   }
 }
 
+let initRef: Input.forward = {
+  focus: () => (),
+  blur: () => (),
+  input: None,
+}
+
 @react.component @genType
 let make = (
   ~size=?,
+  ~style as groupStyle=?,
   ~placeholder=?,
   ~addonBefore=?,
   ~prefix=?,
   ~suffix=?,
   ~onSearch: option<(. string, ReactEvent.Synthetic.t) => unit>=?,
 ) => {
-  let inputRef: React.ref<Js.Nullable.t<Dom.htmlInputElement>> = React.useRef(Js.Nullable.null)
+  let inputRef: Input.inputRef = React.useRef(initRef)
 
   let onSearch = event =>
     onSearch->Belt.Option.forEach(fn =>
-      inputRef.current
-      ->Js.Nullable.toOption
-      ->Belt.Option.forEach(input => fn(. input->Webapi.Dom.HtmlInputElement.value, event))
+      inputRef.current.input->Belt.Option.forEach(input =>
+        fn(. input->Webapi.Dom.HtmlInputElement.value, event)
+      )
     )
 
   let addonAfter = {
@@ -38,5 +45,16 @@ let make = (
 
   let onPressEnter = event => event->ReactEvent.toSyntheticEvent->onSearch
 
-  <Input ref=inputRef ?size ?placeholder ?addonBefore ?prefix ?suffix addonAfter onPressEnter />
+  <Input
+    ref=inputRef
+    ?size
+    ?groupStyle
+    ?placeholder
+    ?addonBefore
+    ?prefix
+    ?suffix
+    addonAfter
+    addonAfterNoStyle=true
+    onPressEnter
+  />
 }

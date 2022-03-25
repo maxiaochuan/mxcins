@@ -14,6 +14,8 @@ import type {Synthetic_t as ReactEvent_Synthetic_t} from '../../src/shims/react.
 
 import type {node as MxRC__Input_node} from './MxRC__Input.gen';
 
+import type {style as ReactDOM_style} from '../../src/shims/react.shim';
+
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
   readonly addonBefore?: MxRC__Input_node; 
@@ -21,6 +23,7 @@ export type Props = {
   readonly placeholder?: string; 
   readonly prefix?: MxRC__Input_node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly style?: ReactDOM_style; 
   readonly suffix?: MxRC__Input_node
 };
 
@@ -30,5 +33,6 @@ export const make: React.ComponentType<{
   readonly placeholder?: string; 
   readonly prefix?: MxRC__Input_node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly style?: ReactDOM_style; 
   readonly suffix?: MxRC__Input_node
 }> = MxRC__Input__SearchBS.make;

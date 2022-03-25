@@ -1,8 +1,8 @@
 open MxRC__Libs__Twind
 
-let makeNoStyled = () => ["w-full p-0 m-0"]->atw
+let makeNoStyle = () => ["w-full p-0 m-0"]->atw
 
-let makeStyled = (class, ~size, ~z, ~affix, ~focused) => {
+let make = (class, ~size, ~z, ~affix, ~focused) => {
   let classes = [
     "
     inline-block
@@ -68,7 +68,7 @@ let makeGroup = () => {
         "& > *:last-child": ["rounded-r"]->apply,
         "& > *:not(:first-child)": ["rounded-l-none"]->apply,
         "& > *:not(:last-child)": ["rounded-r-none"]->apply,
-        // "& > *": ["table-cell align-middle"]->apply,
+        "& > *": ["align-middle"]->apply,
       }->css,
     ]
 
@@ -78,10 +78,10 @@ let makeGroup = () => {
   (out, inner)
 }
 
-let makeGroupAddon = (~isStandard) => {
+let makeAddon = (~noStyled) => {
   let classes = [
     "relative w-0 table-cell font-normal transition",
-    isStandard ? "px-3-bordered text(sm center text) bg(background) border(1 border)" : "-left-px",
+    noStyled ? "-left-px" : "px-3-bordered text(sm center text) bg(background) border(1 border)",
     {
       "&:first-child": ["border-r-0"]->apply,
       "&:last-child": ["border-l-0"]->apply,

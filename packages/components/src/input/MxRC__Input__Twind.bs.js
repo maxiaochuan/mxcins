@@ -4,11 +4,11 @@ import * as Twind from "twind";
 import * as Css from "twind/css";
 import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
-function makeNoStyled(param) {
+function makeNoStyle(param) {
   return MxRC__Libs__Twind.atw(undefined, ["w-full p-0 m-0"]);
 }
 
-function makeStyled($$class, size, z, affix, focused) {
+function make($$class, size, z, affix, focused) {
   var classes = ["\n    inline-block\n    relative\n    m-0\n    min-w-0\n    w-full\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    hover:(border-primary-hover)\n    focus:(border-primary-hover shadow-input-focus)\n    transition\n    tabular-nums\n    rounded\n  "];
   if (affix) {
     classes.push("inline-flex");
@@ -39,7 +39,8 @@ function makeGroup(param) {
           "& > *:first-child": Twind.apply(["rounded-l"]),
           "& > *:last-child": Twind.apply(["rounded-r"]),
           "& > *:not(:first-child)": Twind.apply(["rounded-l-none"]),
-          "& > *:not(:last-child)": Twind.apply(["rounded-r-none"])
+          "& > *:not(:last-child)": Twind.apply(["rounded-r-none"]),
+          "& > *": Twind.apply(["align-middle"])
         })
   ];
   var inner = MxRC__Libs__Twind.atw(undefined, classes);
@@ -49,10 +50,10 @@ function makeGroup(param) {
         ];
 }
 
-function makeGroupAddon(isStandard) {
+function makeAddon(noStyled) {
   var classes = [
     "relative w-0 table-cell font-normal transition",
-    isStandard ? "px-3-bordered text(sm center text) bg(background) border(1 border)" : "-left-px",
+    noStyled ? "-left-px" : "px-3-bordered text(sm center text) bg(background) border(1 border)",
     Css.css({
           "&:first-child": Twind.apply(["border-r-0"]),
           "&:last-child": Twind.apply(["border-l-0"])
@@ -62,11 +63,11 @@ function makeGroupAddon(isStandard) {
 }
 
 export {
-  makeNoStyled ,
-  makeStyled ,
+  makeNoStyle ,
+  make ,
   makeFixed ,
   makeGroup ,
-  makeGroupAddon ,
+  makeAddon ,
   
 }
 /* twind Not a pure module */
