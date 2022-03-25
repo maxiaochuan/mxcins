@@ -25,7 +25,7 @@ let getCollapsedWidth = _ =>
   ReactDOM.Style.make(~width="0px", ~opacity="0", ~transform="scale(0)", ())
 
 let getRealWidth = node => {
-  open MxLibs.Dom.Element
+  open Webapi.Dom.Element
   open Belt.Int
   ReactDOM.Style.make(
     ~width=node->scrollWidth->toString ++ "px",

@@ -2,8 +2,8 @@ module AffixUtils = {
   type rect = {top: int, bottom: int, width: int, height: int}
 
   let getDomRect = node => {
-    open MxLibs.Dom.Element
-    open MxLibs.Dom.DomRect
+    open Webapi.Dom.Element
+    open Webapi.Dom.DomRect
     open Belt.Float
     let rect = node->getBoundingClientRect
 
@@ -16,8 +16,8 @@ module AffixUtils = {
   }
 
   let getWinRect = () => {
-    open MxLibs.Dom.Window
-    open! MxLibs.Dom
+    open Webapi.Dom.Window
+    open! Webapi.Dom
     {
       top: 0,
       bottom: window->innerHeight,
@@ -42,8 +42,8 @@ module AffixUtils = {
       | Some(bottom) =>
         target.bottom < container.bottom + bottom
           ? {
-              open MxLibs.Dom.Window
-              open! MxLibs.Dom
+              open Webapi.Dom.Window
+              open! Webapi.Dom
               let offset = window->innerHeight - target.bottom
               Some(bottom + offset)
             }
@@ -108,7 +108,7 @@ let make = (
   }
 
   React.useEffect4(() => {
-    updateRef.current = MxLibs.Raf.throttle(_ => {
+    updateRef.current = MxWebapi.Raf.throttle(_ => {
       let container = containerRef.current->Js.toOption
       switch container {
       | None => ()
@@ -179,18 +179,18 @@ let make = (
   }, (targetType, targetRef.current, offsetTop, offsetBottom))
 
   React.useEffect2(() => {
-    let handler = MxLibs.Raf.throttle(_ => {
+    let handler = MxWebapi.Raf.throttle(_ => {
       ()->updateRef.current
     })
 
     let node = switch (targetType, targetRef.current) {
     | (Default, _) => {
-        open MxLibs.Dom.Window
-        open! MxLibs.Dom
+        open Webapi.Dom.Window
+        open! Webapi.Dom
         window->asEventTarget->Some
       }
     | (Element, Some(target)) => {
-        open MxLibs.Dom.Element
+        open Webapi.Dom.Element
         target->asEventTarget->Some
       }
     | (_, _) => None
@@ -200,7 +200,7 @@ let make = (
       switch node {
       | Some(node) => {
           open Js.Array2
-          open MxLibs.Dom.EventTarget
+          open Webapi.Dom.EventTarget
           events->forEach(name => node->addEventListener(name, handler))
         }
       | _ => ()
@@ -211,7 +211,7 @@ let make = (
       switch node {
       | Some(node) => {
           open Js.Array2
-          open MxLibs.Dom.EventTarget
+          open Webapi.Dom.EventTarget
           events->forEach(name => node->removeEventListener(name, handler))
         }
       | _ => ()

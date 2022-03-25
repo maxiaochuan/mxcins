@@ -2,7 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as MxLibs__BreakpointSub from "@mxcins/webapi/src/breakpoint-sub/MxLibs__BreakpointSub.bs.js";
+import * as MxWebapi__BreakpointSub from "@mxcins/webapi/src/breakpoint-sub/MxWebapi__BreakpointSub.bs.js";
 
 function useBreakpoint(param) {
   var match = React.useState(function () {
@@ -10,13 +10,13 @@ function useBreakpoint(param) {
       });
   var set = match[1];
   React.useEffect((function () {
-          var id = MxLibs__BreakpointSub.subscribe(function (screens) {
+          var id = MxWebapi__BreakpointSub.subscribe(function (screens) {
                 return Curry._1(set, (function (param) {
                               return screens;
                             }));
               });
           return (function (param) {
-                    return MxLibs__BreakpointSub.unsubscribe(id);
+                    return MxWebapi__BreakpointSub.unsubscribe(id);
                   });
         }), []);
   return match[0];

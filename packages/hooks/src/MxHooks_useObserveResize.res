@@ -7,7 +7,11 @@ type size = {
 
 type onResize = (~target: Dom.element, ~size: size) => unit
 
-let useObserveResize = (~target: Js.Nullable.t<Dom.element>, ~onResize: option<onResize>, ~disabled: option<bool>) => {
+let useObserveResize = (
+  ~target: Js.Nullable.t<Dom.element>,
+  ~onResize: option<onResize>,
+  ~disabled: option<bool>,
+) => {
   let sizeRef = React.useRef({width: -1, height: -1, offsetWidth: -1, offsetHeight: -1})
   let onResizeRef = React.useRef(onResize)
 
@@ -75,7 +79,7 @@ let useObserveResize = (~target: Js.Nullable.t<Dom.element>, ~onResize: option<o
     Some(
       () => {
         switch target->Js.Nullable.toOption {
-        | (Some(target)) => target->unobserve(onObserverResizeCallback)
+        | Some(target) => target->unobserve(onObserverResizeCallback)
         | _ => ()
         }
       },

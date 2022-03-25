@@ -54,8 +54,8 @@ type align = [#start | #end | #center]
 type style = MxRC__Libs__React.style
 
 type mspace = (
-  array<(MxLibs__BreakpointSub.breakpoint, int)>,
-  array<(MxLibs__BreakpointSub.breakpoint, int)>,
+  array<(MxWebapi.BreakpointSub.breakpoint, int)>,
+  array<(MxWebapi.BreakpointSub.breakpoint, int)>,
 )
 
 @react.component @genType
@@ -73,14 +73,14 @@ let make = (
   let spaceRef = React.useRef(space)
   let dynamicSpaceRef = React.useRef(dynamicSpace)
 
-  let (screens, setScreens) = React.useState(_ => MxLibs__BreakpointSub.breakpoints)
+  let (screens, setScreens) = React.useState(_ => MxWebapi.BreakpointSub.breakpoints)
 
   React.useLayoutEffect0(() => {
-    let token = MxLibs__BreakpointSub.subscribe(screens => {
+    let token = MxWebapi.BreakpointSub.subscribe(screens => {
       dynamicSpaceRef.current->Belt.Option.forEach(_ => setScreens(_ => screens))
     })
 
-    let cleanup = () => MxLibs__BreakpointSub.unsubscribe(token)
+    let cleanup = () => MxWebapi.BreakpointSub.unsubscribe(token)
 
     cleanup->Some
   })
@@ -92,7 +92,7 @@ let make = (
     }
   | (Some(space), None) => space
   | (None, Some(space)) => {
-      module Id = MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp
+      module Id = MxWebapi.BreakpointSub.BreakpointPubSub.BreakpointCmp
       open Belt.Map
       let (mx, my) = space
       let mx =

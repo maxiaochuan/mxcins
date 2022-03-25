@@ -2,7 +2,7 @@
 external nanoid: unit => string = "nanoid"
 
 module BreakpointUtils = {
-  open MxLibs__BreakpointSub
+  open MxWebapi.BreakpointSub
 
   @genType.as("BreakpointRecord")
   type breakpointRecord = {
@@ -13,11 +13,6 @@ module BreakpointUtils = {
     sm: int,
     xs: int,
   }
-  // let makeRecord = () => {
-  //   {
-
-  //   }
-  // }
 
   @module("./_externals.js") @val
   external anyToBreakpointRecord: 'a => 'b = "anyToBreakpointRecord"

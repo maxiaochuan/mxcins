@@ -24,7 +24,7 @@ let make = (
     onSearch->Belt.Option.forEach(fn =>
       inputRef.current
       ->Js.Nullable.toOption
-      ->Belt.Option.forEach(input => fn(. input->MxLibs__Dom.HtmlInputElement.value, event))
+      ->Belt.Option.forEach(input => fn(. input->Webapi.Dom.HtmlInputElement.value, event))
     )
 
   let addonAfter = {

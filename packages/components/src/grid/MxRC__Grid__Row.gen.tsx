@@ -8,7 +8,7 @@ import * as React from 'react';
 import * as MxRC__Grid__RowBS__Es6Import from './MxRC__Grid__Row.bs';
 const MxRC__Grid__RowBS: any = MxRC__Grid__RowBS__Es6Import;
 
-import type {breakpoint as MxLibs__BreakpointSub_breakpoint} from '@mxcins/webapi/src/breakpoint-sub/MxLibs__BreakpointSub.gen';
+import type {BreakpointSub_breakpoint as MxWebapi_BreakpointSub_breakpoint} from '@mxcins/webapi/src/MxWebapi.gen';
 
 import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
 
@@ -16,7 +16,7 @@ import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs_
 export type style = MxRC__Libs__React_style;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type mspace = [Array<[MxLibs__BreakpointSub_breakpoint, number]>, Array<[MxLibs__BreakpointSub_breakpoint, number]>];
+export type mspace = [Array<[MxWebapi_BreakpointSub_breakpoint, number]>, Array<[MxWebapi_BreakpointSub_breakpoint, number]>];
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {

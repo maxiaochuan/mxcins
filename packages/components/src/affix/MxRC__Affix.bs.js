@@ -4,7 +4,7 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as MxHooks from "@mxcins/hooks/src/MxHooks.bs.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxLibs__Raf from "@mxcins/webapi/src/raf/MxLibs__Raf.bs.js";
+import * as MxWebapi__Raf from "@mxcins/webapi/src/raf/MxWebapi__Raf.bs.js";
 
 function getDomRect(node) {
   var rect = node.getBoundingClientRect();
@@ -91,7 +91,7 @@ function MxRC__Affix(Props) {
     targetType = /* Default */0;
   }
   React.useEffect((function () {
-          updateRef.current = MxLibs__Raf.throttle(undefined, (function (param) {
+          updateRef.current = MxWebapi__Raf.throttle(undefined, (function (param) {
                   var container = containerRef.current;
                   if (container == null) {
                     return ;
@@ -168,7 +168,7 @@ function MxRC__Affix(Props) {
         offsetBottom
       ]);
   React.useEffect((function () {
-          var handler = MxLibs__Raf.throttle(undefined, (function (param) {
+          var handler = MxWebapi__Raf.throttle(undefined, (function (param) {
                   return Curry._1(updateRef.current, undefined);
                 }));
           var match = targetRef.current;

@@ -6,7 +6,7 @@ import * as Twind from "twind";
 import * as Belt_Map from "rescript/lib/es6/belt_Map.js";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as MxLibs__BreakpointSub from "@mxcins/webapi/src/breakpoint-sub/MxLibs__BreakpointSub.bs.js";
+import * as MxWebapi__BreakpointSub from "@mxcins/webapi/src/breakpoint-sub/MxWebapi__BreakpointSub.bs.js";
 
 var ctx = React.createContext({
       spacex: 0
@@ -86,12 +86,12 @@ function MxRC__Grid__Row(Props) {
   var spaceRef = React.useRef(space);
   var dynamicSpaceRef = React.useRef(dynamicSpace);
   var match = React.useState(function () {
-        return MxLibs__BreakpointSub.breakpoints;
+        return MxWebapi__BreakpointSub.breakpoints;
       });
   var setScreens = match[1];
   var screens = match[0];
   React.useLayoutEffect((function () {
-          var token = MxLibs__BreakpointSub.subscribe(function (screens) {
+          var token = MxWebapi__BreakpointSub.subscribe(function (screens) {
                 return Belt_Option.forEach(dynamicSpaceRef.current, (function (param) {
                               return Curry._1(setScreens, (function (param) {
                                             return screens;
@@ -99,7 +99,7 @@ function MxRC__Grid__Row(Props) {
                             }));
               });
           return (function (param) {
-                    return MxLibs__BreakpointSub.unsubscribe(token);
+                    return MxWebapi__BreakpointSub.unsubscribe(token);
                   });
         }), []);
   var match$1 = spaceRef.current;
@@ -113,12 +113,12 @@ function MxRC__Grid__Row(Props) {
       space$1 = match$1;
     }
   } else if (match$2 !== undefined) {
-    var mx = Belt_Option.map(Belt_Map.findFirstBy(Belt_Map.fromArray(match$2[0], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp), (function (k, param) {
+    var mx = Belt_Option.map(Belt_Map.findFirstBy(Belt_Map.fromArray(match$2[0], MxWebapi__BreakpointSub.BreakpointPubSub.BreakpointCmp), (function (k, param) {
                 return screens.includes(k);
               })), (function (param) {
             return param[1];
           }));
-    var my = Belt_Option.map(Belt_Map.findFirstBy(Belt_Map.fromArray(match$2[1], MxLibs__BreakpointSub.BreakpointPubSub.BreakpointCmp), (function (k, param) {
+    var my = Belt_Option.map(Belt_Map.findFirstBy(Belt_Map.fromArray(match$2[1], MxWebapi__BreakpointSub.BreakpointPubSub.BreakpointCmp), (function (k, param) {
                 return screens.includes(k);
               })), (function (param) {
             return param[1];
