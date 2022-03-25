@@ -23,6 +23,8 @@ let make = React.forwardRef((~size=?,
 ~onKeyDown=?,
 ~onBlur=?,
 ~onChange=?,
+//value
+~value=?,
 ref) => {
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
@@ -95,6 +97,7 @@ ref) => {
       ?placeholder
       onBlur
       onKeyDown
+      ?value
       ?onChange
     />
   }

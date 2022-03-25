@@ -42,7 +42,8 @@ export type Props = {
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly suffix?: node
+  readonly suffix?: node; 
+  readonly value?: string
 };
 
 export const make: React.ComponentType<{
@@ -56,5 +57,6 @@ export const make: React.ComponentType<{
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly suffix?: node
+  readonly suffix?: node; 
+  readonly value?: string
 }> = MxRC__InputBS.make;
