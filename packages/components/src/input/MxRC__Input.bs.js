@@ -2,51 +2,56 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as Twind from "twind";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
+import * as MxRC__Input__Affix from "./MxRC__Input__Affix.bs.js";
 import * as MxRC__Input__Group from "./MxRC__Input__Group.bs.js";
+import * as MxRC__Input__Twind from "./MxRC__Input__Twind.bs.js";
 import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.bs.js";
+import * as Webapi__Dom__HtmlElement from "rescript-webapi/src/Webapi/Dom/Webapi__Dom__HtmlElement.bs.js";
+import * as Webapi__Dom__HtmlInputElement from "rescript-webapi/src/Webapi/Dom/Webapi__Dom__HtmlInputElement.bs.js";
 
-var init = "\n    inline-block\n    relative\n    m-0\n    min-w-0\n    w-full\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    hover:(border-primary-hover)\n    focus:(border-primary-hover shadow-input-focus)\n    transition\n    tabular-nums\n    rounded\n  ";
-
-function make(className, size, inGroup) {
-  var classes = [init];
-  if (inGroup) {
-    classes.push("z-1");
-  }
-  classes.push(size === "small" ? "h-6 px-2-bordered" : (
-          size === "default" ? "h-8 px-3-bordered" : "h-10 px-3-bordered text-base"
-        ));
-  var match = Twind.tw(Twind.apply(classes));
-  if (className !== undefined) {
-    return [
-              match,
-              className
-            ].join(" ");
-  } else {
-    return match;
-  }
-}
-
-var InputTwind = {
-  init: init,
-  make: make
-};
-
-var make$1 = React.forwardRef(function (Props, ref) {
+var make = React.forwardRef(function (Props, ref) {
       var size = Props.size;
       var className = Props.className;
       var style = Props.style;
       var placeholder = Props.placeholder;
       var addonBefore = Props.addonBefore;
       var addonAfter = Props.addonAfter;
+      var prefix = Props.prefix;
+      var suffix = Props.suffix;
       var onPressEnter = Props.onPressEnter;
       var onKeyDown = Props.onKeyDown;
+      var inputRef = React.useRef(null);
+      React.useImperativeHandle(ref, (function () {
+              var input = inputRef.current;
+              var input$1 = (input == null) ? undefined : Caml_option.some(input);
+              return {
+                      focus: (function (param) {
+                          return Belt_Option.forEach(input$1, (function (input) {
+                                        return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
+                                                      input.focus();
+                                                      
+                                                    }));
+                                      }));
+                        }),
+                      blur: (function (param) {
+                          return Belt_Option.forEach(input$1, (function (input) {
+                                        return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
+                                                      input.blur();
+                                                      
+                                                    }));
+                                      }));
+                        }),
+                      input: Belt_Option.map(input$1, (function (input) {
+                              return Curry._1(Webapi__Dom__HtmlInputElement.ofElement, input);
+                            }))
+                    };
+            }), []);
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
       var size$1 = Belt_Option.getWithDefault(size, context.size);
       var inGroup = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
-      var className$1 = make(className, size$1, inGroup);
+      var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix);
       var onKeyDown$1 = function ($$event) {
         if ($$event.key === "Enter") {
           Belt_Option.forEach(onPressEnter, (function (fn) {
@@ -57,24 +62,47 @@ var make$1 = React.forwardRef(function (Props, ref) {
                       return Curry._1(fn, $$event);
                     }));
       };
-      var tmp = {
-        className: className$1,
-        type: "text",
-        onKeyDown: onKeyDown$1
-      };
-      var tmp$1 = Belt_Option.map((ref == null) ? undefined : Caml_option.some(ref), (function (prim) {
-              return prim;
-            }));
-      if (tmp$1 !== undefined) {
-        tmp.ref = Caml_option.valFromOption(tmp$1);
+      var child;
+      if (hasfix) {
+        var prefix$1 = prefix !== undefined ? React.createElement(MxRC__Input__Affix.InputAffixAddon.make, {
+                children: Caml_option.valFromOption(prefix)
+              }) : null;
+        var suffix$1 = suffix !== undefined ? React.createElement(MxRC__Input__Affix.InputAffixAddon.make, {
+                children: Caml_option.valFromOption(suffix)
+              }) : null;
+        var tmp = {
+          ref: inputRef,
+          type: "text",
+          onKeyDown: onKeyDown$1
+        };
+        if (style !== undefined) {
+          tmp.style = Caml_option.valFromOption(style);
+        }
+        if (placeholder !== undefined) {
+          tmp.placeholder = Caml_option.valFromOption(placeholder);
+        }
+        var child$1 = React.createElement("input", tmp);
+        var className$1 = MxRC__Input__Twind.makeInputBox(className, size$1, inGroup, true);
+        child = React.createElement(MxRC__Input__Affix.make, {
+              className: className$1,
+              children: null
+            }, prefix$1, child$1, suffix$1);
+      } else {
+        var className$2 = MxRC__Input__Twind.makeInputBox(className, size$1, inGroup, false);
+        var tmp$1 = {
+          ref: inputRef,
+          className: className$2,
+          type: "text",
+          onKeyDown: onKeyDown$1
+        };
+        if (style !== undefined) {
+          tmp$1.style = Caml_option.valFromOption(style);
+        }
+        if (placeholder !== undefined) {
+          tmp$1.placeholder = Caml_option.valFromOption(placeholder);
+        }
+        child = React.createElement("input", tmp$1);
       }
-      if (style !== undefined) {
-        tmp.style = Caml_option.valFromOption(style);
-      }
-      if (placeholder !== undefined) {
-        tmp.placeholder = Caml_option.valFromOption(placeholder);
-      }
-      var child = React.createElement("input", tmp);
       if (!inGroup) {
         return child;
       }
@@ -91,10 +119,12 @@ var make$1 = React.forwardRef(function (Props, ref) {
 
 var InputGroup;
 
+var InputAffix;
+
 export {
-  InputTwind ,
   InputGroup ,
-  make$1 as make,
+  InputAffix ,
+  make ,
   
 }
 /* make Not a pure module */

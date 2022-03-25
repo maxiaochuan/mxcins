@@ -11,6 +11,8 @@ const MxRC__ConfigProviderBS: any = MxRC__ConfigProviderBS__Es6Import;
 // tslint:disable-next-line:interface-over-type-literal
 export type ConfigContext_size = "default" | "small" | "large";
 
+export const setup: () => void = MxRC__ConfigProviderBS.setup;
+
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = { readonly children?: React.ReactNode; readonly size?: ConfigContext_size };
 

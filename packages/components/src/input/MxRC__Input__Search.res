@@ -4,12 +4,8 @@ module Input = MxRC__Input
 module InputGroup = MxRC__Input__Group
 module Button = MxRC__Button
 
-type style = MxRC__Libs__React.style
-
 module InputSearchTwind = {
   open MxRC__Libs__Twind
-  // open Js.Array2
-
   let makeSearch = () => {
     ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1)"]->atw
   }
@@ -20,23 +16,16 @@ let make = (
   ~size=?,
   ~placeholder=?,
   ~addonBefore=?,
-  ~onSearch: option<(string, ReactEvent.Synthetic.t) => unit>=?,
+  ~onSearch: option<(. string, ReactEvent.Synthetic.t) => unit>=?,
 ) => {
-  let inputRef = React.useRef(Js.Nullable.null)
+  let inputRef: React.ref<Js.Nullable.t<Dom.htmlInputElement>> = React.useRef(Js.Nullable.null)
 
-  let onSearch = event => {
-    onSearch->Belt.Option.forEach(fn => {
-      let input = inputRef.current
-      input
+  let onSearch = event =>
+    onSearch->Belt.Option.forEach(fn =>
+      inputRef.current
       ->Js.Nullable.toOption
-      ->Belt.Option.forEach(input => {
-        let v: option<string> = input["value"]
-        v->Belt.Option.getWithDefault("")->fn(event)
-      })
-    })
-  }
-
-  let onPressEnter = event => event->ReactEvent.toSyntheticEvent->onSearch
+      ->Belt.Option.forEach(input => fn(. input->MxLibs__Dom.HtmlInputElement.value, event))
+    )
 
   let addonAfter = {
     let className = InputSearchTwind.makeSearch()
@@ -45,6 +34,8 @@ let make = (
 
     <Button className icon onClick />
   }
+
+  let onPressEnter = event => event->ReactEvent.toSyntheticEvent->onSearch
 
   <Input ref=inputRef ?size ?placeholder ?addonBefore addonAfter onPressEnter />
 }

@@ -19,6 +19,7 @@
     "shims": {
       "Dom": "dom",
       "Belt": "belt",
+      "ReactDOM": "react",
       "ReactEvent": "react"
     },
     "generatedFileExtension": ".gen.tsx",

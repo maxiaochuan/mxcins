@@ -1,1 +1,1 @@
-export * from '@mxcins/webapi/src/shims/dom.shim'
+export * from '@mxcins/webapi/src/shims/dom.shim';

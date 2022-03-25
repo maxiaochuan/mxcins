@@ -1,5 +1,7 @@
-import type { KeyboardEvent, SyntheticEvent } from 'react';
+import type { CSSProperties, KeyboardEvent, SyntheticEvent } from 'react';
 
-export type Synthetic_t = SyntheticEvent
+export type style = CSSProperties;
 
-export type Keyboard_t = KeyboardEvent
+export type Synthetic_t = SyntheticEvent;
+
+export type Keyboard_t = KeyboardEvent;

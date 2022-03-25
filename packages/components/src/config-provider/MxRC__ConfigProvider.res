@@ -13,9 +13,8 @@ module ConfigContext = {
   }
 }
 
-let init = () => MxRC__Libs__Twind.setup(MxRC__Libs__Twind.conf)
-
-init()
+@genType
+let setup = () => MxRC__Libs__Twind.setup(MxRC__Libs__Twind.conf)
 
 open ConfigContext
 

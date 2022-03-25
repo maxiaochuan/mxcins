@@ -14,10 +14,7 @@ import type {Keyboard_t as ReactEvent_Keyboard_t} from '../../src/shims/react.sh
 
 import type {node as MxRC__Libs__React_node} from '../../src/_libs/MxRC__Libs__React.gen';
 
-import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
-
-// tslint:disable-next-line:interface-over-type-literal
-export type style = MxRC__Libs__React_style;
+import type {style as ReactDOM_style} from '../../src/shims/react.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type node = MxRC__Libs__React_node;
@@ -30,8 +27,10 @@ export type Props = {
   readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 
+  readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly style?: style
+  readonly style?: ReactDOM_style; 
+  readonly suffix?: node
 };
 
 export const make: React.ComponentType<{
@@ -41,6 +40,8 @@ export const make: React.ComponentType<{
   readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 
+  readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly style?: style
+  readonly style?: ReactDOM_style; 
+  readonly suffix?: node
 }> = MxRC__InputBS.make;

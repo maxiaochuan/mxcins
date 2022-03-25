@@ -30,12 +30,10 @@ var ConfigContext = {
   Provider: Provider
 };
 
-function init(param) {
+function setup(param) {
   Twind.setup(MxRC__Libs__Twind.conf);
   
 }
-
-Twind.setup(MxRC__Libs__Twind.conf);
 
 function MxRC__ConfigProvider(Props) {
   var sizeOpt = Props.size;
@@ -57,7 +55,7 @@ var make = MxRC__ConfigProvider;
 
 export {
   ConfigContext ,
-  init ,
+  setup ,
   make ,
   
 }

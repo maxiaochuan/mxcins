@@ -1,62 +1,49 @@
-module InputTwind = {
-  open MxRC__Libs__Twind
-  open Js.Array2
-
-  let init = "
-    inline-block
-    relative
-    m-0
-    min-w-0
-    w-full
-    overflow-visible
-    text(sm text)
-    border(1 solid border)
-    hover:(border-primary-hover)
-    focus:(border-primary-hover shadow-input-focus)
-    transition
-    tabular-nums
-    rounded
-  "
-
-  let make = (className, ~size, ~inGroup) => {
-    let classes = [init]
-    let push = str => classes->push(str)->ignore
-
-    if inGroup {
-      "z-1"->push
-    }
-
-    /* --- size --- */
-    switch size {
-    | #default => "h-8 px-3-bordered"
-    | #small => "h-6 px-2-bordered"
-    | #large => "h-10 px-3-bordered text-base"
-    }->push
-    /* --- size --- */
-
-    switch (classes->apply->tw, className) {
-    | (classes, Some(className)) => [classes, className]->joinWith(" ")
-    | (classes, _) => classes
-    }
-  }
-}
-
 module InputGroup = MxRC__Input__Group
+module InputAffix = MxRC__Input__Affix
 
-type style = MxRC__Libs__React.style
 type node = MxRC__Libs__React.node
+
+type forwardRef = {
+  focus: unit => unit,
+  blur: unit => unit,
+  input: option<Dom.htmlInputElement>,
+}
 
 @react.component @genType
 let make = React.forwardRef((~size=?,
 ~className=?,
-~style: option<style>=?,
+~style=?,
 ~placeholder=?,
 ~addonBefore: option<node>=?,
 ~addonAfter: option<node>=?,
+~prefix: option<node>=?,
+~suffix: option<node>=?,
 //events
 ~onPressEnter: option<ReactEvent.Keyboard.t => unit>=?,
 ~onKeyDown: option<ReactEvent.Keyboard.t => unit>=?,
 ref) => {
+  let inputRef: React.ref<Js.Nullable.t<Dom.element>> = React.useRef(Js.Nullable.null)
+
+  React.useImperativeHandle0(ref, () => {
+    let input = inputRef.current->Js.Nullable.toOption
+    {
+      input: input
+      ->Belt.Option.map(input => input->Webapi.Dom.HtmlInputElement.ofElement)
+      ->Belt.Option.getUnsafe,
+      focus: () =>
+        input->Belt.Option.forEach(input =>
+          input
+          ->Webapi.Dom.HtmlElement.ofElement
+          ->Belt.Option.forEach(input => input->Webapi.Dom.HtmlElement.focus)
+        ),
+      blur: () =>
+        input->Belt.Option.forEach(input =>
+          input
+          ->Webapi.Dom.HtmlElement.ofElement
+          ->Belt.Option.forEach(input => input->Webapi.Dom.HtmlElement.blur)
+        ),
+    }
+  })
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
 
@@ -64,7 +51,7 @@ ref) => {
   let size = size->Belt.Option.getWithDefault(context.size)
 
   let inGroup = addonBefore->Belt.Option.isSome || addonAfter->Belt.Option.isSome
-  let className = InputTwind.make(className, ~size, ~inGroup)
+  let hasfix = prefix->Belt.Option.isSome || suffix->Belt.Option.isSome
 
   let onKeyDown = event => {
     // press enter
@@ -75,15 +62,29 @@ ref) => {
     onKeyDown->Belt.Option.forEach(fn => event->fn)
   }
 
-  let child =
-    <input
-      ref=?{ref->Js.Nullable.toOption->Belt.Option.map(ReactDOM.Ref.domRef)}
-      type_="text"
-      className
-      ?style
-      ?placeholder
-      onKeyDown
-    />
+  let child = {
+    if hasfix {
+      let prefix = switch prefix {
+      | Some(prefix) => <InputAffix.InputAffixAddon> prefix </InputAffix.InputAffixAddon>
+      | _ => React.null
+      }
+      let suffix = switch suffix {
+      | Some(suffix) => <InputAffix.InputAffixAddon> suffix </InputAffix.InputAffixAddon>
+      | _ => React.null
+      }
+
+      let child =
+        <input ref={inputRef->ReactDOM.Ref.domRef} type_="text" ?style ?placeholder onKeyDown />
+
+      let className = className->MxRC__Input__Twind.makeInputBox(~size, ~z=inGroup, ~flex=true)
+      <InputAffix className> prefix child suffix </InputAffix>
+    } else {
+      let className = className->MxRC__Input__Twind.makeInputBox(~size, ~z=inGroup, ~flex=false)
+      <input
+        ref={inputRef->ReactDOM.Ref.domRef} type_="text" className ?style ?placeholder onKeyDown
+      />
+    }
+  }
 
   if inGroup {
     let before = switch addonBefore {
