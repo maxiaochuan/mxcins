@@ -43,6 +43,7 @@ export type Props = {
   readonly className?: string; 
   readonly defaultValue?: string; 
   readonly groupStyle?: ReactDOM_style; 
+  readonly maxLength?: number; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly onFocus?: (_1:ReactEvent_Focus_t) => void; 
@@ -64,6 +65,7 @@ export const make: React.ComponentType<{
   readonly className?: string; 
   readonly defaultValue?: string; 
   readonly groupStyle?: ReactDOM_style; 
+  readonly maxLength?: number; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly onFocus?: (_1:ReactEvent_Focus_t) => void; 

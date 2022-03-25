@@ -32,6 +32,7 @@ var make = React.forwardRef(function (Props, ref) {
       var value = Props.value;
       var defaultValue = Props.defaultValue;
       var allowClearOpt = Props.allowClear;
+      var maxLength = Props.maxLength;
       var addonBeforeNoStyle = addonBeforeNoStyleOpt !== undefined ? addonBeforeNoStyleOpt : false;
       var addonAfterNoStyle = addonAfterNoStyleOpt !== undefined ? addonAfterNoStyleOpt : false;
       var allowClear = allowClearOpt !== undefined ? allowClearOpt : false;
@@ -107,15 +108,21 @@ var make = React.forwardRef(function (Props, ref) {
                     }));
       };
       var onChange$1 = function ($$event) {
-        if (!isControled) {
-          var next = $$event.target;
-          Curry._1(set, (function (param) {
-                  return next.value;
-                }));
+        var target = $$event.target;
+        var next = target.value;
+        var v = Belt_Option.getWithDefault(next, "");
+        var enabled = maxLength !== undefined ? (maxLength + 1 | 0) > v.length : true;
+        if (enabled) {
+          if (!isControled) {
+            Curry._1(set, (function (param) {
+                    return v;
+                  }));
+          }
+          return Belt_Option.forEach(onChange, (function (fn) {
+                        return Curry._1(fn, $$event);
+                      }));
         }
-        return Belt_Option.forEach(onChange, (function (fn) {
-                      return Curry._1(fn, $$event);
-                    }));
+        
       };
       var onKeyDown$1 = function ($$event) {
         if ($$event.key === "Enter") {

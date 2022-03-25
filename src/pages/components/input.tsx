@@ -12,7 +12,7 @@ const LayoutView = () => {
   return (
     <>
       <Record title="space">
-        <Input placeholder="Basic usage" />
+        <Input placeholder="Basic usage" maxLength={10} />
         <Input placeholder="Basic usage" size="small" />
         <Input placeholder="Basic usage" size="large" />
         <br />
@@ -31,28 +31,16 @@ const LayoutView = () => {
           style={{ width: 200 }}
         />
         <Search
-      addonBefore="https://"
-      placeholder="input search text"
-      allowClear
-      onSearch={onSearch}
-      style={{ width: 304 }}
-    />
-    <TextArea rows={4} />
-    {/* <Search placeholder="input search text" onSearch={onSearch} enterButton />
-    <Search
-      placeholder="input search text"
-      allowClear
-      enterButton="Search"
-      size="large"
-      onSearch={onSearch}
-    />
-    <Search
-      placeholder="input search text"
-      enterButton="Search"
-      size="large"
-      suffix={suffix}
-      onSearch={onSearch}
-    /> */}
+          addonBefore="https://"
+          placeholder="input search text"
+          allowClear
+          onSearch={onSearch}
+          style={{ width: 304 }}
+        />
+        <TextArea rows={4} />
+        <br />
+        <br />
+        <TextArea rows={4} placeholder="maxLength is 6" maxLength={6} />
       </Record>
     </>
   );

@@ -3,7 +3,7 @@ import { make } from './MxRC__Input.gen';
 import type { Props, InputRef } from './MxRC__Input.gen';
 import { make as Search } from './MxRC__Input__Search.gen';
 import type { Props as SeProps } from './MxRC__Input__Search.gen';
-import { make as TextArea } from './MxRC__Input__TextArea.gen'
+import { make as TextArea } from './MxRC__Input__TextArea.gen';
 
 // 2022-03-25 23:53:20 rescript onchange is ReactEvent.Form.t
 interface InputProps extends Omit<Props, 'onChange'> {

@@ -45,7 +45,7 @@ let make = (class, ~size, ~z, ~affix, ~focused) => {
 
 let makeTextArea = (class, ~size, ~focused) => {
   let class = make(class, ~size, ~affix=false, ~z=false, ~focused)
-  let classes = ["h-auto"];
+  let classes = ["h-auto"]
   let push = str => classes->Js.Array2.push(str)->ignore
 
   switch size {

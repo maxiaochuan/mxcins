@@ -34,6 +34,7 @@ let make = React.forwardRef((~size=?,
 ~value=?,
 ~defaultValue=?,
 ~allowClear=false,
+~maxLength=?,
 ref) => {
   // context size
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
@@ -125,13 +126,24 @@ ref) => {
     })
   }
 
+  // onchange
   let onChange = event => {
     open ReactEvent.Synthetic
-    if !isControled {
-      let next = event->target
-      set(_ => next["value"])
+    let target = event->target
+    let next: option<string> = target["value"]
+    let v = next->Belt.Option.getWithDefault("")
+
+    let enabled = switch maxLength {
+    | None => true
+    | Some(maxLength) => maxLength + 1 > v->Js.String2.length
     }
-    onChange->Belt.Option.forEach(fn => event->fn)
+
+    if enabled {
+      if !isControled {
+        set(_ => v)
+      }
+      onChange->Belt.Option.forEach(fn => event->fn)
+    }
   }
 
   let onKeyDown = event => {
