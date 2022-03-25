@@ -12,6 +12,8 @@ import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from
 
 import type {Focus_t as ReactEvent_Focus_t} from '../../src/shims/react.shim';
 
+import type {Form_t as ReactEvent_Form_t} from '../../src/shims/react.shim';
+
 import type {Keyboard_t as ReactEvent_Keyboard_t} from '../../src/shims/react.shim';
 
 import type {htmlInputElement as Dom_htmlInputElement} from '../../src/shims/dom.shim';
@@ -34,6 +36,7 @@ export type Props = {
   readonly addonBefore?: node; 
   readonly className?: string; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
+  readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 
@@ -47,6 +50,7 @@ export const make: React.ComponentType<{
   readonly addonBefore?: node; 
   readonly className?: string; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
+  readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly onKeyDown?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly onPressEnter?: (_1:ReactEvent_Keyboard_t) => void; 
   readonly placeholder?: string; 

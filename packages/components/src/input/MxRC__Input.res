@@ -22,6 +22,7 @@ let make = React.forwardRef((~size=?,
 ~onPressEnter=?,
 ~onKeyDown=?,
 ~onBlur=?,
+~onChange=?,
 ref) => {
   // config context
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
@@ -92,6 +93,7 @@ ref) => {
       ?placeholder
       onBlur
       onKeyDown
+      ?onChange
     />
 
   let child = switch hasfix {

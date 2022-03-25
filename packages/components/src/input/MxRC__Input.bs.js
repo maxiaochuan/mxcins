@@ -21,6 +21,7 @@ var make = React.forwardRef(function (Props, ref) {
       var onPressEnter = Props.onPressEnter;
       var onKeyDown = Props.onKeyDown;
       var onBlur = Props.onBlur;
+      var onChange = Props.onChange;
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
       var match = React.useState(function () {
             return false;
@@ -88,6 +89,9 @@ var make = React.forwardRef(function (Props, ref) {
       };
       if (placeholder !== undefined) {
         tmp.placeholder = Caml_option.valFromOption(placeholder);
+      }
+      if (onChange !== undefined) {
+        tmp.onChange = Caml_option.valFromOption(onChange);
       }
       var child = React.createElement("input", tmp);
       var child$1;
