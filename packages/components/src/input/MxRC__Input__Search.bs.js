@@ -41,6 +41,8 @@ function MxRC__Input__Search(Props) {
   var onChange = Props.onChange;
   var allowClear = Props.allowClear;
   var onSearch = Props.onSearch;
+  var loadingOpt = Props.loading;
+  var loading = loadingOpt !== undefined ? loadingOpt : false;
   var inputRef = React.useRef(initRef);
   var onSearch$1 = function ($$event) {
     return Belt_Option.forEach(onSearch, (function (fn) {
@@ -54,6 +56,7 @@ function MxRC__Input__Search(Props) {
   var onClick = onSearch$1;
   var addonAfter = React.createElement(MxRC__Button.make, {
         className: className,
+        loading: loading,
         icon: icon,
         onClick: onClick
       });

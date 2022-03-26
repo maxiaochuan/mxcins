@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SettingOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { SettingOutlined, ClockCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { Input } from '@mxcins/components';
 import { Record } from '../../components';
 
@@ -49,6 +49,12 @@ const LayoutView = () => {
           prefix={<ClockCircleOutlined />}
           placeholder="Warning with prefix"
         />
+        <Input size="large" placeholder="large size" prefix={<UserOutlined />} />
+        <Input placeholder="default size" prefix={<UserOutlined />} />
+        <Input size="small" placeholder="small size" prefix={<UserOutlined />} />
+            <Search placeholder="input search loading default" loading />
+    {/* <Search placeholder="input search loading with enterButton" loading enterButton /> */}
+    {/* <Search placeholder="input search text" enterButton="Search" size="large" loading /> */}
       </Record>
     </>
   );

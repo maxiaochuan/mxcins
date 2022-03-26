@@ -28,6 +28,7 @@ let make = (
   ~onChange=?,
   ~allowClear=?,
   ~onSearch: option<(. string, ReactEvent.Synthetic.t) => unit>=?,
+  ~loading=false,
 ) => {
   let inputRef = React.useRef(initRef)
 
@@ -43,7 +44,7 @@ let make = (
     let icon = <SearchOutlined />
     let onClick = event => event->ReactEvent.toSyntheticEvent->onSearch
 
-    <Button className icon onClick />
+    <Button loading className icon onClick />
   }
 
   let onPressEnter = event => event->ReactEvent.toSyntheticEvent->onSearch
