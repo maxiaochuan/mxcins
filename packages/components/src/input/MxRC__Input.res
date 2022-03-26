@@ -122,9 +122,9 @@ let make = React.forwardRef((
             // clone input element & set value empty
             clone->Webapi.Dom.HtmlInputElement.setValue("")
             let event = event->cloneEvent({
-              "target": { "value": clone },
-              "currentTarget": { "value": clone },
-            });
+              "target": {"value": clone},
+              "currentTarget": {"value": clone},
+            })
             event->fn
           })
         }

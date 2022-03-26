@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@ant-design/colors": "6.0.0",
+    "@rescript/react": "0.10.3",
     "@mxcins/hooks": "3.0.0-alpha.1",
     "@mxcins/webapi": "1.0.0-alpha.1",
     "@twind/content": "0.1.0",
@@ -34,8 +35,9 @@
     "twind": "0.16.16"
   },
   "peerDependencies": {
-    "@rescript/react": "*",
-    "twind": "*"
+    "@ant-design/icons": "*",
+    "react": "*",
+    "react-dom": "*"
   },
   "publishConfig": {
     "access": "public"

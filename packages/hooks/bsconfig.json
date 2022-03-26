@@ -12,6 +12,11 @@
   ],
   "suffix": ".bs.js",
   "reason": { "react-jsx": 3 },
-  "bs-dependencies": ["@rescript/react", "@ryyppy/rescript-promise", "@mxcins/webapi", "rescript-webapi"],
+  "bs-dependencies": [
+    "@rescript/react",
+    "@ryyppy/rescript-promise",
+    "@mxcins/webapi",
+    "rescript-webapi"
+  ],
   "pinned-dependencies": ["@mxcins/webapi"]
 }

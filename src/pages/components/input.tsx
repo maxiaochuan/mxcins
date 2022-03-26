@@ -21,7 +21,12 @@ const LayoutView = () => {
         <Input addonBefore="http://" addonAfter=".com" defaultValue="mysite" />
         <Input addonAfter={<SettingOutlined />} defaultValue="mysite" />
         <Input addonBefore="http://" suffix=".com" defaultValue="mysite" />
-        <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} allowClear />
+        <Search
+          placeholder="input search text"
+          onSearch={onSearch}
+          style={{ width: 200 }}
+          allowClear
+        />
         <Search
           placeholder="input search text"
           value={v}
