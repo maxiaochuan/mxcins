@@ -10,6 +10,7 @@ let make = (
   ~value=?,
   ~defaultValue=?,
   ~onChange=?,
+  ~disabled=false,
 ) => {
   // context size
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
@@ -40,7 +41,7 @@ let make = (
     }
   }
 
-  let className = className->Twind.makeTextArea(~size, ~focused=false)
+  let className = className->Twind.makeTextArea(~size, ~focused=false,~disabled)
 
-  <textarea className ?placeholder ?rows value onChange />
+  <textarea className ?placeholder ?rows value onChange disabled />
 }

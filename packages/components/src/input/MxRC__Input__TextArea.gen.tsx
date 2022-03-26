@@ -16,6 +16,7 @@ import type {Form_t as ReactEvent_Form_t} from '../../src/shims/react.shim';
 export type Props = {
   readonly className?: string; 
   readonly defaultValue?: string; 
+  readonly disabled?: boolean; 
   readonly maxLength?: number; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly placeholder?: string; 
@@ -27,6 +28,7 @@ export type Props = {
 export const make: React.ComponentType<{
   readonly className?: string; 
   readonly defaultValue?: string; 
+  readonly disabled?: boolean; 
   readonly maxLength?: number; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly placeholder?: string; 

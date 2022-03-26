@@ -51,6 +51,7 @@ export type Props = {
   readonly allowClear?: boolean; 
   readonly className?: string; 
   readonly defaultValue?: string; 
+  readonly disabled?: boolean; 
   readonly groupStyle?: ReactDOM_style; 
   readonly maxLength?: number; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
@@ -61,7 +62,10 @@ export type Props = {
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly status?: status; 
+  readonly status?: 
+    "default"
+  | "error"
+  | "warning"; 
   readonly suffix?: node; 
   readonly value?: string
 };
@@ -75,6 +79,7 @@ export const make: React.ComponentType<{
   readonly allowClear?: boolean; 
   readonly className?: string; 
   readonly defaultValue?: string; 
+  readonly disabled?: boolean; 
   readonly groupStyle?: ReactDOM_style; 
   readonly maxLength?: number; 
   readonly onBlur?: (_1:ReactEvent_Focus_t) => void; 
@@ -85,7 +90,10 @@ export const make: React.ComponentType<{
   readonly placeholder?: string; 
   readonly prefix?: node; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly status?: status; 
+  readonly status?: 
+    "default"
+  | "error"
+  | "warning"; 
   readonly suffix?: node; 
   readonly value?: string
 }> = MxRC__InputBS.make;

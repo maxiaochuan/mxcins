@@ -29,6 +29,7 @@ let make = (
   ~allowClear=?,
   ~onSearch: option<(. string, ReactEvent.Synthetic.t) => unit>=?,
   ~loading=false,
+  ~disabled=false,
 ) => {
   let inputRef = React.useRef(initRef)
 
@@ -63,5 +64,6 @@ let make = (
     addonAfter
     addonAfterNoStyle=true
     onPressEnter
+    disabled
   />
 }

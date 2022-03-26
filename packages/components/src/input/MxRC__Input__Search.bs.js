@@ -42,7 +42,9 @@ function MxRC__Input__Search(Props) {
   var allowClear = Props.allowClear;
   var onSearch = Props.onSearch;
   var loadingOpt = Props.loading;
+  var disabledOpt = Props.disabled;
   var loading = loadingOpt !== undefined ? loadingOpt : false;
+  var disabled = disabledOpt !== undefined ? disabledOpt : false;
   var inputRef = React.useRef(initRef);
   var onSearch$1 = function ($$event) {
     return Belt_Option.forEach(onSearch, (function (fn) {
@@ -65,6 +67,7 @@ function MxRC__Input__Search(Props) {
     addonAfter: addonAfter,
     addonAfterNoStyle: true,
     onPressEnter: onPressEnter,
+    disabled: disabled,
     ref: inputRef
   };
   if (size !== undefined) {

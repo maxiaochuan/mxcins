@@ -1,8 +1,8 @@
 open MxRC__Libs__Twind
 
-let makeNoStyle = () => ["w-full p-0 m-0"]->atw
+let makeNoStyle = () => ["w-full p-0 m-0 disabled:cursor-not-allowed"]->atw
 
-let make = (class, ~size, ~z, ~affix, ~focused, ~status) => {
+let make = (class, ~size, ~z, ~affix, ~focused, ~status, ~disabled) => {
   let classes = [
     "
     inline-block
@@ -20,7 +20,6 @@ let make = (class, ~size, ~z, ~affix, ~focused, ~status) => {
   ]
   let push = str => classes->Js.Array2.push(str)->ignore
 
-  // focus:(border-primary-hover shadow-input-focus)
 
   if affix {
     "inline-flex"->push
@@ -50,11 +49,21 @@ let make = (class, ~size, ~z, ~affix, ~focused, ~status) => {
     "z-1"->push
   }
 
+
+  if disabled {
+    "
+      cursor-not-allowed
+      text(text-disabled hover:text-disabled focus:text-disabled active:text-disabled)
+      bg(background-disabled hover:background-disabled focus:background-disabled active:background-disabled)
+      border(border hover:border focus:border active:border)
+    "->push
+  }
+
   classes->atw(~class?)
 }
 
-let makeTextArea = (class, ~size, ~focused) => {
-  let class = make(class, ~size, ~affix=false, ~z=false, ~focused, ~status=#default)
+let makeTextArea = (class, ~size, ~focused, ~disabled) => {
+  let class = make(class, ~size, ~affix=false, ~z=false, ~focused, ~status=#default, ~disabled)
   let classes = ["h-auto"]
   let push = str => classes->Js.Array2.push(str)->ignore
 

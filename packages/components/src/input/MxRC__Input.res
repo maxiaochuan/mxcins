@@ -42,7 +42,8 @@ let make = React.forwardRef((~_type: _type=#text,
 ~defaultValue=?,
 ~allowClear=false,
 ~maxLength=?,
-~status: status=#default,
+~status = #default,
+~disabled=false,
 ref) => {
   // context size
   let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
@@ -59,17 +60,20 @@ ref) => {
   // inputDomRef
   let inputRef = React.useRef(Js.Nullable.null)
 
-  let focus = () =>
-    inputRef.current
-    ->Js.Nullable.toOption
-    ->Belt.Option.forEach(input =>
-      input
-      ->Webapi.Dom.HtmlElement.ofElement
-      ->Belt.Option.forEach(input => {
-        setFocused(_ => true)
-        input->Webapi.Dom.HtmlElement.focus
-      })
-    )
+  let focus = () => {
+    if !disabled {
+      inputRef.current
+      ->Js.Nullable.toOption
+      ->Belt.Option.forEach(input =>
+        input
+        ->Webapi.Dom.HtmlElement.ofElement
+        ->Belt.Option.forEach(input => {
+          setFocused(_ => true)
+          input->Webapi.Dom.HtmlElement.focus
+        })
+      )
+    }
+  }
 
   let blur = () =>
     inputRef.current
@@ -178,7 +182,7 @@ ref) => {
   let child = {
     let className = hasfix
       ? Twind.makeNoStyle()
-      : className->Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon, ~status)
+      : className->Twind.make(~size, ~affix=false, ~focused, ~z=hasaddon, ~status, ~disabled)
 
     let type_ = switch _type {
     | #text => "text"
@@ -194,6 +198,7 @@ ref) => {
       onKeyDown
       value
       onChange
+      disabled
     />
   }
 
@@ -226,7 +231,7 @@ ref) => {
         }
       | (None, false) => React.null
       }
-      let className = className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused, ~status)
+      let className = className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused, ~status,~disabled)
       let onMouseUp = _ => focus()
       <span className onMouseUp> prefix child suffix </span>
     }

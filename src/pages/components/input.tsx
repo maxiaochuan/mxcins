@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { SettingOutlined, ClockCircleOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  SettingOutlined,
+  ClockCircleOutlined,
+  UserOutlined,
+  InfoCircleOutlined,
+} from '@ant-design/icons';
 import { Input } from '@mxcins/components';
 import { Record } from '../../components';
 
@@ -52,9 +57,16 @@ const LayoutView = () => {
         <Input size="large" placeholder="large size" prefix={<UserOutlined />} />
         <Input placeholder="default size" prefix={<UserOutlined />} />
         <Input size="small" placeholder="small size" prefix={<UserOutlined />} />
-            <Search placeholder="input search loading default" loading />
-    {/* <Search placeholder="input search loading with enterButton" loading enterButton /> */}
-    {/* <Search placeholder="input search text" enterButton="Search" size="large" loading /> */}
+        <Search placeholder="input search loading default" loading />
+        {/* <Search placeholder="input search loading with enterButton" loading enterButton /> */}
+        {/* <Search placeholder="input search text" enterButton="Search" size="large" loading /> */}
+        <Input
+          placeholder="Enter your username"
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          suffix={<InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />}
+        />
+        <Input prefix="￥" suffix="RMB" />
+        <Input prefix="￥" suffix="RMB" disabled />
       </Record>
     </>
   );

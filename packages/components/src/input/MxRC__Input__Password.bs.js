@@ -8,6 +8,7 @@ import * as Icons from "@ant-design/icons";
 
 function MxRC__Input__Password(Props) {
   var placeholder = Props.placeholder;
+  var disabled = Props.disabled;
   var match = React.useState(function () {
         return false;
       });
@@ -37,7 +38,8 @@ function MxRC__Input__Password(Props) {
         });
   var tmp = {
     type: visible ? "text" : "password",
-    suffix: suffix
+    suffix: suffix,
+    disabled: disabled
   };
   if (placeholder !== undefined) {
     tmp.placeholder = Caml_option.valFromOption(placeholder);

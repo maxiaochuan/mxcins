@@ -2,7 +2,7 @@ open MxRC__Libs__Antd
 module Input = MxRC__Input
 
 @react.component @genType
-let make = (~placeholder=?) => {
+let make = (~placeholder=?, ~disabled) => {
   let (visible, set) = React.useState(_ => false)
 
   let onMouseDown = event => {
@@ -21,5 +21,5 @@ let make = (~placeholder=?) => {
     ? <EyeOutlined onMouseDown onMouseUp onClick />
     : <EyeInvisibleOutlined onMouseDown onMouseUp onClick />
 
-  <Input _type={visible ? #text : #password} ?placeholder suffix />
+  <Input _type={visible ? #text : #password} ?placeholder suffix disabled />
 }

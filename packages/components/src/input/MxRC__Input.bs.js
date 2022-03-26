@@ -35,11 +35,13 @@ var make = React.forwardRef(function (Props, ref) {
       var allowClearOpt = Props.allowClear;
       var maxLength = Props.maxLength;
       var statusOpt = Props.status;
+      var disabledOpt = Props.disabled;
       var _type = _typeOpt !== undefined ? _typeOpt : "text";
       var addonBeforeNoStyle = addonBeforeNoStyleOpt !== undefined ? addonBeforeNoStyleOpt : false;
       var addonAfterNoStyle = addonAfterNoStyleOpt !== undefined ? addonAfterNoStyleOpt : false;
       var allowClear = allowClearOpt !== undefined ? allowClearOpt : false;
       var status = statusOpt !== undefined ? statusOpt : "default";
+      var disabled = disabledOpt !== undefined ? disabledOpt : false;
       var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
       var size$1 = Belt_Option.getWithDefault(size, context.size);
       var match = React.useState(function () {
@@ -55,15 +57,18 @@ var make = React.forwardRef(function (Props, ref) {
       var focused = match$1[0];
       var inputRef = React.useRef(null);
       var focus = function (param) {
-        return Belt_Option.forEach(Caml_option.nullable_to_opt(inputRef.current), (function (input) {
-                      return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
-                                    Curry._1(setFocused, (function (param) {
-                                            return true;
-                                          }));
-                                    input.focus();
-                                    
-                                  }));
-                    }));
+        if (!disabled) {
+          return Belt_Option.forEach(Caml_option.nullable_to_opt(inputRef.current), (function (input) {
+                        return Belt_Option.forEach(Webapi__Dom__HtmlElement.ofElement(input), (function (input) {
+                                      Curry._1(setFocused, (function (param) {
+                                              return true;
+                                            }));
+                                      input.focus();
+                                      
+                                    }));
+                      }));
+        }
+        
       };
       var blur = function (param) {
         return Belt_Option.forEach(Caml_option.nullable_to_opt(inputRef.current), (function (input) {
@@ -156,11 +161,12 @@ var make = React.forwardRef(function (Props, ref) {
       };
       var hasfix = Belt_Option.isSome(prefix) || Belt_Option.isSome(suffix) || allowClear;
       var hasaddon = Belt_Option.isSome(addonBefore) || Belt_Option.isSome(addonAfter);
-      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyle(undefined) : MxRC__Input__Twind.make(className, size$1, hasaddon, false, focused, status);
+      var className$1 = hasfix ? MxRC__Input__Twind.makeNoStyle(undefined) : MxRC__Input__Twind.make(className, size$1, hasaddon, false, focused, status, disabled);
       var type_ = _type === "text" ? "text" : "password";
       var tmp = {
         ref: inputRef,
         className: className$1,
+        disabled: disabled,
         type: type_,
         value: value$1,
         onKeyDown: onKeyDown$1,
@@ -220,7 +226,7 @@ var make = React.forwardRef(function (Props, ref) {
         } else {
           suffix$1 = null;
         }
-        var className$6 = MxRC__Input__Twind.make(className, size$1, hasaddon, true, focused, status);
+        var className$6 = MxRC__Input__Twind.make(className, size$1, hasaddon, true, focused, status, disabled);
         var onMouseUp = function (param) {
           return focus(undefined);
         };

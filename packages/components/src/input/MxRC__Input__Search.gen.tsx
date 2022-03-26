@@ -22,6 +22,7 @@ import type {style as ReactDOM_style} from '../../src/shims/react.shim';
 export type Props = {
   readonly addonBefore?: MxRC__Input_node; 
   readonly allowClear?: boolean; 
+  readonly disabled?: boolean; 
   readonly loading?: boolean; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly onSearch?: (_1:string, _2:ReactEvent_Synthetic_t) => void; 
@@ -36,6 +37,7 @@ export type Props = {
 export const make: React.ComponentType<{
   readonly addonBefore?: MxRC__Input_node; 
   readonly allowClear?: boolean; 
+  readonly disabled?: boolean; 
   readonly loading?: boolean; 
   readonly onChange?: (_1:ReactEvent_Form_t) => void; 
   readonly onSearch?: (_1:string, _2:ReactEvent_Synthetic_t) => void; 

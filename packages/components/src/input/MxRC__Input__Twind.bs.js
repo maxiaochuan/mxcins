@@ -5,10 +5,10 @@ import * as Css from "twind/css";
 import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
 function makeNoStyle(param) {
-  return MxRC__Libs__Twind.atw(undefined, ["w-full p-0 m-0"]);
+  return MxRC__Libs__Twind.atw(undefined, ["w-full p-0 m-0 disabled:cursor-not-allowed"]);
 }
 
-function make($$class, size, z, affix, focused, status) {
+function make($$class, size, z, affix, focused, status, disabled) {
   var classes = ["\n    inline-block\n    relative\n    m-0\n    min-w-0\n    w-full\n    overflow-visible\n    text(sm text)\n    border(1 solid border)\n    transition\n    tabular-nums\n    rounded\n  "];
   if (affix) {
     classes.push("inline-flex");
@@ -27,11 +27,14 @@ function make($$class, size, z, affix, focused, status) {
   if (z) {
     classes.push("z-1");
   }
+  if (disabled) {
+    classes.push("\n      cursor-not-allowed\n      text(text-disabled hover:text-disabled focus:text-disabled active:text-disabled)\n      bg(background-disabled hover:background-disabled focus:background-disabled active:background-disabled)\n      border(border hover:border focus:border active:border)\n    ");
+  }
   return MxRC__Libs__Twind.atw($$class, classes);
 }
 
-function makeTextArea($$class, size, focused) {
-  var $$class$1 = make($$class, size, false, false, focused, "default");
+function makeTextArea($$class, size, focused, disabled) {
+  var $$class$1 = make($$class, size, false, false, focused, "default", disabled);
   var classes = ["h-auto"];
   classes.push(size === "small" ? "py-y6-bordered" : (
           size === "default" ? "py-y8-bordered" : "py-y10-bordered"
