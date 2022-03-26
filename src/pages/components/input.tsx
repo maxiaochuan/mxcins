@@ -10,7 +10,7 @@ import { Record } from '../../components';
 
 const { Search, TextArea } = Input;
 
-const onSearch = (v: string) => console.log(v);
+const onSearch = (v: string) => console.log('onsearch', v);
 
 const LayoutView = () => {
   const [v, set] = React.useState('');
@@ -18,12 +18,10 @@ const LayoutView = () => {
     <>
       <Record title="space">
         <Input placeholder="Basic usage" maxLength={10} />
-        <Input placeholder="Basic usage" size="small" />
-        <Input placeholder="Basic usage" size="large" />
         <Input addonBefore="http://" addonAfter=".com" defaultValue="mysite" />
         <Input addonAfter={<SettingOutlined />} defaultValue="mysite" />
         <Input addonBefore="http://" suffix=".com" defaultValue="mysite" />
-        <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
+        <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} allowClear />
         <Search
           placeholder="input search text"
           value={v}

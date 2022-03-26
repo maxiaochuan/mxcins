@@ -14,8 +14,8 @@ import * as Webapi__Dom__HtmlInputElement from "rescript-webapi/src/Webapi/Dom/W
 var AddonAfterConflict = /* @__PURE__ */Caml_exceptions.create("MxRC__Input.AddonAfterConflict");
 
 var make = React.forwardRef(function (Props, ref) {
-      var _typeOpt = Props.type;
       var size = Props.size;
+      var _typeOpt = Props.type;
       var className = Props.className;
       var groupStyle = Props.groupStyle;
       var placeholder = Props.placeholder;
@@ -29,8 +29,8 @@ var make = React.forwardRef(function (Props, ref) {
       var onKeyDown = Props.onKeyDown;
       var onFocus = Props.onFocus;
       var onBlur = Props.onBlur;
-      var onChange = Props.onChange;
       var value = Props.value;
+      var onChange = Props.onChange;
       var defaultValue = Props.defaultValue;
       var allowClearOpt = Props.allowClear;
       var maxLength = Props.maxLength;
@@ -42,8 +42,7 @@ var make = React.forwardRef(function (Props, ref) {
       var allowClear = allowClearOpt !== undefined ? allowClearOpt : false;
       var status = statusOpt !== undefined ? statusOpt : "default";
       var disabled = disabledOpt !== undefined ? disabledOpt : false;
-      var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-      var size$1 = Belt_Option.getWithDefault(size, context.size);
+      var size$1 = MxRC__ConfigProvider.ConfigContext.useSizeConfig(size);
       var match = React.useState(function () {
             return Belt_Option.getWithDefault(defaultValue, "");
           });
@@ -103,13 +102,14 @@ var make = React.forwardRef(function (Props, ref) {
                                     if (type_ === "click") {
                                       return Belt_Option.forEach(Curry._1(Webapi__Dom__HtmlInputElement.ofElement, input.cloneNode(true)), (function (clone) {
                                                     clone.value = "";
-                                                    var makeEvent = (function (e, value) {
-                return Object.create(e, {
-                  target: { value: value },
-                  currentTarget: { value: value },
-                })
-              });
-                                                    return Curry._1(fn, makeEvent($$event, clone));
+                                                    return Curry._1(fn, Object.create($$event, {
+                                                                    target: {
+                                                                      value: clone
+                                                                    },
+                                                                    currentTarget: {
+                                                                      value: clone
+                                                                    }
+                                                                  }));
                                                   }));
                                     }
                                     
@@ -270,9 +270,12 @@ var make = React.forwardRef(function (Props, ref) {
                     }, before, child$1, after));
     });
 
+var Config;
+
 var Twind;
 
 export {
+  Config ,
   Twind ,
   AddonAfterConflict ,
   make ,

@@ -8,7 +8,7 @@ import * as React from 'react';
 import * as MxRC__Input__SearchBS__Es6Import from './MxRC__Input__Search.bs';
 const MxRC__Input__SearchBS: any = MxRC__Input__SearchBS__Es6Import;
 
-import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from '../../src/config-provider/MxRC__ConfigProvider.gen';
+import type {Config_size as MxRC__Input_Config_size} from './MxRC__Input.gen';
 
 import type {Form_t as ReactEvent_Form_t} from '../../src/shims/react.shim';
 
@@ -28,7 +28,7 @@ export type Props = {
   readonly onSearch?: (_1:string, _2:ReactEvent_Synthetic_t) => void; 
   readonly placeholder?: string; 
   readonly prefix?: MxRC__Input_node; 
-  readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly size?: MxRC__Input_Config_size; 
   readonly style?: ReactDOM_style; 
   readonly suffix?: MxRC__Input_node; 
   readonly value?: string
@@ -43,7 +43,7 @@ export const make: React.ComponentType<{
   readonly onSearch?: (_1:string, _2:ReactEvent_Synthetic_t) => void; 
   readonly placeholder?: string; 
   readonly prefix?: MxRC__Input_node; 
-  readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
+  readonly size?: MxRC__Input_Config_size; 
   readonly style?: ReactDOM_style; 
   readonly suffix?: MxRC__Input_node; 
   readonly value?: string

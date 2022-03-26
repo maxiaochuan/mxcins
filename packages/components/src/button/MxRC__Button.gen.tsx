@@ -10,7 +10,7 @@ const MxRC__ButtonBS: any = MxRC__ButtonBS__Es6Import;
 
 import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from '../../src/config-provider/MxRC__ConfigProvider.gen';
 
-import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
+import type {style as ReactDOM_style} from '../../src/shims/react.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type _type = 
@@ -26,9 +26,6 @@ export type shape = "default" | "circle" | "round";
 export type ButtonShapeType = shape;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type style = MxRC__Libs__React_style;
-
-// tslint:disable-next-line:interface-over-type-literal
 export type Props = {
   readonly type?: _type; 
   readonly block?: boolean; 
@@ -42,7 +39,7 @@ export type Props = {
   readonly onClick?: (_1:MouseEvent) => void; 
   readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly style?: style
+  readonly style?: ReactDOM_style
 };
 
 export const make: React.ComponentType<{
@@ -58,5 +55,5 @@ export const make: React.ComponentType<{
   readonly onClick?: (_1:MouseEvent) => void; 
   readonly shape?: shape; 
   readonly size?: MxRC__ConfigProvider_ConfigContext_size; 
-  readonly style?: style
+  readonly style?: ReactDOM_style
 }> = MxRC__ButtonBS.make;

@@ -1,13 +1,22 @@
 module ConfigContext = {
   type size = [#default | #small | #large]
-  type context = {size: size}
+  type value = {size: size}
 
-  let ctx = React.createContext({size: #default})
+  let context = React.createContext({size: #default})
+
+  let make = (~size) => {{size: size}}
+
+  @genType
+  let useSizeConfig = (size: option<size>) => {
+    let ctx = React.useContext(context)
+
+    React.useMemo2(() => size->Belt.Option.getWithDefault(ctx.size), (size, ctx.size))
+  }
 
   module Provider = {
-    let provider = React.Context.provider(ctx)
+    let provider = React.Context.provider(context)
     @react.component
-    let make = (~value: context, ~children) => {
+    let make = (~value, ~children) => {
       React.createElement(provider, {"value": value, "children": children})
     }
   }
@@ -16,11 +25,9 @@ module ConfigContext = {
 @genType
 let setup = () => MxRC__Libs__Twind.setup(MxRC__Libs__Twind.conf)
 
-open ConfigContext
-
 @react.component @genType
 let make = (~size=#default, ~children=React.null) => {
-  let value = React.useMemo1(() => {size: size}, [size])
+  let value = React.useMemo1(() => ConfigContext.make(~size), [size])
 
-  <> <Provider value> children </Provider> </>
+  <> <ConfigContext.Provider value> children </ConfigContext.Provider> </>
 }

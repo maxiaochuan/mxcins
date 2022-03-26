@@ -1,7 +1,7 @@
-open Belt.Option
-open MxRC__Button__Utils
-
+module Config = MxRC__ConfigProvider.ConfigContext
+module Twind = MxRC__Button__Twind
 module IconBody = MxRC__Button__IconBody
+module Utils = MxRC__Button__Utils
 
 @genType.as("ButtonType")
 type _type = [#default | #primary | #dashed | #text | #link]
@@ -9,12 +9,10 @@ type _type = [#default | #primary | #dashed | #text | #link]
 @genType.as("ButtonShapeType")
 type shape = [#default | #circle | #round]
 
-type style = MxRC__Libs__React.style
-
 @react.component @genType
 let make = React.forwardRef((
   ~className=?,
-  ~style: option<style>=?,
+  ~style=?,
   ~size=?,
   ~_type: _type=#default,
   ~shape: shape=#default,
@@ -23,32 +21,25 @@ let make = React.forwardRef((
   ~disabled=false,
   ~ghost=false,
   ~loading=false,
-  ~icon: option<React.element>=?,
-  ~children: option<React.element>=?,
+  ~icon=?,
+  ~children=?,
   ~onClick: option<ReactEvent.Mouse.t => unit>=?,
   ref,
 ) => {
-  // config context
-  let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
-
   // size
-  let size = size->getWithDefault(context.size)
+  let size = size->Config.useSizeConfig
 
   // onclick
   let onClick = evt =>
     switch (onClick, disabled) {
     | (Some(onClick), false) => {
-        open ReactEvent.Mouse
-        evt->preventDefault
+        evt->ReactEvent.Mouse.preventDefault
         evt->onClick->ignore
       }
     | (_, _) => ()
     }
 
-  let iconOnly = switch (children, icon) {
-  | (None, Some(_)) => true
-  | (_, _) => false
-  }
+  let iconOnly = children->Belt.Option.isNone && icon->Belt.Option.isSome
 
   // classname
   let className =
@@ -68,11 +59,11 @@ let make = React.forwardRef((
 
   let kids =
     children
-    ->getWithDefault(React.null)
+    ->Belt.Option.getWithDefault(React.null)
     ->React.Children.map(child => {
       open MxRC__Libs__React.Children
       if child->isString || child->isNumber {
-        if child->isString && child->asString->isTwoCNChar {
+        if child->isString && child->asString->Utils.isTwoCNChar {
           let string = child->asString->Js.String2.split("")->Js.Array2.joinWith(" ")
           <span> {React.string(string)} </span>
         } else {

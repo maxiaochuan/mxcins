@@ -1,4 +1,5 @@
 open MxRC__Libs__Antd
+module Config = MxRC__ConfigProvider.ConfigContext
 module Twind = MxRC__Input__Twind
 
 type node = MxRC__Libs__React.node
@@ -20,34 +21,35 @@ type status = [#default | #warning | #error]
 
 exception AddonAfterConflict
 
+@scope("Object") @val external cloneEvent: ('a, {..}) => 'b = "create"
+
 @react.component @genType
-let make = React.forwardRef((~_type: _type=#text,
-~size=?,
-~className=?,
-~groupStyle=?,
-~placeholder=?,
-~addonBefore: option<node>=?,
-~addonBeforeNoStyle=false,
-~addonAfter: option<node>=?,
-~addonAfterNoStyle=false,
-~prefix: option<node>=?,
-~suffix: option<node>=?,
-//events
-~onPressEnter=?,
-~onKeyDown=?,
-~onFocus=?,
-~onBlur=?,
-~onChange=?,
-~value=?,
-~defaultValue=?,
-~allowClear=false,
-~maxLength=?,
-~status = #default,
-~disabled=false,
-ref) => {
-  // context size
-  let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
-  let size = size->Belt.Option.getWithDefault(context.size)
+let make = React.forwardRef((
+  ~size=?,
+  ~_type: _type=#text,
+  ~className=?,
+  ~groupStyle=?,
+  ~placeholder=?,
+  ~addonBefore: option<node>=?,
+  ~addonBeforeNoStyle=false,
+  ~addonAfter: option<node>=?,
+  ~addonAfterNoStyle=false,
+  ~prefix: option<node>=?,
+  ~suffix: option<node>=?,
+  ~onPressEnter=?,
+  ~onKeyDown=?,
+  ~onFocus=?,
+  ~onBlur=?,
+  ~value=?,
+  ~onChange=?,
+  ~defaultValue=?,
+  ~allowClear=false,
+  ~maxLength=?,
+  ~status=#default,
+  ~disabled=false,
+  ref,
+) => {
+  let size = size->Config.useSizeConfig
 
   // value state
   let (v, set) = React.useState(_ => defaultValue->Belt.Option.getWithDefault(""))
@@ -119,18 +121,10 @@ ref) => {
           ->Belt.Option.forEach(clone => {
             // clone input element & set value empty
             clone->Webapi.Dom.HtmlInputElement.setValue("")
-            let makeEvent: (
-              ReactEvent.Mouse.t,
-              Webapi.Dom.HtmlInputElement.t,
-            ) => ReactEvent.Form.t = %raw("
-              function (e, value) {
-                return Object.create(e, {
-                  target: { value: value },
-                  currentTarget: { value: value },
-                })
-              }
-            ")
-            let event = makeEvent(event, clone)
+            let event = event->cloneEvent({
+              "target": { "value": clone },
+              "currentTarget": { "value": clone },
+            });
             event->fn
           })
         }
@@ -231,7 +225,8 @@ ref) => {
         }
       | (None, false) => React.null
       }
-      let className = className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused, ~status,~disabled)
+      let className =
+        className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused, ~status, ~disabled)
       let onMouseUp = _ => focus()
       <span className onMouseUp> prefix child suffix </span>
     }

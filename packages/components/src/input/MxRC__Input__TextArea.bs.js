@@ -18,8 +18,7 @@ function MxRC__Input__TextArea(Props) {
   var onChange = Props.onChange;
   var disabledOpt = Props.disabled;
   var disabled = disabledOpt !== undefined ? disabledOpt : false;
-  var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-  var size$1 = Belt_Option.getWithDefault(size, context.size);
+  var size$1 = MxRC__ConfigProvider.ConfigContext.useSizeConfig(size);
   var match = React.useState(function () {
         return Belt_Option.getWithDefault(defaultValue, "");
       });
@@ -61,10 +60,13 @@ function MxRC__Input__TextArea(Props) {
 
 var Twind;
 
+var Config;
+
 var make = MxRC__Input__TextArea;
 
 export {
   Twind ,
+  Config ,
   make ,
   
 }

@@ -11,6 +11,11 @@ const MxRC__ConfigProviderBS: any = MxRC__ConfigProviderBS__Es6Import;
 // tslint:disable-next-line:interface-over-type-literal
 export type ConfigContext_size = "default" | "small" | "large";
 
+export const ConfigContext_useSizeConfig: (size:(null | undefined | ConfigContext_size)) => ConfigContext_size = function (Arg1: any) {
+  const result = MxRC__ConfigProviderBS.ConfigContext.useSizeConfig((Arg1 == null ? undefined : Arg1));
+  return result
+};
+
 export const setup: () => void = MxRC__ConfigProviderBS.setup;
 
 // tslint:disable-next-line:interface-over-type-literal

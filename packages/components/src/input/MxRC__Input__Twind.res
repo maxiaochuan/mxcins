@@ -20,7 +20,6 @@ let make = (class, ~size, ~z, ~affix, ~focused, ~status, ~disabled) => {
   ]
   let push = str => classes->Js.Array2.push(str)->ignore
 
-
   if affix {
     "inline-flex"->push
   }
@@ -48,7 +47,6 @@ let make = (class, ~size, ~z, ~affix, ~focused, ~status, ~disabled) => {
   if z {
     "z-1"->push
   }
-
 
   if disabled {
     "

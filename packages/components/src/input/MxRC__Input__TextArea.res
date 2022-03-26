@@ -1,4 +1,5 @@
 module Twind = MxRC__Input__Twind
+module Config = MxRC__ConfigProvider.ConfigContext
 
 @react.component @genType
 let make = (
@@ -13,8 +14,7 @@ let make = (
   ~disabled=false,
 ) => {
   // context size
-  let context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx)
-  let size = size->Belt.Option.getWithDefault(context.size)
+  let size = size->Config.useSizeConfig
 
   // value state
   let (v, set) = React.useState(_ => defaultValue->Belt.Option.getWithDefault(""))
@@ -41,7 +41,7 @@ let make = (
     }
   }
 
-  let className = className->Twind.makeTextArea(~size, ~focused=false,~disabled)
+  let className = className->Twind.makeTextArea(~size, ~focused=false, ~disabled)
 
   <textarea className ?placeholder ?rows value onChange disabled />
 }

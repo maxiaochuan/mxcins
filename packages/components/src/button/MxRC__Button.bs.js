@@ -31,8 +31,7 @@ var make = React.forwardRef(function (Props, ref) {
       var disabled = disabledOpt !== undefined ? disabledOpt : false;
       var ghost = ghostOpt !== undefined ? ghostOpt : false;
       var loading = loadingOpt !== undefined ? loadingOpt : false;
-      var context = React.useContext(MxRC__ConfigProvider.ConfigContext.ctx);
-      var size$1 = Belt_Option.getWithDefault(size, context.size);
+      var size$1 = MxRC__ConfigProvider.ConfigContext.useSizeConfig(size);
       var onClick$1 = function (evt) {
         if (onClick !== undefined && !disabled) {
           evt.preventDefault();
@@ -41,7 +40,7 @@ var make = React.forwardRef(function (Props, ref) {
         }
         
       };
-      var iconOnly = children !== undefined ? false : icon !== undefined;
+      var iconOnly = Belt_Option.isNone(children) && Belt_Option.isSome(icon);
       var className$1 = MxRC__Button__Twind.make(className, size$1, _type, shape, danger, ghost, block, disabled, loading, iconOnly);
       var icon$1 = React.createElement(MxRC__Button__IconBody.make, {
             loading: loading,
@@ -75,10 +74,19 @@ var make = React.forwardRef(function (Props, ref) {
       return React.createElement("button", tmp, icon$1, kids);
     });
 
+var Config;
+
+var Twind;
+
 var IconBody;
 
+var Utils;
+
 export {
+  Config ,
+  Twind ,
   IconBody ,
+  Utils ,
   make ,
   
 }

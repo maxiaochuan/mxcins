@@ -33,6 +33,17 @@ let make = (
 ) => {
   let inputRef = React.useRef(initRef)
 
+  let onChange = event => {
+    // on reset
+    if event->ReactEvent.Form.type_ === "click" {
+      onSearch->Belt.Option.forEach(fn => {
+        let target = event->ReactEvent.Form.target
+        fn(. target["value"], event->ReactEvent.toSyntheticEvent)
+      })
+    }
+    onChange->Belt.Option.forEach(fn => event->fn)
+  }
+
   let onSearch = event =>
     onSearch->Belt.Option.forEach(fn =>
       inputRef.current.input->Belt.Option.forEach(input =>
@@ -60,7 +71,7 @@ let make = (
     ?suffix
     ?allowClear
     ?value
-    ?onChange
+    onChange
     addonAfter
     addonAfterNoStyle=true
     onPressEnter

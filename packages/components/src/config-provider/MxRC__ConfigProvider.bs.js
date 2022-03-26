@@ -2,14 +2,31 @@
 
 import * as React from "react";
 import * as Twind from "twind";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
 
-var ctx = React.createContext({
+var context = React.createContext({
       size: "default"
     });
 
-var provider = ctx.Provider;
+function make(size) {
+  return {
+          size: size
+        };
+}
+
+function useSizeConfig(size) {
+  var ctx = React.useContext(context);
+  return React.useMemo((function () {
+                return Belt_Option.getWithDefault(size, ctx.size);
+              }), [
+              size,
+              ctx.size
+            ]);
+}
+
+var provider = context.Provider;
 
 function MxRC__ConfigProvider$ConfigContext$Provider(Props) {
   var value = Props.value;
@@ -26,7 +43,9 @@ var Provider = {
 };
 
 var ConfigContext = {
-  ctx: ctx,
+  context: context,
+  make: make,
+  useSizeConfig: useSizeConfig,
   Provider: Provider
 };
 
@@ -51,12 +70,12 @@ function MxRC__ConfigProvider(Props) {
                 }));
 }
 
-var make = MxRC__ConfigProvider;
+var make$1 = MxRC__ConfigProvider;
 
 export {
   ConfigContext ,
   setup ,
-  make ,
+  make$1 as make,
   
 }
-/* ctx Not a pure module */
+/* context Not a pure module */
