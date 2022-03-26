@@ -16,4 +16,4 @@ export const space2standard = input => {
   }
 
   throw new Error('space 2 standard error.');
-}
+};

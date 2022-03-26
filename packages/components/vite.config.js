@@ -14,8 +14,8 @@ export default defineConfig({
         'react',
         'react-dom',
         '@ant-design/icons',
-        ...Object.keys(packageJSON.dependencies)
+        ...Object.keys(packageJSON.dependencies),
       ],
-    }
-  }
-})
+    },
+  },
+});

@@ -2,8 +2,5 @@ node_modules
 lib
 .bsb.lock
 .merlin
-yarn.lock
 dist
 /src/.mx
-
-/packages/vite-plugin-routes/dynamic.js

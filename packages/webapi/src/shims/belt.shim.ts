@@ -1,1 +1,1 @@
-export type MutableMap_Int_key = number
+export type MutableMap_Int_key = number;

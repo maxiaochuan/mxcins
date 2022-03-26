@@ -1,2 +1,5 @@
+dist
 lib
 tsconfig.json
+**/*.gen.tsx
+**/*.bs.js

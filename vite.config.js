@@ -11,7 +11,7 @@ export default defineConfig({
     alias: {
       '@mxcins/components': `${path.resolve(process.cwd(), 'packages', 'components')}/`,
       '@mxcins/libs': `${path.resolve(process.cwd(), 'packages', 'libs')}/`,
-      '@/': `${path.resolve(process.cwd(), 'src')}/`
+      '@/': `${path.resolve(process.cwd(), 'src')}/`,
     },
   },
   plugins: [
@@ -57,10 +57,10 @@ export default defineConfig({
             {
               index: true,
               component: '@/pages/home',
-            }
-          ]
-        }
-      ]
-    })
+            },
+          ],
+        },
+      ],
+    }),
   ],
 });

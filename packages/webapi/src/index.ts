@@ -1,4 +1,4 @@
-import './polyfill'
+import './polyfill';
 
 import * as SingleResizeObserver from './single-resize-observer/MxWebapi__SingleResizeObserver.gen';
 
