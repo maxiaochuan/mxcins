@@ -14,15 +14,15 @@ function make($$class, size, z, affix, focused, status) {
     classes.push("inline-flex");
   }
   if (focused) {
-    classes.push(status === "warning" ? "border-warning shadow-input-focus" : (
-            status === "default" ? "border-primary-hover shadow-input-focus" : "border-error shadow-input-focus"
+    classes.push(status === "warning" ? "border-warning shadow-input-focus-warning" : (
+            status === "default" ? "border-primary-hover shadow-input-focus" : "border-error shadow-input-focus-error"
           ));
   }
+  classes.push(status === "warning" ? "border-warning hover:(border-warning-hover)" : (
+          status === "default" ? "hover:(border-primary-hover)" : "border-error hover:(border-error-hover)"
+        ));
   classes.push(size === "small" ? "h-6 px-2-bordered" : (
           size === "default" ? "h-8 px-3-bordered" : "h-10 px-3-bordered text-base"
-        ));
-  classes.push(status === "warning" ? "border-warning hover:(border-warning-hover) shadow-warning-outline" : (
-          status === "default" ? "hover:(border-primary-hover)" : "border-error hover:(border-error-hover) shadow-error-outline"
         ));
   if (z) {
     classes.push("z-1");
@@ -39,9 +39,12 @@ function makeTextArea($$class, size, focused) {
   return MxRC__Libs__Twind.atw($$class$1, classes);
 }
 
-function makeFixed(pos) {
+function makeFixed(pos, status) {
   var classes = ["flex flex-none items-center"];
   classes.push(pos === "prefix" ? "mr-1" : "ml-1");
+  classes.push(status === "error" ? "text-error" : (
+          status === "warning" ? "text-warning" : ""
+        ));
   return MxRC__Libs__Twind.atw(undefined, classes);
 }
 
@@ -78,7 +81,7 @@ function makeAddon(noStyled) {
 
 function makeClear(param) {
   return MxRC__Libs__Twind.atw(undefined, [
-              "\n    text-text-disabled\n    pointer\n    text-xs\n    hover:(text-text-secondary)\n    active:(text-text)\n    transition\n    ",
+              "\n    text-text-disabled\n    cursor-pointer\n    text-xs\n    hover:(text-text-secondary)\n    active:(text-text)\n    transition\n    ",
               Css.css({
                     "vertical-align": "-1px"
                   })

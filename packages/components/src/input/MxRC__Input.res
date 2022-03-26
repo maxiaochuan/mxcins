@@ -11,18 +11,17 @@ type inputRef = {
 }
 
 @genType.as("InputType")
-type _type = [#text|#password]
+type _type = [#text | #password]
 
 @genType.as("InputStatusType")
-type status = [#default|#warning|#error]
+type status = [#default | #warning | #error]
 
 // TODO: ReactEvent ChangeEvent
 
 exception AddonAfterConflict
 
 @react.component @genType
-let make = React.forwardRef((
-~_type: _type=#text,
+let make = React.forwardRef((~_type: _type=#text,
 ~size=?,
 ~className=?,
 ~groupStyle=?,
@@ -202,7 +201,7 @@ ref) => {
   | true => {
       let prefix = switch prefix {
       | Some(node) => {
-          let className = Twind.makeFixed(~pos=#prefix)
+          let className = Twind.makeFixed(~pos=#prefix, ~status)
           <span className> node </span>
         }
       | None => React.null
@@ -210,11 +209,11 @@ ref) => {
       let suffix = switch (suffix, allowClear) {
       | (Some(_), true) => AddonAfterConflict->raise
       | (Some(node), false) => {
-          let className = Twind.makeFixed(~pos=#suffix)
+          let className = Twind.makeFixed(~pos=#suffix, ~status)
           <span className> node </span>
         }
       | (None, true) => {
-          let className = Twind.makeFixed(~pos=#suffix)
+          let className = Twind.makeFixed(~pos=#suffix, ~status)
           let icon = {
             let className = Twind.makeClear()
             let visibility = value->Js.String2.length > 0 ? "visible" : "hidden"

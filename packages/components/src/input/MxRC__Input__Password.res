@@ -17,7 +17,9 @@ let make = (~placeholder=?) => {
     set(prev => !prev)
   }
 
-  let suffix = visible ? <EyeOutlined onMouseDown onMouseUp onClick /> : <EyeInvisibleOutlined onMouseDown onMouseUp onClick />
+  let suffix = visible
+    ? <EyeOutlined onMouseDown onMouseUp onClick />
+    : <EyeInvisibleOutlined onMouseDown onMouseUp onClick />
 
   <Input _type={visible ? #text : #password} ?placeholder suffix />
 }

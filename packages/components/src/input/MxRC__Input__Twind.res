@@ -20,7 +20,7 @@ let make = (class, ~size, ~z, ~affix, ~focused, ~status) => {
   ]
   let push = str => classes->Js.Array2.push(str)->ignore
 
-    // focus:(border-primary-hover shadow-input-focus)
+  // focus:(border-primary-hover shadow-input-focus)
 
   if affix {
     "inline-flex"->push
@@ -29,21 +29,21 @@ let make = (class, ~size, ~z, ~affix, ~focused, ~status) => {
   if focused {
     switch status {
     | #default => "border-primary-hover shadow-input-focus"
-    | #warning => "border-warning shadow-input-focus"
-    | #error => "border-error shadow-input-focus"
+    | #warning => "border-warning shadow-input-focus-warning"
+    | #error => "border-error shadow-input-focus-error"
     }->push
   }
+
+  switch status {
+  | #default => "hover:(border-primary-hover)"
+  | #warning => "border-warning hover:(border-warning-hover)"
+  | #error => "border-error hover:(border-error-hover)"
+  }->push
 
   switch size {
   | #default => "h-8 px-3-bordered"
   | #small => "h-6 px-2-bordered"
   | #large => "h-10 px-3-bordered text-base"
-  }->push
-
-  switch status {
-  | #default => "hover:(border-primary-hover)"
-  | #warning => "border-warning hover:(border-warning-hover) shadow-warning-outline"
-  | #error => "border-error hover:(border-error-hover) shadow-error-outline"
   }->push
 
   if z {
@@ -67,13 +67,19 @@ let makeTextArea = (class, ~size, ~focused) => {
   classes->atw(~class)
 }
 
-let makeFixed = (~pos) => {
+let makeFixed = (~pos, ~status) => {
   let classes = ["flex flex-none items-center"]
   let push = str => classes->Js.Array2.push(str)->ignore
 
   switch pos {
   | #prefix => "mr-1"
   | #suffix => "ml-1"
+  }->push
+
+  switch status {
+  | #warning => "text-warning"
+  | #error => "text-error"
+  | _ => ""
   }->push
 
   classes->atw
@@ -119,7 +125,7 @@ let makeClear = () =>
   [
     "
     text-text-disabled
-    pointer
+    cursor-pointer
     text-xs
     hover:(text-text-secondary)
     active:(text-text)

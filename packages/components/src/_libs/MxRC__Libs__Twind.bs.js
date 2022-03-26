@@ -150,21 +150,9 @@ var conf = {
       }),
     minWidth: (theme => theme('width')),
     boxShadow: {
-      "input-focus": "0 0 0 2px var(--color-primary-outline)"
-    },
-    boxShadowColor: {
-      warning: {
-        DEFAULT: "var(--color-warning)",
-        hover: "var(--color-warning-hover)",
-        active: "var(--color-warning-active)",
-        outline: "var(--color-warning-outline)"
-      },
-      error: {
-        DEFAULT: "var(--color-error)",
-        hover: "var(--color-error-hover)",
-        active: "var(--color-error-active)",
-        outline: "var(--color-error-outline)"
-      }
+      "input-focus": "0 0 0 2px var(--color-primary-outline)",
+      "input-focus-warning": "0 0 0 2px var(--color-warning-outline)",
+      "input-focus-error": "0 0 0 2px var(--color-error-outline)"
     },
     zIndex: {
       auto: "auto",

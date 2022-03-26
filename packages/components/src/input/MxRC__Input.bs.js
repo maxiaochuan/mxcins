@@ -176,7 +176,7 @@ var make = React.forwardRef(function (Props, ref) {
       if (hasfix) {
         var prefix$1;
         if (prefix !== undefined) {
-          var className$2 = MxRC__Input__Twind.makeFixed("prefix");
+          var className$2 = MxRC__Input__Twind.makeFixed("prefix", status);
           prefix$1 = React.createElement("span", {
                 className: className$2
               }, Caml_option.valFromOption(prefix));
@@ -191,12 +191,12 @@ var make = React.forwardRef(function (Props, ref) {
                   Error: new Error()
                 };
           }
-          var className$3 = MxRC__Input__Twind.makeFixed("suffix");
+          var className$3 = MxRC__Input__Twind.makeFixed("suffix", status);
           suffix$1 = React.createElement("span", {
                 className: className$3
               }, Caml_option.valFromOption(suffix));
         } else if (allowClear) {
-          var className$4 = MxRC__Input__Twind.makeFixed("suffix");
+          var className$4 = MxRC__Input__Twind.makeFixed("suffix", status);
           var className$5 = MxRC__Input__Twind.makeClear(undefined);
           var visibility = value$1.length > 0 ? "visible" : "hidden";
           var style = {

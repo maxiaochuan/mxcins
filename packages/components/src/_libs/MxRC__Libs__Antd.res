@@ -1,8 +1,7 @@
-
 module AccountBookFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -13,7 +12,7 @@ module AccountBookFilled = {
 module AccountBookOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -24,7 +23,7 @@ module AccountBookOutlined = {
 module AccountBookTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -35,7 +34,7 @@ module AccountBookTwoTone = {
 module AimOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -46,7 +45,7 @@ module AimOutlined = {
 module AlertFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -57,7 +56,7 @@ module AlertFilled = {
 module AlertOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -68,7 +67,7 @@ module AlertOutlined = {
 module AlertTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -79,7 +78,7 @@ module AlertTwoTone = {
 module AlibabaOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -90,7 +89,7 @@ module AlibabaOutlined = {
 module AlignCenterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -101,7 +100,7 @@ module AlignCenterOutlined = {
 module AlignLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -112,7 +111,7 @@ module AlignLeftOutlined = {
 module AlignRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -123,7 +122,7 @@ module AlignRightOutlined = {
 module AlipayCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -134,7 +133,7 @@ module AlipayCircleFilled = {
 module AlipayCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -145,7 +144,7 @@ module AlipayCircleOutlined = {
 module AlipayOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -156,7 +155,7 @@ module AlipayOutlined = {
 module AlipaySquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -167,7 +166,7 @@ module AlipaySquareFilled = {
 module AliwangwangFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -178,7 +177,7 @@ module AliwangwangFilled = {
 module AliwangwangOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -189,7 +188,7 @@ module AliwangwangOutlined = {
 module AliyunOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -200,7 +199,7 @@ module AliyunOutlined = {
 module AmazonCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -211,7 +210,7 @@ module AmazonCircleFilled = {
 module AmazonOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -222,7 +221,7 @@ module AmazonOutlined = {
 module AmazonSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -233,7 +232,7 @@ module AmazonSquareFilled = {
 module AndroidFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -244,7 +243,7 @@ module AndroidFilled = {
 module AndroidOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -255,7 +254,7 @@ module AndroidOutlined = {
 module AntCloudOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -266,7 +265,7 @@ module AntCloudOutlined = {
 module AntDesignOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -277,7 +276,7 @@ module AntDesignOutlined = {
 module ApartmentOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -288,7 +287,7 @@ module ApartmentOutlined = {
 module ApiFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -299,7 +298,7 @@ module ApiFilled = {
 module ApiOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -310,7 +309,7 @@ module ApiOutlined = {
 module ApiTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -321,7 +320,7 @@ module ApiTwoTone = {
 module AppleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -332,7 +331,7 @@ module AppleFilled = {
 module AppleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -343,7 +342,7 @@ module AppleOutlined = {
 module AppstoreAddOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -354,7 +353,7 @@ module AppstoreAddOutlined = {
 module AppstoreFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -365,7 +364,7 @@ module AppstoreFilled = {
 module AppstoreOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -376,7 +375,7 @@ module AppstoreOutlined = {
 module AppstoreTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -387,7 +386,7 @@ module AppstoreTwoTone = {
 module AreaChartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -398,7 +397,7 @@ module AreaChartOutlined = {
 module ArrowDownOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -409,7 +408,7 @@ module ArrowDownOutlined = {
 module ArrowLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -420,7 +419,7 @@ module ArrowLeftOutlined = {
 module ArrowRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -431,7 +430,7 @@ module ArrowRightOutlined = {
 module ArrowUpOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -442,7 +441,7 @@ module ArrowUpOutlined = {
 module ArrowsAltOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -453,7 +452,7 @@ module ArrowsAltOutlined = {
 module AudioFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -464,7 +463,7 @@ module AudioFilled = {
 module AudioMutedOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -475,7 +474,7 @@ module AudioMutedOutlined = {
 module AudioOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -486,7 +485,7 @@ module AudioOutlined = {
 module AudioTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -497,7 +496,7 @@ module AudioTwoTone = {
 module AuditOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -508,7 +507,7 @@ module AuditOutlined = {
 module BackwardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -519,7 +518,7 @@ module BackwardFilled = {
 module BackwardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -530,7 +529,7 @@ module BackwardOutlined = {
 module BankFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -541,7 +540,7 @@ module BankFilled = {
 module BankOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -552,7 +551,7 @@ module BankOutlined = {
 module BankTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -563,7 +562,7 @@ module BankTwoTone = {
 module BarChartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -574,7 +573,7 @@ module BarChartOutlined = {
 module BarcodeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -585,7 +584,7 @@ module BarcodeOutlined = {
 module BarsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -596,7 +595,7 @@ module BarsOutlined = {
 module BehanceCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -607,7 +606,7 @@ module BehanceCircleFilled = {
 module BehanceOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -618,7 +617,7 @@ module BehanceOutlined = {
 module BehanceSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -629,7 +628,7 @@ module BehanceSquareFilled = {
 module BehanceSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -640,7 +639,7 @@ module BehanceSquareOutlined = {
 module BellFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -651,7 +650,7 @@ module BellFilled = {
 module BellOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -662,7 +661,7 @@ module BellOutlined = {
 module BellTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -673,7 +672,7 @@ module BellTwoTone = {
 module BgColorsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -684,7 +683,7 @@ module BgColorsOutlined = {
 module BlockOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -695,7 +694,7 @@ module BlockOutlined = {
 module BoldOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -706,7 +705,7 @@ module BoldOutlined = {
 module BookFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -717,7 +716,7 @@ module BookFilled = {
 module BookOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -728,7 +727,7 @@ module BookOutlined = {
 module BookTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -739,7 +738,7 @@ module BookTwoTone = {
 module BorderBottomOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -750,7 +749,7 @@ module BorderBottomOutlined = {
 module BorderHorizontalOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -761,7 +760,7 @@ module BorderHorizontalOutlined = {
 module BorderInnerOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -772,7 +771,7 @@ module BorderInnerOutlined = {
 module BorderLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -783,7 +782,7 @@ module BorderLeftOutlined = {
 module BorderOuterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -794,7 +793,7 @@ module BorderOuterOutlined = {
 module BorderOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -805,7 +804,7 @@ module BorderOutlined = {
 module BorderRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -816,7 +815,7 @@ module BorderRightOutlined = {
 module BorderTopOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -827,7 +826,7 @@ module BorderTopOutlined = {
 module BorderVerticleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -838,7 +837,7 @@ module BorderVerticleOutlined = {
 module BorderlessTableOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -849,7 +848,7 @@ module BorderlessTableOutlined = {
 module BoxPlotFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -860,7 +859,7 @@ module BoxPlotFilled = {
 module BoxPlotOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -871,7 +870,7 @@ module BoxPlotOutlined = {
 module BoxPlotTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -882,7 +881,7 @@ module BoxPlotTwoTone = {
 module BranchesOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -893,7 +892,7 @@ module BranchesOutlined = {
 module BugFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -904,7 +903,7 @@ module BugFilled = {
 module BugOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -915,7 +914,7 @@ module BugOutlined = {
 module BugTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -926,7 +925,7 @@ module BugTwoTone = {
 module BuildFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -937,7 +936,7 @@ module BuildFilled = {
 module BuildOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -948,7 +947,7 @@ module BuildOutlined = {
 module BuildTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -959,7 +958,7 @@ module BuildTwoTone = {
 module BulbFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -970,7 +969,7 @@ module BulbFilled = {
 module BulbOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -981,7 +980,7 @@ module BulbOutlined = {
 module BulbTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -992,7 +991,7 @@ module BulbTwoTone = {
 module CalculatorFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1003,7 +1002,7 @@ module CalculatorFilled = {
 module CalculatorOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1014,7 +1013,7 @@ module CalculatorOutlined = {
 module CalculatorTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1025,7 +1024,7 @@ module CalculatorTwoTone = {
 module CalendarFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1036,7 +1035,7 @@ module CalendarFilled = {
 module CalendarOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1047,7 +1046,7 @@ module CalendarOutlined = {
 module CalendarTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1058,7 +1057,7 @@ module CalendarTwoTone = {
 module CameraFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1069,7 +1068,7 @@ module CameraFilled = {
 module CameraOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1080,7 +1079,7 @@ module CameraOutlined = {
 module CameraTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1091,7 +1090,7 @@ module CameraTwoTone = {
 module CarFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1102,7 +1101,7 @@ module CarFilled = {
 module CarOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1113,7 +1112,7 @@ module CarOutlined = {
 module CarTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1124,7 +1123,7 @@ module CarTwoTone = {
 module CaretDownFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1135,7 +1134,7 @@ module CaretDownFilled = {
 module CaretDownOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1146,7 +1145,7 @@ module CaretDownOutlined = {
 module CaretLeftFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1157,7 +1156,7 @@ module CaretLeftFilled = {
 module CaretLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1168,7 +1167,7 @@ module CaretLeftOutlined = {
 module CaretRightFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1179,7 +1178,7 @@ module CaretRightFilled = {
 module CaretRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1190,7 +1189,7 @@ module CaretRightOutlined = {
 module CaretUpFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1201,7 +1200,7 @@ module CaretUpFilled = {
 module CaretUpOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1212,7 +1211,7 @@ module CaretUpOutlined = {
 module CarryOutFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1223,7 +1222,7 @@ module CarryOutFilled = {
 module CarryOutOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1234,7 +1233,7 @@ module CarryOutOutlined = {
 module CarryOutTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1245,7 +1244,7 @@ module CarryOutTwoTone = {
 module CheckCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1256,7 +1255,7 @@ module CheckCircleFilled = {
 module CheckCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1267,7 +1266,7 @@ module CheckCircleOutlined = {
 module CheckCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1278,7 +1277,7 @@ module CheckCircleTwoTone = {
 module CheckOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1289,7 +1288,7 @@ module CheckOutlined = {
 module CheckSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1300,7 +1299,7 @@ module CheckSquareFilled = {
 module CheckSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1311,7 +1310,7 @@ module CheckSquareOutlined = {
 module CheckSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1322,7 +1321,7 @@ module CheckSquareTwoTone = {
 module ChromeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1333,7 +1332,7 @@ module ChromeFilled = {
 module ChromeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1344,7 +1343,7 @@ module ChromeOutlined = {
 module CiCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1355,7 +1354,7 @@ module CiCircleFilled = {
 module CiCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1366,7 +1365,7 @@ module CiCircleOutlined = {
 module CiCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1377,7 +1376,7 @@ module CiCircleTwoTone = {
 module CiOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1388,7 +1387,7 @@ module CiOutlined = {
 module CiTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1399,7 +1398,7 @@ module CiTwoTone = {
 module ClearOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1410,7 +1409,7 @@ module ClearOutlined = {
 module ClockCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1421,7 +1420,7 @@ module ClockCircleFilled = {
 module ClockCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1432,7 +1431,7 @@ module ClockCircleOutlined = {
 module ClockCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1443,7 +1442,7 @@ module ClockCircleTwoTone = {
 module CloseCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1454,7 +1453,7 @@ module CloseCircleFilled = {
 module CloseCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1465,7 +1464,7 @@ module CloseCircleOutlined = {
 module CloseCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1476,7 +1475,7 @@ module CloseCircleTwoTone = {
 module CloseOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1487,7 +1486,7 @@ module CloseOutlined = {
 module CloseSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1498,7 +1497,7 @@ module CloseSquareFilled = {
 module CloseSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1509,7 +1508,7 @@ module CloseSquareOutlined = {
 module CloseSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1520,7 +1519,7 @@ module CloseSquareTwoTone = {
 module CloudDownloadOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1531,7 +1530,7 @@ module CloudDownloadOutlined = {
 module CloudFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1542,7 +1541,7 @@ module CloudFilled = {
 module CloudOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1553,7 +1552,7 @@ module CloudOutlined = {
 module CloudServerOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1564,7 +1563,7 @@ module CloudServerOutlined = {
 module CloudSyncOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1575,7 +1574,7 @@ module CloudSyncOutlined = {
 module CloudTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1586,7 +1585,7 @@ module CloudTwoTone = {
 module CloudUploadOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1597,7 +1596,7 @@ module CloudUploadOutlined = {
 module ClusterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1608,7 +1607,7 @@ module ClusterOutlined = {
 module CodeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1619,7 +1618,7 @@ module CodeFilled = {
 module CodeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1630,7 +1629,7 @@ module CodeOutlined = {
 module CodeSandboxCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1641,7 +1640,7 @@ module CodeSandboxCircleFilled = {
 module CodeSandboxOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1652,7 +1651,7 @@ module CodeSandboxOutlined = {
 module CodeSandboxSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1663,7 +1662,7 @@ module CodeSandboxSquareFilled = {
 module CodeTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1674,7 +1673,7 @@ module CodeTwoTone = {
 module CodepenCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1685,7 +1684,7 @@ module CodepenCircleFilled = {
 module CodepenCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1696,7 +1695,7 @@ module CodepenCircleOutlined = {
 module CodepenOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1707,7 +1706,7 @@ module CodepenOutlined = {
 module CodepenSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1718,7 +1717,7 @@ module CodepenSquareFilled = {
 module CoffeeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1729,7 +1728,7 @@ module CoffeeOutlined = {
 module ColumnHeightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1740,7 +1739,7 @@ module ColumnHeightOutlined = {
 module ColumnWidthOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1751,7 +1750,7 @@ module ColumnWidthOutlined = {
 module CommentOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1762,7 +1761,7 @@ module CommentOutlined = {
 module CompassFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1773,7 +1772,7 @@ module CompassFilled = {
 module CompassOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1784,7 +1783,7 @@ module CompassOutlined = {
 module CompassTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1795,7 +1794,7 @@ module CompassTwoTone = {
 module CompressOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1806,7 +1805,7 @@ module CompressOutlined = {
 module ConsoleSqlOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1817,7 +1816,7 @@ module ConsoleSqlOutlined = {
 module ContactsFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1828,7 +1827,7 @@ module ContactsFilled = {
 module ContactsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1839,7 +1838,7 @@ module ContactsOutlined = {
 module ContactsTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1850,7 +1849,7 @@ module ContactsTwoTone = {
 module ContainerFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1861,7 +1860,7 @@ module ContainerFilled = {
 module ContainerOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1872,7 +1871,7 @@ module ContainerOutlined = {
 module ContainerTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1883,7 +1882,7 @@ module ContainerTwoTone = {
 module ControlFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1894,7 +1893,7 @@ module ControlFilled = {
 module ControlOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1905,7 +1904,7 @@ module ControlOutlined = {
 module ControlTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1916,7 +1915,7 @@ module ControlTwoTone = {
 module CopyFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1927,7 +1926,7 @@ module CopyFilled = {
 module CopyOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1938,7 +1937,7 @@ module CopyOutlined = {
 module CopyTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1949,7 +1948,7 @@ module CopyTwoTone = {
 module CopyrightCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1960,7 +1959,7 @@ module CopyrightCircleFilled = {
 module CopyrightCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1971,7 +1970,7 @@ module CopyrightCircleOutlined = {
 module CopyrightCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1982,7 +1981,7 @@ module CopyrightCircleTwoTone = {
 module CopyrightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -1993,7 +1992,7 @@ module CopyrightOutlined = {
 module CopyrightTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2004,7 +2003,7 @@ module CopyrightTwoTone = {
 module CreditCardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2015,7 +2014,7 @@ module CreditCardFilled = {
 module CreditCardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2026,7 +2025,7 @@ module CreditCardOutlined = {
 module CreditCardTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2037,7 +2036,7 @@ module CreditCardTwoTone = {
 module CrownFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2048,7 +2047,7 @@ module CrownFilled = {
 module CrownOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2059,7 +2058,7 @@ module CrownOutlined = {
 module CrownTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2070,7 +2069,7 @@ module CrownTwoTone = {
 module CustomerServiceFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2081,7 +2080,7 @@ module CustomerServiceFilled = {
 module CustomerServiceOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2092,7 +2091,7 @@ module CustomerServiceOutlined = {
 module CustomerServiceTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2103,7 +2102,7 @@ module CustomerServiceTwoTone = {
 module DashOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2114,7 +2113,7 @@ module DashOutlined = {
 module DashboardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2125,7 +2124,7 @@ module DashboardFilled = {
 module DashboardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2136,7 +2135,7 @@ module DashboardOutlined = {
 module DashboardTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2147,7 +2146,7 @@ module DashboardTwoTone = {
 module DatabaseFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2158,7 +2157,7 @@ module DatabaseFilled = {
 module DatabaseOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2169,7 +2168,7 @@ module DatabaseOutlined = {
 module DatabaseTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2180,7 +2179,7 @@ module DatabaseTwoTone = {
 module DeleteColumnOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2191,7 +2190,7 @@ module DeleteColumnOutlined = {
 module DeleteFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2202,7 +2201,7 @@ module DeleteFilled = {
 module DeleteOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2213,7 +2212,7 @@ module DeleteOutlined = {
 module DeleteRowOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2224,7 +2223,7 @@ module DeleteRowOutlined = {
 module DeleteTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2235,7 +2234,7 @@ module DeleteTwoTone = {
 module DeliveredProcedureOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2246,7 +2245,7 @@ module DeliveredProcedureOutlined = {
 module DeploymentUnitOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2257,7 +2256,7 @@ module DeploymentUnitOutlined = {
 module DesktopOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2268,7 +2267,7 @@ module DesktopOutlined = {
 module DiffFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2279,7 +2278,7 @@ module DiffFilled = {
 module DiffOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2290,7 +2289,7 @@ module DiffOutlined = {
 module DiffTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2301,7 +2300,7 @@ module DiffTwoTone = {
 module DingdingOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2312,7 +2311,7 @@ module DingdingOutlined = {
 module DingtalkCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2323,7 +2322,7 @@ module DingtalkCircleFilled = {
 module DingtalkOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2334,7 +2333,7 @@ module DingtalkOutlined = {
 module DingtalkSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2345,7 +2344,7 @@ module DingtalkSquareFilled = {
 module DisconnectOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2356,7 +2355,7 @@ module DisconnectOutlined = {
 module DislikeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2367,7 +2366,7 @@ module DislikeFilled = {
 module DislikeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2378,7 +2377,7 @@ module DislikeOutlined = {
 module DislikeTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2389,7 +2388,7 @@ module DislikeTwoTone = {
 module DollarCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2400,7 +2399,7 @@ module DollarCircleFilled = {
 module DollarCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2411,7 +2410,7 @@ module DollarCircleOutlined = {
 module DollarCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2422,7 +2421,7 @@ module DollarCircleTwoTone = {
 module DollarOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2433,7 +2432,7 @@ module DollarOutlined = {
 module DollarTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2444,7 +2443,7 @@ module DollarTwoTone = {
 module DotChartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2455,7 +2454,7 @@ module DotChartOutlined = {
 module DoubleLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2466,7 +2465,7 @@ module DoubleLeftOutlined = {
 module DoubleRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2477,7 +2476,7 @@ module DoubleRightOutlined = {
 module DownCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2488,7 +2487,7 @@ module DownCircleFilled = {
 module DownCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2499,7 +2498,7 @@ module DownCircleOutlined = {
 module DownCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2510,7 +2509,7 @@ module DownCircleTwoTone = {
 module DownOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2521,7 +2520,7 @@ module DownOutlined = {
 module DownSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2532,7 +2531,7 @@ module DownSquareFilled = {
 module DownSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2543,7 +2542,7 @@ module DownSquareOutlined = {
 module DownSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2554,7 +2553,7 @@ module DownSquareTwoTone = {
 module DownloadOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2565,7 +2564,7 @@ module DownloadOutlined = {
 module DragOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2576,7 +2575,7 @@ module DragOutlined = {
 module DribbbleCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2587,7 +2586,7 @@ module DribbbleCircleFilled = {
 module DribbbleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2598,7 +2597,7 @@ module DribbbleOutlined = {
 module DribbbleSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2609,7 +2608,7 @@ module DribbbleSquareFilled = {
 module DribbbleSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2620,7 +2619,7 @@ module DribbbleSquareOutlined = {
 module DropboxCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2631,7 +2630,7 @@ module DropboxCircleFilled = {
 module DropboxOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2642,7 +2641,7 @@ module DropboxOutlined = {
 module DropboxSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2653,7 +2652,7 @@ module DropboxSquareFilled = {
 module EditFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2664,7 +2663,7 @@ module EditFilled = {
 module EditOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2675,7 +2674,7 @@ module EditOutlined = {
 module EditTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2686,7 +2685,7 @@ module EditTwoTone = {
 module EllipsisOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2697,7 +2696,7 @@ module EllipsisOutlined = {
 module EnterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2708,7 +2707,7 @@ module EnterOutlined = {
 module EnvironmentFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2719,7 +2718,7 @@ module EnvironmentFilled = {
 module EnvironmentOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2730,7 +2729,7 @@ module EnvironmentOutlined = {
 module EnvironmentTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2741,7 +2740,7 @@ module EnvironmentTwoTone = {
 module EuroCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2752,7 +2751,7 @@ module EuroCircleFilled = {
 module EuroCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2763,7 +2762,7 @@ module EuroCircleOutlined = {
 module EuroCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2774,7 +2773,7 @@ module EuroCircleTwoTone = {
 module EuroOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2785,7 +2784,7 @@ module EuroOutlined = {
 module EuroTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2796,7 +2795,7 @@ module EuroTwoTone = {
 module ExceptionOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2807,7 +2806,7 @@ module ExceptionOutlined = {
 module ExclamationCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2818,7 +2817,7 @@ module ExclamationCircleFilled = {
 module ExclamationCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2829,7 +2828,7 @@ module ExclamationCircleOutlined = {
 module ExclamationCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2840,7 +2839,7 @@ module ExclamationCircleTwoTone = {
 module ExclamationOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2851,7 +2850,7 @@ module ExclamationOutlined = {
 module ExpandAltOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2862,7 +2861,7 @@ module ExpandAltOutlined = {
 module ExpandOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2873,7 +2872,7 @@ module ExpandOutlined = {
 module ExperimentFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2884,7 +2883,7 @@ module ExperimentFilled = {
 module ExperimentOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2895,7 +2894,7 @@ module ExperimentOutlined = {
 module ExperimentTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2906,7 +2905,7 @@ module ExperimentTwoTone = {
 module ExportOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2917,7 +2916,7 @@ module ExportOutlined = {
 module EyeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2928,7 +2927,7 @@ module EyeFilled = {
 module EyeInvisibleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2939,7 +2938,7 @@ module EyeInvisibleFilled = {
 module EyeInvisibleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2950,7 +2949,7 @@ module EyeInvisibleOutlined = {
 module EyeInvisibleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2961,7 +2960,7 @@ module EyeInvisibleTwoTone = {
 module EyeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2972,7 +2971,7 @@ module EyeOutlined = {
 module EyeTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2983,7 +2982,7 @@ module EyeTwoTone = {
 module FacebookFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -2994,7 +2993,7 @@ module FacebookFilled = {
 module FacebookOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3005,7 +3004,7 @@ module FacebookOutlined = {
 module FallOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3016,7 +3015,7 @@ module FallOutlined = {
 module FastBackwardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3027,7 +3026,7 @@ module FastBackwardFilled = {
 module FastBackwardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3038,7 +3037,7 @@ module FastBackwardOutlined = {
 module FastForwardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3049,7 +3048,7 @@ module FastForwardFilled = {
 module FastForwardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3060,7 +3059,7 @@ module FastForwardOutlined = {
 module FieldBinaryOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3071,7 +3070,7 @@ module FieldBinaryOutlined = {
 module FieldNumberOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3082,7 +3081,7 @@ module FieldNumberOutlined = {
 module FieldStringOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3093,7 +3092,7 @@ module FieldStringOutlined = {
 module FieldTimeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3104,7 +3103,7 @@ module FieldTimeOutlined = {
 module FileAddFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3115,7 +3114,7 @@ module FileAddFilled = {
 module FileAddOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3126,7 +3125,7 @@ module FileAddOutlined = {
 module FileAddTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3137,7 +3136,7 @@ module FileAddTwoTone = {
 module FileDoneOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3148,7 +3147,7 @@ module FileDoneOutlined = {
 module FileExcelFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3159,7 +3158,7 @@ module FileExcelFilled = {
 module FileExcelOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3170,7 +3169,7 @@ module FileExcelOutlined = {
 module FileExcelTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3181,7 +3180,7 @@ module FileExcelTwoTone = {
 module FileExclamationFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3192,7 +3191,7 @@ module FileExclamationFilled = {
 module FileExclamationOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3203,7 +3202,7 @@ module FileExclamationOutlined = {
 module FileExclamationTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3214,7 +3213,7 @@ module FileExclamationTwoTone = {
 module FileFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3225,7 +3224,7 @@ module FileFilled = {
 module FileGifOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3236,7 +3235,7 @@ module FileGifOutlined = {
 module FileImageFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3247,7 +3246,7 @@ module FileImageFilled = {
 module FileImageOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3258,7 +3257,7 @@ module FileImageOutlined = {
 module FileImageTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3269,7 +3268,7 @@ module FileImageTwoTone = {
 module FileJpgOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3280,7 +3279,7 @@ module FileJpgOutlined = {
 module FileMarkdownFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3291,7 +3290,7 @@ module FileMarkdownFilled = {
 module FileMarkdownOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3302,7 +3301,7 @@ module FileMarkdownOutlined = {
 module FileMarkdownTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3313,7 +3312,7 @@ module FileMarkdownTwoTone = {
 module FileOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3324,7 +3323,7 @@ module FileOutlined = {
 module FilePdfFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3335,7 +3334,7 @@ module FilePdfFilled = {
 module FilePdfOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3346,7 +3345,7 @@ module FilePdfOutlined = {
 module FilePdfTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3357,7 +3356,7 @@ module FilePdfTwoTone = {
 module FilePptFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3368,7 +3367,7 @@ module FilePptFilled = {
 module FilePptOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3379,7 +3378,7 @@ module FilePptOutlined = {
 module FilePptTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3390,7 +3389,7 @@ module FilePptTwoTone = {
 module FileProtectOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3401,7 +3400,7 @@ module FileProtectOutlined = {
 module FileSearchOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3412,7 +3411,7 @@ module FileSearchOutlined = {
 module FileSyncOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3423,7 +3422,7 @@ module FileSyncOutlined = {
 module FileTextFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3434,7 +3433,7 @@ module FileTextFilled = {
 module FileTextOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3445,7 +3444,7 @@ module FileTextOutlined = {
 module FileTextTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3456,7 +3455,7 @@ module FileTextTwoTone = {
 module FileTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3467,7 +3466,7 @@ module FileTwoTone = {
 module FileUnknownFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3478,7 +3477,7 @@ module FileUnknownFilled = {
 module FileUnknownOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3489,7 +3488,7 @@ module FileUnknownOutlined = {
 module FileUnknownTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3500,7 +3499,7 @@ module FileUnknownTwoTone = {
 module FileWordFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3511,7 +3510,7 @@ module FileWordFilled = {
 module FileWordOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3522,7 +3521,7 @@ module FileWordOutlined = {
 module FileWordTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3533,7 +3532,7 @@ module FileWordTwoTone = {
 module FileZipFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3544,7 +3543,7 @@ module FileZipFilled = {
 module FileZipOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3555,7 +3554,7 @@ module FileZipOutlined = {
 module FileZipTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3566,7 +3565,7 @@ module FileZipTwoTone = {
 module FilterFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3577,7 +3576,7 @@ module FilterFilled = {
 module FilterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3588,7 +3587,7 @@ module FilterOutlined = {
 module FilterTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3599,7 +3598,7 @@ module FilterTwoTone = {
 module FireFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3610,7 +3609,7 @@ module FireFilled = {
 module FireOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3621,7 +3620,7 @@ module FireOutlined = {
 module FireTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3632,7 +3631,7 @@ module FireTwoTone = {
 module FlagFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3643,7 +3642,7 @@ module FlagFilled = {
 module FlagOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3654,7 +3653,7 @@ module FlagOutlined = {
 module FlagTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3665,7 +3664,7 @@ module FlagTwoTone = {
 module FolderAddFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3676,7 +3675,7 @@ module FolderAddFilled = {
 module FolderAddOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3687,7 +3686,7 @@ module FolderAddOutlined = {
 module FolderAddTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3698,7 +3697,7 @@ module FolderAddTwoTone = {
 module FolderFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3709,7 +3708,7 @@ module FolderFilled = {
 module FolderOpenFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3720,7 +3719,7 @@ module FolderOpenFilled = {
 module FolderOpenOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3731,7 +3730,7 @@ module FolderOpenOutlined = {
 module FolderOpenTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3742,7 +3741,7 @@ module FolderOpenTwoTone = {
 module FolderOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3753,7 +3752,7 @@ module FolderOutlined = {
 module FolderTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3764,7 +3763,7 @@ module FolderTwoTone = {
 module FolderViewOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3775,7 +3774,7 @@ module FolderViewOutlined = {
 module FontColorsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3786,7 +3785,7 @@ module FontColorsOutlined = {
 module FontSizeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3797,7 +3796,7 @@ module FontSizeOutlined = {
 module ForkOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3808,7 +3807,7 @@ module ForkOutlined = {
 module FormOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3819,7 +3818,7 @@ module FormOutlined = {
 module FormatPainterFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3830,7 +3829,7 @@ module FormatPainterFilled = {
 module FormatPainterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3841,7 +3840,7 @@ module FormatPainterOutlined = {
 module ForwardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3852,7 +3851,7 @@ module ForwardFilled = {
 module ForwardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3863,7 +3862,7 @@ module ForwardOutlined = {
 module FrownFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3874,7 +3873,7 @@ module FrownFilled = {
 module FrownOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3885,7 +3884,7 @@ module FrownOutlined = {
 module FrownTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3896,7 +3895,7 @@ module FrownTwoTone = {
 module FullscreenExitOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3907,7 +3906,7 @@ module FullscreenExitOutlined = {
 module FullscreenOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3918,7 +3917,7 @@ module FullscreenOutlined = {
 module FunctionOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3929,7 +3928,7 @@ module FunctionOutlined = {
 module FundFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3940,7 +3939,7 @@ module FundFilled = {
 module FundOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3951,7 +3950,7 @@ module FundOutlined = {
 module FundProjectionScreenOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3962,7 +3961,7 @@ module FundProjectionScreenOutlined = {
 module FundTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3973,7 +3972,7 @@ module FundTwoTone = {
 module FundViewOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3984,7 +3983,7 @@ module FundViewOutlined = {
 module FunnelPlotFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -3995,7 +3994,7 @@ module FunnelPlotFilled = {
 module FunnelPlotOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4006,7 +4005,7 @@ module FunnelPlotOutlined = {
 module FunnelPlotTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4017,7 +4016,7 @@ module FunnelPlotTwoTone = {
 module GatewayOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4028,7 +4027,7 @@ module GatewayOutlined = {
 module GifOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4039,7 +4038,7 @@ module GifOutlined = {
 module GiftFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4050,7 +4049,7 @@ module GiftFilled = {
 module GiftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4061,7 +4060,7 @@ module GiftOutlined = {
 module GiftTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4072,7 +4071,7 @@ module GiftTwoTone = {
 module GithubFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4083,7 +4082,7 @@ module GithubFilled = {
 module GithubOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4094,7 +4093,7 @@ module GithubOutlined = {
 module GitlabFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4105,7 +4104,7 @@ module GitlabFilled = {
 module GitlabOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4116,7 +4115,7 @@ module GitlabOutlined = {
 module GlobalOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4127,7 +4126,7 @@ module GlobalOutlined = {
 module GoldFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4138,7 +4137,7 @@ module GoldFilled = {
 module GoldOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4149,7 +4148,7 @@ module GoldOutlined = {
 module GoldTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4160,7 +4159,7 @@ module GoldTwoTone = {
 module GoldenFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4171,7 +4170,7 @@ module GoldenFilled = {
 module GoogleCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4182,7 +4181,7 @@ module GoogleCircleFilled = {
 module GoogleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4193,7 +4192,7 @@ module GoogleOutlined = {
 module GooglePlusCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4204,7 +4203,7 @@ module GooglePlusCircleFilled = {
 module GooglePlusOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4215,7 +4214,7 @@ module GooglePlusOutlined = {
 module GooglePlusSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4226,7 +4225,7 @@ module GooglePlusSquareFilled = {
 module GoogleSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4237,7 +4236,7 @@ module GoogleSquareFilled = {
 module GroupOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4248,7 +4247,7 @@ module GroupOutlined = {
 module HddFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4259,7 +4258,7 @@ module HddFilled = {
 module HddOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4270,7 +4269,7 @@ module HddOutlined = {
 module HddTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4281,7 +4280,7 @@ module HddTwoTone = {
 module HeartFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4292,7 +4291,7 @@ module HeartFilled = {
 module HeartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4303,7 +4302,7 @@ module HeartOutlined = {
 module HeartTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4314,7 +4313,7 @@ module HeartTwoTone = {
 module HeatMapOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4325,7 +4324,7 @@ module HeatMapOutlined = {
 module HighlightFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4336,7 +4335,7 @@ module HighlightFilled = {
 module HighlightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4347,7 +4346,7 @@ module HighlightOutlined = {
 module HighlightTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4358,7 +4357,7 @@ module HighlightTwoTone = {
 module HistoryOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4369,7 +4368,7 @@ module HistoryOutlined = {
 module HolderOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4380,7 +4379,7 @@ module HolderOutlined = {
 module HomeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4391,7 +4390,7 @@ module HomeFilled = {
 module HomeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4402,7 +4401,7 @@ module HomeOutlined = {
 module HomeTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4413,7 +4412,7 @@ module HomeTwoTone = {
 module HourglassFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4424,7 +4423,7 @@ module HourglassFilled = {
 module HourglassOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4435,7 +4434,7 @@ module HourglassOutlined = {
 module HourglassTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4446,7 +4445,7 @@ module HourglassTwoTone = {
 module Html5Filled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4457,7 +4456,7 @@ module Html5Filled = {
 module Html5Outlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4468,7 +4467,7 @@ module Html5Outlined = {
 module Html5TwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4479,7 +4478,7 @@ module Html5TwoTone = {
 module IdcardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4490,7 +4489,7 @@ module IdcardFilled = {
 module IdcardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4501,7 +4500,7 @@ module IdcardOutlined = {
 module IdcardTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4512,7 +4511,7 @@ module IdcardTwoTone = {
 module IeCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4523,7 +4522,7 @@ module IeCircleFilled = {
 module IeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4534,7 +4533,7 @@ module IeOutlined = {
 module IeSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4545,7 +4544,7 @@ module IeSquareFilled = {
 module ImportOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4556,7 +4555,7 @@ module ImportOutlined = {
 module InboxOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4567,7 +4566,7 @@ module InboxOutlined = {
 module InfoCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4578,7 +4577,7 @@ module InfoCircleFilled = {
 module InfoCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4589,7 +4588,7 @@ module InfoCircleOutlined = {
 module InfoCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4600,7 +4599,7 @@ module InfoCircleTwoTone = {
 module InfoOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4611,7 +4610,7 @@ module InfoOutlined = {
 module InsertRowAboveOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4622,7 +4621,7 @@ module InsertRowAboveOutlined = {
 module InsertRowBelowOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4633,7 +4632,7 @@ module InsertRowBelowOutlined = {
 module InsertRowLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4644,7 +4643,7 @@ module InsertRowLeftOutlined = {
 module InsertRowRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4655,7 +4654,7 @@ module InsertRowRightOutlined = {
 module InstagramFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4666,7 +4665,7 @@ module InstagramFilled = {
 module InstagramOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4677,7 +4676,7 @@ module InstagramOutlined = {
 module InsuranceFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4688,7 +4687,7 @@ module InsuranceFilled = {
 module InsuranceOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4699,7 +4698,7 @@ module InsuranceOutlined = {
 module InsuranceTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4710,7 +4709,7 @@ module InsuranceTwoTone = {
 module InteractionFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4721,7 +4720,7 @@ module InteractionFilled = {
 module InteractionOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4732,7 +4731,7 @@ module InteractionOutlined = {
 module InteractionTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4743,7 +4742,7 @@ module InteractionTwoTone = {
 module IssuesCloseOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4754,7 +4753,7 @@ module IssuesCloseOutlined = {
 module ItalicOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4765,7 +4764,7 @@ module ItalicOutlined = {
 module KeyOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4776,7 +4775,7 @@ module KeyOutlined = {
 module LaptopOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4787,7 +4786,7 @@ module LaptopOutlined = {
 module LayoutFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4798,7 +4797,7 @@ module LayoutFilled = {
 module LayoutOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4809,7 +4808,7 @@ module LayoutOutlined = {
 module LayoutTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4820,7 +4819,7 @@ module LayoutTwoTone = {
 module LeftCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4831,7 +4830,7 @@ module LeftCircleFilled = {
 module LeftCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4842,7 +4841,7 @@ module LeftCircleOutlined = {
 module LeftCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4853,7 +4852,7 @@ module LeftCircleTwoTone = {
 module LeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4864,7 +4863,7 @@ module LeftOutlined = {
 module LeftSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4875,7 +4874,7 @@ module LeftSquareFilled = {
 module LeftSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4886,7 +4885,7 @@ module LeftSquareOutlined = {
 module LeftSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4897,7 +4896,7 @@ module LeftSquareTwoTone = {
 module LikeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4908,7 +4907,7 @@ module LikeFilled = {
 module LikeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4919,7 +4918,7 @@ module LikeOutlined = {
 module LikeTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4930,7 +4929,7 @@ module LikeTwoTone = {
 module LineChartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4941,7 +4940,7 @@ module LineChartOutlined = {
 module LineHeightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4952,7 +4951,7 @@ module LineHeightOutlined = {
 module LineOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4963,7 +4962,7 @@ module LineOutlined = {
 module LinkOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4974,7 +4973,7 @@ module LinkOutlined = {
 module LinkedinFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4985,7 +4984,7 @@ module LinkedinFilled = {
 module LinkedinOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -4996,7 +4995,7 @@ module LinkedinOutlined = {
 module Loading3QuartersOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5007,7 +5006,7 @@ module Loading3QuartersOutlined = {
 module LoadingOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5018,7 +5017,7 @@ module LoadingOutlined = {
 module LockFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5029,7 +5028,7 @@ module LockFilled = {
 module LockOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5040,7 +5039,7 @@ module LockOutlined = {
 module LockTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5051,7 +5050,7 @@ module LockTwoTone = {
 module LoginOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5062,7 +5061,7 @@ module LoginOutlined = {
 module LogoutOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5073,7 +5072,7 @@ module LogoutOutlined = {
 module MacCommandFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5084,7 +5083,7 @@ module MacCommandFilled = {
 module MacCommandOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5095,7 +5094,7 @@ module MacCommandOutlined = {
 module MailFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5106,7 +5105,7 @@ module MailFilled = {
 module MailOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5117,7 +5116,7 @@ module MailOutlined = {
 module MailTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5128,7 +5127,7 @@ module MailTwoTone = {
 module ManOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5139,7 +5138,7 @@ module ManOutlined = {
 module MedicineBoxFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5150,7 +5149,7 @@ module MedicineBoxFilled = {
 module MedicineBoxOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5161,7 +5160,7 @@ module MedicineBoxOutlined = {
 module MedicineBoxTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5172,7 +5171,7 @@ module MedicineBoxTwoTone = {
 module MediumCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5183,7 +5182,7 @@ module MediumCircleFilled = {
 module MediumOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5194,7 +5193,7 @@ module MediumOutlined = {
 module MediumSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5205,7 +5204,7 @@ module MediumSquareFilled = {
 module MediumWorkmarkOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5216,7 +5215,7 @@ module MediumWorkmarkOutlined = {
 module MehFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5227,7 +5226,7 @@ module MehFilled = {
 module MehOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5238,7 +5237,7 @@ module MehOutlined = {
 module MehTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5249,7 +5248,7 @@ module MehTwoTone = {
 module MenuFoldOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5260,7 +5259,7 @@ module MenuFoldOutlined = {
 module MenuOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5271,7 +5270,7 @@ module MenuOutlined = {
 module MenuUnfoldOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5282,7 +5281,7 @@ module MenuUnfoldOutlined = {
 module MergeCellsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5293,7 +5292,7 @@ module MergeCellsOutlined = {
 module MessageFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5304,7 +5303,7 @@ module MessageFilled = {
 module MessageOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5315,7 +5314,7 @@ module MessageOutlined = {
 module MessageTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5326,7 +5325,7 @@ module MessageTwoTone = {
 module MinusCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5337,7 +5336,7 @@ module MinusCircleFilled = {
 module MinusCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5348,7 +5347,7 @@ module MinusCircleOutlined = {
 module MinusCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5359,7 +5358,7 @@ module MinusCircleTwoTone = {
 module MinusOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5370,7 +5369,7 @@ module MinusOutlined = {
 module MinusSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5381,7 +5380,7 @@ module MinusSquareFilled = {
 module MinusSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5392,7 +5391,7 @@ module MinusSquareOutlined = {
 module MinusSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5403,7 +5402,7 @@ module MinusSquareTwoTone = {
 module MobileFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5414,7 +5413,7 @@ module MobileFilled = {
 module MobileOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5425,7 +5424,7 @@ module MobileOutlined = {
 module MobileTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5436,7 +5435,7 @@ module MobileTwoTone = {
 module MoneyCollectFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5447,7 +5446,7 @@ module MoneyCollectFilled = {
 module MoneyCollectOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5458,7 +5457,7 @@ module MoneyCollectOutlined = {
 module MoneyCollectTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5469,7 +5468,7 @@ module MoneyCollectTwoTone = {
 module MonitorOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5480,7 +5479,7 @@ module MonitorOutlined = {
 module MoreOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5491,7 +5490,7 @@ module MoreOutlined = {
 module NodeCollapseOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5502,7 +5501,7 @@ module NodeCollapseOutlined = {
 module NodeExpandOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5513,7 +5512,7 @@ module NodeExpandOutlined = {
 module NodeIndexOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5524,7 +5523,7 @@ module NodeIndexOutlined = {
 module NotificationFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5535,7 +5534,7 @@ module NotificationFilled = {
 module NotificationOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5546,7 +5545,7 @@ module NotificationOutlined = {
 module NotificationTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5557,7 +5556,7 @@ module NotificationTwoTone = {
 module NumberOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5568,7 +5567,7 @@ module NumberOutlined = {
 module OneToOneOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5579,7 +5578,7 @@ module OneToOneOutlined = {
 module OrderedListOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5590,7 +5589,7 @@ module OrderedListOutlined = {
 module PaperClipOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5601,7 +5600,7 @@ module PaperClipOutlined = {
 module PartitionOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5612,7 +5611,7 @@ module PartitionOutlined = {
 module PauseCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5623,7 +5622,7 @@ module PauseCircleFilled = {
 module PauseCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5634,7 +5633,7 @@ module PauseCircleOutlined = {
 module PauseCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5645,7 +5644,7 @@ module PauseCircleTwoTone = {
 module PauseOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5656,7 +5655,7 @@ module PauseOutlined = {
 module PayCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5667,7 +5666,7 @@ module PayCircleFilled = {
 module PayCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5678,7 +5677,7 @@ module PayCircleOutlined = {
 module PercentageOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5689,7 +5688,7 @@ module PercentageOutlined = {
 module PhoneFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5700,7 +5699,7 @@ module PhoneFilled = {
 module PhoneOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5711,7 +5710,7 @@ module PhoneOutlined = {
 module PhoneTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5722,7 +5721,7 @@ module PhoneTwoTone = {
 module PicCenterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5733,7 +5732,7 @@ module PicCenterOutlined = {
 module PicLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5744,7 +5743,7 @@ module PicLeftOutlined = {
 module PicRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5755,7 +5754,7 @@ module PicRightOutlined = {
 module PictureFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5766,7 +5765,7 @@ module PictureFilled = {
 module PictureOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5777,7 +5776,7 @@ module PictureOutlined = {
 module PictureTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5788,7 +5787,7 @@ module PictureTwoTone = {
 module PieChartFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5799,7 +5798,7 @@ module PieChartFilled = {
 module PieChartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5810,7 +5809,7 @@ module PieChartOutlined = {
 module PieChartTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5821,7 +5820,7 @@ module PieChartTwoTone = {
 module PlayCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5832,7 +5831,7 @@ module PlayCircleFilled = {
 module PlayCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5843,7 +5842,7 @@ module PlayCircleOutlined = {
 module PlayCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5854,7 +5853,7 @@ module PlayCircleTwoTone = {
 module PlaySquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5865,7 +5864,7 @@ module PlaySquareFilled = {
 module PlaySquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5876,7 +5875,7 @@ module PlaySquareOutlined = {
 module PlaySquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5887,7 +5886,7 @@ module PlaySquareTwoTone = {
 module PlusCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5898,7 +5897,7 @@ module PlusCircleFilled = {
 module PlusCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5909,7 +5908,7 @@ module PlusCircleOutlined = {
 module PlusCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5920,7 +5919,7 @@ module PlusCircleTwoTone = {
 module PlusOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5931,7 +5930,7 @@ module PlusOutlined = {
 module PlusSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5942,7 +5941,7 @@ module PlusSquareFilled = {
 module PlusSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5953,7 +5952,7 @@ module PlusSquareOutlined = {
 module PlusSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5964,7 +5963,7 @@ module PlusSquareTwoTone = {
 module PoundCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5975,7 +5974,7 @@ module PoundCircleFilled = {
 module PoundCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5986,7 +5985,7 @@ module PoundCircleOutlined = {
 module PoundCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -5997,7 +5996,7 @@ module PoundCircleTwoTone = {
 module PoundOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6008,7 +6007,7 @@ module PoundOutlined = {
 module PoweroffOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6019,7 +6018,7 @@ module PoweroffOutlined = {
 module PrinterFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6030,7 +6029,7 @@ module PrinterFilled = {
 module PrinterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6041,7 +6040,7 @@ module PrinterOutlined = {
 module PrinterTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6052,7 +6051,7 @@ module PrinterTwoTone = {
 module ProfileFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6063,7 +6062,7 @@ module ProfileFilled = {
 module ProfileOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6074,7 +6073,7 @@ module ProfileOutlined = {
 module ProfileTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6085,7 +6084,7 @@ module ProfileTwoTone = {
 module ProjectFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6096,7 +6095,7 @@ module ProjectFilled = {
 module ProjectOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6107,7 +6106,7 @@ module ProjectOutlined = {
 module ProjectTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6118,7 +6117,7 @@ module ProjectTwoTone = {
 module PropertySafetyFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6129,7 +6128,7 @@ module PropertySafetyFilled = {
 module PropertySafetyOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6140,7 +6139,7 @@ module PropertySafetyOutlined = {
 module PropertySafetyTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6151,7 +6150,7 @@ module PropertySafetyTwoTone = {
 module PullRequestOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6162,7 +6161,7 @@ module PullRequestOutlined = {
 module PushpinFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6173,7 +6172,7 @@ module PushpinFilled = {
 module PushpinOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6184,7 +6183,7 @@ module PushpinOutlined = {
 module PushpinTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6195,7 +6194,7 @@ module PushpinTwoTone = {
 module QqCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6206,7 +6205,7 @@ module QqCircleFilled = {
 module QqOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6217,7 +6216,7 @@ module QqOutlined = {
 module QqSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6228,7 +6227,7 @@ module QqSquareFilled = {
 module QrcodeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6239,7 +6238,7 @@ module QrcodeOutlined = {
 module QuestionCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6250,7 +6249,7 @@ module QuestionCircleFilled = {
 module QuestionCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6261,7 +6260,7 @@ module QuestionCircleOutlined = {
 module QuestionCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6272,7 +6271,7 @@ module QuestionCircleTwoTone = {
 module QuestionOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6283,7 +6282,7 @@ module QuestionOutlined = {
 module RadarChartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6294,7 +6293,7 @@ module RadarChartOutlined = {
 module RadiusBottomleftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6305,7 +6304,7 @@ module RadiusBottomleftOutlined = {
 module RadiusBottomrightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6316,7 +6315,7 @@ module RadiusBottomrightOutlined = {
 module RadiusSettingOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6327,7 +6326,7 @@ module RadiusSettingOutlined = {
 module RadiusUpleftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6338,7 +6337,7 @@ module RadiusUpleftOutlined = {
 module RadiusUprightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6349,7 +6348,7 @@ module RadiusUprightOutlined = {
 module ReadFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6360,7 +6359,7 @@ module ReadFilled = {
 module ReadOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6371,7 +6370,7 @@ module ReadOutlined = {
 module ReconciliationFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6382,7 +6381,7 @@ module ReconciliationFilled = {
 module ReconciliationOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6393,7 +6392,7 @@ module ReconciliationOutlined = {
 module ReconciliationTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6404,7 +6403,7 @@ module ReconciliationTwoTone = {
 module RedEnvelopeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6415,7 +6414,7 @@ module RedEnvelopeFilled = {
 module RedEnvelopeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6426,7 +6425,7 @@ module RedEnvelopeOutlined = {
 module RedEnvelopeTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6437,7 +6436,7 @@ module RedEnvelopeTwoTone = {
 module RedditCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6448,7 +6447,7 @@ module RedditCircleFilled = {
 module RedditOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6459,7 +6458,7 @@ module RedditOutlined = {
 module RedditSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6470,7 +6469,7 @@ module RedditSquareFilled = {
 module RedoOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6481,7 +6480,7 @@ module RedoOutlined = {
 module ReloadOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6492,7 +6491,7 @@ module ReloadOutlined = {
 module RestFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6503,7 +6502,7 @@ module RestFilled = {
 module RestOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6514,7 +6513,7 @@ module RestOutlined = {
 module RestTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6525,7 +6524,7 @@ module RestTwoTone = {
 module RetweetOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6536,7 +6535,7 @@ module RetweetOutlined = {
 module RightCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6547,7 +6546,7 @@ module RightCircleFilled = {
 module RightCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6558,7 +6557,7 @@ module RightCircleOutlined = {
 module RightCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6569,7 +6568,7 @@ module RightCircleTwoTone = {
 module RightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6580,7 +6579,7 @@ module RightOutlined = {
 module RightSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6591,7 +6590,7 @@ module RightSquareFilled = {
 module RightSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6602,7 +6601,7 @@ module RightSquareOutlined = {
 module RightSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6613,7 +6612,7 @@ module RightSquareTwoTone = {
 module RiseOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6624,7 +6623,7 @@ module RiseOutlined = {
 module RobotFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6635,7 +6634,7 @@ module RobotFilled = {
 module RobotOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6646,7 +6645,7 @@ module RobotOutlined = {
 module RocketFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6657,7 +6656,7 @@ module RocketFilled = {
 module RocketOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6668,7 +6667,7 @@ module RocketOutlined = {
 module RocketTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6679,7 +6678,7 @@ module RocketTwoTone = {
 module RollbackOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6690,7 +6689,7 @@ module RollbackOutlined = {
 module RotateLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6701,7 +6700,7 @@ module RotateLeftOutlined = {
 module RotateRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6712,7 +6711,7 @@ module RotateRightOutlined = {
 module SafetyCertificateFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6723,7 +6722,7 @@ module SafetyCertificateFilled = {
 module SafetyCertificateOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6734,7 +6733,7 @@ module SafetyCertificateOutlined = {
 module SafetyCertificateTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6745,7 +6744,7 @@ module SafetyCertificateTwoTone = {
 module SafetyOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6756,7 +6755,7 @@ module SafetyOutlined = {
 module SaveFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6767,7 +6766,7 @@ module SaveFilled = {
 module SaveOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6778,7 +6777,7 @@ module SaveOutlined = {
 module SaveTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6789,7 +6788,7 @@ module SaveTwoTone = {
 module ScanOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6800,7 +6799,7 @@ module ScanOutlined = {
 module ScheduleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6811,7 +6810,7 @@ module ScheduleFilled = {
 module ScheduleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6822,7 +6821,7 @@ module ScheduleOutlined = {
 module ScheduleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6833,7 +6832,7 @@ module ScheduleTwoTone = {
 module ScissorOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6844,7 +6843,7 @@ module ScissorOutlined = {
 module SearchOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6855,7 +6854,7 @@ module SearchOutlined = {
 module SecurityScanFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6866,7 +6865,7 @@ module SecurityScanFilled = {
 module SecurityScanOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6877,7 +6876,7 @@ module SecurityScanOutlined = {
 module SecurityScanTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6888,7 +6887,7 @@ module SecurityScanTwoTone = {
 module SelectOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6899,7 +6898,7 @@ module SelectOutlined = {
 module SendOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6910,7 +6909,7 @@ module SendOutlined = {
 module SettingFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6921,7 +6920,7 @@ module SettingFilled = {
 module SettingOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6932,7 +6931,7 @@ module SettingOutlined = {
 module SettingTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6943,7 +6942,7 @@ module SettingTwoTone = {
 module ShakeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6954,7 +6953,7 @@ module ShakeOutlined = {
 module ShareAltOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6965,7 +6964,7 @@ module ShareAltOutlined = {
 module ShopFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6976,7 +6975,7 @@ module ShopFilled = {
 module ShopOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6987,7 +6986,7 @@ module ShopOutlined = {
 module ShopTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -6998,7 +6997,7 @@ module ShopTwoTone = {
 module ShoppingCartOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7009,7 +7008,7 @@ module ShoppingCartOutlined = {
 module ShoppingFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7020,7 +7019,7 @@ module ShoppingFilled = {
 module ShoppingOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7031,7 +7030,7 @@ module ShoppingOutlined = {
 module ShoppingTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7042,7 +7041,7 @@ module ShoppingTwoTone = {
 module ShrinkOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7053,7 +7052,7 @@ module ShrinkOutlined = {
 module SignalFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7064,7 +7063,7 @@ module SignalFilled = {
 module SisternodeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7075,7 +7074,7 @@ module SisternodeOutlined = {
 module SketchCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7086,7 +7085,7 @@ module SketchCircleFilled = {
 module SketchOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7097,7 +7096,7 @@ module SketchOutlined = {
 module SketchSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7108,7 +7107,7 @@ module SketchSquareFilled = {
 module SkinFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7119,7 +7118,7 @@ module SkinFilled = {
 module SkinOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7130,7 +7129,7 @@ module SkinOutlined = {
 module SkinTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7141,7 +7140,7 @@ module SkinTwoTone = {
 module SkypeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7152,7 +7151,7 @@ module SkypeFilled = {
 module SkypeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7163,7 +7162,7 @@ module SkypeOutlined = {
 module SlackCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7174,7 +7173,7 @@ module SlackCircleFilled = {
 module SlackOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7185,7 +7184,7 @@ module SlackOutlined = {
 module SlackSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7196,7 +7195,7 @@ module SlackSquareFilled = {
 module SlackSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7207,7 +7206,7 @@ module SlackSquareOutlined = {
 module SlidersFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7218,7 +7217,7 @@ module SlidersFilled = {
 module SlidersOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7229,7 +7228,7 @@ module SlidersOutlined = {
 module SlidersTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7240,7 +7239,7 @@ module SlidersTwoTone = {
 module SmallDashOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7251,7 +7250,7 @@ module SmallDashOutlined = {
 module SmileFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7262,7 +7261,7 @@ module SmileFilled = {
 module SmileOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7273,7 +7272,7 @@ module SmileOutlined = {
 module SmileTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7284,7 +7283,7 @@ module SmileTwoTone = {
 module SnippetsFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7295,7 +7294,7 @@ module SnippetsFilled = {
 module SnippetsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7306,7 +7305,7 @@ module SnippetsOutlined = {
 module SnippetsTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7317,7 +7316,7 @@ module SnippetsTwoTone = {
 module SolutionOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7328,7 +7327,7 @@ module SolutionOutlined = {
 module SortAscendingOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7339,7 +7338,7 @@ module SortAscendingOutlined = {
 module SortDescendingOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7350,7 +7349,7 @@ module SortDescendingOutlined = {
 module SoundFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7361,7 +7360,7 @@ module SoundFilled = {
 module SoundOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7372,7 +7371,7 @@ module SoundOutlined = {
 module SoundTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7383,7 +7382,7 @@ module SoundTwoTone = {
 module SplitCellsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7394,7 +7393,7 @@ module SplitCellsOutlined = {
 module StarFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7405,7 +7404,7 @@ module StarFilled = {
 module StarOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7416,7 +7415,7 @@ module StarOutlined = {
 module StarTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7427,7 +7426,7 @@ module StarTwoTone = {
 module StepBackwardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7438,7 +7437,7 @@ module StepBackwardFilled = {
 module StepBackwardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7449,7 +7448,7 @@ module StepBackwardOutlined = {
 module StepForwardFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7460,7 +7459,7 @@ module StepForwardFilled = {
 module StepForwardOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7471,7 +7470,7 @@ module StepForwardOutlined = {
 module StockOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7482,7 +7481,7 @@ module StockOutlined = {
 module StopFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7493,7 +7492,7 @@ module StopFilled = {
 module StopOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7504,7 +7503,7 @@ module StopOutlined = {
 module StopTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7515,7 +7514,7 @@ module StopTwoTone = {
 module StrikethroughOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7526,7 +7525,7 @@ module StrikethroughOutlined = {
 module SubnodeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7537,7 +7536,7 @@ module SubnodeOutlined = {
 module SwapLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7548,7 +7547,7 @@ module SwapLeftOutlined = {
 module SwapOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7559,7 +7558,7 @@ module SwapOutlined = {
 module SwapRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7570,7 +7569,7 @@ module SwapRightOutlined = {
 module SwitcherFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7581,7 +7580,7 @@ module SwitcherFilled = {
 module SwitcherOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7592,7 +7591,7 @@ module SwitcherOutlined = {
 module SwitcherTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7603,7 +7602,7 @@ module SwitcherTwoTone = {
 module SyncOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7614,7 +7613,7 @@ module SyncOutlined = {
 module TableOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7625,7 +7624,7 @@ module TableOutlined = {
 module TabletFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7636,7 +7635,7 @@ module TabletFilled = {
 module TabletOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7647,7 +7646,7 @@ module TabletOutlined = {
 module TabletTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7658,7 +7657,7 @@ module TabletTwoTone = {
 module TagFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7669,7 +7668,7 @@ module TagFilled = {
 module TagOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7680,7 +7679,7 @@ module TagOutlined = {
 module TagTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7691,7 +7690,7 @@ module TagTwoTone = {
 module TagsFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7702,7 +7701,7 @@ module TagsFilled = {
 module TagsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7713,7 +7712,7 @@ module TagsOutlined = {
 module TagsTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7724,7 +7723,7 @@ module TagsTwoTone = {
 module TaobaoCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7735,7 +7734,7 @@ module TaobaoCircleFilled = {
 module TaobaoCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7746,7 +7745,7 @@ module TaobaoCircleOutlined = {
 module TaobaoOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7757,7 +7756,7 @@ module TaobaoOutlined = {
 module TaobaoSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7768,7 +7767,7 @@ module TaobaoSquareFilled = {
 module TeamOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7779,7 +7778,7 @@ module TeamOutlined = {
 module ThunderboltFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7790,7 +7789,7 @@ module ThunderboltFilled = {
 module ThunderboltOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7801,7 +7800,7 @@ module ThunderboltOutlined = {
 module ThunderboltTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7812,7 +7811,7 @@ module ThunderboltTwoTone = {
 module ToTopOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7823,7 +7822,7 @@ module ToTopOutlined = {
 module ToolFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7834,7 +7833,7 @@ module ToolFilled = {
 module ToolOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7845,7 +7844,7 @@ module ToolOutlined = {
 module ToolTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7856,7 +7855,7 @@ module ToolTwoTone = {
 module TrademarkCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7867,7 +7866,7 @@ module TrademarkCircleFilled = {
 module TrademarkCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7878,7 +7877,7 @@ module TrademarkCircleOutlined = {
 module TrademarkCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7889,7 +7888,7 @@ module TrademarkCircleTwoTone = {
 module TrademarkOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7900,7 +7899,7 @@ module TrademarkOutlined = {
 module TransactionOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7911,7 +7910,7 @@ module TransactionOutlined = {
 module TranslationOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7922,7 +7921,7 @@ module TranslationOutlined = {
 module TrophyFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7933,7 +7932,7 @@ module TrophyFilled = {
 module TrophyOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7944,7 +7943,7 @@ module TrophyOutlined = {
 module TrophyTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7955,7 +7954,7 @@ module TrophyTwoTone = {
 module TwitterCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7966,7 +7965,7 @@ module TwitterCircleFilled = {
 module TwitterOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7977,7 +7976,7 @@ module TwitterOutlined = {
 module TwitterSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7988,7 +7987,7 @@ module TwitterSquareFilled = {
 module UnderlineOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -7999,7 +7998,7 @@ module UnderlineOutlined = {
 module UndoOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8010,7 +8009,7 @@ module UndoOutlined = {
 module UngroupOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8021,7 +8020,7 @@ module UngroupOutlined = {
 module UnlockFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8032,7 +8031,7 @@ module UnlockFilled = {
 module UnlockOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8043,7 +8042,7 @@ module UnlockOutlined = {
 module UnlockTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8054,7 +8053,7 @@ module UnlockTwoTone = {
 module UnorderedListOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8065,7 +8064,7 @@ module UnorderedListOutlined = {
 module UpCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8076,7 +8075,7 @@ module UpCircleFilled = {
 module UpCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8087,7 +8086,7 @@ module UpCircleOutlined = {
 module UpCircleTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8098,7 +8097,7 @@ module UpCircleTwoTone = {
 module UpOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8109,7 +8108,7 @@ module UpOutlined = {
 module UpSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8120,7 +8119,7 @@ module UpSquareFilled = {
 module UpSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8131,7 +8130,7 @@ module UpSquareOutlined = {
 module UpSquareTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8142,7 +8141,7 @@ module UpSquareTwoTone = {
 module UploadOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8153,7 +8152,7 @@ module UploadOutlined = {
 module UsbFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8164,7 +8163,7 @@ module UsbFilled = {
 module UsbOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8175,7 +8174,7 @@ module UsbOutlined = {
 module UsbTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8186,7 +8185,7 @@ module UsbTwoTone = {
 module UserAddOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8197,7 +8196,7 @@ module UserAddOutlined = {
 module UserDeleteOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8208,7 +8207,7 @@ module UserDeleteOutlined = {
 module UserOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8219,7 +8218,7 @@ module UserOutlined = {
 module UserSwitchOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8230,7 +8229,7 @@ module UserSwitchOutlined = {
 module UsergroupAddOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8241,7 +8240,7 @@ module UsergroupAddOutlined = {
 module UsergroupDeleteOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8252,7 +8251,7 @@ module UsergroupDeleteOutlined = {
 module VerifiedOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8263,7 +8262,7 @@ module VerifiedOutlined = {
 module VerticalAlignBottomOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8274,7 +8273,7 @@ module VerticalAlignBottomOutlined = {
 module VerticalAlignMiddleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8285,7 +8284,7 @@ module VerticalAlignMiddleOutlined = {
 module VerticalAlignTopOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8296,7 +8295,7 @@ module VerticalAlignTopOutlined = {
 module VerticalLeftOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8307,7 +8306,7 @@ module VerticalLeftOutlined = {
 module VerticalRightOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8318,7 +8317,7 @@ module VerticalRightOutlined = {
 module VideoCameraAddOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8329,7 +8328,7 @@ module VideoCameraAddOutlined = {
 module VideoCameraFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8340,7 +8339,7 @@ module VideoCameraFilled = {
 module VideoCameraOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8351,7 +8350,7 @@ module VideoCameraOutlined = {
 module VideoCameraTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8362,7 +8361,7 @@ module VideoCameraTwoTone = {
 module WalletFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8373,7 +8372,7 @@ module WalletFilled = {
 module WalletOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8384,7 +8383,7 @@ module WalletOutlined = {
 module WalletTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8395,7 +8394,7 @@ module WalletTwoTone = {
 module WarningFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8406,7 +8405,7 @@ module WarningFilled = {
 module WarningOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8417,7 +8416,7 @@ module WarningOutlined = {
 module WarningTwoTone = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8428,7 +8427,7 @@ module WarningTwoTone = {
 module WechatFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8439,7 +8438,7 @@ module WechatFilled = {
 module WechatOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8450,7 +8449,7 @@ module WechatOutlined = {
 module WeiboCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8461,7 +8460,7 @@ module WeiboCircleFilled = {
 module WeiboCircleOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8472,7 +8471,7 @@ module WeiboCircleOutlined = {
 module WeiboOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8483,7 +8482,7 @@ module WeiboOutlined = {
 module WeiboSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8494,7 +8493,7 @@ module WeiboSquareFilled = {
 module WeiboSquareOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8505,7 +8504,7 @@ module WeiboSquareOutlined = {
 module WhatsAppOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8516,7 +8515,7 @@ module WhatsAppOutlined = {
 module WifiOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8527,7 +8526,7 @@ module WifiOutlined = {
 module WindowsFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8538,7 +8537,7 @@ module WindowsFilled = {
 module WindowsOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8549,7 +8548,7 @@ module WindowsOutlined = {
 module WomanOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8560,7 +8559,7 @@ module WomanOutlined = {
 module YahooFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8571,7 +8570,7 @@ module YahooFilled = {
 module YahooOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8582,7 +8581,7 @@ module YahooOutlined = {
 module YoutubeFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8593,7 +8592,7 @@ module YoutubeFilled = {
 module YoutubeOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8604,7 +8603,7 @@ module YoutubeOutlined = {
 module YuqueFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8615,7 +8614,7 @@ module YuqueFilled = {
 module YuqueOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8626,7 +8625,7 @@ module YuqueOutlined = {
 module ZhihuCircleFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8637,7 +8636,7 @@ module ZhihuCircleFilled = {
 module ZhihuOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8648,7 +8647,7 @@ module ZhihuOutlined = {
 module ZhihuSquareFilled = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8659,7 +8658,7 @@ module ZhihuSquareFilled = {
 module ZoomInOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
@@ -8670,7 +8669,7 @@ module ZoomInOutlined = {
 module ZoomOutOutlined = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,

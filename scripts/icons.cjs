@@ -12,7 +12,7 @@ const make = name => `
 module ${name} = {
   @module("@ant-design/icons") @react.component
   external make: (
-    ~className:string=?,
+    ~className: string=?,
     ~style: ReactDOM.style=?,
     ~onMouseUp: ReactEvent.Mouse.t => unit=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
