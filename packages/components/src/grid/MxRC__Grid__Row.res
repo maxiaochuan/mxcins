@@ -51,7 +51,6 @@ module GridRowTwind = {
 
 type justify = [#start | #end | #center | #"space-between" | #"space-around"]
 type align = [#start | #end | #center]
-type style = MxRC__Libs__React.style
 
 type mspace = (
   array<(MxWebapi.BreakpointSub.breakpoint, int)>,
@@ -61,7 +60,7 @@ type mspace = (
 @react.component @genType
 let make = (
   ~className=?,
-  ~style: option<style>=?,
+  ~style=?,
   ~wrap=true,
   ~justify=#start,
   ~align=#start,

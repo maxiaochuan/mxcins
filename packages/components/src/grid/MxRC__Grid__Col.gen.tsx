@@ -8,10 +8,7 @@ import * as React from 'react';
 import * as MxRC__Grid__ColBS__Es6Import from './MxRC__Grid__Col.bs';
 const MxRC__Grid__ColBS: any = MxRC__Grid__ColBS__Es6Import;
 
-import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
-
-// tslint:disable-next-line:interface-over-type-literal
-export type style = MxRC__Libs__React_style;
+import type {Style_t as ReactDOM_Style_t} from '../../src/shims/react.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
@@ -19,7 +16,7 @@ export type Props = {
   readonly className?: string; 
   readonly flex?: string; 
   readonly span?: number; 
-  readonly style?: style
+  readonly style?: ReactDOM_Style_t
 };
 
 export const make: React.ComponentType<{
@@ -27,5 +24,5 @@ export const make: React.ComponentType<{
   readonly className?: string; 
   readonly flex?: string; 
   readonly span?: number; 
-  readonly style?: style
+  readonly style?: ReactDOM_Style_t
 }> = MxRC__Grid__ColBS.make;

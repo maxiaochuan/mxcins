@@ -42,10 +42,8 @@ module LayoutTwind = {
   }
 }
 
-type style = MxRC__Libs__React.style
-
 @react.component @genType
-let make = (~className=?, ~style: option<style>=?, ~hasSider=?, ~children=?) => {
+let make = (~className=?, ~style=?, ~hasSider=?, ~children=?) => {
   let (siders, setSiders) = React.useState(_ => [])
 
   let value = React.useMemo0(() => {

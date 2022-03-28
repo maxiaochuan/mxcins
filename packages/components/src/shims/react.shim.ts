@@ -2,6 +2,8 @@ import type { CSSProperties, KeyboardEvent, SyntheticEvent, FocusEvent, FormEven
 
 export type style = CSSProperties;
 
+export type Style_t = CSSProperties;
+
 export type Synthetic_t = SyntheticEvent;
 
 export type Keyboard_t = KeyboardEvent;

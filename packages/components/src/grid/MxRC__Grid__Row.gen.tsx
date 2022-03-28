@@ -10,10 +10,7 @@ const MxRC__Grid__RowBS: any = MxRC__Grid__RowBS__Es6Import;
 
 import type {BreakpointSub_breakpoint as MxWebapi_BreakpointSub_breakpoint} from '@mxcins/webapi/src/MxWebapi.gen';
 
-import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
-
-// tslint:disable-next-line:interface-over-type-literal
-export type style = MxRC__Libs__React_style;
+import type {Style_t as ReactDOM_Style_t} from '../../src/shims/react.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type mspace = [Array<[MxWebapi_BreakpointSub_breakpoint, number]>, Array<[MxWebapi_BreakpointSub_breakpoint, number]>];
@@ -34,7 +31,7 @@ export type Props = {
   | "space-between"
   | "start"; 
   readonly space?: [number, number]; 
-  readonly style?: style; 
+  readonly style?: ReactDOM_Style_t; 
   readonly wrap?: boolean
 };
 
@@ -53,6 +50,6 @@ export const make: React.ComponentType<{
   | "space-between"
   | "start"; 
   readonly space?: [number, number]; 
-  readonly style?: style; 
+  readonly style?: ReactDOM_Style_t; 
   readonly wrap?: boolean
 }> = MxRC__Grid__RowBS.make;

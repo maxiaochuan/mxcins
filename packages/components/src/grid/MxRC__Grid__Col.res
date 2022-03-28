@@ -16,10 +16,8 @@ module GridColTwind = {
   }
 }
 
-type style = MxRC__Libs__React.style
-
 @react.component @genType
-let make = (~className=?, ~style: option<style>=?, ~span=?, ~flex=?, ~children=?) => {
+let make = (~className=?, ~style=?, ~span=?, ~flex=?, ~children=?) => {
   let context = React.useContext(MxRC__Grid__Row.GridRowContext.ctx)
 
   let className = GridColTwind.make(className, ~span)

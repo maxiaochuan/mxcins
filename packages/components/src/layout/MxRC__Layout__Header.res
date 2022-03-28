@@ -1,5 +1,3 @@
-type style = MxRC__Libs__React.style
-
 module LayoutHeaderTwind = {
   open MxRC__Libs__Twind
   open Js.Array2
@@ -17,7 +15,7 @@ module LayoutHeaderTwind = {
 }
 
 @react.component @genType
-let make = (~className=?, ~style: option<style>=?, ~children=?) => {
+let make = (~className=?, ~style=?, ~children=?) => {
   let className = LayoutHeaderTwind.make(className)
   let children = children->Belt.Option.getWithDefault(React.null)
   <header className ?style> children </header>

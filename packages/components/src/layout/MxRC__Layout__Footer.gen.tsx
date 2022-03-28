@@ -8,20 +8,17 @@ import * as React from 'react';
 import * as MxRC__Layout__FooterBS__Es6Import from './MxRC__Layout__Footer.bs';
 const MxRC__Layout__FooterBS: any = MxRC__Layout__FooterBS__Es6Import;
 
-import type {style as MxRC__Libs__React_style} from '../../src/_libs/MxRC__Libs__React.gen';
-
-// tslint:disable-next-line:interface-over-type-literal
-export type style = MxRC__Libs__React_style;
+import type {style as ReactDOM_style} from '../../src/shims/react.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
   readonly children?: React.ReactNode; 
   readonly className?: string; 
-  readonly style?: style
+  readonly style?: ReactDOM_style
 };
 
 export const make: React.ComponentType<{
   readonly children?: React.ReactNode; 
   readonly className?: string; 
-  readonly style?: style
+  readonly style?: ReactDOM_style
 }> = MxRC__Layout__FooterBS.make;

@@ -44,12 +44,10 @@ module SpaceTwind = {
   }
 }
 
-type style = MxRC__Libs__React.style
-
 @react.component @genType
 let make = (
   ~className=?,
-  ~style: option<style>=?,
+  ~style=?,
   ~direction=#horizontal,
   ~align=#center,
   ~wrap=false,

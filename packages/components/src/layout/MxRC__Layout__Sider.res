@@ -1,5 +1,3 @@
-type style = MxRC__Libs__React.style
-
 module LayoutSiderTwind = {
   open MxRC__Libs__Twind
   open Js.Array2
@@ -29,7 +27,7 @@ module LayoutSiderTwind = {
 @react.component @genType
 let make = (
   ~className=?,
-  ~style: option<style>=?,
+  ~style=?,
   ~width=200,
   ~collapsed=false,
   ~collapsedWidth=80,

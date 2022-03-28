@@ -1,5 +1,3 @@
-type style = MxRC__Libs__React.style
-
 module LayoutFooterTwind = {
   open MxRC__Libs__Twind
   open Js.Array2
@@ -17,7 +15,7 @@ module LayoutFooterTwind = {
 }
 
 @react.component @genType
-let make = (~className=?, ~style: option<style>=?, ~children=?) => {
+let make = (~className=?, ~style=?, ~children=?) => {
   let className = LayoutFooterTwind.make(className)
   let children = children->Belt.Option.getWithDefault(React.null)
   <footer className ?style> children </footer>

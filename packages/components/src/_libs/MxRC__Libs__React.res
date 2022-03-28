@@ -1,6 +1,3 @@
-@genType.import(("react", "CSSProperties"))
-type style = ReactDOM.style
-
 @genType.import(("react", "ReactNode"))
 type node = React.element
 
