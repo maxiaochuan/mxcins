@@ -1,5 +1,4 @@
 open MxRC__Libs__Antd
-module Config = MxRC__ConfigProvider.ConfigContext
 module Twind = MxRC__Input__Twind
 
 type node = MxRC__Libs__React.node
@@ -22,6 +21,8 @@ type status = [#default | #warning | #error]
 exception AddonAfterConflict
 
 @scope("Object") @val external cloneEvent: ('a, {..}) => 'b = "create"
+
+let useSizeConfig = MxRC__ConfigProvider.ConfigContext.useSizeConfig
 
 @react.component @genType
 let make = React.forwardRef((
@@ -49,7 +50,7 @@ let make = React.forwardRef((
   ~disabled=false,
   ref,
 ) => {
-  let size = size->Config.useSizeConfig
+  let size = size->useSizeConfig
 
   // value state
   let (v, set) = React.useState(_ => defaultValue->Belt.Option.getWithDefault(""))
