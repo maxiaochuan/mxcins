@@ -20,7 +20,8 @@
       "Dom": "dom",
       "Belt": "belt",
       "ReactDOM": "react",
-      "ReactEvent": "react"
+      "ReactEvent": "react",
+      "MxWebapi": "mxwebapi"
     },
     "generatedFileExtension": ".gen.tsx",
     "module": "es6",

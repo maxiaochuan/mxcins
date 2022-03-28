@@ -8,7 +8,7 @@ import * as React from 'react';
 import * as MxRC__Grid__RowBS__Es6Import from './MxRC__Grid__Row.bs';
 const MxRC__Grid__RowBS: any = MxRC__Grid__RowBS__Es6Import;
 
-import type {BreakpointSub_breakpoint as MxWebapi_BreakpointSub_breakpoint} from '@mxcins/webapi/src/MxWebapi.gen';
+import type {BreakpointSub_breakpoint as MxWebapi_BreakpointSub_breakpoint} from '../../src/shims/mxwebapi.shim';
 
 import type {Style_t as ReactDOM_Style_t} from '../../src/shims/react.shim';
 

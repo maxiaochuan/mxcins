@@ -2,9 +2,9 @@ import { tw, apply } from 'twind';
 import { css } from 'twind/css';
 
 import { ConfigProvider, ConfigProviderProps } from './config-provider';
-import { make as Affix, Props as AffixProps } from './affix/MxRC__Affix.gen';
+import { Affix, AffixProps } from './affix';
 import { Button, ButtonProps } from './button';
-import { make as Divider, Props as DividerProps } from './divider/MxRC_Divider.gen';
+import { Divider, DividerProps } from './divider';
 import { Row, Col, RowProps, ColProps } from './grid';
 import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';

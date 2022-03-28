@@ -16,7 +16,8 @@
     "language": "typescript",
     "shims": {
       "Dom": "dom",
-      "Belt": "belt"
+      "Belt": "belt",
+      "Webapi": "webapi"
     },
     "generatedFileExtension": ".gen.tsx",
     "module": "es6",

@@ -1,4 +1,5 @@
 open MxRC__Libs__Antd
+open MxRC__ConfigProvider.ConfigContext
 module Twind = MxRC__Input__Twind
 
 type node = MxRC__Libs__React.node
@@ -21,8 +22,6 @@ type status = [#default | #warning | #error]
 exception AddonAfterConflict
 
 @scope("Object") @val external cloneEvent: ('a, {..}) => 'b = "create"
-
-let useSizeConfig = MxRC__ConfigProvider.ConfigContext.useSizeConfig
 
 @react.component @genType
 let make = React.forwardRef((

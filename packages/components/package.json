@@ -19,7 +19,9 @@
   "module": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
-    "build": "rescript",
+    "build": "run-s build:*",
+    "build:res": "rescript",
+    "build:check": "tsc --noEmit",
     "clean": "rescript clean",
     "dev": "rescript build -w"
   },

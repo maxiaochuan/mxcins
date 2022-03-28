@@ -10,7 +10,7 @@ const Curry: any = Curry__Es6Import;
 import * as MxWebapi__SingleResizeObserverBS__Es6Import from './MxWebapi__SingleResizeObserver.bs';
 const MxWebapi__SingleResizeObserverBS: any = MxWebapi__SingleResizeObserverBS__Es6Import;
 
-import type {ResizeObserver_ResizeObserverEntry_t as Webapi_ResizeObserver_ResizeObserverEntry_t} from 'rescript-webapi/src/Webapi.gen';
+import type {ResizeObserver_ResizeObserverEntry_t as Webapi_ResizeObserver_ResizeObserverEntry_t} from '../../src/shims/webapi.shim';
 
 import type {element as Dom_element} from '../../src/shims/dom.shim';
 

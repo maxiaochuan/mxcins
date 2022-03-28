@@ -79,8 +79,6 @@ type targetType =
   | Element
   | Null
 
-type element = Dom.element
-
 @react.component @genType
 let make = (
   ~offsetTop=0,

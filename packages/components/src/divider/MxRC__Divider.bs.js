@@ -68,7 +68,7 @@ var DividerTwind = {
   make: make
 };
 
-function MxRC_Divider(Props) {
+function MxRC__Divider(Props) {
   var className = Props.className;
   var _typeOpt = Props.type;
   var dashedOpt = Props.dashed;
@@ -85,7 +85,7 @@ function MxRC_Divider(Props) {
             }, children$1);
 }
 
-var make$1 = MxRC_Divider;
+var make$1 = MxRC__Divider;
 
 export {
   DividerTwind ,

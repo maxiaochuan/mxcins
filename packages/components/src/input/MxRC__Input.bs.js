@@ -13,8 +13,6 @@ import * as Webapi__Dom__HtmlInputElement from "rescript-webapi/src/Webapi/Dom/W
 
 var AddonAfterConflict = /* @__PURE__ */Caml_exceptions.create("MxRC__Input.AddonAfterConflict");
 
-var useSizeConfig = MxRC__ConfigProvider.ConfigContext.useSizeConfig;
-
 var make = React.forwardRef(function (Props, ref) {
       var size = Props.size;
       var _typeOpt = Props.type;
@@ -44,7 +42,7 @@ var make = React.forwardRef(function (Props, ref) {
       var allowClear = allowClearOpt !== undefined ? allowClearOpt : false;
       var status = statusOpt !== undefined ? statusOpt : "default";
       var disabled = disabledOpt !== undefined ? disabledOpt : false;
-      var size$1 = useSizeConfig(size);
+      var size$1 = MxRC__ConfigProvider.ConfigContext.useSizeConfig(size);
       var match = React.useState(function () {
             return Belt_Option.getWithDefault(defaultValue, "");
           });
@@ -277,7 +275,6 @@ var Twind;
 export {
   Twind ,
   AddonAfterConflict ,
-  useSizeConfig ,
   make ,
   
 }
