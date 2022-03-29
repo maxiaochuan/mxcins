@@ -46,6 +46,7 @@ importers:
       '@ant-design/colors': 6.0.0
       '@mxcins/hooks': 3.0.0-alpha.1
       '@mxcins/webapi': 1.0.0-alpha.1
+      '@rescript/react': 0.10.3
       '@twind/content': 0.1.0
       nanoid: 3.3.1
       rc-motion: 2.4.5
@@ -55,6 +56,7 @@ importers:
       '@ant-design/colors': 6.0.0
       '@mxcins/hooks': link:../hooks
       '@mxcins/webapi': link:../webapi
+      '@rescript/react': 0.10.3_react-dom@17.0.2+react@17.0.2
       '@twind/content': 0.1.0_twind@0.16.16+typescript@4.6.2
       nanoid: 3.3.1
       rc-motion: 2.4.5_react-dom@17.0.2+react@17.0.2

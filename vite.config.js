@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@mxcins/components': `${path.resolve(process.cwd(), 'packages', 'components')}/`,
-      '@mxcins/libs': `${path.resolve(process.cwd(), 'packages', 'libs')}/`,
+      '@mxcins/webapi': `${path.resolve(process.cwd(), 'packages', 'webapi')}/`,
       '@/': `${path.resolve(process.cwd(), 'src')}/`,
     },
   },
@@ -49,6 +49,10 @@ export default defineConfig({
             {
               path: '/components/input',
               component: '@/pages/components/input',
+            },
+            {
+              path: '/components/tooltip',
+              component: '@/pages/components/tooltip',
             },
             {
               path: '/colors',
