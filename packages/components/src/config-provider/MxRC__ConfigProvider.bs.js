@@ -5,6 +5,25 @@ import * as Twind from "twind";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as MxRC__Libs__Twind from "../_libs/MxRC__Libs__Twind.bs.js";
+import * as Webapi__Dom__Document from "rescript-webapi/src/Webapi/Dom/Webapi__Dom__Document.bs.js";
+
+function getPartalContainer(param) {
+  var id = "__mx_partial_root";
+  var exist = document.querySelector("#__mx_partial_root");
+  var exist$1 = (exist == null) ? undefined : Caml_option.some(exist);
+  if (!Belt_Option.isNone(exist$1)) {
+    return exist$1;
+  }
+  var container = document.createElement("div");
+  container.id = id;
+  Belt_Option.forEach(Webapi__Dom__Document.asHtmlDocument(document), (function ($$document) {
+          return Belt_Option.forEach(Caml_option.nullable_to_opt($$document.body), (function (body) {
+                        body.appendChild(container);
+                        
+                      }));
+        }));
+  return container;
+}
 
 var context = React.createContext({
       size: "default"
@@ -43,6 +62,7 @@ var Provider = {
 };
 
 var ConfigContext = {
+  getPartalContainer: getPartalContainer,
   context: context,
   make: make,
   useSizeConfig: useSizeConfig,

@@ -1,6 +1,27 @@
 module ConfigContext = {
   type size = [#default | #small | #large]
+  type getPartalContainer = unit => Dom.element
   type value = {size: size}
+
+  let getPartalContainer = () => {
+    let id = "__mx_partial_root"
+    open Webapi.Dom
+    open Belt.Option
+
+    let exist = document->Document.querySelector("#" ++ id)
+    if exist->isNone {
+      let container = document->Document.createElement("div")
+      container->Element.setId(id)
+      document
+      ->Document.asHtmlDocument
+      ->forEach(document =>
+        document->HtmlDocument.body->forEach(body => body->Element.appendChild(~child=container))
+      )
+      container
+    } else {
+      exist->getUnsafe
+    }
+  }
 
   let context = React.createContext({size: #default})
 

@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { tw } from 'twind';
 import { DomMover } from '@mxcins/webapi';
+import { Tooltip, Button } from '@mxcins/components';
 
 const $id = (id: string) => document.getElementById(id);
 
@@ -9,6 +11,11 @@ const TooltipView = () => {
 
   return (
     <>
+      <div className={tw`flex items-center justify-center pt-10 text-xl`}>
+        <Tooltip title="title">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+      </div>
       <div className={tw`flex items-center justify-center pt-10 text-xl`}>
         <button type="button" onClick={() => DomMover.align($id('source')!, $id('target')!, { points: ['tc', 'cc'], offsetX: 10, offsetY: -10 })}>align</button>
       </div>

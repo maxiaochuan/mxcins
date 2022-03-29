@@ -9,8 +9,9 @@ import { Row, Col, RowProps, ColProps } from './grid';
 import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';
 import { Input, InputProps, SearchProps } from './input';
+import { Tooltip, TooltipProps } from './tooltip';
 
-export { ConfigProvider, Affix, Button, Divider, Row, Col, Layout, Space, Input };
+export { ConfigProvider, Affix, Button, Divider, Row, Col, Layout, Space, Input, Tooltip };
 
 export const Twind = {
   tw,
@@ -31,4 +32,5 @@ export type {
   SpaceProps,
   InputProps,
   SearchProps,
+  TooltipProps,
 };
