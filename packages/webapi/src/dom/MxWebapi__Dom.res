@@ -33,7 +33,14 @@ module DomMover = {
     }
 
   @genType
-  let align = (source: Dom.element, target: Dom.element, ~points: (point, point), ~offsetX=?, ~offsetY=?, ()) => {
+  let align = (
+    source: Dom.element,
+    target: Dom.element,
+    ~points: (point, point),
+    ~offsetX=?,
+    ~offsetY=?,
+    (),
+  ) => {
     let sourceRect = source->getDomRect
     let targetRect = target->getDomRect
     let (sourcePoint, targetPoint) = points
@@ -56,8 +63,12 @@ module DomMover = {
       ->Belt.Option.getWithDefault(0.0)
 
     // move to top & left
-    let sourceToTop = (sourceCurrentTop +. movedY +. offsetY->Belt.Option.getWithDefault(0.0))->Belt.Float.toString ++ "px"
-    let sourceToLeft = (sourceCurrentLeft +. movedX +. offsetX->Belt.Option.getWithDefault(0.0))->Belt.Float.toString ++ "px"
+    let sourceToTop =
+      (sourceCurrentTop +. movedY +. offsetY->Belt.Option.getWithDefault(0.0))
+        ->Belt.Float.toString ++ "px"
+    let sourceToLeft =
+      (sourceCurrentLeft +. movedX +. offsetX->Belt.Option.getWithDefault(0.0))
+        ->Belt.Float.toString ++ "px"
 
     let sourceStyle = source->HtmlElement.ofElement->Belt.Option.getUnsafe->HtmlElement.style
     sourceStyle->CssStyleDeclaration.setProperty("top", sourceToTop, "")
