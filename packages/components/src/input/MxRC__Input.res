@@ -2,8 +2,6 @@ open MxRC__Libs__Antd
 open MxRC__ConfigProvider.ConfigContext
 module Twind = MxRC__Input__Twind
 
-type node = MxRC__Libs__React.node
-
 @genType.as("InputRef")
 type inputRef = {
   focus: unit => unit,
@@ -16,6 +14,9 @@ type _type = [#text | #password]
 
 @genType.as("InputStatusType")
 type status = [#default | #warning | #error]
+
+@genType.import(("react", "ReactNode"))
+type node = React.element
 
 // TODO: ReactEvent ChangeEvent
 

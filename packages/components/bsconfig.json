@@ -19,6 +19,7 @@
     "shims": {
       "Dom": "dom",
       "Belt": "belt",
+      "React": "react",
       "ReactDOM": "react",
       "ReactEvent": "react",
       "MxWebapi": "mxwebapi"

@@ -16,14 +16,11 @@ import type {Form_t as ReactEvent_Form_t} from '../../src/shims/react.shim';
 
 import type {Keyboard_t as ReactEvent_Keyboard_t} from '../../src/shims/react.shim';
 
+import type {ReactNode as $$node} from 'react';
+
 import type {htmlInputElement as Dom_htmlInputElement} from '../../src/shims/dom.shim';
 
-import type {node as MxRC__Libs__React_node} from '../../src/_libs/MxRC__Libs__React.gen';
-
 import type {style as ReactDOM_style} from '../../src/shims/react.shim';
-
-// tslint:disable-next-line:interface-over-type-literal
-export type node = MxRC__Libs__React_node;
 
 // tslint:disable-next-line:interface-over-type-literal
 export type inputRef = {
@@ -40,6 +37,9 @@ export type InputType = _type;
 // tslint:disable-next-line:interface-over-type-literal
 export type status = "default" | "warning" | "error";
 export type InputStatusType = status;
+
+// tslint:disable-next-line:interface-over-type-literal
+export type node = $$node;
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {
