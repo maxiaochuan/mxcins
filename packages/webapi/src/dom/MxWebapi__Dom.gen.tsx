@@ -24,7 +24,11 @@ export type DomMover_point =
   | "bc"
   | "br";
 
-export const DomMover_align: (source:Dom_element, target:Dom_element, _3:{ readonly points: [DomMover_point, DomMover_point] }) => void = function (Arg1: any, Arg2: any, Arg3: any) {
-  const result = Curry._3(MxWebapi__DomBS.DomMover.align, Arg1, Arg2, Arg3.points);
+export const DomMover_align: (source:Dom_element, target:Dom_element, _3:{
+  readonly points: [DomMover_point, DomMover_point]; 
+  readonly offsetX?: number; 
+  readonly offsetY?: number
+}, param:void) => void = function (Arg1: any, Arg2: any, Arg3: any, Arg4: any) {
+  const result = Curry._6(MxWebapi__DomBS.DomMover.align, Arg1, Arg2, Arg3.points, Arg3.offsetX, Arg3.offsetY, Arg4);
   return result
 };

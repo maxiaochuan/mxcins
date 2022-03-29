@@ -66,7 +66,7 @@ function getPointPos(point, rect) {
   }
 }
 
-function align(source, target, points) {
+function align(source, target, points, offsetX, offsetY, param) {
   var sourceRect = getDomRect(source);
   var targetRect = getDomRect(target);
   var match = getPointPos(points[0], sourceRect);
@@ -80,8 +80,8 @@ function align(source, target, points) {
   var sourceComputedtyle = Curry._1(getComputedStyle, source);
   var sourceCurrentTop = Belt_Option.getWithDefault(Belt_Float.fromString(sourceComputedtyle.top), 0.0);
   var sourceCurrentLeft = Belt_Option.getWithDefault(Belt_Float.fromString(sourceComputedtyle.left), 0.0);
-  var sourceToTop = String(sourceCurrentTop + movedY) + "px";
-  var sourceToLeft = String(sourceCurrentLeft + movedX) + "px";
+  var sourceToTop = String(sourceCurrentTop + movedY + Belt_Option.getWithDefault(offsetY, 0.0)) + "px";
+  var sourceToLeft = String(sourceCurrentLeft + movedX + Belt_Option.getWithDefault(offsetX, 0.0)) + "px";
   var sourceStyle = Webapi__Dom__HtmlElement.ofElement(source).style;
   sourceStyle.setProperty("top", sourceToTop, "");
   sourceStyle.setProperty("left", sourceToLeft, "");

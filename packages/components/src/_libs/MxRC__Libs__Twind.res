@@ -149,5 +149,11 @@ let conf = {
       "40": "40",
       "50": "50",
     },
+    "transitionTimingFunction": {
+      "DEFAULT": "ease",
+    },
+    "transitionDuration": {
+      "DEFAULT": "300ms",
+    },
   },
 }
