@@ -10,6 +10,7 @@ let make = React.forwardRef((
   ~onChange=?,
   ~onBlur=?,
   ~id=?,
+  ~autoComplete=?,
   ref,
 ) => {
   let (visible, set) = React.useState(_ => false)
@@ -41,5 +42,6 @@ let make = React.forwardRef((
     ?onChange
     ?onBlur
     ?id
+    ?autoComplete
   />
 })

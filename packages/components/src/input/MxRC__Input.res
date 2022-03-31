@@ -50,6 +50,7 @@ let make = React.forwardRef((
   ~disabled=false,
   ~id=?,
   ~name=?,
+  ~autoComplete="on",
   ref,
 ) => {
   let size = size->useSizeConfig
@@ -197,6 +198,7 @@ let make = React.forwardRef((
       disabled
       ?name
       ?id
+      autoComplete
     />
   }
 

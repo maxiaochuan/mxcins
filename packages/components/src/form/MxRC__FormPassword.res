@@ -9,6 +9,5 @@ let make = (~className=?, ~name: string, ~placeholder=?, ~label=?, ~required=?) 
     ->Belt.Option.map(input => input->Webapi.Dom.HtmlInputElement.asNode->Webapi.Dom.Element.ofNode)
     ->Belt.Option.getUnsafe
   }
-
   <Field name ?className ?label ?required ?placeholder getDomNodeFromRef> <Password /> </Field>
 }

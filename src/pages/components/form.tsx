@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { Form, FormText, FormPassword } from '@mxcins/components';
+import { Button, Form, FormText, FormPassword } from '@mxcins/components';
 import { Record } from '../../components';
 
 const LayoutView = () => {
   return (
     <>
       <Record title="space">
-        <Form onFinish={v => console.log('v', v)}>
+        <Form initialValues={{ username: '123', password: '' }} onFinish={v => console.log('v', v)}>
           <FormText name="username" label="asdf" />
           <FormPassword name="password" />
-          <button type="submit">submit</button>
+          <input type="password" autoComplete="current-password" />
+          <Button htmlType="submit">submit</Button>
+          <Button htmlType="reset">reset</Button>
         </Form>
       </Record>
     </>

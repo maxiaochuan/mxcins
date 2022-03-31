@@ -24,13 +24,15 @@ module Twind = {
 
 external toDomElement: 'a => option<Dom.element> = "%identity"
 
+type getDomNodeFromRef<'a> = 'a => option<Dom.element>
+
 @react.component @genType
 let make = (
   ~className=?,
   ~label=?,
   ~name: string,
   ~placeholder: option<string>=?,
-  ~getDomNodeFromRef: option<'a => option<Dom.element>>=?,
+  ~getDomNodeFromRef: option<getDomNodeFromRef<'a>>=?,
   ~required=?,
   ~children=?,
 ) => {

@@ -17,6 +17,7 @@
   "gentypeconfig": {
     "language": "typescript",
     "shims": {
+      "Js": "js",
       "Dom": "dom",
       "Belt": "belt",
       "React": "react",

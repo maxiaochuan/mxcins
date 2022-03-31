@@ -22,7 +22,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "run-s build:*",
-    "build:res": "rescript clean && rescript",
+    "build:res": "rescript",
     "build:vite": "vite build && tsc",
     "build:clean": "rescript clean",
     "clean": "rescript clean",

@@ -35,16 +35,26 @@ module Twind = {
   }
 }
 
-type onFinish<'a> = ({..} as 'a) => unit
+type onFinish<'a> = (Js.Dict.t<'a>) => unit
 
 @react.component @genType
 let make = (
+  ~initialValues: option<'init> =?,
   ~onFinish: option<onFinish<'a>>=?,
   ~onFinishFailed: option<onFinish<'a>>=?,
   ~children=?,
 ) => {
-  let methods = ReactHookForm.useTopForm({"mode": "all"})
+  let methods = ReactHookForm.useTopForm({
+    "mode": "all",
+    "defaultValues": initialValues,
+  })
 
+  let onSubmit = methods["handleSubmit"](onFinish, onFinishFailed)
+  let onReset = event => {
+    event->ReactEvent.Form.preventDefault
+    "methods"->Js.log2(methods)
+    methods["reset"]()
+  }
   let children = children->Belt.Option.getWithDefault(React.null)
   let className = Twind.make()
 
@@ -52,9 +62,12 @@ let make = (
     ReactHookForm.FormProvider.make,
     methods,
     [
-      <form className onSubmit={methods["handleSubmit"](onFinish, onFinishFailed)}>
-        children
-      </form>,
+      React.cloneElement(
+        <form className onSubmit>
+          children
+        </form>,
+        { "onReset": onReset },
+      )
     ],
   )
 }

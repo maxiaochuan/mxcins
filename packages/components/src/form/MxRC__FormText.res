@@ -1,12 +1,6 @@
 module Input = MxRC__Input
 module Field = MxRC__FormField
 
-let initRef: Input.inputRef = {
-  focus: () => (),
-  blur: () => (),
-  input: None,
-}
-
 @react.component @genType
 let make = (~className=?, ~name: string, ~placeholder=?, ~label=?, ~required=?) => {
   let getDomNodeFromRef = (inputRef: React.ref<option<Input.inputRef>>) => {
