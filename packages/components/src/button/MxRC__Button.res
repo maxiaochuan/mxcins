@@ -4,6 +4,9 @@ module IconBody = MxRC__Button__IconBody
 module Utils = MxRC__Button__Utils
 
 @genType.as("ButtonType")
+type htmlType = [#button | #submit | #reset]
+
+@genType.as("ButtonType")
 type _type = [#default | #primary | #dashed | #text | #link]
 
 @genType.as("ButtonShapeType")
@@ -11,6 +14,7 @@ type shape = [#default | #circle | #round]
 
 @react.component @genType
 let make = React.forwardRef((
+  ~htmlType: htmlType=#button,
   ~className=?,
   ~style=?,
   ~size=?,
@@ -74,8 +78,15 @@ let make = React.forwardRef((
       }
     })
 
+  let type_ = switch htmlType {
+  | #button => "button"
+  | #submit => "submit"
+  | #reset => "reset"
+  }
+
   <button
     ref=?{ref->Js.Nullable.toOption->Belt.Option.map(ReactDOM.Ref.domRef)}
+    type_
     className
     ?style
     disabled

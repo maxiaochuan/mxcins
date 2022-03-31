@@ -13,6 +13,10 @@ import type {ConfigContext_size as MxRC__ConfigProvider_ConfigContext_size} from
 import type {style as ReactDOM_style} from '../../src/shims/react.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
+export type htmlType = "button" | "submit" | "reset";
+export type ButtonType = htmlType;
+
+// tslint:disable-next-line:interface-over-type-literal
 export type _type = 
     "default"
   | "primary"
@@ -34,6 +38,7 @@ export type Props = {
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
+  readonly htmlType?: htmlType; 
   readonly icon?: JSX.Element; 
   readonly loading?: boolean; 
   readonly onClick?: (_1:MouseEvent) => void; 
@@ -50,6 +55,7 @@ export const make: React.ComponentType<{
   readonly danger?: boolean; 
   readonly disabled?: boolean; 
   readonly ghost?: boolean; 
+  readonly htmlType?: htmlType; 
   readonly icon?: JSX.Element; 
   readonly loading?: boolean; 
   readonly onClick?: (_1:MouseEvent) => void; 

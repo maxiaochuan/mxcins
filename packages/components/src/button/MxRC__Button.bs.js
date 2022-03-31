@@ -11,6 +11,7 @@ import * as MxRC__ConfigProvider from "../config-provider/MxRC__ConfigProvider.b
 import * as MxRC__Button__IconBody from "./MxRC__Button__IconBody.bs.js";
 
 var make = React.forwardRef(function (Props, ref) {
+      var htmlTypeOpt = Props.htmlType;
       var className = Props.className;
       var style = Props.style;
       var size = Props.size;
@@ -24,6 +25,7 @@ var make = React.forwardRef(function (Props, ref) {
       var icon = Props.icon;
       var children = Props.children;
       var onClick = Props.onClick;
+      var htmlType = htmlTypeOpt !== undefined ? htmlTypeOpt : "button";
       var _type = _typeOpt !== undefined ? _typeOpt : "default";
       var shape = shapeOpt !== undefined ? shapeOpt : "default";
       var danger = dangerOpt !== undefined ? dangerOpt : false;
@@ -57,9 +59,13 @@ var make = React.forwardRef(function (Props, ref) {
               var string = child.split("").join(" ");
               return React.createElement("span", undefined, string);
             }));
+      var type_ = htmlType === "reset" ? "reset" : (
+          htmlType === "submit" ? "submit" : "button"
+        );
       var tmp = {
         className: className$1,
         disabled: disabled,
+        type: type_,
         onClick: onClick$1
       };
       var tmp$1 = Belt_Option.map((ref == null) ? undefined : Caml_option.some(ref), (function (prim) {
