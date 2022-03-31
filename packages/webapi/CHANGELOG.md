@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.2](https://github.com/maxiaochuan/mxcins/compare/@mxcins/webapi@1.0.0-alpha.1...@mxcins/webapi@1.0.0-alpha.2) (2022-03-31)
+
+
+### Features
+
+* **components:** refactor row ([c4e2b75](https://github.com/maxiaochuan/mxcins/commit/c4e2b75717c57a7ec9940939185cc5adda03297f))
+* **webapi:** export breakpoint type ([8d57ed8](https://github.com/maxiaochuan/mxcins/commit/8d57ed868aef570344a0b2be9786997096877322))
+* **webapi:** move dom ([a4e0e5e](https://github.com/maxiaochuan/mxcins/commit/a4e0e5e2fff874fc532077e82bc255041875c230))
+* **webapi:** move dom offset ([910f1ef](https://github.com/maxiaochuan/mxcins/commit/910f1ef98801f517a2b86b22be8f8f89e2865a48))
+* **webapi:** resize observer polifill ([833ffc4](https://github.com/maxiaochuan/mxcins/commit/833ffc4a6fa86fdc3ab07b09110e7ee6129214e2))
+* **webapi:** webapi module with dom ([ae5c5a0](https://github.com/maxiaochuan/mxcins/commit/ae5c5a081fbaea32c849c19c0e63160818e5b856))
+
+
+
+
+
 # 1.0.0-alpha.1 (2022-03-17)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/hooks",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "",
   "homepage": "https://github.com/maxiaochuan/mxcins",
   "bugs": {
@@ -20,7 +20,7 @@
     "dev": "rescript build -w"
   },
   "dependencies": {
-    "@mxcins/webapi": "1.0.0-alpha.1",
+    "@mxcins/webapi": "1.0.0-alpha.2",
     "@rescript/react": "0.10.3",
     "@ryyppy/rescript-promise": "2.1.0",
     "rescript-webapi": "0.6.1"
