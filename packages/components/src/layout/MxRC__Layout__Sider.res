@@ -1,5 +1,5 @@
 module LayoutSiderTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   open Js.Array2
 
   let init = "relative min-w-0 transition-all"
@@ -36,7 +36,7 @@ let make = (
   let context = React.useContext(MxRC__Layout.LayoutContext.ctx)
 
   React.useEffect1(() => {
-    let id = "sider-" ++ MxRC__Libs__Utils.nanoid()
+    let id = "sider-" ++ MxRC__Utils.nanoid()
 
     id->context.sider.add
 

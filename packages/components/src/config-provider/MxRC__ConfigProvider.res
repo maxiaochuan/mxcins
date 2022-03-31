@@ -44,7 +44,7 @@ module ConfigContext = {
 }
 
 @genType
-let setup = () => MxRC__Libs__Twind.setup(MxRC__Libs__Twind.conf)
+let setup = () => MxRC__Twind.setup(MxRC__Twind.conf)
 
 @react.component @genType
 let make = (~size=#default, ~children=React.null) => {

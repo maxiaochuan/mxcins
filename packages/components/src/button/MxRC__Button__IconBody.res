@@ -1,4 +1,4 @@
-open MxRC__Libs__Antd
+open MxRC__Antd
 
 module RcMotion = {
   type appear = Dom.element => ReactDOM.style
@@ -38,7 +38,7 @@ let getRealWidth = node => {
 module TransitionBody = {
   @react.component
   let make = React.forwardRef((~style=?, ~children, ref) => {
-    open MxRC__Libs__Twind
+    open MxRC__Twind
     let className =
       [
         "transition transition-[width, opacity]",
@@ -57,7 +57,7 @@ module TransitionBody = {
 }
 
 module MarginRightBody = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   @react.component
   let make = (~children) => {
     let className = ["pr-2"]->apply->tw

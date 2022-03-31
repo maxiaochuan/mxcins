@@ -50,6 +50,7 @@ importers:
       '@twind/content': 0.1.0
       nanoid: 3.3.2
       rc-motion: 2.4.5
+      react-hook-form: 7.29.0
       rescript-webapi: 0.6.1
       twind: 0.16.16
     dependencies:
@@ -60,6 +61,7 @@ importers:
       '@twind/content': 0.1.0_twind@0.16.16+typescript@4.6.2
       nanoid: 3.3.2
       rc-motion: 2.4.5_react-dom@17.0.2+react@17.0.2
+      react-hook-form: 7.29.0_react@17.0.2
       rescript-webapi: 0.6.1
       twind: 0.16.16_typescript@4.6.2
 
@@ -4458,6 +4460,15 @@ packages:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
+    dev: false
+
+  /react-hook-form/7.29.0_react@17.0.2:
+    resolution: {integrity: sha512-NcJqWRF6el5HMW30fqZRt27s+lorvlCCDbTpAyHoodQeYWXgQCvZJJQLC1kRMKdrJknVH0NIg3At6TUzlZJFOQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /react-is/16.13.1:

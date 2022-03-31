@@ -3,7 +3,7 @@ type align = [#center | #start | #end | #baseline]
 type size = MxRC__ConfigProvider.ConfigContext.size
 
 module SpaceTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   open Js.Array2
 
   let init = "inline-flex"

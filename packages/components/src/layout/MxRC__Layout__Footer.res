@@ -1,5 +1,5 @@
 module LayoutFooterTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   open Js.Array2
 
   let init = "h-16 px-12"

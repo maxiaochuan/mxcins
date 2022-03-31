@@ -1,10 +1,10 @@
-open MxRC__Libs__Antd
+open MxRC__Antd
 
 module Input = MxRC__Input
 module Button = MxRC__Button
 
 module InputSearchTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   let makeSearch = () => {
     ["rounded-l-none hover:(z-1) focus:(z-1) active:(z-1) text-text-secondary"]->atw
   }

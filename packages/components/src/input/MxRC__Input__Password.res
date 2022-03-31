@@ -1,4 +1,4 @@
-open MxRC__Libs__Antd
+open MxRC__Antd
 module Input = MxRC__Input
 
 @react.component @genType

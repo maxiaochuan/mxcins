@@ -1,4 +1,4 @@
-open MxRC__Libs__Antd
+open MxRC__Antd
 open MxRC__ConfigProvider.ConfigContext
 module Twind = MxRC__Input__Twind
 

@@ -17,7 +17,7 @@ module GridRowContext = {
 }
 
 module GridRowTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   open Js.Array2
 
   let init = "flex"

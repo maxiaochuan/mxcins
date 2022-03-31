@@ -18,7 +18,7 @@ module LayoutContext = {
 }
 
 module LayoutTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   open Js.Array2
 
   let init = "flex flex-auto bg-background min-h-0"

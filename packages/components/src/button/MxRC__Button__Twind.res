@@ -1,4 +1,4 @@
-open MxRC__Libs__Twind
+open MxRC__Twind
 let init = "
     relative
     inline-block

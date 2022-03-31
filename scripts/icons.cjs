@@ -22,4 +22,4 @@ module ${name} = {
 `
 
 const output = keys.map(k => make(k)).join("");
-fs.writeFileSync(path.join(cwd, 'packages/components/src/_libs/MxRC__Libs__Antd.res'), output, 'utf-8');
+fs.writeFileSync(path.join(cwd, 'packages/components/src/_libs/MxRC__Antd.res'), output, 'utf-8');

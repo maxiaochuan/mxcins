@@ -1,5 +1,5 @@
-open MxRC__Libs__React
-open MxRC__Libs__Utils
+open MxRC__React
+open MxRC__Utils
 open MxRC__ConfigProvider.ConfigContext
 open MxWebapi__Dom
 

@@ -1,4 +1,4 @@
-open MxRC__Libs__Twind
+open MxRC__Twind
 
 let makeNoStyle = () => ["w-full p-0 m-0 disabled:cursor-not-allowed"]->atw
 

@@ -3,7 +3,7 @@ type _type = [#horizontal | #vertical]
 type orientation = [#left | #right | #center]
 
 module DividerTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   open Js.Array2
   let init = "flex p-0 text-sm"
   let horizontal = "flex w-full min-w-full my-6 border-border border-t"

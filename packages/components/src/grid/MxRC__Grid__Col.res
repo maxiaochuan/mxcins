@@ -1,5 +1,5 @@
 module GridColTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   let init = "block"
   let make = (className, ~span) => {
     open Js.Array2

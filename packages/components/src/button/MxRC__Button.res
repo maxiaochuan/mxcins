@@ -64,7 +64,7 @@ let make = React.forwardRef((
     children
     ->Belt.Option.getWithDefault(React.null)
     ->React.Children.map(child => {
-      open MxRC__Libs__React.Children
+      open MxRC__React.Children
       if child->isString || child->isNumber {
         if child->isString && child->asString->Utils.isTwoCNChar {
           let string = child->asString->Js.String2.split("")->Js.Array2.joinWith(" ")

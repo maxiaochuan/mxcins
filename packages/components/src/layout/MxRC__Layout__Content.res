@@ -1,5 +1,5 @@
 module LayoutContentTwind = {
-  open MxRC__Libs__Twind
+  open MxRC__Twind
   open Js.Array2
 
   let init = "flex-auto min-h-0"
