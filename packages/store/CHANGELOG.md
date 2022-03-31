@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.0.0-alpha.7 (2022-03-31)
+
+
+### Features
+
+* **store:** depdendency & typescript config ([45ab813](https://github.com/maxiaochuan/mxcins/commit/45ab813aa1852696996a0e4e18dddfa38e438c93))
+
+
+
+
+
 # [0.0.0-alpha.6](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.5...@mxcins/store@0.0.0-alpha.6) (2021-11-23)
 
 
