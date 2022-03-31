@@ -19,7 +19,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build"
+    "build": "run-s build:*",
+    "build:vite": "vite build",
+    "build:tsc": "tsc"
   },
   "dependencies": {
     "nanoid": "3.3.2",
