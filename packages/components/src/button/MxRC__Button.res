@@ -3,7 +3,6 @@ module Twind = MxRC__Button__Twind
 module IconBody = MxRC__Button__IconBody
 module Utils = MxRC__Button__Utils
 
-@genType.as("ButtonType")
 type htmlType = [#button | #submit | #reset]
 
 @genType.as("ButtonType")
