@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/components",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "",
   "homepage": "https://github.com/maxiaochuan/mxcins",
   "bugs": {
@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@ant-design/colors": "6.0.0",
-    "@mxcins/hooks": "3.0.0-alpha.2",
-    "@mxcins/webapi": "1.0.0-alpha.2",
+    "@mxcins/hooks": "3.0.0-alpha.3",
+    "@mxcins/webapi": "1.0.0-alpha.3",
     "@rescript/react": "0.10.3",
     "@twind/content": "0.1.0",
     "nanoid": "3.3.2",

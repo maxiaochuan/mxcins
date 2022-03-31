@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.3](https://github.com/maxiaochuan/mxcins/compare/@mxcins/components@1.0.0-alpha.2...@mxcins/components@1.0.0-alpha.3) (2022-03-31)
+
+
+### Bug Fixes
+
+* **components:** shims ([319691c](https://github.com/maxiaochuan/mxcins/commit/319691c1f16c5565a73b7919ba1f39a85ddac096))
+
+
+### Features
+
+* **components:** button htmltype ([82518ac](https://github.com/maxiaochuan/mxcins/commit/82518ac2d7ada8b23cac6b31e309bbb3fca3ed4d))
+* **components:** input password classname ([ab9e4aa](https://github.com/maxiaochuan/mxcins/commit/ab9e4aae3d2f6b500be59b10e4efe4c611ceed51))
+* **components:** shim name ([f26e436](https://github.com/maxiaochuan/mxcins/commit/f26e436874c5a5ed673211adc7d665444cb8e0c4))
+
+
+
+
+
 # [1.0.0-alpha.2](https://github.com/maxiaochuan/mxcins/compare/@mxcins/components@1.0.0-alpha.1...@mxcins/components@1.0.0-alpha.2) (2022-03-31)
 
 

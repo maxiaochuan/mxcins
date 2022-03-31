@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.3](https://github.com/maxiaochuan/mxcins/compare/@mxcins/webapi@1.0.0-alpha.2...@mxcins/webapi@1.0.0-alpha.3) (2022-03-31)
+
+
+### Features
+
+* **components:** input password classname ([ab9e4aa](https://github.com/maxiaochuan/mxcins/commit/ab9e4aae3d2f6b500be59b10e4efe4c611ceed51))
+
+
+
+
+
 # [1.0.0-alpha.2](https://github.com/maxiaochuan/mxcins/compare/@mxcins/webapi@1.0.0-alpha.1...@mxcins/webapi@1.0.0-alpha.2) (2022-03-31)
 
 
