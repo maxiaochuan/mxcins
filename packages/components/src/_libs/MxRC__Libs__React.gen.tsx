@@ -8,7 +8,7 @@ import * as React from 'react';
 import * as MxRC__Libs__ReactBS__Es6Import from './MxRC__Libs__React.bs';
 const MxRC__Libs__ReactBS: any = MxRC__Libs__ReactBS__Es6Import;
 
-import type {element as Dom_element} from './dom.shim';
+import type {element as Dom_element} from '../../src/shims/dom.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = { readonly children?: React.ReactNode; readonly getContainer: () => Dom_element };

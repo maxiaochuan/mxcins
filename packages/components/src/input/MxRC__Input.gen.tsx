@@ -18,7 +18,7 @@ import type {Keyboard_t as ReactEvent_Keyboard_t} from '../../src/shims/react.sh
 
 import type {ReactNode as $$node} from 'react';
 
-import type {htmlInputElement as Dom_htmlInputElement} from './dom.shim';
+import type {htmlInputElement as Dom_htmlInputElement} from '../../src/shims/dom.shim';
 
 import type {style as ReactDOM_style} from '../../src/shims/react.shim';
 
