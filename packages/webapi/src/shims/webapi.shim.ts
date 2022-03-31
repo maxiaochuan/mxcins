@@ -1,1 +1,1 @@
-export type ResizeObserver_ResizeObserverEntry_t = ResizeObserverEntry
+export type ResizeObserver_ResizeObserverEntry_t = ResizeObserverEntry;

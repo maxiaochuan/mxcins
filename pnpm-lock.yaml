@@ -111,10 +111,8 @@ importers:
   packages/webapi:
     specifiers:
       rescript-webapi: 0.6.1
-      resize-observer-polyfill: 1.5.1
-    dependencies:
+    devDependencies:
       rescript-webapi: 0.6.1
-      resize-observer-polyfill: 1.5.1
 
 packages:
 
@@ -4683,16 +4681,11 @@ packages:
 
   /rescript-webapi/0.6.1:
     resolution: {integrity: sha512-I/eeHOcsUfWbCf6u15zd+rKxMz9awSjjdRa8eFtl2X+HjDNs0mJxoC4uFFK9dIazYcmY2VpuK5TTpOPXvdkhDw==}
-    dev: false
 
   /rescript/9.1.4:
     resolution: {integrity: sha512-aXANK4IqecJzdnDpJUsU6pxMViCR5ogAxzuqS0mOr8TloMnzAjJFu63fjD6LCkWrKAhlMkFFzQvVQYaAaVkFXw==}
     hasBin: true
     requiresBuild: true
-    dev: false
-
-  /resize-observer-polyfill/1.5.1:
-    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
     dev: false
 
   /resolve-cwd/3.0.0:

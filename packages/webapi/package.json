@@ -20,14 +20,14 @@
   "types": "src/index.ts",
   "scripts": {
     "build": "run-s build:*",
-    "build:res": "rescript",
-    "build:check": "tsc --noEmit",
+    "build:res": "rescript clean && rescript",
+    "build:vite": "vite build && tsc",
+    "build:clean": "rescript clean",
     "clean": "rescript clean",
     "dev": "rescript build -w"
   },
-  "dependencies": {
-    "rescript-webapi": "0.6.1",
-    "resize-observer-polyfill": "1.5.1"
+  "devDependencies": {
+    "rescript-webapi": "0.6.1"
   },
   "publishConfig": {
     "access": "public"

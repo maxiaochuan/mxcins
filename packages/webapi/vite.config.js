@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import packageJSON from './package.json';
 
 export default defineConfig({
   build: {
@@ -10,7 +9,7 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', ...Object.keys(packageJSON.dependencies)],
+      external: [],
     },
   },
 });
