@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Form, FormText, FormPassword } from '@mxcins/components';
+import { Button, Form, useForm, FormText, FormPassword } from '@mxcins/components';
 import { Record } from '../../components';
 
 const LayoutView = () => {

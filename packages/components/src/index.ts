@@ -10,7 +10,7 @@ import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';
 import { Input, InputRef, InputProps, SearchProps } from './input';
 import { Tooltip, TooltipProps } from './tooltip';
-import { Form, FormProps, FormText, FormPassword } from './form';
+import { Form, FormProps, useForm, FormText, FormPassword } from './form';
 
 export {
   ConfigProvider,
@@ -24,6 +24,7 @@ export {
   Input,
   Tooltip,
   Form,
+  useForm,
   FormText,
   FormPassword,
 };

@@ -42,9 +42,9 @@ let make = (
 
   let ref = React.useRef(None)
 
-  let {register, formState} = useFormContext()
-  let registed = register(. name, {"required": required})
-  React.useImperativeHandle0(registed.ref, () => {
+  let methods = useFormContext()
+  let registed = methods["register"](. name, {"required": required})
+  React.useImperativeHandle0(registed["ref"], () => {
     switch getDomNodeFromRef {
     | Some(getDomNodeFromRef) => ref->getDomNodeFromRef
     | _ => ref.current->toDomElement
@@ -66,13 +66,13 @@ let make = (
       "ref": ref,
       "name": name,
       "placeholder": placeholder,
-      "onChange": registed.onChange,
-      "onBlur": registed.onBlur,
+      "onChange": registed["onChange"],
+      "onBlur": registed["onBlur"],
     },
   )
 
-  let error = switch formState.errors->Js.Dict.get(name) {
-  | Some(error) => <span> {React.string(error.message)} </span>
+  let error = switch methods["formState"]["errors"]->Js.Dict.get(name) {
+  | Some(error) => <span> {React.string(error["message"])} </span>
   | _ => React.null
   }
 

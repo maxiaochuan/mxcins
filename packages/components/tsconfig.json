@@ -4,6 +4,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
+    "esModuleInterop": true,
     "skipLibCheck": false
   },
   "include": ["src"]

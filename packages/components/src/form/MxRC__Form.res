@@ -1,26 +1,31 @@
 module ReactHookForm = {
-  type registed<'a> = {
-    // ref: (a: 'a) => unit,
-    ref: Js.Nullable.t<React.ref<'a>>,
-    onChange: ReactEvent.Form.t => unit,
-    onBlur: ReactEvent.Focus.t => unit,
-  }
+  // type registed<'a> = {
+  //   // ref: (a: 'a) => unit,
+  //   ref: Js.Nullable.t<React.ref<'a>>,
+  //   onChange: ReactEvent.Form.t => unit,
+  //   onBlur: ReactEvent.Focus.t => unit,
+  // }
 
-  type opt = {"required": option<bool>}
+  // type opt = {"required": option<bool>}
 
-  type register<'a> = (. string, opt) => registed<'a>
+  // type register<'ref> = (. string, opt) => registed<'ref>
 
-  type error = {message: string, ref: React.ref<Dom.element>, _type: string}
-  type formState = {errors: Js.Dict.t<error>}
+  // type error = {message: string, ref: React.ref<Dom.element>, _type: string}
+  // type formState = {errors: Js.Dict.t<error>}
 
-  type useFormReturned<'a> = {register: register<'a>, formState: formState}
+  // type onVailid<'v> = (Js.Dict.t<'v>) => unit
+  // type onInvalid<'v> = (Js.Dict.t<'v>) => unit
+  // type handleSubmitReturned = ReactEvent.Form.t => unit
+  // type handleSubmit<'v> = (. option<onVailid<'v>>, option<onInvalid<'v>>) => handleSubmitReturned
+  // type reset = () => unit
 
-  @module("react-hook-form") external useForm: {..} => useFormReturned<'a> = "useForm"
+  // type useFormReturned<'ref, 'v> = {register: register<'ref>, formState: formState, handleSubmit: handleSubmit<'v>, reset: reset }
 
-  @module("react-hook-form") external useTopForm: {..} => 'a = "useForm"
+  // @module("react-hook-form") external useForm: 'useFormOptions => useFormReturned<'ref, 'v> = "useForm"
+  @module("react-hook-form") external useForm: {..} => {..} = "useForm"
 
   @module("react-hook-form")
-  external useFormContext: unit => useFormReturned<'a> = "useFormContext"
+  external useFormContext: unit => {..} = "useFormContext"
 
   module FormProvider = {
     @module("react-hook-form") @react.component
@@ -35,32 +40,37 @@ module Twind = {
   }
 }
 
-type onFinish<'a> = (Js.Dict.t<'a>) => unit
+// type onFinish<'v> = ReactHookForm.onVailid<'v>
+  type onFinish<'v> = (Js.Dict.t<'v>) => unit
 
 @react.component @genType
 let make = (
   ~initialValues: option<'init> =?,
-  ~onFinish: option<onFinish<'a>>=?,
-  ~onFinishFailed: option<onFinish<'a>>=?,
+  ~onFinish: option<onFinish<'v>>=?,
+  ~onFinishFailed: option<onFinish<'v>>=?,
   ~children=?,
 ) => {
-  let methods = ReactHookForm.useTopForm({
+  let methods = ReactHookForm.useForm({
     "mode": "all",
     "defaultValues": initialValues,
   })
 
-  let onSubmit = methods["handleSubmit"](onFinish, onFinishFailed)
+  let onSubmit = event => {
+    methods["handleSubmit"](. onFinish, onFinishFailed)(. event)
+  }
+
   let onReset = event => {
     event->ReactEvent.Form.preventDefault
-    "methods"->Js.log2(methods)
-    methods["reset"]()
+    let reset: () => unit = methods["reset"]
+    reset()
   }
+
   let children = children->Belt.Option.getWithDefault(React.null)
   let className = Twind.make()
 
   React.createElementVariadic(
     ReactHookForm.FormProvider.make,
-    methods,
+    Obj.magic(methods),
     [
       React.cloneElement(
         <form className onSubmit>
