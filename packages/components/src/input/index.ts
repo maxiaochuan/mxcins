@@ -42,4 +42,4 @@ Input.TextArea = TextArea as TextAreaComponent;
 Input.Password = Password as PasswordComponent;
 
 export { Input };
-export type { InputType, InputProps, SearchProps, TextAreaProps, PasswordProps };
+export type { InputType, InputProps, SearchProps, TextAreaProps, PasswordProps, InputRef };

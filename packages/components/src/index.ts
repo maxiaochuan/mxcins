@@ -8,7 +8,7 @@ import { Divider, DividerProps } from './divider';
 import { Row, Col, RowProps, ColProps } from './grid';
 import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';
-import { Input, InputProps, SearchProps } from './input';
+import { Input, InputRef, InputProps, SearchProps } from './input';
 import { Tooltip, TooltipProps } from './tooltip';
 
 export { ConfigProvider, Affix, Button, Divider, Row, Col, Layout, Space, Input, Tooltip };
@@ -31,6 +31,7 @@ export type {
   HeaderProps,
   SpaceProps,
   InputProps,
+  InputRef,
   SearchProps,
   TooltipProps,
 };

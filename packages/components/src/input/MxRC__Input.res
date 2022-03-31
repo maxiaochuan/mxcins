@@ -48,6 +48,7 @@ let make = React.forwardRef((
   ~maxLength=?,
   ~status=#default,
   ~disabled=false,
+  ~name=?,
   ref,
 ) => {
   let size = size->useSizeConfig
@@ -194,6 +195,7 @@ let make = React.forwardRef((
       value
       onChange
       disabled
+      ?name
     />
   }
 

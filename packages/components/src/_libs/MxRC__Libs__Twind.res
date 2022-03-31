@@ -141,6 +141,7 @@ let conf = {
     "),
     "minWidth": %raw("theme => theme('width')"),
     "boxShadow": {
+      "none": "none",
       // "input-focus": "0 0 0 2px var(--color-primary-outline)",
       "input-focus": "0 0 0 2px var(--color-primary-outline)",
       "input-focus-warning": "0 0 0 2px var(--color-warning-outline)",
