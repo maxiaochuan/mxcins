@@ -9,6 +9,14 @@ import * as MxRC__Input__PasswordBS__Es6Import from './MxRC__Input__Password.bs'
 const MxRC__Input__PasswordBS: any = MxRC__Input__PasswordBS__Es6Import;
 
 // tslint:disable-next-line:interface-over-type-literal
-export type Props = { readonly disabled: boolean; readonly placeholder?: string };
+export type Props = {
+  readonly className?: string; 
+  readonly disabled: boolean; 
+  readonly placeholder?: string
+};
 
-export const make: React.ComponentType<{ readonly disabled: boolean; readonly placeholder?: string }> = MxRC__Input__PasswordBS.make;
+export const make: React.ComponentType<{
+  readonly className?: string; 
+  readonly disabled: boolean; 
+  readonly placeholder?: string
+}> = MxRC__Input__PasswordBS.make;

@@ -8,7 +8,7 @@ import * as React from 'react';
 import * as MxRC__TooltipBS__Es6Import from './MxRC__Tooltip.bs';
 const MxRC__TooltipBS: any = MxRC__TooltipBS__Es6Import;
 
-import type {element as Dom_element} from '../../src/shims/dom.shim';
+import type {element as Dom_element} from './dom.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {

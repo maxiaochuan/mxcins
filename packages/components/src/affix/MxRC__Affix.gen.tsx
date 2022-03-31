@@ -8,7 +8,7 @@ import * as React from 'react';
 import * as MxRC__AffixBS__Es6Import from './MxRC__Affix.bs';
 const MxRC__AffixBS: any = MxRC__AffixBS__Es6Import;
 
-import type {element as Dom_element} from '../../src/shims/dom.shim';
+import type {element as Dom_element} from './dom.shim';
 
 // tslint:disable-next-line:interface-over-type-literal
 export type Props = {

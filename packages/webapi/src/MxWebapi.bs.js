@@ -7,10 +7,13 @@ var SingleResizeObserver;
 
 var BreakpointSub;
 
+var Dom;
+
 export {
   Raf ,
   SingleResizeObserver ,
   BreakpointSub ,
+  Dom ,
   
 }
 /* No side effect */

@@ -7,6 +7,7 @@ import * as MxRC__Input from "./MxRC__Input.bs.js";
 import * as Icons from "@ant-design/icons";
 
 function MxRC__Input__Password(Props) {
+  var className = Props.className;
   var placeholder = Props.placeholder;
   var disabled = Props.disabled;
   var match = React.useState(function () {
@@ -41,6 +42,9 @@ function MxRC__Input__Password(Props) {
     suffix: suffix,
     disabled: disabled
   };
+  if (className !== undefined) {
+    tmp.className = Caml_option.valFromOption(className);
+  }
   if (placeholder !== undefined) {
     tmp.placeholder = Caml_option.valFromOption(placeholder);
   }
