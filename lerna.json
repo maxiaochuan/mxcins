@@ -5,6 +5,7 @@
     "bootstrap": {},
     "version": {
       "exact": true,
+      "allowBranch": "master",
       "conventionalCommits": true
     },
     "publish": {
