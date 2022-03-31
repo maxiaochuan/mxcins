@@ -7,9 +7,9 @@ const Home: React.FC = () => {
     <>
       HOME
       {routes[0].routes?.map(
-        row =>
+        (row, i) =>
           row.path && (
-            <div>
+            <div key={row.path || `p-${i}`}>
               <Link style={{ color: 'blue' }} key={row.path} to={row.path}>
                 {row.path}
               </Link>

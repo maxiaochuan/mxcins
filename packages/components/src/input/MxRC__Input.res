@@ -48,13 +48,14 @@ let make = React.forwardRef((
   ~maxLength=?,
   ~status=#default,
   ~disabled=false,
+  ~id=?,
   ~name=?,
   ref,
 ) => {
   let size = size->useSizeConfig
 
   // value state
-  let (v, set) = React.useState(_ => defaultValue->Belt.Option.getWithDefault(""))
+  let (v, set) = React.useState(_ => defaultValue)
   let isControled = !(value->Belt.Option.isNone)
   let value = value->Belt.Option.getWithDefault(v)
 
@@ -104,7 +105,7 @@ let make = React.forwardRef((
 
   let onReset = event => {
     if !isControled {
-      set(_ => "")
+      set(_ => None)
     }
     focus()
 
@@ -148,7 +149,7 @@ let make = React.forwardRef((
 
     if enabled {
       if !isControled {
-        set(_ => v)
+        set(_ => v->Some)
       }
       onChange->Belt.Option.forEach(fn => event->fn)
     }
@@ -192,10 +193,10 @@ let make = React.forwardRef((
       onBlur
       onFocus
       onKeyDown
-      value
       onChange
       disabled
       ?name
+      ?id
     />
   }
 
@@ -218,7 +219,10 @@ let make = React.forwardRef((
           let className = Twind.makeFixed(~pos=#suffix, ~status)
           let icon = {
             let className = Twind.makeClear()
-            let visibility = value->Js.String2.length > 0 ? "visible" : "hidden"
+            let visibility = switch value {
+            | Some(value) => value->Js.String2.length > 0 ? "visible" : "hidden"
+            | _ => "hidden"
+            }
             let style = ReactDOM.Style.make(~visibility, ())
             let onMouseDown = event => event->ReactEvent.Mouse.preventDefault
             let onClick = onReset

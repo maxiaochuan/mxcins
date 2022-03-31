@@ -10,8 +10,23 @@ import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';
 import { Input, InputRef, InputProps, SearchProps } from './input';
 import { Tooltip, TooltipProps } from './tooltip';
+import { Form, FormProps, FormText, FormPassword } from './form';
 
-export { ConfigProvider, Affix, Button, Divider, Row, Col, Layout, Space, Input, Tooltip };
+export {
+  ConfigProvider,
+  Affix,
+  Button,
+  Divider,
+  Row,
+  Col,
+  Layout,
+  Space,
+  Input,
+  Tooltip,
+  Form,
+  FormText,
+  FormPassword,
+};
 
 export const Twind = {
   tw,
@@ -34,4 +49,5 @@ export type {
   InputRef,
   SearchProps,
   TooltipProps,
+  FormProps,
 };

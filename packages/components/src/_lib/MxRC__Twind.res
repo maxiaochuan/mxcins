@@ -61,6 +61,8 @@ let conf = {
   "theme": {
     "content": {
       "empty": "\"\"",
+      "colon": "\":\"",
+      "asterisk": "\"*\"",
     },
     "screens": {
       "sm": "576px",

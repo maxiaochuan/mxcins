@@ -2,7 +2,16 @@ open MxRC__Antd
 module Input = MxRC__Input
 
 @react.component @genType
-let make = (~className=?, ~placeholder=?, ~disabled) => {
+let make = React.forwardRef((
+  ~className=?,
+  ~placeholder=?,
+  ~disabled=?,
+  ~name=?,
+  ~onChange=?,
+  ~onBlur=?,
+  ~id=?,
+  ref,
+) => {
   let (visible, set) = React.useState(_ => false)
 
   let onMouseDown = event => {
@@ -21,5 +30,16 @@ let make = (~className=?, ~placeholder=?, ~disabled) => {
     ? <EyeOutlined onMouseDown onMouseUp onClick />
     : <EyeInvisibleOutlined onMouseDown onMouseUp onClick />
 
-  <Input _type={visible ? #text : #password} ?className ?placeholder suffix disabled />
-}
+  <Input
+    ref
+    _type={visible ? #text : #password}
+    ?className
+    ?placeholder
+    suffix
+    ?disabled
+    ?name
+    ?onChange
+    ?onBlur
+    ?id
+  />
+})
