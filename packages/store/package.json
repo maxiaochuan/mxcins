@@ -1,0 +1,37 @@
+{
+  "name": "@mxcins/store",
+  "version": "0.0.0-alpha.6",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "nanoid": "3.3.2",
+    "recoil": "0.6.1"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}
