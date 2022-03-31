@@ -4,6 +4,7 @@
   "command": {
     "bootstrap": {},
     "version": {
+      "exact": true,
       "conventionalCommits": true
     },
     "publish": {
