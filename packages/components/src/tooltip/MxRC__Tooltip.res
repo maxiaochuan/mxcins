@@ -32,7 +32,7 @@ module ToolipContent = {
 let make = (~title=?, ~children: React.element) => {
   let idRef = React.useRef(nanoid())
   let (target, setTarget) = React.useState(_ => Js.Nullable.null)
-  let getContainer = getPartalContainer
+  let getContainer = getPartalRoot
 
   let partal =
     <Partal getContainer>

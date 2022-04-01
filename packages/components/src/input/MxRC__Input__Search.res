@@ -10,12 +10,6 @@ module InputSearchTwind = {
   }
 }
 
-let initRef: Input.inputRef = {
-  focus: () => (),
-  blur: () => (),
-  input: None,
-}
-
 @react.component @genType
 let make = (
   ~size=?,
@@ -31,7 +25,7 @@ let make = (
   ~loading=false,
   ~disabled=false,
 ) => {
-  let inputRef = React.useRef(initRef)
+  let inputRef = React.useRef(Js.Nullable.null)
 
   let onChange = event => {
     // on reset
@@ -46,9 +40,9 @@ let make = (
 
   let onSearch = event =>
     onSearch->Belt.Option.forEach(fn =>
-      inputRef.current.input->Belt.Option.forEach(input =>
-        fn(. input->Webapi.Dom.HtmlInputElement.value, event)
-      )
+      inputRef.current
+      ->Js.Nullable.toOption
+      ->Belt.Option.forEach(input => fn(. input->Webapi.Dom.HtmlInputElement.value, event))
     )
 
   let addonAfter = {

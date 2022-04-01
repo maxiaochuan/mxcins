@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Form, useForm, FormText, FormPassword } from '@mxcins/components';
+import { Button, Form, FormText, FormPassword } from '@mxcins/components';
 import { Record } from '../../components';
 
 const LayoutView = () => {
@@ -9,7 +9,7 @@ const LayoutView = () => {
         <Form initialValues={{ username: '123', password: '' }} onFinish={v => console.log('v', v)}>
           <FormText name="username" label="asdf" />
           <FormPassword name="password" />
-          <input type="password" autoComplete="current-password" />
+          <FormText name="u2" label="asdf" required />
           <Button htmlType="submit">submit</Button>
           <Button htmlType="reset">reset</Button>
         </Form>

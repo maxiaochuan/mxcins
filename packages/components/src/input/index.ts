@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { make } from './MxRC__Input.gen';
-import type { Props, InputRef, InputType } from './MxRC__Input.gen';
+import type { Props, InputActionRef, InputType } from './MxRC__Input.gen';
 import { make as Search } from './MxRC__Input__Search.gen';
 import type { Props as SearchProps1 } from './MxRC__Input__Search.gen';
 import { make as TextArea } from './MxRC__Input__TextArea.gen';
@@ -9,8 +9,9 @@ import { make as Password } from './MxRC__Input__Password.gen';
 import type { Props as PasswordProps1 } from './MxRC__Input__Password.gen';
 
 // 2022-03-25 23:53:20 rescript onchange is ReactEvent.Form.t
-interface InputProps extends Omit<Props, 'onChange'> {
+interface InputProps extends Omit<Props, 'onChange' | 'actionRef'> {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  actionRef?: React.MutableRefObject<InputActionRef>;
 }
 
 interface SearchProps extends Omit<SearchProps1, 'onChange'> {
@@ -30,7 +31,7 @@ type TextAreaComponent = React.FunctionComponent<TextAreaProps>;
 type PasswordComponent = React.FunctionComponent<PasswordProps>;
 
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<InputProps & React.RefAttributes<InputRef>> {
+  extends React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>> {
   Search: SearchComponent;
   TextArea: TextAreaComponent;
   Password: PasswordComponent;
@@ -42,4 +43,4 @@ Input.TextArea = TextArea as TextAreaComponent;
 Input.Password = Password as PasswordComponent;
 
 export { Input };
-export type { InputType, InputProps, SearchProps, TextAreaProps, PasswordProps, InputRef };
+export type { InputType, InputProps, SearchProps, TextAreaProps, PasswordProps, InputActionRef };

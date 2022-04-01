@@ -8,9 +8,9 @@ import { Divider, DividerProps } from './divider';
 import { Row, Col, RowProps, ColProps } from './grid';
 import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';
-import { Input, InputRef, InputProps, SearchProps } from './input';
+import { Input, InputActionRef, InputProps, SearchProps } from './input';
 import { Tooltip, TooltipProps } from './tooltip';
-import { Form, FormProps, useForm, FormText, FormPassword } from './form';
+import { Form, FormProps, FormText, FormPassword } from './form';
 
 export {
   ConfigProvider,
@@ -24,7 +24,6 @@ export {
   Input,
   Tooltip,
   Form,
-  useForm,
   FormText,
   FormPassword,
 };
@@ -47,7 +46,7 @@ export type {
   HeaderProps,
   SpaceProps,
   InputProps,
-  InputRef,
+  InputActionRef,
   SearchProps,
   TooltipProps,
   FormProps,

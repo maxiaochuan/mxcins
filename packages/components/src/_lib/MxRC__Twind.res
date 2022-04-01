@@ -26,7 +26,22 @@ let background = {
   HSV.make(~h=0, ~s=0.0, ~v=0.96, ())->hsv2rgb->RGB.toS
 }
 
-external asString: {..} => string = "%identity"
+external toString: {..} => string = "%identity"
+external toAny: 'before => 'any = "%identity"
+external dictToJsObj: Js.Dict.t<_> => Js.t<{..}> = "%identity"
+
+let width = {
+  let width: array<(string, string)> = []
+  for i in 1 to 24 {
+    width
+    ->Js.Array2.push((
+      `${i->Js.Int.toString}/24`,
+      (i->Js.Int.toFloat /. 24.0 *. 100.0)->Js.Float.toFixedWithPrecision(~digits=6) ++ "%",
+    ))
+    ->ignore
+  }
+  width->Js.Dict.fromArray
+}
 
 let conf = {
   "darkMode": "class",
@@ -120,11 +135,11 @@ let conf = {
       },
     },
     "fontSize": {
-      "xs": ["0.75rem", {"lineHeight": "1rem"}->asString],
-      "sm": ["0.875rem", {"lineHeight": "1.375rem"}->asString],
-      "base": ["1rem", {"lineHeight": "1.5rem"}->asString],
-      "lg": ["1.125rem", {"lineHeight": "1.75rem"}->asString],
-      "xl": ["1.25rem", {"lineHeight": "1.75rem"}->asString],
+      "xs": ["0.75rem", {"lineHeight": "1rem"}->toString],
+      "sm": ["0.875rem", {"lineHeight": "1.375rem"}->toString],
+      "base": ["1rem", {"lineHeight": "1.5rem"}->toString],
+      "lg": ["1.125rem", {"lineHeight": "1.75rem"}->toString],
+      "xl": ["1.25rem", {"lineHeight": "1.75rem"}->toString],
     },
     "padding": %raw("
       theme => {
@@ -141,6 +156,22 @@ let conf = {
         return padding;
       }
     "),
+    "width": (
+      theme => {
+        let w = Js.Obj.empty()
+        ->Js.Obj.assign(theme(. "spacing"))
+        ->Js.Obj.assign(width->dictToJsObj)
+        ->Js.Obj.assign({
+          "auto": "auto",
+          "full": "100%",
+          "screen": "100vw",
+          "min": "min-content",
+          "max": "max-content",
+        })
+        "asdf"->Js.log3(w, theme(. "spacing"))
+        w
+      }
+    )->toAny,
     "minWidth": %raw("theme => theme('width')"),
     "boxShadow": {
       "none": "none",

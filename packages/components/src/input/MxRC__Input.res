@@ -2,8 +2,8 @@ open MxRC__Antd
 open MxRC__ConfigProvider.ConfigContext
 module Twind = MxRC__Input__Twind
 
-@genType.as("InputRef")
-type inputRef = {
+@genType.as("InputActionRef")
+type actionRef = {
   focus: unit => unit,
   blur: unit => unit,
   input: option<Dom.htmlInputElement>,
@@ -50,7 +50,8 @@ let make = React.forwardRef((
   ~disabled=false,
   ~id=?,
   ~name=?,
-  ~autoComplete="on",
+  ~autoComplete="off",
+  ~actionRef: option<Js.Nullable.t<React.ref<actionRef>>>=?,
   ref,
 ) => {
   let size = size->useSizeConfig
@@ -93,7 +94,8 @@ let make = React.forwardRef((
       })
     )
 
-  React.useImperativeHandle0(ref, () => {
+  React.useImperativeHandle0(ref, () => inputRef.current)
+  React.useImperativeHandle0(actionRef->Belt.Option.getUnsafe, () => {
     {
       input: inputRef.current
       ->Js.Nullable.toOption
