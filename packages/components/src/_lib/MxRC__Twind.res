@@ -43,42 +43,60 @@ let width = {
   width->Js.Dict.fromArray
 }
 
-let conf = {
-  "darkMode": "class",
-  "plugins": {"content": content},
-  "preflight": {
-    ":root": {
-      "--color-primary": colors["blue"]["primary"],
-      "--color-primary-hover": colors["blue"]["4"],
-      "--color-primary-active": colors["blue"]["6"],
-      "--color-primary-outline": colors["blue"]["1"],
-      "--color-danger": colors["red"]["primary"],
-      "--color-danger-hover": colors["red"]["4"],
-      "--color-danger-active": colors["red"]["6"],
-      "--color-link": colors["blue"]["primary"],
-      "--color-link-hover": colors["blue"]["4"],
-      "--color-link-active": colors["blue"]["6"],
-      "--color-warning": colors["gold"]["primary"],
-      "--color-warning-hover": colors["gold"]["4"],
-      "--color-warning-active": colors["gold"]["6"],
-      "--color-warning-outline": colors["gold"]["1"],
-      "--color-error": colors["red"]["primary"],
-      "--color-error-hover": colors["red"]["4"],
-      "--color-error-active": colors["red"]["6"],
-      "--color-error-outline": colors["red"]["1"],
-    },
-    "button:focus": {"outline": "0"},
-    ":focus-visible": {"outline": "0"},
-    /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
-    "svg": {"vertical-align": "initial"},
-    /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
-  },
+let colors = {
+  "--color-primary": colors["blue"]["primary"],
+  "--color-primary-hover": colors["blue"]["4"],
+  "--color-primary-active": colors["blue"]["6"],
+  "--color-primary-outline": colors["blue"]["1"],
+  "--color-danger": colors["red"]["primary"],
+  "--color-danger-hover": colors["red"]["4"],
+  "--color-danger-active": colors["red"]["6"],
+  "--color-link": colors["blue"]["primary"],
+  "--color-link-hover": colors["blue"]["4"],
+  "--color-link-active": colors["blue"]["6"],
+  "--color-warning": colors["gold"]["primary"],
+  "--color-warning-hover": colors["gold"]["4"],
+  "--color-warning-active": colors["gold"]["6"],
+  "--color-warning-outline": colors["gold"]["1"],
+  "--color-error": colors["red"]["primary"],
+  "--color-error-hover": colors["red"]["4"],
+  "--color-error-active": colors["red"]["6"],
+  "--color-error-outline": colors["red"]["1"],
+}
+
+let assignWithDefault = (o, i) => Js.Obj.empty()->Js.Obj.assign(i)->Js.Obj.assign(o)
+
+let find = %raw("function get(o, properties) {
+  if (properties.length) {
+    const k = properties.shift();
+    const current = o[k];
+    if (typeof current !== 'object') {
+      return {}
+    }
+    return get(current, properties);
+  }
+  return o;
+}")
+
+let conf = (override: option<{..}>) => {
+  let override = override->Belt.Option.getWithDefault(Js.Obj.empty())
+  {
+    "darkMode": override["darkMode"]->Belt.Option.getWithDefault("class"),
+    "plugins": {"content": content},
+    "preflight": override->find(["preflight"])->assignWithDefault({
+      ":root": colors,
+      "button:focus": {"outline": "0"},
+      ":focus-visible": {"outline": "0"},
+      /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
+      "svg": {"vertical-align": "initial"},
+      /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
+    }),
   "theme": {
-    "content": {
+    "content": override->find(["theme", "content"])->assignWithDefault({
       "empty": "\"\"",
       "colon": "\":\"",
       "asterisk": "\"*\"",
-    },
+    }),
     "screens": {
       "sm": "576px",
       "md": "768px",
@@ -175,7 +193,6 @@ let conf = {
     "minWidth": %raw("theme => theme('width')"),
     "boxShadow": {
       "none": "none",
-      // "input-focus": "0 0 0 2px var(--color-primary-outline)",
       "input-focus": "0 0 0 2px var(--color-primary-outline)",
       "input-focus-warning": "0 0 0 2px var(--color-warning-outline)",
       "input-focus-error": "0 0 0 2px var(--color-error-outline)",
@@ -197,4 +214,5 @@ let conf = {
       "DEFAULT": "300ms",
     },
   },
+  }
 }

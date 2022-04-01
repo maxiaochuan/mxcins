@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ConfigProvider } from '@mxcins/components';
 import routes from './.mx/render';
 
-ConfigProvider.setup();
+ConfigProvider.setup({});
 
 ReactDOM.render(
   <React.StrictMode>

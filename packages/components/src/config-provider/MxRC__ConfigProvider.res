@@ -62,7 +62,7 @@ module ConfigContext = {
 }
 
 @genType
-let setup = () => MxRC__Twind.setup(MxRC__Twind.conf)
+let setup = (override: 'override) => MxRC__Twind.setup(Obj.magic(override)->MxRC__Twind.conf)
 
 @react.component @genType
 let make = (
