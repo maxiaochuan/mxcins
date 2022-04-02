@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.5](https://github.com/maxiaochuan/mxcins/compare/@mxcins/webapi@1.0.0-alpha.4...@mxcins/webapi@1.0.0-alpha.5) (2022-04-02)
+
+
+### Features
+
+* **webapi:** build ([30f3ee4](https://github.com/maxiaochuan/mxcins/commit/30f3ee469749bf05ec5a27acfd8729d4f85ea948))
+
+
+
+
+
 # [1.0.0-alpha.4](https://github.com/maxiaochuan/mxcins/compare/@mxcins/webapi@1.0.0-alpha.3...@mxcins/webapi@1.0.0-alpha.4) (2022-04-02)
 
 **Note:** Version bump only for package @mxcins/webapi

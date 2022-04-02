@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.5](https://github.com/maxiaochuan/mxcins/compare/@mxcins/hooks@3.0.0-alpha.4...@mxcins/hooks@3.0.0-alpha.5) (2022-04-02)
+
+**Note:** Version bump only for package @mxcins/hooks
+
+
+
+
+
 # [3.0.0-alpha.4](https://github.com/maxiaochuan/mxcins/compare/@mxcins/hooks@3.0.0-alpha.3...@mxcins/hooks@3.0.0-alpha.4) (2022-04-02)
 
 **Note:** Version bump only for package @mxcins/hooks
