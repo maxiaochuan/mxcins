@@ -1,8 +1,8 @@
 module FormContext = {
-  type value = { colspan: (int, int) }
+  type value = {colspan: (int, int)}
 
   let initColspan = (6, 18)
-  let initContext = { colspan: initColspan }
+  let initContext = {colspan: initColspan}
 
   let makeContext = (~colspan) => {
     {

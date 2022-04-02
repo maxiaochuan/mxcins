@@ -83,7 +83,9 @@ let conf = (override: option<{..}>) => {
   {
     "darkMode": override["darkMode"]->Belt.Option.getWithDefault("class"),
     "plugins": {"content": content},
-    "preflight": override->find(["preflight"])->assignWithDefault({
+    "preflight": override
+    ->find(["preflight"])
+    ->assignWithDefault({
       ":root": colors,
       "button:focus": {"outline": "0"},
       ":focus-visible": {"outline": "0"},
@@ -91,75 +93,77 @@ let conf = (override: option<{..}>) => {
       "svg": {"vertical-align": "initial"},
       /* ------ 2022-03-10 12:00:12 默认的 middle 会影响 anticon的样式  ------ */
     }),
-  "theme": {
-    "content": override->find(["theme", "content"])->assignWithDefault({
-      "empty": "\"\"",
-      "colon": "\":\"",
-      "asterisk": "\"*\"",
-    }),
-    "screens": {
-      "sm": "576px",
-      "md": "768px",
-      "lg": "992px",
-      "xl": "1200px",
-      "2xl": "1600px",
-    },
-    "colors": {
-      "initial": "initial",
-      "transparent": "transparent",
-      "white": "#fff",
-      "black": "#000",
-      "primary": {
-        "DEFAULT": "var(--color-primary)",
-        "hover": "var(--color-primary-hover)",
-        "active": "var(--color-primary-active)",
+    "theme": {
+      "content": override
+      ->find(["theme", "content"])
+      ->assignWithDefault({
+        "empty": "\"\"",
+        "colon": "\":\"",
+        "asterisk": "\"*\"",
+      }),
+      "screens": {
+        "sm": "576px",
+        "md": "768px",
+        "lg": "992px",
+        "xl": "1200px",
+        "2xl": "1600px",
       },
-      "danger": {
-        "DEFAULT": "var(--color-danger)",
-        "hover": "var(--color-danger-hover)",
-        "active": "var(--color-danger-active)",
-      },
-      "link": {
-        "DEFAULT": "var(--color-link)",
-        "hover": "var(--color-link-hover)",
-        "active": "var(--color-link-active)",
-      },
-      "warning": {
-        "DEFAULT": "var(--color-warning)",
-        "hover": "var(--color-warning-hover)",
-        "active": "var(--color-warning-active)",
-        "outline": "var(--color-warning-outline)",
-      },
-      "error": {
-        "DEFAULT": "var(--color-error)",
-        "hover": "var(--color-error-hover)",
-        "active": "var(--color-error-active)",
-        "outline": "var(--color-error-outline)",
-      },
-      "text": {
-        "DEFAULT": "rgba(0, 0, 0, .85)",
-        "secondary": "rgba(0, 0, 0, .45)",
-        "disabled": "rgba(0, 0, 0, 0.25)",
-      },
-      "background": {
-        "DEFAULT": background,
-        "disabled": background,
-      },
-      "border": {
-        "DEFAULT": {
-          open MxRC__Colord
-          HSV.make(~h=0, ~s=0.0, ~v=0.85, ())->hsv2rgb->RGB.toS
+      "colors": {
+        "initial": "initial",
+        "transparent": "transparent",
+        "white": "#fff",
+        "black": "#000",
+        "primary": {
+          "DEFAULT": "var(--color-primary)",
+          "hover": "var(--color-primary-hover)",
+          "active": "var(--color-primary-active)",
+        },
+        "danger": {
+          "DEFAULT": "var(--color-danger)",
+          "hover": "var(--color-danger-hover)",
+          "active": "var(--color-danger-active)",
+        },
+        "link": {
+          "DEFAULT": "var(--color-link)",
+          "hover": "var(--color-link-hover)",
+          "active": "var(--color-link-active)",
+        },
+        "warning": {
+          "DEFAULT": "var(--color-warning)",
+          "hover": "var(--color-warning-hover)",
+          "active": "var(--color-warning-active)",
+          "outline": "var(--color-warning-outline)",
+        },
+        "error": {
+          "DEFAULT": "var(--color-error)",
+          "hover": "var(--color-error-hover)",
+          "active": "var(--color-error-active)",
+          "outline": "var(--color-error-outline)",
+        },
+        "text": {
+          "DEFAULT": "rgba(0, 0, 0, .85)",
+          "secondary": "rgba(0, 0, 0, .45)",
+          "disabled": "rgba(0, 0, 0, 0.25)",
+        },
+        "background": {
+          "DEFAULT": background,
+          "disabled": background,
+        },
+        "border": {
+          "DEFAULT": {
+            open MxRC__Colord
+            HSV.make(~h=0, ~s=0.0, ~v=0.85, ())->hsv2rgb->RGB.toS
+          },
         },
       },
-    },
-    "fontSize": {
-      "xs": ["0.75rem", {"lineHeight": "1rem"}->toString],
-      "sm": ["0.875rem", {"lineHeight": "1.375rem"}->toString],
-      "base": ["1rem", {"lineHeight": "1.5rem"}->toString],
-      "lg": ["1.125rem", {"lineHeight": "1.75rem"}->toString],
-      "xl": ["1.25rem", {"lineHeight": "1.75rem"}->toString],
-    },
-    "padding": %raw("
+      "fontSize": {
+        "xs": ["0.75rem", {"lineHeight": "1rem"}->toString],
+        "sm": ["0.875rem", {"lineHeight": "1.375rem"}->toString],
+        "base": ["1rem", {"lineHeight": "1.5rem"}->toString],
+        "lg": ["1.125rem", {"lineHeight": "1.75rem"}->toString],
+        "xl": ["1.25rem", {"lineHeight": "1.75rem"}->toString],
+      },
+      "padding": %raw("
       theme => {
         const spacing = theme('spacing');
         const padding = {
@@ -174,45 +178,47 @@ let conf = (override: option<{..}>) => {
         return padding;
       }
     "),
-    "width": (
-      theme => {
-        let w = Js.Obj.empty()
-        ->Js.Obj.assign(theme(. "spacing"))
-        ->Js.Obj.assign(width->dictToJsObj)
-        ->Js.Obj.assign({
-          "auto": "auto",
-          "full": "100%",
-          "screen": "100vw",
-          "min": "min-content",
-          "max": "max-content",
-        })
-        "asdf"->Js.log3(w, theme(. "spacing"))
-        w
-      }
-    )->toAny,
-    "minWidth": %raw("theme => theme('width')"),
-    "boxShadow": {
-      "none": "none",
-      "input-focus": "0 0 0 2px var(--color-primary-outline)",
-      "input-focus-warning": "0 0 0 2px var(--color-warning-outline)",
-      "input-focus-error": "0 0 0 2px var(--color-error-outline)",
+      "width": (
+        theme => {
+          let w =
+            Js.Obj.empty()
+            ->Js.Obj.assign(theme(. "spacing"))
+            ->Js.Obj.assign(width->dictToJsObj)
+            ->Js.Obj.assign({
+              "auto": "auto",
+              "full": "100%",
+              "screen": "100vw",
+              "min": "min-content",
+              "max": "max-content",
+            })
+          "asdf"->Js.log3(w, theme(. "spacing"))
+          w
+        }
+      )->toAny,
+      "minWidth": %raw("theme => theme('width')"),
+      "minHeight": %raw("theme => theme('height')"),
+      "boxShadow": {
+        "none": "none",
+        "input-focus": "0 0 0 2px var(--color-primary-outline)",
+        "input-focus-warning": "0 0 0 2px var(--color-warning-outline)",
+        "input-focus-error": "0 0 0 2px var(--color-error-outline)",
+      },
+      "zIndex": {
+        "auto": "auto",
+        "0": "0",
+        "1": "1",
+        "10": "10",
+        "20": "20",
+        "30": "30",
+        "40": "40",
+        "50": "50",
+      },
+      "transitionTimingFunction": {
+        "DEFAULT": "ease",
+      },
+      "transitionDuration": {
+        "DEFAULT": "300ms",
+      },
     },
-    "zIndex": {
-      "auto": "auto",
-      "0": "0",
-      "1": "1",
-      "10": "10",
-      "20": "20",
-      "30": "30",
-      "40": "40",
-      "50": "50",
-    },
-    "transitionTimingFunction": {
-      "DEFAULT": "ease",
-    },
-    "transitionDuration": {
-      "DEFAULT": "300ms",
-    },
-  },
   }
 }

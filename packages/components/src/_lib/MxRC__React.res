@@ -6,6 +6,8 @@ module Children = {
   external asString: React.element => string = "%identity"
 }
 
+@module("./_externals.js") @val external combineRef: (React.element, 'ref) => 'ref = "combineRef"
+
 module Partal = {
   @react.component @genType
   let make = (~getContainer: unit => Dom.element, ~children=?) => {

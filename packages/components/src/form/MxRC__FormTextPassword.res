@@ -1,4 +1,4 @@
-module Input = MxRC__Input
+module Password = MxRC__Input__Password
 module Field = MxRC__FormField
 
 @react.component @genType
@@ -13,6 +13,6 @@ let make = (
   ~fieldProps=?,
 ) => {
   <Field name ?className ?label ?required ?placeholder ?register ?hideLabel>
-    {React.createElement(Input.make, fieldProps->Belt.Option.getUnsafe)}
+    {React.createElement(Password.make, fieldProps->Belt.Option.getUnsafe)}
   </Field>
 }

@@ -24,7 +24,6 @@
     "build": "run-s build:*",
     "build:res": "rescript",
     "build:vite": "vite build && tsc",
-    "build:clean": "rescript clean",
     "clean": "rescript clean",
     "dev": "rescript build -w"
   },

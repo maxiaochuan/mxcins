@@ -26,8 +26,8 @@ exception AddonAfterConflict
 
 @react.component @genType
 let make = React.forwardRef((
-  ~size=?,
   ~_type: _type=#text,
+  ~size=?,
   ~className=?,
   ~groupStyle=?,
   ~placeholder=?,

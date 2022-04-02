@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 const isBreakpointRecord = input => {
   if (Array.isArray(input)) {
     return input.some(row => isBreakpointRecord(row));
@@ -36,6 +38,34 @@ const makeSpacingByBreakpoints = (spacing, screens) => {
   const k2 = screens.find(breakpoint => !!h2[breakpoint]);
   return [(k1 && h1[k1]) || 0, (k2 && h2[k2]) || 0];
 };
+
+export function fillRef(ref, node) {
+  if (typeof ref === 'function') {
+    ref(node);
+  } else if (typeof ref === 'object' && ref && 'current' in ref) {
+    ref.current = node;
+  }
+}
+
+export function composeRef(...refs) {
+  const refList = refs.filter(ref => ref);
+  if (refList.length <= 1) {
+    return refList[0];
+  }
+
+  return node => {
+    refs.forEach(ref => {
+      fillRef(ref, node);
+    });
+  };
+}
+
+export function combineRef(children, ref) {
+  if (React.isValidElement(children)) {
+    return composeRef(children.props.ref, ref);
+  }
+  return undefined;
+}
 
 export {
   anyToBreakpointRecord,
