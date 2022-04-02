@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable max-classes-per-file */
-import { tuple } from '@mxcins/types';
 import omit from './omit';
+
+const tuple: <T extends string[]>(...args: T) => T = (...args) => args;
 
 const BUILTIN_KEYS = tuple('parent', 'children', 'ancestors', 'proletariats');
 
