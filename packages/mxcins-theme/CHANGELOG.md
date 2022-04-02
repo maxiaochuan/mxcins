@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.10](https://github.com/maxiaochuan/mxcins/compare/@mxcins/theme@1.0.9...@mxcins/theme@1.0.10) (2022-04-02)
+
+
+### Bug Fixes
+
+* style ([72620c3](https://github.com/maxiaochuan/mxcins/commit/72620c3cdcaa97c232ea4a9f79422bb9dfeeeb48))
+
+
+
+
+
 ## [1.0.9](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-theme/compare/@mxcins/theme@1.0.8...@mxcins/theme@1.0.9) (2021-03-20)
 
 

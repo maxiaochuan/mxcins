@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0-alpha.2](https://github.com/maxiaochuan/mxcins/compare/babel-preset-mxcins@0.4.0-alpha.1...babel-preset-mxcins@0.4.0-alpha.2) (2022-04-02)
+
+
+### Bug Fixes
+
+* style ([72620c3](https://github.com/maxiaochuan/mxcins/commit/72620c3cdcaa97c232ea4a9f79422bb9dfeeeb48))
+
+
+
+
+
 # [0.4.0-alpha.1](https://github.com/maxiaochuan/mxcins/tree/master/packages/babel-preset-mxcins/compare/babel-preset-mxcins@0.4.0-alpha.0...babel-preset-mxcins@0.4.0-alpha.1) (2020-12-17)
 
 

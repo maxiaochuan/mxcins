@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/maxiaochuan/mxcins/compare/@mxcins/request@3.3.1...@mxcins/request@3.4.0) (2022-04-02)
+
+
+### Bug Fixes
+
+* style ([72620c3](https://github.com/maxiaochuan/mxcins/commit/72620c3cdcaa97c232ea4a9f79422bb9dfeeeb48))
+
+
+### Features
+
+* **request:** test ([ccce172](https://github.com/maxiaochuan/mxcins/commit/ccce1726f1e777bf02c5e9fc815fd20cabf1cd3f))
+
+
+
+
+
 ## [3.3.1](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-reqeust/compare/@mxcins/request@3.3.0...@mxcins/request@3.3.1) (2021-06-24)
 
 

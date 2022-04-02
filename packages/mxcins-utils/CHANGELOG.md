@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/maxiaochuan/mxcins/compare/@mxcins/utils@1.13.10...@mxcins/utils@1.14.0) (2022-04-02)
+
+
+### Bug Fixes
+
+* style ([72620c3](https://github.com/maxiaochuan/mxcins/commit/72620c3cdcaa97c232ea4a9f79422bb9dfeeeb48))
+
+
+### Features
+
+* **utils:** dependencies ([b812bf6](https://github.com/maxiaochuan/mxcins/commit/b812bf6d6819f2c496cf71c4112d05e3457a2d29))
+
+
+
+
+
 ## [1.13.10](https://github.com/maxiaochuan/mxcins/tree/master/packages/mxcins-utils/compare/@mxcins/utils@1.13.9...@mxcins/utils@1.13.10) (2021-03-01)
 
 
