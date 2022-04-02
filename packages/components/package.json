@@ -1,6 +1,6 @@
 {
   "name": "@mxcins/components",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "",
   "homepage": "https://github.com/maxiaochuan/mxcins",
   "bugs": {
@@ -29,13 +29,13 @@
   },
   "dependencies": {
     "@ant-design/colors": "6.0.0",
-    "@mxcins/hooks": "3.0.0-alpha.3",
-    "@mxcins/webapi": "1.0.0-alpha.3",
+    "@mxcins/hooks": "3.0.0-alpha.4",
+    "@mxcins/webapi": "1.0.0-alpha.4",
     "@rescript/react": "0.10.3",
     "@twind/content": "0.1.0",
     "nanoid": "3.3.2",
-    "react-hook-form": "7.29.0",
     "rc-motion": "2.4.5",
+    "react-hook-form": "7.29.0",
     "rescript-webapi": "0.6.1",
     "twind": "0.16.16"
   },

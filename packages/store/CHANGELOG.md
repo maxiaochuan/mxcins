@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.0.0-alpha.8](https://github.com/maxiaochuan/mxcins/compare/@mxcins/store@0.0.0-alpha.7...@mxcins/store@0.0.0-alpha.8) (2022-04-02)
+
+**Note:** Version bump only for package @mxcins/store
+
+
+
+
+
 # 0.0.0-alpha.7 (2022-03-31)
 
 

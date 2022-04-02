@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/maxiaochuan/mxcins/compare/@mxcins/components@1.0.0-alpha.3...@mxcins/components@1.0.0-alpha.4) (2022-04-02)
+
+
+### Features
+
+* **components:** form ([da54bfb](https://github.com/maxiaochuan/mxcins/commit/da54bfbc1168c45231af9204aa0cfd4c68a80924))
+* **components:** form ([95b83f5](https://github.com/maxiaochuan/mxcins/commit/95b83f5daf5b2148886007fed067b4610c5d72a3))
+* **components:** form field ([18dbeea](https://github.com/maxiaochuan/mxcins/commit/18dbeea2c71433d2f97453740cf16c595c8e9498))
+* **components:** form init values ([43ef277](https://github.com/maxiaochuan/mxcins/commit/43ef277741e91aa4250199eccc9dd5dacee3a83a))
+* **components:** form text field ([dd0d463](https://github.com/maxiaochuan/mxcins/commit/dd0d46359ba405cb5d2d69f36ebb5e256848c137))
+* **components:** input name ([11a1439](https://github.com/maxiaochuan/mxcins/commit/11a1439e0f78446021a66b006ece7a97e4ce41f7))
+* **components:** lib rename ([0bdb277](https://github.com/maxiaochuan/mxcins/commit/0bdb277c1a6162b4f438cc684d8452b1662bee93))
+* **components:** update config provider setup ([8638e89](https://github.com/maxiaochuan/mxcins/commit/8638e8971460ad942e757255b1ef7e464fe57f2d))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/maxiaochuan/mxcins/compare/@mxcins/components@1.0.0-alpha.2...@mxcins/components@1.0.0-alpha.3) (2022-03-31)
 
 
