@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/maxiaochuan/mxcins/compare/@mxcins/webapi@1.0.0-alpha.5...@mxcins/webapi@1.0.0-alpha.6) (2022-04-02)
+
+
+### Bug Fixes
+
+* **webapi:** package.json files add dist ([096f20b](https://github.com/maxiaochuan/mxcins/commit/096f20b7052dab9276f36e98488e99bd812cbebe))
+
+
+
+
+
 # [1.0.0-alpha.5](https://github.com/maxiaochuan/mxcins/compare/@mxcins/webapi@1.0.0-alpha.4...@mxcins/webapi@1.0.0-alpha.5) (2022-04-02)
 
 
