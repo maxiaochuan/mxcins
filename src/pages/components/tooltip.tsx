@@ -9,8 +9,14 @@ const $id = (id: string) => document.getElementById(id);
 const TooltipView = () => {
   return (
     <>
-      <div className={tw`flex items-center justify-center pt-10 text-xl`}>
-        <Tooltip title="title">
+      <div className={tw`flex items-center justify-around pt-10 text-xl`}>
+        <Tooltip title="title" placement="top">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="topLeft">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="topRight">
           <Button type="primary">按钮</Button>
         </Tooltip>
       </div>
