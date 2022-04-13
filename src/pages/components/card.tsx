@@ -17,6 +17,11 @@ const CardView = () => {
           <div>content</div>
           <div>content</div>
         </Card>
+        <Card size="small" title="title" bordered={false}>
+          <div>content</div>
+          <div>content</div>
+          <div>content</div>
+        </Card>
         </div>
       </Record>
     </>

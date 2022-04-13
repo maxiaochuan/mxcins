@@ -7,19 +7,15 @@ module Twind = {
     let push = classes->Js.Array2.push
 
     if bordered {
-      "border(1 solid border) rounded-sm"->push->ignore
+      "border(1 solid border-split) rounded-sm"->push->ignore
     }
 
     classes->atw(~class?)
   }
 
-  let makeHead = (~size, ~bordered) => {
-    let classes = []
+  let makeHead = (~size) => {
+    let classes = ["border(b-1 solid border-split) rounded-sm"]
     let push = classes->Js.Array2.push
-
-    if bordered {
-      "border(b-1 solid border) rounded-sm"->push->ignore
-    }
 
     switch size {
     | #default => "px-5 text-base"->push->ignore
@@ -83,7 +79,7 @@ let make = (
   let className = className->Twind.make(~bordered)
 
   let head = switch title {
-  | Some(title) => <div className={Twind.makeHead(~size, ~bordered)}>
+  | Some(title) => <div className={Twind.makeHead(~size)}>
       <div className={Twind.makeHeadContent()}>
         <div className={Twind.makeTitle(~size)}> {title->React.string} </div>
       </div>

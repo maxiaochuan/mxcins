@@ -154,6 +154,7 @@ let conf = (override: option<{..}>) => {
             open MxRC__Colord
             HSV.make(~h=0, ~s=0.0, ~v=0.85, ())->hsv2rgb->RGB.toS
           },
+          "split": "rgba(0,0,0,.06)",
         },
       },
       "fontSize": {
