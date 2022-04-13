@@ -191,7 +191,6 @@ let conf = (override: option<{..}>) => {
               "min": "min-content",
               "max": "max-content",
             })
-          "asdf"->Js.log3(w, theme(. "spacing"))
           w
         }
       )->toAny,

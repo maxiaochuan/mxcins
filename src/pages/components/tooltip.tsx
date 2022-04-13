@@ -9,7 +9,7 @@ const $id = (id: string) => document.getElementById(id);
 const TooltipView = () => {
   return (
     <>
-      <div className={tw`flex items-center justify-around pt-10 text-xl`}>
+      <div className={tw`flex items-center justify-around pt-[100px] text-xl`}>
         <Tooltip title="title" placement="top">
           <Button type="primary">按钮</Button>
         </Tooltip>
@@ -17,6 +17,39 @@ const TooltipView = () => {
           <Button type="primary">按钮</Button>
         </Tooltip>
         <Tooltip title="title" placement="topRight">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+      </div>
+      <div className={tw`flex items-center justify-around pt-[100px] text-xl`}>
+        <Tooltip title="title" placement="bottom">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="bottomLeft">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="bottomRight">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+      </div>
+      <div className={tw`flex items-center justify-around pt-[100px] text-xl`}>
+        <Tooltip title="title" placement="left">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="leftTop">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="leftBottom">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+      </div>
+      <div className={tw`flex items-center justify-around pt-[100px] text-xl`}>
+        <Tooltip title="title" placement="right">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="rightTop">
+          <Button type="primary">按钮</Button>
+        </Tooltip>
+        <Tooltip title="title" placement="rightBottom">
           <Button type="primary">按钮</Button>
         </Tooltip>
       </div>

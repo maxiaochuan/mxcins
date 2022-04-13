@@ -12,8 +12,16 @@ type placement = [top | bottom | left | right]
 
 module Twind = {
   open MxRC__Twind
-  let makeContent = () => {
-    let classes = ["block pb-3 z-50"]
+  let makeContent = (~placement) => {
+    let classes = ["block"]
+    let push = classes->Js.Array2.push
+    switch placement {
+    | #...top => "pb-3"->push->ignore
+    | #...bottom => "pt-3"->push->ignore
+    | #...left => "pr-3"->push->ignore
+    | #...right => "pl-3"->push->ignore
+    | _ => ()
+    }
     classes->atw
   }
   let makeTextContent = () => {
@@ -21,27 +29,50 @@ module Twind = {
     classes->atw
   }
 
+  let arrowWidth = 6.0 *. Js.Math.sqrt(2.0)
+  let arrowRotateWidth = Js.Math.sqrt(arrowWidth *. arrowWidth *. 2.0)
+
   let makeArrow = (~placement) => {
-    let classes = ["absolute w-5 h-5 -translate-y-2/4"]
+    let classes = ["absolute w-[22px] h-[22px] overflow-hidden"]
     let push = classes->Js.Array2.push
 
     switch placement {
-    | #...top => "-bottom-2.5"->push->ignore
+    | #...top => " -translate-y-2/4 bottom-[-21px]"->push->ignore
+    | #...bottom => "-translate-y-2/4 top-[1px] rotate-180"->push->ignore
+    | #...left => "-rotate-90 right-[-10px]"->push->ignore
+    | #...right => "rotate-90 left-[-10px]"->push->ignore
+    | _ => ()
+    }
+    switch placement {
+    | #top => "left-1/2 -translate-x-2/4"->push->ignore
+    | #topRight => "right-0"->push->ignore
+    | #bottom => "left-1/2 -translate-x-2/4"->push->ignore
+    | #bottomRight => "right-0"->push->ignore
+    | #left => "top-1/2 -translate-y-2/4"->push->ignore
+    | #leftBottom => "bottom-0"->push->ignore
+    | #right => "top-1/2 -translate-y-2/4"->push->ignore
+    | #rightBottom => "bottom-0"->push->ignore
     | _ => ()
     }
     classes->atw
   }
 
   let makeArrowContent = () => {
-    let classes = [
-      "
-      block absolute inset-0 content-empty w-3 h-3 m-auto rotate-45
-      before::(block absolute -top-3, -bottom-4 content-empty)
-    ",
-    ]
+    let classes = ["block absolute inset-0 m-auto rotate-45 before::(block absolute content-empty)"]
     let push = classes->Js.Array2.push
+
     css({
-      "background": "inear-gradient(to left,rgba(0, 0, 0, 0.75) 50%,rgba(0, 0, 0, 0.75) 50%) no-repeat -10px -10px;",
+      "width": arrowWidth->Js.Float.toString ++ "px",
+      "height": arrowWidth->Js.Float.toString ++ "px",
+      "--tw-translate-y": "-" ++ arrowWidth->Js.Float.toString ++ "px",
+      "--tw-translate-x": "0",
+      "&::before": {
+        "top": "-" ++ arrowWidth->Js.Float.toString ++ "px",
+        "left": "-" ++ arrowWidth->Js.Float.toString ++ "px",
+        "width": (arrowWidth *. 3.0)->Js.Float.toString ++ "px",
+        "height": (arrowWidth *. 3.0)->Js.Float.toString ++ "px",
+        "background": "linear-gradient(to left,rgba(0, 0, 0, 0.75) 50%,rgba(0, 0, 0, 0.75) 50%) no-repeat -10px -10px",
+      },
     })
     ->push
     ->ignore
@@ -52,20 +83,27 @@ module Twind = {
 
 module ToolipContent = {
   @react.component @genType
-  let make = (~id, ~content, ~placement, ~target: Js.Nullable.t<Dom.element>) => {
+  let make = (~id, ~content, ~placement: placement, ~target: Js.Nullable.t<Dom.element>) => {
     let divRef = React.useRef(Js.Nullable.null)
 
     let points = switch placement {
     | #top => (#bc, #tc)
     | #topLeft => (#bl, #tl)
     | #topRight => (#br, #tr)
-    | _ => (#cc, #cc)
+    | #bottom => (#tc, #bc)
+    | #bottomLeft => (#tl, #bl)
+    | #bottomRight => (#tr, #br)
+    | #left => (#cr, #cl)
+    | #leftTop => (#tr, #tl)
+    | #leftBottom => (#br, #bl)
+    | #right => (#cl, #cr)
+    | #rightTop => (#tl, #tr)
+    | #rightBottom => (#bl, #br)
     }
 
     React.useEffect1(() => {
       switch (divRef.current->Js.Nullable.toOption, target->Js.Nullable.toOption) {
       | (Some(source), Some(target)) => {
-          "render"->Js.log3(source, target)
           source->DomMover.align(target, ~points, ())->ignore
         }
       | (_, _) => ()
@@ -78,21 +116,20 @@ module ToolipContent = {
       <div
         ref={divRef->ReactDOM.Ref.domRef}
         style={ReactDOM.Style.make(~position="absolute", ())}
-        className={Twind.makeContent()}>
+        className={Twind.makeContent(~placement)}>
         <div className={Twind.makeArrow(~placement)}>
           <span className={Twind.makeArrowContent()} />
         </div>
+        <div className={Twind.makeTextContent()}> {React.string(content)} </div>
       </div>
     </div>
   }
 }
 
-// <div className={Twind.makeTextContent()}>{React.string(content)}</div>
-
 @react.component @genType
-let make = (~title=?, ~placement=#top, ~children: React.element) => {
+let make = (~title=?, ~placement:placement=#top, ~children: React.element) => {
   let idRef = React.useRef(nanoid())
-  let (target, setTarget) = React.useState(_ => Js.Nullable.null)
+  let (target, set) = React.useState(_ => Js.Nullable.null)
   let getContainer = getPartalRoot
 
   let partal =
@@ -102,7 +139,7 @@ let make = (~title=?, ~placement=#top, ~children: React.element) => {
       />
     </Partal>
 
-  let children = React.cloneElement(children, {"ref": setTarget})
+  let children = React.cloneElement(children, {"ref": set})
 
   <> partal children </>
 }

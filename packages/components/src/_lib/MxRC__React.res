@@ -19,8 +19,6 @@ module Partal = {
       containerRef.current = getContainer()->Some
     }
 
-    "partal render"->Js.log3(containerRef.current, children)
-
     containerRef.current->Belt.Option.isSome
       ? ReactDOM.createPortal(children, containerRef.current->Belt.Option.getUnsafe)
       : React.null
