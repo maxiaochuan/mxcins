@@ -103,9 +103,7 @@ module ToolipContent = {
 
     React.useEffect1(() => {
       switch (divRef.current->Js.Nullable.toOption, target->Js.Nullable.toOption) {
-      | (Some(source), Some(target)) => {
-          source->DomMover.align(target, ~points, ())->ignore
-        }
+      | (Some(source), Some(target)) => source->DomMover.align(target, ~points, ())->ignore
       | (_, _) => ()
       }
 
@@ -127,17 +125,21 @@ module ToolipContent = {
 }
 
 @react.component @genType
-let make = (~title=?, ~placement:placement=#top, ~children: React.element) => {
+let make = (~title=?, ~placement: placement=#top, ~children: React.element) => {
   let idRef = React.useRef(nanoid())
   let (target, set) = React.useState(_ => Js.Nullable.null)
+  let (visible, changeVisible) = React.useState(_ => false)
+  let isRendered = React.useRef(false)
+  isRendered.current = isRendered.current === true ? true : visible
   let getContainer = getPartalRoot
 
-  let partal =
-    <Partal getContainer>
-      <ToolipContent
-        placement id={idRef.current} target content={title->Belt.Option.getWithDefault("")}
-      />
-    </Partal>
+  let partal = isRendered.current
+    ? <Partal getContainer>
+        <ToolipContent
+          placement id={idRef.current} target content={title->Belt.Option.getWithDefault("")}
+        />
+      </Partal>
+    : React.null
 
   let children = React.cloneElement(children, {"ref": set})
 
