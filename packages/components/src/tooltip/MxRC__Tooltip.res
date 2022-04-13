@@ -1,6 +1,5 @@
 open MxRC__React
 open MxRC__Utils
-open MxRC__ConfigProvider.ConfigContext
 open MxWebapi__Dom
 
 type top = [#top | #topLeft | #topRight]
@@ -12,20 +11,25 @@ type placement = [top | bottom | left | right]
 
 module Twind = {
   open MxRC__Twind
-  let makeContent = (~placement) => {
-    let classes = ["block"]
-    let push = classes->Js.Array2.push
+  let makeContent = (~placement, ~visible) => {
+    let classes = ["block pointer-events-none"]
+    let push = str => classes->Js.Array2.push(str)->ignore
     switch placement {
-    | #...top => "pb-3"->push->ignore
-    | #...bottom => "pt-3"->push->ignore
-    | #...left => "pr-3"->push->ignore
-    | #...right => "pl-3"->push->ignore
+    | #...top => "pb-3"->push
+    | #...bottom => "pt-3"->push
+    | #...left => "pr-3"->push
+    | #...right => "pl-3"->push
     | _ => ()
     }
+
+    if !visible {
+      "hidden"->push
+    }
+
     classes->atw
   }
   let makeTextContent = () => {
-    let classes = ["bg(black opacity-75) text-white px-2 py-1.5"]
+    let classes = ["bg(black opacity-75) text-white px-2 py-1"]
     classes->atw
   }
 
@@ -33,7 +37,7 @@ module Twind = {
   let arrowRotateWidth = Js.Math.sqrt(arrowWidth *. arrowWidth *. 2.0)
 
   let makeArrow = (~placement) => {
-    let classes = ["absolute w-[22px] h-[22px] overflow-hidden"]
+    let classes = ["absolute w-[22px] h-[22px] overflow-hidden pointer-events-none"]
     let push = classes->Js.Array2.push
 
     switch placement {
@@ -58,7 +62,9 @@ module Twind = {
   }
 
   let makeArrowContent = () => {
-    let classes = ["block absolute inset-0 m-auto rotate-45 before::(block absolute content-empty)"]
+    let classes = [
+      "block absolute inset-0 m-auto rotate-45 pointer-events-none before::(block absolute content-empty)",
+    ]
     let push = classes->Js.Array2.push
 
     css({
@@ -83,7 +89,13 @@ module Twind = {
 
 module ToolipContent = {
   @react.component @genType
-  let make = (~id, ~content, ~placement: placement, ~target: Js.Nullable.t<Dom.element>) => {
+  let make = (
+    ~id,
+    ~content,
+    ~visible,
+    ~placement: placement,
+    ~target: Js.Nullable.t<Dom.element>,
+  ) => {
     let divRef = React.useRef(Js.Nullable.null)
 
     let points = switch placement {
@@ -114,7 +126,7 @@ module ToolipContent = {
       <div
         ref={divRef->ReactDOM.Ref.domRef}
         style={ReactDOM.Style.make(~position="absolute", ())}
-        className={Twind.makeContent(~placement)}>
+        className={Twind.makeContent(~placement, ~visible)}>
         <div className={Twind.makeArrow(~placement)}>
           <span className={Twind.makeArrowContent()} />
         </div>
@@ -125,23 +137,42 @@ module ToolipContent = {
 }
 
 @react.component @genType
-let make = (~title=?, ~placement: placement=#top, ~children: React.element) => {
+let make = (~title="", ~placement: placement=#top, ~children: React.element) => {
   let idRef = React.useRef(nanoid())
   let (target, set) = React.useState(_ => Js.Nullable.null)
-  let (visible, changeVisible) = React.useState(_ => false)
+  let (visible, setVisible) = React.useState(_ => false)
   let isRendered = React.useRef(false)
   isRendered.current = isRendered.current === true ? true : visible
-  let getContainer = getPartalRoot
+  let getContainer = MxRC__ConfigProvider.ConfigContext.getPartalRoot
 
   let partal = isRendered.current
     ? <Partal getContainer>
         <ToolipContent
-          placement id={idRef.current} target content={title->Belt.Option.getWithDefault("")}
+          visible
+          placement
+          id=idRef.current
+          target
+          content=title
         />
       </Partal>
     : React.null
 
-  let children = React.cloneElement(children, {"ref": set})
+  let onMouseEnter = React.useCallback0(_ => {
+    setVisible(_ => true)
+  })
+
+  let onMouseLeave = React.useCallback0(_ => {
+    setVisible(_ => false)
+  })
+
+  let children = React.cloneElement(
+    children,
+    {
+      "ref": set,
+      "onMouseEnter": onMouseEnter,
+      "onMouseLeave": onMouseLeave,
+    },
+  )
 
   <> partal children </>
 }

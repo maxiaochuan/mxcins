@@ -1,9 +1,10 @@
 module ConfigContext = {
+  open MxRC__Utils
+  let id = "__mx_" ++ nanoid()
   let getPartalRoot = () => {
     open Webapi.Dom
     open Belt.Option
 
-    let id = "__mx_partial_root"
     switch document->Document.querySelector("#" ++ id) {
     | None => {
         let root = document->Document.createElement("div")

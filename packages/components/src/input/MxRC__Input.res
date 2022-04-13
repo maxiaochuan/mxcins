@@ -52,6 +52,8 @@ let make = React.forwardRef((
   ~name=?,
   ~autoComplete="off",
   ~actionRef: option<Js.Nullable.t<React.ref<actionRef>>>=?,
+  ~onMouseEnter: option<ReactEvent.Mouse.t => unit>=?,
+  ~onMouseLeave: option<ReactEvent.Mouse.t => unit>=?,
   ref,
 ) => {
   let size = size->useSizeConfig
@@ -201,6 +203,8 @@ let make = React.forwardRef((
       ?name
       ?id
       autoComplete
+      ?onMouseEnter
+      ?onMouseLeave
     />
   }
 

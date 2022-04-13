@@ -11,7 +11,7 @@ type _type = [#default | #primary | #dashed | #text | #link]
 @genType.as("ButtonShapeType")
 type shape = [#default | #circle | #round]
 
-@react.component @genType
+@react.component
 let make = React.forwardRef((
   ~htmlType: htmlType=#button,
   ~className=?,
@@ -27,6 +27,8 @@ let make = React.forwardRef((
   ~icon=?,
   ~children=?,
   ~onClick: option<ReactEvent.Mouse.t => unit>=?,
+  ~onMouseEnter: option<ReactEvent.Mouse.t => unit>=?,
+  ~onMouseLeave: option<ReactEvent.Mouse.t => unit>=?,
   ref,
 ) => {
   // size
@@ -89,7 +91,12 @@ let make = React.forwardRef((
     className
     ?style
     disabled
-    onClick>
+    onClick
+    ?onMouseEnter
+    ?onMouseLeave>
     icon kids
   </button>
 })
+
+@genType
+let make = React.memo(make)

@@ -24,6 +24,8 @@ let make = (
   ~onSearch: option<(. string, ReactEvent.Synthetic.t) => unit>=?,
   ~loading=false,
   ~disabled=false,
+  ~onMouseEnter: option<ReactEvent.Mouse.t => unit>=?,
+  ~onMouseLeave: option<ReactEvent.Mouse.t => unit>=?,
 ) => {
   let inputRef = React.useRef(Js.Nullable.null)
 
@@ -70,5 +72,7 @@ let make = (
     addonAfterNoStyle=true
     onPressEnter
     disabled
+    ?onMouseEnter
+    ?onMouseLeave
   />
 }

@@ -16,6 +16,8 @@ let make = React.forwardRef((
   ~onBlur=?,
   ~id=?,
   ~autoComplete=?,
+  ~onMouseEnter: option<ReactEvent.Mouse.t => unit>=?,
+  ~onMouseLeave: option<ReactEvent.Mouse.t => unit>=?,
   ref,
 ) => {
   let (visible, set) = React.useState(_ => false)
@@ -50,5 +52,7 @@ let make = React.forwardRef((
     ?onBlur
     ?id
     ?autoComplete
+    ?onMouseEnter
+    ?onMouseLeave
   />
 })

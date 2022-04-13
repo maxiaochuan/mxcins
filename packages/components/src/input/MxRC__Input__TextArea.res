@@ -12,6 +12,8 @@ let make = (
   ~defaultValue=?,
   ~onChange=?,
   ~disabled=false,
+  ~onMouseEnter: option<ReactEvent.Mouse.t => unit>=?,
+  ~onMouseLeave: option<ReactEvent.Mouse.t => unit>=?,
 ) => {
   // context size
   let size = size->Config.useSizeConfig
@@ -43,5 +45,5 @@ let make = (
 
   let className = className->Twind.makeTextArea(~size, ~focused=false, ~disabled)
 
-  <textarea className ?placeholder ?rows value onChange disabled />
+  <textarea className ?placeholder ?rows value onChange disabled ?onMouseEnter ?onMouseLeave />
 }
