@@ -29,7 +29,7 @@ module Twind = {
     classes->atw
   }
   let makeTextContent = () => {
-    let classes = ["bg(black opacity-75) text-white px-2 py-1"]
+    let classes = ["bg(black opacity-75) text-white px-2 py-1 rounded"]
     classes->atw
   }
 
