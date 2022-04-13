@@ -55,6 +55,10 @@ export default defineConfig({
               component: '@/pages/components/tooltip',
             },
             {
+              path: '/components/card',
+              component: '@/pages/components/card',
+            },
+            {
               path: '/components/form',
               component: '@/pages/components/form',
             },

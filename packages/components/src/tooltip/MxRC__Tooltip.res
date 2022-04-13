@@ -147,13 +147,7 @@ let make = (~title="", ~placement: placement=#top, ~children: React.element) => 
 
   let partal = isRendered.current
     ? <Partal getContainer>
-        <ToolipContent
-          visible
-          placement
-          id=idRef.current
-          target
-          content=title
-        />
+        <ToolipContent visible placement id=idRef.current target content=title />
       </Partal>
     : React.null
 

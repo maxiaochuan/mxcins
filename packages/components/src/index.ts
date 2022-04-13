@@ -10,6 +10,7 @@ import { Layout, LayoutProps, ContentProps, HeaderProps } from './layout';
 import { Space, SpaceProps } from './space';
 import { Input, InputActionRef, InputProps, SearchProps } from './input';
 import { Tooltip, TooltipProps } from './tooltip';
+import { Card, CardProps } from './card';
 import {
   Form,
   FormProps,
@@ -32,6 +33,7 @@ export {
   Space,
   Input,
   Tooltip,
+  Card,
   Form,
   FormField,
   FormText,
@@ -59,6 +61,7 @@ export type {
   InputActionRef,
   SearchProps,
   TooltipProps,
+  CardProps,
   FormProps,
   FormFieldProps,
   FormTextProps,
