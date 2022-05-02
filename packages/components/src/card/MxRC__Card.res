@@ -2,12 +2,16 @@ module Config = MxRC__ConfigProvider.ConfigContext
 
 module Twind = {
   open MxRC__Twind
-  let make = (class, ~bordered) => {
+  let make = (class, ~bordered, ~hoverable) => {
     let classes = []
     let push = classes->Js.Array2.push
 
     if bordered {
       "border(1 solid border-split) rounded-sm"->push->ignore
+    }
+
+    if hoverable {
+      "cursor-pointer transition"->push->ignore
     }
 
     classes->atw(~class?)
@@ -51,7 +55,7 @@ module Twind = {
     let classes = []
     let push = classes->Js.Array2.push
 
-    { "&>*": ["rounded-t-sm w-full block"]->apply }->css->push->ignore
+    {"&>*": ["rounded-t-sm w-full block"]->apply}->css->push->ignore
 
     if bordered {
       "-mt-px -mr-px -ml-px"->push->ignore
@@ -84,6 +88,7 @@ let make = (
   ~title=?,
   ~extra=?,
   ~bordered=true,
+  ~hoverable=false,
   ~cover=?,
   ~children=?,
 ) => {
@@ -92,7 +97,7 @@ let make = (
 
   let children = children->Belt.Option.getWithDefault(React.null)
 
-  let className = className->Twind.make(~bordered)
+  let className = className->Twind.make(~bordered, ~hoverable)
 
   let head = switch title {
   | Some(title) => {
@@ -111,13 +116,11 @@ let make = (
   }
 
   let cover = switch cover {
-  | Some(cover) => <div className={Twind.makeCover(~bordered)}>cover</div>
+  | Some(cover) => <div className={Twind.makeCover(~bordered)}> cover </div>
   | None => React.null
   }
 
   let body = <div className={Twind.makeBody(~size)} style=?bodyStyle> children </div>
 
-  <div className ?style>
-    head cover body
-  </div>
+  <div className ?style> head cover body </div>
 }
