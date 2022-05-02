@@ -12,6 +12,8 @@ module Twind = {
 
     if hoverable {
       "cursor-pointer transition"->push->ignore
+
+      "hover:(border-transparent shadow-card)"->push->ignore
     }
 
     classes->atw(~class?)

@@ -202,6 +202,7 @@ let conf = (override: option<{..}>) => {
         "input-focus": "0 0 0 2px var(--color-primary-outline)",
         "input-focus-warning": "0 0 0 2px var(--color-warning-outline)",
         "input-focus-error": "0 0 0 2px var(--color-error-outline)",
+        "card": "0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017",
       },
       "zIndex": {
         "auto": "auto",
