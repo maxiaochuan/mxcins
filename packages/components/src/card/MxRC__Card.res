@@ -47,6 +47,19 @@ module Twind = {
     classes->atw
   }
 
+  let makeCover = (~bordered) => {
+    let classes = []
+    let push = classes->Js.Array2.push
+
+    { "&>*": ["rounded-t-sm w-full block"]->apply }->css->push->ignore
+
+    if bordered {
+      "-mt-px -mr-px -ml-px"->push->ignore
+    }
+
+    classes->atw
+  }
+
   let makeBody = (~size) => {
     let classes = []
     let push = classes->Js.Array2.push
@@ -71,6 +84,7 @@ let make = (
   ~title=?,
   ~extra=?,
   ~bordered=true,
+  ~cover=?,
   ~children=?,
 ) => {
   // size
@@ -96,7 +110,14 @@ let make = (
   | _ => React.null
   }
 
+  let cover = switch cover {
+  | Some(cover) => <div className={Twind.makeCover(~bordered)}>cover</div>
+  | None => React.null
+  }
+
+  let body = <div className={Twind.makeBody(~size)} style=?bodyStyle> children </div>
+
   <div className ?style>
-    head <div className={Twind.makeBody(~size)} style=?bodyStyle> children </div>
+    head cover body
   </div>
 }
