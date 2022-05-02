@@ -78,6 +78,11 @@ module Twind = {
 
     classes->atw
   }
+
+  let makeActions = () => {
+    let classes = []
+    classes->atw
+  }
 }
 
 @react.component @genType
@@ -92,12 +97,11 @@ let make = (
   ~bordered=true,
   ~hoverable=false,
   ~cover=?,
+  ~actions=?,
   ~children=?,
 ) => {
   // size
   let size = size->Config.useSizeConfig
-
-  let children = children->Belt.Option.getWithDefault(React.null)
 
   let className = className->Twind.make(~bordered, ~hoverable)
 
@@ -122,7 +126,22 @@ let make = (
   | None => React.null
   }
 
-  let body = <div className={Twind.makeBody(~size)} style=?bodyStyle> children </div>
+  let body = switch children {
+  | Some(children) => <div className={Twind.makeBody(~size)} style=?bodyStyle> children </div>
+  | None => React.null
+  }
 
-  <div className ?style> head cover body </div>
+  let actions = switch actions {
+  | Some(actions) =>
+    switch actions->Js.Array2.length {
+    | 0 => React.null
+    | _ =>
+      <ul className={Twind.makeActions()}>
+        {actions->Js.Array2.map(action => <li> action </li>)->React.array}
+      </ul>
+    }
+  | None => React.null
+  }
+
+  <div className ?style> head cover body actions </div>
 }
