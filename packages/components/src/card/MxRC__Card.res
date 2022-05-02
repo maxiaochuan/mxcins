@@ -65,6 +65,7 @@ module Twind = {
 let make = (
   ~className=?,
   ~style=?,
+  ~headStyle=?,
   ~bodyStyle=?,
   ~size=?,
   ~title=?,
@@ -79,8 +80,9 @@ let make = (
   let className = className->Twind.make(~bordered)
 
   let head = switch title {
-  | Some(title) => <div className={Twind.makeHead(~size)}>
-      <div className={Twind.makeHeadContent()}>
+  | Some(title) =>
+    <div className={Twind.makeHead(~size)}>
+      <div style=?headStyle className={Twind.makeHeadContent()}>
         <div className={Twind.makeTitle(~size)}> {title->React.string} </div>
       </div>
     </div>

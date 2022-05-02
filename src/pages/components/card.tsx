@@ -7,17 +7,17 @@ const CardView = () => {
     <>
       <Record title="Card">
         <div style={{ display: 'flex', gap: 12, alignItems: 'start' }}>
-        <Card title="title">
+        <Card title="title" style={{ width: 300 }}>
           <div>content</div>
           <div>content</div>
           <div>content</div>
         </Card>
-        <Card size="small" title="title">
+        <Card size="small" title="title" style={{ width: 300 }}>
           <div>content</div>
           <div>content</div>
           <div>content</div>
         </Card>
-        <Card size="small" title="title" bordered={false}>
+        <Card size="small" title="title" style={{ width: 300 }} bordered={false}>
           <div>content</div>
           <div>content</div>
           <div>content</div>
