@@ -12,7 +12,12 @@ const CardView = () => {
           <div>content</div>
           <div>content</div>
         </Card>
-        <Card size="small" title="title" style={{ width: 300 }}>
+        <Card title="title" style={{ width: 300 }} extra={<a href="#">Edit</a>}>
+          <div>content</div>
+          <div>content</div>
+          <div>content</div>
+        </Card>
+        <Card size="small" title="title" style={{ width: 300 }} extra={<a href="#">Edit</a>}>
           <div>content</div>
           <div>content</div>
           <div>content</div>

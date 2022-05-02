@@ -30,21 +30,21 @@ module Twind = {
     ["flex items-center"]->atw
   }
 
-  let makeTitle = (~size) => {
+  let makeHeadExtra = () => {
+    ["flex-none flex items-center text-sm"]->atw
+  }
+
+  let makeHeadTitle = (~size) => {
     let classes = ["flex-1 font-medium"]
     let push = classes->Js.Array2.push
 
     switch size {
     | #default => "py-3"->push->ignore
-    | #small => "py-1"->push->ignore
+    | #small => "py-1.5"->push->ignore
     | #large => "py-3"->push->ignore
     }
 
     classes->atw
-  }
-
-  let makeExtra = () => {
-    []->atw
   }
 
   let makeBody = (~size) => {
@@ -69,6 +69,7 @@ let make = (
   ~bodyStyle=?,
   ~size=?,
   ~title=?,
+  ~extra=?,
   ~bordered=true,
   ~children=?,
 ) => {
@@ -80,12 +81,18 @@ let make = (
   let className = className->Twind.make(~bordered)
 
   let head = switch title {
-  | Some(title) =>
-    <div className={Twind.makeHead(~size)}>
-      <div style=?headStyle className={Twind.makeHeadContent()}>
-        <div className={Twind.makeTitle(~size)}> {title->React.string} </div>
+  | Some(title) => {
+      let title = <div className={Twind.makeHeadTitle(~size)}> {title->React.string} </div>
+
+      let extra = switch extra {
+      | Some(extra) => <div className={Twind.makeHeadExtra()}> extra </div>
+      | None => React.null
+      }
+
+      <div className={Twind.makeHead(~size)} style=?headStyle>
+        <div className={Twind.makeHeadContent()}> title extra </div>
       </div>
-    </div>
+    }
   | _ => React.null
   }
 
