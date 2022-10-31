@@ -31,11 +31,11 @@ let useObserveResize = (
       ->Belt.Option.map(ele => ele->Webapi.Dom.HtmlElement.offsetHeight)
       ->Belt.Option.getWithDefault(0)
 
-    /**
-     * Resize observer trigger when content size changed.
-     * In most case we just care about element size,
-     * let's use `boundary` instead of `contentRect` here to avoid shaking.
-     */
+    // /**
+    //  * Resize observer trigger when content size changed.
+    //  * In most case we just care about element size,
+    //  * let's use `boundary` instead of `contentRect` here to avoid shaking.
+    //  */
     open Js.Math
     let fixedWidth = width->floor_int
     let fixedHeight = height->floor_int
