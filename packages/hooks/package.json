@@ -17,7 +17,12 @@
     "bsconfig.json"
   ],
   "scripts": {
-    "dev": "rescript build -w"
+    "build": "run-s build:*",
+    "build:res": "rescript",
+    "build:vite": "vite build && tsc",
+    "clean": "rescript clean",
+    "dev": "rescript build -w",
+    "format": "rescript format -all"
   },
   "dependencies": {
     "@mxcins/webapi": "1.0.0-alpha.6",

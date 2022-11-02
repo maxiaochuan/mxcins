@@ -12,20 +12,21 @@
   },
   "license": "MIT",
   "sideEffects": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src",
     "bsconfig.json"
   ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "run-s build:*",
     "build:res": "rescript",
     "build:vite": "vite build && tsc",
     "clean": "rescript clean",
-    "dev": "rescript build -w"
+    "dev": "rescript build -w",
+    "format": "rescript format -all"
   },
   "dependencies": {
     "@ant-design/colors": "6.0.0",
