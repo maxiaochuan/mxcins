@@ -5,12 +5,11 @@
     "packages/*"
   ],
   "scripts": {
-    "site": "vite build",
     "dev": "vite",
-    "dev:res": "run-p dev:res:**",
-    "dev:res:webapi": "pnpm run -r --filter webapi dev",
-    "dev:res:hooks": "pnpm run -r --filter hooks dev",
-    "dev:res:components": "pnpm run -r --filter components dev",
+    "dev:webapi": "pnpm run -r --filter webapi dev",
+    "dev:hooks": "pnpm run -r --filter hooks dev",
+    "dev:components": "pnpm run -r --filter components dev",
+    "dev:site": "pnpm run -r --filter site dev",
     "clean": "run-s clean:**",
     "clean:res:webapi": "pnpm run -r --filter webapi clean",
     "clean:res:hooks": "pnpm run -r --filter hooks clean",

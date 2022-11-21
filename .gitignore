@@ -8,3 +8,4 @@ dist
 
 **/*.bs.js
 **/*.gen.tsx
+**/.mx
