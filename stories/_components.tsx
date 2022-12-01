@@ -3,7 +3,7 @@ import {
   ButtonProps,
   Card as C,
   CardProps,
-} from "@mxcins/components";
+} from "@components";
 
 export const Button = (props: ButtonProps) => <B {...props} />
 export const Card = (props: CardProps) => <C {...props} />

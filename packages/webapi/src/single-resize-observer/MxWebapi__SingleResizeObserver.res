@@ -29,8 +29,8 @@ module ElementResizeListenersMap = {
     entries->Js.Array2.forEach(entry =>
       store
       ->Belt.MutableMap.get(entry->ResizeObserver.ResizeObserverEntry.target)
-      ->Belt.Option.forEach(listeners =>
-        listeners->Belt.MutableSet.forEach(listener => entry->listener)
+      ->Belt.Option.forEach(
+        listeners => listeners->Belt.MutableSet.forEach(listener => entry->listener),
       )
     )
   })
@@ -43,6 +43,7 @@ let observe = (element, listener) =>
       store->Belt.MutableMap.set(element, [listener]->ResizeListenerSet.fromArray)
       observer->ResizeObserver.observe(element)
     }
+
   | Some(listeners) => listeners->Belt.MutableSet.add(listener)
   }
 

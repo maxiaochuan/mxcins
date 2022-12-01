@@ -1,4 +1,4 @@
-import { ConfigProvider } from '@mxcins/components';
+import { ConfigProvider } from '@components';
 
 ConfigProvider.setup({});
 

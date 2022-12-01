@@ -50,6 +50,7 @@ let make = (~className=?, ~style=?, ~span=?, ~flex=?, ~children=?) => {
       }
       style->ReactDOM.Style.combine(ReactDOM.Style.make(~flex=f, ()))
     }
+
   | _ => style
   }
 

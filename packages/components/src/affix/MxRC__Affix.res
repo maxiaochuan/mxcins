@@ -100,6 +100,7 @@ let make = (
         targetRef.current = target->Some
         Element
       }
+
     | None => Null
     }
   | None => Default
@@ -158,14 +159,16 @@ let make = (
                 }
               }
 
-              setState(prev =>
-                switch (prev, next) {
-                | (Fixed(prev), Fixed(_)) => Fixed(prev)
-                | (Unfixed, Unfixed) => Unfixed
-                | (_, _) => next
-                }
+              setState(
+                prev =>
+                  switch (prev, next) {
+                  | (Fixed(prev), Fixed(_)) => Fixed(prev)
+                  | (Unfixed, Unfixed) => Unfixed
+                  | (_, _) => next
+                  },
               )
             }
+
           | _ => ()
           }
         }
@@ -187,10 +190,12 @@ let make = (
         open! Webapi.Dom
         window->asEventTarget->Some
       }
+
     | (Element, Some(target)) => {
         open Webapi.Dom.Element
         target->asEventTarget->Some
       }
+
     | (_, _) => None
     }
 
@@ -201,6 +206,7 @@ let make = (
           open Webapi.Dom.EventTarget
           events->forEach(name => node->addEventListener(name, handler))
         }
+
       | _ => ()
       }
     }
@@ -212,6 +218,7 @@ let make = (
           open Webapi.Dom.EventTarget
           events->forEach(name => node->removeEventListener(name, handler))
         }
+
       | _ => ()
       }
     }

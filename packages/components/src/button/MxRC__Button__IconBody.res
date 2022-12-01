@@ -74,9 +74,12 @@ let make = (~loading, ~icon: option<React.element>, ~iconOnly) => {
       let child = loading ? <LoadingOutlined /> : icon
       <MarginRightBody> child </MarginRightBody>
     }
+
   | (false, None, loading) => {
       let children = (params: RcMotion.params, ref) => {
-        <TransitionBody ref style={params.style}> <LoadingOutlined /> </TransitionBody>
+        <TransitionBody ref style={params.style}>
+          <LoadingOutlined />
+        </TransitionBody>
       }
 
       <RcMotion

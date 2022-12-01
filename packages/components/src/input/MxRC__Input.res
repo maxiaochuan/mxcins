@@ -76,10 +76,12 @@ let make = React.forwardRef((
       ->Belt.Option.forEach(input =>
         input
         ->Webapi.Dom.HtmlElement.ofElement
-        ->Belt.Option.forEach(input => {
-          setFocused(_ => true)
-          input->Webapi.Dom.HtmlElement.focus
-        })
+        ->Belt.Option.forEach(
+          input => {
+            setFocused(_ => true)
+            input->Webapi.Dom.HtmlElement.focus
+          },
+        )
       )
     }
   }
@@ -90,10 +92,12 @@ let make = React.forwardRef((
     ->Belt.Option.forEach(input =>
       input
       ->Webapi.Dom.HtmlElement.ofElement
-      ->Belt.Option.forEach(input => {
-        setFocused(_ => false)
-        input->Webapi.Dom.HtmlElement.blur
-      })
+      ->Belt.Option.forEach(
+        input => {
+          setFocused(_ => false)
+          input->Webapi.Dom.HtmlElement.blur
+        },
+      )
     )
 
   React.useImperativeHandle0(ref, () => inputRef.current)
@@ -103,8 +107,8 @@ let make = React.forwardRef((
       ->Js.Nullable.toOption
       ->Belt.Option.map(input => input->Webapi.Dom.HtmlInputElement.ofElement)
       ->Belt.Option.getUnsafe,
-      focus: focus,
-      blur: blur,
+      focus,
+      blur,
     }
   })
 
@@ -118,25 +122,30 @@ let make = React.forwardRef((
       // onchange is some
       inputRef.current
       ->Js.Nullable.toOption
-      ->Belt.Option.forEach(input => {
-        // input is some
-        let type_ = event->ReactEvent.Mouse.type_
-        // on clear clicked
-        if type_ === "click" {
-          input
-          ->Webapi.Dom.Element.cloneNodeDeep
-          ->Webapi.Dom.HtmlInputElement.ofElement
-          ->Belt.Option.forEach(clone => {
-            // clone input element & set value empty
-            clone->Webapi.Dom.HtmlInputElement.setValue("")
-            let event = event->cloneEvent({
-              "target": {"value": clone},
-              "currentTarget": {"value": clone},
-            })
-            event->fn
-          })
-        }
-      })
+      ->Belt.Option.forEach(
+        input => {
+          // input is some
+          let type_ = event->ReactEvent.Mouse.type_
+
+          // on clear clicked
+          if type_ === "click" {
+            input
+            ->Webapi.Dom.Element.cloneNodeDeep
+            ->Webapi.Dom.HtmlInputElement.ofElement
+            ->Belt.Option.forEach(
+              clone => {
+                // clone input element & set value empty
+                clone->Webapi.Dom.HtmlInputElement.setValue("")
+                let event = event->cloneEvent({
+                  "target": {"value": clone},
+                  "currentTarget": {"value": clone},
+                })
+                event->fn
+              },
+            )
+          }
+        },
+      )
     })
   }
 
@@ -215,6 +224,7 @@ let make = React.forwardRef((
           let className = Twind.makeFixed(~pos=#prefix, ~status)
           <span className> node </span>
         }
+
       | None => React.null
       }
       let suffix = switch (suffix, allowClear) {
@@ -223,6 +233,7 @@ let make = React.forwardRef((
           let className = Twind.makeFixed(~pos=#suffix, ~status)
           <span className> node </span>
         }
+
       | (None, true) => {
           let className = Twind.makeFixed(~pos=#suffix, ~status)
           let icon = {
@@ -234,17 +245,25 @@ let make = React.forwardRef((
             let style = ReactDOM.Style.make(~visibility, ())
             let onMouseDown = event => event->ReactEvent.Mouse.preventDefault
             let onClick = onReset
-            <span className style role="button"> <CloseCircleFilled onMouseDown onClick /> </span>
+            <span className style role="button">
+              <CloseCircleFilled onMouseDown onClick />
+            </span>
           }
           <span className> icon </span>
         }
+
       | (None, false) => React.null
       }
       let className =
         className->Twind.make(~size, ~affix=true, ~z=hasaddon, ~focused, ~status, ~disabled)
       let onMouseUp = _ => focus()
-      <span className onMouseUp> prefix child suffix </span>
+      <span className onMouseUp>
+        prefix
+        child
+        suffix
+      </span>
     }
+
   | false => child
   }
 
@@ -255,6 +274,7 @@ let make = React.forwardRef((
           let className = Twind.makeAddon(~noStyled=addonBeforeNoStyle)
           <span className> addon </span>
         }
+
       | _ => React.null
       }
       let after = switch addonAfter {
@@ -262,13 +282,21 @@ let make = React.forwardRef((
           let className = Twind.makeAddon(~noStyled=addonAfterNoStyle)
           <span className> addon </span>
         }
+
       | _ => React.null
       }
 
       let (o, i) = Twind.makeGroup()
 
-      <span className=o style=?groupStyle> <span className=i> before child after </span> </span>
+      <span className=o style=?groupStyle>
+        <span className=i>
+          before
+          child
+          after
+        </span>
+      </span>
     }
+
   | false => child
   }
 

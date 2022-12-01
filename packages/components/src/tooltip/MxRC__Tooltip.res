@@ -168,5 +168,8 @@ let make = (~title="", ~placement: placement=#top, ~children: React.element) => 
     },
   )
 
-  <> partal children </>
+  <>
+    partal
+    children
+  </>
 }

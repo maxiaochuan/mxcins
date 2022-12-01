@@ -5,7 +5,7 @@ module LayoutContext = {
   let ctx = React.createContext({sider: {add: _ => (), remove: _ => ()}})
 
   let make = (~add, ~remove) => {
-    {sider: {add: add, remove: remove}}
+    {sider: {add, remove}}
   }
 
   module Provider = {

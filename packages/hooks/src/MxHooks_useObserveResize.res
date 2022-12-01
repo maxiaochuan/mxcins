@@ -49,8 +49,8 @@ let useObserveResize = (
       let size = {
         width: fixedWidth,
         height: fixedHeight,
-        offsetWidth: offsetWidth,
-        offsetHeight: offsetHeight,
+        offsetWidth,
+        offsetHeight,
       }
       sizeRef.current = size
 
@@ -64,6 +64,7 @@ let useObserveResize = (
           })
           ->ignore
         }
+
       | _ => ()
       }
     }

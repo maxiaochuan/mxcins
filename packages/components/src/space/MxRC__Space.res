@@ -68,6 +68,7 @@ let make = (
         let key = "space-split-" ++ i->Js.Int.toString
         [child, <div key> split </div>]->React.array
       }
+
     | (_, _) => child
     }
   })

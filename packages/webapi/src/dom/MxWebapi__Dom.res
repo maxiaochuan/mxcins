@@ -19,8 +19,8 @@ module DomMover = {
     }
   }
 
-  let getPointPos = (point, rect) =>
-    switch point {
+  let getPointPos = (rect, conf) =>
+    switch conf {
     | #tl => (rect.left, rect.top)
     | #tc => (rect.left +. rect.width /. 2.0, rect.top)
     | #tr => (rect.right, rect.top)
@@ -41,37 +41,29 @@ module DomMover = {
     ~offsetY=?,
     (),
   ) => {
-    let sourceRect = source->getDomRect
-    let targetRect = target->getDomRect
-    let (sourcePoint, targetPoint) = points
-    let (sourcePointPosX, sourcePointPosY) = sourcePoint->getPointPos(sourceRect)
-    let (targetPointPosX, targetPointPosY) = targetPoint->getPointPos(targetRect)
+    let (sourcePointConf, targetPointConf) = points
+
+    let (sourcePointPosX, sourcePointPosY) = source->getDomRect->getPointPos(sourcePointConf)
+    let (targetPointPosX, targetPointPosY) = target->getDomRect->getPointPos(targetPointConf)
+
     let (movedX, movedY) = (targetPointPosX -. sourcePointPosX, targetPointPosY -. sourcePointPosY)
-    // current source top & left
+
     open Webapi.Dom
-    let getComputedStyle = window->Window.getComputedStyle
-    let sourceComputedtyle = source->getComputedStyle
-    let sourceCurrentTop =
-      sourceComputedtyle
-      ->CssStyleDeclaration.top
-      ->Belt.Float.fromString
-      ->Belt.Option.getWithDefault(0.0)
-    let sourceCurrentLeft =
-      sourceComputedtyle
-      ->CssStyleDeclaration.left
-      ->Belt.Float.fromString
-      ->Belt.Option.getWithDefault(0.0)
+    open CssStyleDeclaration
+    open Belt.Float
+    open Belt.Option
+    let sourceComputedStyle = window->Window.getComputedStyle(source)
+    let sourceCurrentTop = sourceComputedStyle->top->fromString->getWithDefault(0.0)
+    let sourceCurrentLeft = sourceComputedStyle->left->fromString->getWithDefault(0.0)
 
     // move to top & left
-    let sourceToTop =
-      (sourceCurrentTop +. movedY +. offsetY->Belt.Option.getWithDefault(0.0))
-        ->Belt.Float.toString ++ "px"
+    let sourceToTop = (sourceCurrentTop +. movedY +. offsetY->getWithDefault(0.0))->toString ++ "px"
     let sourceToLeft =
-      (sourceCurrentLeft +. movedX +. offsetX->Belt.Option.getWithDefault(0.0))
-        ->Belt.Float.toString ++ "px"
+      (sourceCurrentLeft +. movedX +. offsetX->getWithDefault(0.0))->toString ++ "px"
 
-    let sourceStyle = source->HtmlElement.ofElement->Belt.Option.getUnsafe->HtmlElement.style
-    sourceStyle->CssStyleDeclaration.setProperty("top", sourceToTop, "")
-    sourceStyle->CssStyleDeclaration.setProperty("left", sourceToLeft, "")
+    open HtmlElement
+    let sourceStyle = source->ofElement->getUnsafe->style
+    sourceStyle->setProperty("top", sourceToTop, "")
+    sourceStyle->setProperty("left", sourceToLeft, "")
   }
 }

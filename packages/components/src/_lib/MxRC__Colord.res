@@ -33,14 +33,14 @@ module HSV = {
       _v := 0.0
     }
 
-    {h: _h.contents, s: _s.contents, v: v, a: a->Belt.Option.getWithDefault(1.0)}
+    {h: _h.contents, s: _s.contents, v, a: a->Belt.Option.getWithDefault(1.0)}
   }
 }
 
 module RGB = {
   type t = {r: int, g: int, b: int, a: float}
   let make = (~r: int, ~g: int, ~b: int, ~a: option<float>) => {
-    {r: r, g: g, b: b, a: a->Belt.Option.getWithDefault(1.0)}
+    {r, g, b, a: a->Belt.Option.getWithDefault(1.0)}
   }
 
   let toS = c => {

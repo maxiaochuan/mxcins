@@ -115,9 +115,13 @@ let make = (
       }
 
       <div className={Twind.makeHead(~size)} style=?headStyle>
-        <div className={Twind.makeHeadContent()}> title extra </div>
+        <div className={Twind.makeHeadContent()}>
+          title
+          extra
+        </div>
       </div>
     }
+
   | _ => React.null
   }
 
@@ -143,5 +147,10 @@ let make = (
   | None => React.null
   }
 
-  <div className ?style> head cover body actions </div>
+  <div className ?style>
+    head
+    cover
+    body
+    actions
+  </div>
 }

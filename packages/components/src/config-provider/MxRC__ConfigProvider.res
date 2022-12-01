@@ -16,6 +16,7 @@ module ConfigContext = {
         )
         root
       }
+
     | Some(root) => root
     }
   }
@@ -31,7 +32,7 @@ module ConfigContext = {
   let makeContext = (~size, ~formErrorMessages: option<formErrorMessages>) => {
     let errors = formErrorMessages->Belt.Option.getWithDefault(Js.Dict.empty())
     {
-      size: size,
+      size,
       formErrorMessages: initFormErrorMessages
       ->Js.Dict.entries
       ->Js.Array2.concat(errors->Js.Dict.entries)
@@ -76,5 +77,7 @@ let make = (
     (size, formErrorMessages->Js.Json.stringifyAny),
   )
 
-  <> <ConfigContext.Provider value> children </ConfigContext.Provider> </>
+  <>
+    <ConfigContext.Provider value> children </ConfigContext.Provider>
+  </>
 }

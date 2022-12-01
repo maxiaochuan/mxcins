@@ -18,10 +18,9 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
-          '@mxcins/components': `${path.resolve(process.cwd(), 'packages', 'components', 'src')}/`,
-          '@mxcins/webapi': `${path.resolve(process.cwd(), 'packages', 'webapi')}/`,
+          '@webapi': `${path.resolve(process.cwd(), 'packages', 'webapi', 'src')}`,
+          '@components': `${path.resolve(process.cwd(), 'packages', 'components', 'src')}/`,
         },
-        dedupe: ['@storybook/client-api'],
       },
       define: {
         ...config.define,

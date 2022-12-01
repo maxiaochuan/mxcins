@@ -41,6 +41,7 @@ let make = React.forwardRef((
         evt->ReactEvent.Mouse.preventDefault
         evt->onClick->ignore
       }
+
     | (_, _) => ()
     }
 
@@ -94,7 +95,8 @@ let make = React.forwardRef((
     onClick
     ?onMouseEnter
     ?onMouseLeave>
-    icon kids
+    icon
+    kids
   </button>
 })
 

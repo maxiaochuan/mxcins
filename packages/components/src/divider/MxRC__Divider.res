@@ -36,6 +36,7 @@ module DividerTwind = {
             after,
           ]
         }
+
       | (false, _) => [horizontal]
       }
     }->pushMany

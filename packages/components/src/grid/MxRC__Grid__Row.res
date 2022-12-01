@@ -89,6 +89,7 @@ let make = (
       Js.Console.warn("`space` or `dynamic space` only can be set one")
       space
     }
+
   | (Some(space), None) => space
   | (None, Some(space)) => {
       module Id = MxWebapi.BreakpointSub.BreakpointPubSub.BreakpointCmp
@@ -105,6 +106,7 @@ let make = (
 
       (mx->Belt.Option.getWithDefault(0), my->Belt.Option.getWithDefault(0))
     }
+
   | (None, None) => (0, 0)
   }
 
@@ -123,5 +125,7 @@ let make = (
   let className = GridRowTwind.make(className, ~wrap, ~justify, ~align)
   let children = children->Belt.Option.getWithDefault(React.null)
 
-  <GridRowContext.Provider value> <div className ?style> children </div> </GridRowContext.Provider>
+  <GridRowContext.Provider value>
+    <div className ?style> children </div>
+  </GridRowContext.Provider>
 }

@@ -27,8 +27,7 @@ module QueryCacheList = {
 
   let make = () => fromArray([])
 
-  let set = (map, ~query, ~mediaQueryList, ~listener) =>
-    map->set(query, {mediaQueryList: mediaQueryList, listener: listener})
+  let set = (map, ~query, ~mediaQueryList, ~listener) => map->set(query, {mediaQueryList, listener})
 
   let forEach = forEach
 

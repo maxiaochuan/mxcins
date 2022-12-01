@@ -108,6 +108,7 @@ let make = (
         <div className={Twind.makeError()}> message </div>
       </div>
     }
+
   | _ => React.null
   }
 
@@ -121,7 +122,14 @@ let make = (
   }
 
   let className = className->Twind.make(~hasError)
-  let children = <Col span={hasLabel ? span2 : 24}> children error </Col>
+  let children =
+    <Col span={hasLabel ? span2 : 24}>
+      children
+      error
+    </Col>
 
-  <Row className> label children </Row>
+  <Row className>
+    label
+    children
+  </Row>
 }

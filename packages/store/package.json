@@ -20,11 +20,7 @@
   ],
   "scripts": {
     "build": "run-s build:*",
-    "build:res": "rescript",
-    "build:vite": "vite build && tsc",
-    "clean": "rescript clean",
-    "dev": "rescript build -w",
-    "format": "rescript format -all"
+    "build:vite": "vite build && tsc"
   },
   "dependencies": {
     "nanoid": "3.3.2",

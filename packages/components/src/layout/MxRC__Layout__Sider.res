@@ -57,5 +57,7 @@ let make = (
   let className = LayoutSiderTwind.make(className)
   let children = children->Belt.Option.getWithDefault(React.null)
 
-  <aside className style> <div> children </div> </aside>
+  <aside className style>
+    <div> children </div>
+  </aside>
 }
