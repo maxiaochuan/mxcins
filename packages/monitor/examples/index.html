@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="../dist/index.umd.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" style="width: 100%; height: 100vh; background-color: gray;display: flex; flex-direction: column; align-items: center; justify-content: center;">
+  </div>
+  <script>
+    console.log(WebMonitor)
+    const app = Vue.createApp({
+      data() {
+        return { message: '123' }
+      },
+      methods: {
+        click() {
+          throw new Error('e');
+        }
+      },
+      template: `
+      <div>
+        {{ message }}
+        <button @click="click">button</button>
+      </div>
+      `
+    })
+
+    app.use(WebMonitor)
+    app.mount('#app')
+  </script>
+</body>
+</html>

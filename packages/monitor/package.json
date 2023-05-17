@@ -1,0 +1,38 @@
+{
+  "name": "@mxcins/monitor",
+  "version": "1.0.0-alpha.0",
+  "description": "",
+  "homepage": "https://github.com/maxiaochuan/mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "bsconfig.json"
+  ],
+  "scripts": {
+    "build": "run-s build:*",
+    "build:vite": "vite build && tsc"
+  },
+  "dependencies": {
+    "error-stack-parser": "2.1.4"
+  },
+  "devDependencies": {
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}
