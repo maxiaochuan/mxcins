@@ -4,6 +4,8 @@ export enum EVENT_TYPE {
   ERROR = 'ERROR',
   HTTP = 'HTTP',
   CLICK = 'CLICK',
+  UNHANDLE_REJECTION = ' UNHANDLE_REJECTION',
+  RESOURCE_ERROR = 'RESOURCE_ERROR',
 }
 
 export interface ReporterOptions {

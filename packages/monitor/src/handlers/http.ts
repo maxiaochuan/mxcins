@@ -2,11 +2,12 @@ import { win } from '../common';
 import { EVENT_TYPE, Handler } from '../types';
 
 export interface HttpInput {
-  method: string;
   url: string | URL;
+  method: string;
   start: number;
   end?: number;
   elapsed?: number;
+  request?: { data: any };
   response?: { status: number; data: any };
 }
 
@@ -47,6 +48,7 @@ const HttpHandler: Handler<HttpInput, HttpResult> = {
     prototype.open = open as XMLHttpRequest['open'];
 
     function send(this: XMLHttpRequest, body?: Document | XMLHttpRequestBodyInit | null): void {
+      this.__monitor.request = { data: body };
       this.addEventListener('loadend', function loadend() {
         const { response, status } = this;
         this.__monitor.response = {
@@ -60,18 +62,30 @@ const HttpHandler: Handler<HttpInput, HttpResult> = {
       prevsend.apply(this, [body]);
     }
     prototype.send = send;
+
+
+    const prevfetch = win.fetch;
+    async function fetch(this: Window, input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+      const info: HttpInput = {
+        url: input as string,
+        method: init?.method || 'GET',
+        start: Date.now(),
+        request: {
+          data: init?.body,
+        }
+      };
+      return prevfetch.apply(this, [input, init]).then((resp) => {
+        const copy = resp.clone();
+        copy.text().then(v => {
+          info.response = { status: copy.status, data: v };
+          monitor.emit(EVENT_TYPE.HTTP, info);
+        })
+        return resp;
+      });
+    }
+    win.fetch = fetch;
   },
   handle: result => {
-    // const { message } = error;
-    // const frames = ErrorStackParser.parse(error);
-    // const { fileName: fname = '', columnNumber: column = 0, lineNumber: line = 0 } = frames[0];
-
-    // const result = {
-    //   fname,
-    //   message,
-    //   line,
-    //   column,
-    // }
     return result;
   },
 };

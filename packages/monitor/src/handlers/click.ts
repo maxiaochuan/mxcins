@@ -1,6 +1,5 @@
-import ErrorStackParser from 'error-stack-parser';
-import { EVENT_TYPE, Handler } from "../types";
 import { win } from '../common';
+import { EVENT_TYPE, Handler } from '../types';
 
 export interface ClickInput {
   ev: MouseEvent;
@@ -22,6 +21,7 @@ const ClickHandler: Handler<ClickInput, ClickResult> = {
     // const frames = ErrorStackParser.parse(error);
     // const { fileName: fname = '', columnNumber: column = 0, lineNumber: line = 0 } = frames[0];
 
+    // TODO: 数据构建
     // const result = {
     //   fname,
     //   message,
