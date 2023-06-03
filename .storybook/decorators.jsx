@@ -3,9 +3,9 @@ import { ConfigProvider } from '@components';
 ConfigProvider.setup({});
 
 export const decorators = [
-  (Story) => (
+  Story => (
     <ConfigProvider>
       <Story />
     </ConfigProvider>
-  )
-]
+  ),
+];

@@ -1,7 +1,8 @@
-import { EVENT_TYPE, Handler, WebMonitorOptions } from "./types";
-import { ErrorHandler, ErrorResult, HttpHandler, HttpResult } from "./handlers";
-import Reporter from "./reporter";
-import dayjs from "dayjs";
+import { EVENT_TYPE, Handler, WebMonitorOptions } from './types';
+import { ClickHandler, ErrorHandler, ErrorInput, ErrorResult, HttpHandler, HttpInput, HttpResult } from './handlers';
+import Reporter from './reporter';
+import dayjs from 'dayjs';
+import { ClickInput, ClickResult } from './handlers/click';
 
 export default class WebMonitor {
   private options: WebMonitorOptions;
@@ -18,10 +19,10 @@ export default class WebMonitor {
 
     this.use(ErrorHandler);
     this.use(HttpHandler);
+    this.use(ClickHandler);
   }
 
   public use(handler: Handler) {
-    console.log('use', handler);
     const { name } = handler;
     if (!this.handlers.has(name)) {
       handler.init && handler.init(this);
@@ -29,8 +30,9 @@ export default class WebMonitor {
     }
   }
 
-  public emit(name: EVENT_TYPE.ERROR, arg: ErrorResult): void
-  public emit(name: EVENT_TYPE.HTTP, arg: HttpResult): void
+  public emit(name: EVENT_TYPE.ERROR, arg: ErrorInput): void;
+  public emit(name: EVENT_TYPE.HTTP, arg: HttpInput): void;
+  public emit(name: EVENT_TYPE.CLICK, arg: ClickInput): void;
   public emit(name: EVENT_TYPE, arg: any): void {
     const handler = this.handlers.get(name);
     if (!handler) {
@@ -42,7 +44,7 @@ export default class WebMonitor {
       type: name,
       info: handler.handle(arg),
       timestamp: dayjs().toISOString(),
-    }
+    };
 
     // TODO: send
     console.log('result', result);

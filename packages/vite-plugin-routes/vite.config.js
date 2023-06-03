@@ -10,11 +10,7 @@ export default defineConfig({
       formats: ['cjs'],
     },
     rollupOptions: {
-      external: [
-        'fs',
-        'path',
-        ...Object.keys(packageJSON.dependencies),
-      ],
+      external: ['fs', 'path', ...Object.keys(packageJSON.dependencies)],
     },
   },
 });

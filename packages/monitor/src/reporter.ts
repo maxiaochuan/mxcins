@@ -1,4 +1,4 @@
-import { ReporterOptions } from "./types";
+import { ReporterOptions } from './types';
 
 export default class Reporter {
   private options: ReporterOptions;
