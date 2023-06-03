@@ -1,5 +1,8 @@
+import type WebMonitor from './monitor';
+
 export enum EVENT_TYPE {
-  ERROR = 'ERROR'
+  ERROR = 'ERROR',
+  HTTP = 'HTTP'
 }
 
 export interface ReporterOptions {
@@ -10,6 +13,6 @@ export interface WebMonitorOptions extends ReporterOptions {}
 
 export interface Handler<T extends any = any, R extends any = any> {
   name: EVENT_TYPE,
-  init?: () => void;
+  init?: (monitor: WebMonitor) => void;
   handle: (arg: T) => R;
 }

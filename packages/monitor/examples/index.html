@@ -8,6 +8,7 @@
     integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="./vue.global.js"></script>
+  <script src="./axios.min.js"></script>
   <script src="../dist/index.umd.js"></script>
   <title>Document</title>
 </head>
@@ -22,12 +23,20 @@
       methods: {
         click() {
           throw new Error('e');
+        },
+        send() {
+          axios.get('/user/12345').then(resp => {
+            console.log('resp', resp);
+          }).catch(error => {
+            console.log('error', error);
+          })
         }
       },
       template: `
       <div>
         {{ message }}
         <button @click="click">button</button>
+        <button @click="send">send</button>
       </div>
       `
     })

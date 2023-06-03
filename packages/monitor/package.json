@@ -21,6 +21,7 @@
     "bsconfig.json"
   ],
   "scripts": {
+    "dev": "vite build --watch",
     "build": "run-s build:*",
     "build:vite": "vite build && tsc"
   },

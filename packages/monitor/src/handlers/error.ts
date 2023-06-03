@@ -1,14 +1,14 @@
 import ErrorStackParser from 'error-stack-parser';
 import { EVENT_TYPE, Handler } from "../types";
 
-interface Result {
+export interface ErrorResult {
   fname: string;
   message: string;
   line: number;
   column: number;
 }
 
-const ErrorHandler: Handler<Error, Result> = {
+const ErrorHandler: Handler<Error, ErrorResult> = {
   name: EVENT_TYPE.ERROR,
   handle: (error) => {
     const { message } = error;

@@ -1,5 +1,5 @@
 import { EVENT_TYPE, Handler, WebMonitorOptions } from "./types";
-import { ErrorHandler } from "./handlers";
+import { ErrorHandler, ErrorResult, HttpHandler, HttpResult } from "./handlers";
 import Reporter from "./reporter";
 import dayjs from "dayjs";
 
@@ -17,17 +17,21 @@ export default class WebMonitor {
     this.reporter = new Reporter({ reportURL: options.reportURL });
 
     this.use(ErrorHandler);
+    this.use(HttpHandler);
   }
 
   public use(handler: Handler) {
-    const { name, init } = handler;
+    console.log('use', handler);
+    const { name } = handler;
     if (!this.handlers.has(name)) {
-      init && init();
+      handler.init && handler.init(this);
       this.handlers.set(name, handler);
     }
   }
 
-  public emit(name: EVENT_TYPE, arg: any) {
+  public emit(name: EVENT_TYPE.ERROR, arg: ErrorResult): void
+  public emit(name: EVENT_TYPE.HTTP, arg: HttpResult): void
+  public emit(name: EVENT_TYPE, arg: any): void {
     const handler = this.handlers.get(name);
     if (!handler) {
       console.error(`no handler for : ${name}`);
@@ -41,6 +45,7 @@ export default class WebMonitor {
     }
 
     // TODO: send
-    this.reporter.send(result);
+    console.log('result', result);
+    // this.reporter.send(result);
   }
 }
