@@ -2,12 +2,14 @@ export enum EVENT_TYPE {
   ERROR = 'ERROR'
 }
 
-export interface WebMonitorOptions {
-
+export interface ReporterOptions {
+  reportURL: string;
 }
 
-export interface Handler<T extends any = any> {
+export interface WebMonitorOptions extends ReporterOptions {}
+
+export interface Handler<T extends any = any, R extends any = any> {
   name: EVENT_TYPE,
   init?: () => void;
-  run: (arg: T) => void;
+  handle: (arg: T) => R;
 }

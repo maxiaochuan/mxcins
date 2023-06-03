@@ -1,13 +1,25 @@
+import ErrorStackParser from 'error-stack-parser';
 import { EVENT_TYPE, Handler } from "../types";
 
-const ErrorHandler: Handler<Error> = {
+interface Result {
+  fname: string;
+  message: string;
+  line: number;
+  column: number;
+}
+
+const ErrorHandler: Handler<Error, Result> = {
   name: EVENT_TYPE.ERROR,
-  run: (error) => {
-    // const { target } = error;
-    // TODO: 
+  handle: (error) => {
+    const { message } = error;
+    const frames = ErrorStackParser.parse(error);
+    const { fileName: fname = '', columnNumber: column = 0, lineNumber: line = 0 } = frames[0];
 
     const result = {
-      type: EVENT_TYPE.ERROR,
+      fname,
+      message,
+      line,
+      column,
     }
 
     return result;

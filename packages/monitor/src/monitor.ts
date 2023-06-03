@@ -1,17 +1,22 @@
 import { EVENT_TYPE, Handler, WebMonitorOptions } from "./types";
 import { ErrorHandler } from "./handlers";
+import Reporter from "./reporter";
+import dayjs from "dayjs";
 
-class WebMonitor {
-  private static instance: WebMonitor;
+export default class WebMonitor {
+  private options: WebMonitorOptions;
 
-  private options: WebMonitorOptions = {};
+  private reporter: Reporter;
 
   private handlers = new Map<EVENT_TYPE, Handler>();
 
   private stack = new Set<any>();
 
-  private constructor() {
+  constructor(options: WebMonitorOptions) {
+    this.options = options;
+    this.reporter = new Reporter({ reportURL: options.reportURL });
 
+    this.use(ErrorHandler);
   }
 
   public use(handler: Handler) {
@@ -28,20 +33,14 @@ class WebMonitor {
       console.error(`no handler for : ${name}`);
       return;
     }
-    const result = handler.run(arg);
-    // TODO: send
-    console.log('result', result);
-  }
 
-  public static make() {
-    if (!WebMonitor.instance) {
-      WebMonitor.instance = new WebMonitor();
+    const result = {
+      type: name,
+      info: handler.handle(arg),
+      timestamp: dayjs().toISOString(),
     }
-    return WebMonitor.instance;
+
+    // TODO: send
+    this.reporter.send(result);
   }
 }
-
-const monitor = WebMonitor.make();
-monitor.use(ErrorHandler);
-
-export default monitor;
