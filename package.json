@@ -5,12 +5,21 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "cset": "changeset",
+    "cset:v": "changeset version",
+    "release": "pnpm build && pnpm release:only",
+    "release:only": "changeset publish --registry=https://registry.npmjs.com/"
   },
   "devDependencies": {
+    "@changesets/cli": "2.26.1",
+    "@changesets/changelog-github": "0.4.8",
     "@turbo/gen": "1.10.3",
     "prettier": "2.8.8",
     "turbo": "1.10.3"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "packageManager": "pnpm@8.6.2"
 }
