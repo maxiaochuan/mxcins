@@ -2,8 +2,8 @@
 
 ### TODO
 
-* [x] turborepo
-* [ ] changesets
-* [ ] typescript
-* [ ] lint
-* [ ] test
+- [x] turborepo
+- [x] changesets
+- [x] typescript
+- [x] lint
+- [ ] test
