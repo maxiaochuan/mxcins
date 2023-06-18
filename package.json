@@ -5,6 +5,8 @@
     "build": "turbo run build",
     "changeset": "changeset",
     "changeset:version": "changeset version",
+    "enter:beta": "changeset pre enter next",
+    "exit:beta": "changeset pre exit",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
