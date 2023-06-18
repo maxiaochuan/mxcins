@@ -1,0 +1,30 @@
+{
+  "name": "@mxcins/monitor",
+  "version": "1.0.0",
+  "description": "web monitor",
+  "homepage": "https://github.com/maxiaochuan/mxcins",
+  "bugs": {
+    "url": "https://github.com/maxiaochuan/mxcins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxiaochuan/mxcins"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc",
+    "dev": "vite dev"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "XiaochuanMa <mxcins@gmail.com> (https://github.com/maxiaochuan)"
+  ]
+}
