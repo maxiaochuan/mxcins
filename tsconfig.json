@@ -7,5 +7,6 @@
     "baseUrl": ".",
     "paths": {},
     "strict": true,
+    "allowSyntheticDefaultImports": true,
   }
 }
