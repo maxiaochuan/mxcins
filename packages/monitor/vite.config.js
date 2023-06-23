@@ -9,6 +9,13 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [],
+      input: {
+        app: './examples/index.html',
+      },
     },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
   },
 });

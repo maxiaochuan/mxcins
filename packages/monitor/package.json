@@ -19,8 +19,17 @@
     "build": "vite build && tsc",
     "dev": "vite dev"
   },
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "error-stack-parser": "2.1.4"
+  },
+  "devDependencies": {
+    "axios": "1.4.0",
+    "dayjs": "1.11.8",
+    "vue": "3.3.4"
+  },
+  "peerDependencies": {
+    "dayjs": "*"
+  },
   "publishConfig": {
     "access": "public"
   },
