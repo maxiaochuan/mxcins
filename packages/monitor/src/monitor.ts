@@ -7,11 +7,12 @@ import {
   ResourceErrorHandler,
   UnhandleRejectionHandler,
 } from './handlers';
+import { deviceInfo } from './common';
 
 export default class MonitorCore {
   private readonly conf: MonitorConfig;
 
-  private readonly handlers = new Map<string, EventHandler>();
+  private readonly handlers = new Map<keyof EventHandlerConfig, EventHandler>();
 
   constructor(conf: MonitorConfig) {
     this.conf = conf;
@@ -48,6 +49,7 @@ export default class MonitorCore {
 
     const result = {
       type: name,
+      device: deviceInfo,
       info: handler.handle(...args),
       at: dayjs().toISOString(),
     };

@@ -20,9 +20,11 @@
     "dev": "vite dev"
   },
   "dependencies": {
-    "error-stack-parser": "2.1.4"
+    "error-stack-parser": "2.1.4",
+    "ua-parser-js": "1.0.35"
   },
   "devDependencies": {
+    "@types/ua-parser-js": "0.7.36",
     "axios": "1.4.0",
     "dayjs": "1.11.8",
     "vue": "3.3.4"

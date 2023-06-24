@@ -1,3 +1,5 @@
+import { UAParser } from 'ua-parser-js';
+
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 export const win = (() => {
   let win;
@@ -26,3 +28,5 @@ export const throttle = <F extends (this: any, ...args: any[]) => void>(fn: F, d
     }, delay);
   } as F;
 };
+
+export const deviceInfo = new UAParser().getResult();
