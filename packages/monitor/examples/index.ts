@@ -2,6 +2,8 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js';
 import axios from 'axios';
 import monitor from '../src';
 
+let i = 1;
+
 const app = createApp({
   data() {
     return { message: '123' };
@@ -23,6 +25,17 @@ const app = createApp({
         throw new Error('wer');
       });
     },
+    push() {
+      history.pushState({ page: i }, `title ${i}`, `?page=${i}`);
+      i += 1;
+    },
+    hash() {
+      location.hash = `#asdflkj${i}`;
+      i += 1;
+    },
+    back() {
+      history.back();
+    },
   },
   template: `
       <div>
@@ -32,6 +45,9 @@ const app = createApp({
         <button @click="send">send</button>
         <button @click="fetch">fetch</button>
         <button @click="unhandlerejecterror">unhandlerejecterror</button>
+        <button @click="push">push</button>
+        <button @click="hash">hash</button>
+        <button @click="back">back</button>
       </div>
       `,
 });

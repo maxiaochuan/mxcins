@@ -6,13 +6,18 @@ const name = 'click';
 const eh: EventHandler<'click'> = {
   name,
   init: monitor => {
-    win.document.addEventListener('click', ev => {
+    win.document.addEventListener('click', function (ev) {
       monitor.emit(name, ev);
     });
   },
 
   handle: ev => {
-    return { ev };
+    const { target } = ev;
+    if (target != null) {
+      const { tagName, id, className } = target as Element;
+      return { id, className, tagName };
+    }
+    return { id: '', className: '', tagName: '' };
   },
 };
 

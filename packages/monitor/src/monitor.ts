@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import {
   ClickHandler,
   ErrorHandler,
+  HistoryHandler,
   HttpHandler,
   ResourceErrorHandler,
   UnhandleRejectionHandler,
@@ -18,6 +19,7 @@ export default class MonitorCore {
     this.conf = conf;
     this.use(ClickHandler);
     this.use(ErrorHandler);
+    this.use(HistoryHandler);
     this.use(HttpHandler);
     this.use(ResourceErrorHandler);
     this.use(UnhandleRejectionHandler);

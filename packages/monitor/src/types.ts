@@ -44,7 +44,8 @@ export type ResourceErrorEvent = Omit<ErrorEvent, 'target'> & {
 };
 
 export interface EventHandlerConfig {
-  click: { i: [ev: MouseEvent]; o: { ev: MouseEvent } };
+  click: { i: [ev: MouseEvent]; o: { id: string; tagName: string; className: string } };
+  history: { i: [to: string]; o: { from: string; to: string } };
   http: { i: [ev: HttpEvent]; o: HttpEvent };
   error: { i: [error: Error]; o: ErrorResult };
   resource: { i: [ev: ResourceErrorEvent]; o: { src: string } };
