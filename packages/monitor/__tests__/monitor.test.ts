@@ -5,7 +5,7 @@ import Monitor from '../src/monitor';
 
 const handler: EventHandler<'b'> = {
   name: 'b',
-  handle: () => ({ src: '' }),
+  handle: () => ({ report: false, result: { src: '' } }),
 };
 describe('monitor class', () => {
   it('handlers', () => {
@@ -26,5 +26,14 @@ describe('monitor class', () => {
     expect(console.warn).toBeCalledWith(
       'a handler named b already exists and will be overwritten!',
     );
+  });
+  it('stack', () => {
+    const monitor = new Monitor({ reportURL: '123' });
+
+    document.dispatchEvent(new Event('click'));
+    // @ts-expect-error
+    const stack = monitor.stack;
+    expect(stack.length).toBe(1);
+    expect(stack[0].type).toBe('click');
   });
 });

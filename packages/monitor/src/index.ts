@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 import Monitor from './monitor';
 import type { MonitorConfig } from './types';
+import { unzip } from './common';
 
 const install = (app: App<Element>, options: MonitorConfig): void => {
   const monitor = new Monitor(options);
@@ -18,4 +19,5 @@ const install = (app: App<Element>, options: MonitorConfig): void => {
 export default {
   install,
   Monitor,
+  unzip,
 };

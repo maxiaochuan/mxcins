@@ -1,3 +1,4 @@
+import type UAParser from 'ua-parser-js';
 import type MonitorCore from './monitor';
 
 // type RecordToUnion<T extends Record<string, any>> = T[keyof T]
@@ -14,7 +15,10 @@ export interface ReporterConfig {
   reportURL: string;
 }
 
-export interface MonitorConfig extends ReporterConfig {}
+export interface MonitorConfig extends ReporterConfig {
+  maxStackLength?: number;
+  recordScreen?: boolean;
+}
 
 declare global {
   interface XMLHttpRequest {
@@ -72,19 +76,42 @@ export type ResourceErrorEvent = Omit<ErrorEvent, 'target'> & {
   target: HTMLScriptElement | HTMLImageElement;
 };
 
+export interface RecordScreenEvent {
+  id: string;
+  events: any[];
+}
+
+type DeviceInfo = UAParser.IResult;
+
+export interface StackResult<T = any> {
+  type: keyof EventHandlerConfig;
+  device: DeviceInfo;
+  info: T;
+  at: string;
+  stack?: StackResult[];
+  cache?: any;
+}
+
 export interface HandleResult<T> {
   result: T;
   report: boolean;
+  sendOnly?: boolean;
+}
+
+interface Conf<I, O> {
+  i: I;
+  o: HandleResult<O>;
 }
 
 export interface EventHandlerConfig {
-  click: { i: [ev: MouseEvent]; o: HandleResult<ClickResult> };
-  history: { i: [to: string]; o: HandleResult<HistoryResult> };
-  http: { i: [ev: HttpEvent]; o: HandleResult<HttpResult> };
-  error: { i: [error: Error]; o: HandleResult<ErrorResult> };
-  resource: { i: [ev: ResourceErrorEvent]; o: HandleResult<{ src: string }> };
-  unhandledrejection: { i: [ev: PromiseRejectionEvent]; o: HandleResult<ErrorResult> };
-  [k: string]: { i: any[]; o: any };
+  screen: Conf<[ev: RecordScreenEvent], { id: string; events: string }>;
+  click: Conf<[ev: MouseEvent], ClickResult>;
+  history: Conf<[to: string], HistoryResult>;
+  http: Conf<[ev: HttpEvent], HttpResult>;
+  error: Conf<[error: Error], ErrorResult>;
+  resource: Conf<[ev: ResourceErrorEvent], { src: string }>;
+  unhandledrejection: Conf<[ev: PromiseRejectionEvent], ErrorResult>;
+  [k: string]: Conf<any[], any>;
 }
 
 export interface EventHandler<K extends keyof EventHandlerConfig = keyof EventHandlerConfig> {

@@ -1,28 +1,46 @@
-import type { MonitorConfig, EventHandler, EventHandlerConfig } from './types';
+import type { MonitorConfig, EventHandler, EventHandlerConfig, StackResult } from './types';
 import dayjs from 'dayjs';
 import {
   ClickHandler,
   ErrorHandler,
   HistoryHandler,
   HttpHandler,
+  RecordScreenHandler,
   ResourceErrorHandler,
   UnhandleRejectionHandler,
 } from './handlers';
-import { deviceInfo } from './common';
+import { deviceInfo as device } from './common';
+import Reporter from './reporter';
 
 export default class MonitorCore {
-  private readonly conf: MonitorConfig;
+  private readonly conf: Required<MonitorConfig>;
 
   private readonly handlers = new Map<keyof EventHandlerConfig, EventHandler>();
 
+  private readonly reporter: Reporter;
+
+  private readonly stack: StackResult[] = [];
+
+  public hasError: boolean = false;
+
+  public cache: Record<string, any> = {};
+
   constructor(conf: MonitorConfig) {
-    this.conf = conf;
+    this.conf = {
+      maxStackLength: 20,
+      recordScreen: true,
+      ...conf,
+    };
+    this.reporter = new Reporter(conf);
     this.use(ClickHandler);
     this.use(ErrorHandler);
     this.use(HistoryHandler);
     this.use(HttpHandler);
     this.use(ResourceErrorHandler);
     this.use(UnhandleRejectionHandler);
+    if (this.conf.recordScreen) {
+      this.use(RecordScreenHandler);
+    }
   }
 
   public use<T extends keyof EventHandlerConfig>(handler: EventHandler<T>): this {
@@ -49,13 +67,27 @@ export default class MonitorCore {
       return;
     }
 
-    const result = {
-      type: name,
-      device: deviceInfo,
-      info: handler.handle(...args),
-      at: dayjs().toISOString(),
-    };
+    const { result: info, report, sendOnly } = handler.handle(...args);
+    const at = dayjs().toISOString();
+    const result: StackResult = { type: name, device, info, at };
+    if (report) {
+      if (!(sendOnly ?? false)) {
+        this.hasError = true;
+        result.stack = this.stack;
+        result.cache = this.cache;
+      }
+      // TODO: reporter
+      this.reporter.send(result);
+    } else {
+      this.save(result);
+    }
+  }
 
-    console.log('result', result);
+  private save(result: StackResult): void {
+    if (this.stack.length >= this.conf.maxStackLength) {
+      this.stack.shift();
+    }
+    this.stack.push(result);
+    this.stack.sort((a, b) => a.at.localeCompare(b.at));
   }
 }
