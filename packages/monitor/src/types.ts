@@ -26,10 +26,28 @@ export interface HttpEvent {
   url: string | URL;
   method: string;
   start: number;
+  status: number;
+  type: 'xhr' | 'fetch';
   end?: number;
   elapsed?: number;
-  request?: { data: any };
-  response?: { status: number; data: any };
+  request?: any;
+  response?: any;
+}
+
+export interface HttpResult {
+  url: string;
+  time: string;
+  elapsed: number;
+  message: string;
+  request: {
+    type: 'xhr' | 'fetch';
+    method: string;
+    data: string;
+  };
+  response: {
+    status: number;
+    data: string | null;
+  };
 }
 
 export interface ErrorResult {
@@ -39,17 +57,33 @@ export interface ErrorResult {
   column: number;
 }
 
+export interface ClickResult {
+  id: string;
+  tagName: string;
+  className: string;
+}
+
+export interface HistoryResult {
+  from: string;
+  to: string;
+}
+
 export type ResourceErrorEvent = Omit<ErrorEvent, 'target'> & {
   target: HTMLScriptElement | HTMLImageElement;
 };
 
+export interface HandleResult<T> {
+  result: T;
+  report: boolean;
+}
+
 export interface EventHandlerConfig {
-  click: { i: [ev: MouseEvent]; o: { id: string; tagName: string; className: string } };
-  history: { i: [to: string]; o: { from: string; to: string } };
-  http: { i: [ev: HttpEvent]; o: HttpEvent };
-  error: { i: [error: Error]; o: ErrorResult };
-  resource: { i: [ev: ResourceErrorEvent]; o: { src: string } };
-  unhandledrejection: { i: [ev: PromiseRejectionEvent]; o: ErrorResult };
+  click: { i: [ev: MouseEvent]; o: HandleResult<ClickResult> };
+  history: { i: [to: string]; o: HandleResult<HistoryResult> };
+  http: { i: [ev: HttpEvent]; o: HandleResult<HttpResult> };
+  error: { i: [error: Error]; o: HandleResult<ErrorResult> };
+  resource: { i: [ev: ResourceErrorEvent]; o: HandleResult<{ src: string }> };
+  unhandledrejection: { i: [ev: PromiseRejectionEvent]; o: HandleResult<ErrorResult> };
   [k: string]: { i: any[]; o: any };
 }
 

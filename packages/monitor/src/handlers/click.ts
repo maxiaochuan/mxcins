@@ -15,9 +15,15 @@ const eh: EventHandler<'click'> = {
     const { target } = ev;
     if (target != null) {
       const { tagName, id, className } = target as Element;
-      return { id, className, tagName };
+      return {
+        result: { id, className, tagName },
+        report: false,
+      };
     }
-    return { id: '', className: '', tagName: '' };
+    return {
+      result: { id: '', className: '', tagName: '' },
+      report: false,
+    };
   },
 };
 

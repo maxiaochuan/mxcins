@@ -8,7 +8,10 @@ export default class Reporter {
   }
 
   public send(data: any): void {
-    const { reportURL } = this.conf;
-    navigator.sendBeacon(reportURL, JSON.stringify(data));
+    this.beacon(data);
+  }
+
+  private beacon(data: any): boolean {
+    return navigator.sendBeacon(this.conf.reportURL, JSON.stringify(data));
   }
 }

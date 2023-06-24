@@ -22,7 +22,7 @@ const ErrorHandler: EventHandler<'error'> = {
       column,
     };
 
-    return result;
+    return { result, report: true };
   },
 };
 

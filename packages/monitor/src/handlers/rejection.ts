@@ -29,7 +29,7 @@ const UnhandleRejectionHandler: EventHandler<'unhandledrejection'> = {
       column,
     };
 
-    return result;
+    return { result, report: true };
   },
 };
 

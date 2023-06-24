@@ -25,8 +25,11 @@
   },
   "devDependencies": {
     "@types/ua-parser-js": "0.7.36",
+    "@types/statuses": "2.0.1",
     "axios": "1.4.0",
     "dayjs": "1.11.8",
+    "rrweb": "2.0.0-alpha.4",
+    "statuses": "2.0.1",
     "vue": "3.3.4"
   },
   "peerDependencies": {

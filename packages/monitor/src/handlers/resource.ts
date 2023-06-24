@@ -20,7 +20,7 @@ const RejectHandler: EventHandler<'resource'> = {
       src: ev.target.src,
     };
 
-    return result;
+    return { result, report: true };
   },
 };
 
