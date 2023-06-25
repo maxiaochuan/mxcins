@@ -3,15 +3,15 @@ import { describe, expect, it, vi } from 'vitest';
 import type { EventHandler } from '../src/types';
 import Monitor from '../src/monitor';
 
+const make = (): Monitor => new Monitor({ reportURL: '123', recordScreen: false });
+
 const handler: EventHandler<'b'> = {
   name: 'b',
   handle: () => ({ report: false, info: { src: '' } }),
 };
 describe('monitor class', () => {
   it('handlers', () => {
-    const monitor = new Monitor({
-      reportURL: '123',
-    });
+    const monitor = make();
     // @ts-expect-error
     const prevsize = monitor.handlers.size;
     monitor.use(handler);
@@ -27,10 +27,12 @@ describe('monitor class', () => {
       'a handler named b already exists and will be overwritten!',
     );
   });
-  it('stack', () => {
-    const monitor = new Monitor({ reportURL: '123' });
-
-    document.dispatchEvent(new Event('click'));
+  it('stack:click', () => {
+    const monitor = make();
+    const btn = document.createElement('button');
+    document.body.appendChild(btn);
+    btn.focus(); // for jsdom trigger focus
+    btn.click();
     // @ts-expect-error
     const stack = monitor.stack;
     expect(stack.length).toBe(1);
