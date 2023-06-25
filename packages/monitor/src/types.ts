@@ -15,10 +15,13 @@ export interface ReporterConfig {
   reportURL: string;
 }
 
+export type HandleResponseStatusCode = (ev: HttpEvent) => number;
+
 export interface MonitorConfig extends ReporterConfig {
   maxStackLength?: number;
   recordScreen?: boolean;
   deduplicate?: boolean;
+  handleResponseStatusCode?: HandleResponseStatusCode;
 }
 
 export interface HttpEvent {

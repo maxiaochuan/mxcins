@@ -13,8 +13,6 @@ import { deviceInfo as device } from './common';
 import Reporter from './reporter';
 
 export default class MonitorCore {
-  private readonly conf: Required<MonitorConfig>;
-
   private readonly handlers = new Map<keyof EventHandlerConfig, EventHandler>();
 
   private readonly reporter: Reporter;
@@ -23,15 +21,18 @@ export default class MonitorCore {
 
   private readonly hash = new Map<string, boolean>();
 
+  public readonly conf: Required<MonitorConfig>;
+
   public hasError: boolean = false;
 
-  public cache: Record<string, any> = {};
+  public readonly cache: Record<string, any> = {};
 
   constructor(conf: MonitorConfig) {
     this.conf = {
       maxStackLength: 20,
       recordScreen: true,
       deduplicate: false,
+      handleResponseStatusCode: ({ status }) => status,
       ...conf,
     };
     this.reporter = new Reporter(this.conf);

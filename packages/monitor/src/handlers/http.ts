@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import statuses from 'statuses';
 import { win } from '../common';
-import { type HttpEvent, type EventHandler } from '../types';
+import type { HttpEvent, EventHandler, HandleResponseStatusCode } from '../types';
 
 declare global {
   interface XMLHttpRequest {
@@ -9,12 +9,16 @@ declare global {
   }
 }
 
+let fn: HandleResponseStatusCode;
+
 const HttpHandler: EventHandler<'http'> = {
   name: 'http',
   init: monitor => {
     if (!('XMLHttpRequest' in win)) {
       return;
     }
+
+    fn = monitor.conf.handleResponseStatusCode;
 
     const prototype = XMLHttpRequest.prototype;
     const prevopen = prototype.open;
@@ -93,10 +97,11 @@ const HttpHandler: EventHandler<'http'> = {
     }
     win.fetch = fetch;
   },
-  handle: result => {
-    const { method, start, status, type, request, response, elapsed = 0 } = result;
-    const report = result.status === 0 || result.status >= 400;
-    const url = result.url.toString();
+  handle: ev => {
+    const { method, start, type, request, response, elapsed = 0 } = ev;
+    const status = fn?.(ev) ?? ev.status;
+    const report = status === 0 || status >= 400;
+    const url = ev.url.toString();
     const time = dayjs(start).toISOString();
 
     const message = (() => {

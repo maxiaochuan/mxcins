@@ -11,6 +11,15 @@ export const handlers = [
   rest.get('/reports', async (req, res, ctx) => {
     return await res(ctx.status(200), ctx.json(reports));
   }),
+  rest.get('/rdce', async (req, res, ctx) => {
+    return await res(
+      ctx.status(200),
+      ctx.json({
+        code: 0,
+        message: '错误',
+      }),
+    );
+  }),
   rest.post('/reports', async (req, res, ctx) => {
     const json = await req.json();
     if (json.type === 'screen') {

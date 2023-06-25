@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { createApp } from 'vue/dist/vue.esm-bundler.js';
+import { createApp } from 'vue';
 import axios from 'axios';
 import RrwebPlayer from 'rrweb-player';
 import 'rrweb-player/dist/style.css';
@@ -19,7 +19,12 @@ const app = createApp({
     click() {
       throw new Error('e');
     },
-    send() {
+    rdce() {
+      void axios.get('/rdce').then(resp => {
+        console.log('resp', resp);
+      });
+    },
+    xhr() {
       void axios.get('/user/12345').then(resp => {
         console.log('resp', resp);
       });
@@ -85,7 +90,8 @@ const app = createApp({
         {{ message }}
         <button id="btn" data-user="user" data-active>attr</button>
         <button @click="click">button</button>
-        <button @click="send">send</button>
+        <button @click="rdce">response data code error</button>
+        <button @click="xhr">xhr</button>
         <button @click="fetch">fetch</button>
         <button @click="unhandlerejecterror">unhandlerejecterror</button>
         <button @click="push">push</button>
@@ -97,5 +103,15 @@ const app = createApp({
       `,
 });
 
-app.use(monitor, { reportURL: '/reports', deduplicate: true });
+app.use(monitor, {
+  reportURL: '/reports',
+  deduplicate: true,
+  handleResponseStatusCode: ev => {
+    const json = JSON.parse(ev.response);
+    if (typeof json === 'object' && json.code === 0) {
+      return 0;
+    }
+    return ev.status;
+  },
+});
 app.mount('#app');
