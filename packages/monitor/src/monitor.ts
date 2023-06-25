@@ -78,7 +78,7 @@ export default class MonitorCore {
 
     const { info, report, sendOnly } = result;
     const at = dayjs().toISOString();
-    const modified: ReportResult = { type: name, device, info, at };
+    const modified: ReportResult = { type: name, device, info, at, href: location.href };
     if (report) {
       if (sendOnly === true) {
         this.reporter.send(modified);

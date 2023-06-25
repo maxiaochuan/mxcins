@@ -12,7 +12,6 @@ const eh: EventHandler<'history'> = {
   init: monitor => {
     const prevonpopstate = win.onpopstate;
     win.onpopstate = function onpopstate(ev) {
-      console.log('emit on onpopstate');
       monitor.emit('history', getLocationRef());
       prevonpopstate?.apply(this, [ev]);
     };

@@ -80,6 +80,7 @@ export interface RecordScreenEvent {
 type DeviceInfo = UAParser.IResult;
 
 export interface ReportResult<T = any> {
+  href: string;
   type: keyof EventHandlerConfig;
   device: DeviceInfo;
   info: T;
