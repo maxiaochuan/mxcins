@@ -15,14 +15,14 @@ const ErrorHandler: EventHandler<'error'> = {
     const frames = ErrorStackParser.parse(error);
     const { fileName: fname = '', columnNumber: column = 0, lineNumber: line = 0 } = frames[0];
 
-    const result = {
+    const info = {
       fname,
       message,
       line,
       column,
     };
 
-    return { result, report: true };
+    return { info, report: true };
   },
 };
 

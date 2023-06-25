@@ -5,7 +5,7 @@ import Monitor from '../src/monitor';
 
 const handler: EventHandler<'b'> = {
   name: 'b',
-  handle: () => ({ report: false, result: { src: '' } }),
+  handle: () => ({ report: false, info: { src: '' } }),
 };
 describe('monitor class', () => {
   it('handlers', () => {

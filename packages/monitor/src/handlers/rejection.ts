@@ -22,14 +22,14 @@ const UnhandleRejectionHandler: EventHandler<'unhandledrejection'> = {
     const { fileName: fname = '', columnNumber: column = 0, lineNumber: line = 0 } = frames[0];
     const message = reason.message;
 
-    const result = {
+    const info = {
       fname,
       message,
       line,
       column,
     };
 
-    return { result, report: true };
+    return { info, report: true };
   },
 };
 

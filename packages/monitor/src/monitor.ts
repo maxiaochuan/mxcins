@@ -1,4 +1,4 @@
-import type { MonitorConfig, EventHandler, EventHandlerConfig, StackResult } from './types';
+import type { MonitorConfig, EventHandler, EventHandlerConfig, ModifiedResult } from './types';
 import dayjs from 'dayjs';
 import {
   ClickHandler,
@@ -19,7 +19,7 @@ export default class MonitorCore {
 
   private readonly reporter: Reporter;
 
-  private readonly stack: StackResult[] = [];
+  private readonly stack: ModifiedResult[] = [];
 
   public hasError: boolean = false;
 
@@ -67,23 +67,28 @@ export default class MonitorCore {
       return;
     }
 
-    const { result: info, report, sendOnly } = handler.handle(...args);
+    const result = handler.handle(...args);
+    if (result == null) {
+      return;
+    }
+
+    const { info, report, sendOnly } = result;
     const at = dayjs().toISOString();
-    const result: StackResult = { type: name, device, info, at };
+    const modified: ModifiedResult = { type: name, device, info, at };
     if (report) {
       if (!(sendOnly ?? false)) {
         this.hasError = true;
-        result.stack = this.stack;
-        result.cache = this.cache;
+        modified.stack = this.stack;
+        modified.cache = this.cache;
       }
       // TODO: reporter
-      this.reporter.send(result);
+      this.reporter.send(modified);
     } else {
-      this.save(result);
+      this.save(modified);
     }
   }
 
-  private save(result: StackResult): void {
+  private save(result: ModifiedResult): void {
     if (this.stack.length >= this.conf.maxStackLength) {
       this.stack.shift();
     }

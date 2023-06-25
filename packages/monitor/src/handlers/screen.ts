@@ -35,7 +35,7 @@ const eh: EventHandler<'screen'> = {
   handle: ev => {
     const { id, events } = ev;
     return {
-      result: { id, events: zip(events) },
+      info: { id, events: zip(events) },
       report: true,
       sendOnly: true,
     };

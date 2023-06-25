@@ -3,6 +3,12 @@ import statuses from 'statuses';
 import { win } from '../common';
 import { type HttpEvent, type EventHandler } from '../types';
 
+declare global {
+  interface XMLHttpRequest {
+    __monitor: HttpEvent;
+  }
+}
+
 const HttpHandler: EventHandler<'http'> = {
   name: 'http',
   init: monitor => {
@@ -53,7 +59,7 @@ const HttpHandler: EventHandler<'http'> = {
       input: RequestInfo | URL,
       init?: RequestInit,
     ): Promise<Response> {
-      const info: HttpEvent = {
+      const ev: HttpEvent = {
         url: input as string,
         method: init?.method ?? 'GET',
         start: Date.now(),
@@ -67,19 +73,19 @@ const HttpHandler: EventHandler<'http'> = {
         resp => {
           const copy = resp.clone();
           void copy.text().then(v => {
-            info.response = v;
-            info.status = copy.status;
-            info.end = Date.now();
-            info.elapsed = info.end - info.start;
-            monitor.emit('http', info);
+            ev.response = v;
+            ev.status = copy.status;
+            ev.end = Date.now();
+            ev.elapsed = ev.end - ev.start;
+            monitor.emit('http', ev);
           });
           return resp;
         },
         err => {
-          info.end = Date.now();
-          info.elapsed = info.end - info.start;
-          info.status = 0;
-          info.response = { data: undefined };
+          ev.end = Date.now();
+          ev.elapsed = ev.end - ev.start;
+          ev.status = 0;
+          ev.response = { data: undefined };
 
           throw err;
         },
@@ -105,7 +111,7 @@ const HttpHandler: EventHandler<'http'> = {
     })();
 
     return {
-      result: {
+      info: {
         url,
         time,
         elapsed,

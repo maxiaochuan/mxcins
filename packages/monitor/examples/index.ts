@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 import axios from 'axios';
+import RrwebPlayer from 'rrweb-player';
+import 'rrweb-player/dist/style.css';
 import monitor from '../src';
 
 import { setupWorker } from 'msw';
@@ -54,13 +57,23 @@ const app = createApp({
         .then(async resp => await resp.json())
         .then(data => {
           const events = monitor.unzip(data.info.events);
+          this.$nextTick(() => {
+            void new RrwebPlayer({
+              target: document.getElementById('player')!,
+              props: {
+                events,
+                UNSAFE_replayCanvas: true,
+              },
+            });
+          });
           console.log('events', events);
         });
     },
   },
   // <img width="300" height="300" src="https://asdf.asdf.asdf/asdf.png" />
   template: `
-    <div>
+    <div style="width:100%;display:flex;flex-direction:column;gap:12px;align-items:center;">
+      <div id="player" style="height: 656px;background:white;width:1024px;"></div>
       <div>
         <div style="display:flex;flex-direction:row;gap:12px;" v-for="report in reports" :key="report.id">
           <div>类型: {{ report.type }}</div>
@@ -70,6 +83,7 @@ const app = createApp({
       </div>
       <div>
         {{ message }}
+        <button id="btn" data-user="user" data-active>attr</button>
         <button @click="click">button</button>
         <button @click="send">send</button>
         <button @click="fetch">fetch</button>

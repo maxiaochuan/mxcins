@@ -20,12 +20,6 @@ export interface MonitorConfig extends ReporterConfig {
   recordScreen?: boolean;
 }
 
-declare global {
-  interface XMLHttpRequest {
-    __monitor: HttpEvent;
-  }
-}
-
 export interface HttpEvent {
   url: string | URL;
   method: string;
@@ -62,9 +56,7 @@ export interface ErrorResult {
 }
 
 export interface ClickResult {
-  id: string;
-  tagName: string;
-  className: string;
+  ele: string;
 }
 
 export interface HistoryResult {
@@ -83,29 +75,29 @@ export interface RecordScreenEvent {
 
 type DeviceInfo = UAParser.IResult;
 
-export interface StackResult<T = any> {
+export interface ModifiedResult<T = any> {
   type: keyof EventHandlerConfig;
   device: DeviceInfo;
   info: T;
   at: string;
-  stack?: StackResult[];
+  stack?: ModifiedResult[];
   cache?: any;
 }
 
 export interface HandleResult<T> {
-  result: T;
+  info: T;
   report: boolean;
   sendOnly?: boolean;
 }
 
 interface Conf<I, O> {
   i: I;
-  o: HandleResult<O>;
+  o: HandleResult<O> | null;
 }
 
 export interface EventHandlerConfig {
   screen: Conf<[ev: RecordScreenEvent], { id: string; events: string }>;
-  click: Conf<[ev: MouseEvent], ClickResult>;
+  click: Conf<[ev: Document], ClickResult>;
   history: Conf<[to: string], HistoryResult>;
   http: Conf<[ev: HttpEvent], HttpResult>;
   error: Conf<[error: Error], ErrorResult>;

@@ -45,7 +45,7 @@ export const zip = (data: unknown): string => {
   return Base64.btoa(result);
 };
 
-export const unzip = (b64: string): string => {
+export const unzip = <T = any>(b64: string): T => {
   const binstr = Base64.atob(b64);
   const char = binstr.split('').map(x => x.charCodeAt(0));
   const u8a = new Uint8Array(char);
@@ -53,15 +53,13 @@ export const unzip = (b64: string): string => {
 
   const str = data.reduce((prev, v) => (prev += String.fromCharCode(v)), '');
   const result = Base64.decode(str);
-  console.log('unzip', result);
   try {
-    console.log('unzip', JSON.parse(result));
     return JSON.parse(result);
   } catch (err) {
     const error = err as Error;
     if (error?.message?.includes('Unexpected token o in JSON at position 0')) {
-      return result;
+      return result as T;
     }
   }
-  return result;
+  return result as T;
 };

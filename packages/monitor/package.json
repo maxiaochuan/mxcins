@@ -24,6 +24,7 @@
     "js-base64": "3.7.5",
     "nanoid": "4.0.2",
     "pako": "2.1.0",
+    "rrweb": "2.0.0-alpha.8",
     "ua-parser-js": "1.0.35"
   },
   "devDependencies": {
@@ -33,7 +34,7 @@
     "axios": "1.4.0",
     "dayjs": "1.11.8",
     "msw": "1.2.2",
-    "rrweb": "2.0.0-alpha.4",
+    "rrweb-player": "2.0.0-alpha.8",
     "statuses": "2.0.1",
     "vue": "3.3.4"
   },

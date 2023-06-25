@@ -16,11 +16,11 @@ const RejectHandler: EventHandler<'resource'> = {
     );
   },
   handle: ev => {
-    const result = {
+    const info = {
       src: ev.target.src,
     };
 
-    return { result, report: true };
+    return { info, report: true };
   },
 };
 

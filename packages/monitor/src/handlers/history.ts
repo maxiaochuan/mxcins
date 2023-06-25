@@ -44,7 +44,7 @@ const eh: EventHandler<'history'> = {
     const from = state.lastHref;
     const url = new URL(to, from);
     state.lastHref = url.toString();
-    return { result: { from, to: url.toString() }, report: false };
+    return { info: { from, to: url.toString() }, report: false };
   },
 };
 

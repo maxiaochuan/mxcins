@@ -7,21 +7,23 @@ const eh: EventHandler<'click'> = {
   name,
   init: monitor => {
     win.document.addEventListener('click', function (ev) {
-      monitor.emit(name, ev);
+      monitor.emit(name, this);
     });
   },
 
   handle: ev => {
-    const { target } = ev;
-    if (target != null) {
-      const { tagName, id, className } = target as Element;
-      return {
-        result: { id, className, tagName },
-        report: false,
-      };
+    const ele = ev.activeElement;
+    if (ele == null) {
+      return null;
     }
+    const tag = ele.tagName.toLowerCase();
+
+    if (tag === 'body') {
+      return null;
+    }
+
     return {
-      result: { id: '', className: '', tagName: '' },
+      info: { ele: ele.outerHTML },
       report: false,
     };
   },
