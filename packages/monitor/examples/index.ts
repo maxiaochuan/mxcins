@@ -97,5 +97,5 @@ const app = createApp({
       `,
 });
 
-app.use(monitor, { reportURL: '/reports' });
+app.use(monitor, { reportURL: '/reports', deduplicate: true });
 app.mount('#app');

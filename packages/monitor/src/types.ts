@@ -18,6 +18,7 @@ export interface ReporterConfig {
 export interface MonitorConfig extends ReporterConfig {
   maxStackLength?: number;
   recordScreen?: boolean;
+  deduplicate?: boolean;
 }
 
 export interface HttpEvent {

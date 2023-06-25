@@ -21,6 +21,8 @@ export default class MonitorCore {
 
   private readonly stack: ModifiedResult[] = [];
 
+  private readonly hash = new Map<string, boolean>();
+
   public hasError: boolean = false;
 
   public cache: Record<string, any> = {};
@@ -29,9 +31,10 @@ export default class MonitorCore {
     this.conf = {
       maxStackLength: 20,
       recordScreen: true,
+      deduplicate: false,
       ...conf,
     };
-    this.reporter = new Reporter(conf);
+    this.reporter = new Reporter(this.conf);
     this.use(ClickHandler);
     this.use(ErrorHandler);
     this.use(HistoryHandler);
@@ -76,13 +79,25 @@ export default class MonitorCore {
     const at = dayjs().toISOString();
     const modified: ModifiedResult = { type: name, device, info, at };
     if (report) {
-      if (!(sendOnly ?? false)) {
+      if (sendOnly === true) {
+        this.reporter.send(modified);
+      } else {
         this.hasError = true;
         modified.stack = this.stack;
         modified.cache = this.cache;
+        if (this.conf.deduplicate) {
+          const hash = JSON.stringify(info);
+          console.log('hash', hash);
+          if (this.hash.get(hash) !== true) {
+            this.reporter.send(modified);
+            this.hash.set(hash, true);
+          }
+        } else {
+          console.log('else');
+          this.reporter.send(modified);
+        }
       }
       // TODO: reporter
-      this.reporter.send(modified);
     } else {
       this.save(modified);
     }
