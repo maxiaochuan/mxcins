@@ -1,4 +1,4 @@
-import type { MonitorConfig, EventHandler, EventHandlerConfig, ModifiedResult } from './types';
+import type { MonitorConfig, EventHandler, EventHandlerConfig, ReportResult } from './types';
 import dayjs from 'dayjs';
 import {
   ClickHandler,
@@ -17,7 +17,7 @@ export default class MonitorCore {
 
   private readonly reporter: Reporter;
 
-  private readonly stack: ModifiedResult[] = [];
+  private readonly stack: ReportResult[] = [];
 
   private readonly hash = new Map<string, boolean>();
 
@@ -78,7 +78,7 @@ export default class MonitorCore {
 
     const { info, report, sendOnly } = result;
     const at = dayjs().toISOString();
-    const modified: ModifiedResult = { type: name, device, info, at };
+    const modified: ReportResult = { type: name, device, info, at };
     if (report) {
       if (sendOnly === true) {
         this.reporter.send(modified);
@@ -88,13 +88,11 @@ export default class MonitorCore {
         modified.cache = this.cache;
         if (this.conf.deduplicate) {
           const hash = JSON.stringify(info);
-          console.log('hash', hash);
           if (this.hash.get(hash) !== true) {
             this.reporter.send(modified);
             this.hash.set(hash, true);
           }
         } else {
-          console.log('else');
           this.reporter.send(modified);
         }
       }
@@ -104,7 +102,7 @@ export default class MonitorCore {
     }
   }
 
-  private save(result: ModifiedResult): void {
+  private save(result: ReportResult): void {
     if (this.stack.length >= this.conf.maxStackLength) {
       this.stack.shift();
     }

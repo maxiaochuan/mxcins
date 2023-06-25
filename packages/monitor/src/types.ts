@@ -79,12 +79,12 @@ export interface RecordScreenEvent {
 
 type DeviceInfo = UAParser.IResult;
 
-export interface ModifiedResult<T = any> {
+export interface ReportResult<T = any> {
   type: keyof EventHandlerConfig;
   device: DeviceInfo;
   info: T;
   at: string;
-  stack?: ModifiedResult[];
+  stack?: ReportResult[];
   cache?: any;
 }
 
