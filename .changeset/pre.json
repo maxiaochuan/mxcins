@@ -4,5 +4,7 @@
   "initialVersions": {
     "@mxcins/monitor": "1.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "weak-ducks-scream"
+  ]
 }
