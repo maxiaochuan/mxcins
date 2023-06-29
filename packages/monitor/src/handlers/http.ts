@@ -51,7 +51,9 @@ const HttpHandler: EventHandler<'http'> = {
         this.__monitor.response = response;
         this.__monitor.end = Date.now();
         this.__monitor.elapsed = this.__monitor.end - this.__monitor.start;
-        monitor.emit('http', this.__monitor);
+        if (!this.__monitor.url.toString().includes(monitor.conf.reportURL)) {
+          monitor.emit('http', this.__monitor);
+        }
       });
       prevsend.apply(this, [body]);
     }
@@ -81,7 +83,9 @@ const HttpHandler: EventHandler<'http'> = {
             ev.status = copy.status;
             ev.end = Date.now();
             ev.elapsed = ev.end - ev.start;
-            monitor.emit('http', ev);
+            if (!ev.url.toString().includes(monitor.conf.reportURL)) {
+              monitor.emit('http', ev);
+            }
           });
           return resp;
         },

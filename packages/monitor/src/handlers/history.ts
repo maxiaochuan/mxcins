@@ -1,18 +1,19 @@
 import { win } from '../common';
 import { type EventHandler } from '../types';
 
-const getLocationRef = (): string => document.location.href;
+const getLocationHref = (): string => win.document.location.href;
 
 const state = {
-  lastHref: getLocationRef(),
+  lastHref: '',
 };
 
 const eh: EventHandler<'history'> = {
   name: 'history',
   init: monitor => {
+    state.lastHref = getLocationHref();
     const prevonpopstate = win.onpopstate;
     win.onpopstate = function onpopstate(ev) {
-      monitor.emit('history', getLocationRef());
+      monitor.emit('history', getLocationHref());
       prevonpopstate?.apply(this, [ev]);
     };
     // const prevonhashchange = win.onhashchange;
