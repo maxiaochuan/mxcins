@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@mxcins/monitor": "1.0.0"
+  },
+  "changesets": []
+}
