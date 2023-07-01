@@ -1,5 +1,11 @@
 # @mxcins/monitor
 
+## 1.0.1-beta.2
+
+### Patch Changes
+
+- [`b1ca0c4`](https://github.com/maxiaochuan/mxcins/commit/b1ca0c42c7496cacf3b99fd5b25c40ed9fa073ff) Thanks [@maxiaochuan](https://github.com/maxiaochuan)! - 更新构建依赖的 external
+
 ## 1.0.1-beta.1
 
 ### Patch Changes
