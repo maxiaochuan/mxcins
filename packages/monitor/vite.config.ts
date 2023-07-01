@@ -13,7 +13,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           formats: ['es', 'cjs'],
         },
         rollupOptions: {
-          external: Object.keys(pkg.dependencies),
+          external: [
+            ...Object.keys(pkg.dependencies).filter(d => d !== 'nanoid'),
+            ...Object.keys(pkg.peerDependencies),
+          ],
         },
       },
     }) as UserConfig;

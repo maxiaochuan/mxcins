@@ -28,6 +28,7 @@
     "nanoid": "4.0.2",
     "pako": "2.1.0",
     "rrweb": "2.0.0-alpha.8",
+    "statuses": "2.0.1",
     "ua-parser-js": "1.0.35"
   },
   "devDependencies": {
@@ -38,7 +39,6 @@
     "dayjs": "1.11.8",
     "msw": "1.2.2",
     "rrweb-player": "2.0.0-alpha.8",
-    "statuses": "2.0.1",
     "vue": "3.3.4"
   },
   "peerDependencies": {
