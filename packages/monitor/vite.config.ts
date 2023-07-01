@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/// <reference types="vitest" />
+
 import { type ConfigEnv, type UserConfig, defineConfig } from 'vite';
+import pkg from './package.json';
 
 export default ({ mode }: ConfigEnv): UserConfig => {
   if (mode === 'production') {
@@ -6,7 +10,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       build: {
         lib: {
           entry: 'src/index.ts',
-          formats: ['es'],
+          formats: ['es', 'cjs'],
+        },
+        rollupOptions: {
+          external: Object.keys(pkg.dependencies),
         },
       },
     }) as UserConfig;

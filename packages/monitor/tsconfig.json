@@ -4,6 +4,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
+    "resolveJsonModule": true,
     "rootDir": "./src"
   },
   "include": ["src"]

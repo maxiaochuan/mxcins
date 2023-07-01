@@ -8,5 +8,6 @@
     "paths": {},
     "strict": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
   }
 }
