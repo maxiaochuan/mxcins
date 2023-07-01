@@ -5,6 +5,7 @@
     "@mxcins/monitor": "1.0.0"
   },
   "changesets": [
+    "lemon-mice-accept",
     "weak-ducks-scream"
   ]
 }

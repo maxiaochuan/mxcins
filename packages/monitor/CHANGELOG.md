@@ -1,5 +1,11 @@
 # @mxcins/monitor
 
+## 1.0.1-beta.1
+
+### Patch Changes
+
+- [`6be279e`](https://github.com/maxiaochuan/mxcins/commit/6be279ef668a02dcaf11d1bcacf6fa6ee311806f) Thanks [@maxiaochuan](https://github.com/maxiaochuan)! - 构建 cjs 版本
+
 ## 1.0.1-beta.0
 
 ### Patch Changes
