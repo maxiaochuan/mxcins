@@ -15,6 +15,7 @@
   "files": [
     "dist"
   ],
+  "main": "dist/monitor.js",
   "module": "dist/monitor.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
