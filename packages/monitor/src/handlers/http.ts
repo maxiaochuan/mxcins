@@ -21,14 +21,13 @@ const HttpHandler: EventHandler<'http'> = {
     fn = monitor.conf.handleResponseStatusCode;
 
     const prototype = XMLHttpRequest.prototype;
-    const prevopen = prototype.open;
-    const prevsend = prototype.send;
 
-    function open(
+    const prevopen = prototype.open;
+    prototype.open = function open(
       this: XMLHttpRequest,
       method: string,
       url: string | URL,
-      async: boolean,
+      async: boolean = true,
       username?: string | null,
       password?: string | null,
     ): void {
@@ -40,10 +39,13 @@ const HttpHandler: EventHandler<'http'> = {
         status: 0,
       };
       prevopen.apply(this, [method, url, async, username, password]);
-    }
-    prototype.open = open as XMLHttpRequest['open'];
+    };
 
-    function send(this: XMLHttpRequest, body?: Document | XMLHttpRequestBodyInit | null): void {
+    const prevsend = prototype.send;
+    prototype.send = function send(
+      this: XMLHttpRequest,
+      body?: Document | XMLHttpRequestBodyInit | null,
+    ): void {
       this.__monitor.request = { data: body };
       this.addEventListener('loadend', function loadend() {
         const { response, status } = this;
@@ -56,11 +58,10 @@ const HttpHandler: EventHandler<'http'> = {
         }
       });
       prevsend.apply(this, [body]);
-    }
-    prototype.send = send;
+    };
 
     const prevfetch = win.fetch;
-    async function fetch(
+    win.fetch = async function fetch(
       this: Window,
       input: RequestInfo | URL,
       init?: RequestInit,
@@ -98,8 +99,7 @@ const HttpHandler: EventHandler<'http'> = {
           throw err;
         },
       );
-    }
-    win.fetch = fetch;
+    };
   },
   handle: ev => {
     const { method, start, type, request, response, elapsed = 0 } = ev;
