@@ -77,6 +77,9 @@ importers:
       rrweb:
         specifier: 2.0.0-alpha.8
         version: 2.0.0-alpha.8
+      statuses:
+        specifier: 2.0.1
+        version: 2.0.1
       ua-parser-js:
         specifier: 1.0.35
         version: 1.0.35
@@ -102,12 +105,15 @@ importers:
       rrweb-player:
         specifier: 2.0.0-alpha.8
         version: 2.0.0-alpha.8
-      statuses:
-        specifier: 2.0.1
-        version: 2.0.1
       vue:
         specifier: 3.3.4
         version: 3.3.4
+
+  packages/smoothie:
+    dependencies:
+      dayjs:
+        specifier: '*'
+        version: 1.11.8
 
 packages:
 
@@ -1715,7 +1721,6 @@ packages:
 
   /dayjs@1.11.8:
     resolution: {integrity: sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==}
-    dev: true
 
   /debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -4229,7 +4234,7 @@ packages:
   /statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
-    dev: true
+    dev: false
 
   /std-env@3.3.3:
     resolution: {integrity: sha512-Rz6yejtVyWnVjC1RFvNmYL10kgjC49EOghxWn0RFqlCHGFpQx+Xe7yW3I4ceK1SGrWIGMjD5Kbue8W/udkbMJg==}

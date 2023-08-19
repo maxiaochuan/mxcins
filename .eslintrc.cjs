@@ -22,6 +22,7 @@ module.exports = {
     project: ['tsconfig.json'],
   },
   rules: {
+    '@typescript-eslint/triple-slash-reference': 0,
     'prettier/prettier': 2,
   },
 };

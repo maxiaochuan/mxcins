@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../node_modules/dayjs/dayjs.min.js"></script>
+</head>
+<style>
+  body {
+    padding: 0;
+  }
+  .container {
+    padding: 12px;
+    background: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container.row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  /* .container canvas {
+    background-color: aqua;
+  } */
+</style>
+<body>
+  <div class="container">
+    <canvas id="canvas" style="width: 100%; height: 200px;"></canvas>
+  </div>
+  <div class="container">
+    <canvas id="canvas2" style="width: 100%; height: 400px;"></canvas>
+  </div>
+  <div class="container row">
+    <!-- <button id="start2">start2</button>
+    <button id="stop2">stop2</button> -->
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+  </div>
+
+  <script type="module">
+    import { SmoothieChart, TimeSeries } from '../src';
+    let intervarId
+    let i = 0;
+
+    const run = (id) => {
+      const smoothie = new SmoothieChart({
+        interpolation: 'bezier',
+        nonRealtimeData: true,
+        // frameRate: 2,
+        grid: {
+          verticalSections: 2,
+          horizontalSections: 1
+        },
+        lines: [
+          { direction: 'horizontal', value: 3000, color: 'red' }
+        ]
+      });
+      smoothie.streamTo(document.getElementById(id), 1000)
+      return smoothie;
+    }
+
+    const s1 = run('canvas');
+
+    const d = dayjs('1990-01-01 01:00:00');
+    const data = Array.from({ length: 1000 }).map((_, i) => {
+      return {
+        x: d.clone().add(i * 500, 'ms').valueOf(),
+        y: Math.random() * 10000,
+      }
+    })
+
+    const r1 = new TimeSeries();
+    const r2 = new TimeSeries();
+    const r3 = new TimeSeries();
+    s1.add('r1',r1, { strokeStyle: 'rgba(0, 255, 0, 1)'});
+    s1.add('r2',r2, { interpolation: "step", strokeStyle: 'rgba(0, 0, 255, 1)'});
+    s1.add('r3',r3, { interpolation: "line", strokeStyle: 'rgba(255, 0, 0, 1)'});
+
+    const start = () => {
+      intervarId = setInterval(() => {
+        r1.append(data[i].x, data[i].y);
+        r2.append(data[i].x, data[i].y);
+        r3.append(data[i].x, data[i].y);
+        console.log('interval', r1);
+        i += 1;
+      }, 500);
+      s1.start();
+    }
+
+    const stop = () => {
+      clearInterval(intervarId);
+      s1.stop();
+    };
+
+    document.getElementById('start').addEventListener('click', () => {
+      start();
+    })
+    document.getElementById('stop').addEventListener('click', () => {
+      stop();
+    })
+  </script>
+</body>
+</html>

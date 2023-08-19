@@ -6,6 +6,7 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "dev": "turbo run dev",
+    "dev:smoothie": "turbo run dev --filter smoothie",
     "enter:beta": "changeset pre enter beta",
     "exit:beta": "changeset pre exit",
     "format": "prettier --write \"**/*.{ts,md,js,cjs}\"",
