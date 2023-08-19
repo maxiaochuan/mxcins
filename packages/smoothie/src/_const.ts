@@ -175,12 +175,36 @@ export const DEFAULT_OPTIONS: SmoothieChartOptions = {
   lines: [],
 };
 
-export interface SizeCache {
+export interface StateRecord {
+  isAnimatingScale: boolean;
+  range: number;
+  min: number;
+}
+
+export const STATE_RECORD: StateRecord = {
+  isAnimatingScale: false,
+  range: 1,
+  min: 0,
+};
+
+export interface SizeRecord {
   lastWidth: number;
   lastHeight: number;
 }
 
-export const SIZE_CACHE: SizeCache = {
+export const SIZE_RECORD: SizeRecord = {
   lastWidth: 0,
   lastHeight: 0,
+};
+
+export interface ValueRecord {
+  min: number;
+  max: number;
+  range: number;
+}
+
+export const VALUE_RECORD: ValueRecord = {
+  min: Number.NaN,
+  max: Number.NaN,
+  range: Number.NaN,
 };

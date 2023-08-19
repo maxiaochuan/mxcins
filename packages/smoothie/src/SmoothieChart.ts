@@ -1,9 +1,15 @@
 import * as Util from './Util';
-import { type SmoothieChartOptions, DEFAULT_OPTIONS, SIZE_CACHE } from './_const';
+import {
+  type SmoothieChartOptions,
+  DEFAULT_OPTIONS,
+  SIZE_RECORD,
+  VALUE_RECORD,
+  STATE_RECORD,
+} from './_const';
 import { type default as TimeSeries, type TimeSeriesExtraOptions } from './TimeSeries';
 
 export default class SmoothieChart {
-  private readonly options = DEFAULT_OPTIONS;
+  private readonly options: Readonly<SmoothieChartOptions>;
 
   private _canvas?: HTMLCanvasElement;
 
@@ -97,19 +103,11 @@ export default class SmoothieChart {
 
   public readonly series = new Map<string, TimeSeries>();
 
-  private readonly cache = SIZE_CACHE;
+  private readonly cache = { ...SIZE_RECORD };
 
-  private value: { min: number; max: number; range: number } = {
-    min: Number.NaN,
-    max: Number.NaN,
-    range: Number.NaN,
-  };
+  private readonly state = { ...STATE_RECORD };
 
-  private readonly state: { range: number; min: number; isAnimatingScale: boolean } = {
-    isAnimatingScale: false,
-    range: 1,
-    min: 0,
-  };
+  private value = { ...VALUE_RECORD };
 
   constructor(options: Partial<SmoothieChartOptions> = {}) {
     this.options = {
@@ -129,12 +127,11 @@ export default class SmoothieChart {
     }
   }
 
-  public streamTo(canvas: HTMLCanvasElement, delay: number): this {
+  public streamTo(canvas: HTMLCanvasElement, delay: number = 500): this {
     this.canvas = canvas;
     this.resize();
-    this.delay = delay ?? 500;
+    this.delay = delay;
     this.render();
-    // this.start();
     return this;
   }
 
