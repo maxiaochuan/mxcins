@@ -162,27 +162,30 @@ export default class SmoothieChart {
     const animate = (): void => {
       this.frameId = requestAnimationFrame(() => {
         const now = Date.now();
+
         // 帧率限制
-        if (this.options.limitFPS > 0 && now - this.lastRenderTime < this.frameTime) return;
+        const skip = this.options.limitFPS > 0 && now - this.lastRenderTime < this.frameTime;
 
-        if (this.options.nonRealtimeData) {
-          // find the data point with the latest timestamp
-          const maxTimeStamp = [...this.series.values()].reduce((max, series) => {
-            const dataSet = series.data;
-            if (dataSet.length > 0) {
-              // timestamp corresponds to element 0 of the data point
-              const lastDataTimeStamp = dataSet[dataSet.length - 1][0];
-              max = max > lastDataTimeStamp ? max : lastDataTimeStamp;
+        if (!skip) {
+          if (this.options.nonRealtimeData) {
+            // find the data point with the latest timestamp
+            const maxTimeStamp = [...this.series.values()].reduce((max, series) => {
+              const dataSet = series.data;
+              if (dataSet.length > 0) {
+                // timestamp corresponds to element 0 of the data point
+                const lastDataTimeStamp = dataSet[dataSet.length - 1][0];
+                max = max > lastDataTimeStamp ? max : lastDataTimeStamp;
+              }
+              return max;
+            }, 0);
+            if (maxTimeStamp !== 0 && this.offset === 0) {
+              this.offset = now - maxTimeStamp;
             }
-            return max;
-          }, 0);
-          if (maxTimeStamp !== 0 && this.offset === 0) {
-            this.offset = now - maxTimeStamp;
-          }
 
-          this.render(now - this.offset);
-        } else {
-          this.render();
+            this.render(now - this.offset);
+          } else {
+            this.render();
+          }
         }
         animate();
       });
@@ -321,7 +324,7 @@ export default class SmoothieChart {
     }
     context.restore();
 
-    // //TODO: Draw any horizontal lines...
+    // Draw any horizontal lines...
     const horizontal = this.options.lines.filter(l => l.direction === 'horizontal');
     if (horizontal.length > 0) {
       for (let hl = 0; hl < horizontal.length; hl++) {

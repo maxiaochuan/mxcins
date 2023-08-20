@@ -50,7 +50,8 @@
       const smoothie = new SmoothieChart({
         interpolation: 'bezier',
         nonRealtimeData: true,
-        // frameRate: 2,
+        // limitFPS: 1,
+        duration: 10000,
         grid: {
           verticalSections: 2,
           horizontalSections: 1
@@ -77,19 +78,21 @@
     const r2 = new TimeSeries();
     const r3 = new TimeSeries();
     s1.add('r1',r1, { strokeStyle: 'rgba(0, 255, 0, 1)'});
-    s1.add('r2',r2, { interpolation: "step", strokeStyle: 'rgba(0, 0, 255, 1)'});
-    s1.add('r3',r3, { interpolation: "line", strokeStyle: 'rgba(255, 0, 0, 1)'});
+    // s1.add('r2',r2, { interpolation: "step", strokeStyle: 'rgba(0, 0, 255, 1)'});
+    // s1.add('r3',r3, { interpolation: "line", strokeStyle: 'rgba(255, 0, 0, 1)'});
 
     const start = () => {
       intervarId = setInterval(() => {
         r1.append(data[i].x, data[i].y);
         r2.append(data[i].x, data[i].y);
         r3.append(data[i].x, data[i].y);
-        console.log('interval', r1);
+        // console.log('interval', r1);
         i += 1;
       }, 500);
       s1.start();
     }
+
+    start();
 
     const stop = () => {
       clearInterval(intervarId);

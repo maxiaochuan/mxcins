@@ -36,7 +36,7 @@ export default class TimeSeries {
 
   public max = Number.NaN;
 
-  constructor(options: Partial<TimeSeriesOptions>) {
+  constructor(options: Partial<TimeSeriesOptions> = {}) {
     this.options = { ...this.options, ...options };
     this.disabled = false;
   }
@@ -46,16 +46,19 @@ export default class TimeSeries {
     return this;
   }
 
-  // /**
-  //  * Adds a new data point to the <code>TimeSeries</code>, preserving chronological order.
-  //  *
-  //  * @param timestamp the position, in time, of this data point
-  //  * @param value the value of this data point
-  //  * @param sumRepeatedTimeStampValues if <code>timestamp</code> has an exact match in the series, this flag controls
-  //  * whether it is replaced, or the values summed (defaults to false.)
-  //  */
-
-  public append(timestamp: number, value: number, sumRepeatedTimeStampValues: boolean): this {
+  /**
+   * Adds a new data point to the <code>TimeSeries</code>, preserving chronological order.
+   *
+   * @param timestamp the position, in time, of this data point
+   * @param value the value of this data point
+   * @param sumRepeatedTimeStampValues if <code>timestamp</code> has an exact match in the series, this flag controls
+   * whether it is replaced, or the values summed (defaults to false.)
+   */
+  public append(
+    timestamp: number,
+    value: number,
+    sumRepeatedTimeStampValues: boolean = false,
+  ): this {
     // Reject NaN
     if (Number.isNaN(timestamp) || Number.isNaN(value)) return this;
 
@@ -114,7 +117,6 @@ export default class TimeSeries {
    * This causes the graph to scale itself in the y-axis.
    */
   public resetBounds(): void {
-    console.log('this', this.data);
     if (this.data.length > 0) {
       // Walk through all data points, finding the min/max value
       this.data.forEach(([, v]) => {
