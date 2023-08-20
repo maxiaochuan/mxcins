@@ -132,7 +132,7 @@ export default class SmoothieChart {
     this.size = { ...SIZE_RECORD };
     this.resize();
     this.delay = delay;
-    this.render();
+    this.render(Date.now());
     return this;
   }
 
@@ -163,31 +163,11 @@ export default class SmoothieChart {
     const animate = (): void => {
       this.frameId = requestAnimationFrame(() => {
         const now = Date.now();
-
         // 帧率限制
         const skip = this.options.limitFPS > 0 && now - this.lastRenderTime < this.frameTime;
 
-        if (!skip) {
-          if (this.options.nonRealtimeData) {
-            // find the data point with the latest timestamp
-            const maxTimeStamp = [...this.series.values()].reduce((max, series) => {
-              const dataSet = series.data;
-              if (dataSet.length > 0) {
-                // timestamp corresponds to element 0 of the data point
-                const lastDataTimeStamp = dataSet[dataSet.length - 1][0];
-                max = max > lastDataTimeStamp ? max : lastDataTimeStamp;
-              }
-              return max;
-            }, 0);
-            if (maxTimeStamp !== 0 && this.offset === 0) {
-              this.offset = now - maxTimeStamp;
-            }
+        if (!skip) this.render(now);
 
-            this.render(now - this.offset);
-          } else {
-            this.render();
-          }
-        }
         animate();
       });
     };
@@ -203,8 +183,25 @@ export default class SmoothieChart {
     }
   }
 
-  private render(timestamp?: number | null): void {
-    const now = Date.now();
+  private render(now: number): void {
+    const timestamp = (() => {
+      if (this.options.nonRealtimeData) {
+        // find the data point with the latest timestamp
+        const maxTimeStamp = [...this.series.values()].reduce((max, series) => {
+          const dataSet = series.data;
+          if (dataSet.length > 0) {
+            // timestamp corresponds to element 0 of the data point
+            const lastDataTimeStamp = dataSet[dataSet.length - 1][0];
+            max = max > lastDataTimeStamp ? max : lastDataTimeStamp;
+          }
+          return max;
+        }, 0);
+        if (maxTimeStamp !== 0 && this.offset === 0) {
+          this.offset = now - maxTimeStamp;
+        }
+      }
+      return now - this.offset;
+    })();
 
     /**
      * @description 当前绘制时间
