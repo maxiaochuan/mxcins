@@ -103,11 +103,11 @@ export default class SmoothieChart {
 
   public readonly series = new Map<string, TimeSeries>();
 
-  private readonly cache = { ...SIZE_RECORD };
-
   private readonly state = { ...STATE_RECORD };
 
   private value = { ...VALUE_RECORD };
+
+  private size = { ...SIZE_RECORD };
 
   constructor(options: Partial<SmoothieChartOptions> = {}) {
     this.options = {
@@ -129,6 +129,7 @@ export default class SmoothieChart {
 
   public streamTo(canvas: HTMLCanvasElement, delay: number = 500): this {
     this.canvas = canvas;
+    this.size = { ...SIZE_RECORD };
     this.resize();
     this.delay = delay;
     this.render();
@@ -500,13 +501,13 @@ export default class SmoothieChart {
     const width = this.canvas.offsetWidth;
     const height = this.canvas.offsetHeight;
 
-    if (width !== this.cache.lastWidth) {
-      this.cache.lastWidth = width;
+    if (width !== this.size.lastWidth) {
+      this.size.lastWidth = width;
       this.canvas.setAttribute('width', Math.floor(width * dpr).toString());
       this.context.scale(dpr, dpr);
     }
-    if (height !== this.cache.lastHeight) {
-      this.cache.lastHeight = height;
+    if (height !== this.size.lastHeight) {
+      this.size.lastHeight = height;
       this.canvas.setAttribute('height', Math.floor(height * dpr).toString());
       this.context.scale(dpr, dpr);
     }
