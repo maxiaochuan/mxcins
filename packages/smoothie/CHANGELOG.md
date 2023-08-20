@@ -1,5 +1,11 @@
 # @mxcins/smoothie
 
+## 1.0.3
+
+### Patch Changes
+
+- fix(smoothie): limit fps'
+
 ## 1.0.2
 
 ### Patch Changes
