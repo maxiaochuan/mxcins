@@ -1,5 +1,12 @@
 # @mxcins/smoothie
 
+## 1.1.0
+
+### Minor Changes
+
+- feat(smoothie): reset size when stream to
+  feat(smoothie): support stream to other canvas
+
 ## 1.0.3
 
 ### Patch Changes
