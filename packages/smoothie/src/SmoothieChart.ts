@@ -53,6 +53,8 @@ export default class SmoothieChart {
    */
   private offset: number = 0;
 
+  private offsetIn: number = 0;
+
   /**
    * @description 每帧时间，毫秒
    * @author Xiaochuan Ma <mxcins@gmail.com>
@@ -183,23 +185,44 @@ export default class SmoothieChart {
     }
   }
 
+  private needResetOffset(): boolean {
+    if (!this.options.nonRealtimeData) return false;
+    if (this.offset === 0) return true;
+
+    let isDiff = false;
+    for (const [, current] of this.series) {
+      if (current.data.length < 3) continue;
+
+      const d1 = current.data[current.data.length - 1];
+      const d2 = current.data[current.data.length - 2];
+      const d3 = current.data[current.data.length - 3];
+      if (d1[0] - d2[0] !== d2[0] - d3[0] && this.offsetIn !== d1[0]) {
+        isDiff = true;
+        this.offsetIn = d1[0];
+        break;
+      }
+    }
+
+    return isDiff;
+  }
+
+  private resetOffset(): this {
+    let max = 0;
+    for (const [, series] of this.series) {
+      if (series.data.length > 0) {
+        const timestemp = series.data[series.data.length - 1][0];
+        max = max > timestemp ? max : timestemp;
+      }
+    }
+
+    if (max !== 0) this.offset = Date.now() - max;
+
+    return this;
+  }
+
   private render(now: number): void {
     const timestamp = (() => {
-      if (this.options.nonRealtimeData) {
-        // find the data point with the latest timestamp
-        const maxTimeStamp = [...this.series.values()].reduce((max, series) => {
-          const dataSet = series.data;
-          if (dataSet.length > 0) {
-            // timestamp corresponds to element 0 of the data point
-            const lastDataTimeStamp = dataSet[dataSet.length - 1][0];
-            max = max > lastDataTimeStamp ? max : lastDataTimeStamp;
-          }
-          return max;
-        }, 0);
-        if (maxTimeStamp !== 0 && this.offset === 0) {
-          this.offset = now - maxTimeStamp;
-        }
-      }
+      if (this.needResetOffset()) this.resetOffset();
       return now - this.offset;
     })();
 

@@ -39,8 +39,11 @@
     <button id="stop2">stop2</button> -->
     <button id="start">start</button>
     <button id="stop">stop</button>
+    <button id="reset">reset offset</button>
+    <button id="stoponly">only stop chart render</button>
     <button id="to1">to canvas1</button>
     <button id="to2">to canvas2</button>
+    <button id="plus">i plus 10</button>
   </div>
 
   <script type="module">
@@ -52,7 +55,7 @@
       const smoothie = new SmoothieChart({
         interpolation: 'bezier',
         nonRealtimeData: true,
-        // limitFPS: 10,
+        // limitFPS: 1,
         duration: 10000,
         grid: {
           verticalSections: 2,
@@ -84,11 +87,9 @@
     // s1.add('r3',r3, { interpolation: "line", strokeStyle: 'rgba(255, 0, 0, 1)'});
 
     const start = () => {
+      if (intervarId) clearInterval(intervarId);
       intervarId = setInterval(() => {
         r1.append(data[i].x, data[i].y);
-        // r2.append(data[i].x, data[i].y);
-        // r3.append(data[i].x, data[i].y);
-        // console.log('interval', r1);
         i += 1;
       }, 500);
       s1.start();
@@ -101,15 +102,31 @@
       s1.stop();
     };
 
+    const onlyStopRender = () => {
+      s1.stop();
+    }
+
     document.getElementById('start').addEventListener('click', () => {
       start();
     })
     document.getElementById('stop').addEventListener('click', () => {
       stop();
     })
+
+    document.getElementById('stoponly').addEventListener('click', () => {
+      onlyStopRender();
+    })
+
+    document.getElementById('reset').addEventListener('click', () => {
+      s1.resetOffset();
+    })
     
     document.getElementById('to1').addEventListener('click', () => {
       s1.streamTo(document.getElementById('canvas1'), 1000)
+    })
+
+    document.getElementById('plus').addEventListener('click', () => {
+      i += 10
     })
 
     document.getElementById('to2').addEventListener('click', () => {
