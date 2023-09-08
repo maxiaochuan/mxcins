@@ -1,5 +1,11 @@
 # @mxcins/smoothie
 
+## 1.2.0
+
+### Minor Changes
+
+- feat(smoothie): draw timestemp at bottom of the chart
+
 ## 1.1.1
 
 ### Patch Changes
