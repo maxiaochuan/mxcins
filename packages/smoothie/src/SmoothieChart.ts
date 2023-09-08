@@ -7,6 +7,7 @@ import {
   STATE_RECORD,
 } from './_const';
 import { type default as TimeSeries, type TimeSeriesExtraOptions } from './TimeSeries';
+import dayjs from 'dayjs';
 
 export default class SmoothieChart {
   private readonly options: Readonly<SmoothieChartOptions>;
@@ -425,6 +426,17 @@ export default class SmoothieChart {
         context.fillStyle = labels.fillStyle;
         context.fillText(maxValueString, maxLabelPos, labels.fontSize);
         context.fillText(minValueString, minLabelPos, dimensions.height - 2);
+      }
+
+      for (
+        let t = time - (time % this.millisPerLine);
+        t >= oldestValidTime;
+        t -= this.millisPerLine
+      ) {
+        const gx = t2x(t, grid.lineWidth);
+        const text = dayjs(t).format('hh:mm:ss');
+        const w = context.measureText(text).width;
+        context.fillText(text, gx - w / 2, dimensions.height - 2);
       }
     }
   }

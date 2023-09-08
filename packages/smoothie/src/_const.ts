@@ -158,7 +158,7 @@ export const DEFAULT_OPTIONS: SmoothieChartOptions = {
   labels: {
     fillStyle: '#ffffff',
     disabled: false,
-    fontSize: 10,
+    fontSize: 12,
     fontFamily: 'monospace',
     precision: 2,
     showIntermediateLabels: false,
