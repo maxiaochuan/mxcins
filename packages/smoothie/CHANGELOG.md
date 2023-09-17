@@ -1,5 +1,11 @@
 # @mxcins/smoothie
 
+## 1.3.0
+
+### Minor Changes
+
+- feat(smoothie): clear serie
+
 ## 1.2.0
 
 ### Minor Changes
