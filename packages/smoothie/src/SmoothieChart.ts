@@ -161,6 +161,11 @@ export default class SmoothieChart {
     }
   }
 
+  public clear(): this {
+    this.series.clear();
+    return this;
+  }
+
   public start(): void {
     if (this.frameId > 0) return;
     const animate = (): void => {
