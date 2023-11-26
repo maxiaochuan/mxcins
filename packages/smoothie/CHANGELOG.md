@@ -1,5 +1,11 @@
 # @mxcins/smoothie
 
+## 1.4.0
+
+### Minor Changes
+
+- feat(smoothie): custom date format
+
 ## 1.3.0
 
 ### Minor Changes
