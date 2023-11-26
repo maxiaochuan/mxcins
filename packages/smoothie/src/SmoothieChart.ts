@@ -439,7 +439,7 @@ export default class SmoothieChart {
         t -= this.millisPerLine
       ) {
         const gx = t2x(t, grid.lineWidth);
-        const text = dayjs(t).format('hh:mm:ss');
+        const text = dayjs(t).format(labels.dateFormat);
         const w = context.measureText(text).width;
         context.fillText(text, gx - w / 2, dimensions.height - 2);
       }

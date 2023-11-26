@@ -103,6 +103,7 @@ export interface SmoothieChartOptions {
     precision: number;
     showIntermediateLabels: boolean;
     intermediateLabelSameAxis: boolean;
+    dateFormat: string;
   };
   /**
    * @description Grid 样式
@@ -163,6 +164,7 @@ export const DEFAULT_OPTIONS: SmoothieChartOptions = {
     precision: 2,
     showIntermediateLabels: false,
     intermediateLabelSameAxis: true,
+    dateFormat: 'HH:mm:ss',
   },
   grid: {
     fillStyle: '#000000',

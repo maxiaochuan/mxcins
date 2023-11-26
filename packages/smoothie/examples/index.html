@@ -74,7 +74,7 @@
     const d = dayjs('1990-01-01 01:00:00');
     const data = Array.from({ length: 1000 }).map((_, i) => {
       return {
-        x: d.clone().add(i * 500, 'ms').valueOf(),
+        x: d.clone().add(12, 'hours').add(i * 500, 'ms').valueOf(),
         y: Math.random() * 10000,
       }
     })
