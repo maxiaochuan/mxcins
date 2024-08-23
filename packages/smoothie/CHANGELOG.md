@@ -1,5 +1,11 @@
 # @mxcins/smoothie
 
+## 1.4.1
+
+### Patch Changes
+
+- [`663b0f4`](https://github.com/maxiaochuan/mxcins/commit/663b0f49700862ea12d7c3378edd980a0807ee66) Thanks [@maxiaochuan](https://github.com/maxiaochuan)! - feat(smoothie): remove example notesf
+
 ## 1.4.0
 
 ### Minor Changes
