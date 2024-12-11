@@ -35,7 +35,7 @@
     "@types/pako": "2.0.0",
     "@types/statuses": "2.0.1",
     "@types/ua-parser-js": "0.7.36",
-    "axios": "1.4.0",
+    "axios": "1.6.0",
     "dayjs": "1.11.8",
     "msw": "1.2.2",
     "rrweb-player": "2.0.0-alpha.8",
